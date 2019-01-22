@@ -2,8 +2,8 @@
 #macro version_date "2019.01.20"
 #macro version "3.3.5"
 
-#macro link_download "http://www.stuffbydavid.com/mcnbs"
-#macro link_topic "http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-tools/1260747-minecraft-note-block-studio"
+#macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
+#macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"

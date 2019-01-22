@@ -6,7 +6,7 @@ y1 = floor(window_height / 2 - 210)
 draw_window(x1, y1, x1 + 700, y1 + 430)
 draw_sprite(spr_logo, 0, x1 + 64, y1 + 64)
 draw_set_font(fnt_mainbold)
-draw_text_center(x1 + 132, y1 + 220, "Minecraft Note Block Studio")
+draw_text_center(x1 + 132, y1 + 220, "Open Minecraft Note Block Studio")
 if (check_update) {
     if (update = -1) {
         draw_set_color(c_red)
@@ -35,11 +35,24 @@ if (check_update) {
 draw_set_font(fnt_main)
 draw_set_color(c_black)
 draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
-draw_text(x1 + 52, y1 + 280, "Created by David Norgren")
+draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
 draw_set_color(c_blue)
-draw_text(x1 + 52, y1 + 296, "www.stuffbydavid.com")
-draw_line(x1 + 52, y1 + 309, x1 + 165, y1 + 309)
-a = mouse_rectangle(x1 + 52, y1 + 302, 114, 12)
+draw_text_center(x1 + 132, y1 + 296, "www.git.io/fh2fJ")
+draw_line(x1 + 90, y1 + 309, x1 + 173, y1 + 309)
+
+a = mouse_rectangle(x1 + 90, y1 + 298, 85, 12)
+if (a) {
+    curs = cr_handpoint
+    if (mouse_check_button_pressed(mb_left))
+        open_url("https://github.com/HielkeMinecraft/OpenNoteBlockStudio")
+}
+
+draw_set_color(c_black)
+draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
+draw_set_color(c_blue)
+draw_text_center(x1 + 132, y1 + 356, "www.stuffbydavid.com")
+draw_line(x1 + 74, y1 + 369, x1 + 187, y1 + 369)
+a = mouse_rectangle(x1 + 75, y1 + 358, 114, 12)
 if (a) {
     curs = cr_handpoint
     if (mouse_check_button_pressed(mb_left))

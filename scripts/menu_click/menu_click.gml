@@ -131,7 +131,7 @@ switch (m) {
         if (sel = 7) open_url("http://minecraft.gamepedia.com/Programs_and_editors/Minecraft_Note_Block_Studio")
         if (sel = 8) window = w_changelist
         if (sel = 9) window = w_about
-        if (sel = 10) open_url("http://www.stuffbydavid.com")
+        if (sel = 10) open_url("https://github.com/HielkeMinecraft/OpenNoteBlockStudio")
         break
     }
     case "section": {

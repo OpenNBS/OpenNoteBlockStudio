@@ -276,7 +276,7 @@ load_settings()
 change_theme()
 if (show_welcome) window = w_greeting
 if (check_update)
-    update_http = http_get("http://www.stuffbydavid.com/stuff/mcnbs/version.txt")
+    update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
 if (file_exists_lib(data_directory + "settings.file") && vers != version) {
