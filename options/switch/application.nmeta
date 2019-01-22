@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NintendoSdkMeta>
+  <Core>
+    <Name>Application</Name>
+    <Is64BitInstruction>True</Is64BitInstruction>
+    <ApplicationId>0x01004b9000490000</ApplicationId>
+    <MainThreadStackSize>0x00100000</MainThreadStackSize>
+    <ProcessAddressSpace>AddressSpace64Bit</ProcessAddressSpace>
+  </Core>
+  <Application>
+    <Title>
+      <Language>AmericanEnglish</Language>
+      <Name>GameMaker Studio 2 Runner</Name>
+      <Publisher>YoYoGames</Publisher>
+    </Title>
+    <Icon>
+      <Language>AmericanEnglish</Language>
+      <IconPath>icon.bmp</IconPath>
+    </Icon>
+    <ReleaseVersion>0</ReleaseVersion>
+    <DisplayVersion>1.0.0</DisplayVersion>
+    <StartupUserAccount>None</StartupUserAccount>
+    <SupportedLanguage>AmericanEnglish</SupportedLanguage>
+    <Screenshot>Allow</Screenshot>
+    <DataLossConfirmation>None</DataLossConfirmation>
+    <UserAccountSaveDataSize>0x0000000000400000</UserAccountSaveDataSize>
+    <UserAccountSaveDataJournalSize>0x0000000000100000</UserAccountSaveDataJournalSize>
+    <LogoType>LicensedByNintendo</LogoType>
+    <LogoHandling>Auto</LogoHandling>
+    <VideoCapture>Enable</VideoCapture>
+    <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>
+  </Application>
+</NintendoSdkMeta>
