@@ -1,6 +1,8 @@
 # Open Minecraft Note Block Studio
 Open Minecraft Note Block Studio is an open source continuation of Minecraft Note Block Studio, created by David Norgren.
 
-For issues, please head over to the [issues](https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues) page
+For issues, please head over to the [issues](https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues) page.
 
-For contributions, please open up a [pull request](https://github.com/HielkeMinecraft/OpenNoteBlockStudio/pulls) and I'll review it
+For contributions, please open up a [pull request](https://github.com/HielkeMinecraft/OpenNoteBlockStudio/pulls) and I'll review it.
+
+This project is written in Game Maker Language (GML). You must have GameMaker Studio 2 in order to open this project and make changes.
