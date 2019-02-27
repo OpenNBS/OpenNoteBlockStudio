@@ -167,6 +167,14 @@
             }
         },
         {
+            "Key": "0ea09bd4-89d7-4b2e-98dc-7dc00e2f1c2f",
+            "Value": {
+                "id": "de2ac01a-f5ce-44d3-aabd-62518cb6f6bd",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\cow_bell.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "0ebe6a3a-330f-4feb-9859-3a573e1e2f15",
             "Value": {
                 "id": "83e5f9a2-122e-4629-af43-ecdc47031cb1",
@@ -204,6 +212,14 @@
                 "id": "9c270249-4a80-4ec5-bdb2-6d7cb4b935cd",
                 "resourcePath": "scripts\\midi_input_pitch_wheel\\midi_input_pitch_wheel.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "132dbf39-4ce2-487d-8a3b-03fd1e679fb9",
+            "Value": {
+                "id": "91cc601b-afa4-4eff-a6aa-c9d77d2356bf",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\didgeridoo.ogg.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
@@ -2351,6 +2367,14 @@
             }
         },
         {
+            "Key": "be6e08ca-7dae-4763-a711-044af44a7b07",
+            "Value": {
+                "id": "f6bfdb9e-c71b-49f8-a2c7-ffe2bf05ecc2",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\bit.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "be77aff2-c16b-4b4f-a22d-6eaa4bd0d7e2",
             "Value": {
                 "id": "408dcbf2-de46-45c0-aa33-719bc908cd55",
@@ -2615,6 +2639,14 @@
             }
         },
         {
+            "Key": "d8651506-5796-430e-883f-f79e489fc92c",
+            "Value": {
+                "id": "8ab9f6a1-e175-4832-8474-625ba1845f43",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\banjo.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "d8ef38a0-a0fb-4e47-8b8c-53ca02850bb9",
             "Value": {
                 "id": "0ac469f7-397b-411c-b0d0-9d229dadd03a",
@@ -2772,6 +2804,14 @@
                 "id": "cb80b041-3328-4321-abf8-e69166662a46",
                 "resourcePath": "sprites\\spr_timeline\\spr_timeline.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "e5dfde89-f0c1-46a3-8b26-1f2e45a48c35",
+            "Value": {
+                "id": "48ff1202-66c4-4a0f-806f-1f6507ba34a7",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\iron_xylophone.ogg.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {

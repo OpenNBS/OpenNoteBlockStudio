@@ -25,4 +25,16 @@ switch (instrument) {
 		return str + "chime"
 	case 9:
 		return str + "xylophone"	
+	case 10:
+		return str + "iron_xylophone"	
+	case 11:
+		return str + "cow_bell"	
+	case 12:
+		return str + "didgeridoo"	
+	case 13:
+		return str + "bit"	
+	case 14:
+		return str + "banjo"	
+	case 15:
+		return str + "pling"	
 }

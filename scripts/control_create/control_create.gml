@@ -248,6 +248,12 @@ ds_list_add(instrument_list, new_instrument("Flute",         "flute.ogg",    fal
 ds_list_add(instrument_list, new_instrument("Bell",          "bell.ogg",     false))
 ds_list_add(instrument_list, new_instrument("Chime",         "icechime.ogg", false))
 ds_list_add(instrument_list, new_instrument("Xylophone",     "xylobone.ogg", false))
+ds_list_add(instrument_list, new_instrument("Iron Xylophone","iron_xylophone.ogg", false))
+ds_list_add(instrument_list, new_instrument("Cow Bell",      "cow_bell.ogg", false))
+ds_list_add(instrument_list, new_instrument("Didgeridoo",    "didgeridoo.ogg", false))
+ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false))
+ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false))
+ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false))
 
 instrument = instrument_list[| 0]
 user_instruments = 0
