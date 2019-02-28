@@ -1,11 +1,31 @@
 // midi_instruments()
 // http://en.wikipedia.org/wiki/General_MIDI#Melodic_sounds
+// https://jazz-soft.net/demo/GeneralMidi.html
 var a;
 a = 0
 
-// 0 = name
-// 1 = instrument
-// 2 = octave difference
+/*
+0 = name
+1 = instruments:
+   0 = Harp
+   1 = Double Bass
+   2 = Bass Drum
+   3 = Snare Drum
+   4 = Click
+   5 = Guitar
+   6 = Flute
+   7 = Bell
+   8 = Chime
+   9 = Xylophone
+   10 = Iron Xylophone
+   11 = Cow Bell
+   12 = Didgeridoo
+   13 = Bit
+   14 = Banjo
+   15 = Pling
+2 = octave difference
+3 = shortened name (optional)
+*/
 
 // Piano
 midi_ins[a, 0] = "Acoustic Grand Piano" midi_ins[a, 3] = "Grand Piano"
@@ -13,28 +33,28 @@ midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Bright Acoustic Piano" midi_ins[a, 3] = "Acoustic Piano"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1 
 midi_ins[a, 0] = "Electric Grand Piano" midi_ins[a, 3] = "E. Grand Piano"
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 13 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Honky - tonk Piano" midi_ins[a, 3] = "H.T. Piano"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Electric Piano 1" midi_ins[a, 3] = "E. Piano 1"
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 13 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Electric Piano 2" midi_ins[a, 3] = "E. Piano 2"
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 13 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Harpsichord" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 1 a += 1
 midi_ins[a, 0] = "Clavinet" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 // Chromatic Percussion
 midi_ins[a, 0] = "Celesta" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 7 midi_ins[a, 2] = -1 a += 1
+midi_ins[a, 1] = 11 midi_ins[a, 2] = -1 a += 1
 midi_ins[a, 0] = "Glockenspiel" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 7 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 11 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Music Box" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 7 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 11 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Vibraphone" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 7 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 11 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Marimba" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 7 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 11 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Xylophone" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 9 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Tubular Bells" midi_ins[a, 3] = "T. Bells"
@@ -128,17 +148,17 @@ midi_ins[a, 0] = "Orchestra hit" midi_ins[a, 3] = "O. Hit"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 // Brass
 midi_ins[a, 0] = "Trumpet" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Trombone" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Tuba" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Muted Trumpet" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "French Horn" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Brass Section" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Synth Brass 1" midi_ins[a, 3] = "S. Brass 1"
 midi_ins[a, 1] = 1 midi_ins[a, 2] = 1 a += 1
 midi_ins[a, 0] = "Synth Brass 2" midi_ins[a, 3] = "S. Brass 2"
@@ -216,7 +236,7 @@ midi_ins[a, 1] = -1 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "FX 2 (soundtrack)" midi_ins[a, 3] = "Fx (strack)"
 midi_ins[a, 1] = -1 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "FX 3 (crystal)" midi_ins[a, 3] = "Fx (crystal)"
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 13 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "FX 4 (atmosphere)" midi_ins[a, 3] = "Fx (atmosph.)"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "FX 5 (brightness)" midi_ins[a, 3] = "Fx (bright.)"
@@ -229,13 +249,13 @@ midi_ins[a, 0] = "FX 8 (sci - fi)" midi_ins[a, 3] = "Fx (sci - fi)"
 midi_ins[a, 1] = -1 midi_ins[a, 2] = 0 a += 1
 // Ethnic
 midi_ins[a, 0] = "Sitar" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 14 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Banjo" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 14 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Shamisen" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 14 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Koto" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 14 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Kalimba" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 1 midi_ins[a, 2] = 1 a += 1
 midi_ins[a, 0] = "Bagpipe" midi_ins[a, 3] = ""
@@ -250,7 +270,7 @@ midi_ins[a, 1] = 7 midi_ins[a, 2] = -1 a += 1
 midi_ins[a, 0] = "Agogo" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Steel Drums" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 10 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Woodblock" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 4 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Taiko Drum" midi_ins[a, 3] = ""
