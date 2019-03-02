@@ -74,7 +74,7 @@ buffer_write_byte(sch_exp_loop)
 buffer_write_byte(sch_exp_glass)
 buffer_write_byte(sch_exp_minecart)
 buffer_write_byte(sch_exp_chest)
-for (a = 0; a < 14; a += 1) {
+for (a = 0; a < 20; a += 1) {
     buffer_write_byte(sch_exp_ins_block[a])
     buffer_write_byte(sch_exp_ins_data[a])
 }

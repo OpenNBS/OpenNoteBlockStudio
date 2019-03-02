@@ -17,6 +17,12 @@ sch_exp_ins_block[6] = 82
 sch_exp_ins_block[7] = 41
 sch_exp_ins_block[8] = 174
 sch_exp_ins_block[9] = 216
+sch_exp_ins_block[10] = 42
+sch_exp_ins_block[11] = 88
+sch_exp_ins_block[12] = 86
+sch_exp_ins_block[13] = 133
+sch_exp_ins_block[14] = 170
+sch_exp_ins_block[15] = 89
 
 sch_exp_walkway_block = 1
 sch_exp_walkway_data = 0

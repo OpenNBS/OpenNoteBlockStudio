@@ -82,7 +82,7 @@ sch_exp_loop = buffer_read_byte()
 sch_exp_glass = buffer_read_byte()
 sch_exp_minecart = buffer_read_byte()
 sch_exp_chest = buffer_read_byte()
-for (a = 0; a < 14; a += 1) {
+for (a = 0; a < 20; a += 1) {
     sch_exp_ins_block[a] = buffer_read_byte()
     sch_exp_ins_data[a] = buffer_read_byte()
 }
