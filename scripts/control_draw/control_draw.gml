@@ -402,14 +402,27 @@ if (window = 0 && text_focus = -1) {
     if (keyboard_check_pressed(vk_f1)) {
         open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
     }
+	// Instrument shortcuts
     if (keyboard_check(vk_control)) {
-        for (a = 1; a <= 10; a++) {
-            if (keyboard_check_pressed(ord(string(a % 10)))) {
+		
+		//First 10 (only ctrl)
+		if(!keyboard_check(vk_shift)){
+		   for (a = 1; a <= 10; a++) {
+             if (keyboard_check_pressed(ord(string(a % 10)))) {
                 instrument = instrument_list[| a - 1]
                 play_sound(instrument, selected_key, 1)
-            }
-        }
-    }
+             }
+           }
+		}else{
+		  //Last 6 (ctrl+shift)
+		  for (a = 1; a <= 6; a++) {
+			if (keyboard_check_pressed(ord(string(a % 10)))) {
+				instrument = instrument_list[| a + 9]
+				play_sound(instrument, selected_key, 1)
+			}
+		  }
+	   }
+	}
 }
 // Selecting note blocks
 if (select > 0) {
@@ -731,8 +744,13 @@ if (draw_tab("Settings")) {
         var ins = instrument_list[| a];
         if (ins.user)
             customstr += check(instrument = ins) + clean(ins.name) + "|"
-        else
-            str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+        else{
+			if(a < 9){
+				 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+			}else{
+				 str += check(instrument = ins) + "Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+			}	
+		}  
     }
     show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + "-|" + customstr + condstr(customstr != "", "-|") +
                         icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Preferences...")
