@@ -1823,14 +1823,6 @@
             }
         },
         {
-            "Key": "972ca65b-c349-477f-bf0b-1b82d76b1334",
-            "Value": {
-                "id": "0d221288-e9b4-4044-9fa4-6c47f3be4aaa",
-                "resourcePath": "datafiles_yy\\Data\\settings.file.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "973ba2b0-e3f1-4b7f-a10b-63282177b7fd",
             "Value": {
                 "id": "91ce11b5-e711-4155-a250-af91d1b9c585",
@@ -2948,6 +2940,14 @@
                 "id": "e66daa96-9476-4251-baab-9d3c79a9c7e1",
                 "resourcePath": "scripts\\draw_window_mididevices\\draw_window_mididevices.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "f30c7dc3-c3f6-455b-aa98-1512c59b26b8",
+            "Value": {
+                "id": "09c43de7-df2f-4605-bdb6-382500c59ca1",
+                "resourcePath": "datafiles_yy\\Data\\settings.file.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {

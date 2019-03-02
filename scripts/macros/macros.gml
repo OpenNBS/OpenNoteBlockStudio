@@ -1,6 +1,6 @@
 #macro gm_runtime_version "2.1.5.246"
-#macro version_date "2019.01.20"
-#macro version "3.3.5"
+#macro version_date "2019.03.02"
+#macro version "3.3.6"
 
 #macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
 #macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"

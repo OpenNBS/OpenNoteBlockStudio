@@ -1,5 +1,5 @@
 {
-    "id": "972ca65b-c349-477f-bf0b-1b82d76b1334",
+    "id": "f30c7dc3-c3f6-455b-aa98-1512c59b26b8",
     "modelName": "GMIncludedFile",
     "mvc": "1.0",
     "name": "settings.file",

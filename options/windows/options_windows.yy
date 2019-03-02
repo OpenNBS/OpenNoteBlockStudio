@@ -5,9 +5,9 @@
     "name": "Windows",
     "option_windows_allow_fullscreen_switching": false,
     "option_windows_borderless": false,
-    "option_windows_company_info": "www.stuffbydavid.com",
+    "option_windows_company_info": "https:\/\/github.com\/HielkeMinecraft\/OpenNoteBlockStudio",
     "option_windows_copy_exe_to_dest": false,
-    "option_windows_copyright_info": "(c) Stuff by David",
+    "option_windows_copyright_info": "",
     "option_windows_description_info": "Minecraft Note Block Studio",
     "option_windows_display_cursor": true,
     "option_windows_display_name": "Minecraft Note Block Studio",
@@ -29,7 +29,7 @@
     "option_windows_texture_page": "2048x2048",
     "option_windows_use_splash": false,
     "option_windows_version": {
-        "build": 5,
+        "build": 6,
         "major": 3,
         "minor": 3,
         "revision": 0
