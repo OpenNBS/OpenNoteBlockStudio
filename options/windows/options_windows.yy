@@ -13,7 +13,7 @@
     "option_windows_display_name": "Minecraft Note Block Studio",
     "option_windows_enable_steam": false,
     "option_windows_executable_name": "Minecraft Note Block Studio",
-    "option_windows_icon": "${options_dir}\\windows\\runner_icon.ico",
+    "option_windows_icon": "${options_dir}\\windows\\icons\\icon.ico",
     "option_windows_installer_finished": "${options_dir}\\windows\\Runner_finish.bmp",
     "option_windows_installer_header": "${options_dir}\\windows\\Runner_header.bmp",
     "option_windows_interpolate_pixels": true,

@@ -1583,14 +1583,6 @@
             }
         },
         {
-            "Key": "809d1bba-e157-42f3-85e5-bbdda80a97d7",
-            "Value": {
-                "id": "61cd8b65-62dd-4e88-904a-3dc3b660e1e7",
-                "resourcePath": "sprites\\spr_icon\\spr_icon.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "8427047f-9ef8-4c77-89f3-9c20623d07b6",
             "Value": {
                 "id": "9a361508-00b0-45b9-ab86-4cf6f356f0c1",
