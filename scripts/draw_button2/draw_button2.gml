@@ -24,9 +24,9 @@ if (lock = 1) {
 draw_set_halign(fa_center)
 if (lock && theme) {
     draw_set_color(c_white)
-    draw_text(xx + w / 2 + (m = 2) + 1, yy + 5 + (m = 2) + 1, str)
+    draw_text(xx + w / 2 + (m = 2) + 1, yy + 4 + (m = 2) + 1, str)
     draw_set_color(10526880)
 }
-draw_text(xx + w / 2 + (m = 2), yy + 5 + (m = 2), str)
+draw_text(xx + w / 2 + (m = 2), yy + 4 + (m = 2), str)
 draw_set_halign(fa_left)
 return (m && mouse_check_button_released(mb_left))

@@ -190,6 +190,8 @@ if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
     if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
 }
 if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
+
+draw_set_font(fnt_small)
 if (menun > -1) {
     if (menun = 0) {
         if (menub = 0) {
