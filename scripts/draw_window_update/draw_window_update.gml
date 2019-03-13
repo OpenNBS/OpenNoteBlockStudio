@@ -8,7 +8,8 @@ if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
 else draw_text(x1 + 8, y1 + 8, "Changelist")
 draw_set_font(fnt_main)
 if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
-fullstr =  "Changes in v3.3.6 (2019.03.02):\n* Added new note block sounds: Iron Xylophone, Cow Bell, Didgeridoo,\n   Bit, Banjo and Pling.\n* Updated Icon.\n* Updated note block texture\n\n"
+fullstr =  "Changes in v3.3.7 (2019.03.13):\n* Changed fonts.\n* Added support for cyrillic characters.\n* Updated desktop icon.\n* Fixed crash while checking for updates.\n\n"
+fullstr += "Changes in v3.3.6 (2019.03.02):\n* Added new note block sounds: Iron Xylophone, Cow Bell, Didgeridoo,\n   Bit, Banjo and Pling.\n* Updated icon.\n* Updated note block texture\n\n"
 fullstr += "Changes in v3.3.5 (2019.01.20):\n* Added option to export song as datapack. File -> Export as Datapack\n\n"
 fullstr += "Changes in v3.3.4 (2018.02.01):\n* Fixed a crash when importing certain MIDI files.\n\n"
 fullstr += "Changes in v3.3.3 (2017.06.10):\n* Stability fixes.\n\n"
