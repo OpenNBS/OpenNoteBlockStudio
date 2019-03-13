@@ -6,32 +6,32 @@ y1 = floor(window_height / 2 - 210)
 draw_window(x1, y1, x1 + 700, y1 + 430)
 draw_sprite(spr_logo, 0, x1 + 64, y1 + 64)
 draw_set_font(fnt_info_med_bold)
-draw_text_center(x1 + 132, y1 + 215, "Open Minecraft Note Block Studio")
+draw_text_center(x1 + 132, y1 + 213, "Open Minecraft Note Block Studio")
 draw_set_font(fnt_mainbold)
 if (check_update) {
     if (update = -1) {
         draw_set_color(c_red)
-        draw_text_center(x1 + 132, y1 + 246, "Could not check for updates")
+        draw_text_center(x1 + 132, y1 + 248, "Could not check for updates")
     }
     if (update = 0) {
         //draw_set_color(c_gray)
-        draw_text_center(x1 + 132, y1 + 246, "Checking for updates...")
+        draw_text_center(x1 + 132, y1 + 248, "Checking for updates...")
     }
     if (update = 1) {
         draw_set_color(33023)
-        draw_text_center(x1 + 132, y1 + 246, "There is an update available!")
+        draw_text_center(x1 + 132, y1 + 248, "There is an update available!")
     }
     if (update = 2) {
         draw_set_color(c_green)
-        draw_text_center(x1 + 132, y1 + 246, "You are using the latest version!")
+        draw_text_center(x1 + 132, y1 + 248, "You are using the latest version!")
     }
     if (update = 3) {
         draw_set_color(c_green)
-        draw_text_center(x1 + 132, y1 + 246, "Successfully updated!")
+        draw_text_center(x1 + 132, y1 + 248, "Successfully updated!")
     }
 } else {
     draw_set_color(c_red)
-    draw_text_center(x1 + 132, y1 + 246, "Update checking disabled by user")
+    draw_text_center(x1 + 132, y1 + 248, "Update checking disabled by user")
 }
 draw_set_font(fnt_main)
 draw_set_color(c_black)
@@ -39,7 +39,7 @@ draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + ver
 draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
 draw_set_color(c_blue)
 draw_text_center(x1 + 132, y1 + 296, "www.git.io/fh2fJ")
-draw_line(x1 + 90, y1 + 309, x1 + 173, y1 + 309)
+draw_line(x1 + 89, y1 + 309, x1 + 173, y1 + 309)
 
 a = mouse_rectangle(x1 + 90, y1 + 298, 85, 12)
 if (a) {
@@ -52,7 +52,7 @@ draw_set_color(c_black)
 draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
 draw_set_color(c_blue)
 draw_text_center(x1 + 132, y1 + 356, "www.stuffbydavid.com")
-draw_line(x1 + 72, y1 + 369, x1 + 190, y1 + 369)
+draw_line(x1 + 70, y1 + 369, x1 + 193, y1 + 369)
 a = mouse_rectangle(x1 + 75, y1 + 358, 114, 12)
 if (a) {
     curs = cr_handpoint
