@@ -5,14 +5,14 @@ if (!file_exists_lib(data_directory + "settings.file")) return 0
 buffer = buffer_import(data_directory + "settings.file")
 // Recent songs
 for (a = 0; a < 11; a += 1) {
-    recent_song[a] = buffer_read_string_int()
+    recent_song[a] = buffer_read_string()
     recent_song_time[a] = buffer_read_double()
 }
 // Preferences
 check_update = buffer_read_byte()
 show_welcome = buffer_read_byte()
 theme = buffer_read_byte()
-songfolder = buffer_read_string_int()
+songfolder = buffer_read_string()
 show_numbers = buffer_read_byte()
 show_octaves = buffer_read_byte()
 use_colored = buffer_read_byte()

@@ -10,7 +10,7 @@ if (fn = "" || !file_exists_lib(fn)) return 0
 reset()
 buffer = buffer_import(fn)
 
-r = buffer_read_string(4)
+r = buffer_read_string_byte(4)
 if (r != "MThd") {
     if (!question("Error loading MIDI file:\n\nFirst 4 bytes must be MThd.\n\nContinue anyway?", "Error")) {
         reset_midi() buffer_delete(buffer) return 0
@@ -31,7 +31,7 @@ window = -1
 // screen_redraw()
 for (t = 0; t < midi_tracks; t += 1) {
     // draw_loading("Loading MIDI", "", file_bin_position(f) / totalsize)
-    r = buffer_read_string(4) 
+    r = buffer_read_string_byte(4) 
     if (r != "MTrk") {message("Error loading MIDI file:\n\nTrack chunk must begin with MTrk.", "Error") reset_midi() buffer_delete(buffer) return 0}
     r = buffer_read_int_be()
     trackend = buffer_tell(buffer) + r
@@ -51,37 +51,37 @@ for (t = 0; t < midi_tracks; t += 1) {
                 }
                 case $1: { // Text event (crap)
                     r = buffer_read_varlen()
-                    buffer_read_string(r)
+                    buffer_read_string_byte(r)
                     break
                 }
                 case $2: { // Copyright
                     r = buffer_read_varlen()
-                    midi_copyright = buffer_read_string(r)
+                    midi_copyright = buffer_read_string_byte(r)
                     break
                 }
                 case $3: { // Track name
                     r = buffer_read_varlen()
-                    midi_trackname[t] = buffer_read_string(r)
+                    midi_trackname[t] = buffer_read_string_byte(r)
                     break
                 }
                 case $4: { // Instrument name (crap)
                     r = buffer_read_varlen()
-                    buffer_read_string(r)
+                    buffer_read_string_byte(r)
                     break
                 }
                 case $5: { // Lyrics (crap)
                     r = buffer_read_varlen()
-                    buffer_read_string(r)
+                    buffer_read_string_byte(r)
                     break
                 }
                 case $6: { // Marker (crap)
                     r = buffer_read_varlen()
-                    buffer_read_string(r)
+                    buffer_read_string_byte(r)
                     break
                 }
                 case $7: { // Cuepoint (crap)
                     r = buffer_read_varlen()
-                    buffer_read_string(r)
+                    buffer_read_string_byte(r)
                     break
                 }
                 case $20: { // MIDI Channel prefix (crap)

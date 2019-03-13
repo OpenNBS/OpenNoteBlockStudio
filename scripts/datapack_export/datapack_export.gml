@@ -3,7 +3,7 @@ var fn, o,dir
 fn = string(get_save_filename_ext("Datapack Folder", dat_name, "", "Datapack Export"))
 if (fn = "") return 0
 
-var tempdir = working_directory + "TempDatapack\\"
+var tempdir = data_directory + "TempDatapack\\"
 if(directory_exists(tempdir))directory_delete_lib(tempdir)
 directory_create_lib(tempdir)
 
@@ -97,7 +97,7 @@ with (new(obj_dummy2)) {
     buffer_delete(file)
 	
 	// Execute shell command that moves temp pack to location
-	ExecuteShell("move.bat \"" + fn + "\\\"", true, true);
+	ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true);
 	instance_destroy()
 }
 message("Datapack saved!","Datapack Export")

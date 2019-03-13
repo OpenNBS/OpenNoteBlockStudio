@@ -1,6 +1,4 @@
-// buffer_read_string(length)
+// buffer_read_string()
+// Reads string
 
-var str = "";
-repeat (argument0)
-    str += chr(buffer_read_byte())
-return str
+return buffer_read(buffer, buffer_string)

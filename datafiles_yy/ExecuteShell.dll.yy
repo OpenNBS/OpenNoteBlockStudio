@@ -3,7 +3,7 @@
     "modelName": "GMIncludedFile",
     "mvc": "1.0",
     "name": "ExecuteShell.dll",
-    "CopyToMask": 1048640,
+    "CopyToMask": 64,
     "exists": true,
     "exportAction": 2,
     "exportDir": "",

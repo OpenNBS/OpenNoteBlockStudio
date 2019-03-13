@@ -4,14 +4,14 @@ buffer = buffer_create(8, buffer_grow, 1)
 
 // Recent songs
 for (a = 0; a < 11; a += 1) {
-    buffer_write_string_int(recent_song[a])
+	buffer_write_string(recent_song[a]);
     buffer_write_double(recent_song_time[a])
 }
 // Preferences
 buffer_write_byte(check_update)
 buffer_write_byte(show_welcome)
 buffer_write_byte(theme)
-buffer_write_string_int(songfolder)
+buffer_write_string(songfolder);
 buffer_write_byte(show_numbers)
 buffer_write_byte(show_octaves)
 buffer_write_byte(use_colored)

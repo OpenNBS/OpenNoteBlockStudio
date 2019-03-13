@@ -27,7 +27,9 @@
         "8e5d6589-b08e-4980-8752-92ae0e76ae14",
         "bc50ef34-e3d5-4ef6-8a36-7d5f8fa34c61",
         "3c3845a5-e4dd-4c4f-85c2-1ec8e589979c",
-        "7c833f27-52c4-4eb9-bd8e-c6b837bff077"
+        "7c833f27-52c4-4eb9-bd8e-c6b837bff077",
+        "5f21c065-8f69-4c49-aa73-f07f68bacd76",
+        "f99db290-f0b3-453f-8ecb-b158aac8b1e4"
     ],
     "filterType": "GMScript",
     "folderName": "Buffer",
