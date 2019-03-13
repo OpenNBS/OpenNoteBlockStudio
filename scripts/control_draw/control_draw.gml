@@ -894,18 +894,18 @@ draw_set_halign(fa_left)
 // Marker position
 draw_set_halign(fa_right)
 draw_set_color(0)
-draw_set_font(fnt_mainbold)
-draw_text(88, 56, time_str(marker_pos / tempo))
+draw_set_font(fnt_info_med_bold)
+draw_text(93, 52, time_str(marker_pos / tempo))
 
 // Song length
 draw_set_font(fnt_small)
-draw_text(88, 68, "/ " + time_str(enda / tempo))
+draw_text(93, 69, "/ " + time_str(enda / tempo))
 draw_set_font(fnt_main)
 
 // Tempo
 draw_sprite(spr_tempobox, 0, 108, 57)
 draw_set_halign(fa_center)
-draw_text(136, 61, string_format(tempo, 4, 2) + " t / s")
+draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
 draw_set_halign(fa_left)
 a = mouse_rectangle(108, 57, 64, 22)
 popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
