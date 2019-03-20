@@ -623,10 +623,11 @@ for (b = 0; b < totalrows; b += 1) {
     m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
     popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
     
-    layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 8, 72, 14, 1, 0)
+	draw_set_font(fnt_small)
+    layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
     if (layername[startb + b] = "") {
         draw_set_color(c_gray)
-        draw_text(x1 + 11, y1 + 9, "Layer " + string(startb + b + 1))
+        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
     }
     draw_set_color(0)
     // Vol
