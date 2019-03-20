@@ -32,7 +32,7 @@ if (tempo = 10 || tempo = 5 || tempo = 2.5) {
 } else if(tempo = 20 || tempo = 6.66 || tempo = 4 || tempo = 3.33 || tempo = 2.86){
     draw_set_color(c_orange)
     draw_text(x1 + 40, yy + 45, "The tempo is datapack compatible")
-	    if (draw_button2(x1 + 40, yy + 65, 120, "Fix tempo for schematic")) {
+	    if (draw_button2(x1 + 40, yy + 65, 145, "Fix tempo for schematic")) {
         var otempo;
         otempo = tempo
         if (otempo > 10) tempo = 10
@@ -43,7 +43,7 @@ if (tempo = 10 || tempo = 5 || tempo = 2.5) {
 }else{
 	draw_set_color(c_red)
     draw_text(x1 + 40, yy + 45, "The tempo is " + string(tempo) + " ticks per second.")
-    if (draw_button2(x1 + 40, yy + 65, 120, "Fix tempo for datapack")) {
+    if (draw_button2(x1 + 40, yy + 65, 140, "Fix tempo for datapack")) {
         var otempo;
         otempo = tempo
 		if (otempo > 20) tempo = 20

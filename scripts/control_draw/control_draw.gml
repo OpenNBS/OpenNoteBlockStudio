@@ -17,8 +17,8 @@ if (delay < 0) delay = 0
 work_mins += 1 / (room_speed * 60)
 
 if (selected = 0) {
-	if(tempo = 10 || tempo = 5 ||tempo = 2.5 && (block_outside = 0 && block_custom = 0))compatible = 1
-	else if (tempo = 20 || tempo = 6.66 || tempo = 4|| tempo = 3.33 || tempo = 2.86 && (block_outside = 0 && block_custom = 0))compatible = 2
+	if((tempo = 10 || tempo = 5 ||tempo = 2.5) && (block_outside = 0 && block_custom = 0))compatible = 1
+	else if ((tempo = 20 || tempo = 6.66 || tempo = 4|| tempo = 3.33 || tempo = 2.86) && (block_outside = 0 && block_custom = 0))compatible = 2
 	else compatible = 0	
 }
 
@@ -805,18 +805,18 @@ break
 // Compatible
 draw_set_font(fnt_mainbold)
 if(compatible = 0){
-	draw_sprite(spr_minecraft, 1, rw - 120, 24)
+	draw_sprite(spr_minecraft, 1, rw - 130, 24)
 	draw_set_color(c_red)
-	draw_text(rw - 95, 28, "Not compatible")
+	draw_text(rw - 105, 28, "Not compatible")
 	draw_set_color(0)
 	draw_set_font(fnt_main)
 	popup_set(rw - compx, 24, compx, 25, "This song is not compatible with Minecraft.\n(Click for more info.)")
 
 }else if (compatible = 2){
 	compx = 155
-	draw_sprite(spr_minecraft, 2, rw - 155, 24)
+	draw_sprite(spr_minecraft, 2, rw - 165, 24)
 	draw_set_color(c_orange)
-	draw_text(rw - 130, 28, "Datapack compatible")
+	draw_text(rw - 140, 28, "Datapack compatible")
 	draw_set_color(0)
 	draw_set_font(fnt_main)
 	popup_set(rw - compx, 24, compx, 25, "This song is compatible with Minecraft Datapacks.\n(Click for more info.)")
