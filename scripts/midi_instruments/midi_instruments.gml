@@ -83,11 +83,11 @@ midi_ins[a, 0] = "Acoustic Guitar (nylon)" midi_ins[a, 3] = "A.Guitar(nylon)"
 midi_ins[a, 1] = 5 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Acoustic Guitar (steel)" midi_ins[a, 3] = "A.Guitar(steel)"
 midi_ins[a, 1] = 5 midi_ins[a, 2] = 0 a += 1
-midi_ins[a, 0] = "Electric Guitar (jazz)" midi_ins[a, 3] = "A.Guitar(jazz)"
+midi_ins[a, 0] = "Electric Guitar (jazz)" midi_ins[a, 3] = "E.Guitar(jazz)"
 midi_ins[a, 1] = 5 midi_ins[a, 2] = 1 a += 1
-midi_ins[a, 0] = "Electric Guitar (clean)" midi_ins[a, 3] = "A.Guitar(clean)"
+midi_ins[a, 0] = "Electric Guitar (clean)" midi_ins[a, 3] = "E.Guitar(clean)"
 midi_ins[a, 1] = 5 midi_ins[a, 2] = 0 a += 1
-midi_ins[a, 0] = "Electric Guitar (muted)" midi_ins[a, 3] = "A.Guitar(mute)"
+midi_ins[a, 0] = "Electric Guitar (muted)" midi_ins[a, 3] = "E.Guitar(mute)"
 midi_ins[a, 1] = -1 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Overdriven Guitar" midi_ins[a, 3] = "OD Guitar"
 midi_ins[a, 1] = 5 midi_ins[a, 2] = -1 a += 1
