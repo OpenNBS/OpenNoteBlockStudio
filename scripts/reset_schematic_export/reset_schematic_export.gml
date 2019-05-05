@@ -10,7 +10,7 @@ for (a = 0; a < ds_list_size(instrument_list) + 9; a += 1) {
 sch_exp_ins_block[0] = 3
 sch_exp_ins_block[1] = 5
 sch_exp_ins_block[2] = 4
-sch_exp_ins_block[3] = 88
+sch_exp_ins_block[3] = 12
 sch_exp_ins_block[4] = 20
 sch_exp_ins_block[5] = 35
 sch_exp_ins_block[6] = 82
