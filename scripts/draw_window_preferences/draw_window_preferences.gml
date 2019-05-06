@@ -22,48 +22,37 @@ for (a = 0; a < 4; a += 1) {
         stabx = b - 2
         stabw = string_width(str[a]) + 15
     } else {
-        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 28)
-        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 28)
+		draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 28)
+		draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+		draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 28)		
         draw_text(x1 + b + 6, y1 + 30, str[a])
     }
     if (mouse_check_button_pressed(mb_left) && c) nsel = a
     b += string_width(str[a]) + 12
 }
-if (theme = 0) {
+if (theme = 0 || theme = 2) {
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 0)
     draw_set_color(make_color_rgb(137, 140, 149))
     draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 1)
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
     draw_set_color(make_color_rgb(137, 140, 149))
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
     draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
-    draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
-} else if(theme = 1){
-    draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
-    draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
-    draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
-    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
+    if(theme = 0) draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
 }else{
-    draw_set_color(c_dark)
-    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 0)
-    draw_set_color(make_color_rgb(137, 140, 149))
-    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 1)
-    draw_set_color(c_dark)
-    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
-    draw_set_color(make_color_rgb(137, 140, 149))
-    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
-    draw_set_color(c_dark)
-    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
-    draw_theme_color()
+    draw_sprite(spr_tabbuttons, 18, x1 + stabx - 1, y1 + 26)
+    draw_sprite_ext(spr_tabbuttons, 19, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
+    draw_sprite(spr_tabbuttons, 20, x1 + stabx + stabw - 1, y1 + 26)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
-    draw_set_color(make_color_rgb(213, 223, 229))
 }
 if (nsel > -1) selected_tab = nsel
 selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)

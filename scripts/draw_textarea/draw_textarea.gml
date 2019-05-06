@@ -8,6 +8,7 @@ h = argument4
 val = argument5
 str = argument6
 draw_set_color(c_white)
+if(theme = 2) draw_set_color(3552822)
 draw_rectangle(xx, yy, xx + w, yy + h, 0)
 popup_set_window(xx, yy, w, h, str)
 
