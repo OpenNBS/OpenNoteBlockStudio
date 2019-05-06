@@ -33,7 +33,7 @@ for (a = 0; a < 11; a += 1) {
     if (a >= midi_input_devices()) break
     draw_set_color(12632256)
     draw_line(x1 + 14, y1 + 106 + 20 * a, x1 + 14 + 250 + 75 + 64 + 85, y1 + 106 + 20 * a)
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + 18, y1 + 90 + 20 * a, midi_input_device_name(a))
     var insname;
     if (mididevice_instrument[a] < 0) insname = "Use selected"

@@ -21,5 +21,5 @@ switch (theme) {
 		break;
 }
 draw_rectangle(xx + 12, yy - 6, xx + 12 + string_width(str) + 6, yy + 6, 0)
-set_theme_color(false)
+draw_theme_color()
 draw_text(xx + 16, yy - 6, str)

@@ -16,12 +16,12 @@ for (m = 0; m < menus; m += 1) {
     draw_set_color(window_background)
     draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
     draw_set_alpha(0.25)
-    set_theme_color(false)
+    draw_theme_color()
     draw_line(dx + 29, dy + 3, dx + 29, dy + hei - 3)
     draw_set_alpha(1)
     draw_set_color(c_white)
     draw_line(dx + 30, dy + 3, dx + 30, dy + hei - 3)
-    set_theme_color(false)
+    draw_theme_color()
     draw_set_alpha(0.25)
     draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 1)
     draw_set_alpha(1)
@@ -29,7 +29,7 @@ for (m = 0; m < menus; m += 1) {
         if (iy >= hei - 3) break
         if (item_str[m, i] = "-") { // Separator
             draw_set_alpha(0.25)
-            set_theme_color(false)
+            draw_theme_color()
             draw_line(dx + 32, dy + iy - 2, dx + menu_wid[m] - 3, dy + iy - 2)
             draw_set_alpha(1)
             draw_set_color(c_white)
@@ -57,7 +57,7 @@ for (m = 0; m < menus; m += 1) {
                     menuy[item_hasmenu[m, i]] = dy + iy - 8
                 }
             }
-            set_theme_color(false)
+            draw_theme_color()
             if (issel) {
                 draw_set_color(16684072)
                 draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
@@ -83,4 +83,4 @@ if (mouse_check_button_released(mb_left) && ani = 1 && !noclick) {
     with (obj_controller) menu_click(a)
     instance_destroy()
 }
-set_theme_color(false)
+draw_theme_color()

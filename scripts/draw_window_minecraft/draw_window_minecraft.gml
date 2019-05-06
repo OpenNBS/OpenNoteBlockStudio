@@ -58,7 +58,7 @@ if (tempo = 10 || tempo = 5 || tempo = 2.5) {
 		if(otempo < 3.68) tempo = 2.5
     }
 }
-set_theme_color(false)
+draw_theme_color()
 
 yy += 100
 draw_sprite(spr_yesno, block_outside = 0, x1 + 20, yy + 8)
@@ -87,7 +87,7 @@ if (block_outside > 0) {
     draw_set_color(c_green)
     draw_text(x1 + 40, yy + 16, "There are no blocks outside the 2 octave range.")
 }
-set_theme_color(false)
+draw_theme_color()
 
 yy += 70
 draw_sprite(spr_yesno, block_custom = 0, x1 + 20, yy + 8)
@@ -105,7 +105,7 @@ if (block_custom > 0) {
     draw_set_color(c_green)
     draw_text(x1 + 40, yy + 16, "There are no blocks with custom instruments.")
 }
-set_theme_color(false)
+draw_theme_color()
 
 if (draw_button2(x1 + 139 + 25, y1 + 310, 72, "OK")) window = 0
 window_set_cursor(cr_default)

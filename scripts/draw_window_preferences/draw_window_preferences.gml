@@ -41,7 +41,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
     draw_set_color(c_white)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
     draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
@@ -61,7 +61,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
     draw_set_color(c_dark)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
 }
@@ -69,7 +69,7 @@ if (nsel > -1) selected_tab = nsel
 selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
 if (selected_tab < 0) selected_tab = 3
 if (selected_tab > 3) selected_tab = 0
-set_theme_color(false)
+draw_theme_color()
 if (selected_tab = 0) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 65, "Startup")
     if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window upon startup", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome

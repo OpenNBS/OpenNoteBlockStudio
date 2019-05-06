@@ -2978,7 +2978,7 @@
             "Key": "fca0f17f-26af-492a-84ef-996e87cb1bb6",
             "Value": {
                 "id": "9ee6b3a6-2c69-44cc-8952-4d3804220d14",
-                "resourcePath": "scripts\\set_theme_color\\set_theme_color.yy",
+                "resourcePath": "scripts\\draw_theme_color\\draw_theme_color.yy",
                 "resourceType": "GMScript"
             }
         },

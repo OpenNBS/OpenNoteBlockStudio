@@ -34,7 +34,7 @@ if (check_update) {
     draw_text_center(x1 + 132, y1 + 248, "Update checking disabled by user")
 }
 draw_set_font(fnt_main)
-set_theme_color(false)
+draw_theme_color()
 draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
 draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
 draw_set_color(c_blue)
@@ -48,7 +48,7 @@ if (a) {
         open_url("https://github.com/HielkeMinecraft/OpenNoteBlockStudio")
 }
 
-set_theme_color(false)
+draw_theme_color()
 draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
 draw_set_color(c_blue)
 draw_text_center(x1 + 132, y1 + 356, "www.stuffbydavid.com")
@@ -62,10 +62,10 @@ if (a) {
 draw_set_color(c_white)
 draw_line(x1 + 270, y1 + 24, x1 + 270, y1 + 396)
 draw_set_alpha(0.25)
-set_theme_color(false)
+draw_theme_color()
 draw_line(x1 + 269, y1 + 24, x1 + 269, y1 + 396)
 draw_set_alpha(1)
-set_theme_color(false)
+draw_theme_color()
 draw_text(x1 + 290, y1 + 20, "What do you want to do?")
 
 b = x1 + 300

@@ -22,7 +22,7 @@ song_name = draw_inputbox(1, x1 + 158, y1 + 64, 240, song_name, "The name of the
 if (song_name = "") {
     draw_set_color(c_gray)
     draw_text(x1 + 161, y1 + 68, "Untitled song")
-    set_theme_color(false)
+    draw_theme_color()
 }
 if (a != song_name) changed = 1
 
@@ -49,7 +49,7 @@ if (a != autosave) {
     if (autosave = 0) tonextsave = 0
     if (autosave = 1) tonextsave = autosavemins
 }
-set_theme_color(false)
+draw_theme_color()
 if (autosave = 0) {
     draw_set_color(c_white)
     draw_text(x1 + 71, y1 + 311, "Minutes between savings:")
@@ -61,7 +61,7 @@ autosavemins = median(1, draw_dragvalue(2, x1 + 220, y1 + 310, autosavemins, 1, 
 if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
 popup_set_window(x1 + 70, y1 + 310, 180, 16, "The amount of minutes between each auto-save.")
 
-set_theme_color(false)
+draw_theme_color()
 draw_text(x1 + 32, y1 + 358, "Time signature:")
 timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 358, timesignature, 1), 8)
 draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 358, " / 4")

@@ -44,12 +44,12 @@ draw_window(x1, y1, x1 + w, y1 + h)
 
 draw_set_font(fnt_info_big)
 draw_set_halign(fa_center)
-set_theme_color(false)
+draw_theme_color()
 draw_text(x1 + floor(w / 2) + 1, y1 + 16 + 1, str[0])
 draw_set_color(col[0])
 draw_text(x1 + floor(w / 2), y1 + 16, str[0])
 draw_set_font(fnt_info_med)
-set_theme_color(false)
+draw_theme_color()
 yy = y1 + 16
 if (song_author != "") {
     yy += 32
@@ -61,7 +61,7 @@ if (song_author != "") {
     if (song_orauthor != "") {
         yy += 20
         draw_set_font(fnt_info_med)
-        set_theme_color(false)
+        draw_theme_color()
         draw_text(x1 + floor(w / 2 - w4 / 2), yy, "Originally created by ")
         draw_set_font(fnt_info_med_bold)
         draw_text(x1 + floor(w / 2 + w3 / 2) + 1, yy + 1, str[2])
@@ -69,7 +69,7 @@ if (song_author != "") {
         draw_text(x1 + floor(w / 2 + w3 / 2), yy, str[2])
     }
 }
-set_theme_color(false)
+draw_theme_color()
 if (midifile != "") {
     draw_set_font(fnt_main)
     a = string_width("Imported from ")
@@ -93,7 +93,7 @@ if (song_desc != "") {
     } else {
         draw_frame(x1 + floor(w / 2) - 118, yy, x1 + floor(w / 2) + 118, yy + 16 + songdeschei)
     }
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + floor(w / 2) - 110, yy + 8, songdescwrap)
 }
 

@@ -18,7 +18,7 @@ if (lock = 1) {
         draw_set_color(8421504)
     }
     draw_text(xx + 18, yy - 1, str)
-    set_theme_color(false)
+    draw_theme_color()
 } else {
     m = mouse_rectangle(xx, yy, 13 + string_width(str) + 8, 13)
     if (w_isdragging > 0) m = 0

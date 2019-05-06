@@ -72,7 +72,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
     draw_set_color(c_white)
     draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])
 } else if (theme = 1){
     draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 126)
@@ -93,10 +93,10 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
     draw_set_color(c_dark)
     draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
-    set_theme_color(false)
+    draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])	
 }
-set_theme_color(false)
+draw_theme_color()
 draw_set_halign(fa_right)
 draw_text(x1 + 590, y1 + 6, midifile)
 draw_set_font(fnt_mainbold)
@@ -127,7 +127,7 @@ if (w_midi_tab = 0) {
     for (a = 0; a < 9; a += 1) {
         b = floor(sb_val[midi_sb1] + a)
         if (b > midi_channels) break
-        set_theme_color(false)
+        draw_theme_color()
         if (b = 9) draw_set_color(make_color_rgb(120, 120, 120))
         draw_text(x1 + 12 + 4, y1 + 174 + 20 * a, string(b + 1))
         if (b = 9) {
@@ -205,7 +205,7 @@ if (w_midi_tab = 0) {
         for (a = 0; a < 9; a += 1) {
             b = floor(sb_val[midi_sb2] + a)
             if (b >= midi_percamount) break
-            set_theme_color(false)
+            draw_theme_color()
             draw_text(x1 + 12 + 4, y1 + 174 + 20 * a, string(midi_percnote[b]))
             draw_text(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, midi_drum[midi_percnote[b], 0])
             if (midi_percins[b] > -1) {
@@ -274,7 +274,7 @@ if (w_midi_tab = 0) {
     for (a = 0; a < 9; a += 1) {
         b = floor(sb_val[midi_sb3] + a)
         if (b >= midi_tracks) break
-        set_theme_color(false)
+        draw_theme_color()
         draw_text(x1 + 12 + 4, y1 + 174 + 20 * a, string(b + 1))
         draw_text(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, midi_trackname[b])
         draw_text(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, string(midi_trackamount[b]))
@@ -299,6 +299,6 @@ if (nsel > -1) w_midi_tab = nsel
 w_midi_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
 if (w_midi_tab < 0) w_midi_tab = 2
 if (w_midi_tab > 2) w_midi_tab = 0
-set_theme_color(false)
+draw_theme_color()
 if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 window_set_cursor(curs)

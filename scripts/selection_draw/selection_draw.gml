@@ -79,4 +79,4 @@ for (a = max(starta, x1); a < min(starta + w, x2); a += 1) {
 // draw_rectangle(xs + (selection_x - starta) * 32, ys + (selection_y - startb) * 32, xs + (selection_x + selection_l - starta) * 32, ys + (selection_y + selection_h - startb) * 32, 1)
 draw_set_halign(fa_left)
 draw_set_alpha(1)
-set_theme_color(false)
+draw_theme_color()

@@ -8,7 +8,7 @@ cursmarker = 0
 compx = 120
 window_set_caption(condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
 draw_set_alpha(1)
-set_theme_color(false)
+draw_theme_color()
 draw_set_font(fnt_main)
 editline += 1
 if (editline > 60) editline = 0
@@ -211,7 +211,7 @@ for (a = 0; a < totalcols; a += 1) {
             break
         }
     }
-    set_theme_color(false)
+    draw_theme_color()
 }
 draw_set_alpha(1)
 draw_set_halign(fa_left)
@@ -297,7 +297,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                     add_block_manual(starta + sela, startb + selb, instrument, selected_key)
                     draw_set_halign(fa_center)
                     draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0)    
-					set_theme_color(false)
+					draw_theme_color()
                     draw_set_halign(fa_left)
                     draw_set_alpha(1)
                 }
@@ -439,7 +439,7 @@ if (select > 0) {
     draw_rectangle(select_pressx, select_pressy, x2, y2, 0)
     draw_set_alpha(1)
     draw_rectangle(select_pressx, select_pressy, x2, y2, 1)
-    set_theme_color(false)
+    draw_theme_color()
 }
 
 // Timeline and markers
@@ -577,7 +577,7 @@ if (section_exists) {
     draw_set_alpha(0.25)
     draw_set_color(c_blue)
     draw_rectangle(x1 + 2 + section_start * 32 - starta * 32, y1 + 2, x1 + 2 + section_end * 32 - starta * 32, y1 + 33, 0)
-    set_theme_color(false)
+    draw_theme_color()
     draw_set_alpha(1)
     a = floor(section_start * 32 - starta * 32)
     draw_sprite(spr_marker, 2 + (section_end < section_start) * 2, x1 + 2 + a, y1 + 2)
@@ -589,8 +589,8 @@ if (section_exists) {
 
 marker_pos = median(0, marker_pos, enda + totalcols)
 a = floor(marker_pos * 32 - starta * 32)
-draw_sprite(spr_marker, 0, x1 + 2 + a, y1 + 2)
-draw_sprite_ext(spr_marker, 1, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 6, 0, -1, 1)
+draw_sprite(spr_marker, 0 + 6 * (theme = 2), x1 + 2 + a, y1 + 2)
+draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 6, 0, -1, 1)
 
 
 draw_set_font(fnt_main)
@@ -603,7 +603,7 @@ draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
 draw_rectangle(x1 + totalcols * 32 + 20, 0, rw, rh, 0)
 draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
 draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
-set_theme_color(false)
+draw_theme_color()
 // Scrollbars
 starta = draw_scrollbar(scrollbarh, 178, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
@@ -631,7 +631,7 @@ for (b = 0; b < totalrows; b += 1) {
 		if(theme = 2) draw_set_color(c_white)
         draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
     }
-    set_theme_color(false)
+    draw_theme_color()
     // Vol
     if (realvolume) {
         c = ((dragvolb = startb + b && window = w_dragvol) || (mouse_rectangle(x1 + 88, y1 + 5, 16, 25) && window = 0))
@@ -811,7 +811,7 @@ if(compatible = 0){
 	draw_sprite(spr_minecraft, 1, rw - 130, 24)
 	draw_set_color(c_red)
 	draw_text(rw - 105, 28, "Not compatible")
-	set_theme_color(false)
+	draw_theme_color()
 	draw_set_font(fnt_main)
 	popup_set(rw - compx, 24, compx, 25, "This song is not compatible with Minecraft.\n(Click for more info.)")
 
@@ -820,7 +820,7 @@ if(compatible = 0){
 	draw_sprite(spr_minecraft, 2, rw - 165, 24)
 	draw_set_color(c_orange)
 	draw_text(rw - 140, 28, "Datapack compatible")
-	set_theme_color(false)
+	draw_theme_color()
 	draw_set_font(fnt_main)
 	popup_set(rw - compx, 24, compx, 25, "This song is compatible with Minecraft Datapacks.\n(Click for more info.)")
 
@@ -828,7 +828,7 @@ if(compatible = 0){
 	draw_sprite(spr_minecraft, 0, rw - 120, 24)
 	draw_set_color(c_green)
 	draw_text(rw - 95, 28, "Compatible")
-	set_theme_color(false)
+	draw_theme_color()
 	draw_set_font(fnt_main)
 	popup_set(rw - compx, 24, compx, 25, "This song is compatible with Minecraft.\n(Click for more info.)")
 }
@@ -850,39 +850,39 @@ draw_set_color(make_color_rgb(128, 128, 128))
 draw_line(0, rh - 24, rw, rh - 24)
 draw_set_color(c_white)
 draw_line(0, rh - 23, rw, rh - 23)
-set_theme_color(false)
+draw_theme_color()
 xx = 4
 
 draw_text(xx, rh - 18, "Instrument: " + instrument.name) xx += 180
 draw_separator(xx, rh - 20)
-set_theme_color(false)
+draw_theme_color()
 
 xx += 4
 draw_text(xx, rh - 18, "Key: " + get_keyname(selected_key, 1)) xx += 75
 draw_separator(xx, rh - 20)
-set_theme_color(false)
+draw_theme_color()
 
 xx += 4
 draw_text(xx, rh - 18, "Tick: " + test(selbx = -1, "None", string(selbx))) xx += 90
 draw_separator(xx, rh - 20)
-set_theme_color(false)
+draw_theme_color()
 
 xx += 4
 draw_text(xx, rh - 18, "Layer: " + test(selby = -1, "None", string(selby + 1))) xx += 90
 draw_separator(xx, rh - 20)
-set_theme_color(false)
+draw_theme_color()
 
 xx += 4
 draw_text(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 120
-set_theme_color(false)
+draw_theme_color()
 
 if (autosave && filename_ext(filename) = ".nbs") {
     draw_separator(xx, rh - 20)
-    set_theme_color(false)
+    draw_theme_color()
     xx += 4
     draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s")) xx += 180
    // draw_separator(xx, rh - 20)
-    set_theme_color(false)
+    draw_theme_color()
 }
 
 
@@ -896,7 +896,7 @@ draw_set_halign(fa_left)
 
 // Marker position
 draw_set_halign(fa_right)
-set_theme_color(false)
+draw_theme_color()
 draw_set_font(fnt_info_med_bold)
 draw_text(93, 52, time_str(marker_pos / tempo))
 
