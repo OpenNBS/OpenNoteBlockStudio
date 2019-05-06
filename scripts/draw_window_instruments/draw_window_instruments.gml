@@ -10,6 +10,7 @@ draw_text(x1 + 10, y1 + 8, "Instrument Settings")
 draw_set_font(fnt_main)
 draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
 draw_set_color(c_white)
+if(theme = 2) draw_set_color(c_dark)
 draw_rectangle(x1 + 12, y1 + 66, x1 + 535, y1 + 310, 0)
 if (!theme) {
     draw_set_color(make_color_rgb(137, 140, 149))
