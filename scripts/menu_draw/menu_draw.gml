@@ -71,7 +71,15 @@ for (m = 0; m < menus; m += 1) {
                 draw_set_halign(fa_left)
             }
             if (item_image[m, i] > -1) draw_sprite(spr_icons, item_image[m, i], dx + 2, dy + iy - 6)
-            if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, c_white * issel, draw_get_alpha())
+			var color;
+			if(obj_controller.theme = 2) {
+				if(issel)color = c_black;
+				else color = c_white;
+			}else{
+				if(issel)color = c_white;
+				else color = c_black;
+			}	
+            if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
             draw_set_alpha(1)
             iy += 22
         }
