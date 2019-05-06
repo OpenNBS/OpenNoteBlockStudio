@@ -38,7 +38,7 @@ if (sb_dir[i] = 0) {
     sb_val[i] = median(0, sb_val[i], ms - s)
     bpos = floor(bpos)
     // Background
-    draw_sprite_ext(spr_scrollbar, 40, xx, yy, mwh + 32, 1, 0, -1, 1)
+    draw_sprite_ext(spr_scrollbar, 40 + 24 * (theme = 2), xx, yy, mwh + 32, 1, 0, -1, 1)
     // Bar
     if (!locked) {
         ind = 0
@@ -57,11 +57,16 @@ if (sb_dir[i] = 0) {
             draw_sprite(spr_scrollbar, 16 + ind * 4, xx + 17 + bpos, yy)
             draw_sprite(spr_scrollbar, 18 + ind * 4, xx + 17 + bpos + ceil(bwh - 6), yy)
             if (bwh > 20) draw_sprite(spr_scrollbar, 19 + ind * 4, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
-        } else {
+        } else if(theme = 1){
             draw_sprite_ext(spr_scrollbar, 59, xx + 16 + bpos, yy, floor(bwh) - 1, 1, 0, -1, 1)
             draw_sprite(spr_scrollbar, 58, xx + 16 + bpos, yy)
             draw_sprite(spr_scrollbar, 60, xx + 16 + bpos + ceil(bwh - 2), yy)
-        }
+        }else{
+            draw_sprite_ext(spr_scrollbar, 101 + ind * 4, xx + 20 + bpos, yy, floor(bwh) - 6, 1, 0, -1, 1)
+            draw_sprite(spr_scrollbar, 100 + ind * 4, xx + 17 + bpos, yy)
+            draw_sprite(spr_scrollbar, 102 + ind * 4, xx + 17 + bpos + ceil(bwh - 6), yy)
+            if (bwh > 20) draw_sprite(spr_scrollbar, 103 + ind * 4, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
+		}
     }
     if (mouse_rectangle(xx + 16, yy, bpos, 16) && locked = 0 && (window = 0 || win = 1) && sb_drag = -1) {
         if (mouse_check_button(mb_left))  {
@@ -164,7 +169,7 @@ if (sb_dir[i] = 0) {
     sb_val[i] = median(0, sb_val[i], ms - s)
     bpos = floor(bpos)
     // Background
-    draw_sprite_ext(spr_scrollbar, 41, xx, yy, 1, mwh + 32, 0, -1, 1)
+    draw_sprite_ext(spr_scrollbar, 41 + 24 * (theme = 2), xx, yy, 1, mwh + 32, 0, -1, 1)
     // Bar
     if (!locked) {
         ind = 0
@@ -183,12 +188,16 @@ if (sb_dir[i] = 0) {
             draw_sprite(spr_scrollbar, 28 + ind * 4, xx, yy + 17 + bpos)
             draw_sprite(spr_scrollbar, 30 + ind * 4, xx, yy + 17 + bpos + ceil(bwh - 6))
             if (bwh > 20) draw_sprite(spr_scrollbar, 31 + ind * 4, xx, yy + 17 + bpos + floor(bwh / 2) - 8)
-        } else {
+        } else if(theme = 1) {
             draw_sprite_ext(spr_scrollbar, 62, xx, yy + 18 + bpos, 1, floor(bwh) - 1, 0, -1, 1)
             draw_sprite(spr_scrollbar, 61, xx, yy + 16 + bpos)
             draw_sprite(spr_scrollbar, 63, xx, yy + 16 + bpos + ceil(bwh - 2))
-
-        }
+        }else{	
+			draw_sprite_ext(spr_scrollbar, 113 + ind * 4, xx, yy + 20 + bpos, 1, floor(bwh) - 6, 0, -1, 1)
+            draw_sprite(spr_scrollbar, 112 + ind * 4, xx, yy + 17 + bpos)
+            draw_sprite(spr_scrollbar, 114 + ind * 4, xx, yy + 17 + bpos + ceil(bwh - 6))
+            if (bwh > 20) draw_sprite(spr_scrollbar, 115 + ind * 4, xx, yy + 17 + bpos + floor(bwh / 2) - 8)
+		}
     }
     if (mouse_rectangle(xx, yy + 16, 16, bpos) && locked = 0 && (window = 0 || win = 1) && sb_drag = -1) {
         if (mouse_check_button(mb_left))  {

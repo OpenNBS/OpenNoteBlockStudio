@@ -76,8 +76,8 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates upon startup", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
     draw_areaheader(x1 + 22, y1 + 164, 456, 80, "Theme")
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
-	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
-    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
+	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
+    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
     draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
     if (draw_button2(x1 + 22, y1 + 286, 76, "Open")) {
