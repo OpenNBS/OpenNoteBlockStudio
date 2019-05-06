@@ -19,7 +19,7 @@ if (lock = 1) {
     draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme, xx, yy, w / 3, 1, 0, -1, 1)
     draw_sprite(spr_button, m * 3 + 12 * theme, xx, yy)
     draw_sprite(spr_button, 2 + m * 3 + 12 * theme, xx + w - 3, yy)
-    draw_set_color(0)
+    set_theme_color(false)
 }
 draw_set_halign(fa_center)
 if (lock && theme) {

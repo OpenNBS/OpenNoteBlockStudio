@@ -41,7 +41,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
     draw_set_color(c_white)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
     // draw_set_color(make_color_rgb(213, 223, 229))
     // draw_roundrect(x1 + 8, y1 + 48, x1 + 492 + 50, y1 + 260, 1)
@@ -96,7 +96,7 @@ if (selected_tab_sch = 0) {
         draw_rectangle(x1 + 10, y1 + 52, x1 + 539, y1 + 255, 0)
         draw_set_color(make_color_rgb(137, 140, 149))
         draw_rectangle(x1 + 10, y1 + 52, x1 + 539, y1 + 255, 1)
-        draw_set_color(0)
+        set_theme_color(false)
     } else {
         draw_set_color(make_color_rgb(137, 140, 149))
         draw_rectangle(x1 + 11, y1 + 52, x1 + 538, y1 + 256, 1)
@@ -115,7 +115,7 @@ if (selected_tab_sch = 0) {
         b = floor(sb_val[sch_exp_scrollbar] + a)
         if (b >= ds_list_size(instrument_list)) break
         var ins = instrument_list[| b];
-        draw_set_color(0)
+        set_theme_color(false)
         draw_text(x1 + 12 + 4, y1 + 74 + 20 * a, ins.name)
         draw_text(x1 + 12 + 4 + tabw[0], y1 + 74 + 20 * a, string(sch_exp_ins_block[b]) + ", " + string(sch_exp_ins_data[b]))
         if (draw_abutton(x1 + 12 + 4 + tabw[0] + tabw[1] - 25, y1 + 72 + 20 * a) && wmenu = 0) {
@@ -138,7 +138,7 @@ if (selected_tab_sch = 0) {
         draw_text(xx - tabw[a] + 4, y1 + 54, tabstr[a])
         xx -= tabw[a] - 1
     }
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + 16, y1 + 270, "Block for walkway:")
     draw_text(x1 + 16, y1 + 300, "Block for circuitry:")
     draw_text(x1 + 16, y1 + 330, "Block for ground:")
@@ -151,7 +151,7 @@ if (selected_tab_sch = 0) {
         menua = 0
     }
     popup_set_window(x1 + 200, y1 + 265, 140, 21, "The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.")
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
     
     draw_set_color(c_white)
@@ -162,7 +162,7 @@ if (selected_tab_sch = 0) {
         menua = 1
     }
     popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
     
     draw_set_color(c_white)
@@ -173,7 +173,7 @@ if (selected_tab_sch = 0) {
         menua = 2
     }
     popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.")
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + 204, y1 + 264 + 4 + 60, block_get_name(sch_exp_ground_block, sch_exp_ground_data))
 }
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {

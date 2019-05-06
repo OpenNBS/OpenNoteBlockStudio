@@ -51,3 +51,5 @@
 #macro w_greeting 1
 
 #macro br "\r\n"
+
+#macro c_dark 1644825

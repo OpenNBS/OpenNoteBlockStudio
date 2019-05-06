@@ -25,5 +25,5 @@ if (theme = 0) {
 } else {
     draw_area(xx, yy, xx + w, yy + h)
 }
-draw_set_color(0)
+set_theme_color(false)
 return draw_text_edit(i, val, xx + 3, yy + 3, w - 6, h - 6, 0, 0)

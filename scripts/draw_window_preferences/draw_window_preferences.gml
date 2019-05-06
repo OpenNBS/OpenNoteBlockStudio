@@ -41,7 +41,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
     draw_set_color(c_white)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
-    draw_set_color(0)
+    set_theme_color(false)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
     draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
@@ -55,29 +55,30 @@ if (nsel > -1) selected_tab = nsel
 selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
 if (selected_tab < 0) selected_tab = 3
 if (selected_tab > 3) selected_tab = 0
-draw_set_color(0)
+set_theme_color(false)
 if (selected_tab = 0) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 65, "Startup")
     if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window upon startup", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
     if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates upon startup", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
-    draw_areaheader(x1 + 22, y1 + 164, 456, 60, "Theme")
-    if (draw_radiobox(x1 + 40, y1 + 164 + 16, !theme, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
-    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
-    draw_text(x1 + 22, y1 + 240, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
-    popup_set_window(x1 + 22, y1 + 240, 430, 18, songfolder)
-    if (draw_button2(x1 + 22, y1 + 266, 76, "Open")) {
+    draw_areaheader(x1 + 22, y1 + 164, 456, 80, "Theme")
+    if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
+    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
+	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
+    draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
+    popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
+    if (draw_button2(x1 + 22, y1 + 286, 76, "Open")) {
         if (!directory_exists_lib(songfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(songfolder)
         }
     }
-    if (draw_button2(x1 + 22 + 84, y1 + 266, 76, "Change")) {
+    if (draw_button2(x1 + 22 + 84, y1 + 286, 76, "Change")) {
         message("Select the directory where saving/loading should be opened in.", "")
         a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
         if (a != "") songfolder = filename_dir(a)
     }
-    if (draw_button2(x1 + 22 + 84 + 84, y1 + 266, 96, "Use default")) songfolder = songs_directory
+    if (draw_button2(x1 + 22 + 84 + 84, y1 + 286, 96, "Use default")) songfolder = songs_directory
 } else if (selected_tab = 1) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Note blocks")
     if (draw_radiobox(x1 + 40, y1 + 90, use_colored, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) use_colored = 1

@@ -9,7 +9,7 @@ str = argument5
 popup_set_window(xx, yy, w, 21, str)
 
 on = (mouse_rectangle(xx, yy, w, 21))
-draw_set_color(0)
+set_theme_color(false)
 draw_sprite_ext(spr_inputbox, 1 + on * 3 + 6 * theme, xx, yy, w, 1, 0, -1, 1)
 draw_sprite(spr_inputbox, on * 3 + 6 * theme, xx, yy)
 draw_sprite(spr_inputbox, 2 + on * 3 + 6 * theme, xx + w - 2, yy)

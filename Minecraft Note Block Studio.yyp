@@ -39,14 +39,6 @@
             }
         },
         {
-            "Key": "00ee037c-b8a6-4faa-87fa-1c0d147fe5c7",
-            "Value": {
-                "id": "6095aa62-b0b5-4c85-a201-9e6a6c1a25ba",
-                "resourcePath": "sprites\\spr_interface3\\spr_interface3.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "01900827-8dc0-435f-814e-d178b3855946",
             "Value": {
                 "id": "3f6c629b-06bc-40de-9fb9-bbbe54a6be17",
@@ -300,14 +292,6 @@
                 "id": "415115d9-3da8-4423-9bef-9be2bb40d783",
                 "resourcePath": "scripts\\message_yesnocancel\\message_yesnocancel.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "1dfd96c9-37f6-4862-a380-2d6ef03fa62c",
-            "Value": {
-                "id": "0f85cc0f-214d-40b2-86bd-2cb99b3f7ccd",
-                "resourcePath": "sprites\\spr_frame3\\spr_frame3.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -831,14 +815,6 @@
             }
         },
         {
-            "Key": "490de033-1ee3-41d8-864a-615210f0c721",
-            "Value": {
-                "id": "fdb63abd-0fcd-4f75-9ece-370b74050ed3",
-                "resourcePath": "sprites\\spr_buttonbig\\spr_buttonbig.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "49cdb31a-ab20-4ad0-984e-b4b88cff6758",
             "Value": {
                 "id": "766b9c6c-e8b7-42e3-8a89-29fb0687a3b4",
@@ -852,14 +828,6 @@
                 "id": "5f3b90dc-b772-42e1-b1f3-397b933678dc",
                 "resourcePath": "scripts\\add_to_recent\\add_to_recent.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "4bb8f8c3-f39a-4b26-aa1c-877c57e0e91c",
-            "Value": {
-                "id": "5e472370-f560-4fcb-b31c-d6bb87a61b37",
-                "resourcePath": "sprites\\spr_msgbutton_classic\\spr_msgbutton_classic.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -2767,14 +2735,6 @@
             }
         },
         {
-            "Key": "e62f0e04-60fd-4725-a8bf-30581f474fdc",
-            "Value": {
-                "id": "98125529-410d-4dbf-9a32-d9615902e408",
-                "resourcePath": "sprites\\spr_msgbutton\\spr_msgbutton.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "e676fd5b-1aa2-40d8-bd47-5e71d48fa75b",
             "Value": {
                 "id": "b1c6d24d-6193-459e-a1de-435dad38e40c",
@@ -3015,6 +2975,14 @@
             }
         },
         {
+            "Key": "fca0f17f-26af-492a-84ef-996e87cb1bb6",
+            "Value": {
+                "id": "9ee6b3a6-2c69-44cc-8952-4d3804220d14",
+                "resourcePath": "scripts\\set_theme_color\\set_theme_color.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "fe2f1b84-8e06-4799-a303-5e3fece0d012",
             "Value": {
                 "id": "be24c767-b3d5-4231-b245-fd4078a4833d",
@@ -3168,6 +3136,7 @@
         "b1ab9747-f5a4-45d3-9b83-29539c7205a5",
         "06542021-ad62-4bba-857f-09ba0f0f8534",
         "ab93f4d7-71bd-4260-85f1-366e065b1656",
+        "fca0f17f-26af-492a-84ef-996e87cb1bb6",
         "34fabfc3-6919-45bb-801b-7f8ba4763e7f",
         "59d9febe-e0ed-4521-bf23-90d0f68a15da",
         "98e2e6c6-16e2-4c86-958d-4c6f3357273d",

@@ -74,13 +74,13 @@ for (a = 0; a <= 10; a += 1) {
     draw_set_color(12632256)
     draw_line(x1 + 14, y1 + 106 + 20 * a, x1 + 520, y1 + 106 + 20 * a)
     draw_set_color(make_color_rgb(120, 120, 120))
-    if (ins.user) draw_set_color(0)
+    if (ins.user) set_theme_color(false)
     if (insselect = b) draw_set_color(c_white)
     // INS NAME
     ins.name = draw_text_edit(b + 5, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < 10)
     // INS SOUND
     draw_set_color(make_color_rgb(120, 120, 120))
-    if (ins.user) {draw_set_color(0)}
+    if (ins.user) {set_theme_color(false)}
     if (!ins.loaded) draw_set_color(c_red)
     if (insselect = b) draw_set_color(c_white)
     draw_text(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "None") + ins.filename)
@@ -109,7 +109,7 @@ for (a = 0; a <= 10; a += 1) {
     }
     // INS KEY
     draw_set_color(make_color_rgb(120, 120, 120))
-    if (ins.user) {draw_set_color(0)}
+    if (ins.user) {set_theme_color(false)}
     if (insselect = b) draw_set_color(c_white)
     if (ins.user) {
         if (draw_abutton(x1 + 18 + 194 + 216, y1 + 88 + 20 * a) && wmenu = 0) {
@@ -134,7 +134,7 @@ for (a = 0; a <= 10; a += 1) {
     }
     draw_text(x1 + 18 + 194 + 160, y1 + 90 + 20 * a, get_keyname(ins.key, 1))
     // INS PRESS
-    draw_set_color(0)
+    set_theme_color(false)
     if (insselect = b) draw_set_color(c_white)
     draw_text(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "Yes", "No"))
     if (draw_abutton(x1 + 18 + 194 + 175 + 112, y1 + 88 + 20 * a) && wmenu = 0) {

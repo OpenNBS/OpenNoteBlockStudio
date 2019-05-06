@@ -5,8 +5,8 @@ xx = median(0, x1 - 32, window_width - 320)
 yy = argument1
 key = argument2
 sharp = argument3
-draw_sprite(spr_notechart, 0, xx, yy - 320 + 1)
-draw_sprite(spr_notechart, 1 + (x1 > window_width - 250), x1 - 16 * (x1 > window_width - 250), yy)
+draw_sprite(spr_notechart, 0 + 3 * theme, xx, yy - 320 + 1)
+draw_sprite(spr_notechart, (1 + (x1 > window_width - 250)) + 3 * theme, x1 - 16 * (x1 > window_width - 250), yy)
 
 draw_set_color(0)
 draw_set_alpha(0.25)
