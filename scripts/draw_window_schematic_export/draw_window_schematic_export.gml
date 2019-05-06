@@ -102,7 +102,7 @@ if (selected_tab_sch = 0) {
     if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 ticks / second", "Generate song at 5 ticks / second")) sch_exp_tempo = 1
     if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) sch_exp_tempo = 2
 } else {
-    if (theme) {
+    if (theme = 1) {
         draw_set_color(c_white)
         draw_rectangle(x1 + 10, y1 + 52, x1 + 539, y1 + 255, 0)
         draw_set_color(make_color_rgb(137, 140, 149))
@@ -155,6 +155,7 @@ if (selected_tab_sch = 0) {
     draw_text(x1 + 16, y1 + 330, "Block for ground:")
     
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + 200, y1 + 265, x1 + 200 + 140, y1 + 265 + 21, 0)
     draw_area(x1 + 200, y1 + 265, x1 + 200 + 140, y1 + 265 + 21)
     if ((draw_abutton(x1 + 200 + 121, y1 + 267) || (mouse_rectangle(x1 + 200, y1 + 265, 140, 21) && mouse_check_button_pressed(mb_left))) && wmenu = 0) {
@@ -166,6 +167,7 @@ if (selected_tab_sch = 0) {
     draw_text(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
     
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + 200, y1 + 265 + 30, x1 + 200 + 140, y1 + 265 + 21 + 30, 0)
     draw_area(x1 + 200, y1 + 265 + 30, x1 + 200 + 140, y1 + 265 + 21 + 30)
     if ((draw_abutton(x1 + 200 + 121, y1 + 267 + 30) || (mouse_rectangle(x1 + 200, y1 + 265 + 30, 140, 21) && mouse_check_button_pressed(mb_left))) && wmenu = 0) {
@@ -177,6 +179,7 @@ if (selected_tab_sch = 0) {
     draw_text(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
     
     draw_set_color(c_white)
+	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + 200, y1 + 265 + 60, x1 + 200 + 140, y1 + 265 + 21 + 60, 0)
     draw_area(x1 + 200, y1 + 265 + 60, x1 + 200 + 140, y1 + 265 + 21 + 60)
     if ((draw_abutton(x1 + 200 + 121, y1 + 267 + 60) || (mouse_rectangle(x1 + 200, y1 + 265 + 60, 140, 21) && mouse_check_button_pressed(mb_left))) && wmenu = 0) {

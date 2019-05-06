@@ -443,7 +443,7 @@ if (select > 0) {
 }
 
 // Timeline and markers
-draw_sprite_ext(spr_timeline, 0, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
+draw_sprite_ext(spr_timeline, 0 + theme = 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
 draw_set_font(fnt_small)
 draw_set_halign(fa_left)
 c = 1
