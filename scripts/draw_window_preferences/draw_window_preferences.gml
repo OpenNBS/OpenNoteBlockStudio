@@ -45,11 +45,25 @@ if (theme = 0) {
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
     draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
-} else {
+} else if(theme = 1){
     draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
     draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
     draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
+}else{
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
+    set_theme_color(false)
+    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
+    draw_set_color(make_color_rgb(213, 223, 229))
 }
 if (nsel > -1) selected_tab = nsel
 selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
@@ -62,8 +76,8 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates upon startup", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
     draw_areaheader(x1 + 22, y1 + 164, 456, 80, "Theme")
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
-    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
+    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
     draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
     if (draw_button2(x1 + 22, y1 + 286, 76, "Open")) {

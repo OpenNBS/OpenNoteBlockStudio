@@ -43,12 +43,23 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
     set_theme_color(false)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
-    // draw_set_color(make_color_rgb(213, 223, 229))
-    // draw_roundrect(x1 + 8, y1 + 48, x1 + 492 + 50, y1 + 260, 1)
-} else {
+} else if(theme = 1){
     draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
     draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
     draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
+    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+}else{
+	draw_set_color(c_dark)
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
+    set_theme_color(false)
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 }
 if (nsel > -1) selected_tab_sch = nsel

@@ -74,7 +74,7 @@ if (theme = 0) {
     draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
     set_theme_color(false)
     draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])
-} else {
+} else if (theme = 1){
     draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 126)
     draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 126, stabw / 2 - 1, 1, 0, -1, 1)
     draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 126)
@@ -82,6 +82,19 @@ if (theme = 0) {
     draw_set_color(c_white)
     draw_rectangle(x1 + 9, y1 + 149, x1 + 589, y1 + 358, 0)
     draw_area(x1 + 9, y1 + 149, x1 + 589 + 1, y1 + 358 + 2)
+}else{
+	draw_set_color(c_dark)
+    draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx + 1, y1 + 127, x1 + stabx + stabw, y1 + 126 + 20, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
+    draw_set_color(c_dark)
+    draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
+    set_theme_color(false)
+    draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])	
 }
 set_theme_color(false)
 draw_set_halign(fa_right)
