@@ -148,17 +148,17 @@ midi_ins[a, 0] = "Orchestra hit" midi_ins[a, 3] = "O. Hit"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 // Brass
 midi_ins[a, 0] = "Trumpet" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Trombone" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Tuba" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Muted Trumpet" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "French Horn" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Brass Section" midi_ins[a, 3] = ""
-midi_ins[a, 1] = 12 midi_ins[a, 2] = 0 a += 1
+midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Synth Brass 1" midi_ins[a, 3] = "S. Brass 1"
 midi_ins[a, 1] = 1 midi_ins[a, 2] = 1 a += 1
 midi_ins[a, 0] = "Synth Brass 2" midi_ins[a, 3] = "S. Brass 2"
