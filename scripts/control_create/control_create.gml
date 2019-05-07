@@ -276,6 +276,9 @@ dat_obj = ""
 dat_tempo = 0
 dat_source = "block"
 dat_includelocked = 0
+dat_enableradius = 0
+dat_radius = 16
+dat_radiusvalue = 0
 
 // Settings
 load_settings()

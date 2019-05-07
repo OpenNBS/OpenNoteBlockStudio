@@ -61,7 +61,8 @@ with (new(obj_dummy2)) {
     buffer_delete(file)
 	
 	//tick.mcfunction
-	inputString = "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":playing"
+	if(o.dat_enableradius) inputString = "execute as @a[tag=play" + randomId + "] run function " + name + ":playing"
+	else inputString = "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":playing"
 	file = buffer_create(string_length(inputString), buffer_fixed, 1)
 	buffer_write(file,buffer_text,inputString)
 	buffer_export(file,functiondir + "tick.mcfunction")

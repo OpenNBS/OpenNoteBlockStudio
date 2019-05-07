@@ -1,4 +1,4 @@
-//Generate_song(name)
+//dat_generate(name)
 //Returns: string
 var o, objective, str, note, instrument, pitch, tick, source, name
 o = obj_controller
@@ -17,7 +17,8 @@ for (a = 0; a <= o.enda; a ++) {
 	                pitch = dat_pitch(o.song_key[a, b])
 			
 					//Add command to result
-					str += "playsound "+ instrument +" "+source+" @s[scores={"+objective+"="+string(tick)+"}] ~ ~ ~ 1000000 "+ string(pitch) + br	
+					if(o.dat_enableradius) str += "execute at @s[scores={"+objective+"="+string(tick)+"}] run playsound "+ instrument +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
+					else str += "playsound "+ instrument +" "+source+" @s[scores={"+objective+"="+string(tick)+"}] ~ ~ ~ 1 "+ string(pitch) + " 1" + br	
 	            }
 	        }
 		}			 

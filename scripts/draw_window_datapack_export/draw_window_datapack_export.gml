@@ -38,9 +38,21 @@ if (draw_radiobox(x1 + 212, y1 + 305, dat_tempo = 5, "4 ticks / second", "Genera
 if (draw_radiobox(x1 + 212, y1 + 325, dat_tempo = 6, "3.33 ticks / second", "Generate song at 3.33 ticks / second")) dat_tempo = 6
 if (draw_radiobox(x1 + 212, y1 + 345, dat_tempo = 7, "2.86 ticks / second", "Generate song at 2.86 ticks / second")) dat_tempo = 7
 if (draw_radiobox(x1 + 212, y1 + 365, dat_tempo = 8, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) dat_tempo = 8
-	
+
+//Locked layers
 if (draw_checkbox(x1 + 390, y1 + 225, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
  
+//Radius
+if (draw_checkbox(x1 + 390, y1 + 250, dat_enableradius, "Nearby players hear"+br+"music too", "Whether to let all players in a given radius"+br+"hear the music as well")) dat_enableradius = !dat_enableradius
+if(dat_enableradius) { 
+	dat_radius = median(16, draw_dragvalue(3, x1 + 500, y1 + 285, dat_radius, 2),100000) 
+	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
+}
+else draw_set_color(c_gray) draw_text(x1 + 500, y1 + 285, dat_radius)
+draw_text(x1 + 390, y1 + 285, "Radius (in blocks):")
+popup_set_window(x1 + 390, y1 + 281, 125, 21, "The radius of which players will hear the music")
+draw_theme_color()
+
 //Submit button
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export", false)) {
 	if(string_replace_all(dat_name," ", "") != "" ){
