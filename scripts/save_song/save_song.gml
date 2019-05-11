@@ -10,7 +10,11 @@ if (fn = "" || filename_ext(filename) != ".nbs") {
 }
 if (selected > 0) selection_place(0)
 buffer = buffer_create(8, buffer_grow, 1)
-buffer_write_short(enda)
+
+buffer_write_short(0)
+buffer_write_byte(nbt_version)
+buffer_write_byte(first_custom_index)
+
 buffer_write_short(endb2)
 
 buffer_write_string_int(song_name)

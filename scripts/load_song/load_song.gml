@@ -1,5 +1,5 @@
 // load_song(fn)
-var fn, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei;
+var fn, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff
 fn = argument0
 if (confirm() < 0) return 0
 if (fn = "") {
@@ -20,8 +20,22 @@ if (file_ext = ".schematic") {
 if (file_ext != ".nbs") {message("Error: This file cannot be opened in this program.", "Error") return 0}
 if (file_ext = ".nbs") {
     buffer = buffer_import(fn)
-    buffer_read_short()
-    hei = buffer_read_short()
+	
+	byte1 = buffer_read_byte()
+	byte2 = buffer_read_byte()
+	
+	//First two bytes 0 = new nbt format
+	if(byte1 = 0 && byte2 = 0){
+		song_nbt_version = buffer_read_byte()
+		song_first_custom_index = buffer_read_byte()
+		custom_index_diff = first_custom_index - song_first_custom_index
+	}else{
+		song_nbt_version = 0
+		custom_index_diff = 0
+		song_first_custom_index = 0
+	}
+	
+	hei = buffer_read_short()
     
     draw_set_font(fnt_main)
     // SONG NAME
@@ -70,6 +84,7 @@ if (file_ext = ".nbs") {
             if (a = 0) break
             cb += a
             var ins = buffer_read_byte();
+			if(ins >= song_first_custom_index)ins += custom_index_diff //If instrument is custom, add custom_index_diff so it works when adding future instruments
             var key = buffer_read_byte();
             add_block(ca, cb, ins, median(0, key, 87), true)
         }
@@ -103,8 +118,8 @@ if (file_ext = ".nbs") {
         blocks_set_instruments()
         return 0
     }
-    
-    // Custom instruments
+	
+	// Custom instruments
     a = buffer_read_byte()
     str = ""
     for (b = 0; b < a; b++) {
