@@ -8,7 +8,8 @@ if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
 else draw_text(x1 + 8, y1 + 8, "Changelist")
 draw_set_font(fnt_main)
 if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
-fullstr =  "Changes in v3.3.8 (2019.03.21):\n* Fixed a glitch with layer names.\n* Fixed a glitch with compatibility indicator.\n\n"
+fullstr =  "Changes in v3.4.0 (2019.05.11):\n* Added dark theme.\n* Datapack export: added option to let nearby players hear your music too.\n* Improved MIDI import.\n* NBS format now stores its version for future proofing. This means that\n   songs made here can't be opened in older versions of Note Block Studio.\n\n"
+fullstr += "Changes in v3.3.8 (2019.03.21):\n* Fixed a glitch with layer names.\n* Fixed a glitch with compatibility indicator.\n\n"
 fullstr += "Changes in v3.3.7 (2019.03.13):\n* Changed fonts.\n* Added support for cyrillic characters.\n* Updated desktop icon.\n* Fixed crash while checking for updates.\n\n"
 fullstr += "Changes in v3.3.6 (2019.03.02):\n* Added new note block sounds: Iron Xylophone, Cow Bell, Didgeridoo,\n   Bit, Banjo and Pling.\n* Updated icon.\n* Updated note block texture\n\n"
 fullstr += "Changes in v3.3.5 (2019.01.20):\n* Added option to export song as datapack. File -> Export as Datapack\n\n"
