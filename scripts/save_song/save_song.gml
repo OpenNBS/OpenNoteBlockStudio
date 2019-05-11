@@ -15,6 +15,7 @@ buffer_write_short(0)
 buffer_write_byte(nbt_version)
 buffer_write_byte(first_custom_index)
 
+buffer_write_short(enda)
 buffer_write_short(endb2)
 
 buffer_write_string_int(song_name)

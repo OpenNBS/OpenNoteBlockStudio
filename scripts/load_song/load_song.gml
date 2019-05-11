@@ -29,6 +29,7 @@ if (file_ext = ".nbs") {
 		song_nbt_version = buffer_read_byte()
 		song_first_custom_index = buffer_read_byte()
 		custom_index_diff = first_custom_index - song_first_custom_index
+		buffer_read_short()
 	}else{
 		song_nbt_version = 0
 		custom_index_diff = 0
