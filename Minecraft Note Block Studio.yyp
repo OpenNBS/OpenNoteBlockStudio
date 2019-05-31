@@ -2495,6 +2495,14 @@
             }
         },
         {
+            "Key": "d19d6a31-a519-4cf1-807b-d508a603d6fc",
+            "Value": {
+                "id": "b9906983-e8a9-4db8-b6ba-0cd34f9c1417",
+                "resourcePath": "sprites\\spr_stereo\\spr_stereo.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "d4189216-0a7f-4e01-8696-5601ff46b705",
             "Value": {
                 "id": "6d1d30e3-ca17-465f-ae82-fa9bc9a68027",
