@@ -67,7 +67,17 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
     if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
-    draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
+    draw_areaheader(x1+258,y1+164,220,60,"Room Speed (Experimental)")
+    if (draw_radiobox(x1+274,y1+164+16,!modspeed,"30FPS","Run the program at 30FPS.")) {
+        game_set_speed(30,gamespeed_fps)
+		modspeed=0
+    }
+    if (draw_radiobox(x1+274,y1+164+16+20,modspeed,"60FPS","Run the program at 60FPS.")) {
+        game_set_speed(60,gamespeed_fps)
+		modspeed=1
+    }
+
+	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
     if (draw_button2(x1 + 22, y1 + 286, 76, "Open")) {
         if (!directory_exists_lib(songfolder)) {
@@ -116,6 +126,7 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
     draw_areaheader(x1 + 22, y1 + 224, 456, 45, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
+if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Show layer stereo panning", "Whether to show the panning of layers.")) realstereo=!realstereo
 }
 if (draw_button2(x1 + 420, y1 + 368, 72, "OK")) window = 0
 window_set_cursor(curs)

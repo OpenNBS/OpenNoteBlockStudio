@@ -4,6 +4,7 @@ for (a = 0; a <= endb2; a += 1) {
     layername[a] = ""
     layerlock[a] = 0
     layervol[a] = 100
+	layerstereo[a] = 100
 }
 for (a = 0; a <= enda; a += 1) {
     colamount[a] = 0

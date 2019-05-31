@@ -1,5 +1,5 @@
 // menu_draw()
-if (ani < 1) ani += 0.2
+if (ani < 1) ani += 0.1
 var m, menux, menuy, noclick;
 menux[0] = sx
 menuy[0] = sy

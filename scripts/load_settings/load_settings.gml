@@ -107,6 +107,8 @@ if (buffer_is_eof()) {
 }
 soundsystem = max(0, buffer_read_byte())
 soundsystemuser = soundsystem
+modspeed = buffer_read_byte()
+realstereo = buffer_read_byte()
 
 buffer_delete(buffer)
 return 1

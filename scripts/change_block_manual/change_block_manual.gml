@@ -10,7 +10,7 @@ pkey = song_key[xx, yy]
 song_ins[xx, yy] = ins
 song_key[xx, yy] = key
 
-if (ins.loaded) play_sound(ins, key, 1)
+if (ins.loaded) play_sound(ins, key, 1,100)
 
 history_set(h_changeblock, xx, yy, ins, key, pins, pkey)
 changed = 1
