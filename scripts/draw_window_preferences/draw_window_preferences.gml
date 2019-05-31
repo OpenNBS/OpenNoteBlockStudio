@@ -124,7 +124,7 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 70, y1 + 130, !marker_pagebypage, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
     if (draw_checkbox(x1 + 40, y1 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
-    draw_areaheader(x1 + 22, y1 + 224, 456, 45, "Playing")
+    draw_areaheader(x1 + 22, y1 + 224, 456, 65, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Show layer stereo panning", "Whether to show the panning of layers.")) realstereo=!realstereo
 }
