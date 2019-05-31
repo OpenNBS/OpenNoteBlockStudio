@@ -15,7 +15,7 @@ for (a = 0; a <= o.enda; a ++) {
 	            if (o.song_key[a, b] > 32 && o.song_key[a, b] < 58) {
 	                instrument = dat_instrument(ds_list_find_index(other.instrument_list, o.song_ins[a, b]))			
 	                pitch = dat_pitch(o.song_key[a, b])
-					blockvolume = o.layervol[b]/100
+			blockvolume = o.layervol[b]/100
 					
 					//Add command to result
 					if(o.dat_enableradius) str += "execute at @s[scores={"+objective+"="+string(tick)+"}] run playsound "+ instrument +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
