@@ -9,7 +9,7 @@ salpha = argument5
 
 index = ds_list_find_index(instrument_list, ins)
 if (ins.user || !use_colored)
-    index += 16
+    index = 32
 if(theme=2) draw_sprite_ext(spr_altblock, index, xx, yy, 1, 1, 0, -1, alpha)
 else draw_sprite_ext(spr_block, index, xx, yy, 1, 1, 0, -1, alpha)
 if (ins.user || key < 33 || key > 57) {
