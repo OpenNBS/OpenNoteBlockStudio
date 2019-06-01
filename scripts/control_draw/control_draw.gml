@@ -966,7 +966,7 @@ if (a && window = 0) {
 if (window = w_dragtempo) {
     curs = cr_size_ns
     tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
-    tempodrag = median(0.25, tempodrag, 20)
+    tempodrag = median(0.25, tempodrag, 30)
     a = tempo
     tempo = floor(tempodrag * 4) / 4
     if (a != tempo) changed = 1

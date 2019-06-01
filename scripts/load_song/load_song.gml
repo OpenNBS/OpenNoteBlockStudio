@@ -48,7 +48,7 @@ if (file_ext = ".nbs") {
     // SONG DESCRIPTION
     song_desc = buffer_read_string_int()
     // TEMPO
-    tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 20)
+    tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 30)
     // AUTOSAVE
     a = buffer_read_byte()
     autosave = median(0, a, 1)
