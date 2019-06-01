@@ -93,11 +93,12 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 286, 96, "Use default")) songfolder = songs_directory
 } else if (selected_tab = 1) {
-    draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Note blocks")
+    draw_areaheader(x1 + 22, y1 + 74, 446, 140, "Note blocks")
     if (draw_radiobox(x1 + 40, y1 + 90, use_colored, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) use_colored = 1
     if (draw_radiobox(x1 + 40, y1 + 110, !use_colored, "Show instrument icons", "If the instruments of the note blocks should\nbe recognized by their respective icons.")) use_colored = 0
     if (draw_checkbox(x1 + 40, y1 + 140, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
     if (draw_checkbox(x1 + 40, y1 + 160, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
+	if (draw_checkbox(x1 + 40, y1 + 180, fade, "Transparency", "Whether to use fading animations with note block sprites")) fade=!fade
     draw_areaheader(x1 + 22, y1 + 220, 456, 120, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 236, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
     if (draw_checkbox(x1 + 40, y1 + 256, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
@@ -124,7 +125,7 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 70, y1 + 130, !marker_pagebypage, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
     if (draw_checkbox(x1 + 40, y1 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
-    draw_areaheader(x1 + 22, y1 + 224, 456, 45, "Playing")
+    draw_areaheader(x1 + 22, y1 + 224, 456, 65, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Show layer stereo panning", "Whether to show the panning of layers.")) realstereo=!realstereo
 }

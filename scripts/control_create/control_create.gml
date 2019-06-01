@@ -53,7 +53,7 @@ timesignature = 4
 
 // Playback
 audio_listener_orientation(0,1,0, 0,0,1)
-audio_listener_position(100,0,0)
+audio_listener_position(100,0,1)
 playing = 0
 record = 0
 tempo = 10
@@ -89,6 +89,7 @@ song_added[0, 0] = 0
 block_outside = 0
 block_custom = 0
 midi_devices = 0
+fade = 1
 
 colamount[0] = 0
 rowamount[0] = 0

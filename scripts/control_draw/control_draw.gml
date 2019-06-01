@@ -191,13 +191,14 @@ for (a = 0; a < totalcols; a += 1) {
                     if (startb + b >= colfirst[starta + a] && startb + b <= collast[starta + a]) {
                         if (song_exists[starta + a, startb + b]) {
                             s = 0 // Selected
-                            c = 0.5
+                            if (fade=1) c = 0.5
+							else c = 1
                             if (lockedlayer[startb + b] = 0) c += 0.5 * (1 - (min(1000, current_time - song_played[starta + a, startb + b]) / 1000))
                             if (playing = 0) {
                                 if (select = 1 && lockedlayer[startb + b] = 0) {
                                     s = (starta + a >= min(select_pressa, selbx) && starta + a <= max(select_pressa, selbx) && startb + b >= min(select_pressb, selby) && startb + b <= max(select_pressb, selby))
                                 }
-                                c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
+                                if (fade=1) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
                             }
                             draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8)
                         }

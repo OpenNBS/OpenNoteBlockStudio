@@ -34,6 +34,7 @@ tempo = 10
 tempodrag = 10
 marker_pos = 0
 marker_prevpos = 0
+fade = 1
 
 // Note blocks
 starta = 0
