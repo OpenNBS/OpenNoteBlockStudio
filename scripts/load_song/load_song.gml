@@ -108,7 +108,7 @@ if (file_ext = ".nbs") {
         if (layervol[b] = -1) layervol[b] = 100
         layervol[b] = median(0, layervol[b], 100)
         if (layervol[b] < 100) realvolume = 1
-		if nbt_version>=2 {
+		if song_nbt_version>=2 {
 			layerstereo[b] = buffer_read_byte()
 		}
 		else {
