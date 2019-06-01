@@ -93,7 +93,7 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 286, 96, "Use default")) songfolder = songs_directory
 } else if (selected_tab = 1) {
-    draw_areaheader(x1 + 22, y1 + 74, 446, 140, "Note blocks")
+    draw_areaheader(x1 + 22, y1 + 74, 456, 140, "Note blocks")
     if (draw_radiobox(x1 + 40, y1 + 90, use_colored, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) use_colored = 1
     if (draw_radiobox(x1 + 40, y1 + 110, !use_colored, "Show instrument icons", "If the instruments of the note blocks should\nbe recognized by their respective icons.")) use_colored = 0
     if (draw_checkbox(x1 + 40, y1 + 140, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
