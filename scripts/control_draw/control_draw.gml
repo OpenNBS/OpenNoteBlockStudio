@@ -11,6 +11,7 @@ draw_set_alpha(1)
 draw_theme_color()
 draw_set_font(fnt_main)
 editline += 1
+if modspeed = 1 game_set_speed(60,gamespeed_fps)
 if (editline > 60) editline = 0
 if (delay > 0) delay -= 1 / (room_speed / 20)
 if (delay < 0) delay = 0
@@ -67,7 +68,7 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     }
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
-x1 = 176
+x1 = 192
 y1 = 52
 if ((window = 0 || select > 0) && playing = 0) {
     if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
@@ -144,22 +145,22 @@ if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && insindex > 0) {
         insindex--
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 1)
+        play_sound(instrument, selected_key, 1,100)
     }
     if (mouse_wheel_up() && insindex < ds_list_size(instrument_list) - 1) {
         insindex++
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 1)
+        play_sound(instrument, selected_key, 1,100)
     }
 }
 if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && selected_key > 0) {
         selected_key -= 1
-        play_sound(instrument, selected_key, 1)
+        play_sound(instrument, selected_key, 1,100)
     }
     if (mouse_wheel_up() && selected_key < 87) {
         selected_key += 1
-        play_sound(instrument, selected_key, 1)
+        play_sound(instrument, selected_key, 1,100)
     }
 }
 
@@ -190,13 +191,14 @@ for (a = 0; a < totalcols; a += 1) {
                     if (startb + b >= colfirst[starta + a] && startb + b <= collast[starta + a]) {
                         if (song_exists[starta + a, startb + b]) {
                             s = 0 // Selected
-                            c = 0.5
+                            if (fade=1) c = 0.5
+							else c = 1
                             if (lockedlayer[startb + b] = 0) c += 0.5 * (1 - (min(1000, current_time - song_played[starta + a, startb + b]) / 1000))
                             if (playing = 0) {
                                 if (select = 1 && lockedlayer[startb + b] = 0) {
                                     s = (starta + a >= min(select_pressa, selbx) && starta + a <= max(select_pressa, selbx) && startb + b >= min(select_pressb, selby) && startb + b <= max(select_pressb, selby))
                                 }
-                                c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
+                                if (fade=1) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
                             }
                             draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8)
                         }
@@ -224,7 +226,11 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
             if (song_exists[xx, b]) {
                 a = 1
                 c = 100
-                if (b < endb2) c = layervol[b]
+				d = 100
+                if (b < endb2) {
+					c = layervol[b]
+					d = layerstereo[b]
+				}
                 if (solostr != "") {
                     if (string_count("|" + string(b) + "|", solostr) = 0) {
                         a = 0
@@ -240,7 +246,7 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                     if (current_time - song_added[xx, b] < 1000) a = 0
                 }
                 if (a) {
-                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c / 100)
+                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c / 100,d)
                     if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
                     song_played[xx, b] = current_time
                 }
@@ -411,7 +417,7 @@ if (window = 0 && text_focus = -1) {
 		   for (a = 1; a <= 10; a++) {
              if (keyboard_check_pressed(ord(string(a % 10)))) {
                 instrument = instrument_list[| a - 1]
-                play_sound(instrument, selected_key, 1)
+                play_sound(instrument, selected_key, 1,100)
              }
            }
 		}else{
@@ -419,7 +425,7 @@ if (window = 0 && text_focus = -1) {
 		  for (a = 1; a <= 6; a++) {
 			if (keyboard_check_pressed(ord(string(a % 10)))) {
 				instrument = instrument_list[| a + 9]
-				play_sound(instrument, selected_key, 1)
+				play_sound(instrument, selected_key, 1,100)
 			}
 		  }
 	   }
@@ -618,6 +624,7 @@ for (b = 0; b < totalrows; b += 1) {
         layername[startb + b] = ""
         layerlock[startb + b] = 0
         layervol[startb + b] = 100
+		layerstereo[startb + b] = 100
         rowamount[startb + b] = 0
         endb2 = startb + b + 1
     }
@@ -656,17 +663,43 @@ for (b = 0; b < totalrows; b += 1) {
             }
         }
     }
+	// Stereo
+    if (realstereo) {
+        c = ((dragstereob = startb + b && window2 = w_dragstereo) || (mouse_rectangle(x1 + 108, y1 + 5, 16, 25) && window2 = 0))
+        if (startb + b >= endb2) {
+            a = 100
+        } else {
+            a = layerstereo[startb + b]
+        }
+        draw_sprite(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5)
+        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
+        if (c) {
+            draw_set_font(fnt_small)
+            draw_set_halign(fa_center)
+			if a > 100 {draw_text(x1 + 120, y1 + 18, "R " + string(a-100))}
+			if a = 100 {draw_text(x1 + 120, y1 + 18, "MONO")}
+			if a < 100 {draw_text(x1 + 120, y1 + 18, "L " + string((a-100)*-1))	}
+            draw_set_halign(fa_left)
+            draw_set_font(fnt_main)
+            curs = cr_size_ns
+            if (mouse_check_button_pressed(mb_left)) {
+                window2 = w_dragstereo
+                dragstereob = startb + b
+                dragstereo = layerstereo[startb + b]
+            }
+        }
+	}
     // Lock button
     p = 0
     if (startb + b < endb2) p = (layerlock[startb + b] = 1)
-    if (draw_layericon(0, x1 + 108-!realvolume * 10, y1 + 8, "Lock this layer", 0, p)) {
+    if (draw_layericon(0, x1 + 126-!realvolume-!realstereo * 10, y1 + 8, "Lock this layer", 0, p)) {
         if (layerlock[startb + b] = 2) solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
         if (layerlock[startb + b] = 1) {layerlock[startb + b] = 0} else {layerlock[startb + b] = 1}
     }
     // Solo button
     p = 0
     if (startb + b < endb2) p = (layerlock[startb + b] = 2)
-    if (draw_layericon(1, x1 + 126 - !realvolume * 10, y1 + 8, "Solo this layer", 0, p)) {
+    if (draw_layericon(1, x1 + 144 - !realvolume-!realstereo * 10, y1 + 8, "Solo this layer", 0, p)) {
         if (layerlock[startb + b] = 2) {
             layerlock[startb + b] = 0
             solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
@@ -675,7 +708,7 @@ for (b = 0; b < totalrows; b += 1) {
             solostr += "|" + string(startb + b) + "|"
         }
     }
-    if (draw_layericon(2, x1 + 144 - !realvolume * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
+    if (draw_layericon(2, x1 + 162 - !realvolume-!realstereo * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
         playing = 0
         selection_place(0)
         selection_add(0, startb + b, enda, startb + b, 0, 0)
@@ -687,6 +720,15 @@ if (window = w_dragvol) {
     layervol[dragvolb] = floor(dragvol / 10) * 10
     if (!mouse_check_button(mb_left)) {
         window = w_releasemouse
+    }
+}
+if (window2 = w_dragstereo) {
+    dragstereo += (mouse_yprev - mouse_y) * 2
+    dragstereo = median(0, dragstereo, 200)
+    layerstereo[dragstereob] = floor(dragstereo / 10) * 10
+    if (!mouse_check_button(mb_left)) {
+        window2 = w_releasemouse
+		window2 = 0
     }
 }
 // Tabs
@@ -782,7 +824,7 @@ if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {
     var ins = instrument_list[| a];
-    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 1) instrument = ins} xx += 25
+    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 1,100) instrument = ins} xx += 25
 }
 xx += 4 draw_separator(xx, 26) xx += 4
 while (1) {
@@ -924,7 +966,7 @@ if (a && window = 0) {
 if (window = w_dragtempo) {
     curs = cr_size_ns
     tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
-    tempodrag = median(0.25, tempodrag, 20)
+    tempodrag = median(0.25, tempodrag, 30)
     a = tempo
     tempo = floor(tempodrag * 4) / 4
     if (a != tempo) changed = 1

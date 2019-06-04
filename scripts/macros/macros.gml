@@ -1,7 +1,7 @@
 #macro gm_runtime_version "2.1.5.246"
 #macro version_date "2019.05.11"
 #macro version "3.4.0"
-#macro nbt_version 1
+#macro nbt_version 2
 
 #macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
 #macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
@@ -26,6 +26,7 @@
 #macro w_releasemouse 29
 #macro w_mididevices 28
 #macro w_dragvol 27
+#macro w_dragstereo 30
 #macro w_dragsection_end 26
 #macro w_dragsection_start 25
 #macro w_dragselection 24

@@ -56,6 +56,6 @@ if (yy > collast[xx]) collast[xx] = yy
 if (xx >= enda) enda = xx
 if (yy >= endb) endb = yy
 
-if (ins.loaded) play_sound(ins, key, 1)
+if (ins.loaded) play_sound(ins, key, 1,100)
 history_set(h_addblock, xx, yy, ins, key)
 return 1

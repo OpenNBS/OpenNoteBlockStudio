@@ -59,6 +59,7 @@ buffer_write_short(0)
 for (b = 0; b < endb2; b += 1) {
     buffer_write_string_int(layername[b])
     buffer_write_byte(layervol[b])
+	buffer_write_byte(layerstereo[b])
 }
 
 // Custom instruments

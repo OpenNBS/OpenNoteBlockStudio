@@ -90,6 +90,10 @@ buffer_write_string_int(version)
 buffer_write_byte(sch_exp_minecraft_old)
 // 3.1.?
 buffer_write_byte(soundsystemuser)
+// OpenNBS Features
+buffer_write_byte(modspeed)
+buffer_write_byte(realstereo)
+buffer_write_byte(fade)
 
 buffer_export(buffer, data_directory + "settings.file")
 buffer_delete(buffer)

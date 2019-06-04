@@ -10,7 +10,7 @@ for (d = 0; d < midi_devices; d += 1) {
                 var ins;
                 ins = mididevice_instrument[d]
                 if (ins < 0) ins = instrument
-                if (playing = 0) play_sound(ins, key, 1)
+                if (playing = 0) play_sound(ins, key, 1,100)
                 if (select_lastpressed) selected_key = key
                 if (playing = 0.25) toggle_playing(totalcols)
                 if (playing && record) {

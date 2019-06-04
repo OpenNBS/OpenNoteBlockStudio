@@ -4,6 +4,7 @@ for (a = 0; a <= endb2; a += 1) {
     layername[a] = ""
     layerlock[a] = 0
     layervol[a] = 100
+	layerstereo[a] = 100
 }
 for (a = 0; a <= enda; a += 1) {
     colamount[a] = 0
@@ -33,6 +34,7 @@ tempo = 10
 tempodrag = 10
 marker_pos = 0
 marker_prevpos = 0
+fade = 1
 
 // Note blocks
 starta = 0

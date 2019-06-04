@@ -30,6 +30,7 @@ if (file_ext = ".nbs") {
 		song_first_custom_index = buffer_read_byte()
 		custom_index_diff = first_custom_index - song_first_custom_index
 	}else{
+		message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 		song_nbt_version = 0
 		custom_index_diff = 0
 		song_first_custom_index = 0
@@ -47,7 +48,7 @@ if (file_ext = ".nbs") {
     // SONG DESCRIPTION
     song_desc = buffer_read_string_int()
     // TEMPO
-    tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 20)
+    tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 30)
     // AUTOSAVE
     a = buffer_read_byte()
     autosave = median(0, a, 1)
@@ -107,6 +108,13 @@ if (file_ext = ".nbs") {
         if (layervol[b] = -1) layervol[b] = 100
         layervol[b] = median(0, layervol[b], 100)
         if (layervol[b] < 100) realvolume = 1
+		if song_nbt_version>=2 {
+			layerstereo[b] = buffer_read_byte()
+		}
+		else {
+			layerstereo[b] = 100
+		}
+        if (layerstereo[b] < 100) realstereo = 1
         endb2 += 1
     }
     if (buffer_is_eof()) { // End?

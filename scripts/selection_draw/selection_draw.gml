@@ -1,6 +1,6 @@
 // selection_draw(x, y, w, h)
 // Draws the selection.
-var xs, ys, x1, y1, x2, y2, w, h, sa, sb, salpha, a, b, c, xx;
+var xs, ys, x1, y1, x2, y2, w, h, sa, sb, salpha, a, b, c, d, xx;
 x1 = selection_x
 y1 = selection_y
 x2 = x1 + selection_l
@@ -18,7 +18,9 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
             if (selection_exists[xx, b]) {
                 a = 1
                 c = 100
+				d = 100
                 if (selection_y + b < endb2) c = layervol[selection_y + b]
+				if (selection_y + b < endb2) d = layerstereo[selection_y + b]
                 if (solostr != "") {
                     if (string_count("|" + string(selection_y + b) + "|", solostr) = 0) {
                         a = 0
@@ -31,7 +33,7 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
                     }
                 }
                 if (a) {
-                    if (selection_ins[xx, b].loaded) play_sound(selection_ins[xx, b], selection_key[xx, b], c / 100)
+                    if (selection_ins[xx, b].loaded) play_sound(selection_ins[xx, b], selection_key[xx, b], c / 100, d)
                     if (selection_ins[xx, b].press) key_played[selection_key[xx, b]] = current_time
                     selection_played[xx, b] = current_time
                 }

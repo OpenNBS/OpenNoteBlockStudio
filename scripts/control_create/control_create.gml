@@ -19,6 +19,7 @@ window_set_min_height(100)
 cam_window = camera_create()
 view_set_camera(0, cam_window)
 window_background = c_white
+window2 = 0
 
 // Application
 update = 0
@@ -34,6 +35,7 @@ soundsystemuser = 0
 menu_shown = ""
 songfolder = songs_directory
 icons_init()
+modspeed=0
 
 // File
 filename = ""
@@ -50,6 +52,8 @@ for (a = 0; a < 11; a += 1) {
 timesignature = 4
 
 // Playback
+audio_listener_orientation(0,1,0, 0,0,1)
+audio_listener_position(100,0,1)
 playing = 0
 record = 0
 tempo = 10
@@ -85,6 +89,7 @@ song_added[0, 0] = 0
 block_outside = 0
 block_custom = 0
 midi_devices = 0
+fade = 1
 
 colamount[0] = 0
 rowamount[0] = 0
@@ -137,12 +142,16 @@ dragincyu = 0
 
 // Layers
 realvolume = 1
+realstereo = 1
 layername[0] = ""
 layerlock[0] = 0
 layervol[0] = 100
+layerstereo[0] = 100
 solostr = ""
 dragvolb = 0
 dragvol = 0
+dragstereob = 0
+dragstereo = 0
 
 // Piano
 show_keynames = 1
