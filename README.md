@@ -37,7 +37,7 @@ Well wonder no more! With dark theme you can compose all night long!
 
 ### Changed .nbs format
 To make Note Block Studio work better in the future, the .nbs format has changed. 
-The first 2 bytes (used to be song lenght) have been changed to 0 to indicate the new format. 
+The first 2 bytes (used to be song length) have been changed to 0 to indicate the new format. 
 
 After this, the next byte is the .nbs version. Right now that version is 1, but if the nbs format needs changes in the future, it will be different.
 
