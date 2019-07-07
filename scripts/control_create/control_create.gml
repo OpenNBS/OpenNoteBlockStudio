@@ -35,7 +35,10 @@ soundsystemuser = 0
 menu_shown = ""
 songfolder = songs_directory
 icons_init()
-modspeed=0
+modspeed = 0
+modspeeduser = 0
+fade = 0
+fadeuser = 0
 
 // File
 filename = ""
@@ -89,7 +92,6 @@ song_added[0, 0] = 0
 block_outside = 0
 block_custom = 0
 midi_devices = 0
-fade = 1
 
 colamount[0] = 0
 rowamount[0] = 0
@@ -142,7 +144,8 @@ dragincyu = 0
 
 // Layers
 realvolume = 1
-realstereo = 1
+realstereo = 0
+realstereouser = 0
 layername[0] = ""
 layerlock[0] = 0
 layervol[0] = 100

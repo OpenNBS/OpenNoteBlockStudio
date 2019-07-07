@@ -85,16 +85,15 @@ for (a = 0; a < 88; a += 1) buffer_write_short(piano_key[a])
 buffer_write_byte(warning_octaves)
 buffer_write_byte(warning_instrument)
 buffer_write_byte(warning_schematic)
-// 3.1.1
+// 3.1.1+
 buffer_write_string_int(version)
 buffer_write_byte(sch_exp_minecraft_old)
-// 3.1.?
 buffer_write_byte(soundsystemuser)
 // OpenNBS Features
-buffer_write_byte(modspeed)
-buffer_write_byte(realstereo)
-buffer_write_byte(fade)
+buffer_write_byte(modspeeduser)
+buffer_write_byte(fadeuser)
+buffer_write_byte(realstereouser)
 
-buffer_export(buffer, data_directory + "settings.file")
+buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)
 return 1
