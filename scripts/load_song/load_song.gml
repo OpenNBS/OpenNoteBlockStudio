@@ -24,14 +24,14 @@ if (file_ext = ".nbs") {
 	byte1 = buffer_read_byte()
 	byte2 = buffer_read_byte()
 	
-	//First byte 0 = new nbt format. Second byte 1 = 3.5.0's version (Format 2)
-	if(byte1 = 0 && byte2 = 1){
+	//First two bytes 0 = new nbt format
+	if(byte1 = 0 && byte2 = 0){
 		song_nbt_version = buffer_read_byte()
 		song_first_custom_index = buffer_read_byte()
 		custom_index_diff = first_custom_index - song_first_custom_index
 	}else{
 		message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
-		song_nbt_version = 1
+		song_nbt_version = 0
 		custom_index_diff = 0
 		song_first_custom_index = 0
 	}
