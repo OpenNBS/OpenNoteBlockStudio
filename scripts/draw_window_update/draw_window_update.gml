@@ -8,6 +8,7 @@ if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
 else draw_text(x1 + 8, y1 + 8, "Changelist")
 draw_set_font(fnt_main)
 if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
+fullstr = ""
 fullstr +=  "Changes in v3.5.1 (2019.07.14):\n* Fixed MIDI Import crash\n\n"
 fullstr +=  "Changes in v3.5.0 (2019.07.11):\n* Added Stereo.\n* Stereo added to Datapack Export.\n* Improved MIDI import, again.\n* Added settings to enhance performance.\n New sprites for note blocks in the dark theme.\n\n"
 fullstr +=  "Changes in v3.4.0 (2019.05.11):\n* Added dark theme.\n* Datapack export: added option to let nearby players hear your music too.\n* Improved MIDI import.\n* NBS format now stores its version for future proofing. This means that\n   songs made here can't be opened in older versions of Note Block Studio.\n\n"
