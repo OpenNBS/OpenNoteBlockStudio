@@ -164,6 +164,7 @@ if (w_midi_name = 1) {
     yy = 0
     for (a = 0; a <= midi_channels; a += 1) {
         for (b = 0; b < channelheight[a]; b += 1) {
+			layerstereo[yy] = 100
             layername[yy] = "Channel " + string(a + 1)
             if (w_midi_name_patch) {
                 layername[yy] = midi_ins[midi_channelpatch[a], 3]

@@ -1,8 +1,8 @@
 // load_settings()
 var a;
 log("Load settings")
-if (!file_exists_lib(data_directory + "settings.file")) return 0
-buffer = buffer_import(data_directory + "settings.file")
+if (!file_exists_lib(data_directory + "settings.onbs")) return 0
+buffer = buffer_import(data_directory + "settings.onbs")
 // Recent songs
 for (a = 0; a < 11; a += 1) {
     recent_song[a] = buffer_read_string()
@@ -93,23 +93,16 @@ for (a = 0; a < 88; a += 1) piano_key[a] = buffer_read_short()
 warning_octaves = buffer_read_byte()
 warning_instrument = buffer_read_byte()
 warning_schematic = buffer_read_byte()
-// 3.1.1
-if (buffer_is_eof()) {
-    buffer_delete(buffer)
-    return 0
-}
 vers = buffer_read_string_int()
 sch_exp_minecraft_old = buffer_read_byte()
-//?
-if (buffer_is_eof()) {
-    buffer_delete(buffer)
-    return 0
-}
 soundsystem = max(0, buffer_read_byte())
 soundsystemuser = soundsystem
 modspeed = buffer_read_byte()
-realstereo = buffer_read_byte()
+modspeeduser = modspeed
 fade = buffer_read_byte()
+fadeuser = fade
+realstereo = buffer_read_byte()
+realstereouser = realstereo
 
 buffer_delete(buffer)
 return 1

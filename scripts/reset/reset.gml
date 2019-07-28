@@ -34,7 +34,7 @@ tempo = 10
 tempodrag = 10
 marker_pos = 0
 marker_prevpos = 0
-fade = 1
+fade = 0
 
 // Note blocks
 starta = 0
@@ -64,6 +64,8 @@ timeline_pressa = -1
 editline = 0
 solostr = ""
 dragvolb = 0
+realstereo = 0
+realstereouser = 0
 
 // Piano
 selected_key = 39
