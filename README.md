@@ -37,14 +37,15 @@ Datapack export also has an option to allow nearby players to hear the music too
 When using Note Block Studio late at night, you might have wondered: why are my eyes burning?
 Well wonder no more! With dark theme you can compose all night long!
 
-### Changed .nbs format
+### Changed NBS format
 To make Note Block Studio work better in the future, the .nbs format has changed. 
 The first 2 bytes (used to be song length) have been changed to 0 to indicate the new format. 
 
-After this, the next byte is the .nbs version. Right now that version is 1, but if the nbs format needs changes in the future, it will be different.
+After this, the next byte is the .nbs version. Right now that version is 2, but if the nbs format needs changes in the future, it will be different.
 
-The byte after that is the first custom instrument index. 
-**Example**: If there are 10 'normal' instruments, 10 is the first index of the custom instruments (remember, we start counting from 0).
+#### NBS version 1 changes:
+The byte after the .nbs version is now the first custom instrument index.
+**Example**: If there are 10 vanilla instruments, 10 is the first index of the custom instruments (remember, we start counting from 0).
 
-The rest of the format is the same, with song height being the next short.
-
+#### NBS version 2 changes:
+Now stereo information is saved. Because of this the sound can pan to the left/right. For each layer, there's now a byte that determines how much that layer pans. 0 is 2 blocks right, 100 is centre, 200 is 2 blocks left.
