@@ -6,6 +6,7 @@
     "option_xbone_description": "Your Description",
     "option_xbone_display_name": "Made in GameMaker Studio 2",
     "option_xbone_foreground_text": 0,
+    "option_xbone_game_chat_slots": 4,
     "option_xbone_interpolate_pixels": false,
     "option_xbone_languages": "<!-- Add languages you support here -->\\u000a <!-- os_get_language will only return languages listed -->\\u000a <!-- \"en\" is supported by default -->\\u000a <!-- See \"NLS APIs and Localization\" white paper -->\\u000a <!-- from developer.xboxlive.com for info -->",
     "option_xbone_logo_background_colour": {
@@ -17,6 +18,7 @@
     "option_xbone_logo_wide": "${base_options_dir}\\xboxone\\logos\\WideLogo.png",
     "option_xbone_network_config_manifest": "",
     "option_xbone_product_id": "",
+    "option_xbone_program_id": "A149997C-9864-464E-9E03-8E06832F4CFF",
     "option_xbone_publisher": "Company Name",
     "option_xbone_publisher_display_name": "Company Display Name",
     "option_xbone_ratings": "<mx:Ratings Category=\"game\">\\u000a <!-- Insert your title ratings here -->\\u000a <!-- See \"Title Ratings for Xbox One\" white paper -->\\u000a <!-- from developer.xboxlive.com for details -->\\u000a <\/mx:Ratings>",
@@ -31,6 +33,8 @@
         "Value": 4282795590
     },
     "option_xbone_stats_system": 0,
+    "option_xbone_support_4k_one_s": false,
+    "option_xbone_support_4k_one_x": false,
     "option_xbone_texture_page": "2048x2048",
     "option_xbone_title_id": "",
     "option_xbone_version": {

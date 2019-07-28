@@ -7,6 +7,8 @@
     "option_ps4_garlic": 1024,
     "option_ps4_icon": "${base_options_dir}\\ps4\\sce_sys\\icon0.png",
     "option_ps4_interpolate_pixels": false,
+    "option_ps4_max_display_height": -1,
+    "option_ps4_max_display_width": -1,
     "option_ps4_neo_garlic": 1536,
     "option_ps4_neo_onion": 2048,
     "option_ps4_nptitledat": null,

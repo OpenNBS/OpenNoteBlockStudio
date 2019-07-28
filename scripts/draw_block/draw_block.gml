@@ -8,6 +8,10 @@ alpha = argument4
 salpha = argument5
 
 index = ds_list_find_index(instrument_list, ins)
+
+//If index isnt found, don't draw
+if(index = -1)return;
+
 if (ins.user || !use_colored)
     index = 32
 if(theme=2) draw_sprite_ext(spr_altblock, index, xx, yy, 1, 1, 0, -1, alpha)
