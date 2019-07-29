@@ -1,2 +1,0 @@
-menu_draw()
-

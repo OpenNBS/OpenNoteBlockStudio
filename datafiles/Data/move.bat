@@ -1,1 +1,0 @@
-xcopy "%~dp0TempDatapack" %1 /s /q /y
