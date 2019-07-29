@@ -8,7 +8,7 @@ You can download Open Note Block studio [Here](https://github.com/HielkeMinecraf
 You can either download as .exe with installer (recommended), or as a zip file.
 
 ## Issues:
-For issues, please head over to the issues page.
+For issues, please head over to the [issues](https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues) page.
 
 ## Contributions
 This project is written in Game Maker Language (GML). You must have GameMaker Studio 2 in order to open this project and make changes.  
