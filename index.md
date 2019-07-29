@@ -1,11 +1,7 @@
 ---
+title: Open Note Block Studio
+description: An open source continuation of Minecraft Note Block Studio with exciting new features.
 ---
-
-![alt text](https://i.imgur.com/1RYhYFU.png)
-<p align="center">
-An open source continuation of Minecraft Note Block Studio with exciting new features. 
-</p>
-
 
 ## Download
 You can either download as .exe (recommended), or as a zip file.
