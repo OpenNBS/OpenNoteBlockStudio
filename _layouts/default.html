@@ -31,7 +31,7 @@
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
       {% if site.github.is_project_page %}
         <a href="{{'/nbs' | absolute_url}}" class="btn btn-outline-light">New NBS format</a>
-        <a href="{{ site.url }}" class="btn btn-outline-light">Home</a>
+        <a href="{{ site.url | absolute_url}}" class="btn btn-outline-light">Home</a>
         <a href="{{ site.github.repository_url }}" class="btn btn-outline-dark">View on GitHub</a>
       {% endif %}
     </header>
