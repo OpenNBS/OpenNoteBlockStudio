@@ -1,20 +1,25 @@
 ---
 title: New NBS format
-description: The .nbs format (Note Block Song) was made mainly for the Minecraft Note Block Studio, <br>and contains data about how note blocks are laid out in the program to form a song. <br><br> To make Note Block Studio work better and to make it futureproof, we are using an improved format.<br>The first 2 bytes of the .nbs file (used to be song length) have been changed to 0 to indicate this new format.
+description: The .nbs format (Note Block Song) was made mainly for the Minecraft Note Block Studio, <br>and contains data about how note blocks are laid out in the program to form a song. <br><br> To make Note Block Studio work better and to make it futureproof, we are using an improved format.<br>The first 2 bytes of the .nbs file have been changed to 0 to indicate this new format.
 permalink: /nbs/
 ---
 
 <button data-toggle="collapse" data-target="#demo" class="btn btn-lg btn-block btn-primary">Show version changelog</button>
 
 <div id="demo" class="collapse">
+
+<strong>NBS version 3 changes:</strong> 
+<p>Song length is now saved again after the Vanilla Note Block Instruments count</p>
+
+<strong>NBS version 2 changes:</strong> 
+<p>Now stereo information is saved for each layer. This means that now the sound can pan to the left/right.<br> For every layer, there's now a byte that determines how much that layer pans.<br>0 is 2 blocks right, 100 is centre, 200 is 2 blocks left.</p>
+
 <strong>NBS version 1 changes:</strong> 
 <p>The byte after the .nbs version is now the amount of vanilla instruments.<br>
 This change was necessary, because previously the program didn't know when the custom instruments began. It always just went up to 9, and everything after that was treated as a custom instrument.<br>
 (Probably because the original creator didn't think Mojang would add new sounds to note blocks :wink: )</p>
+</div>
 
-<strong>NBS version 2 changes:</strong> 
-<p>Now stereo information is saved for each layer. This means that now the sound can pan to the left/right.<br> For every layer, there's now a byte that determines how much that layer pans.<br>0 is 2 blocks right, 100 is centre, 200 is 2 blocks left.</p>
-</div>>
 
 ## About NBS
 All the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
@@ -54,6 +59,17 @@ The header contains information about the file, all the data must be in the foll
       <td style="text-align: left">Byte</td>
       <td style="text-align: left">Vanilla Note Block Instruments count</td>
        <td style="text-align: left">Amount of Vanilla Note Block Instruments, this is needed to determine at what index custom instruments start.</td>
+    </tr>
+    <tr class="newversion">
+      <td style="text-align: left">Short</td>
+      <td style="text-align: left">Song length</td>
+       <td style="text-align: left">The length of the song, measured in ticks. Divide this by the tempo to get the length of the song in seconds. The Note Block Studio doesn't really care about this value, the song size is calculated in the second part.<br>
+       (Note that this was re-added in nbs version 3)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Short</td>
+      <td style="text-align: left">Layer count</td>
+       <td style="text-align: left">The last layer with at least one note block in it, or the last layer that have had its name or volume changed.</td>
     </tr>
     <tr>
       <td style="text-align: left">String</td>
