@@ -1919,14 +1919,6 @@
             }
         },
         {
-            "Key": "99267053-1874-4da4-88fa-204e50d9e583",
-            "Value": {
-                "id": "63d13608-1d9c-4120-8069-2e598edb9c66",
-                "resourcePath": "sprites\\spr_scrollbar_old\\spr_scrollbar_old.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "992bdcd6-c643-4b90-bc0f-77087cf6bc28",
             "Value": {
                 "id": "d6b20a6d-8c9f-4ffa-acaa-bf0e64ae0352",
