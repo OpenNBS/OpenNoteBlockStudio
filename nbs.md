@@ -29,7 +29,7 @@ All the data types found in a .nbs file are <a href="http://en.wikipedia.org/wik
 3. Layers (Optional)
 4. Custom instruments (Optional)
 
-<span>In the tables below the rows are marked</span> <strong><span style="color: #01cc01c7">Green</span></strong> <span>if this was added/changed by the new .nbs format.</span>
+<span>If the information provided below differs from the old .nbs format, they are marked </span> <strong><span style="color: #01cc01c7">Green</span></strong>
 
 ### Part 1: Header
 
@@ -47,7 +47,7 @@ The header contains information about the file, all the data must be in the foll
     <tr class="newversion">
       <td style="text-align: left">Short</td>
       <td style="text-align: left"></td>
-        <td style="text-align: left">The first 2 bytes are always zero. In the old nbs format, this used to be song lenght, which can never be zero.<br> 
+        <td style="text-align: left">The first 2 bytes are always zero. In the old nbs format, this used to be song length, which can never be zero.<br> 
         (So this is how you can check whether a .nbs file is using the new format)</td>
     </tr>
     <tr class="newversion">
@@ -140,6 +140,9 @@ The header contains information about the file, all the data must be in the foll
 </table>
 
 ### Part 2: Note blocks
+The next part contains the information about how the note blocks are placed, what instruments they have and what note. As you may or may not know, the song is divided into ticks (horizontally) and layers (vertically). Often, a majority of the ticks and layers in the song are empty, which is why we specify the amount of "jumps" to the next active tick or layer, rather than just a bunch of empty slots.
+
+The pattern of the note block format is as follows: 
 
 <table>
   <thead>
@@ -159,6 +162,35 @@ The header contains information about the file, all the data must be in the foll
       <td style="text-align: left">Short</td>
       <td style="text-align: left">Jumps to the next layer</td>
       <td style="text-align: left">Once we have found an active tick, we read the amount of vertical jumps to the next layer. We start at layer -1. If this is 0, we go back to Step 1. If not, we have found a note block!</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Byte</td>
+      <td style="text-align: left">Note block instrument</td>
+      <td style="text-align: left">The instrument of the note block. This is 0-15, or higher if the song uses custom instruments.<br>
+        <strong>0 = </strong>Piano (Air)<br>
+        <strong>1 = </strong>Double Bass (Wood)<br>
+        <strong>2 = </strong>Bass Drum (Stone)<br>
+        <strong>3 = </strong>Snare Drum (Sand)<br>
+        <strong>4 = </strong>Click (Glass)<br>
+        <strong>5 = </strong>Guitar (Wool)<br>
+        <strong>6 = </strong>Flute (Clay)<br>
+        <strong>7 = </strong>Bell (Block of Gold)<br>
+        <strong>8 = </strong>Chime (Packed Ice)<br>
+        <strong>9 = </strong>Xylophone (Bone Block)<br>
+        <span class="newversion">
+        <strong>10 = </strong>Iron Xylophone (Iron Block)<br>
+        <strong>11 = </strong>Cow Bell (Soul Sand)<br>
+        <strong>12 = </strong>Didgeridoo (Pumpkin)<br>
+        <strong>13 = </strong>Bit (Block of Emerald)<br>
+        <strong>14 = </strong>Bajo (Hay)<br>
+        <strong>15 = </strong>Pling (Glowstone)
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Byte</td>
+      <td style="text-align: left">Note block key</td>
+      <td style="text-align: left">The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2 octave limit. After reading this, we go back to Step 2. </td>
     </tr>
   </tbody>
 </table>
@@ -201,7 +233,7 @@ Here the information about the layers are stored, which in this case are the lay
 
 Finally, the custom instruments of the song are stored. Like the previous part, this is optional. You can stop writing here and the song will still be loaded.
 
-A song can have a maximum of 18 custom instruments, each with a name and sound file assigned to it. The sound file must be located in the /Sounds folder of the Minecraft Note Block Studio directory.
+A song can have a maximum of <span class="newversion">18</span> custom instruments, each with a name and sound file assigned to it. The sound file must be located in the /Sounds folder of the Minecraft Note Block Studio directory.
 
 Before we begin, we need to know the amount of custom instruments:
 <table>
@@ -216,7 +248,7 @@ Before we begin, we need to know the amount of custom instruments:
     <tr>
       <td style="text-align: left">Byte</td>
       <td style="text-align: left">Custom instruments</td>
-        <td style="text-align: left">The amount of custom instruments (0-18).</td>
+        <td style="text-align: left">The amount of custom instruments (0-<span class="newversion">18</span>).</td>
     </tr>
   </tbody>
 </table><br> 
