@@ -10,7 +10,15 @@ popup_set_window(xx, yy, w, 21, str)
 
 on = (mouse_rectangle(xx, yy, w, 21))
 draw_theme_color()
-draw_sprite_ext(spr_inputbox, 1 + on * 3 + 6 * theme, xx, yy, w, 1, 0, -1, 1)
-draw_sprite(spr_inputbox, on * 3 + 6 * theme, xx, yy)
-draw_sprite(spr_inputbox, 2 + on * 3 + 6 * theme, xx + w - 2, yy)
+
+if(on){
+	draw_sprite_ext(spr_inputbox_s_middle, theme, xx, yy, w, 1, 0, -1, 1)
+	draw_sprite(spr_inputbox_s_left, theme, xx, yy)
+	draw_sprite(spr_inputbox_s_right, theme, xx + w - 2, yy)
+}else{
+	draw_sprite_ext(spr_inputbox_n_middle, theme, xx, yy, w, 1, 0, -1, 1)
+	draw_sprite(spr_inputbox_n_left, theme, xx, yy)
+	draw_sprite(spr_inputbox_n_right, theme, xx + w - 2, yy)
+}
+
 return draw_text_edit(i, val, xx + 3, yy + 3, w - 3, 21, 1, 0)

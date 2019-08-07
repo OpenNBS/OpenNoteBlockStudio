@@ -359,6 +359,14 @@
             }
         },
         {
+            "Key": "1e06239f-58bd-40af-90a2-ecd64e8f1256",
+            "Value": {
+                "id": "f9554607-ba85-4d66-b617-61692af4a1df",
+                "resourcePath": "views\\1e06239f-58bd-40af-90a2-ecd64e8f1256.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "1f6c51a9-a407-4c9d-b41b-84ff0c3d47ea",
             "Value": {
                 "id": "4c304414-4ebd-403f-9e0e-9ceb1c0746d1",
@@ -1415,6 +1423,14 @@
             }
         },
         {
+            "Key": "6bdf5319-e216-4389-989c-62f525e5c166",
+            "Value": {
+                "id": "83131f41-521f-4078-9e9e-86a9585abe0f",
+                "resourcePath": "views\\6bdf5319-e216-4389-989c-62f525e5c166.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "6c6007ae-b6d0-4d99-940c-b2f721424e00",
             "Value": {
                 "id": "35145b77-19af-4f11-8d24-f802120de8e9",
@@ -1555,6 +1571,14 @@
             "Value": {
                 "id": "d637d1fc-3fc9-4f68-b793-24a30f18cf98",
                 "resourcePath": "sprites\\spr_tabbar\\spr_tabbar.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "782e3e87-763a-431c-ad77-584e27966660",
+            "Value": {
+                "id": "6c848243-b933-4f83-877f-1ddaf26891dd",
+                "resourcePath": "sprites\\spr_inputbox_n_left\\spr_inputbox_n_left.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1783,6 +1807,14 @@
             }
         },
         {
+            "Key": "8ae8d51c-6cdc-4b4b-ab89-a136ee2d192f",
+            "Value": {
+                "id": "8270d41e-d224-419b-af46-b48bd09d5c6a",
+                "resourcePath": "sprites\\spr_inputbox_s_right\\spr_inputbox_s_right.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "8af143fb-1c6c-46ec-b4f2-101da7ac611d",
             "Value": {
                 "id": "7d018433-1ebd-453c-b2de-bd22776ddcc3",
@@ -1844,6 +1876,14 @@
                 "id": "09bfc296-ef14-454b-9456-1c5a8ea843ed",
                 "resourcePath": "scripts\\dat_inittempo\\dat_inittempo.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "8ed9acb9-c3dc-44d5-9ecf-e2b8e4439a3c",
+            "Value": {
+                "id": "499f80cd-6d9b-4c20-9747-0f3fc01cc198",
+                "resourcePath": "sprites\\spr_inputbox_s_left\\spr_inputbox_s_left.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -2487,14 +2527,6 @@
             }
         },
         {
-            "Key": "c067e096-4c64-4a96-a5f5-cbfb7faecd9b",
-            "Value": {
-                "id": "247a8b77-cdcd-4c95-9bd7-c601b4dd5278",
-                "resourcePath": "sprites\\spr_inputbox\\spr_inputbox.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "c1ae4275-cc48-48bb-bc3a-7c638ac064ec",
             "Value": {
                 "id": "7165a370-b987-42b6-9d50-f2c7ef8c2fb9",
@@ -2540,6 +2572,14 @@
                 "id": "8d1c6db5-fe00-4b87-8e74-8713c717e000",
                 "resourcePath": "datafiles_yy\\Data\\Sounds\\guitar.ogg.yy",
                 "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "c3e31483-d785-490d-9dbd-89f7183ff640",
+            "Value": {
+                "id": "77d22819-9525-4232-93e3-b7e1c446913b",
+                "resourcePath": "sprites\\spr_inputbox_n_right\\spr_inputbox_n_right.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -2807,6 +2847,14 @@
             }
         },
         {
+            "Key": "da780a1c-167f-48ed-a59e-cb84c5b1a6cb",
+            "Value": {
+                "id": "027ea80f-8770-40d8-bc06-a4c914733c8f",
+                "resourcePath": "sprites\\spr_inputbox_s_middle\\spr_inputbox_s_middle.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "dcca1e09-ceaa-4b35-8713-522fe5100a00",
             "Value": {
                 "id": "41f18202-e6c6-4fc0-bf42-7d3e64772f55",
@@ -2868,6 +2916,14 @@
                 "id": "d86ce1f0-dd26-4caf-b370-39c462a32317",
                 "resourcePath": "scripts\\window_set_focus\\window_set_focus.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "e0b1f047-1fd4-469b-8f65-1be7ac42ad96",
+            "Value": {
+                "id": "a4f56ae0-9eb5-4f1f-8b7a-f959f6879bc1",
+                "resourcePath": "views\\e0b1f047-1fd4-469b-8f65-1be7ac42ad96.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -3196,6 +3252,14 @@
                 "id": "6067a8db-4787-40ca-aa67-f40e2c5bc633",
                 "resourcePath": "views\\f9facd62-1dff-4187-9dc4-1e66ed93be79.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "fbd0778c-6593-4978-a410-32c76b4e23f1",
+            "Value": {
+                "id": "4a3a5b41-7868-4365-b608-a8de8f386c5c",
+                "resourcePath": "sprites\\spr_inputbox_n_middle\\spr_inputbox_n_middle.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
