@@ -11,7 +11,7 @@ draw_set_font(fnt_main)
 b = 8
 str[0] = "General"
 str[1] = "Appearance"
-str[2] = "Usabiliy"
+str[2] = "Usability"
 str[3] = "Playback"
 if (theme = 1) {
     draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 364)
