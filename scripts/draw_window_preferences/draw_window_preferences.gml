@@ -93,24 +93,28 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 286, 96, "Use default")) songfolder = songs_directory
 } else if (selected_tab = 1) {
-    draw_areaheader(x1 + 22, y1 + 74, 456, 140, "Note blocks")
-    if (draw_radiobox(x1 + 40, y1 + 90, use_colored, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) use_colored = 1
-    if (draw_radiobox(x1 + 40, y1 + 110, !use_colored, "Show instrument icons", "If the instruments of the note blocks should\nbe recognized by their respective icons.")) use_colored = 0
-    if (draw_checkbox(x1 + 40, y1 + 140, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
-    if (draw_checkbox(x1 + 40, y1 + 160, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
-	if (draw_checkbox(x1 + 40, y1 + 180, fade, "No Fading", "Disables transparency animations on note block sprites"))	{
+    draw_areaheader(x1 + 22, y1 + 74, 456, 150, "Note blocks")
+    if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) draw_type = 0
+    if (draw_radiobox(x1 + 40, y1 + 110, draw_type = 1, "Show instrument icons", "If the instruments of the note blocks should\nbe recognized by their respective icons.")) draw_type = 1
+	if (draw_radiobox(x1 + 40, y1 + 130, draw_type = 2, "Use different shapes for each instrument", "Whether each instrument should have a different shape\nto make them more distinquisable.")) draw_type = 2
+		
+    if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
+    if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
+	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No Fading", "Disables transparency animations on note block sprites"))	{
 		fade = !fade
 		if fade = !fade
 		fade = 1
 		fadeuser = 1
 	}
-    draw_areaheader(x1 + 22, y1 + 220, 456, 120, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 236, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-    if (draw_checkbox(x1 + 40, y1 + 256, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-    if (draw_checkbox(x1 + 40, y1 + 276, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-    draw_text(x1 + 40, y1 + 306, "Keys to show:")
-    keysmax = median(20, draw_dragvalue(3, x1 + 120, y1 + 306, keysmax, 2), 50)
-    popup_set_window(x1 + 40, y1 + 302, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+
+	
+    draw_areaheader(x1 + 22, y1 + 240, 456, 110, "Piano")
+    if (draw_checkbox(x1 + 40, y1 + 256, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
+    if (draw_checkbox(x1 + 40, y1 + 276, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
+    if (draw_checkbox(x1 + 40, y1 + 296, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
+    draw_text(x1 + 40, y1 + 326, "Keys to show:")
+    keysmax = median(20, draw_dragvalue(3, x1 + 120, y1 + 326, keysmax, 2), 50)
+    popup_set_window(x1 + 40, y1 + 322, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
 } else if (selected_tab = 2) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Mouse wheel")
     if (draw_radiobox(x1 + 40, y1 + 90, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0

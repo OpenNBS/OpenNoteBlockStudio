@@ -100,7 +100,7 @@ collast[0] = -1
 
 show_numbers = 1
 show_octaves = 0
-use_colored = 1
+draw_type = 0
 totalblocks = 0
 
 mousewheel = 0

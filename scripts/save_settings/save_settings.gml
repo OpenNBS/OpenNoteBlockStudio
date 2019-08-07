@@ -14,7 +14,7 @@ buffer_write_byte(theme)
 buffer_write_string(songfolder);
 buffer_write_byte(show_numbers)
 buffer_write_byte(show_octaves)
-buffer_write_byte(use_colored)
+buffer_write_byte(draw_type)
 buffer_write_byte(show_keynames)
 buffer_write_byte(show_keyboard)
 buffer_write_byte(show_notechart)

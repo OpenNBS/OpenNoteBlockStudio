@@ -1698,7 +1698,7 @@
             "Key": "91f6b839-aba4-422a-9992-a736e55fb77f",
             "Value": {
                 "id": "dc3bb9e5-0340-483b-abd9-12a1b538269a",
-                "resourcePath": "sprites\\spr_altblock\\spr_altblock.yy",
+                "resourcePath": "sprites\\spr_block\\spr_block.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -2692,14 +2692,6 @@
                 "id": "51121ebc-b2a8-4fc2-9b7c-00d89092826c",
                 "resourcePath": "scripts\\play_sound\\play_sound.yy",
                 "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "e2042df6-5acd-40cb-a75a-0c3be13b6145",
-            "Value": {
-                "id": "a1ffb581-28f1-4a26-a5fb-ec5c4d7f262b",
-                "resourcePath": "sprites\\spr_block\\spr_block.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
