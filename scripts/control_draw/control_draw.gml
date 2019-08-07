@@ -790,10 +790,10 @@ if (draw_tab("Settings")) {
         if (ins.user)
             customstr += check(instrument = ins) + clean(ins.name) + "|"
         else{
-			if(a < 9){
+			if(a < 10){
 				 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 			}else{
-				 str += check(instrument = ins) + "Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+			  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 			}	
 		}  
     }
