@@ -2039,6 +2039,14 @@
             }
         },
         {
+            "Key": "9bb1342a-268d-48e9-bdb0-73991de3cb1b",
+            "Value": {
+                "id": "9a5c84a1-5efc-44b3-b3b0-57560d803eff",
+                "resourcePath": "sprites\\spr_mp3_exp\\spr_mp3_exp.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "9be0be3c-e3eb-4737-8257-88d0f158e4bb",
             "Value": {
                 "id": "4ca2e8a6-1f64-4690-8f46-8ff9cf187954",
@@ -2791,6 +2799,14 @@
             }
         },
         {
+            "Key": "d6ee4472-3c3d-4cdc-8f2e-50d7b7d705d3",
+            "Value": {
+                "id": "5622d7bd-3806-4e2a-a21f-40f45e464c2b",
+                "resourcePath": "scripts\\draw_window_mp3_export\\draw_window_mp3_export.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d7191c7b-708e-4a13-8ff8-fe7a42cb8ad8",
             "Value": {
                 "id": "a33d5096-2524-46ca-b808-9141b4827c15",
@@ -3398,6 +3414,7 @@
         "98731502-7533-4583-8bfb-0ee49aca74f9",
         "7d9abfa0-fc4d-40f6-831c-7a92d01bf2bf",
         "164cafca-eb1a-465e-b90a-e54e4c1fe703",
+        "d6ee4472-3c3d-4cdc-8f2e-50d7b7d705d3",
         "b3124205-130d-4000-b1d7-af04465dab00",
         "e7ef2956-a38a-44fc-858f-fcc654140bb3",
         "a911a261-c097-45b1-9947-a95233b5ec7a",

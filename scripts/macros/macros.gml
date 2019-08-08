@@ -38,6 +38,7 @@
 #macro w_minecraft 15
 #macro w_schematic_export 14
 #macro w_datapack_export 30
+#macro w_mp3_export 31
 #macro w_checkupdates 13
 #macro w_about 12
 #macro w_songinfoedit 11

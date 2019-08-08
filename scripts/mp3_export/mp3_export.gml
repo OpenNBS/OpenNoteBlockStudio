@@ -27,7 +27,7 @@ with (obj_instrument) {
 for (a = 0; a <= enda; a += 1) {
     if (colamount[a] > 0) {
         for (b = 0; b <= collast[a]; b += 1) {
-            if (song_exists[a, b]) {
+            if (song_exists[a, b] && (lockedlayer[b] = 0 || mp3_includelocked)) {
                 var ins = song_ins[a, b]; 
                 var key = song_key[a, b];
                 if (ins.loaded) {

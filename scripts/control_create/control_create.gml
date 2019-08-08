@@ -293,6 +293,9 @@ dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
 
+//MP3
+mp3_includelocked = 0
+
 // Settings
 load_settings()
 change_theme()

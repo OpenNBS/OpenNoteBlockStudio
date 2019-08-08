@@ -10,6 +10,7 @@ switch (window mod w_menu) {
     case w_midi: draw_window_midi_import() break
     case w_schematic_export: draw_window_schematic_export() break
 	case w_datapack_export: draw_window_datapack_export() break
+	case w_mp3_export: draw_window_mp3_export() break
     case w_instruments: draw_window_instruments() break
     case w_stats: draw_window_stats() break
     case w_properties: draw_window_properties() break
