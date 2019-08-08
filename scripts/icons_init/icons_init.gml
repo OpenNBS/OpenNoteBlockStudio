@@ -65,5 +65,8 @@ enum icons {
     HELP,
     INTERNET,
     CHECK,
-    SUB_MENU
+    SUB_MENU,
+	CHECK_INACTIVE,
+	LOOP_INACTIVE,
+	LOOP
 }

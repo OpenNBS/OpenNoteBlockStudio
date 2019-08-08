@@ -495,7 +495,7 @@ if (playing = 1 || forward<>0) {
         marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
     }
 	//loop song
-	if (loop = 1 && marker_pos > enda) {
+	if (loop = 1 && marker_pos > enda + 1) {
         starta = 0
         marker_pos = starta
         sb_val[scrollbarh] = starta
@@ -830,7 +830,9 @@ if (draw_icon(icons.STOP, xx, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 ma
 forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 + 4
+if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
+if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop
+xx += 25 + 4
 if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {
