@@ -494,6 +494,12 @@ if (playing = 1 || forward<>0) {
     if (forward != 0) {
         marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
     }
+	//loop song
+	if (loop = 1 && marker_pos > enda) {
+        starta = 0
+        marker_pos = starta
+        sb_val[scrollbarh] = starta
+    }
     if (marker_pos > enda + totalcols) {
         marker_pos = enda + totalcols
         playing = 0
