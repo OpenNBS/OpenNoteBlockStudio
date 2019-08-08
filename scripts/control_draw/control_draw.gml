@@ -58,7 +58,10 @@ draw_clear(window_background)
 
 // Calculate area
 totalcols = floor((rw - 198) / 32)
-totalrows = floor((rh - 270) / 32)
+if show_piano = 1 {
+	rhval = 270
+}
+totalrows = floor((rh - rhval) / 32)
 if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     startkey = 27 - floor(min(keysmax, floor((rw - 32) / 39)) / 2)
     sharpkeys = 0

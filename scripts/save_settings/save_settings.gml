@@ -93,6 +93,8 @@ buffer_write_byte(soundsystem)
 buffer_write_byte(refreshrate)
 buffer_write_byte(fade)
 buffer_write_byte(realstereo)
+buffer_write_byte(show_piano)
+buffer_write_byte(rhval)
 
 buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)

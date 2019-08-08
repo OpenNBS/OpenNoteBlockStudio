@@ -99,6 +99,8 @@ soundsystem = max(0, buffer_read_byte())
 refreshrate = buffer_read_byte()
 fade = buffer_read_byte()
 realstereo = buffer_read_byte()
+show_piano = buffer_read_byte()
+rhval = buffer_read_byte()
 
 buffer_delete(buffer)
 return 1

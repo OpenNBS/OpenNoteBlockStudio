@@ -104,11 +104,20 @@ if (selected_tab = 0) {
 
 	
     draw_areaheader(x1 + 22, y1 + 240, 456, 110, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 256, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-    if (draw_checkbox(x1 + 40, y1 + 276, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-    if (draw_checkbox(x1 + 40, y1 + 296, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-    draw_text(x1 + 40, y1 + 326, "Keys to show:")
-    keysmax = median(20, draw_dragvalue(3, x1 + 120, y1 + 326, keysmax, 2), 50)
+    if (draw_checkbox(x1 + 40, y1 + 256, show_piano, "Show Piano", "Whether the piano should be visible.")) {
+		show_piano=!show_piano
+		keysmax=0
+		rhval=120
+		if show_piano = 1 {
+			keysmax=20
+			rhval=270
+		}
+}
+    if (draw_checkbox(x1 + 40, y1 + 276, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
+    if (draw_checkbox(x1 + 40, y1 + 296, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
+    if (draw_checkbox(x1 + 40, y1 + 316, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
+    draw_text(x1 + 40, y1 + 336, "Keys to show:")
+    keysmax = median(0, draw_dragvalue(3, x1 + 120, y1 + 336, keysmax, 2), 50)
     popup_set_window(x1 + 40, y1 + 322, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
 } else if (selected_tab = 2) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Mouse wheel")

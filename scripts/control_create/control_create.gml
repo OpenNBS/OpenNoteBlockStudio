@@ -36,6 +36,7 @@ songfolder = songs_directory
 icons_init()
 refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
+rhval = 270
 
 // File
 filename = ""
@@ -153,6 +154,7 @@ dragstereob = 0
 dragstereo = 0
 
 // Piano
+show_piano = 1
 show_keynames = 1
 show_keyboard = 1
 show_notechart = 0
