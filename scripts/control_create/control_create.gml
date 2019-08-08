@@ -268,6 +268,7 @@ ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false)
 instrument = instrument_list[| 0]
 first_custom_index = ds_list_size(instrument_list)
 user_instruments = 0
+emitters_to_remove = ds_list_create()
 
 // Initialize instruments
 str = ""
