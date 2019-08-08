@@ -31,14 +31,11 @@ clickinarea = 0
 dontplace = 0
 vers = version
 soundsystem = 0
-soundsystemuser = 0
 menu_shown = ""
 songfolder = songs_directory
 icons_init()
-modspeed = 0
-modspeeduser = 0
+refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
-fadeuser = 0
 
 // File
 filename = ""
@@ -145,7 +142,6 @@ dragincyu = 0
 // Layers
 realvolume = 1
 realstereo = 0
-realstereouser = 0
 layername[0] = ""
 layerlock[0] = 0
 layervol[0] = 100
@@ -304,7 +300,7 @@ if (check_update)
     update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
-if (file_exists_lib(data_directory + "settings.file") && vers != version) {
+if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
     window = w_update
     update = 3
 }

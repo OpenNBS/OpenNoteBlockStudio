@@ -96,13 +96,9 @@ warning_schematic = buffer_read_byte()
 vers = buffer_read_string_int()
 sch_exp_minecraft_old = buffer_read_byte()
 soundsystem = max(0, buffer_read_byte())
-soundsystemuser = soundsystem
-modspeed = buffer_read_byte()
-modspeeduser = modspeed
+refreshrate = buffer_read_byte()
 fade = buffer_read_byte()
-fadeuser = fade
 realstereo = buffer_read_byte()
-realstereouser = realstereo
 
 buffer_delete(buffer)
 return 1
