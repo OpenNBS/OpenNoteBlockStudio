@@ -107,7 +107,7 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 256, show_piano, "Show Piano", "Whether the piano should be visible.")) {
 		show_piano=!show_piano
 		keysmax=0
-		rhval=120
+		rhval=130
 		if show_piano = 1 {
 			keysmax=20
 			rhval=270
