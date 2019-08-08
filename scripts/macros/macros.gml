@@ -1,6 +1,6 @@
-#macro gm_runtime_version "2.1.5.246"
-#macro version_date "2019.08.06"
-#macro version "3.5.2"
+#macro gm_runtime_version "2.2.3.344"
+#macro version_date "2019.08.08"
+#macro version "3.6.0"
 #macro nbs_version 3
 
 #macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"

@@ -9,9 +9,9 @@ else draw_text(x1 + 8, y1 + 8, "Changelist")
 draw_set_font(fnt_main)
 if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
 fullstr = ""
-fullstr +=  "Changes in v3.5.2 (2019.08.06):\n* NBS format updated to version 3. Now stores song length again\n\n"
+fullstr +=  "Changes in v3.6.0 (2019.08.08):\n* Added MP3 export option to select whether you want to include\n   locked layers.\n* Added loop button to loop the current song.\n* Readded colored note blocks, added option for the shaped ones.\n* Updated icon.\n* NBS format updated to version 3. Now stores song length again.\n* Fixed an issue where there was an unintended gradient over sprites.\n* Fixed typo in preferences.\n* Fixed instrument icons being blank.\n* Fixed preferences not saving.\n\n"
 fullstr +=  "Changes in v3.5.1 (2019.07.14):\n* Fixed MIDI Import crash\n\n"
-fullstr +=  "Changes in v3.5.0 (2019.07.11):\n* Added Stereo.\n* Stereo added to Datapack Export.\n* Improved MIDI import, again.\n* Added settings to enhance performance.\n New sprites for note blocks in the dark theme.\n\n"
+fullstr +=  "Changes in v3.5.0 (2019.07.11):\n* Added Stereo.\n* Stereo added to Datapack Export.\n* Improved MIDI import, again.\n* Added settings to enhance performance.\n *Added new sprites for note blocks.\n\n"
 fullstr +=  "Changes in v3.4.0 (2019.05.11):\n* Added dark theme.\n* Datapack export: added option to let nearby players hear your music too.\n* Improved MIDI import.\n* NBS format now stores its version for future proofing. This means that\n   songs made here can't be opened in older versions of Note Block Studio.\n\n"
 fullstr += "Changes in v3.3.8 (2019.03.21):\n* Fixed a glitch with layer names.\n* Fixed a glitch with compatibility indicator.\n\n"
 fullstr += "Changes in v3.3.7 (2019.03.13):\n* Changed fonts.\n* Added support for cyrillic characters.\n* Updated desktop icon.\n* Fixed crash while checking for updates.\n\n"
