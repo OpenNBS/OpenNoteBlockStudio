@@ -32,7 +32,7 @@ if (file_ext = ".nbs") {
 		custom_index_diff = first_custom_index - song_first_custom_index
 		
 		//From nbt version 3, we save the song length again
-		if(song_nbs_version > 3){
+		if(song_nbs_version >= 3){
 			buffer_read_short()
 		}
 	}else{
