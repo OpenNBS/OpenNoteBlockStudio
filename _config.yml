@@ -20,7 +20,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
   - jemoji
