@@ -1,27 +1,25 @@
-<body class="landing">
-	<!-- Banner -->
-	<section id="banner">
-		<h2>Features</h2>
-		<p>What makes us different from the original Note Block Studio</p>
-	</section>
-	<section id="one" class="wrapper style2 special">
-		<div class="container">
-			<div class="row 100%">
-				<div class="6u 12u$(xsmall)">
-					<div class="image fit captioned">
-						<img src="images/datapack_export.jpg" alt="" />
-						<div class="caption">
-							<h2>Datapack export</h2>
-							<span style="text-align:left">
-								<p>Note block music in Minecraft, without any actual note blocks.<br>It really is magic.
-									<br><br>
-									With datapack export, you can export your song to a datapack.<br>After you've exported your song, move the created datapack inside the "datapacks" directory of your world folder, and that's all there is to it!<br> Now just join your world, and you can:</p>
-									<ul>
-										<li><strong>Play</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:play</code></li>
-										<li><strong>Pause</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:pause</code></li>
-										<li><strong>Stop</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:stop</code></li>
-									</ul>
-									<p>
+<section id="banner">
+	<h2>Features</h2>
+	<p>What makes us different from the original Note Block Studio</p>
+</section>
+<section id="one" class="wrapper style2 special">
+	<div class="container">
+		<div class="row 100%">
+			<div class="6u 12u$(xsmall)">
+				<div class="image fit captioned">
+					<img src="images/datapack_export.jpg" alt="" />
+					<div class="caption">
+						<h2>Datapack export</h2>
+						<span style="text-align:left">
+							<p>Note block music in Minecraft, without any actual note blocks.<br>It really is magic.
+								<br><br>
+								With datapack export, you can export your song to a datapack.<br>After you've exported your song, move the created datapack inside the "datapacks" directory of your world folder, and that's all there is to it!<br> Now just join your world, and you can:</p>
+								<ul>
+									<li><strong>Play</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:play</code></li>
+									<li><strong>Pause</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:pause</code></li>
+									<li><strong>Stop</strong> your song by running: <br><code>/function &lt;datapack_name&gt;:stop</code></li>
+								</ul>
+								<p>
 									Of course you need to have cheats enabled to run these commands.
 									<br>
 									When exporting, there's also an option that allows nearby players to hear the music too. This way you can be a walking music player!
@@ -62,16 +60,15 @@
 			</div>
 		</div>
 	</section>
-</body>
-<!-- Discord -->
-<section id="two" class="wrapper style3 special">
-	<div class="container">
-		<header class="major">
-			<h2>Keep in touch</h2>
-			<p>By joining our Discord server!</p>
-		</header>
-		<ul class="actions">
-			<li><a href="https://discord.gg/w35BqQp" class="button special big">Join</a></li>
-		</ul>
-	</div>
-</section>
+	<!-- Discord -->
+	<section id="two" class="wrapper style3 special">
+		<div class="container">
+			<header class="major">
+				<h2>Keep in touch</h2>
+				<p>By joining our Discord server!</p>
+			</header>
+			<ul class="actions">
+				<li><a href="https://discord.gg/w35BqQp" class="button special big">Join</a></li>
+			</ul>
+		</div>
+	</section>
