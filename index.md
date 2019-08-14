@@ -15,37 +15,35 @@
 				<i class="fa fa-bug" style="font-size:40px"></i>
 				<h2>Reporting bugs</h2>
 				<p>When experiencing bugs, please report them at the issues page.
-					This is also the place to give feedback!
-					<strong>Note:</strong> please search before creating a new issue!
-					<br><br>
+					This is also the place to give feedback!<br>
+					<strong>Note:</strong> please search before creating a new issue!</p>
 					<ul class="actions vertical">
 						<li><a href="https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues" class="button">Report an issue</a></li>
 					</ul>
 					<br>	
-				</p>
-			</div>
-			<div class="4u 12u$(small)">
-				<i class="fa fa-comments" style="font-size:40px"></i>
-				<h2>Keep in touch</h2>
-				<p>Keep in touch with us by joining our public Discord server. This is also the fastest way to contact us!<br><br><br>
+				</div>
+				<div class="4u 12u$(small)">
+					<i class="fa fa-comments" style="font-size:40px"></i>
+					<h2>Keep in touch</h2>
+					<p>Follow development and keep in touch with us by joining our public Discord server. This is also the fastest way to contact us!</p>
 					<ul class="actions vertical">
 						<li><a href="https://discord.gg/w35BqQp" class="button">Join Server</a></li>
 					</ul>
-				</p>
-			</div>
-			<div class="4u 12u$(small)">
-				<i class="fa fa-users" style="font-size:40px"></i>
-				<h2>Contributions</h2>
-				<p>This project is written in Game Maker Language (GML).
 					<br>
-					You must have GameMaker Studio 2 in order to open this project and make changes.<br><br>
+				</div>
+				<div class="4u 12u$(small)">
+					<i class="fa fa-users" style="font-size:40px"></i>
+					<h2>Contributions</h2>
+					<p>This project is written in Game Maker Language (GML).
+						<br>
+					You must have GameMaker Studio 2 in order to open this project and make changes.</p>
 					<ul class="actions vertical">
 						<li><a href="https://github.com/HielkeMinecraft/OpenNoteBlockStudio/pulls" class="button">Contribute!</a></li>
 					</ul>
 					<br>
-				</p>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<script src="{{ '/assets/js/index.js' | absolute_url}}"></script>
+		<script src="{{ '/assets/js/index.js' | absolute_url}}"></script>
+	</section>
+	
