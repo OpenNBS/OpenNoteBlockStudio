@@ -41,7 +41,7 @@ switch (m) {
         if (sel = b + 5) save_song("")
         if (sel = b + 6) open_midi("")
         if (sel = b + 7) open_schematic("")
-        if (sel = b + 8) mp3_export()
+        if (sel = b + 8) window = w_mp3_export
         if (sel = b + 9) {
             if (calculate_size()) window = w_schematic_export
         }

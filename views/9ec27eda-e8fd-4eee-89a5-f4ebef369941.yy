@@ -17,7 +17,8 @@
         "ce34798e-3d81-483d-bc53-9b8051ea283d",
         "98731502-7533-4583-8bfb-0ee49aca74f9",
         "7d9abfa0-fc4d-40f6-831c-7a92d01bf2bf",
-        "164cafca-eb1a-465e-b90a-e54e4c1fe703"
+        "164cafca-eb1a-465e-b90a-e54e4c1fe703",
+        "d6ee4472-3c3d-4cdc-8f2e-50d7b7d705d3"
     ],
     "filterType": "GMScript",
     "folderName": "Windows",

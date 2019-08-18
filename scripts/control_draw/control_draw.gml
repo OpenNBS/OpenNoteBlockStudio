@@ -11,11 +11,13 @@ draw_set_alpha(1)
 draw_theme_color()
 draw_set_font(fnt_main)
 editline += 1
-if modspeed = 1 game_set_speed(60,gamespeed_fps)
+if refreshrate = 1 game_set_speed(60,gamespeed_fps)
 if (editline > 60) editline = 0
 if (delay > 0) delay -= 1 / (room_speed / 20)
 if (delay < 0) delay = 0
 work_mins += 1 / (room_speed * 60)
+
+remove_emitters()
 
 if (selected = 0) {
 	if((tempo = 10 || tempo = 5 ||tempo = 2.5) && (block_outside = 0 && block_custom = 0))compatible = 1
@@ -58,7 +60,10 @@ draw_clear(window_background)
 
 // Calculate area
 totalcols = floor((rw - 198) / 32)
-totalrows = floor((rh - 270) / 32)
+if show_piano = 1 {
+	rhval = 270
+}
+totalrows = floor((rh - rhval) / 32)
 if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     startkey = 27 - floor(min(keysmax, floor((rw - 32) / 39)) / 2)
     sharpkeys = 0
@@ -191,14 +196,14 @@ for (a = 0; a < totalcols; a += 1) {
                     if (startb + b >= colfirst[starta + a] && startb + b <= collast[starta + a]) {
                         if (song_exists[starta + a, startb + b]) {
                             s = 0 // Selected
-                            if (fadeuser=0) c = 0.5
+                            if (fade=0) c = 0.5
 							else c = 1
                             if (lockedlayer[startb + b] = 0) c += 0.5 * (1 - (min(1000, current_time - song_played[starta + a, startb + b]) / 1000))
                             if (playing = 0) {
                                 if (select = 1 && lockedlayer[startb + b] = 0) {
                                     s = (starta + a >= min(select_pressa, selbx) && starta + a <= max(select_pressa, selbx) && startb + b >= min(select_pressb, selby) && startb + b <= max(select_pressb, selby))
                                 }
-                                if (fadeuser=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
+                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
                             }
                             draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8)
                         }
@@ -489,6 +494,12 @@ if (playing = 1 || forward<>0) {
     if (forward != 0) {
         marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
     }
+	//loop song
+	if (loop = 1 && marker_pos > enda + 1) {
+        starta = 0
+        marker_pos = starta
+        sb_val[scrollbarh] = starta
+    }
     if (marker_pos > enda + totalcols) {
         marker_pos = enda + totalcols
         playing = 0
@@ -611,7 +622,7 @@ draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols
 draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
 draw_theme_color()
 // Scrollbars
-starta = draw_scrollbar(scrollbarh, 178, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+starta = draw_scrollbar(scrollbarh, 192, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 
 // Draw layers
@@ -790,10 +801,10 @@ if (draw_tab("Settings")) {
         if (ins.user)
             customstr += check(instrument = ins) + clean(ins.name) + "|"
         else{
-			if(a < 9){
+			if(a < 10){
 				 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 			}else{
-				 str += check(instrument = ins) + "Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+			  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 			}	
 		}  
     }
@@ -801,7 +812,7 @@ if (draw_tab("Settings")) {
                         icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Preferences...")
 }
 if (draw_tab("Help")) {
-    show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft|-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|Github")
+    show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|Github")
 }
 
 // Icons
@@ -819,7 +830,9 @@ if (draw_icon(icons.STOP, xx, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 ma
 forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 + 4
+if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
+if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop
+xx += 25 + 4
 if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {

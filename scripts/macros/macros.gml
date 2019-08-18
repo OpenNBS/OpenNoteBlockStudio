@@ -1,7 +1,7 @@
-#macro gm_runtime_version "2.1.5.246"
-#macro version_date "2019.05.11"
-#macro version "3.5.1"
-#macro nbt_version 2
+#macro gm_runtime_version "2.2.3.344"
+#macro version_date "2019.08.08"
+#macro version "3.6.0"
+#macro nbs_version 3
 
 #macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
 #macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
@@ -38,6 +38,7 @@
 #macro w_minecraft 15
 #macro w_schematic_export 14
 #macro w_datapack_export 30
+#macro w_mp3_export 31
 #macro w_checkupdates 13
 #macro w_about 12
 #macro w_songinfoedit 11

@@ -15,7 +15,7 @@ theme = buffer_read_byte()
 songfolder = buffer_read_string()
 show_numbers = buffer_read_byte()
 show_octaves = buffer_read_byte()
-use_colored = buffer_read_byte()
+draw_type = buffer_read_byte()
 show_keynames = buffer_read_byte()
 show_keyboard = buffer_read_byte()
 show_notechart = buffer_read_byte()
@@ -96,13 +96,11 @@ warning_schematic = buffer_read_byte()
 vers = buffer_read_string_int()
 sch_exp_minecraft_old = buffer_read_byte()
 soundsystem = max(0, buffer_read_byte())
-soundsystemuser = soundsystem
-modspeed = buffer_read_byte()
-modspeeduser = modspeed
+refreshrate = buffer_read_byte()
 fade = buffer_read_byte()
-fadeuser = fade
 realstereo = buffer_read_byte()
-realstereouser = realstereo
+show_piano = buffer_read_byte()
+rhval = buffer_read_byte()
 
 buffer_delete(buffer)
 return 1

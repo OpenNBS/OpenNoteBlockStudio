@@ -65,7 +65,6 @@ editline = 0
 solostr = ""
 dragvolb = 0
 realstereo = 0
-realstereouser = 0
 
 // Piano
 selected_key = 39

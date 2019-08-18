@@ -31,14 +31,12 @@ clickinarea = 0
 dontplace = 0
 vers = version
 soundsystem = 0
-soundsystemuser = 0
 menu_shown = ""
 songfolder = songs_directory
 icons_init()
-modspeed = 0
-modspeeduser = 0
+refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
-fadeuser = 0
+rhval = 270
 
 // File
 filename = ""
@@ -100,7 +98,7 @@ collast[0] = -1
 
 show_numbers = 1
 show_octaves = 0
-use_colored = 1
+draw_type = 0
 totalblocks = 0
 
 mousewheel = 0
@@ -145,7 +143,6 @@ dragincyu = 0
 // Layers
 realvolume = 1
 realstereo = 0
-realstereouser = 0
 layername[0] = ""
 layerlock[0] = 0
 layervol[0] = 100
@@ -157,6 +154,7 @@ dragstereob = 0
 dragstereo = 0
 
 // Piano
+show_piano = 1
 show_keynames = 1
 show_keyboard = 1
 show_notechart = 0
@@ -222,6 +220,7 @@ asso_midi = 0
 asso_sch = 0
 w_asso_start = 1
 wmenu = 0
+loop = 0
 
 // Midi export / import
 w_midi_remember = 1
@@ -270,6 +269,7 @@ ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false)
 instrument = instrument_list[| 0]
 first_custom_index = ds_list_size(instrument_list)
 user_instruments = 0
+emitters_to_remove = ds_list_create()
 
 // Initialize instruments
 str = ""
@@ -293,6 +293,9 @@ dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
 
+//MP3
+mp3_includelocked = 0
+
 // Settings
 load_settings()
 change_theme()
@@ -301,7 +304,7 @@ if (check_update)
     update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
-if (file_exists_lib(data_directory + "settings.file") && vers != version) {
+if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
     window = w_update
     update = 3
 }
