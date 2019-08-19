@@ -16,6 +16,8 @@ with (new(obj_dummy2)) {
 	var objective = o.dat_obj
 	var name = string_lower(string_replace_all(o.dat_name," ","_"))
 	var randomId = string(randomize())
+	var playspeed = max(o.tempo * 4, 80)
+	var rootFunction = "1_" + string(power(2, floor(log2(o.enda)) + 1))
 	var file
 	var functiondir = tempdir + "data\\"+name+"\\functions\\"
 	var inputString
@@ -27,6 +29,8 @@ with (new(obj_dummy2)) {
 	directory_create_lib(tempdir + "data\\minecraft\\tags\\functions\\")
 	directory_create_lib(tempdir + "data\\"+ name +"\\")
 	directory_create_lib(functiondir)
+	directory_create_lib(functiondir + "\\notes")
+	directory_create_lib(functiondir + "\\tree")
 	
 	//pack.mcmeta
 	inputString = "{ \"pack\": { \"description\": \"Note block song made with Minecraft Note Block Studio\", \"pack_format\": 1 } }"
@@ -54,22 +58,26 @@ with (new(obj_dummy2)) {
 	//Song folder:
 	
 	//load.mcfunction
-	inputString = "scoreboard objectives add " + objective + " dummy"
+	inputString = "scoreboard objectives add " + objective + " dummy" + br
+	inputString += "scoreboard objectives add " + objective + "_t dummy" + br
+	inputString += "scoreboard players set speed " + objective + " " + string(playspeed)
     file = buffer_create(string_length(inputString), buffer_fixed, 1)
 	buffer_write(file,buffer_text,inputString)
 	buffer_export(file,functiondir + "load.mcfunction")
     buffer_delete(file)
 	
 	//tick.mcfunction
-	if(o.dat_enableradius) inputString = "execute as @a[tag=play" + randomId + "] run function " + name + ":playing"
-	else inputString = "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":playing"
+	inputString = "execute as @a[tag=play" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
+	if(o.dat_enableradius) inputString += "execute as @a[tag=play" + randomId + "] run function " + name + ":tree/" + rootFunction
+	else inputString += "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":tree/" + rootFunction
 	file = buffer_create(string_length(inputString), buffer_fixed, 1)
 	buffer_write(file,buffer_text,inputString)
 	buffer_export(file,functiondir + "tick.mcfunction")
     buffer_delete(file)
 	
 	//play.mcfunction
-	inputString = "tag @s add play" + randomId
+	inputString = "tag @s add play" + randomId + br
+	inputString += "scoreboard players set @s " + objective + "_t 0"
 	file = buffer_create(string_length(inputString), buffer_fixed, 1)
 	buffer_write(file,buffer_text,inputString)
 	buffer_export(file,functiondir + "play.mcfunction")
@@ -84,18 +92,15 @@ with (new(obj_dummy2)) {
 	
 	//stop.mcfunction
 	inputString = "tag @s remove play" + randomId + br
-	inputString += "scoreboard players reset @s " + objective
+	inputString += "scoreboard players reset @s " + objective + br
+	inputString += "scoreboard players reset @s " + objective + "_t" + br 
 	file = buffer_create(string_length(inputString), buffer_fixed, 1)
 	buffer_write(file,buffer_text,inputString)
 	buffer_export(file,functiondir + "stop.mcfunction")
     buffer_delete(file)
 	
-	//playing.mcfunction
-	inputString =  dat_generate(name)
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir +"playing.mcfunction")
-    buffer_delete(file)
+	//Generate binary tree and notes
+	dat_generate(name, functiondir)
 	
 	// Execute shell command that moves temp pack to location
 	ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true);

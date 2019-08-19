@@ -27,30 +27,31 @@ if (draw_radiobox(x1 + 100, y1 + 325, dat_source = "record", "record", "Use reco
 if (draw_radiobox(x1 + 100, y1 + 345, dat_source = "voice", "voice", "Use voice source")) dat_source = "voice"
 if (draw_radiobox(x1 + 100, y1 + 365, dat_source = "weather", "weather", "Use weather source")) dat_source = "weather"
 
-//Tempo
-if(dat_tempo = 0) dat_tempo = dat_inittempo()
-draw_text(x1 + 200, y1 + 200, "Tempo")
-if (draw_radiobox(x1 + 212, y1 + 225, dat_tempo = 1, "20 ticks / second", "Generate song at 20 ticks / second")) dat_tempo = 1
-if (draw_radiobox(x1 + 212, y1 + 245, dat_tempo = 2, "10 ticks / second", "Generate song at 10 ticks / second")) dat_tempo = 2
-if (draw_radiobox(x1 + 212, y1 + 265, dat_tempo = 3, "6.66 ticks / second", "Generate song at 6.66 ticks / second")) dat_tempo = 3
-if (draw_radiobox(x1 + 212, y1 + 285, dat_tempo = 4, "5 ticks / second", "Generate song at 5 ticks / second")) dat_tempo = 4
-if (draw_radiobox(x1 + 212, y1 + 305, dat_tempo = 5, "4 ticks / second", "Generate song at 4 ticks / second")) dat_tempo = 5
-if (draw_radiobox(x1 + 212, y1 + 325, dat_tempo = 6, "3.33 ticks / second", "Generate song at 3.33 ticks / second")) dat_tempo = 6
-if (draw_radiobox(x1 + 212, y1 + 345, dat_tempo = 7, "2.86 ticks / second", "Generate song at 2.86 ticks / second")) dat_tempo = 7
-if (draw_radiobox(x1 + 212, y1 + 365, dat_tempo = 8, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) dat_tempo = 8
-
 //Locked layers
-if (draw_checkbox(x1 + 390, y1 + 225, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
- 
+if (draw_checkbox(x1 + 212, y1 + 225, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
+
+//Out of range notes
+if (draw_checkbox(x1 + 212, y1 + 250, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2-octave range supported by"+br+"Minecraft. This will require an additional resource pack included with the program.")) dat_includeoutofrange = !dat_includeoutofrange
+
 //Radius
-if (draw_checkbox(x1 + 390, y1 + 250, dat_enableradius, "Nearby players hear"+br+"music too", "Whether to let all players in a given radius"+br+"hear the music as well")) dat_enableradius = !dat_enableradius
+if (draw_checkbox(x1 + 212, y1 + 275, dat_enableradius, "Nearby players hear music too", "Whether to let all players in a given radius"+br+"hear the music as well")) dat_enableradius = !dat_enableradius
 if(dat_enableradius) { 
-	dat_radius = median(16, draw_dragvalue(3, x1 + 500, y1 + 285, dat_radius, 2),100000) 
+	dat_radius = median(16, draw_dragvalue(3, x1 + 322, y1 + 295, dat_radius, 2),100000) 
 	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
 }
-else draw_set_color(c_gray) draw_text(x1 + 500, y1 + 285, dat_radius)
-draw_text(x1 + 390, y1 + 285, "Radius (in blocks):")
-popup_set_window(x1 + 390, y1 + 281, 125, 21, "The radius of which players will hear the music")
+else draw_set_color(c_gray) draw_text(x1 + 322, y1 + 295, dat_radius)
+draw_text(x1 + 212, y1 + 295, "Radius (in blocks):")
+popup_set_window(x1 + 212, y1 + 292, 125, 21, "The radius of which players will hear the music")
+draw_theme_color()
+
+//Looping
+if (draw_checkbox(x1 + 212, y1 + 325, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
+if(dat_enablelooping) { 
+	dat_loopstart = median(0, draw_dragvalue(3, x1 + 322, y1 + 345, dat_loopstart, 2), obj_controller.enda)
+}
+else draw_set_color(c_gray) draw_text(x1 + 322, y1 + 345, dat_loopstart)
+draw_text(x1 + 212, y1 + 345, "Loop start:")
+popup_set_window(x1 + 212, y1 + 341, 125, 21, "Tick the song will jump to at the end of playback")
 draw_theme_color()
 
 //Submit button
@@ -64,5 +65,4 @@ if (draw_button2(x1 + 470, y1 + 368, 72, "Export", false)) {
 
 if (draw_button2(x1 + 390, y1 + 368, 72, "Cancel", false)) {
 	window = 0
-	dat_tempo = 0
 }

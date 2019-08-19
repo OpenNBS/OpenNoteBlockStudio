@@ -21,7 +21,7 @@ remove_emitters()
 
 if (selected = 0) {
 	if((tempo = 10 || tempo = 5 ||tempo = 2.5) && (block_outside = 0 && block_custom = 0))compatible = 1
-	else if ((tempo = 20 || tempo = 6.66 || tempo = 4|| tempo = 3.33 || tempo = 2.86) && (block_outside = 0 && block_custom = 0))compatible = 2
+	else if ((tempo <= 20) && (block_outside = 0 && block_custom = 0))compatible = 2
 	else compatible = 0	
 }
 

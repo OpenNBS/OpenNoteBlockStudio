@@ -286,12 +286,14 @@ reset_schematic_export(0)
 //Datapack
 dat_name = ""
 dat_obj = ""
-dat_tempo = 0
 dat_source = "block"
 dat_includelocked = 0
+dat_includeoutofrange = 0
 dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
+dat_enablelooping = 0
+dat_loopstart = 0
 
 //MP3
 mp3_includelocked = 0
