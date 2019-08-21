@@ -1,10 +1,11 @@
-//dat_generate(name, functiondir)
-var o, s, file, functiondir, objective, note, instrument, soundname, pitch, source, name, blockvolume, blockposition
+//dat_generate(functionpath, functiondir, objective)
+var o, s, file, functionpath, functiondir, objective, instrument, soundname, pitch, source, blockvolume, blockposition
 o = obj_controller
-objective = o.dat_obj
+
 source = o.dat_source
-name = argument0
+functionpath = argument0
 functiondir = argument1
+objective = argument2
 str = ""
 for (a = 0; a <= o.enda; a ++) { 	
 	if (o.colamount[a] > 0) {
@@ -37,12 +38,12 @@ for (a = 0; a <= o.enda; a ++) {
 				str += "scoreboard players set @s " + objective + " " + string(o.dat_loopstart*80-79) + br
 				str += "scoreboard players set @s " + objective + "_t " + string(o.dat_loopstart)
 			}
-			else str += "execute if score @s " + objective + " matches " + string(a+1) + " run function " + name + ":stop"
+			else str += "execute if score @s " + objective + " matches " + string(a+1) + " run function " + functionpath + "stop"
 		}
 		
 		file = buffer_create(string_length(str), buffer_fixed, 1)
 		buffer_write(file,buffer_text,str)
-		buffer_export(file, functiondir + "\\notes\\" + string(a+1) + ".mcfunction")
+		buffer_export(file, functiondir + "notes\\" + string(a+1) + ".mcfunction")
 	    buffer_delete(file)
 	}
  }
@@ -69,16 +70,16 @@ for (step = 0; step < steps; step++) {
 		
 		if (min1 <= length) {
 			if (step == steps-1) { // Last step, play the tick
-				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + name + ":notes/" + string(min1) + br
-				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + name + ":notes/" + string(min2) + br
+				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + functionpath + "notes/" + string(min1) + br
+				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + functionpath + "notes/" + string(min2) + br
 			}
 			else { // Don't play yet, refine the search
-				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "}] run function " + name + ":tree/" + string(min1) + "_" + string(max1) + br
-				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "}] run function " + name + ":tree/" + string(min2) + "_" + string(max2) + br
+				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
+				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
 			}
 			file = buffer_create(string_length(str), buffer_fixed, 1)
 			buffer_write(file, buffer_text, str)
-			buffer_export(file, functiondir + "\\tree\\" + string(min1) + "_" + string(max2) + ".mcfunction")
+			buffer_export(file, functiondir + "tree\\" + string(min1) + "_" + string(max2) + ".mcfunction")
 			buffer_delete(file)
 		}
 	}

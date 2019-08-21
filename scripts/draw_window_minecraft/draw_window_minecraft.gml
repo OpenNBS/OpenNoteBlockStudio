@@ -14,7 +14,7 @@ yy = y1 + 80
 if(tempo = 10 || tempo = 5 || tempo = 2.5){
 	draw_sprite(spr_yesno, 1, x1 + 20, yy + 8)
 	//only datapack
-}else if(tempo = 20 || tempo = 6.66 || tempo = 4 || tempo = 3.33 || tempo = 2.86){
+}else if(tempo <= 20){
 	draw_sprite(spr_yesno, 2, x1 + 20, yy + 8)
 }else{
 	//not compatible

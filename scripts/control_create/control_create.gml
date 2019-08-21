@@ -285,7 +285,8 @@ reset_schematic_export(0)
 
 //Datapack
 dat_name = ""
-dat_obj = ""
+dat_namespace = ""
+dat_path = ""
 dat_source = "block"
 dat_includelocked = 0
 dat_includeoutofrange = 0
