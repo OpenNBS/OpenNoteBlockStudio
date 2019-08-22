@@ -7,7 +7,7 @@ functionpath = argument0
 functiondir = argument1
 objective = argument2
 str = ""
-for (a = 0; a <= o.enda; a ++) { 	
+for (a = 0; a <= o.enda; a++) { 	
 	if (o.colamount[a] > 0) {
 		str = ""
 	    for (b = 0; b <= o.collast[a]; b += 1) {

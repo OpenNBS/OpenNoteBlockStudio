@@ -12,9 +12,9 @@ o = obj_controller
 
 with (new(obj_dummy2)) {
 	// Initialize variables
-	var name = string_lower(string_replace_all(o.dat_name," ","_"))
-	var namespace = string_lettersdigits(string_lower(string_replace_all(o.dat_namespace," ","_")))
-	var opath = string_lower(string_replace_all(o.dat_path," ","_"))
+	var name = string_path(o.dat_name)
+	var namespace = string_path(o.dat_namespace)
+	var path = dat_getpath(o.dat_path)
 	var randomId = string(randomize())
 	var objective = "song" + randomId
 	var playspeed = max(o.tempo * 4, 80)
@@ -22,30 +22,12 @@ with (new(obj_dummy2)) {
 	var file
 	var inputString
 	
-	// Sanitize path
-	// removes consecutive slashes, slashes at beginning/end of path, and special characters 
-	var path = ""
-	var char
-	var previouschar = ""
-	if opath != "" {
-		for (i = 1; i <= string_length(opath)+1; i++) {
-			char = string_copy(opath, i, 1)
-			if ((char = "/" && previouschar != "/" && i > 1) || string_lettersdigits(char) = char) {
-				path += char
-			}
-			previouschar = char
-		}
-		if (string_copy(path, string_length(path), string_length(path)) = "/") path = string_copy(path, 1, string_length(path)-1)
-	}
-	
-	show_debug_message(opath + "    " + path)
-	
 	// Create folder structure
 	var functionpath
 	if namespace = "" {
 		path = ""
 		namespace = name
-		functionpath = namespace + ":"
+		functionpath = namespace+":"
 	} else if path = "" {
 		path = name
 		functionpath = namespace+":"+path+"/"
@@ -57,9 +39,9 @@ with (new(obj_dummy2)) {
 	var folders = []
 	var foldercount = 0
 	var str = ""
-	if path != "" {		
-		for (i = 1; i <= string_length(path)+1; i++) {			
-			var char = string_copy(path, i, 1)
+	if path != "" {
+		for (i = 1; i <= string_length(path); i++) {			
+			var char = string_char_at(path, i)
 			if (char = "/") {
 				folders[foldercount] = str
 				foldercount++
@@ -80,7 +62,6 @@ with (new(obj_dummy2)) {
 	directory_create_lib(functiondir)
 	
 	// Dinamically create function folder
-	show_debug_message(folders)
 	if (array_length_1d(folders) > 0) {
 		for (i = 0; i <= foldercount; i++) {
 			functiondir += folders[i] + "\\"

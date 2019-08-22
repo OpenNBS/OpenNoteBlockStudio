@@ -24,22 +24,9 @@ dat_path = draw_inputbox(3,x1 + 16, y1+ 320,120,dat_path,"(optional) Path to the
 
 //Preview
 draw_text(x1 + 16, y1 + 350, "Command preview:")
-if (string_replace_all(dat_name, " ", "") = "") {
-	draw_text(x1 + 16, y1 + 370, "<enter name>")
-} else {
-	if (string_replace_all(dat_namespace, " ", "") = "") {
-		draw_text(x1 + 16, y1 + 370, "/function "+string_lower(string_replace_all(dat_name+":play", " ", "_")))
-	} else {
-		if (string_replace_all(dat_path, " ", "") = "") {
-			draw_text(x1 + 16, y1 + 370, "/function "+string_lower(string_replace_all(dat_namespace+":"+dat_name+"/play", " ", "_")))
-		} else {
-			draw_text(x1 + 16, y1 + 370, "/function "+string_lower(string_replace_all(dat_namespace+":"+dat_path+"/"+dat_name+"/play", " ", "_")))
-		}
-	}
-}
+draw_text(x1 + 16, y1 + 370, dat_preview(dat_name, dat_namespace, dat_path))
 
 //Source
-
 draw_text(x1 + 162, y1 + 200, "Sound source")
 if (draw_radiobox(x1 + 167, y1 + 220, dat_source = "ambient", "ambient", "Use ambient source")) dat_source = "ambient"
 if (draw_radiobox(x1 + 167, y1 + 240, dat_source = "block", "block", "Use block source")) dat_source = "block"
@@ -82,7 +69,7 @@ draw_theme_color()
 //Submit button
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export", false)) {
 	if(string_replace_all(dat_name," ", "") != "") {
-		if(string_count("/", dat_path) >= 10) {
+		if(string_count("/", dat_getpath(dat_path)) >= 5) {
 			message("Path can only contain up to 5 subfolders", "Error")
 		} else {
 		datapack_export()

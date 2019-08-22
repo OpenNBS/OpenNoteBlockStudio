@@ -8,7 +8,8 @@
         "c599906c-0b1d-4064-baf0-0ee5fb298c4f",
         "35da7ebc-caa1-4720-8c30-8f63e25228bf",
         "34ec0d19-615a-4729-90e8-994c82ebca34",
-        "8ecaf002-b3c3-4236-af31-24c93d435951"
+        "f439138d-cb08-4208-85da-e22227eb6ec2",
+        "8f252975-cc91-4271-9c1e-3ba33e25cff1"
     ],
     "filterType": "GMScript",
     "folderName": "Datapack",
