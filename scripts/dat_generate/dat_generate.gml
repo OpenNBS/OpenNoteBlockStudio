@@ -1,11 +1,12 @@
-//dat_generate(functionpath, functiondir, objective)
-var o, s, file, functionpath, functiondir, objective, instrument, soundname, pitch, source, blockvolume, blockposition
+//dat_generate(functionpath, functiondir, objective, zipfile)
+var o, s, file, zipfile, functionpath, functiondir, objective, str, instrument, soundname, pitch, source, blockvolume, blockposition
 o = obj_controller
 
 source = o.dat_source
 functionpath = argument0
 functiondir = argument1
 objective = argument2
+zipfile = argument3
 str = ""
 for (a = 0; a <= o.enda; a++) { 	
 	if (o.colamount[a] > 0) {
@@ -40,11 +41,7 @@ for (a = 0; a <= o.enda; a++) {
 			}
 			else str += "execute if score @s " + objective + " matches " + string(a+1) + " run function " + functionpath + "stop"
 		}
-		
-		file = buffer_create(string_length(str), buffer_fixed, 1)
-		buffer_write(file,buffer_text,str)
-		buffer_export(file, functiondir + "notes\\" + string(a+1) + ".mcfunction")
-	    buffer_delete(file)
+		dat_writefile(str, functiondir + "notes/" + string(a+1) + ".mcfunction", zipfile)
 	}
  }
  
@@ -77,10 +74,7 @@ for (step = 0; step < steps; step++) {
 				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
 				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
 			}
-			file = buffer_create(string_length(str), buffer_fixed, 1)
-			buffer_write(file, buffer_text, str)
-			buffer_export(file, functiondir + "tree\\" + string(min1) + "_" + string(max2) + ".mcfunction")
-			buffer_delete(file)
+			dat_writefile(str, functiondir + "tree/" + string(min1) + "_" + string(max2) + ".mcfunction", zipfile)
 		}
 	}
  }

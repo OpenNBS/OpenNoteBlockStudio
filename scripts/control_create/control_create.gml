@@ -288,6 +288,7 @@ dat_name = ""
 dat_namespace = ""
 dat_path = ""
 dat_source = "block"
+dat_usezip = 1
 dat_includelocked = 0
 dat_includeoutofrange = 0
 dat_enableradius = 0

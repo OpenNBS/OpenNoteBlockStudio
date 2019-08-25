@@ -927,6 +927,14 @@
             }
         },
         {
+            "Key": "4756f83f-caf8-4253-8464-427c453bfc07",
+            "Value": {
+                "id": "99bb9809-d7b6-420a-80c4-4e0196940fa7",
+                "resourcePath": "scripts\\dat_makefolders\\dat_makefolders.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "47ed99d9-a08e-4462-ba0f-3ede4c4862a0",
             "Value": {
                 "id": "7bdee6ee-ca47-426b-a341-79d27df3fe5d",
@@ -2175,6 +2183,14 @@
             }
         },
         {
+            "Key": "a3feae56-9d2c-4f64-a9d2-1c7122c797a9",
+            "Value": {
+                "id": "5c024704-e10b-4b3e-9d8d-44d17447041f",
+                "resourcePath": "extensions\\ZipWriter\\ZipWriter.yy",
+                "resourceType": "GMExtension"
+            }
+        },
+        {
             "Key": "a4ce9ef6-e630-491f-b44e-d23a770565e1",
             "Value": {
                 "id": "97adb6ac-ec5a-49a8-b60a-fac1a7d4853c",
@@ -3335,6 +3351,14 @@
             }
         },
         {
+            "Key": "fe69e6df-7e13-4935-99d0-6f5629ac7d22",
+            "Value": {
+                "id": "cc594af4-dbc3-4a18-a4a7-f718f42ba644",
+                "resourcePath": "scripts\\dat_writefile\\dat_writefile.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "ff759636-90d7-4b09-aa6f-41bab2c12014",
             "Value": {
                 "id": "44588c4c-822c-4f26-aa4b-f4ca56766f92",
@@ -3587,7 +3611,9 @@
         "35da7ebc-caa1-4720-8c30-8f63e25228bf",
         "34ec0d19-615a-4729-90e8-994c82ebca34",
         "f439138d-cb08-4208-85da-e22227eb6ec2",
-        "8f252975-cc91-4271-9c1e-3ba33e25cff1"
+        "8f252975-cc91-4271-9c1e-3ba33e25cff1",
+        "fe69e6df-7e13-4935-99d0-6f5629ac7d22",
+        "4756f83f-caf8-4253-8464-427c453bfc07"
     ],
     "tutorial": ""
 }

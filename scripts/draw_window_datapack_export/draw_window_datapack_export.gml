@@ -39,6 +39,9 @@ if (draw_radiobox(x1 + 239, y1 + 260, dat_source = "record", "record", "Use reco
 if (draw_radiobox(x1 + 239, y1 + 280, dat_source = "voice", "voice", "Use voice source")) dat_source = "voice"
 if (draw_radiobox(x1 + 239, y1 + 300, dat_source = "weather", "weather", "Use weather source")) dat_source = "weather"
 
+//Export as ZIP
+if (draw_checkbox(x1 + 167, y1 + 335, dat_usezip, "Export as ZIP", "Whether to export the datapack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
+
 //Locked layers
 if (draw_checkbox(x1 + 340, y1 + 205, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
 
