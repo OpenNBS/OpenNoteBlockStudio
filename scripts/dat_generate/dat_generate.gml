@@ -67,14 +67,24 @@ for (step = 0; step < steps; step++) {
 		
 		if (min1 <= length) {
 			if (step == steps-1) { // Last step, play the tick
-				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + functionpath + "notes/" + string(min1) + br
-				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + functionpath + "notes/" + string(min2) + br
+				if (o.colamount[min1-1] > 0) str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + functionpath + "notes/" + string(min1) + br
+				if (o.colamount[min2-1] > 0) str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + functionpath + "notes/" + string(min2) + br
 			}
 			else { // Don't play yet, refine the search
-				str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
-				str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
+				for (i = min1; i <= min(max1, length); i++) {
+					if (o.colamount[i-1] > 0) {
+						str += "execute as @s[scores={" + objective + "=" + string(min1*80-79) + ".." + string(max1*80) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
+						break
+					}
+				}
+				for (i = min2; i <= min(max2, length); i++) {
+					if (o.colamount[i-1] > 0) {
+						str += "execute as @s[scores={" + objective + "=" + string(min2*80-79) + ".." + string(max2*80) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
+						break
+					}
+				}
 			}
-			dat_writefile(str, functiondir + "tree/" + string(min1) + "_" + string(max2) + ".mcfunction", zipfile)
+			if (str != "") dat_writefile(str, functiondir + "tree/" + string(min1) + "_" + string(max2) + ".mcfunction", zipfile)
 		}
 	}
  }

@@ -12,15 +12,18 @@ draw_sprite(spr_datapack_exp, sch_exp_layout, x1 + 15, y1 + 30)
 
 //Name
 draw_text(x1 + 16, y1 + 200, "Unique name:")
-dat_name = draw_inputbox(1,x1 + 16, y1+ 220,120,dat_name,"Used to differentiate created datapack from others")
+if (song_name != "") dat_name = song_name
+else if (filename != "") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
+else dat_name = ""
+dat_name = draw_inputbox(5,x1 + 16, y1+ 220,120,dat_name,"Used to differentiate created datapack from others.")
 
 //Namespace
 draw_text(x1 + 16, y1 + 250, "Namespace:")
-dat_namespace = draw_inputbox(2,x1 + 16, y1+ 270,120,dat_namespace,"(optional) Use this to place the functions under a custom namespace."+br+"If empty, namespace will be the name of the song.")
+dat_namespace = draw_inputbox(6,x1 + 16, y1+ 270,120,dat_namespace,"(optional) Use this to place the functions under a custom namespace."+br+"If empty, namespace will be the name of the song.")
 
 //Path
 draw_text(x1 + 16, y1 + 300, "Path:")
-dat_path = draw_inputbox(3,x1 + 16, y1+ 320,120,dat_path,"(optional) Path to the song from the main 'functions'"+br+"folder. You can use / to add subfolders.")
+dat_path = draw_inputbox(7,x1 + 16, y1+ 320,120,dat_path,"(optional) Path to the song from the main 'functions'"+br+"folder. You can use '/' to add subfolders.")
 
 //Preview
 draw_text(x1 + 16, y1 + 350, "Command preview:")
@@ -43,20 +46,20 @@ if (draw_radiobox(x1 + 239, y1 + 300, dat_source = "weather", "weather", "Use we
 if (draw_checkbox(x1 + 167, y1 + 335, dat_usezip, "Export as ZIP", "Whether to export the datapack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
 
 //Locked layers
-if (draw_checkbox(x1 + 340, y1 + 205, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
+if (draw_checkbox(x1 + 340, y1 + 205, dat_includelocked, "Include locked layers", "Whether to include locked layers in the datapack.")) dat_includelocked=!dat_includelocked
 
 //Out of range notes
-if (draw_checkbox(x1 + 340, y1 + 230, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2-octave range supported by"+br+"Minecraft. This will require an additional resource pack included with the program.")) dat_includeoutofrange = !dat_includeoutofrange
+if (draw_checkbox(x1 + 340, y1 + 230, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack included with the program.")) dat_includeoutofrange = !dat_includeoutofrange
 
 //Radius
-if (draw_checkbox(x1 + 340, y1 + 255, dat_enableradius, "Nearby players hear music too", "Whether to let all players in a given radius"+br+"hear the music as well")) dat_enableradius = !dat_enableradius
+if (draw_checkbox(x1 + 340, y1 + 255, dat_enableradius, "Nearby players hear music too", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
 if(dat_enableradius) { 
 	dat_radius = median(16, draw_dragvalue(3, x1 + 450, y1 + 275, dat_radius, 2),100000) 
 	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
 }
 else draw_set_color(c_gray) draw_text(x1 + 450, y1 + 275, dat_radius)
 draw_text(x1 + 340, y1 + 275, "Radius (in blocks):")
-popup_set_window(x1 + 340, y1 + 271, 125, 21, "The radius of which players will hear the music")
+popup_set_window(x1 + 340, y1 + 271, 125, 21, "Radius in which players will be able to hear the music")
 draw_theme_color()
 
 //Looping

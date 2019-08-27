@@ -16,7 +16,7 @@ with (new(obj_dummy2)) {
 	var randomId = string(randomize())
 	var objective = "song" + randomId
 	var playspeed = max(o.tempo * 4, 80)
-	var rootFunction = "1_" + string(power(2, floor(log2(o.enda)) + 1))
+	var rootfunction = "1_" + string(power(2, floor(log2(o.enda)) + 1))
 	var tempdir
 	var functionpath
 	var functiondir
@@ -39,7 +39,7 @@ with (new(obj_dummy2)) {
 	// Create folder structure if not using ZIP
 	if (o.dat_usezip) {
 		tempdir = ""
-		functiondir = "data/" + namespace + "/functions/" + path + "/"
+		functiondir = "data/" + namespace + "/functions/" + path + condstr(path != "", "/")
 	} else {
 		tempdir = data_directory + "TempDatapack\\"
 		functiondir = dat_makefolders(path, namespace)
@@ -69,8 +69,8 @@ with (new(obj_dummy2)) {
 	
 	//tick.mcfunction
 	inputString = "execute as @a[tag=play" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
-	if(o.dat_enableradius) inputString += "execute as @a[tag=play" + randomId + "] run function " + name + ":tree/" + rootFunction
-	else inputString += "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":tree/" + rootFunction
+	if(o.dat_enableradius) inputString += "execute as @a[tag=play" + randomId + "] run function " + name + ":tree/" + rootfunction
+	else inputString += "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":tree/" + rootfunction
 	dat_writefile(inputString, functiondir + "tick.mcfunction", zipfile)
 	
 	//play.mcfunction
