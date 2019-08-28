@@ -15,7 +15,7 @@ with (new(obj_dummy2)) {
 	var path = dat_getpath(o.dat_path)
 	var randomId = string(randomize())
 	var objective = "song" + randomId
-	var playspeed = max(o.tempo * 4, 80)
+	var playspeed = min(o.tempo * 4, 80)
 	var rootfunction = "1_" + string(power(2, floor(log2(o.enda)) + 1))
 	var tempdir
 	var functionpath
@@ -46,17 +46,17 @@ with (new(obj_dummy2)) {
 	}
 	
 	//pack.mcmeta
-	inputString = "{ \"pack\": { \"description\": \"Note block song made with Minecraft Note Block Studio\", \"pack_format\": 1 } }"
+	inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"Note block song made with Minecraft Note Block Studio\"\n\t}\n}"
 	dat_writefile(inputString, tempdir + "pack.mcmeta", zipfile)
 	
 	//Minecraft folder:
 	
 	//load.json
-	inputString = "{ \"values\": [ \""+functionpath+"load\" ] }"
+	inputString = "{\n\t\"values\": [\n\t\t\"" + functionpath + "load\"\n\t]\n}"
 	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json", zipfile)
 	
 	//tick.json
-	inputString = "{ \"values\": [ \""+functionpath+"tick\" ] }"
+	inputString = "{\n\t\"values\": [\n\t\t\"" + functionpath + "tick\"\n\t]\n}"
 	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json", zipfile)
 	
 	//Song folder:
