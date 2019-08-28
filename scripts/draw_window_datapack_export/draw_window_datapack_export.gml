@@ -3,7 +3,7 @@ var x1, y1
 curs = cr_default
 x1 = floor(window_width / 2 - 275)
 y1 = floor(window_height / 2 - 200)
-draw_window(x1, y1, x1 + 550, y1 + 400)
+draw_window(x1, y1, x1 + 550, y1 + 419)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Datapack Export")
 draw_set_font(fnt_main) 
@@ -49,10 +49,10 @@ if (draw_checkbox(x1 + 167, y1 + 335, dat_usezip, "Export as ZIP", "Whether to e
 if (draw_checkbox(x1 + 340, y1 + 205, dat_includelocked, "Include locked layers", "Whether to include locked layers in the datapack.")) dat_includelocked=!dat_includelocked
 
 //Out of range notes
-if (draw_checkbox(x1 + 340, y1 + 230, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack included with the program.")) dat_includeoutofrange = !dat_includeoutofrange
+if (draw_checkbox(x1 + 340, y1 + 230, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
 
 //Radius
-if (draw_checkbox(x1 + 340, y1 + 255, dat_enableradius, "Nearby players hear music too", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
+if (draw_checkbox(x1 + 340, y1 + 255, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
 if(dat_enableradius) { 
 	dat_radius = median(16, draw_dragvalue(3, x1 + 450, y1 + 275, dat_radius, 2),100000) 
 	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
@@ -73,18 +73,23 @@ popup_set_window(x1 + 340, y1 + 321, 125, 21, "Tick the song will jump to at the
 draw_theme_color()
 
 //Submit button
-if (draw_button2(x1 + 470, y1 + 368, 72, "Export", false)) {
+if (draw_button2(x1 + 470, y1 + 388, 72, "Export", false)) {
 	if(string_replace_all(dat_name," ", "") != "") {
 		if(string_count("/", dat_getpath(dat_path)) >= 5) {
 			message("Path can only contain up to 5 subfolders", "Error")
 		} else {
-		datapack_export()
+			datapack_export()
 		}
 	}else{
 		message("Please enter a valid name for the datapack","Error")
 	}
 }
 
-if (draw_button2(x1 + 390, y1 + 368, 72, "Cancel", false)) {
+if (draw_button2(x1 + 390, y1 + 388, 72, "Cancel", false)) {
 	window = 0
+}
+
+
+if (draw_button2(x1 + 230, y1 + 388, 152, "Get extra notes pack", !dat_includeoutofrange)) {
+	datapack_getextranotes()
 }
