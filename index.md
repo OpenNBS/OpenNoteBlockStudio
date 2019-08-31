@@ -11,9 +11,9 @@
 <section id="one" class="wrapper style2 special">
 	<div class="container">
 		<div class="row">
-			<div class="4u 12u$(small)">
+			<div class="col-md">
 				<i class="fa fa-bug" style="font-size:40px"></i>
-				<h2>Reporting bugs</h2>
+				<h2>Report bugs</h2>
 				<p>When experiencing bugs, please report them at the issues page.
 					This is also the place to give feedback!<br>
 					<strong>Note:</strong> please search before creating a new issue!</p>
@@ -22,7 +22,7 @@
 					</ul>
 					<br>	
 				</div>
-				<div class="4u 12u$(small)">
+				<div class="col-md">
 					<i class="fa fa-comments" style="font-size:40px"></i>
 					<h2>Keep in touch</h2>
 					<p>Follow development and keep in touch with us by joining our public Discord server. This is also the fastest way to contact us!</p>
@@ -31,9 +31,9 @@
 					</ul>
 					<br>
 				</div>
-				<div class="4u 12u$(small)">
+				<div class="col-md">
 					<i class="fa fa-users" style="font-size:40px"></i>
-					<h2>Contributions</h2>
+					<h2>Contribute</h2>
 					<p>This project is written in Game Maker Language (GML).
 						<br>
 					You must have GameMaker Studio 2 in order to open this project and make changes.</p>
