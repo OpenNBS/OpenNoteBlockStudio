@@ -16,7 +16,7 @@ with (new(obj_dummy2)) {
 	var randomId = string(randomize())
 	var objective = "song" + randomId
 	var playspeed = min(o.tempo * 4, 80)
-	var rootfunction = "1_" + string(power(2, floor(log2(o.enda)) + 1))
+	var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 	var tempdir
 	var functionpath
 	var functiondir
@@ -68,22 +68,22 @@ with (new(obj_dummy2)) {
 	dat_writefile(inputString, functiondir + "load.mcfunction", zipfile)
 	
 	//tick.mcfunction
-	inputString = "execute as @a[tag=play" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
-	if(o.dat_enableradius) inputString += "execute as @a[tag=play" + randomId + "] run function " + name + ":tree/" + rootfunction
-	else inputString += "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":tree/" + rootfunction
+	inputString = "execute as @a[tag=song" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
+	if(o.dat_enableradius) inputString += "execute as @a[tag=song" + randomId + "] run function " + functionpath + "tree/" + rootfunction
+	else inputString += "execute as @a[tag=song" + randomId + "] at @s run function " + functionpath + "tree/" + rootfunction
 	dat_writefile(inputString, functiondir + "tick.mcfunction", zipfile)
 	
 	//play.mcfunction
-	inputString = "tag @s add play" + randomId + br
-	inputString += "scoreboard players set @s " + objective + "_t 0"
+	inputString = "tag @s add song" + randomId + br
+	inputString += "scoreboard players set @s " + objective + "_t -1"
 	dat_writefile(inputString, functiondir + "play.mcfunction", zipfile)
 	
 	//pause.mcfunction
-	inputString = "tag @s remove play" + randomId
+	inputString = "tag @s remove song" + randomId
 	dat_writefile(inputString, functiondir + "pause.mcfunction", zipfile)
 	
 	//stop.mcfunction
-	inputString = "tag @s remove play" + randomId + br
+	inputString = "tag @s remove song" + randomId + br
 	inputString += "scoreboard players reset @s " + objective + br
 	inputString += "scoreboard players reset @s " + objective + "_t" + br 
 	dat_writefile(inputString, functiondir + "stop.mcfunction", zipfile)
