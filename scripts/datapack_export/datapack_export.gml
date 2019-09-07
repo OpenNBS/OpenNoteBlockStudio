@@ -2,8 +2,8 @@
 var fn, o
 o = obj_controller
 
-if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Datapack Export"))
-else fn = string(get_save_filename_ext("Datapack Folder", dat_name, "", "Datapack Export"))
+if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
+else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
 if (fn = "") return 0
 
 window = -1
@@ -15,7 +15,7 @@ with (new(obj_dummy2)) {
 	var path = dat_getpath(o.dat_path)
 	var randomId = string(randomize())
 	var objective = "song" + randomId
-	var playspeed = min(o.tempo * 4, 80)
+	var playspeed = min(o.tempo * 4, 120)
 	var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 	var tempdir
 	var functionpath
@@ -52,11 +52,11 @@ with (new(obj_dummy2)) {
 	//Minecraft folder:
 	
 	//load.json
-	inputString = "{\n\t\"values\": [\n\t\t\"" + functionpath + "load\"\n\t]\n}"
+	inputString = "{\"values\": [\"" + functionpath + "load\"]}"
 	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json", zipfile)
 	
 	//tick.json
-	inputString = "{\n\t\"values\": [\n\t\t\"" + functionpath + "tick\"\n\t]\n}"
+	inputString = "{\"values\": [\"" + functionpath + "tick\"]}"
 	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json", zipfile)
 	
 	//Song folder:
@@ -103,5 +103,5 @@ with (new(obj_dummy2)) {
 	
 	instance_destroy()
 }
-message("Datapack saved!","Datapack Export")
+message("Data pack saved!","Data Pack Export")
 window = w_datapack_export

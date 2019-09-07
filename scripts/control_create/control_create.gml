@@ -280,6 +280,9 @@ if (str != "") message("The following file(s) could not be found:\n\n" + str + "
 
 log("Instruments loaded")
 
+// Minecraft
+selected_tab_mc = 0
+
 // Schematic
 reset_schematic_export(0)
 
@@ -287,7 +290,7 @@ reset_schematic_export(0)
 dat_name = ""
 dat_namespace = ""
 dat_path = ""
-dat_source = "block"
+dat_source = "record"
 dat_usezip = 1
 dat_includelocked = 0
 dat_includeoutofrange = 0

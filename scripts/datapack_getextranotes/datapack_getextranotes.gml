@@ -2,7 +2,7 @@
 //allows the user to save the resource pack containing extra notes to their location of choice
 
 var fn, src
-fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "Extra Note Blocks", "", "Save extra notes for datapack"))
+fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "Extra Note Blocks", "", "Save extra notes for data pack"))
 if (fn = "") return 0
 
 src = data_directory + "extranotes.zip"
