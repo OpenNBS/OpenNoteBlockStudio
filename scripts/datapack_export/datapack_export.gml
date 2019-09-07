@@ -13,8 +13,8 @@ with (new(obj_dummy2)) {
 	var name = string_path(o.dat_name)
 	var namespace = string_path(o.dat_namespace)
 	var path = dat_getpath(o.dat_path)
-	var randomId = string(randomize())
-	var objective = "song" + randomId
+	var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
+	var tag = objective
 	var playspeed = min(o.tempo * 4, 120)
 	var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 	var tempdir
@@ -39,7 +39,7 @@ with (new(obj_dummy2)) {
 	functiondir = dat_makefolders(path, namespace)
 	
 	//pack.mcmeta
-	inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"Note block song made with Minecraft Note Block Studio\"\n\t}\n}"
+	inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
 	dat_writefile(inputString, tempdir + "pack.mcmeta")
 	
 	//Minecraft folder:
@@ -61,22 +61,22 @@ with (new(obj_dummy2)) {
 	dat_writefile(inputString, functiondir + "load.mcfunction")
 	
 	//tick.mcfunction
-	inputString = "execute as @a[tag=song" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
-	if(o.dat_enableradius) inputString += "execute as @a[tag=song" + randomId + "] run function " + functionpath + "tree/" + rootfunction
-	else inputString += "execute as @a[tag=song" + randomId + "] at @s run function " + functionpath + "tree/" + rootfunction
+	inputString = "execute as @a[tag=" + tag + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
+	if(o.dat_enableradius) inputString += "execute as @a[tag=" + tag + "] run function " + functionpath + "tree/" + rootfunction
+	else inputString += "execute as @a[tag=" + tag + "] at @s run function " + functionpath + "tree/" + rootfunction
 	dat_writefile(inputString, functiondir + "tick.mcfunction")
 	
 	//play.mcfunction
-	inputString = "tag @s add song" + randomId + br
+	inputString = "tag @s add " + tag + br
 	inputString += "scoreboard players set @s " + objective + "_t -1"
 	dat_writefile(inputString, functiondir + "play.mcfunction")
 	
 	//pause.mcfunction
-	inputString = "tag @s remove song" + randomId
+	inputString = "tag @s remove " + tag
 	dat_writefile(inputString, functiondir + "pause.mcfunction")
 	
 	//stop.mcfunction
-	inputString = "tag @s remove song" + randomId + br
+	inputString = "tag @s remove " + tag + br
 	inputString += "scoreboard players reset @s " + objective + br
 	inputString += "scoreboard players reset @s " + objective + "_t" + br 
 	dat_writefile(inputString, functiondir + "stop.mcfunction")
@@ -94,5 +94,5 @@ with (new(obj_dummy2)) {
 	directory_delete_lib(tempdir)
 	instance_destroy()
 }
-message("Data pack saved!","Data Pack Export")
+message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")
 window = w_datapack_export
