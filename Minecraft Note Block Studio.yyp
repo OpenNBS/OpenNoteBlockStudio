@@ -2191,14 +2191,6 @@
             }
         },
         {
-            "Key": "a3feae56-9d2c-4f64-a9d2-1c7122c797a9",
-            "Value": {
-                "id": "5c024704-e10b-4b3e-9d8d-44d17447041f",
-                "resourcePath": "extensions\\ZipWriter\\ZipWriter.yy",
-                "resourceType": "GMExtension"
-            }
-        },
-        {
             "Key": "a4ce9ef6-e630-491f-b44e-d23a770565e1",
             "Value": {
                 "id": "97adb6ac-ec5a-49a8-b60a-fac1a7d4853c",
@@ -2619,6 +2611,14 @@
             "Value": {
                 "id": "8d1c6db5-fe00-4b87-8e74-8713c717e000",
                 "resourcePath": "datafiles_yy\\Data\\Sounds\\guitar.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "c3b64a7d-786b-4841-a849-c167a83a7dc9",
+            "Value": {
+                "id": "f64de887-2574-487f-8237-3bc1619c22cc",
+                "resourcePath": "datafiles_yy\\7za.exe.yy",
                 "resourceType": "GMIncludedFile"
             }
         },

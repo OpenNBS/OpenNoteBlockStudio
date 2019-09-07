@@ -48,7 +48,11 @@ dat_path = draw_inputbox(52,x1 + 16, y1 + 318,145,dat_path,"(optional) Path to t
 
 //Preview
 draw_text(x1 + 16, y1 + 348, "Command preview:")
+draw_set_font(fnt_mainbold)
+if (string_path(dat_name) = "") draw_set_color(c_gray)
 draw_text(x1 + 16, y1 + 365, dat_preview(dat_name, dat_namespace, dat_path))
+draw_set_font(fnt_main)
+draw_theme_color()
 
 //Source
 draw_text(x1 + 187, y1 + 208, "Sound source")

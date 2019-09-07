@@ -1,12 +1,11 @@
-//dat_generate(functionpath, functiondir, objective, zipfile)
-var o, s, zipfile, functionpath, functiondir, objective, str, instrument, soundname, pitch, source, blockvolume, blockposition
+//dat_generate(functionpath, functiondir, objective)
+var o, s, functionpath, functiondir, objective, str, instrument, soundname, pitch, source, blockvolume, blockposition
 o = obj_controller
 
 source = o.dat_source
 functionpath = argument0
 functiondir = argument1
 objective = argument2
-zipfile = argument3
 str = ""
 for (a = 0; a <= o.enda; a++) { 	
 	if (o.colamount[a] > 0) {
@@ -41,7 +40,7 @@ for (a = 0; a <= o.enda; a++) {
 			}
 			else str += "function " + functionpath + "stop"
 		}
-		dat_writefile(str, functiondir + "notes/" + string(a) + ".mcfunction", zipfile)
+		dat_writefile(str, functiondir + "notes/" + string(a) + ".mcfunction")
 	}
  }
  
@@ -86,7 +85,7 @@ for (step = 0; step < steps; step++) {
 					}
 				}
 			}
-			if (str != "") dat_writefile(str, functiondir + "tree/" + string(min1) + "_" + string(max2) + ".mcfunction", zipfile)
+			if (str != "") dat_writefile(str, functiondir + "tree/" + string(min1) + "_" + string(max2) + ".mcfunction")
 		}
 		else break
 	}

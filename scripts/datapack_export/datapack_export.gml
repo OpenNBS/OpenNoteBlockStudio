@@ -21,8 +21,6 @@ with (new(obj_dummy2)) {
 	var functionpath
 	var functiondir
 	var inputString
-	var zipfile = ""
-	if (o.dat_usezip) zipfile = zip_create()
 	
 	if namespace = "" {
 		path = ""
@@ -36,28 +34,23 @@ with (new(obj_dummy2)) {
 		functionpath = namespace+":"+path+"/"
 	}
 	
-	// Create folder structure if not using ZIP
-	if (o.dat_usezip) {
-		tempdir = ""
-		functiondir = "data/" + namespace + "/functions/" + path + condstr(path != "", "/")
-	} else {
-		tempdir = data_directory + "TempDatapack\\"
-		functiondir = dat_makefolders(path, namespace)
-	}
+	// Create folder structure
+	tempdir = data_directory + "TempDatapack\\"
+	functiondir = dat_makefolders(path, namespace)
 	
 	//pack.mcmeta
 	inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"Note block song made with Minecraft Note Block Studio\"\n\t}\n}"
-	dat_writefile(inputString, tempdir + "pack.mcmeta", zipfile)
+	dat_writefile(inputString, tempdir + "pack.mcmeta")
 	
 	//Minecraft folder:
 	
 	//load.json
 	inputString = "{\"values\": [\"" + functionpath + "load\"]}"
-	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json", zipfile)
+	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json")
 	
 	//tick.json
 	inputString = "{\"values\": [\"" + functionpath + "tick\"]}"
-	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json", zipfile)
+	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json")
 	
 	//Song folder:
 	
@@ -65,42 +58,40 @@ with (new(obj_dummy2)) {
 	inputString = "scoreboard objectives add " + objective + " dummy" + br
 	inputString += "scoreboard objectives add " + objective + "_t dummy" + br
 	inputString += "scoreboard players set speed " + objective + " " + string(playspeed)
-	dat_writefile(inputString, functiondir + "load.mcfunction", zipfile)
+	dat_writefile(inputString, functiondir + "load.mcfunction")
 	
 	//tick.mcfunction
 	inputString = "execute as @a[tag=song" + randomId + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
 	if(o.dat_enableradius) inputString += "execute as @a[tag=song" + randomId + "] run function " + functionpath + "tree/" + rootfunction
 	else inputString += "execute as @a[tag=song" + randomId + "] at @s run function " + functionpath + "tree/" + rootfunction
-	dat_writefile(inputString, functiondir + "tick.mcfunction", zipfile)
+	dat_writefile(inputString, functiondir + "tick.mcfunction")
 	
 	//play.mcfunction
 	inputString = "tag @s add song" + randomId + br
 	inputString += "scoreboard players set @s " + objective + "_t -1"
-	dat_writefile(inputString, functiondir + "play.mcfunction", zipfile)
+	dat_writefile(inputString, functiondir + "play.mcfunction")
 	
 	//pause.mcfunction
 	inputString = "tag @s remove song" + randomId
-	dat_writefile(inputString, functiondir + "pause.mcfunction", zipfile)
+	dat_writefile(inputString, functiondir + "pause.mcfunction")
 	
 	//stop.mcfunction
 	inputString = "tag @s remove song" + randomId + br
 	inputString += "scoreboard players reset @s " + objective + br
 	inputString += "scoreboard players reset @s " + objective + "_t" + br 
-	dat_writefile(inputString, functiondir + "stop.mcfunction", zipfile)
+	dat_writefile(inputString, functiondir + "stop.mcfunction")
 	
 	//Generate binary tree and notes
-	dat_generate(functionpath, functiondir, objective, zipfile)
+	dat_generate(functionpath, functiondir, objective)
 	
-	// Save ZIP, or execute shell command to move temp folder to location
-	if (zipfile != "") {
-		show_debug_message(data_directory)
-		zip_save(zipfile, fn)
-		zip_destroy(zipfile)
+	// Execute shell command to create ZIP, or to move temp folder to location
+	if (o.dat_usezip) {
+		ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true, true)
 	} else {
-		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true);
-		directory_delete_lib(tempdir)
+		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
 	}
 	
+	directory_delete_lib(tempdir)
 	instance_destroy()
 }
 message("Data pack saved!","Data Pack Export")
