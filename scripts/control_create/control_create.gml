@@ -280,18 +280,25 @@ if (str != "") message("The following file(s) could not be found:\n\n" + str + "
 
 log("Instruments loaded")
 
+// Minecraft
+selected_tab_mc = 0
+
 // Schematic
 reset_schematic_export(0)
 
 //Datapack
 dat_name = ""
-dat_obj = ""
-dat_tempo = 0
-dat_source = "block"
+dat_namespace = ""
+dat_path = ""
+dat_source = "record"
+dat_usezip = 1
 dat_includelocked = 0
+dat_includeoutofrange = 0
 dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
+dat_enablelooping = 0
+dat_loopstart = 0
 
 //MP3
 mp3_includelocked = 0

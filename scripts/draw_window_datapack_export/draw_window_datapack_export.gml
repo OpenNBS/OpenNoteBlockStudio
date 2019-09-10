@@ -2,67 +2,120 @@
 var x1, y1
 curs = cr_default
 x1 = floor(window_width / 2 - 275)
-y1 = floor(window_height / 2 - 200)
-draw_window(x1, y1, x1 + 550, y1 + 400)
+y1 = floor(window_height / 2 - 215)
+draw_window(x1, y1, x1 + 550, y1 + 430)
 draw_set_font(fnt_mainbold)
-draw_text(x1 + 8, y1 + 8, "Datapack Export")
+draw_text(x1 + 8, y1 + 8, "Data Pack Export")
 draw_set_font(fnt_main) 
 
-draw_sprite(spr_datapack_exp, sch_exp_layout, x1 + 15, y1 + 30)
+//Background panel
+if (theme = 0) {
+    draw_set_color(c_white)
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 544, y1 + 392, 0)
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 544, y1 + 392, 1)
+} else if (theme = 1) {
+	draw_window(x1 + 4, y1 + 26, x1 + 546, y1 + 392)
+} else {
+	draw_set_color(c_dark)
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 544, y1 + 392, 0) 
+    draw_set_color(make_color_rgb(137, 140, 149))
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 544, y1 + 392, 1)
+}
+draw_sprite(spr_datapack_exp, sch_exp_layout, x1 + 18, y1 + 38)
+draw_theme_color()
 
 //Name
-draw_text(x1 + 16, y1 + 200, "Unique name:")
-dat_name = draw_inputbox(1,x1 + 16, y1+ 220,120,dat_name,"Used to differentiate created datapack from others")
+draw_text(x1 + 16, y1 + 208, "Unique name:")
+if (song_name != "") dat_name = song_name
+else if (filename != "") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
+else dat_name = ""
+dat_name = draw_inputbox(50,x1 + 16, y1 + 225,145,dat_name,"This name will be used in the command"+br+"for playing the song inside the game.")
+
+//Namespace
+draw_set_color(c_gray)
+if ((string_path(dat_name) != "") && (string_path(dat_namespace) != "")) draw_theme_color()
+draw_text(x1 + 16, y1 + 255, "Namespace:")
+draw_theme_color()
+dat_namespace = draw_inputbox(51,x1 + 16, y1 + 272,145,dat_namespace,"(optional) Use this to place the functions under a custom namespace."+br+"If empty, namespace will be the name of the song.")
+
+//Path
+draw_set_color(c_gray)
+if ((string_path(dat_name) != "") && (string_path(dat_namespace) != "") && dat_getpath(dat_path) != "") draw_theme_color()
+draw_text(x1 + 16, y1 + 301, "Path:")
+draw_theme_color()
+dat_path = draw_inputbox(52,x1 + 16, y1 + 318,145,dat_path,"(optional) Path to the song from the main 'functions'"+br+"folder. You can use '/' to add subfolders.")
+
+//Preview
+draw_text(x1 + 16, y1 + 348, "Command preview:")
+draw_set_font(fnt_mainbold)
+if (string_path(dat_name) = "") draw_set_color(c_gray)
+draw_text(x1 + 16, y1 + 365, dat_preview(dat_name, dat_namespace, dat_path))
+draw_set_font(fnt_main)
+draw_theme_color()
 
 //Source
-draw_text(x1 + 16, y1 + 260, "Sound source")
-if (draw_radiobox(x1 + 28, y1 + 285, dat_source = "ambient", "ambient", "Use ambient source")) dat_source = "ambient"
-if (draw_radiobox(x1 + 28, y1 + 305, dat_source = "block", "block", "Use block source")) dat_source = "block"
-if (draw_radiobox(x1 + 28, y1 + 325, dat_source = "hostile", "hostile", "Use hostile source")) dat_source = "hostile"
-if (draw_radiobox(x1 + 28, y1 + 345, dat_source = "master", "master", "Use master source")) dat_source = "master"
-if (draw_radiobox(x1 + 28, y1 + 365, dat_source = "music", "music", "Use music source")) dat_source = "music"
-if (draw_radiobox(x1 + 100, y1 + 285, dat_source = "neutral", "neutral", "Use neutral source")) dat_source = "neutral"
-if (draw_radiobox(x1 + 100, y1 + 305, dat_source = "player", "player", "Use player source")) dat_source = "player"
-if (draw_radiobox(x1 + 100, y1 + 325, dat_source = "record", "record", "Use record source")) dat_source = "record"
-if (draw_radiobox(x1 + 100, y1 + 345, dat_source = "voice", "voice", "Use voice source")) dat_source = "voice"
-if (draw_radiobox(x1 + 100, y1 + 365, dat_source = "weather", "weather", "Use weather source")) dat_source = "weather"
+draw_text(x1 + 187, y1 + 208, "Sound source")
+if (draw_radiobox(x1 + 192, y1 + 228, dat_source = "ambient", "ambient", "Controlled by Ambient/Environment slider")) dat_source = "ambient"
+if (draw_radiobox(x1 + 192, y1 + 247, dat_source = "block", "block", "Controlled by Blocks slider")) dat_source = "block"
+if (draw_radiobox(x1 + 192, y1 + 266, dat_source = "hostile", "hostile", "Controlled by Hostile Creatures slider")) dat_source = "hostile"
+if (draw_radiobox(x1 + 192, y1 + 285, dat_source = "master", "master", "Controlled by Master Volume slider")) dat_source = "master"
+if (draw_radiobox(x1 + 192, y1 + 304, dat_source = "music", "music", "Controlled by Music slider")) dat_source = "music"
+if (draw_radiobox(x1 + 264, y1 + 228, dat_source = "neutral", "neutral", "Controlled by Friendly Creatures slider")) dat_source = "neutral"
+if (draw_radiobox(x1 + 264, y1 + 247, dat_source = "player", "player", "Controlled by Players slider")) dat_source = "player"
+if (draw_radiobox(x1 + 264, y1 + 266, dat_source = "record", "record", "Controlled by Jukebox/Note Blocks slider")) dat_source = "record"
+if (draw_radiobox(x1 + 264, y1 + 285, dat_source = "voice", "voice", "Controlled by Voice/Speech slider")) dat_source = "voice"
+if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "weather", "Controlled by Weather slider")) dat_source = "weather"
 
-//Tempo
-if(dat_tempo = 0) dat_tempo = dat_inittempo()
-draw_text(x1 + 200, y1 + 200, "Tempo")
-if (draw_radiobox(x1 + 212, y1 + 225, dat_tempo = 1, "20 ticks / second", "Generate song at 20 ticks / second")) dat_tempo = 1
-if (draw_radiobox(x1 + 212, y1 + 245, dat_tempo = 2, "10 ticks / second", "Generate song at 10 ticks / second")) dat_tempo = 2
-if (draw_radiobox(x1 + 212, y1 + 265, dat_tempo = 3, "6.66 ticks / second", "Generate song at 6.66 ticks / second")) dat_tempo = 3
-if (draw_radiobox(x1 + 212, y1 + 285, dat_tempo = 4, "5 ticks / second", "Generate song at 5 ticks / second")) dat_tempo = 4
-if (draw_radiobox(x1 + 212, y1 + 305, dat_tempo = 5, "4 ticks / second", "Generate song at 4 ticks / second")) dat_tempo = 5
-if (draw_radiobox(x1 + 212, y1 + 325, dat_tempo = 6, "3.33 ticks / second", "Generate song at 3.33 ticks / second")) dat_tempo = 6
-if (draw_radiobox(x1 + 212, y1 + 345, dat_tempo = 7, "2.86 ticks / second", "Generate song at 2.86 ticks / second")) dat_tempo = 7
-if (draw_radiobox(x1 + 212, y1 + 365, dat_tempo = 8, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) dat_tempo = 8
+//Export as ZIP
+if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
 
 //Locked layers
-if (draw_checkbox(x1 + 390, y1 + 225, dat_includelocked, "Include locked layers", "Whether to include locked layers in the Datapack.")) dat_includelocked=!dat_includelocked
- 
+if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.")) dat_includelocked=!dat_includelocked
+
+//Out of range notes
+if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
+
 //Radius
-if (draw_checkbox(x1 + 390, y1 + 250, dat_enableradius, "Nearby players hear"+br+"music too", "Whether to let all players in a given radius"+br+"hear the music as well")) dat_enableradius = !dat_enableradius
+if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
 if(dat_enableradius) { 
-	dat_radius = median(16, draw_dragvalue(3, x1 + 500, y1 + 285, dat_radius, 2),100000) 
+	dat_radius = median(16, draw_dragvalue(5, x1 + 490, y1 + 283, dat_radius, 2),100000) 
 	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
 }
-else draw_set_color(c_gray) draw_text(x1 + 500, y1 + 285, dat_radius)
-draw_text(x1 + 390, y1 + 285, "Radius (in blocks):")
-popup_set_window(x1 + 390, y1 + 281, 125, 21, "The radius of which players will hear the music")
+else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 283, dat_radius)
+draw_text(x1 + 380, y1 + 283, "Radius (in blocks):")
+popup_set_window(x1 + 380, y1 + 279, 125, 21, "Radius in which players will be able to hear the music")
+draw_theme_color()
+
+//Looping
+if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
+if(dat_enablelooping) { 
+	dat_loopstart = median(0, draw_dragvalue(6, x1 + 490, y1 + 333, dat_loopstart, 0.5), obj_controller.enda)
+}
+else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 333, dat_loopstart)
+draw_text(x1 + 380, y1 + 333, "Loop start:")
+popup_set_window(x1 + 380, y1 + 329, 125, 21, "Tick the song will jump to at the end of playback")
 draw_theme_color()
 
 //Submit button
-if (draw_button2(x1 + 470, y1 + 368, 72, "Export", false)) {
-	if(string_replace_all(dat_name," ", "") != "" ){
-		datapack_export()
+if (draw_button2(x1 + 470, y1 + 398, 72, "Export", false)) {
+	if(string_replace_all(dat_name," ", "") != "") {
+		if(string_count("/", dat_getpath(dat_path)) >= 5) {
+			message("Path can only contain up to 5 subfolders", "Error")
+		} else {
+			datapack_export()
+		}
 	}else{
-		message("Please enter a valid name for the datapack","Error")
+		message("Please enter a valid name for the data pack","Error")
 	}
 }
 
-if (draw_button2(x1 + 390, y1 + 368, 72, "Cancel", false)) {
+//Cancel button
+if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false)) {
 	window = 0
-	dat_tempo = 0
+}
+
+//Get extra notes button
+if (draw_button2(x1 + 230, y1 + 398, 152, "Get extra notes pack", !dat_includeoutofrange)) {
+	datapack_getextranotes()
 }

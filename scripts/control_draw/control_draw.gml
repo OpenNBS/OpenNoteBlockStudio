@@ -5,7 +5,7 @@ rh = window_height
 curs = cr_default
 showmenu = 0
 cursmarker = 0
-compx = 120
+compx = 180
 window_set_caption(condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
 draw_set_alpha(1)
 draw_theme_color()
@@ -20,9 +20,10 @@ work_mins += 1 / (room_speed * 60)
 remove_emitters()
 
 if (selected = 0) {
-	if((tempo = 10 || tempo = 5 ||tempo = 2.5) && (block_outside = 0 && block_custom = 0))compatible = 1
-	else if ((tempo = 20 || tempo = 6.66 || tempo = 4|| tempo = 3.33 || tempo = 2.86) && (block_outside = 0 && block_custom = 0))compatible = 2
-	else compatible = 0	
+	if (block_outside = 0 && block_custom = 0) {
+		if (tempo = 10 || tempo = 5 || tempo = 2.5) compatible = 1
+		else compatible = 2
+	} else compatible = 0
 }
 
 sela = -1
@@ -759,7 +760,7 @@ if (draw_tab("File")) {
                              "Import from MIDI...|Import from Schematic...|-|"+
                              inactive(totalblocks = 0) + "Export as MP3...|"+
                              inactive(totalblocks = 0) + "Export as Schematic...|"+
-							 inactive(totalblocks = 0) + "Export as Datapack...|-|" + 
+							 inactive(totalblocks = 0) + "Export as Data Pack...|-|" + 
                              "Alt + F4$Exit")
 							
 }
@@ -841,53 +842,53 @@ for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 }
 xx += 4 draw_separator(xx, 26) xx += 4
 while (1) {
-if (draw_icon(icons.UNDO, xx, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.REDO, xx, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.COPY, xx, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.CUT, xx, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.PASTE, xx, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.DELETE, xx, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 140) break
-xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 140) break
-if (draw_icon(icons.INFORMATION, xx, "View song info")) {playing = 0 window = w_songinfoedit} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.PROPERTIES, xx, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.INSTRUMENTS, xx, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.MIDI_INPUT, xx, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 140) break
-xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 140) break
+if (draw_icon(icons.UNDO, xx, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.REDO, xx, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.COPY, xx, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.CUT, xx, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.PASTE, xx, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.DELETE, xx, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break
+xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 190) break
+if (draw_icon(icons.INFORMATION, xx, "View song info")) {playing = 0 window = w_songinfoedit} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.PROPERTIES, xx, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.INSTRUMENTS, xx, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.MIDI_INPUT, xx, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 190) break
+xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 190) break
 if (draw_icon(icons.HELP, xx, "Watch tutorial videos")) {
     open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-} xx += 25 if (xx > rw - 140) break
-if (draw_icon(icons.INTERNET, xx, "Visit the Minecraft Forums topic")) {open_url(link_topic)} xx += 25 if (xx > rw - 140) break
+} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.INTERNET, xx, "Visit the Minecraft Forums topic")) {open_url(link_topic)} xx += 25 if (xx > rw - 190) break
 break
 }
 
 // Compatible
+draw_separator(rw - 34, 26)
 draw_set_font(fnt_mainbold)
-if(compatible = 0){
-	draw_sprite(spr_minecraft, 1, rw - 130, 24)
-	draw_set_color(c_red)
-	draw_text(rw - 105, 28, "Not compatible")
-	draw_theme_color()
-	draw_set_font(fnt_main)
-	popup_set(rw - compx, 24, compx, 25, "This song is not compatible with Minecraft.\n(Click for more info.)")
-
-}else if (compatible = 2){
-	compx = 155
-	draw_sprite(spr_minecraft, 2, rw - 165, 24)
-	draw_set_color(c_orange)
-	draw_text(rw - 140, 28, "Datapack compatible")
-	draw_theme_color()
-	draw_set_font(fnt_main)
-	popup_set(rw - compx, 24, compx, 25, "This song is compatible with Minecraft Datapacks.\n(Click for more info.)")
-
-}else if(compatible = 1){
-	draw_sprite(spr_minecraft, 0, rw - 120, 24)
+if (compatible = 1) {
+	draw_sprite(spr_minecraft, 0, rw - 30, 25)
+	draw_sprite(spr_minecraft, 0, rw - 59, 25)
 	draw_set_color(c_green)
-	draw_text(rw - 95, 28, "Compatible")
+	draw_text(rw - 166, 28, "Fully compatible")
 	draw_theme_color()
 	draw_set_font(fnt_main)
-	popup_set(rw - compx, 24, compx, 25, "This song is compatible with Minecraft.\n(Click for more info.)")
+	popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
+} else if (compatible = 2) {
+	draw_sprite(spr_minecraft, 0, rw - 30, 25)
+	draw_sprite(spr_minecraft, 1, rw - 59, 25)
+	draw_set_color(c_orange)
+	draw_text(rw - 154, 28, "Data pack only")
+	draw_theme_color()
+	draw_set_font(fnt_main)
+	popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
+} else {
+	draw_sprite(spr_minecraft, 2, rw - 30, 25)
+	draw_sprite(spr_minecraft, 1, rw - 59, 25)
+	draw_set_color(c_red)
+	draw_text(rw - 180, 28, "Resource pack only")
+	draw_theme_color()
+	draw_set_font(fnt_main)
+	popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
 }
-
 
 a = mouse_rectangle(rw - compx, 24, compx, 25)
 if (a && window = 0) {

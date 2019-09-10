@@ -1,105 +1,98 @@
 // datapack_export()
-var fn, o,dir
-fn = string(get_save_filename_ext("Datapack Folder", dat_name, "", "Datapack Export"))
-if (fn = "") return 0
-
-var tempdir = data_directory + "TempDatapack\\"
-if(directory_exists(tempdir))directory_delete_lib(tempdir)
-directory_create_lib(tempdir)
-
-dat_obj = "song"+string(randomize())
-window = -1
+var fn, o
 o = obj_controller
 
+if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
+else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
+if (fn = "") return 0
+
+window = -1
+
 with (new(obj_dummy2)) {
-	// Initialize variables  
-	var objective = o.dat_obj
-	var name = string_lower(string_replace_all(o.dat_name," ","_"))
-	var randomId = string(randomize())
-	var file
-	var functiondir = tempdir + "data\\"+name+"\\functions\\"
+	// Initialize variables
+	var name = string_path(o.dat_name)
+	var namespace = string_path(o.dat_namespace)
+	var path = dat_getpath(o.dat_path)
+	var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
+	var tag = objective
+	var playspeed = min(o.tempo * 4, 120)
+	var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
+	var tempdir
+	var functionpath
+	var functiondir
 	var inputString
 	
-	//Create folder structure
-	directory_create_lib(tempdir + "data\\")
-	directory_create_lib(tempdir + "data\\minecraft\\")
-	directory_create_lib(tempdir + "data\\minecraft\\tags\\")
-	directory_create_lib(tempdir + "data\\minecraft\\tags\\functions\\")
-	directory_create_lib(tempdir + "data\\"+ name +"\\")
-	directory_create_lib(functiondir)
+	if namespace = "" {
+		path = ""
+		namespace = name
+		functionpath = namespace+":"
+	} else if path = "" {
+		path = name
+		functionpath = namespace+":"+path+"/"
+	} else {
+		path += "/" + name
+		functionpath = namespace+":"+path+"/"
+	}
+	
+	// Create folder structure
+	tempdir = data_directory + "TempDatapack\\"
+	functiondir = dat_makefolders(path, namespace)
 	
 	//pack.mcmeta
-	inputString = "{ \"pack\": { \"description\": \"Note block song made with Minecraft Note Block Studio\", \"pack_format\": 1 } }"
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,tempdir+"pack.mcmeta")
-    buffer_delete(file)
+	inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
+	dat_writefile(inputString, tempdir + "pack.mcmeta")
 	
 	//Minecraft folder:
 	
 	//load.json
-	inputString = "{ \"values\": [ \""+name+":load\" ] }"
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,tempdir+"data\\minecraft\\tags\\functions\\load.json")
-    buffer_delete(file)
+	inputString = "{\"values\": [\"" + functionpath + "load\"]}"
+	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json")
 	
 	//tick.json
-	inputString = "{ \"values\": [ \""+name+":tick\" ] }"
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,tempdir+"data\\minecraft\\tags\\functions\\tick.json")
-    buffer_delete(file)
+	inputString = "{\"values\": [\"" + functionpath + "tick\"]}"
+	dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json")
 	
 	//Song folder:
 	
 	//load.mcfunction
-	inputString = "scoreboard objectives add " + objective + " dummy"
-    file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir + "load.mcfunction")
-    buffer_delete(file)
+	inputString = "scoreboard objectives add " + objective + " dummy" + br
+	inputString += "scoreboard objectives add " + objective + "_t dummy" + br
+	inputString += "scoreboard players set speed " + objective + " " + string(playspeed)
+	dat_writefile(inputString, functiondir + "load.mcfunction")
 	
 	//tick.mcfunction
-	if(o.dat_enableradius) inputString = "execute as @a[tag=play" + randomId + "] run function " + name + ":playing"
-	else inputString = "execute as @a[tag=play" + randomId + "] at @s run function " + name + ":playing"
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir + "tick.mcfunction")
-    buffer_delete(file)
+	inputString = "execute as @a[tag=" + tag + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
+	if(o.dat_enableradius) inputString += "execute as @a[tag=" + tag + "] run function " + functionpath + "tree/" + rootfunction
+	else inputString += "execute as @a[tag=" + tag + "] at @s run function " + functionpath + "tree/" + rootfunction
+	dat_writefile(inputString, functiondir + "tick.mcfunction")
 	
 	//play.mcfunction
-	inputString = "tag @s add play" + randomId
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir + "play.mcfunction")
-    buffer_delete(file)
+	inputString = "tag @s add " + tag + br
+	inputString += "scoreboard players set @s " + objective + "_t -1"
+	dat_writefile(inputString, functiondir + "play.mcfunction")
 	
 	//pause.mcfunction
-	inputString = "tag @s remove play" + randomId
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir + "pause.mcfunction")
-    buffer_delete(file)
+	inputString = "tag @s remove " + tag
+	dat_writefile(inputString, functiondir + "pause.mcfunction")
 	
 	//stop.mcfunction
-	inputString = "tag @s remove play" + randomId + br
-	inputString += "scoreboard players reset @s " + objective
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir + "stop.mcfunction")
-    buffer_delete(file)
+	inputString = "tag @s remove " + tag + br
+	inputString += "scoreboard players reset @s " + objective + br
+	inputString += "scoreboard players reset @s " + objective + "_t" + br 
+	dat_writefile(inputString, functiondir + "stop.mcfunction")
 	
-	//playing.mcfunction
-	inputString =  dat_generate(name)
-	file = buffer_create(string_length(inputString), buffer_fixed, 1)
-	buffer_write(file,buffer_text,inputString)
-	buffer_export(file,functiondir +"playing.mcfunction")
-    buffer_delete(file)
+	//Generate binary tree and notes
+	dat_generate(functionpath, functiondir, objective)
 	
-	// Execute shell command that moves temp pack to location
-	ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true);
+	// Execute shell command to create ZIP, or to move temp folder to location
+	if (o.dat_usezip) {
+		ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true, true)
+	} else {
+		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
+	}
+	
+	directory_delete_lib(tempdir)
 	instance_destroy()
 }
-message("Datapack saved!","Datapack Export")
+message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")
 window = w_datapack_export

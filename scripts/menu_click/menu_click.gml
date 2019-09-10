@@ -45,12 +45,7 @@ switch (m) {
         if (sel = b + 9) {
             if (calculate_size()) window = w_schematic_export
         }
-		if(sel = b + 10) {
-			if (tempo != 20 && tempo != 10 && tempo != 6.66 && tempo != 5 && tempo != 4 && tempo != 3.33 && tempo != 2.86 && tempo != 2.5) {
-				message("The tempo of the song is not compatible with Minecraft. As a result, the playback speed of the song in-game will differ from the one in the program.", "Tempo")
-			}
-			window = w_datapack_export
-		}
+		if(sel = b + 10) window = w_datapack_export
         if (sel = b + 11) game_end()
         break
     }
