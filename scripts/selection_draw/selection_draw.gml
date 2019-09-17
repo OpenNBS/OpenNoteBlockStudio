@@ -19,8 +19,8 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
                 a = 1
                 c = 100
 				d = 100
-                if (selection_y + b < endb2) c = layervol[selection_y + b] / 100 * key_vel[selection_y + b]
-				if (selection_y + b < endb2) d = layerstereo[selection_y + b] / 100 * key_pan[selection_y + b]
+                if (selection_y + b < endb2) c = layervol[selection_y + b] / 100 * selection_vel[selection_y + b]
+				if (selection_y + b < endb2) d = layerstereo[selection_y + b] / 100 * selection_pan[selection_y + b]
                 if (solostr != "") {
                     if (string_count("|" + string(selection_y + b) + "|", solostr) = 0) {
                         a = 0

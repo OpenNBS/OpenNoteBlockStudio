@@ -1,5 +1,5 @@
 // import_midi()
-var a, b, deltapertick, t, e, channel, note, pos, yy, channelheight, posamount, framesps, smpte, ins, stop;
+var a, b, deltapertick, t, e, channel, note, pos, yy, channelheight, posamount, framesps, smpte, ins, stop, vel;
 var ins1notes, ins2notes, ins3notes, ins4notes, ins5notes, ins6notes, ins7notes, ins8notes, ins9notes, ins10notes;
 io_clear()
 reset()
@@ -27,6 +27,7 @@ for (t = 0; t < midi_tracks; t += 1) {
     for (e = 0; e < midi_trackamount[t]; e += 1) {
         channel = midi_eventchannel[t, e]
         note = median(0, midi_eventnote[t, e] - 21, 87)
+		vel = midi_eventvel[t, e]
         pos = floor((midi_eventx[t, e] - midi_minpos * w_midi_removesilent) / deltapertick)
         stop = 0
         if (channel = 9) {
@@ -47,18 +48,6 @@ for (t = 0; t < midi_tracks; t += 1) {
             while (note > 57) note -= 12
         }
         if (stop = 0) {
-            switch (midi_channelins[channel]) { // Look if this instrument and note already exist
-                case 0: {stop += ins1notes[note, pos] break}
-                case 1: {stop += ins2notes[note, pos] break}
-                case 2: {stop += ins3notes[note, pos] break}
-                case 3: {stop += ins4notes[note, pos] break}
-                case 4: {stop += ins5notes[note, pos] break}
-                case 5: {stop += ins6notes[note, pos] break}
-                case 6: {stop += ins7notes[note, pos] break}
-                case 7: {stop += ins8notes[note, pos] break}
-                case 8: {stop += ins9notes[note, pos] break}
-                case 9: {stop += ins10notes[note, pos] break}
-            }
             if (channelheight[channel] < w_midi_maxheight || w_midi_maxheight = 20) {
                 switch (midi_channelins[channel]) {
                     case 0: {ins1notes[note, pos] = 1 break}
@@ -99,6 +88,9 @@ for (t = 0; t < midi_tracks; t += 1) {
         channel = midi_eventchannel[t, e]
         pos = floor((midi_eventx[t, e] - midi_minpos * w_midi_removesilent) / deltapertick)
         note = midi_eventnote[t, e] - 21
+		vel = midi_eventvel[t, e]
+		if vel >=100 vel = 100
+		show_debug_message(string(vel))
         yy = 0
         stop = 0
         if (channel = 9) { // Percussion
@@ -115,18 +107,6 @@ for (t = 0; t < midi_tracks; t += 1) {
         if (w_midi_octave) {
             while (note < 33) note += 12
             while (note > 57) note -= 12
-        }
-        switch (midi_channelins[channel]) { // Look if this instrument and note already exist
-            case 0: {stop += ins1notes[note, pos] break}
-            case 1: {stop += ins2notes[note, pos] break}
-            case 2: {stop += ins3notes[note, pos] break}
-            case 3: {stop += ins4notes[note, pos] break}
-            case 4: {stop += ins5notes[note, pos] break}
-            case 5: {stop += ins6notes[note, pos] break}
-            case 6: {stop += ins7notes[note, pos] break}
-            case 7: {stop += ins8notes[note, pos] break}
-            case 8: {stop += ins9notes[note, pos] break}
-            case 9: {stop += ins10notes[note, pos] break}
         }
         if (ins > -1 && stop = 0) {
             switch (midi_channelins[channel]) {
@@ -146,7 +126,7 @@ for (t = 0; t < midi_tracks; t += 1) {
             // Add block, go lower if failed
             a = 0
             while (1) {
-                if (add_block(pos, yy, instrument_list[| ins], note, 100, 100)) break // TODO: Add note velocity
+                if (add_block(pos, yy, instrument_list[| ins], note, true, vel, 100)) break // TODO: Read and add note velocity
                 yy += 1
                 a += 1
                 if (a >= w_midi_maxheight && w_midi_maxheight < 20) break
