@@ -205,7 +205,7 @@ for (a = 0; a < totalcols; a += 1) {
                                 }
                                 if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
                             }
-                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8, song_vel[starta + a, startb + b], song_pan[starta + a, startb + b])
+                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8)
                         }
                     }
                 } else {
@@ -307,7 +307,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                 } else {
                     add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100)
                     draw_set_halign(fa_center)
-                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0, song_vel, song_pan)    
+                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0)    
 					draw_theme_color()
                     draw_set_halign(fa_left)
                     draw_set_alpha(1)

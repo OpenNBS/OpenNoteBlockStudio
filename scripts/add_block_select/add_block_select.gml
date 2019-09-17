@@ -1,4 +1,4 @@
-// add_block_select(x, y, ins, key, vol, pan)
+// add_block_select(x, y, ins, key, vel, pan)
 var a, b, c, xx, yy, ins, key, vel, pan;
 xx = argument0
 yy = argument1

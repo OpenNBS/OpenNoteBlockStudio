@@ -1,13 +1,11 @@
 // draw_block(x, y, ins, key, alpha, selalpha)
-var xx, yy, ins, key, alpha, salpha, index, vol, pan;
+var xx, yy, ins, key, alpha, salpha, index;
 xx = argument0
 yy = argument1
 ins = argument2
 key = argument3
 alpha = argument4
 salpha = argument5
-vol = argument6
-pan = argument7
 
 index = ds_list_find_index(instrument_list, ins)
 

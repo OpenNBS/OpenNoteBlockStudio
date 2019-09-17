@@ -71,7 +71,7 @@ for (a = max(starta, x1); a < min(starta + w, x2); a += 1) {
                         if (select_pressa = sa && select_pressb = sb) salpha = 0.7
                     }
                     salpha += 0.1 * (1 - (min(1000, current_time - selection_played[sa, sb]) / 1000))
-                    draw_block(xs + (a - starta) * 32, ys + (b - startb) * 32, selection_ins[sa, sb], selection_key[sa, sb], 1, salpha, selection_vel[sa, sb], selection_pan[sa, sb])
+                    draw_block(xs + (a - starta) * 32, ys + (b - startb) * 32, selection_ins[sa, sb], selection_key[sa, sb], 1, salpha)
                 }
             }
         }

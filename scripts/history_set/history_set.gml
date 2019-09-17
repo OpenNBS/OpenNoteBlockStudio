@@ -15,5 +15,5 @@ for (a = historylen; a > 0; a -= 1) {
     }
 }
 historypos = 0
-history[0, 11] = 0
+history[0, 9] = 0
 for (a = 0; a < argument_count; a += 1) history[0, a] = argument[a]
