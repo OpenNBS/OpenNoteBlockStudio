@@ -1,6 +1,6 @@
 // region_code_load(x, y, code)
 // Loads the specified code into the x, y position.
-var xx, yy, str, ca, cb, val, ins, key;
+var xx, yy, str, ca, cb, val, ins, key, vel, pan;
 xx = argument0
 yy = argument1
 str = argument2
@@ -20,6 +20,10 @@ while (str != "") {
         str = string_delete(str, 1, string_pos("|", str))
         key = real(string_copy(str, 1, string_pos("|", str) - 1))
         str = string_delete(str, 1, string_pos("|", str))
-        add_block(xx + ca, yy + cb, ins, key)
+        vel = real(string_copy(str, 1, string_pos("|", str) - 1))
+        str = string_delete(str, 1, string_pos("|", str))
+        pan = real(string_copy(str, 1, string_pos("|", str) - 1))
+        str = string_delete(str, 1, string_pos("|", str))
+        add_block(xx + ca, yy + cb, ins, key, vel, pan)
     }
 }

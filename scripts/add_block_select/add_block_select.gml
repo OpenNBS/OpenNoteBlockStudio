@@ -1,9 +1,11 @@
-// add_block_select(x, y, ins, key)
-var a, b, c, xx, yy, ins, key;
+// add_block_select(x, y, ins, key, vol, pan)
+var a, b, c, xx, yy, ins, key, vel, pan;
 xx = argument0
 yy = argument1
 ins = argument2
 key = median(0, argument3, 87)
+vel = argument4
+pan = argument5
 
 // Initialize cells
 if (xx >= arraylength) {
@@ -31,6 +33,8 @@ if (song_exists[xx, yy]) remove_block_select(xx, yy)
 song_exists[xx, yy] = 1
 song_ins[xx, yy] = ins
 song_key[xx, yy] = key
+song_vel[xx, yy] = vel
+song_pan[xx, yy] = pan
 song_played[xx, yy] = 0
 song_added[xx, yy] = 0
 colamount[xx] += 1

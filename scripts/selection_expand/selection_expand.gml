@@ -1,5 +1,5 @@
 // selection_expand()
-var str, nw, temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_played, sa;
+var str, nw, temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_played, sa;
 str = selection_code
 if (selected = 0) return 0
 nw = selection_l * 2
@@ -20,10 +20,14 @@ for (a = 0; a < selection_l; a += 1) {
                 temp_exists[a, b] = 1
                 temp_ins[a, b] = selection_ins[a, b]
                 temp_key[a, b] = selection_key[a, b]
+                temp_vel[a, b] = selection_vel[a, b]
+                temp_pan[a, b] = selection_pan[a, b]
                 temp_played[a, b] = selection_played[a, b]
                 selection_exists[a, b] = 0
                 selection_ins[a, b] = 0
                 selection_key[a, b] = 0
+                selection_vel[a, b] = 0
+                selection_pan[a, b] = 0
                 selection_played[a, b] = 0
             } else {
                 temp_exists[a, b] = 0
@@ -43,6 +47,8 @@ for (a = 0; a < selection_l; a += 1) {
                 selection_exists[sa, b] = 1
                 selection_ins[sa, b] = temp_ins[a, b]
                 selection_key[sa, b] = temp_key[a, b]
+                selection_vel[sa, b] = temp_vel[a, b]
+                selection_pan[sa, b] = temp_pan[a, b]
                 selection_played[sa, b] = temp_played[a, b]
             }
         }

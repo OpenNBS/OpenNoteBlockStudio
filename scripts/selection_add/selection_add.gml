@@ -95,7 +95,7 @@ if (selected = 0) { // Create new
         selection_arrayheight = ah
     }
     if (x1 < selection_x || y1 < selection_y) { // Move blocks
-        var temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_played;
+        var temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_played;
         for (a = 0; a < selection_l; a += 1) {
             if (selection_colfirst[a] > -1) {
                 for (b = selection_colfirst[a]; b <= selection_collast[a]; b += 1) {
@@ -103,10 +103,14 @@ if (selected = 0) { // Create new
                         temp_exists[a, b] = 1
                         temp_ins[a, b] = selection_ins[a, b]
                         temp_key[a, b] = selection_key[a, b]
+                        temp_vel[a, b] = selection_vel[a, b]
+                        temp_pan[a, b] = selection_pan[a, b]
                         temp_played[a, b] = selection_played[a, b]
                         selection_exists[a, b] = 0
                         selection_ins[a, b] = 0
                         selection_key[a, b] = 0
+                        selection_vel[a, b] = 0
+                        selection_pan[a, b] = 0
                         selection_played[a, b] = 0
                     } else {
                         temp_exists[a, b] = 0
@@ -127,6 +131,8 @@ if (selected = 0) { // Create new
                         selection_exists[sa, sb] = 1
                         selection_ins[sa, sb] = temp_ins[a, b]
                         selection_key[sa, sb] = temp_key[a, b]
+                        selection_vel[sa, sb] = temp_vel[a, b]
+                        selection_pan[sa, sb] = temp_pan[a, b]
                         selection_played[sa, sb] = temp_played[a, b]
                     }
                 }
@@ -156,6 +162,8 @@ for (a = x1; a < x2; a += 1) { // Add block to selection
                     selection_exists[sa, sb] = 1
                     selection_ins[sa, sb] = song_ins[a, b]
                     selection_key[sa, sb] = song_key[a, b]
+                    selection_vel[sa, sb] = song_vel[a, b]
+                    selection_pan[sa, sb] = song_pan[a, b]
                     selection_played[sa, sb] = 0
                     if (!copy) {
                         remove_block_select(a, b)

@@ -93,7 +93,9 @@ if (file_ext = ".nbs") {
             var ins = buffer_read_byte();
 			if(ins >= song_first_custom_index)ins += custom_index_diff //If instrument is custom, add custom_index_diff so it works when adding future instruments
             var key = buffer_read_byte();
-            add_block(ca, cb, ins, median(0, key, 87), true)
+			var vel = buffer_read_byte();
+			var pan = buffer_read_byte();
+            add_block(ca, cb, ins, median(0, key, 87), true, vel, pan)
         }
     }
     if (buffer_is_eof()) { // End?

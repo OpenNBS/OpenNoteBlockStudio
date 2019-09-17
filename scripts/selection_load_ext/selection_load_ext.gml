@@ -25,6 +25,12 @@ while (str != "") {
         val = real(string_copy(str, 1, string_pos("|", str) - 1))
         str = string_delete(str, 1, string_pos("|", str))
         selection_key[ca, cb] = val
+        val = real(string_copy(str, 1, string_pos("|", str) - 1))
+        str = string_delete(str, 1, string_pos("|", str))
+        selection_vel[ca, cb] = val
+        val = real(string_copy(str, 1, string_pos("|", str) - 1))
+        str = string_delete(str, 1, string_pos("|", str))
+        selection_pan[ca, cb] = val
         selected += 1
         if (selection_colfirst[ca] = -1) selection_colfirst[ca] = cb
         selection_collast[ca] = cb

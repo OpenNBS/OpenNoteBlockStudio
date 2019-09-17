@@ -150,22 +150,22 @@ if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && insindex > 0) {
         insindex--
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 1,100)
+        play_sound(instrument, selected_key, 100 ,100)
     }
     if (mouse_wheel_up() && insindex < ds_list_size(instrument_list) - 1) {
         insindex++
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 1,100)
+        play_sound(instrument, selected_key, 100 ,100)
     }
 }
 if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && selected_key > 0) {
         selected_key -= 1
-        play_sound(instrument, selected_key, 1,100)
+        play_sound(instrument, selected_key, 100 ,100)
     }
     if (mouse_wheel_up() && selected_key < 87) {
         selected_key += 1
-        play_sound(instrument, selected_key, 1,100)
+        play_sound(instrument, selected_key, 100 ,100)
     }
 }
 
@@ -205,7 +205,7 @@ for (a = 0; a < totalcols; a += 1) {
                                 }
                                 if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
                             }
-                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8)
+                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], c, s * 0.8, song_vel[starta + a, startb + b], song_pan[starta + a, startb + b])
                         }
                     }
                 } else {
@@ -233,8 +233,8 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                 c = 100
 				d = 100
                 if (b < endb2) {
-					c = layervol[b]
-					d = layerstereo[b]
+					c = (layervol[b] / 100 * song_vel[xx, b])
+					d = (layerstereo[b] / 100 * song_pan[xx, b])
 				}
                 if (solostr != "") {
                     if (string_count("|" + string(b) + "|", solostr) = 0) {
@@ -251,7 +251,7 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                     if (current_time - song_added[xx, b] < 1000) a = 0
                 }
                 if (a) {
-                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c / 100,d)
+                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d)
                     if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
                     song_played[xx, b] = current_time
                 }
@@ -305,9 +305,9 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                 if (exist = 1) {
                     change_block_manual(selbx, selby, instrument, selected_key)
                 } else {
-                    add_block_manual(starta + sela, startb + selb, instrument, selected_key)
+                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100)
                     draw_set_halign(fa_center)
-                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0)    
+                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0, song_vel, song_pan)    
 					draw_theme_color()
                     draw_set_halign(fa_left)
                     draw_set_alpha(1)
@@ -422,7 +422,7 @@ if (window = 0 && text_focus = -1) {
 		   for (a = 1; a <= 10; a++) {
              if (keyboard_check_pressed(ord(string(a % 10)))) {
                 instrument = instrument_list[| a - 1]
-                play_sound(instrument, selected_key, 1,100)
+                play_sound(instrument, selected_key, 100 ,100)
              }
            }
 		}else{
@@ -430,7 +430,7 @@ if (window = 0 && text_focus = -1) {
 		  for (a = 1; a <= 6; a++) {
 			if (keyboard_check_pressed(ord(string(a % 10)))) {
 				instrument = instrument_list[| a + 9]
-				play_sound(instrument, selected_key, 1,100)
+				play_sound(instrument, selected_key, 100 ,100)
 			}
 		  }
 	   }
@@ -837,7 +837,7 @@ if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {
     var ins = instrument_list[| a];
-    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 1,100) instrument = ins} xx += 25
+    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100) instrument = ins} xx += 25
 }
 xx += 4 draw_separator(xx, 26) xx += 4
 while (1) {

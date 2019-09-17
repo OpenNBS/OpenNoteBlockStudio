@@ -15,6 +15,8 @@ for (a = 0; a <= enda; a += 1) {
         song_exists[a, b] = 0
         song_ins[a, b] = 0
         song_key[a, b] = 0
+        song_vel[a, b] = 0
+        song_pan[a, b] = 0
         song_played[a, b] = 0
         song_added[a, b] = 0
     }

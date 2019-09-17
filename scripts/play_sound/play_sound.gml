@@ -3,6 +3,7 @@
 /// @param instrument
 /// @param  key
 /// @param  volume
+/// @param  pan
 
 var ins, key, vol, pan, newemitter, emitter
 ins = argument0
@@ -14,7 +15,7 @@ if (!ins.loaded)
     return 0
 emitter=audio_emitter_create()
 audio_emitter_pitch(emitter, 0.495 * power(1.06, (key + ins.key - 78)))
-audio_emitter_gain(emitter, vol)
+audio_emitter_gain(emitter, vol / 100)
 if (realstereo = 0) audio_emitter_position(emitter,pan,0,0)
 else audio_emitter_position(emitter,100,0,0)
 

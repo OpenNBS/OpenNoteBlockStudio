@@ -147,7 +147,7 @@ if (w_midi_tab = 0) {
                 if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20) && wmenu = 0) {
                     curs = cr_handpoint
                     if (mouse_check_button_pressed(mb_left)) {
-                        play_sound(instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 1,100)
+                        play_sound(instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 100 ,100)
                     }
                 }
             }
@@ -214,7 +214,7 @@ if (w_midi_tab = 0) {
                 if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20) && wmenu = 0) {
                     curs = cr_handpoint
                     if (mouse_check_button_pressed(mb_left)) {
-                        play_sound(instrument_list[| midi_percins[b]], midi_percpitch[b], 1,100)
+                        play_sound(instrument_list[| midi_percins[b]], midi_percpitch[b], 100 ,100)
                     }
                 }
             } else {
