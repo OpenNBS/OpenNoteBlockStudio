@@ -101,6 +101,6 @@ fade = buffer_read_byte()
 realstereo = buffer_read_byte()
 show_piano = buffer_read_byte()
 rhval = buffer_read_byte()
-
+w_midi_vel = buffer_read_byte()
 buffer_delete(buffer)
 return 1

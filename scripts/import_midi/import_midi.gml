@@ -27,7 +27,9 @@ for (t = 0; t < midi_tracks; t += 1) {
     for (e = 0; e < midi_trackamount[t]; e += 1) {
         channel = midi_eventchannel[t, e]
         note = median(0, midi_eventnote[t, e] - 21, 87)
-		vel = midi_eventvel[t, e]
+		if (w_midi_vel = 1) {
+			vel = midi_eventvel[t, e]
+		} else vel = 100
         pos = floor((midi_eventx[t, e] - midi_minpos * w_midi_removesilent) / deltapertick)
         stop = 0
         if (channel = 9) {
@@ -88,7 +90,9 @@ for (t = 0; t < midi_tracks; t += 1) {
         channel = midi_eventchannel[t, e]
         pos = floor((midi_eventx[t, e] - midi_minpos * w_midi_removesilent) / deltapertick)
         note = midi_eventnote[t, e] - 21
-		vel = midi_eventvel[t, e]
+		if (w_midi_vel = 1) {
+			vel = midi_eventvel[t, e]
+		} else vel = 100
 		if vel >=100 vel = 100
 		show_debug_message(string(vel))
         yy = 0
@@ -126,7 +130,7 @@ for (t = 0; t < midi_tracks; t += 1) {
             // Add block, go lower if failed
             a = 0
             while (1) {
-                if (add_block(pos, yy, instrument_list[| ins], note, true, vel, 100)) break // TODO: Read and add note velocity
+                if (add_block(pos, yy, instrument_list[| ins], note, true, vel, 100)) break
                 yy += 1
                 a += 1
                 if (a >= w_midi_maxheight && w_midi_maxheight < 20) break
