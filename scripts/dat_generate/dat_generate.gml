@@ -18,7 +18,7 @@ for (a = 0; a <= o.enda; a++) {
 					blockvolume = o.layervol[b]/100 / 100 * o.song_vel[a, b]
 					s = o.layerstereo[b] // Stereo values to X coordinates
 					if s > 100 blockposition=(s-100)/-100 * (o.song_pan[a, b]/100)
-					if s = 100 blockposition=o.song_pan[a, b]-100/100
+					if s = 100 blockposition=((o.song_pan[a, b]-100)/100)
 					if s < 100 blockposition=((s-100)*-1)/100 * (o.song_pan[a, b]/100)
 					
 					// Append -1 or 1 to sound event if note is out of range
