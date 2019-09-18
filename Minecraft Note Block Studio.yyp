@@ -3151,14 +3151,6 @@
             }
         },
         {
-            "Key": "f0c2c223-9b0a-4604-9d4e-add06f06e8d3",
-            "Value": {
-                "id": "05076416-8b91-4b51-9c3e-464746174ce8",
-                "resourcePath": "scripts\\draw_window_clip_editor\\draw_window_clip_editor.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "f156b801-b9bb-4929-af5c-2b9df4acc238",
             "Value": {
                 "id": "28a79843-5cfc-44c5-b54c-7df2f718c5c2",
@@ -3433,7 +3425,6 @@
         "fe6126ab-f6f2-4984-9252-7a4927f6fdbf",
         "4564b283-6afe-4396-89e5-addd9aaceea2",
         "bced0341-fa02-480d-adda-d9372d1f5c0e",
-        "f0c2c223-9b0a-4604-9d4e-add06f06e8d3",
         "8e645857-4717-4877-ad47-32c6bb77ecdc",
         "ce34798e-3d81-483d-bc53-9b8051ea283d",
         "98731502-7533-4583-8bfb-0ee49aca74f9",

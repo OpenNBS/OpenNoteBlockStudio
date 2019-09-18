@@ -38,7 +38,6 @@ buffer_write_byte(w_midi_name_patch)
 buffer_write_byte(w_midi_maxheight)
 buffer_write_byte(w_midi_tempo)
 buffer_write_byte(w_midi_octave)
-
 // instruments
 for (a = 0; a < 128; a += 1) {
     buffer_write_byte(midi_ins[a, 1]) // Instrument

@@ -19,5 +19,4 @@ switch (window mod w_menu) {
     case w_update: draw_window_update() break
     case w_changelist: draw_window_update() break
     case w_mididevices: draw_window_mididevices() break
-    case w_clip_editor: draw_window_clip_editor() break
 }

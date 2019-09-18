@@ -52,7 +52,6 @@
 #macro w_instruments 3
 #macro w_preferences 2
 #macro w_greeting 1
-#macro w_clip_editor 19
 
 #macro br "\r\n"
 
