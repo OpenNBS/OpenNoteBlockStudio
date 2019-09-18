@@ -435,6 +435,7 @@ if (window = 0 && text_focus = -1) {
 		  }
 	   }
 	}
+  if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {playing = 0 window = w_clip_editor}
 }
 // Selecting note blocks
 if (select > 0) {
