@@ -19,8 +19,8 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
                 a = 1
                 c = 100
 				d = 100
-                if (selection_y + b < endb2) c = layervol[selection_y + b]
-				if (selection_y + b < endb2) d = layerstereo[selection_y + b]
+                if (selection_y + b < endb2) c = layervol[selection_y + b] / 100 * selection_vel[selection_y + b]
+				if (selection_y + b < endb2) d = layerstereo[selection_y + b] / 100 * selection_pan[selection_y + b]
                 if (solostr != "") {
                     if (string_count("|" + string(selection_y + b) + "|", solostr) = 0) {
                         a = 0
@@ -33,7 +33,7 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
                     }
                 }
                 if (a) {
-                    if (selection_ins[xx, b].loaded) play_sound(selection_ins[xx, b], selection_key[xx, b], c / 100, d)
+                    if (selection_ins[xx, b].loaded) play_sound(selection_ins[xx, b], selection_key[xx, b], c , d)
                     if (selection_ins[xx, b].press) key_played[selection_key[xx, b]] = current_time
                     selection_played[xx, b] = current_time
                 }
@@ -70,7 +70,7 @@ for (a = max(starta, x1); a < min(starta + w, x2); a += 1) {
                     } else if (window = w_dragselection) {
                         if (select_pressa = sa && select_pressb = sb) salpha = 0.7
                     }
-                    salpha += 0.1 * (1 - (min(1000, current_time - selection_played[sa, sb]) / 1000))
+//                    salpha += 0.1 * (1 - (min(1000, current_time - selection_played[sa, sb]) / 1000))
                     draw_block(xs + (a - starta) * 32, ys + (b - startb) * 32, selection_ins[sa, sb], selection_key[sa, sb], 1, salpha)
                 }
             }

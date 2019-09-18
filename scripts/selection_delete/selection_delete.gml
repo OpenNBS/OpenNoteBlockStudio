@@ -9,6 +9,8 @@ for (a = 0; a < selection_l; a += 1) {
                 selection_exists[a, b] = 0
                 selection_ins[a, b] = 0
                 selection_key[a, b] = 0
+                selection_vel[a, b] = 0
+                selection_pan[a, b] = 0
                 selection_played[a, b] = 0
             }
         }

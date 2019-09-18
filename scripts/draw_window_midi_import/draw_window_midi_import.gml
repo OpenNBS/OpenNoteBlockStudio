@@ -18,6 +18,7 @@ draw_text(x1 + 300, y1 + 52, "Max. channel height:")
 popup_set_window(x1 + 300, y1 + 52, 140, 16, "The maximum allowed layers per channel.\nClick and drag to adjust.")
 w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
 if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
+if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
 if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
 if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi()}
 if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {w_midi_tab = 0 midifile = "" window = 0}
@@ -38,6 +39,7 @@ if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
         w_midi_maxheight = 2
         w_midi_tempo = 1
         w_midi_octave = 1
+		w_midi_vel = 0
     }
 }
 b = 8
@@ -147,7 +149,7 @@ if (w_midi_tab = 0) {
                 if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20) && wmenu = 0) {
                     curs = cr_handpoint
                     if (mouse_check_button_pressed(mb_left)) {
-                        play_sound(instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 1,100)
+                        play_sound(instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 100 ,100)
                     }
                 }
             }
@@ -214,7 +216,7 @@ if (w_midi_tab = 0) {
                 if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20) && wmenu = 0) {
                     curs = cr_handpoint
                     if (mouse_check_button_pressed(mb_left)) {
-                        play_sound(instrument_list[| midi_percins[b]], midi_percpitch[b], 1,100)
+                        play_sound(instrument_list[| midi_percins[b]], midi_percpitch[b], 100 ,100)
                     }
                 }
             } else {

@@ -1,13 +1,16 @@
-// add_block(x, y, ins, key, [insnum])
-var a, b, c, xx, yy, ins, key, insnum;
+// add_block(x, y, ins, key, [insnum], vel, pan)
+var a, b, c, xx, yy, ins, key, insnum, vel, pan;
 xx = argument[0]
 yy = argument[1]
 ins = argument[2]
 key = median(0, argument[3], 87)
-if (argument_count > 4)
+if (argument_count > 4) {
     insnum = argument[4]
-else
-    insnum = false
+	vel = argument[5]
+	pan = argument[6]
+}
+else 
+	insnum = false
 
 // Initialize cells
 if (xx >= arraylength) {
@@ -35,6 +38,8 @@ if (song_exists[xx, yy]) return 0
 song_exists[xx, yy] = 1
 song_ins[xx, yy] = ins
 song_key[xx, yy] = key
+song_vel[xx, yy] = vel
+song_pan[xx, yy] = pan
 song_played[xx, yy] = 0
 song_added[xx, yy] = 0
 colamount[xx] += 1

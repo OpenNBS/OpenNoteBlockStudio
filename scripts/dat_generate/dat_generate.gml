@@ -15,11 +15,11 @@ for (a = 0; a <= o.enda; a++) {
 	            if (o.song_key[a, b] > 32 && o.song_key[a, b] < 58 || (o.dat_includeoutofrange && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                instrument = dat_instrument(ds_list_find_index(other.instrument_list, o.song_ins[a, b]))
 	                pitch = dat_pitch(o.song_key[a, b])
-					blockvolume = o.layervol[b]/100
+					blockvolume = o.layervol[b]/100 / 100 * o.song_vel[a, b]
 					s = o.layerstereo[b] // Stereo values to X coordinates
-					if s > 100 blockposition=(s-100)/-100
-					if s = 100 blockposition=0
-					if s < 100 blockposition=((s-100)*-1)/100
+					if s > 100 blockposition=(s-100)/-100 * (o.song_pan[a, b]/100)
+					if s = 100 blockposition=o.song_pan[a, b]-100/100
+					if s < 100 blockposition=((s-100)*-1)/100 * (o.song_pan[a, b]/100)
 					
 					// Append -1 or 1 to sound event if note is out of range
 					soundname = instrument

@@ -1,6 +1,6 @@
 // select_all(instrument, not)
 // Deselects all and selects all notes with the given instrument. -1 to select all.
-var inst, a, b, ins, key, n, x1, y1, str;
+var inst, a, b, ins, key, n, x1, y1, str, vel, pan;
 inst = argument0
 n = argument1
 x1 = selection_x
@@ -34,10 +34,14 @@ for (a = 0; a <= enda; a += 1) {
             if (song_exists[a, b]) {
                 ins = song_ins[a, b]
                 key = song_key[a, b]
+                vel = song_vel[a, b]
+                pan = song_pan[a, b]
                 if (((ins = inst || inst = -1) && n = 0) || (ins != inst && n = 1)) {
                     selection_exists[a, b] = 1
                     selection_ins[a, b] = ins
                     selection_key[a, b] = key
+                    selection_vel[a, b] = vel
+                    selection_pan[a, b] = pan
                     selection_played[a, b] = 0
                     if (selection_colfirst[a] = -1) selection_colfirst[a] = b
                     selection_collast[a] = max(selection_collast[a], b)

@@ -15,6 +15,8 @@ for (a = 0; a < selection_l; a += 1) {
                 cb = 0
                 str += string(ds_list_find_index(instrument_list, selection_ins[a, b])) + "|"
                 str += string(selection_key[a, b]) + "|"
+                str += string(selection_vel[a, b]) + "|"
+                str += string(selection_pan[a, b]) + "|"
             }
             cb += 1
             if (b = selection_h - 1) {

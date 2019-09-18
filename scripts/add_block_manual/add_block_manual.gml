@@ -1,9 +1,11 @@
-// add_block_manual(x, y, ins, key)
-var a, b, c, xx, yy, ins, key;
+// add_block_manual(x, y, ins, key, vel, pan)
+var a, b, c, xx, yy, ins, key, vel, pan;
 xx = argument0
 yy = argument1
 ins = argument2
 key = argument3
+vel = argument4
+pan = argument5
 if (xx >= 32000) return 0
 
 // Initialize cells
@@ -40,6 +42,8 @@ if ((key < 33  || key > 57) && warning_octaves = 0) {
 song_exists[xx, yy] = 1
 song_ins[xx, yy] = ins
 song_key[xx, yy] = key
+song_vel[xx, yy] = vel
+song_pan[xx, yy] = pan
 song_played[xx, yy] = 0
 song_added[xx, yy] = current_time
 colamount[xx] += 1
@@ -56,6 +60,6 @@ if (yy > collast[xx]) collast[xx] = yy
 if (xx >= enda) enda = xx
 if (yy >= endb) endb = yy
 
-if (ins.loaded) play_sound(ins, key, 1,100)
-history_set(h_addblock, xx, yy, ins, key)
+if (ins.loaded) play_sound(ins, key, 100 ,100)
+history_set(h_addblock, xx, yy, ins, key, vel, pan)
 return 1

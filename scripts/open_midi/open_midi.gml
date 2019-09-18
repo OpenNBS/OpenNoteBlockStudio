@@ -150,7 +150,7 @@ for (t = 0; t < midi_tracks; t += 1) {
                     vel = buffer_read_byte()
                     
                     if (vel > 0)
-                        midi_add_note(channel, t, p, note) //-21
+                        midi_add_note(channel, t, p, note, vel) //-21
                     break
                 }
                 case $A: { // Note aftertouch (useless)

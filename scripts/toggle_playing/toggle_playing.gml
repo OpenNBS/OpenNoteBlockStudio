@@ -40,7 +40,7 @@ if (playing = 1) {
                         }
                     }
                     if (a) {
-                        if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c / 100, d)
+                        if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d)
                         if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
                         song_played[xx, b] = current_time
                     }

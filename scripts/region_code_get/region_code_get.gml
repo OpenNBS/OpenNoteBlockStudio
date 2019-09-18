@@ -21,6 +21,8 @@ for (a = x1; a < x2; a += 1) {
                         cb = 0
                         str += string(ds_list_find_index(instrument_list, song_ins[a, b])) + "|"
                         str += string(song_key[a, b]) + "|"
+                        str += string(song_vel[a, b]) + "|"
+                        str += string(song_pan[a, b]) + "|"
                         am += 1
                     }
                 }
