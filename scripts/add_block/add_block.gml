@@ -1,13 +1,13 @@
-// add_block(x, y, ins, key, [insnum], vel, pan)
-var a, b, c, xx, yy, ins, key, insnum, vel, pan;
+// add_block(x, y, ins, key, vel, pan, [insnum])
+var a, b, c, xx, yy, ins, key, vel, pan, insnum;
 xx = argument[0]
 yy = argument[1]
 ins = argument[2]
 key = median(0, argument[3], 87)
-if (argument_count > 4) {
-    insnum = argument[4]
-	vel = argument[5]
-	pan = argument[6]
+vel = argument[4]
+pan = argument[5]
+if (argument_count > 6) {
+    insnum = argument[6]
 }
 else 
 	insnum = false
