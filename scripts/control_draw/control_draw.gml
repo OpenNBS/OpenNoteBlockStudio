@@ -1,5 +1,5 @@
 // control_draw()
-var a, b, c, d, e, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, showmenu, rw, rh, totalcols, totalrows, compx
+var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, showmenu, rw, rh, totalcols, totalrows, compx
 rw = window_width
 rh = window_height
 curs = cr_default
@@ -60,7 +60,7 @@ if (theme = 2) window_background = c_dark
 draw_clear(window_background)
 
 // Calculate area
-totalcols = floor((rw - 198) / 32)
+totalcols = floor((rw - 270) / 32)
 if show_piano = 1 {
 	rhval = 270
 }
@@ -74,7 +74,7 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     }
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
-x1 = 192
+x1 = 264
 y1 = 52
 if ((window = 0 || select > 0) && playing = 0) {
     if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
@@ -623,7 +623,7 @@ draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols
 draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
 draw_theme_color()
 // Scrollbars
-starta = draw_scrollbar(scrollbarh, 192, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+starta = draw_scrollbar(scrollbarh, 264, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 
 // Draw layers
@@ -642,10 +642,13 @@ for (b = 0; b < totalrows; b += 1) {
     }
     m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
     popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
-    
 	draw_set_font(fnt_small)
-    layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
-    if (layername[startb + b] = "") {
+	if (m) {
+		layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
+	} else {
+		draw_text(x1 + 11, y1 + 10, layername[startb + b])
+	}
+	if (layername[startb + b] = "") {
         draw_set_color(c_gray)
 		if(theme = 2) draw_set_color(c_white)
         draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
@@ -720,11 +723,32 @@ for (b = 0; b < totalrows; b += 1) {
             solostr += "|" + string(startb + b) + "|"
         }
     }
+	// Select all
     if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
         playing = 0
         selection_place(0)
         selection_add(0, startb + b, enda, startb + b, 0, 0)
     }
+	// Add layer
+    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, "Add empty layer here", 0, 0)) {
+        playing = 0
+		add_layer(startb + b, false)
+    }
+	// Remove layer
+	if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, "Remove this layer", 0, 0)) {
+        playing = 0
+		remove_layer(startb + b, false)
+	}
+	// Shift layer up
+	if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, "Shift layer up", 0, 0)) {
+	    playing = 0
+		shift_layers(startb + b, startb + b - 1, false)
+	}
+	// Shift layer down
+	if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, "Shift layer down", 0, 0)) {
+	    playing = 0
+		shift_layers(startb + b, startb + b + 1, false)
+	}
 }
 if (window = w_dragvol) {
     dragvol += (mouse_yprev - mouse_y) * 2

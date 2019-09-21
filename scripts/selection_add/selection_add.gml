@@ -1,15 +1,19 @@
-// selection_add(x1, y1, x2, y2, copy, undo)
+// selection_add(x1, y1, x2, y2, copy, undo[, locked])
 // Adds the given area to the selection.
-var x1, y1, x2, y2, al, ah, ac, a, b, am, sa, sb, nx1, ny1, nx2, ny2, copy, lockedlayer;
-x1 = min(argument0, argument2)
-y1 = min(argument1, argument3)
-x2 = max(argument0, argument2)
-y2 = max(argument1, argument3)
+var x1, y1, x2, y2, al, ah, ac, a, b, am, sa, sb, nx1, ny1, nx2, ny2, copy, lockedlayer, includelocked;
+x1 = min(argument[0], argument[2])
+y1 = min(argument[1], argument[3])
+x2 = max(argument[0], argument[2])
+y2 = max(argument[1], argument[3])
 x1 = max(0, x1)
 y1 = max(0, y1)
 x2 = median(0, x2, enda) + 1
 y2 = median(0, y2, endb) + 1
-copy = argument4
+copy = argument[4]
+includelocked = 0
+if (argument_count > 6) {
+	includelocked = argument[6]
+}
 if (x1 > enda || y1 > endb) return 0
 ac = 0
 nx1 = x2
@@ -32,7 +36,7 @@ for (b = 0; b <= endb; b += 1) {
 }
 for (a = x1; a < x2; a += 1) {
     for (b = y1; b < y2; b += 1) {
-        if (lockedlayer[b] = 0) {
+        if (lockedlayer[b] = 0 || includelocked) {
             if (song_exists[a, b]) {
                 nx1 = min(nx1, a)
                 ny1 = min(ny1, b)
@@ -152,7 +156,7 @@ if (selected = 0) { // Create new
 for (a = x1; a < x2; a += 1) { // Add block to selection 
     if (colamount[a] > 0) {
         for (b = max(colfirst[a], y1); b < min(collast[a] + 1, y2); b += 1) {
-            if (lockedlayer[b] = 0) {
+            if (lockedlayer[b] = 0 || includelocked) {
                 if (song_exists[a, b]) {
                     sa = a - selection_x
                     sb = b - selection_y
@@ -173,6 +177,6 @@ for (a = x1; a < x2; a += 1) { // Add block to selection
         }
     }
 }
-if (!argument5) history_set(h_selectadd, x1, y1, x2, y2, copy)
+if (!argument[5]) history_set(h_selectadd, x1, y1, x2, y2, copy)
 selected += ac
 selection_code_update()

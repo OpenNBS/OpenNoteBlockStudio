@@ -36,4 +36,10 @@ if (t = h_addblock) {
 } else if (t = h_select) {
     selection_place(1)
     selection_load_ext(arg3, arg4, arg5)
+} else if (t = h_addlayer) {
+	remove_layer(arg0, true)
+} else if (t = h_removelayer) {
+	add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
+} else if (t = h_swaplayer) {
+	shift_layers(arg1, arg0, true)
 }
