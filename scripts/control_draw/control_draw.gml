@@ -1,5 +1,5 @@
 // control_draw()
-var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, showmenu, rw, rh, totalcols, totalrows, compx
+var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx
 rw = window_width
 rh = window_height
 curs = cr_default
@@ -58,6 +58,9 @@ if (theme = 0) window_background = 15790320
 if (theme = 1) window_background = 13160660
 if (theme = 2) window_background = c_dark
 draw_clear(window_background)
+
+iconcolor = c_black
+if (theme = 2) iconcolor = c_white
 
 // Calculate area
 totalcols = floor((rw - 270) / 32)
@@ -662,7 +665,7 @@ for (b = 0; b < totalrows; b += 1) {
         } else {
             a = layervol[startb + b]
         }
-        draw_sprite(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5)
+        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
         popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
         if (c) {
             draw_set_font(fnt_small)
@@ -686,7 +689,7 @@ for (b = 0; b < totalrows; b += 1) {
         } else {
             a = layerstereo[startb + b]
         }
-        draw_sprite(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5)
+        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
         popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
         if (c) {
             draw_set_font(fnt_small)
