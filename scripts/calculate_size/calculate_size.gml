@@ -32,20 +32,8 @@ sch_exp_maxheight[1] = 0
 
 var sch_colamount, cnt;
 // Calculate locked layers
-for (c = 0; c <= endb; c += 1) {
-    lockedlayer[c] = 0
-    if (solostr != "") {
-        if (string_count("|" + string(c) + "|", solostr) = 0) {
-            lockedlayer[c] = 1
-        } else if (layerlock[c] = 1) {
-            lockedlayer[c] = 1
-        }
-    } else if (c < endb2) {
-        if (layerlock[c] = 1) {
-            lockedlayer[c] = 1
-        }
-    }
-}
+calculate_locked_layers()
+
 // Calculate maximum height and note block count
 for (a = 0; a <= enda; a += 1) {
     if (colamount[a] > 0) {

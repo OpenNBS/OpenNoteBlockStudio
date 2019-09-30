@@ -7,6 +7,7 @@ else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data P
 if (fn = "") return 0
 
 window = -1
+calculate_locked_layers()
 
 with (new(obj_dummy2)) {
 	// Initialize variables

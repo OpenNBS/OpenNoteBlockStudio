@@ -1543,6 +1543,14 @@
             }
         },
         {
+            "Key": "71481bb2-aa29-4aa5-8808-2d6b299f31e0",
+            "Value": {
+                "id": "8a3e80c3-86eb-4079-97d9-67b72387a223",
+                "resourcePath": "scripts\\calculate_locked_layers\\calculate_locked_layers.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "71dc38b0-4409-4d2b-a7d4-eae56434707b",
             "Value": {
                 "id": "52ce73bc-9551-4100-933e-a898814fa8e8",
@@ -3621,6 +3629,7 @@
         "82d48775-110a-44d7-a981-4858f0609ed4",
         "11d66464-127c-4513-b0f4-58159c8010b3",
         "4ab6f19b-c67c-4a89-8297-28892413fa3b",
+        "71481bb2-aa29-4aa5-8808-2d6b299f31e0",
         "ece2d180-8579-4d29-961f-4246fbe4974d",
         "adf62f95-47ea-4b3d-bcba-dbaae6ce6bca",
         "86cc17eb-5dec-4f72-982d-98c7a7d7e859",

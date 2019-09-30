@@ -24,6 +24,7 @@ with (obj_instrument) {
 }
 
 // Add sounds
+calculate_locked_layers()
 for (a = 0; a <= enda; a += 1) {
     if (colamount[a] > 0) {
         for (b = 0; b <= collast[a]; b += 1) {
