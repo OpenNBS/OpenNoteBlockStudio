@@ -100,7 +100,7 @@ if (file_ext = ".nbs") {
 				vel = 100
 				pan = 100
 			}
-            add_block(ca, cb, ins, median(0, key, 87), true, vel, pan)
+            add_block(ca, cb, ins, median(0, key, 87), vel, pan, true)
         }
     }
     if (buffer_is_eof()) { // End?

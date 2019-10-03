@@ -56,5 +56,5 @@ if (collast[xx] = yy) {
         }
     }
 }
-history_set(h_removeblock, xx, yy, ins, key)
+history_set(h_removeblock, xx, yy, ins, key, vel, pan)
 changed = 1

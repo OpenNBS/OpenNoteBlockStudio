@@ -15,6 +15,7 @@ if (playing = 1) {
         }
     }
     marker_prevpos = marker_pos
+    metronome_played = -1
     // PLAY COL
     xx = floor(marker_pos)
     if (xx <= enda) {

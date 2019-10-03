@@ -13,6 +13,9 @@
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 
+#macro h_swaplayer 11
+#macro h_removelayer 10
+#macro h_addlayer 9
 #macro h_select 8
 #macro h_selectpaste 7
 #macro h_selectmove 6

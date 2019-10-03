@@ -1,5 +1,5 @@
 // control_draw()
-var a, b, c, d, e, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, showmenu, rw, rh, totalcols, totalrows, compx
+var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx
 rw = window_width
 rh = window_height
 curs = cr_default
@@ -59,8 +59,11 @@ if (theme = 1) window_background = 13160660
 if (theme = 2) window_background = c_dark
 draw_clear(window_background)
 
+iconcolor = c_black
+if (theme = 2) iconcolor = c_white
+
 // Calculate area
-totalcols = floor((rw - 198) / 32)
+totalcols = floor((rw - 270) / 32)
 if show_piano = 1 {
 	rhval = 270
 }
@@ -74,7 +77,7 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     }
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
-x1 = 192
+x1 = 264
 y1 = 52
 if ((window = 0 || select > 0) && playing = 0) {
     if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
@@ -491,15 +494,30 @@ for (a = 0; a <= totalcols; a += 1) {
     }
 }
 // Marker
+if (playing = 0) metronome_played = -1
 if (playing = 1 || forward<>0) {
     if (playing = 1) marker_pos += (tempo / room_speed)
     if (forward != 0) {
         marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
     }
+	//metronome
+	if (metronome) {
+		var pos = floor(marker_pos)
+		if ((pos mod 4 == 0) && (metronome_played < pos)) {
+			ins = instrument_list[| 4]
+			if (pos mod (4 * timesignature) == 0) {
+				if (ins.loaded) play_sound(ins, 57, 100, 100)
+			} else {
+				if (ins.loaded) play_sound(ins, 45, 100, 100)
+			}
+		metronome_played = pos + 1
+		}
+	}
 	//loop song
 	if (loop = 1 && marker_pos > enda + 1) {
         starta = 0
         marker_pos = starta
+		metronome_played = -1
         sb_val[scrollbarh] = starta
     }
     if (marker_pos > enda + totalcols) {
@@ -624,7 +642,7 @@ draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols
 draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
 draw_theme_color()
 // Scrollbars
-starta = draw_scrollbar(scrollbarh, 192, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+starta = draw_scrollbar(scrollbarh, 264, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 
 // Draw layers
@@ -643,10 +661,13 @@ for (b = 0; b < totalrows; b += 1) {
     }
     m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
     popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
-    
 	draw_set_font(fnt_small)
-    layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
-    if (layername[startb + b] = "") {
+	if (m) {
+		layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
+	} else {
+		draw_text(x1 + 11, y1 + 10, layername[startb + b])
+	}
+	if (layername[startb + b] = "") {
         draw_set_color(c_gray)
 		if(theme = 2) draw_set_color(c_white)
         draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
@@ -660,7 +681,7 @@ for (b = 0; b < totalrows; b += 1) {
         } else {
             a = layervol[startb + b]
         }
-        draw_sprite(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5)
+        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
         popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
         if (c) {
             draw_set_font(fnt_small)
@@ -684,7 +705,7 @@ for (b = 0; b < totalrows; b += 1) {
         } else {
             a = layerstereo[startb + b]
         }
-        draw_sprite(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5)
+        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
         popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
         if (c) {
             draw_set_font(fnt_small)
@@ -721,11 +742,32 @@ for (b = 0; b < totalrows; b += 1) {
             solostr += "|" + string(startb + b) + "|"
         }
     }
+	// Select all
     if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
         playing = 0
         selection_place(0)
         selection_add(0, startb + b, enda, startb + b, 0, 0)
     }
+	// Add layer
+    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, "Add empty layer here", 0, 0)) {
+        playing = 0
+		add_layer(startb + b, false)
+    }
+	// Remove layer
+	if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, "Remove this layer", 0, 0)) {
+        playing = 0
+		remove_layer(startb + b, false)
+	}
+	// Shift layer up
+	if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, "Shift layer up", 0, 0)) {
+	    playing = 0
+		shift_layers(startb + b, startb + b - 1, false)
+	}
+	// Shift layer down
+	if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, "Shift layer down", 0, 0)) {
+	    playing = 0
+		shift_layers(startb + b, startb + b + 1, false)
+	}
 }
 if (window = w_dragvol) {
     dragvol += (mouse_yprev - mouse_y) * 2
@@ -833,7 +875,14 @@ forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
 if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop
+if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop xx += 25
+if metronome {
+	if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
+	else metricon = icons.METRONOME_2
+} else {
+	metricon = icons.METRONOME_INACTIVE
+}
+if(draw_icon(metricon, xx, "Toggle metronome", 0, 0)) metronome = !metronome
 xx += 25 + 4
 if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
@@ -970,7 +1019,7 @@ draw_set_halign(fa_left)
 a = mouse_rectangle(108, 57, 64, 22)
 popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
 
-if (a && window = 0) {
+if (a && window = 0 && window2 = 0) {
     curs = cr_size_ns
     if (mouse_check_button(mb_left)) {
         tempodrag = tempo

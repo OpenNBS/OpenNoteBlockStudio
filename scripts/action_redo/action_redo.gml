@@ -1,5 +1,5 @@
 // action_redo()
-var t, arg0, arg1, arg2, arg3, arg4, arg5;
+var t, arg0, arg1, arg2, arg3, arg4, arg5, arg6;
 if (historypos = 0) return 0
 historypos -= 1
 t = history[historypos, 0]
@@ -9,10 +9,11 @@ arg2 = history[historypos, 3]
 arg3 = history[historypos, 4]
 arg4 = history[historypos, 5]
 arg5 = history[historypos, 6]
+arg6 = history[historypos, 7]
 changed = 1
 
 if (t = h_addblock) {
-    add_block(arg0, arg1, arg2, arg3, arg4, arg5)
+    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 } else if (t = h_removeblock) {
     remove_block(arg0, arg1)
 } else if (t = h_changeblock) {
@@ -32,4 +33,10 @@ if (t = h_addblock) {
 } else if (t = h_select) {
     selection_place(1)
     selection_load_ext(arg0, arg1, arg2)
+} else if (t = h_addlayer) {
+	add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
+} else if (t = h_removelayer) {
+	remove_layer(arg0, true)
+} else if (t = h_swaplayer) {
+	shift_layers(arg0, arg1, true)
 }
