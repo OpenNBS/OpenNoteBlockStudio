@@ -1018,7 +1018,7 @@ draw_set_halign(fa_left)
 a = mouse_rectangle(108, 57, 64, 22)
 popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
 
-if (a && window = 0) {
+if (a && window = 0 && window2 = 0) {
     curs = cr_size_ns
     if (mouse_check_button(mb_left)) {
         tempodrag = tempo
