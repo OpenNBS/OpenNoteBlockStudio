@@ -493,15 +493,30 @@ for (a = 0; a <= totalcols; a += 1) {
     }
 }
 // Marker
+if (playing = 0) metronome_played = -1
 if (playing = 1 || forward<>0) {
     if (playing = 1) marker_pos += (tempo / room_speed)
     if (forward != 0) {
         marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
     }
+	//metronome
+	if (metronome) {
+		var pos = floor(marker_pos)
+		if ((pos mod 4 == 0) && (metronome_played < pos)) {
+			ins = instrument_list[| 4]
+			if (pos mod (4 * timesignature) == 0) {
+				if (ins.loaded) play_sound(ins, 57, 100, 100)
+			} else {
+				if (ins.loaded) play_sound(ins, 45, 100, 100)
+			}
+		metronome_played = pos + 1
+		}
+	}
 	//loop song
 	if (loop = 1 && marker_pos > enda + 1) {
         starta = 0
         marker_pos = starta
+		metronome_played = -1
         sb_val[scrollbarh] = starta
     }
     if (marker_pos > enda + totalcols) {
@@ -859,7 +874,14 @@ forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
 if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop
+if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop xx += 25
+if metronome {
+	if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
+	else metricon = icons.METRONOME_2
+} else {
+	metricon = icons.METRONOME_INACTIVE
+}
+if(draw_icon(metricon, xx, "Toggle metronome", 0, 0)) metronome = !metronome
 xx += 25 + 4
 if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
