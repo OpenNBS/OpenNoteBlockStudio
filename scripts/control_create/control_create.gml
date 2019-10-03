@@ -321,3 +321,6 @@ if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
     update = 3
 }
 log("Startup OK")
+
+// Clipboard Editor
+clipboard = ""
