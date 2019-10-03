@@ -15,24 +15,10 @@ if (theme = 0) {
     draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 392, 1)
 }
 draw_areaheader(x1 + 22, y1 + 48, 396, 330, "Clipboard")
-a = clipboard
-clipboard = draw_textarea(4, x1 + 32, y1 + 23 * 3, 370, 300, string(clipboard), "Edit the clipboard code.") 
+a = string(selection_copied)
+clipboard = draw_textarea(4, x1 + 32, y1 + 23 * 3, 370, 300, string(selection_copied), "Edit the clipboard code.") 
 if (a != clipboard) {
-	selection_copied = string(clipboard)
-/*
-												// TODO: Check if length has changed, and what new length is.
-
-	if (selection_l > selection_arraylength) { // Apply new length
-	    for (a = selection_arraylength + 1; a <= nw; a += 1) {
-	        selection_colfirst[a] = -1
-	        selection_collast[a] = -1
-	        for (b = 0; b <= selection_arrayheight; b += 1) {
-	            selection_exists[a, b] = 0
-	        }
-	    }
-    selection_arraylength = selection_l
-	}
-*/
+	selection_copied = string(clipboard) 
 }
 
 draw_theme_color()

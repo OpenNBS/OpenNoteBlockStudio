@@ -68,7 +68,13 @@ switch (m) {
         if (sel > 15 && sel < 16 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 16])
         if (sel = 16 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 17 + ds_list_size(instrument_list)) selection_compress()
-        if (sel = 18 + ds_list_size(instrument_list)) {
+        if (sel = 19 + ds_list_size(instrument_list)) macro_stereoize()
+		if (sel = 20 + ds_list_size(instrument_list)) macro_glissando_up()
+		if (sel = 21 + ds_list_size(instrument_list)) macro_glissando_down()
+        if (sel = 22 + ds_list_size(instrument_list)) macro_volumelfo()
+        if (sel = 23 + ds_list_size(instrument_list)) macro_fadein()
+        if (sel = 24 + ds_list_size(instrument_list)) macro_fadeout()
+        if (sel = 25 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break
@@ -98,7 +104,13 @@ switch (m) {
         if (sel > 15 && sel < 16 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 16])
         if (sel = 16 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 17 + ds_list_size(instrument_list)) selection_compress()
-        if (sel = 18 + ds_list_size(instrument_list)) {
+        if (sel = 19 + ds_list_size(instrument_list)) macro_stereoize()
+		if (sel = 20 + ds_list_size(instrument_list)) macro_glissando_up()
+		if (sel = 21 + ds_list_size(instrument_list)) macro_glissando_down()
+        if (sel = 22 + ds_list_size(instrument_list)) macro_volumelfo()
+        if (sel = 23 + ds_list_size(instrument_list)) macro_fadein()
+        if (sel = 24 + ds_list_size(instrument_list)) macro_fadeout()
+        if (sel = 25 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break

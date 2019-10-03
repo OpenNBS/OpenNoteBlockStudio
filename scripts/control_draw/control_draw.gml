@@ -359,6 +359,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
+                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Stereoizer|"+ "Gliss Up|"+ "Gliss Down|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
             menu.pastex = selbx
@@ -835,6 +836,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Stereoizer|"+ "Gliss Up|"+ "Gliss Down|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {

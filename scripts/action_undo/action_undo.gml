@@ -42,4 +42,6 @@ if (t = h_addblock) {
 	add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
 } else if (t = h_swaplayer) {
 	shift_layers(arg1, arg0, true)
+} else if (t = h_stereoize) {
+	selection_load(arg0, arg1, arg2, true)
 }

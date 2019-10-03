@@ -23,7 +23,9 @@
         "281a8edd-eb77-4a9f-b687-1a079b26686c",
         "72aa87c6-343b-4b2a-83a5-7e83a02ca30f",
         "f9017613-87e4-4647-acaf-031810c88874",
-        "96e71766-9191-49ee-b54e-c922677c5700"
+        "96e71766-9191-49ee-b54e-c922677c5700",
+        "08bce871-0173-460d-87e7-3d8972a417fd",
+        "76a73bb5-8095-4ed8-bb49-8b7ddb1e48fd"
     ],
     "filterType": "GMScript",
     "folderName": "Selection",

@@ -13,6 +13,7 @@
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 
+#macro h_stereoize 12
 #macro h_swaplayer 11
 #macro h_removelayer 10
 #macro h_addlayer 9
