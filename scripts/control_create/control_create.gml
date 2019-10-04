@@ -328,3 +328,7 @@ log("Startup OK")
 
 // Clipboard Editor
 clipboard = ""
+
+// Macros
+stereo_reverse = 0
+legatotype = 0

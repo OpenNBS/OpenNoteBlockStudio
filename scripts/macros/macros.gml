@@ -57,6 +57,9 @@
 #macro w_preferences 2
 #macro w_greeting 1
 #macro w_clip_editor 19
+#macro w_stereosize 20
+#macro w_arpeggio 32
+#macro w_legato 33
 
 #macro br "\r\n"
 

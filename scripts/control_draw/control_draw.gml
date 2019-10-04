@@ -357,12 +357,12 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
                                         inactive(selected = 0) + "Ctrl+R$Increase key|"+
                                         inactive(selected = 0) + "Ctrl+F$Decrease key|"+
-                                        inactive(selected = 0) + "Ctrl+T$Detune +10|"+
-                                        inactive(selected = 0) + "Ctrl+G$Detune -10|"+
+                                        inactive(selected = 0) + "Ctrl+T$Detune +10 Cents|"+
+                                        inactive(selected = 0) + "Ctrl+G$Detune -10 Cents|"+
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Stereoizer|"+ "Gliss Up|"+ "Gliss Down|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "/|-|"+
+                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Legato|"+ "Stereo|"+ "Chorus|"+ "Arpeggio|"+ "Glissando Up|"+ "Glissando Down|"+ "Tremolo|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Reset Vol/Pan|"+ "/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
             menu.pastex = selbx
@@ -838,12 +838,12 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
                                 inactive(selected = 0) + "Ctrl+R$Increase key|"+
                                 inactive(selected = 0) + "Ctrl+F$Decrease key|"+
-	                            inactive(selected = 0) + "Ctrl+T$Detune +10|"+
-	                            inactive(selected = 0) + "Ctrl+G$Detune -10|"+
+	                            inactive(selected = 0) + "Ctrl+T$Detune +10 Cents|"+
+	                            inactive(selected = 0) + "Ctrl+G$Detune -10 Cents|"+
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Stereoizer|"+ "Gliss Up|"+ "Gliss Down|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Legato|"+ "Stereo|"+ "Chorus|"+ "Arpeggio|"+ "Glissando Up|"+ "Glissando Down|"+ "Tremolo|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Reset Vol/Pan|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {

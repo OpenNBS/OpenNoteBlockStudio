@@ -1,8 +1,8 @@
 {
-    "id": "5ed324c5-b2e5-4d52-9834-18593af37d4c",
+    "id": "9234b951-f543-49cc-a17b-49ae6fe48089",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "macro_stereoize",
+    "name": "draw_window_macro_legato",
     "IsCompatibility": false,
     "IsDnD": false
 }

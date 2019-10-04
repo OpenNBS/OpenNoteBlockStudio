@@ -8,7 +8,7 @@ for (a = 0; a < selection_l; a += 1) {
         for (b = selection_colfirst[a]; b <= selection_collast[a]; b += 1) {
             if (selection_exists[a, b]) {
                 pit = selection_pit[a, b]
-                if (pit + dif > -1 && pit + dif < 88) pit += dif
+                pit += dif
                 selection_pit[a, b] = pit
             }
         }

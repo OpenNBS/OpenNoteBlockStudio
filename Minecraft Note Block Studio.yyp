@@ -143,6 +143,14 @@
             }
         },
         {
+            "Key": "080d2ab2-f7d0-4277-bbe4-db809b7116a7",
+            "Value": {
+                "id": "8c99a435-31b3-432e-a3b4-c5d36f8135de",
+                "resourcePath": "scripts\\draw_window_macro_arpeggio\\draw_window_macro_arpeggio.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "08424a9e-1bc1-41ab-8881-393a1247b7be",
             "Value": {
                 "id": "ad57eeb8-5a2d-4b03-8e75-d00f3b5fb942",
@@ -247,6 +255,14 @@
             }
         },
         {
+            "Key": "0f6ef094-62f0-422b-a0f1-9943174244c0",
+            "Value": {
+                "id": "5d6bb27e-da97-4426-9376-fff5ce148a58",
+                "resourcePath": "scripts\\draw_window_macro_stereo\\draw_window_macro_stereo.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "0fa6fc8e-f603-47e0-9e90-bf02df57e4c7",
             "Value": {
                 "id": "6c879dc1-b7d9-4bb5-b09b-88ee3f9d8530",
@@ -266,7 +282,7 @@
             "Key": "11313390-ea0d-4d1e-8bbd-9870958e217d",
             "Value": {
                 "id": "041a0efb-bb7e-4396-84a9-8353f66f635a",
-                "resourcePath": "scripts\\macro_volumelfo\\macro_volumelfo.yy",
+                "resourcePath": "scripts\\macro_tremolo\\macro_tremolo.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -623,6 +639,14 @@
             }
         },
         {
+            "Key": "2dbfac2c-5d41-4a72-a0e8-d20f8bef3354",
+            "Value": {
+                "id": "5598def7-05f9-4bc6-a0a8-f8b360a24f01",
+                "resourcePath": "scripts\\macro_vibrato\\macro_vibrato.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2e180ca3-a5ef-42c0-8458-7d1cb9d61144",
             "Value": {
                 "id": "d4888744-6ba3-4149-a44c-8c8e790c5f84",
@@ -707,6 +731,14 @@
             "Value": {
                 "id": "9898f176-329d-497b-bb06-5f514c381e45",
                 "resourcePath": "scripts\\new_song\\new_song.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "33dbff70-7508-4564-8f98-be23caaf8181",
+            "Value": {
+                "id": "fc2c601a-1541-4eb3-b7e0-a57e042f706c",
+                "resourcePath": "scripts\\macro_legato_fadeout\\macro_legato_fadeout.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1311,14 +1343,6 @@
             }
         },
         {
-            "Key": "5ed324c5-b2e5-4d52-9834-18593af37d4c",
-            "Value": {
-                "id": "d8519684-6281-4bb7-a764-bc0fec1f1df9",
-                "resourcePath": "scripts\\macro_stereoize\\macro_stereoize.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "5f21c065-8f69-4c49-aa73-f07f68bacd76",
             "Value": {
                 "id": "dd903eb5-a08d-4705-b5ed-b447815e25d8",
@@ -1412,6 +1436,14 @@
                 "id": "6c265e3f-6068-4298-ab24-3cf27fc2f3df",
                 "resourcePath": "views\\65346df6-252a-440f-9836-2e3227a3259b.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "65cb288f-2fc4-4109-85bd-5c1e099e9d38",
+            "Value": {
+                "id": "57ae1e62-9f33-489c-9747-7daf30262a74",
+                "resourcePath": "scripts\\macro_reset\\macro_reset.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -2036,6 +2068,14 @@
                 "id": "dc3bb9e5-0340-483b-abd9-12a1b538269a",
                 "resourcePath": "sprites\\spr_block\\spr_block.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "9234b951-f543-49cc-a17b-49ae6fe48089",
+            "Value": {
+                "id": "1725231a-b9ba-41c5-948a-edb8d952f3c5",
+                "resourcePath": "scripts\\draw_window_macro_legato\\draw_window_macro_legato.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -2687,6 +2727,14 @@
             }
         },
         {
+            "Key": "bee4a905-3a02-44ca-9489-075d42694e36",
+            "Value": {
+                "id": "d6be6923-a367-4380-8009-2164000c1933",
+                "resourcePath": "scripts\\macro_portamento\\macro_portamento.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "c032c6f1-0ef4-493c-82d0-cbc09ed91a90",
             "Value": {
                 "id": "6df93347-05ee-4bf7-8456-49f33a392b4d",
@@ -2903,6 +2951,14 @@
             }
         },
         {
+            "Key": "cfdacf74-3f86-4fc4-9fea-cfb16efb8dc1",
+            "Value": {
+                "id": "c00d80de-2ac8-4ef1-b2d8-a0c6962a68f6",
+                "resourcePath": "scripts\\macro_chorus\\macro_chorus.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d1000c3b-7005-4ddc-a9ca-5ade0033de00",
             "Value": {
                 "id": "f36a92f5-246e-4495-a287-520e261df3b3",
@@ -3007,6 +3063,22 @@
             }
         },
         {
+            "Key": "d7c56812-4f31-496d-bc68-24bb28273c54",
+            "Value": {
+                "id": "3bc2928f-fa72-496f-9336-1381f4785e39",
+                "resourcePath": "scripts\\macro_legato_fadein\\macro_legato_fadein.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "d7fa9b4a-fe17-445f-94c8-b256eef49385",
+            "Value": {
+                "id": "d380f3dc-5e47-4b48-bbee-9d8ebf74f074",
+                "resourcePath": "scripts\\macro_legato\\macro_legato.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d8651506-5796-430e-883f-f79e489fc92c",
             "Value": {
                 "id": "8ab9f6a1-e175-4832-8474-625ba1845f43",
@@ -3099,6 +3171,14 @@
             "Value": {
                 "id": "57fa264f-ac1f-403e-be56-e4844cb1789b",
                 "resourcePath": "scripts\\mp3_export\\mp3_export.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "ddfe1453-7047-47cf-9a91-cb4c5888e373",
+            "Value": {
+                "id": "fdec8190-0a9c-48d3-b836-c9bfd13e1b1f",
+                "resourcePath": "scripts\\macro_replacekey\\macro_replacekey.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -3731,12 +3811,22 @@
         "11d66464-127c-4513-b0f4-58159c8010b3",
         "4ab6f19b-c67c-4a89-8297-28892413fa3b",
         "71481bb2-aa29-4aa5-8808-2d6b299f31e0",
-        "5ed324c5-b2e5-4d52-9834-18593af37d4c",
-        "c362477c-bbbc-4a71-9abb-d2c833178d27",
+        "9234b951-f543-49cc-a17b-49ae6fe48089",
+        "0f6ef094-62f0-422b-a0f1-9943174244c0",
+        "cfdacf74-3f86-4fc4-9fea-cfb16efb8dc1",
+        "080d2ab2-f7d0-4277-bbe4-db809b7116a7",
         "b01340ea-8951-43d9-8279-7067451443fd",
+        "c362477c-bbbc-4a71-9abb-d2c833178d27",
         "11313390-ea0d-4d1e-8bbd-9870958e217d",
+        "2dbfac2c-5d41-4a72-a0e8-d20f8bef3354",
+        "bee4a905-3a02-44ca-9489-075d42694e36",
         "f1a5ff07-5174-4dcc-b9cc-e88d3ce75b79",
         "9db27b06-0d27-4bfb-83b8-1ae3f89572ce",
+        "d7fa9b4a-fe17-445f-94c8-b256eef49385",
+        "d7c56812-4f31-496d-bc68-24bb28273c54",
+        "33dbff70-7508-4564-8f98-be23caaf8181",
+        "ddfe1453-7047-47cf-9a91-cb4c5888e373",
+        "65cb288f-2fc4-4109-85bd-5c1e099e9d38",
         "ece2d180-8579-4d29-961f-4246fbe4974d",
         "adf62f95-47ea-4b3d-bcba-dbaae6ce6bca",
         "86cc17eb-5dec-4f72-982d-98c7a7d7e859",

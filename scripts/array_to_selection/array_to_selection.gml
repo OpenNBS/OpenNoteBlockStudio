@@ -5,5 +5,5 @@ var str = ""
 for (var i = 0; i < total_vals; i++;) {
 	str += string(string(array[i]) + "|")
 }
-show_debug_message(str)
+// show_debug_message(str)
 return str

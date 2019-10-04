@@ -10,8 +10,7 @@ for(var i = 1; i < string_length(main_str)+1; i++)
  
 	if (next_char != "|") {
        sub_str = sub_str + next_char
-   }
-   else {
+   } else {
        //ADD TO ARRAY
        if(sub_str!="") array[at++] = sub_str
        sub_str = ""
