@@ -57,6 +57,7 @@ for (a = 0; a <= enda; a += 1) {
                 buffer_write_byte(song_key[a, b])
 				buffer_write_byte(song_vel[a, b])
 				buffer_write_byte(song_pan[a, b])
+				buffer_write_byte(song_pit[a, b])
             }
         }
         buffer_write_short(0)

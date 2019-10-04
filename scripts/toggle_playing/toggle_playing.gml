@@ -1,5 +1,5 @@
 // toggle_playing(cols)
-var xx, a, b, c, d;
+var xx, a, b, c, d, e;
 playing=!playing
 if (playing = 1) {
     if (marker_pos = enda + argument0) marker_pos = 0
@@ -25,9 +25,11 @@ if (playing = 1) {
                     a = 1
                     c = 100
 					d = 100
+					e = 0
 					if (b < endb2) {
-						c = layervol[b]
-						d = layerstereo[b]
+						c = (layervol[b] / 100 ) * song_vel[xx, b]
+						d = (layerstereo[b] / 100 ) * song_pan[xx, b]
+						e = song_pit[xx, b]
 					}
                     if (solostr != "") {
                         if (string_count("|" + string(b) + "|", solostr) = 0) {
@@ -41,7 +43,7 @@ if (playing = 1) {
                         }
                     }
                     if (a) {
-                        if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d)
+                        if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d, e)
                         if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
                         song_played[xx, b] = current_time
                     }

@@ -1,5 +1,5 @@
 // remove_block_manual(x, y)
-var xx, yy, ins, key, a, b, vel, pan;
+var xx, yy, ins, key, a, b, vel, pan, pit;
 xx = argument0
 yy = argument1
 
@@ -9,6 +9,7 @@ ins = song_ins[xx, yy]
 key = song_key[xx, yy]
 vel = song_vel[xx, yy]
 pan = song_pan[xx, yy]
+pit = song_pit[xx, yy]
 ins.num_blocks--
 if (song_key[xx, yy] < 33 || song_key[xx, yy] > 57) block_outside -= 1
 if (ins.user) block_custom -= 1
@@ -16,6 +17,7 @@ song_ins[xx, yy] = 0
 song_key[xx, yy] = 0
 song_vel[xx, yy] = 0
 song_pan[xx, yy] = 0
+song_pit[xx, yy] = 0
 song_played[xx, yy] = 0
 song_added[xx, yy] = 0
 colamount[xx] -= 1
@@ -56,5 +58,5 @@ if (collast[xx] = yy) {
         }
     }
 }
-history_set(h_removeblock, xx, yy, ins, key, vel, pan)
+history_set(h_removeblock, xx, yy, ins, key, vel, pan, pit)
 changed = 1

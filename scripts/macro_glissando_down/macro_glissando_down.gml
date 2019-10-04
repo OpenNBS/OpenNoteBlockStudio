@@ -9,16 +9,18 @@ decr = 0
 show_debug_message(string_count("-1", str))
 //for (var i = 0; i < total_vals; i++;) {show_debug_message(data[i])}
 while (val < total_vals) {
-	decr ++
-	val = val + 3
+	val += 3
 	data[val] -= decr
-	val = val + 3
+	val += 4
 	while data[val] != -1 {
-		val = val + 2
+		val += 2
 		data[val] -= decr
-		val = val + 3
+		val += 4
 	}
 	val ++
+	if decr > 0 {
+	decr ++
+	}
 }
 str = array_to_selection(data, total_vals)
 selection_load(selection_x,selection_y,str,true)

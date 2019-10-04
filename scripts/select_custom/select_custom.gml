@@ -1,6 +1,6 @@
 // select_custom()
 // Selects all the note blocks with custom instruments.
-var a, b, str, ins, key, vel, pan;
+var a, b, str, ins, key, vel, pan, pit;
 str = selection_code
 if (selected > 0) selection_place(1)
 if (enda > selection_arraylength) { // New length
@@ -29,12 +29,14 @@ for (a = 0; a <= enda; a += 1) {
                 key = song_key[a, b]
                 vel = song_vel[a, b]
                 pan = song_pan[a, b]
+                pit = song_pit[a, b]
                 if (ins.user) {
                     selection_exists[a, b] = 1
                     selection_ins[a, b] = ins
                     selection_key[a, b] = key
                     selection_vel[a, b] = vel
                     selection_pan[a, b] = pan
+                    selection_pit[a, b] = pit
                     selection_played[a, b] = 0
                     if (selection_colfirst[a] = -1) selection_colfirst[a] = b
                     selection_collast[a] = max(selection_collast[a], b)

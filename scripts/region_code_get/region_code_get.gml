@@ -23,6 +23,7 @@ for (a = x1; a < x2; a += 1) {
                         str += string(song_key[a, b]) + "|"
                         str += string(song_vel[a, b]) + "|"
                         str += string(song_pan[a, b]) + "|"
+                        str += string(song_pit[a, b]) + "|"
                         am += 1
                     }
                 }

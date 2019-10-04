@@ -1,6 +1,6 @@
 // selection_trim()
 // Removes unneccesary space from selection.
-var x1, y1, x2, y2, a, b, temp_colfirst, temp_collast, temp_exists, temp_ins, temp_vel, temp_pan, temp_key, temp_played;
+var x1, y1, x2, y2, a, b, temp_colfirst, temp_collast, temp_exists, temp_ins, temp_vel, temp_pan, temp_key, temp_pit, temp_played;
 for (x1 = 0; x1 < selection_l; x1 += 1) {
     if (selection_colfirst[x1] > -1) break
 }
@@ -27,12 +27,14 @@ if (x1 > 0 || y1 > 0) {
                     temp_key[a - x1, b - y1] = selection_key[a, b]
                     temp_vel[a - x1, b - y1] = selection_vel[a, b]
                     temp_pan[a - x1, b - y1] = selection_pan[a, b]
+                    temp_pit[a - x1, b - y1] = selection_pit[a, b]
                     temp_played[a - x1, b - y1] = selection_played[a, b]
                     selection_exists[a, b] = 0
                     selection_ins[a, b] = 0
                     selection_key[a, b] = 0
                     selection_vel[a, b] = 0
                     selection_pan[a, b] = 0
+                    selection_pit[a, b] = 0
                     selection_played[a, b] = 0
                 } else {
                     temp_exists[a - x1, b - y1] = 0
@@ -53,6 +55,7 @@ if (x1 > 0 || y1 > 0) {
                     selection_key[a, b] = temp_key[a, b]
                     selection_vel[a, b] = temp_vel[a, b]
                     selection_pan[a, b] = temp_pan[a, b]
+                    selection_pit[a, b] = temp_pit[a, b]
                     selection_played[a, b] = temp_played[a, b]
                 }
             }

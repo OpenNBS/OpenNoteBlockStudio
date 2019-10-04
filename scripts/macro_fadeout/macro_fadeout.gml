@@ -10,13 +10,13 @@ inc = decr
 show_debug_message(string_count("-1", str))
 //for (var i = 0; i < total_vals; i++;) {show_debug_message(data[i])}
 while (val < total_vals) {
-	val = val + 4
+	val += 4
 	data[val] = 100-decr
-	val = val + 2
+	val += 3
 	while data[val] != -1 {
-		val = val + 3
+		val += 3
 		data[val] = 100-decr
-		val = val + 2
+		val += 3
 	}
 	decr = decr + inc
 	val ++

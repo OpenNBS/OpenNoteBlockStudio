@@ -1,4 +1,4 @@
-// change_block(x, y, ins, key, vel, pan)
+// change_block(x, y, ins, key)
 var xx, yy, ins, key;
 xx = argument0
 yy = argument1

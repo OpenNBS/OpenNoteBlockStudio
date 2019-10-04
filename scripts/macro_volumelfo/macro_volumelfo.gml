@@ -9,13 +9,13 @@ decr = 100/string_count("-1", str)
 for (var i = 0; i < total_vals; i++;) {show_debug_message(data[i])}
 while (val < total_vals) {
 	// First column 100
-	val = val + 4
+	val += 4
 	data[val] = 100
 	val ++
 	if data[val] = 0 {
 		data[val] = 100 // Center Panning if Stereoized
 	}
-	val ++
+	val += 2
 	while data[val] != -1 {
 		val = val + 3
 		data[val] = 100
@@ -23,34 +23,37 @@ while (val < total_vals) {
 		if data[val] = 0 {
 			data[val] = 100 // Center Panning if Stereoized
 		}
-		val ++
+		val += 2
 	}
 	// Second column 50
-	val = val + 5
+	val += 5
 	data[val] = 50
-	val = val + 2
+	val += 3
+	if val >= total_vals break
 	while data[val] != -1 {
 		val = val + 3
 		data[val] = 50
-		val = val + 2
+		val += 3
 	}
 	// Third column 25
-	val = val + 5
+	val += 5
 	data[val] = 25
-	val = val + 2
+	val += 3
+	if val >= total_vals break
 	while data[val] != -1 {
-		val = val + 3
+		val += 3
 		data[val] = 25
-		val = val + 2
+		val += 3
 	}
 	// Fourth column 10
-	val = val + 5
+	val += 5
 	data[val] = 10
-	val = val + 2
+	val += 3
+	if val >= total_vals break
 	while data[val] != -1 {
-		val = val + 3
+		val += 3
 		data[val] = 10
-		val = val + 2
+		val += 3
 	}
 	val ++
 }

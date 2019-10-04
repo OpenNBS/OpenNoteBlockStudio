@@ -154,22 +154,22 @@ if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && insindex > 0) {
         insindex--
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 100 ,100)
+        play_sound(instrument, selected_key, 100 ,100, 0)
     }
     if (mouse_wheel_up() && insindex < ds_list_size(instrument_list) - 1) {
         insindex++
         instrument = instrument_list[| insindex]
-        play_sound(instrument, selected_key, 100 ,100)
+        play_sound(instrument, selected_key, 100 ,100, 0)
     }
 }
 if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0)) {
     if (mouse_wheel_down() && selected_key > 0) {
         selected_key -= 1
-        play_sound(instrument, selected_key, 100 ,100)
+        play_sound(instrument, selected_key, 100 ,100, 0)
     }
     if (mouse_wheel_up() && selected_key < 87) {
         selected_key += 1
-        play_sound(instrument, selected_key, 100 ,100)
+        play_sound(instrument, selected_key, 100 ,100, 0)
     }
 }
 
@@ -237,8 +237,9 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                 c = 100
 				d = 100
                 if (b < endb2) {
-					c = (layervol[b] / 100 * song_vel[xx, b])
-					d = (layerstereo[b] / 100 * song_pan[xx, b])
+					c = (layervol[b] / 100) * song_vel[xx, b]
+					d = (layerstereo[b] / 100) * song_pan[xx, b]
+					e = song_pit[xx, b]
 				}
                 if (solostr != "") {
                     if (string_count("|" + string(b) + "|", solostr) = 0) {
@@ -255,7 +256,7 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                     if (current_time - song_added[xx, b] < 1000) a = 0
                 }
                 if (a) {
-                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d)
+                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d, e)
                     if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
                     song_played[xx, b] = current_time
                 }
@@ -309,7 +310,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                 if (exist = 1) {
                     change_block_manual(selbx, selby, instrument, selected_key)
                 } else {
-                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100)
+                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100, 0)
                     draw_set_halign(fa_center)
                     draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 0.5, 0)    
 					draw_theme_color()
@@ -356,6 +357,8 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
                                         inactive(selected = 0) + "Ctrl+R$Increase key|"+
                                         inactive(selected = 0) + "Ctrl+F$Decrease key|"+
+                                        inactive(selected = 0) + "Ctrl+T$Detune +10|"+
+                                        inactive(selected = 0) + "Ctrl+G$Detune -10|"+
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -389,6 +392,8 @@ if (window = 0 && text_focus = -1) {
             if (keyboard_check_pressed(ord("D"))) selection_changekey(-12)
             if (keyboard_check_pressed(ord("R"))) selection_changekey(1)
             if (keyboard_check_pressed(ord("F"))) selection_changekey(-1)
+            if (keyboard_check_pressed(ord("T"))) selection_changepit(10)
+            if (keyboard_check_pressed(ord("G"))) selection_changepit(-10)
         }
         if (keyboard_check_pressed(vk_delete) && selected > 0) selection_delete(0)
         if (sb_sel = 0) {
@@ -427,7 +432,7 @@ if (window = 0 && text_focus = -1) {
 		   for (a = 1; a <= 10; a++) {
              if (keyboard_check_pressed(ord(string(a % 10)))) {
                 instrument = instrument_list[| a - 1]
-                play_sound(instrument, selected_key, 100 ,100)
+                play_sound(instrument, selected_key, 100 ,100, 0)
              }
            }
 		}else{
@@ -435,7 +440,7 @@ if (window = 0 && text_focus = -1) {
 		  for (a = 1; a <= 6; a++) {
 			if (keyboard_check_pressed(ord(string(a % 10)))) {
 				instrument = instrument_list[| a + 9]
-				play_sound(instrument, selected_key, 100 ,100)
+				play_sound(instrument, selected_key, 100 ,100, 0)
 			}
 		  }
 	   }
@@ -507,9 +512,9 @@ if (playing = 1 || forward<>0) {
 		if ((pos mod 4 == 0) && (metronome_played < pos)) {
 			ins = instrument_list[| 4]
 			if (pos mod (4 * timesignature) == 0) {
-				if (ins.loaded) play_sound(ins, 57, 100, 100)
+				if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
 			} else {
-				if (ins.loaded) play_sound(ins, 45, 100, 100)
+				if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
 			}
 		metronome_played = pos + 1
 		}
@@ -833,6 +838,8 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
                                 inactive(selected = 0) + "Ctrl+R$Increase key|"+
                                 inactive(selected = 0) + "Ctrl+F$Decrease key|"+
+	                            inactive(selected = 0) + "Ctrl+T$Detune +10|"+
+	                            inactive(selected = 0) + "Ctrl+G$Detune -10|"+
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -890,7 +897,7 @@ if (playing = 0) record = 0
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {
     var ins = instrument_list[| a];
-    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100) instrument = ins} xx += 25
+    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
 }
 xx += 4 draw_separator(xx, 26) xx += 4
 while (1) {

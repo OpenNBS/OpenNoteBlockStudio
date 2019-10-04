@@ -1,11 +1,12 @@
 // add_block_select(x, y, ins, key, vel, pan)
-var a, b, c, xx, yy, ins, key, vel, pan;
+var a, b, c, xx, yy, ins, key, vel, pan, pit;
 xx = argument0
 yy = argument1
 ins = argument2
 key = median(0, argument3, 87)
 vel = argument4
 pan = argument5
+pit = argument6
 
 // Initialize cells
 if (xx >= arraylength) {
@@ -35,6 +36,7 @@ song_ins[xx, yy] = ins
 song_key[xx, yy] = key
 song_vel[xx, yy] = vel
 song_pan[xx, yy] = pan
+song_pit[xx, yy] = pit
 song_played[xx, yy] = 0
 song_added[xx, yy] = 0
 colamount[xx] += 1

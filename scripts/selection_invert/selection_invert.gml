@@ -1,6 +1,6 @@
 // invert_selection()
 // Inverts the selection.
-var a, b, ins, key, d, x1, y1, x2, y2, temp_exists, xx, yy, str, vel, pan;
+var a, b, ins, key, d, x1, y1, x2, y2, temp_exists, xx, yy, str, vel, pan, pit;
 if (selected = 0 && totalblocks = 0) return 0
 if (selected > 0 && totalblocks = 0) {
     selection_place(0)
@@ -51,6 +51,7 @@ for (a = 0; a <= enda; a += 1) {
                 key = song_key[a, b]
                 vel = song_vel[a, b]
                 pan = song_pan[a, b]
+                pit = song_pit[a, b]
                 d = 0
                 if (a >= x1 && b >= y1 && a < x2 && b < y2) {
                     d = temp_exists[a - x1, b - y1]
@@ -61,6 +62,7 @@ for (a = 0; a <= enda; a += 1) {
                     selection_key[a, b] = key
                     selection_vel[a, b] = vel
                     selection_pan[a, b] = pan
+                    selection_pit[a, b] = pit
                     selection_played[a, b] = 0
                     if (selection_colfirst[a] = -1) selection_colfirst[a] = b
                     selection_collast[a] = max(selection_collast[a], b)

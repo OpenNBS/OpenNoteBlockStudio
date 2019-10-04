@@ -11,12 +11,12 @@ for (d = 0; d < midi_devices; d += 1) {
                 ins = mididevice_instrument[d]
 				vel = midi_input_key_press_velocity(d, k)
                 if (ins < 0) ins = instrument
-                if (playing = 0) play_sound(ins, key, vel ,100)
+                if (playing = 0) play_sound(ins, key, vel ,100, 0)
                 if (select_lastpressed) selected_key = key
                 if (playing = 0.25) toggle_playing(totalcols)
                 if (playing && record) {
                     b = 0
-                    while (!add_block_manual(ceil(marker_pos), b, ins, key, vel, 100)) b += 1
+                    while (!add_block_manual(ceil(marker_pos), b, ins, key, vel, 100, 0)) b += 1
                     song_played[round(marker_pos), b] = current_time
                 }
                 key_midipress[key] = 1

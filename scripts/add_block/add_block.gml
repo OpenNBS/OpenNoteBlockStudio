@@ -1,13 +1,14 @@
 // add_block(x, y, ins, key, vel, pan, [insnum])
-var a, b, c, xx, yy, ins, key, vel, pan, insnum;
+var a, b, c, xx, yy, ins, key, vel, pan, pit, insnum;
 xx = argument[0]
 yy = argument[1]
 ins = argument[2]
 key = median(0, argument[3], 87)
 vel = argument[4]
 pan = argument[5]
-if (argument_count > 6) {
-    insnum = argument[6]
+pit = argument[6]
+if (argument_count > 7) {
+    insnum = argument[7]
 }
 else 
 	insnum = false
@@ -40,6 +41,7 @@ song_ins[xx, yy] = ins
 song_key[xx, yy] = key
 song_vel[xx, yy] = vel
 song_pan[xx, yy] = pan
+song_pit[xx, yy] = pit
 song_played[xx, yy] = 0
 song_added[xx, yy] = 0
 colamount[xx] += 1

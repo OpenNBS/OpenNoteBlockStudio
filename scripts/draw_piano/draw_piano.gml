@@ -30,7 +30,7 @@ for (a = 0; a < k; a += 1) {
                 key_click[c2] = (mouse_check_button(mb_left))
                 if (t = 0 && key_click[c2]) {
                     selectedkey = c2
-                    play_sound(instrument, c2, 100 ,100)
+                    play_sound(instrument, c2, 100 ,100, 0)
                 }
                 if (a = k - 1) d = 1
                 if (a = 0) d = 0
@@ -47,7 +47,7 @@ for (a = 0; a < k; a += 1) {
             key_click[c1] = mouse_check_button(mb_left)
             if (t = 0 && key_click[c1]) {
                 selectedkey = c1
-                play_sound(instrument, c1, 100 ,100)
+                play_sound(instrument, c1, 100 ,100, 0)
             }
         } else {
             key_click[c1] = 0
@@ -110,7 +110,7 @@ for (a = 0; a < k; a += 1) {
                 key_click[c1] = mouse_check_button(mb_left)
                 if (t = 0 && key_click[c1]) {
                     selectedkey = c1
-                    play_sound(instrument, c1, 100 ,100)
+                    play_sound(instrument, c1, 100 ,100, 0)
                 }
                 if (a = k - 1) d = 1
                 if (a = 0) d = 0
@@ -175,11 +175,11 @@ for (a = 0 ;a < 87; a += 1) {
     if (piano_key[a] > 0) {
         if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
             if (select_lastpressed) selected_key = a
-            if (playing = 0) play_sound(instrument, a, 100 ,100)
+            if (playing = 0) play_sound(instrument, a, 100 ,100, 0)
             if (playing = 0.25) toggle_playing(totalcols)
             if (playing && record) {
                 b = 0
-                while (!add_block_manual(ceil(marker_pos), b, instrument, a, 100, 100)) b += 1
+                while (!add_block_manual(ceil(marker_pos), b, instrument, a, 100, 100, 0)) b += 1
                 song_played[round(marker_pos), b] = current_time
             }
         }

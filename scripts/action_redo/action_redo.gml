@@ -1,5 +1,5 @@
 // action_redo()
-var t, arg0, arg1, arg2, arg3, arg4, arg5, arg6;
+var t, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7;
 if (historypos = 0) return 0
 historypos -= 1
 t = history[historypos, 0]
@@ -10,10 +10,11 @@ arg3 = history[historypos, 4]
 arg4 = history[historypos, 5]
 arg5 = history[historypos, 6]
 arg6 = history[historypos, 7]
+arg7 = history[historypos, 8]
 changed = 1
 
 if (t = h_addblock) {
-    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 } else if (t = h_removeblock) {
     remove_block(arg0, arg1)
 } else if (t = h_changeblock) {

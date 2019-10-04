@@ -96,11 +96,13 @@ if (file_ext = ".nbs") {
 			if song_nbs_version>=4 {
 				var vel = buffer_read_byte();
 				var pan = buffer_read_byte();
+				var pit = buffer_read_byte_signed();
 			} else {
 				vel = 100
 				pan = 100
+				pit = 0
 			}
-            add_block(ca, cb, ins, median(0, key, 87), vel, pan, true)
+            add_block(ca, cb, ins, median(0, key, 87), vel, pan, pit, true)
         }
     }
     if (buffer_is_eof()) { // End?

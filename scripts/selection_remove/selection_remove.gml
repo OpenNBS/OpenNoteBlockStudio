@@ -1,6 +1,6 @@
 // selection_remove(x1, y1, x2, y2, all, undo)
 // Removes the blocks within the given area from the selection.
-var x1, y1, x2, y2, key, ins, a, b, c, sa, sb, vel, pan;
+var x1, y1, x2, y2, key, ins, a, b, c, sa, sb, vel, pan, pit;
 if (!argument4) {
     x1 = min(argument0, argument2)
     y1 = min(argument1, argument3)
@@ -37,14 +37,16 @@ if (ac = selected) {
                     key = selection_key[a, b]
                     vel = selection_vel[a, b]
                     pan = selection_pan[a, b]
+                    pit = selection_pit[a, b]
                     sa = selection_x + a
                     sb = selection_y + b
-                    add_block_select(sa, sb, ins, key, vel, pan)
+                    add_block_select(sa, sb, ins, key, vel, pan, pit)
                     selection_exists[a, b] = 0
                     selection_ins[a, b] = 0
                     selection_key[a, b] = 0
                     selection_vel[a, b] = 0
                     selection_pan[a, b] = 0
+                    selection_pit[a, b] = 0
                     selection_played[a, b] = 0
                 }
             }
@@ -71,12 +73,14 @@ if (ac = selected) {
                         key = selection_key[sa, sb]
                         vel = selection_vel[sa, sb]
                         pan = selection_pan[sa, sb]
-                        add_block_select(a, b, ins, key, vel, pan)
+                        pit = selection_pit[sa, sb]
+                        add_block_select(a, b, ins, key, vel, pan, pit)
                         selection_exists[sa, sb] = 0
                         selection_ins[sa, sb] = 0
                         selection_key[sa, sb] = 0
                         selection_vel[sa, sb] = 0
                         selection_pan[sa, sb] = 0
+                        selection_pit[sa, sb] = 0
                         selection_played[sa, sb] = 0
                         selected -= 1
                         if (selection_colfirst[sa] = sb) {

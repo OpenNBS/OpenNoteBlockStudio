@@ -17,6 +17,7 @@ for (a = 0; a < selection_l; a += 1) {
                 str += string(selection_key[a, b]) + "|"
                 str += string(selection_vel[a, b]) + "|"
                 str += string(selection_pan[a, b]) + "|"
+                str += string(selection_pit[a, b]) + "|"
             }
             cb += 1
             if (b = selection_h - 1) {
