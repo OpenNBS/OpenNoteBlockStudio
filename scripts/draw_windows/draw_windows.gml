@@ -22,5 +22,7 @@ switch (window mod w_menu) {
     case w_clip_editor: draw_window_clip_editor() break
     case w_stereosize: draw_window_macro_stereo() break
     case w_arpeggio: draw_window_macro_arpeggio() break
-    case w_legato: draw_window_macro_legato() break
+    case w_tremolo: draw_window_macro_tremolo() break
+    case w_stagger: draw_window_macro_stagger() break
+    case w_portamento: draw_window_macro_portamento() break
 }

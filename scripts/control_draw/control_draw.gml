@@ -362,7 +362,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Legato|"+ "Stereo|"+ "Chorus|"+ "Arpeggio|"+ "Glissando Up|"+ "Glissando Down|"+ "Tremolo|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Stagger|"+ "Chorus|"+ "Glissando Up|"+ "Glissando Down|"+ "Volume LFO|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
             menu.pastex = selbx
@@ -445,7 +445,10 @@ if (window = 0 && text_focus = -1) {
 		  }
 	   }
 	}
-	if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {playing = 0 window = w_clip_editor}
+	if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
+		playing = 0 
+		window = w_clip_editor
+		}
 }
 // Selecting note blocks
 if (select > 0) {
@@ -806,7 +809,7 @@ if (draw_tab("File")) {
                              icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
                              icon(icons.SAVE)+"Ctrl+S$Save song|"+
                              icon(icons.SAVE_AS)+"Save song as a new file...|-|"+
-                             "Import from MIDI...|Import from Schematic...|-|"+
+                             "Import Pattern...|"+"Export Pattern...|"+"Import from MIDI...|Import from Schematic...|-|"+
                              inactive(totalblocks = 0) + "Export as MP3...|"+
                              inactive(totalblocks = 0) + "Export as Schematic...|"+
 							 inactive(totalblocks = 0) + "Export as Data Pack...|-|" + 
@@ -843,7 +846,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Legato|"+ "Stereo|"+ "Chorus|"+ "Arpeggio|"+ "Glissando Up|"+ "Glissando Down|"+ "Tremolo|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Stagger|"+ "Chorus|"+ "Glissando Up|"+ "Glissando Down|"+ "Volume LFO|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {

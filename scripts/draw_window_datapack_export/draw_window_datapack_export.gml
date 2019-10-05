@@ -79,7 +79,7 @@ if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out of ran
 //Radius
 if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
 if(dat_enableradius) { 
-	dat_radius = median(16, draw_dragvalue(5, x1 + 490, y1 + 283, dat_radius, 2),100000) 
+	dat_radius = median(16, draw_dragvalue(6, x1 + 490, y1 + 283, dat_radius, 2),100000) 
 	dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
 }
 else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 283, dat_radius)
@@ -90,7 +90,7 @@ draw_theme_color()
 //Looping
 if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
 if(dat_enablelooping) { 
-	dat_loopstart = median(0, draw_dragvalue(6, x1 + 490, y1 + 333, dat_loopstart, 0.5), obj_controller.enda)
+	dat_loopstart = median(0, draw_dragvalue(7, x1 + 490, y1 + 333, dat_loopstart, 0.5), obj_controller.enda)
 }
 else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 333, dat_loopstart)
 draw_text(x1 + 380, y1 + 333, "Loop start:")

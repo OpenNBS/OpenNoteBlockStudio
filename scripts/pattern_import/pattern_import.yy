@@ -1,8 +1,8 @@
 {
-    "id": "d7fa9b4a-fe17-445f-94c8-b256eef49385",
+    "id": "495cb438-b385-47c7-b749-2d5f1721a3aa",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "macro_tremolo",
+    "name": "pattern_import",
     "IsCompatibility": false,
     "IsDnD": false
 }
