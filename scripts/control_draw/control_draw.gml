@@ -190,9 +190,14 @@ for (b = 0; b <= totalrows; b += 1) {
     }
 }
 for (a = 0; a < totalcols; a += 1) {
-    draw_set_alpha(0.1)
-    if (starta + a) / timesignature = floor((starta + a) / timesignature) draw_set_alpha(0.25)
-    draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+	if ((starta + a) mod (timesignature * 4) == 0) {
+		draw_set_alpha(0.3)
+		draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
+	} else {
+	    draw_set_alpha(0.1)
+		if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
+		draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+	}
     for (b = 0; b < totalrows; b += 1) {
         if (starta + a <= enda) {
             if (startb + b <= endb) {
@@ -492,7 +497,7 @@ while (xx < totalcols * 32 + 16) {
 }
 
 for (a = 0; a <= totalcols; a += 1) {
-    b = (starta + a) / timesignature = floor((starta + a) / timesignature)
+    b = ((starta + a) mod 4 == 0)
     draw_set_alpha(0.6)
     draw_line(x1 + 2 + 32 * a, y1 + 33, x1 + 2 + 32 * a, y1 + 30 - 3 * b)
     draw_set_alpha(1)
