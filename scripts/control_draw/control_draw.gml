@@ -1028,6 +1028,16 @@ draw_set_font(fnt_small)
 draw_text(93, 69, "/ " + time_str(enda / tempo))
 draw_set_font(fnt_main)
 
+// Bars-beats-sixteenths
+draw_sprite(spr_tempobox, 0, 184, 57)
+draw_set_halign(fa_right)
+draw_text(215, 60, ".")
+draw_text(230, 60, ".")
+draw_text(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
+draw_text(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
+draw_text(240, 60, floor(marker_pos mod 4) + 1)
+popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
+
 // Tempo
 draw_sprite(spr_tempobox, 0, 108, 57)
 draw_set_halign(fa_center)
