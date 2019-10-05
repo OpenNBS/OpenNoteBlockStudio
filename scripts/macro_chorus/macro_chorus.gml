@@ -1,25 +1,27 @@
 // macro_chorus()
-message("Not Implemented Yet", "Error")
-/* var str, total_vals, val, key
+var str, total_vals, val;
 str = selection_code
-if (selected = 0) return 0
 arr_data = selection_to_array(str)
+window = 0
 total_vals = string_count("|", str)
 val = 0
-show_debug_message(string_count("-1", str))
-//for (var i = 0; i < total_vals; i++;) {show_debug_message(arr_data[i])}
 while (val < total_vals) {
-	val += 3
-	key = arr_data[val]
-	val += 4
-	while arr_data[val] != -1 {
-		val += 2
-		arr_data[val] = key
-		val += 4
-	}
+	val += 5
+	arr_data[val] = 140
 	val ++
+	arr_data[val] += 5
+	val ++
+	if arr_data[val] = -1 {
+		message("There must be exactly two layers worth of note blocks in every applicable tick!", "Error")
+		return 1
+	}
+	val += 4
+	arr_data[val] = 60
+	val++
+	arr_data[val] += -5
+	val += 2
 }
 str = array_to_selection(arr_data, total_vals)
 selection_load(selection_x,selection_y,str,true)
-selection_code_update()
-history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str) */
+if(!keyboard_check(vk_shift)) selection_place(false)
+history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)

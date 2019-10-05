@@ -1,8 +1,8 @@
 {
-    "id": "bee4a905-3a02-44ca-9489-075d42694e36",
+    "id": "395e2149-7095-4b85-9a90-9b808723ddb7",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "macro_portamento",
+    "name": "pattern_export",
     "IsCompatibility": false,
     "IsDnD": false
 }

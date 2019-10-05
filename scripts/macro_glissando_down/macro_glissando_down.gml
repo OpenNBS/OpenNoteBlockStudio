@@ -10,19 +10,21 @@ show_debug_message(string_count("-1", str))
 //for (var i = 0; i < total_vals; i++;) {show_debug_message(arr_data[i])}
 while (val < total_vals) {
 	val += 3
-	arr_data[val] -= decr
+	if arr_data[val] > 0 {
+	arr_data[real(val)] = real(arr_data[real(val)]) + real(decr)
+	} else arr_data[val] = 1
 	val += 4
 	while arr_data[val] != -1 {
 		val += 2
-		arr_data[val] -= decr
+		if arr_data[val] > 0 {
+		arr_data[real(val)] = real(arr_data[real(val)]) + real(decr)
+		} else arr_data[val] = 1
 		val += 4
 	}
 	val ++
-	if decr > 0 {
-	decr ++
-	}
+	decr --
 }
 str = array_to_selection(arr_data, total_vals)
 selection_load(selection_x,selection_y,str,true)
-selection_code_update()
+if(!keyboard_check(vk_shift)) selection_place(false)
 history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)

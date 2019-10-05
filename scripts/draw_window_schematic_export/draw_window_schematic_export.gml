@@ -75,7 +75,7 @@ if (selected_tab_sch = 0) {
     if (draw_radiobox(x1 + 32, y1 + 310, !sch_exp_minecraft_old, "1.11+", "Create a Schematic that is compatible with\nnew Minecraft versions only, starting at 1.11.")) sch_exp_minecraft_old = false
     if (draw_radiobox(x1 + 32, y1 + 330, sch_exp_minecraft_old, "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) sch_exp_minecraft_old = true
     draw_text(x1 + 170, y1 + 220, "Repeaters per row:")
-    sch_exp_notesperrow = median(5, draw_dragvalue(100, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
+    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
     sch_exp_notesperrow = max(5, sch_exp_notesperrow)
     popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
     if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked

@@ -1,4 +1,4 @@
-// macro_vibrato()
+// macro_volumelfo()
 var str, total_vals, val, decr
 str = selection_code
 if (selected = 0) return 0
@@ -9,42 +9,51 @@ decr = 100/string_count("-1", str)
 //for (var i = 0; i < total_vals; i++;) {show_debug_message(arr_data[i])}
 while (val < total_vals) {
 	// First column 100
-	val += 6
-	arr_data[val] = 40
+	val += 4
+	arr_data[val] = 100
 	val ++
+	if arr_data[val] = 0 {
+		arr_data[val] = 100 // Center Panning if Stereoized
+	}
+	val += 2
 	while arr_data[val] != -1 {
-		val = val + 5
-		arr_data[val] = 40
+		val = val + 3
+		arr_data[val] = 100
 		val ++
+		if arr_data[val] = 0 {
+			arr_data[val] = 100 // Center Panning if Stereoized
+		}
+		val += 2
 	}
 	// Second column 50
-	val += 7
+	val += 5
 	if val >= total_vals break
-	arr_data[val] = 0
-	val ++
+	arr_data[val] = 50
+	val += 3
 	while arr_data[val] != -1 {
-		val = val + 5
-		arr_data[val] = 0
-		val ++
+		val = val + 3
+		arr_data[val] = 50
+		val += 3
 	}
 	// Third column 25
-	val += 7
+	val += 5
 	if val >= total_vals break
-	arr_data[val] = -40
-	val ++
+	arr_data[val] = 25
+	val += 3
 	while arr_data[val] != -1 {
-		val = val + 5
-		arr_data[val] = -40
-		val ++
+		val += 3
+		arr_data[val] = 25
+		val += 3
 	}
-	val += 7
+	// Fourth column 10
+	val += 5
 	if val >= total_vals break
-	arr_data[val] = 0
-	val ++
+	arr_data[val] = 10
+	val += 3
 	while arr_data[val] != -1 {
-		val = val + 5
-		arr_data[val] = 0
-		val ++
+		val += 3
+		arr_data[val] = 10
+		val += 3
 	}
 	val ++
 }

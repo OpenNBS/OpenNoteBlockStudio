@@ -19,7 +19,12 @@
         "98731502-7533-4583-8bfb-0ee49aca74f9",
         "7d9abfa0-fc4d-40f6-831c-7a92d01bf2bf",
         "164cafca-eb1a-465e-b90a-e54e4c1fe703",
-        "d6ee4472-3c3d-4cdc-8f2e-50d7b7d705d3"
+        "d6ee4472-3c3d-4cdc-8f2e-50d7b7d705d3",
+        "080d2ab2-f7d0-4277-bbe4-db809b7116a7",
+        "7f86b84d-2550-4779-9158-5af317275bfc",
+        "0f6ef094-62f0-422b-a0f1-9943174244c0",
+        "20f0e848-5569-45ea-bd3a-51b63de3cb69",
+        "9234b951-f543-49cc-a17b-49ae6fe48089"
     ],
     "filterType": "GMScript",
     "folderName": "Windows",

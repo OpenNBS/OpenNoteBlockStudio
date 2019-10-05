@@ -331,4 +331,10 @@ clipboard = ""
 
 // Macros
 stereo_reverse = 0
-legatotype = 0
+tremolotype = 0
+trem_spacing = 1
+fade_auto = 1
+leg_dec = 20
+leg_sus = 20
+port_cent = 0
+stereo_width = 50
