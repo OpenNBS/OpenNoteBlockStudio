@@ -40,8 +40,6 @@ buffer_write_int(work_add)
 buffer_write_int(work_remove)
 
 buffer_write_string_int(midifile)
-buffer_write_byte(loop)
-buffer_write_byte(dat_loopstart)
 
 ca = 0
 for (a = 0; a <= enda; a += 1) {
