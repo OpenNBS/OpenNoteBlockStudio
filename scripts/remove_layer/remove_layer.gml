@@ -33,6 +33,13 @@ vol = layervol[num]
 pan = layerstereo[num]
 selection_delete(true)
 
+// Remove properties
+text_str[num + 100] = ""
+layername[num] = ""
+layerlock[num] = 0
+layervol[num] = 100
+layerstereo[num] = 100
+
 // Shift blocks up
 selection_add(0, num + 1, enda, endb2, 0, true, true)
 selection_y -= 1
@@ -47,6 +54,6 @@ for (l = num; l < endb2 - 1; l++) {
 	swap_text_edit(100 + l, 100 + l + 1)
 }
 
-endb2--
+endb2 -= 1
 
 if (!argument1) history_set(h_removelayer, num, blocks, xx, name, lock, vol, pan)

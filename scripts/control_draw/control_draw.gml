@@ -190,9 +190,14 @@ for (b = 0; b <= totalrows; b += 1) {
     }
 }
 for (a = 0; a < totalcols; a += 1) {
-    draw_set_alpha(0.1)
-    if (starta + a) / timesignature = floor((starta + a) / timesignature) draw_set_alpha(0.25)
-    draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+	if ((starta + a) mod (timesignature * 4) == 0) {
+		draw_set_alpha(0.3)
+		draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
+	} else {
+	    draw_set_alpha(0.1)
+		if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
+		draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+	}
     for (b = 0; b < totalrows; b += 1) {
         if (starta + a <= enda) {
             if (startb + b <= endb) {
@@ -492,7 +497,7 @@ while (xx < totalcols * 32 + 16) {
 }
 
 for (a = 0; a <= totalcols; a += 1) {
-    b = (starta + a) / timesignature = floor((starta + a) / timesignature)
+    b = ((starta + a) mod 4 == 0)
     draw_set_alpha(0.6)
     draw_line(x1 + 2 + 32 * a, y1 + 33, x1 + 2 + 32 * a, y1 + 30 - 3 * b)
     draw_set_alpha(1)
@@ -512,18 +517,22 @@ if (playing = 1 || forward<>0) {
 	//metronome
 	if (metronome) {
 		var pos = floor(marker_pos)
+		if (tempo = 30) pos -= 1
+		show_debug_message(marker_pos)
 		if ((pos mod 4 == 0) && (metronome_played < pos)) {
 			ins = instrument_list[| 4]
 			if (pos mod (4 * timesignature) == 0) {
-				if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
+				if (!loop || pos < enda + 1) { // avoid double ticks when looping
+					if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
+				}
 			} else {
 				if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
 			}
-		metronome_played = pos + 1
+			metronome_played = pos + 1
 		}
 	}
 	//loop song
-	if (loop = 1 && marker_pos > enda + 1) {
+	if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
         starta = 0
         marker_pos = starta
 		metronome_played = -1
@@ -671,11 +680,7 @@ for (b = 0; b < totalrows; b += 1) {
     m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
     popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 	draw_set_font(fnt_small)
-	if (m) {
-		layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
-	} else {
-		draw_text(x1 + 11, y1 + 10, layername[startb + b])
-	}
+	layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
 	if (layername[startb + b] = "") {
         draw_set_color(c_gray)
 		if(theme = 2) draw_set_color(c_white)
@@ -1022,6 +1027,16 @@ draw_text(93, 52, time_str(marker_pos / tempo))
 draw_set_font(fnt_small)
 draw_text(93, 69, "/ " + time_str(enda / tempo))
 draw_set_font(fnt_main)
+
+// Bars-beats-sixteenths
+draw_sprite(spr_tempobox, 0, 184, 57)
+draw_set_halign(fa_right)
+draw_text(215, 60, ".")
+draw_text(230, 60, ".")
+draw_text(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
+draw_text(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
+draw_text(240, 60, floor(marker_pos mod 4) + 1)
+popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
 
 // Tempo
 draw_sprite(spr_tempobox, 0, 108, 57)
