@@ -1,4 +1,4 @@
-// add_layer(num, undo, [blocks, x, lock, vol, pan, undo])
+// add_layer(num, undo[, blocks, x, lock, vol, pan])
 
 var num, solonum, solostrnew, i, char, blocks, xx, name, lock, vol, pan, l
 
@@ -44,8 +44,16 @@ selection_add(0, num, enda, endb2, 0, true, true)
 selection_y += 1
 selection_place(true)
 
+// Set properties on last layer (will be shifted up)
+text_str[endb2 + 100] = ""
+layername[endb2] = ""
+layerlock[endb2] = 0
+layervol[endb2] = 100
+layerstereo[endb2] = 100
+endb2 += 1
+
 // Shift properties
-for (l = endb2 - 1; l > num; l--) {
+for (l = endb2; l > num; l--) {
 	layername[l] = layername[l - 1]
 	layerlock[l] = layerlock[l - 1]
 	layervol[l] = layervol[l - 1]
@@ -58,6 +66,7 @@ if (blocks != "") {
 	selection_load(xx, num, blocks, true)
 	selection_place(true)
 }
+text_str[num + 100] = name
 layername[num] = name
 layerlock[num] = lock
 layervol[num] = vol
