@@ -517,18 +517,22 @@ if (playing = 1 || forward<>0) {
 	//metronome
 	if (metronome) {
 		var pos = floor(marker_pos)
+		if (tempo = 30) pos -= 1
+		show_debug_message(marker_pos)
 		if ((pos mod 4 == 0) && (metronome_played < pos)) {
 			ins = instrument_list[| 4]
 			if (pos mod (4 * timesignature) == 0) {
-				if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
+				if (!loop || pos < enda + 1) { // avoid double ticks when looping
+					if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
+				}
 			} else {
 				if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
 			}
-		metronome_played = pos + 1
+			metronome_played = pos + 1
 		}
 	}
 	//loop song
-	if (loop = 1 && marker_pos > enda + 1) {
+	if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
         starta = 0
         marker_pos = starta
 		metronome_played = -1
