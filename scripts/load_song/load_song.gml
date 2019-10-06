@@ -79,6 +79,11 @@ if (file_ext = ".nbs") {
     // MIDI FILENAME
     a = buffer_read_string_int()
     if (filename_ext(a) = ".mid" || filename_ext(a) = ".midi") midifile = a
+	// LOOP
+	if(song_nbs_version >= 3){
+	loop = buffer_read_byte()
+	loopstart = buffer_read_byte()
+	}
     // Note blocks
     ca = -1
     while (1) {

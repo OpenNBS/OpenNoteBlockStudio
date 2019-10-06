@@ -533,7 +533,7 @@ if (playing = 1 || forward<>0) {
 	}
 	//loop song
 	if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
-        starta = dat_loopstart
+        starta = loopstart
         marker_pos = starta
 		metronome_played = -1
         sb_val[scrollbarh] = starta

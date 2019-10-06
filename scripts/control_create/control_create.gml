@@ -307,7 +307,7 @@ dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
 dat_enablelooping = 0
-dat_loopstart = 0
+loopstart = 0
 
 //MP3
 mp3_includelocked = 0
@@ -337,4 +337,5 @@ fade_auto = 1
 leg_dec = 20
 leg_sus = 20
 port_cent = 0
+porta_reverse = 0
 stereo_width = 50

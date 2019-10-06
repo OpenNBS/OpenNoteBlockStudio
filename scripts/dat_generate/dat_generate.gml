@@ -35,8 +35,8 @@ for (a = 0; a <= o.enda; a++) {
 		if(a < o.enda) str += "scoreboard players set @s " + objective + "_t " + string(a)
 		else { // Last tick
 			if(o.dat_enablelooping) {
-				str += "scoreboard players set @s " + objective + " " + string(o.dat_loopstart*80) + br
-				str += "scoreboard players set @s " + objective + "_t " + string(o.dat_loopstart-1)
+				str += "scoreboard players set @s " + objective + " " + string(o.loopstart*80) + br
+				str += "scoreboard players set @s " + objective + "_t " + string(o.loopstart-1)
 			}
 			else str += "function " + functionpath + "stop"
 		}

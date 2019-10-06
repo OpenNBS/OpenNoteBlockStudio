@@ -90,9 +90,9 @@ draw_theme_color()
 //Looping
 if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
 if(dat_enablelooping) { 
-	dat_loopstart = median(0, draw_dragvalue(7, x1 + 490, y1 + 333, dat_loopstart, 0.5), obj_controller.enda)
+	loopstart = median(0, draw_dragvalue(7, x1 + 490, y1 + 333, loopstart, 0.5), obj_controller.enda)
 }
-else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 333, dat_loopstart)
+else draw_set_color(c_gray) draw_text(x1 + 490, y1 + 333, loopstart)
 draw_text(x1 + 380, y1 + 333, "Loop start:")
 popup_set_window(x1 + 380, y1 + 329, 125, 21, "Tick the song will jump to at the end of playback")
 draw_theme_color()
