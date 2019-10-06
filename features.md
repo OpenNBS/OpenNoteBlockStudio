@@ -56,7 +56,7 @@
 					<img src="images/stereo_sound.gif" alt="" />
 					<div class="caption">
 						<h2>Stereo Sound</h2>
-						<p>When exporting as MP3 or datapack, the note block sounds are able to pan to the left or right, which allows stereo sound. With this you can create exceptionally immersive songs!</p>
+						<p>When exporting as a datapack, the note block sounds are able to pan to the left or right, which allows stereo sound. With this you can create exceptionally immersive songs!</p>
 					</div>
 				</div>
 			</div>
