@@ -30,7 +30,7 @@ permalink: /nbs
 				<h2>NBS Changelog</h2>
 				<div>
 					<strong>Version 4.0:</strong> 
-					<ul><li>Loop On/Off and Loop Start Tick are now saved. Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
+					<ul><li>Loop On/Off and Loop Start Tick are now saved.</li><li>Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
 					<strong>Version 3.0:</strong> 
 					<ul><li>Song length is now saved again after the Vanilla Note Block Instruments count.</li></ul>
 					<strong>Version 2.0:</strong> 
@@ -214,14 +214,17 @@ permalink: /nbs
 					<tr>
 						<td>Byte</td>
 						<td>Note block key</td>
-						<td>The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2 octave limit.</td>
-						<span class="newversion">
+						<td>The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2 octave limit.</td></tr>
+					<tr>
+						<span class="newversion"> 
 						<td>Byte</td>
 						<td>Note block velocity</td>
 						<td>The velocity/volume of the note block, from 0%-100%.</td>
+					</tr>
 						<td>Byte</td>
 						<td>Note block panning</td>
 						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
+					<tr>
 						<td>Byte (Signed)</td>
 						<td>Note block pitch</td>
 						<td>The fine pitch of the note block, from -128 - 127 cents. 0 is no fine tuning. +-100 cents is a single semitone difference. After reading this, we go back to Step 2.</td>
