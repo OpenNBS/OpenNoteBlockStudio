@@ -807,6 +807,14 @@
             }
         },
         {
+            "Key": "36bf530d-9afd-4915-8e0f-6d9162ea03b2",
+            "Value": {
+                "id": "4e621698-98c5-43df-b3ac-df039dbe20d2",
+                "resourcePath": "scripts\\draw_macroicon\\draw_macroicon.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3767f449-1393-47d7-9fb5-e6b2bce7f0d5",
             "Value": {
                 "id": "006c3ac5-c960-4626-a8aa-9c9cb4441207",
@@ -1767,6 +1775,14 @@
             }
         },
         {
+            "Key": "7aab5402-ccef-4bc8-ab1c-5744150f4296",
+            "Value": {
+                "id": "89444db8-1697-4ac0-a0a3-10b2d24b1324",
+                "resourcePath": "sprites\\spr_macroicons\\spr_macroicons.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "7b03524a-b952-46da-b281-1ef814b14848",
             "Value": {
                 "id": "59c276e9-be21-4eb5-8f23-0d97dab222ba",
@@ -2559,14 +2575,6 @@
             }
         },
         {
-            "Key": "b01340ea-8951-43d9-8279-7067451443fd",
-            "Value": {
-                "id": "9fbb06c5-f7b8-413e-824e-7c7aa1757e4f",
-                "resourcePath": "scripts\\macro_glissando_up\\macro_glissando_up.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "b0830e95-c5d1-4c29-9f76-35d2554d268a",
             "Value": {
                 "id": "1a2f97a3-9f64-42dc-8456-cd3496adcbcf",
@@ -2804,14 +2812,6 @@
                 "id": "28703cf7-2bfe-41b6-a3ec-3735dde10481",
                 "resourcePath": "fonts\\fnt_small\\fnt_small.yy",
                 "resourceType": "GMFont"
-            }
-        },
-        {
-            "Key": "c362477c-bbbc-4a71-9abb-d2c833178d27",
-            "Value": {
-                "id": "48e48537-8fac-4f19-8918-9733a88e0f09",
-                "resourcePath": "scripts\\macro_glissando_down\\macro_glissando_down.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -3762,6 +3762,7 @@
         "df4f777a-ec71-49f8-8f9e-8b25350626c4",
         "bcc4cc3e-1061-409b-9610-433c5b682eae",
         "28131748-b621-459e-952c-fcd16de0bd8b",
+        "36bf530d-9afd-4915-8e0f-6d9162ea03b2",
         "f6cfba59-defd-47c1-b2fa-8fa627a1c1a4",
         "ffdb58ba-3567-4019-acf7-c6e674131bbb",
         "bb77e968-5a4f-4c9d-954b-7ddca77d2c0a",
@@ -3843,8 +3844,6 @@
         "4ab6f19b-c67c-4a89-8297-28892413fa3b",
         "71481bb2-aa29-4aa5-8808-2d6b299f31e0",
         "a8e2247b-670b-4704-9af2-60ef95eeea29",
-        "b01340ea-8951-43d9-8279-7067451443fd",
-        "c362477c-bbbc-4a71-9abb-d2c833178d27",
         "11313390-ea0d-4d1e-8bbd-9870958e217d",
         "2dbfac2c-5d41-4a72-a0e8-d20f8bef3354",
         "f1a5ff07-5174-4dcc-b9cc-e88d3ce75b79",

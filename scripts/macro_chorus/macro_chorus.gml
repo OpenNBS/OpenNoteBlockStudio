@@ -9,7 +9,7 @@ while (val < total_vals) {
 	val += 5
 	arr_data[val] = 140
 	val ++
-	arr_data[val] += 5
+	arr_data[real(val)] = real(arr_data[real(val)]) + real(5)
 	val ++
 	if arr_data[val] = -1 {
 		message("There must be exactly two layers worth of note blocks in every applicable tick!", "Error")
@@ -18,7 +18,7 @@ while (val < total_vals) {
 	val += 4
 	arr_data[val] = 60
 	val++
-	arr_data[val] += -5
+	arr_data[real(val)] = real(arr_data[real(val)]) + real(-5)
 	val += 2
 }
 str = array_to_selection(arr_data, total_vals)

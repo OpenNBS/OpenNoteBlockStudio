@@ -58,7 +58,7 @@
 #macro w_preferences 2
 #macro w_greeting 1
 #macro w_clip_editor 19
-#macro w_stereosize 20
+#macro w_stereo 20
 #macro w_arpeggio 32
 #macro w_tremolo 33
 #macro w_stagger 34

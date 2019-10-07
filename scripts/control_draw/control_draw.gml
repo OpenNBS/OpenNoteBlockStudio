@@ -367,7 +367,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Stagger|"+ "Chorus|"+ "Glissando Up|"+ "Glissando Down|"+ "Volume LFO|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
             menu.pastex = selbx
@@ -800,6 +800,27 @@ if (window2 = w_dragstereo) {
 		window2 = 0
     }
 }
+// Macro Bar
+if selected != 0 {
+draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
+draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
+draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+xx = x1 + 6
+var yy = y1+37
+if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
+if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
+if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
+if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
+if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo()} xx += 25
+if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
+if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+if (draw_macroicon(11, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
+}
+
 // Tabs
 if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 tab_x = 1
@@ -851,7 +872,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Stagger|"+ "Chorus|"+ "Glissando Up|"+ "Glissando Down|"+ "Volume LFO|"+ "Vibrato|"+ "Portamento|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {

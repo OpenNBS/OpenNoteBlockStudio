@@ -73,20 +73,18 @@ switch (m) {
         if (sel = 18 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 19 + ds_list_size(instrument_list)) selection_compress()
         if (sel = 21 + ds_list_size(instrument_list)) window = w_tremolo
-        if (sel = 22 + ds_list_size(instrument_list)) window = w_stereosize
+        if (sel = 22 + ds_list_size(instrument_list)) window = w_stereo
 		if (sel = 23 + ds_list_size(instrument_list)) window = w_arpeggio
-		if (sel = 24 + ds_list_size(instrument_list)) window = w_stagger
-        if (sel = 25 + ds_list_size(instrument_list)) macro_chorus()
-		if (sel = 26 + ds_list_size(instrument_list)) macro_glissando_up()
-		if (sel = 27 + ds_list_size(instrument_list)) macro_glissando_down()
+        if (sel = 24 + ds_list_size(instrument_list)) window = w_portamento
+        if (sel = 25 + ds_list_size(instrument_list)) macro_vibrato()
+		if (sel = 26 + ds_list_size(instrument_list)) window = w_stagger
+        if (sel = 27 + ds_list_size(instrument_list)) macro_chorus()
         if (sel = 28 + ds_list_size(instrument_list)) macro_volumelfo()
-        if (sel = 29 + ds_list_size(instrument_list)) macro_vibrato()
-        if (sel = 30 + ds_list_size(instrument_list)) window = w_portamento
-        if (sel = 31 + ds_list_size(instrument_list)) macro_fadein()
-        if (sel = 32 + ds_list_size(instrument_list)) macro_fadeout()
-        if (sel = 33 + ds_list_size(instrument_list)) macro_replacekey()
-        if (sel = 34 + ds_list_size(instrument_list)) macro_reset()
-        if (sel = 35 + ds_list_size(instrument_list)) {
+        if (sel = 29 + ds_list_size(instrument_list)) macro_fadein()
+        if (sel = 30 + ds_list_size(instrument_list)) macro_fadeout()
+        if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()
+        if (sel = 32 + ds_list_size(instrument_list)) macro_reset()
+        if (sel = 33 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break
@@ -119,20 +117,18 @@ switch (m) {
         if (sel = 18 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 19 + ds_list_size(instrument_list)) selection_compress()
         if (sel = 21 + ds_list_size(instrument_list)) window = w_tremolo
-        if (sel = 22 + ds_list_size(instrument_list)) window = w_stereosize
+        if (sel = 22 + ds_list_size(instrument_list)) window = w_stereo
 		if (sel = 23 + ds_list_size(instrument_list)) window = w_arpeggio
-		if (sel = 24 + ds_list_size(instrument_list)) window = w_stagger
-        if (sel = 25 + ds_list_size(instrument_list)) macro_chorus()
-		if (sel = 26 + ds_list_size(instrument_list)) macro_glissando_up()
-		if (sel = 27 + ds_list_size(instrument_list)) macro_glissando_down()
+        if (sel = 24 + ds_list_size(instrument_list)) window = w_portamento
+        if (sel = 25 + ds_list_size(instrument_list)) macro_vibrato()
+		if (sel = 26 + ds_list_size(instrument_list)) window = w_stagger
+        if (sel = 27 + ds_list_size(instrument_list)) macro_chorus()
         if (sel = 28 + ds_list_size(instrument_list)) macro_volumelfo()
-        if (sel = 29 + ds_list_size(instrument_list)) macro_vibrato()
-        if (sel = 30 + ds_list_size(instrument_list)) window = w_portamento
-        if (sel = 31 + ds_list_size(instrument_list)) macro_fadein()
-        if (sel = 32 + ds_list_size(instrument_list)) macro_fadeout()
-        if (sel = 33 + ds_list_size(instrument_list)) macro_replacekey()
-        if (sel = 34 + ds_list_size(instrument_list)) macro_reset()
-        if (sel = 35 + ds_list_size(instrument_list)) {
+        if (sel = 29 + ds_list_size(instrument_list)) macro_fadein()
+        if (sel = 30 + ds_list_size(instrument_list)) macro_fadeout()
+        if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()
+        if (sel = 32 + ds_list_size(instrument_list)) macro_reset()
+        if (sel = 33 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break
