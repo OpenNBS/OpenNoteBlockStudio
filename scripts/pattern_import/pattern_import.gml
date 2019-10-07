@@ -1,8 +1,8 @@
 // selection_import()
 // Can successfully read and store all the below into the arrays/variables, but can't seem to display or place the imported selection.
-var str, a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, byte1, byte2;
+var a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, byte1, byte2;
 fn = argument0
-str = selection_code
+if (selected != 0) return 0
 if (fn = "") {
     if (!directory_exists_lib(songfolder)) songfolder = songs_directory
     fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", songfolder, "Load pattern"))
@@ -16,34 +16,36 @@ if (file_ext = ".nbp") {
 	
 	song_pat_version = buffer_read_byte()
 	show_debug_message("song_pat_version " + string(song_pat_version))
-	enda = buffer_read_short()
-	show_debug_message("enda " + string(enda))
-	endb = buffer_read_short()
-	show_debug_message("endb " + string(endb))
+	var pat_length = buffer_read_short()
+	show_debug_message("enda " + string(pat_length))
+	var pat_height = buffer_read_short()
+	show_debug_message("endb " + string(pat_height))
 	selection_l = buffer_read_short()
 	show_debug_message("selection_l " + string(selection_l))
 	if song_pat_version < pat_version message("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 	if song_pat_version > pat_version message("Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening.","Warning")
-/*
-	if (enda > selection_arraylength) { // New length
-	    for (a = selection_arraylength + 1; a <= enda; a += 1) {
+	selection_copied = buffer_read_string()
+	show_debug_message("selection_code " + string(selection_copied))
+	
+	if (pat_length > selection_arraylength) { // New length
+	    for (a = selection_arraylength + 1; a <= pat_length; a += 1) {
 	        selection_colfirst[a] = -1
 	        selection_collast[a] = -1
 	        for (b = 0; b <= selection_arrayheight; b += 1) {
 	            selection_exists[a, b] = 0
 	        }
 	    }
-	    selection_arraylength = enda
+	    selection_arraylength = pat_length
 	}
-	if (endb > selection_arrayheight) { // New height
+	
+	if (pat_height > selection_arrayheight) { // New height
 	    for (a = 0; a <= selection_arraylength; a += 1) {
-	        for (b = selection_arrayheight + 1; b <= endb; b += 1) {
+	        for (b = selection_arrayheight + 1; b <= pat_height; b += 1) {
 	            selection_exists[a, b] = 0
 	        }
 	    }
-	    selection_arrayheight = endb
+	    selection_arrayheight = pat_height
 	}
-	*/
 	
 	for (a = 0; a < selection_l; a += 1) {
 		temp_colfirst[a] = buffer_read_byte_signed()
@@ -52,6 +54,7 @@ if (file_ext = ".nbp") {
 		temp_collast[a] = buffer_read_byte_signed()
 	    selection_collast[a] = temp_collast[a]
 		show_debug_message("selection_collast " + string(a) + " " + string(selection_collast[a]))
+		/*
 	    if (temp_colfirst[a] > -1) {
 	        for (b = temp_colfirst[a] ;b <= temp_collast[a] ;b += 1) {
 			temp_exists[a, b] = buffer_read_byte()
@@ -74,9 +77,7 @@ if (file_ext = ".nbp") {
 					show_debug_message("selection_played " + string(a) + " " + string(b) + " " + string(selection_played[a, b]))
 	            }
 	        }
-	    }
+	    }*/
 	}
-	selection_code_update()
-	selection_place(0)
-	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
+	selection_load(0,0, selection_copied, false)
 }

@@ -80,5 +80,5 @@ str = array_to_selection(arr_data, c)
 arr_data = 0
 selection_load(selection_x,selection_y,str,true)
 selection_code_update()
-if(!keyboard_check(vk_shift)) selection_place(false)
+if(!keyboard_check(vk_alt)) selection_place(false)
 history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)

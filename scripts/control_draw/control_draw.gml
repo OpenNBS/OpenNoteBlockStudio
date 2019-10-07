@@ -348,9 +348,9 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                     str += "...to " + clean(ins.name) + "|"
             }
             menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "~Ctrl+X$Cut|"+
-                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "~Ctrl+V$Paste|"+
-                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "~Delete$Delete|-|"+
+                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
+                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
+                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
                                       inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
                                       inactive(selected = 0) + "Ctrl + Shift+A$Deselect all|"+
                                       inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
@@ -367,7 +367,20 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
+										"Ctrl+Shift+A$Tremolo|"+
+										"Ctrl+Shift+S$Stereo|"+
+										"Ctrl+Shift+D$Arpeggio|"+
+										"Ctrl+Shift+F$Portamento|"+
+										"Ctrl+Shift+G$Vibrato|"+
+										"Ctrl+Shift+H$Stagger|"+
+										"Ctrl+Shift+J$Chorus|"+
+										"Ctrl+Shift+K$Volume LFO|"+
+										"Ctrl+Shift+Q$Fade In|"+
+										"Ctrl+Shift+W$Fade Out|"+
+										"Ctrl+Shift+E$Replace Key|"+
+										"Ctrl+Shift+R$Reset Vol/Pan/Pit|"+
+										"/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
             menu.pastex = selbx
@@ -378,7 +391,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
 // Keyboard shortcuts
 if (window = 0 && text_focus = -1) {
     if (playing = 0) {
-        if (keyboard_check(vk_control)) {
+        if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
             if (keyboard_check_pressed(ord("N"))) new_song()
             if (keyboard_check_pressed(ord("O"))) load_song("")
             if (keyboard_check_pressed(ord("S"))) save_song(filename)
@@ -450,10 +463,65 @@ if (window = 0 && text_focus = -1) {
 		  }
 	   }
 	}
-	if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
-		playing = 0 
-		window = w_clip_editor
+	// Control+Shift Stuff (Macros, Clip Editor)
+	if (keyboard_check(vk_control)) {
+		if (keyboard_check_pressed(ord("P"))&& keyboard_check(vk_shift)) {
+			playing = 0 
+			window = w_clip_editor
+			}
+		// Macro Hotkeys
+		if selected != 0 {
+			if (keyboard_check_pressed(ord("A"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_tremolo
+				}
+			if (keyboard_check_pressed(ord("S"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_stereo
+				}
+			if (keyboard_check_pressed(ord("D"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_arpeggio
+				}
+			if (keyboard_check_pressed(ord("F"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_portamento
+				}
+			if (keyboard_check_pressed(ord("G"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_vibrato()
+				}
+			if (keyboard_check_pressed(ord("H"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_stagger
+				}
+			if (keyboard_check_pressed(ord("J"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_chorus()
+				}
+			if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_volumelfo()
+				}
+			if (keyboard_check_pressed(ord("Q"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_fadein()
+				}
+			if (keyboard_check_pressed(ord("W"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_fadeout()
+				}
+			if (keyboard_check_pressed(ord("E"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_replacekey()
+				}
+			if (keyboard_check_pressed(ord("R"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				macro_reset()
+				}
 		}
+		
+	}
 }
 // Selecting note blocks
 if (select > 0) {
@@ -872,7 +940,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan/Pit|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {

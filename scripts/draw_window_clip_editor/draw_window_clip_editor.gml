@@ -1,5 +1,5 @@
 // draw_window_clip_editor()
-var x1, y1, a, b; 
+var x1, y1, a; 
 curs = cr_default
 text_exists[0] = 0
 x1 = floor(window_width / 2 - 220)
@@ -14,13 +14,18 @@ if (theme = 0) {
     draw_set_color(make_color_rgb(137, 140, 149))
     draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 392, 1)
 }
-draw_areaheader(x1 + 22, y1 + 48, 396, 330, "Clipboard")
-a = string(selection_copied)
-clipboard = draw_textarea(4, x1 + 32, y1 + 23 * 3, 370, 300, string(selection_copied), "Edit the clipboard code.") 
-if (a != clipboard) {
-	selection_copied = string(clipboard) 
-}
-
 draw_theme_color()
-if (draw_button2(x1 + 320, y1 + 398, 72, "OK")) {window = 0}
+draw_areaheader(x1 + 22, y1 + 48, 396, 330, "Clipboard")
+draw_theme_color()
+a = clipboard
+clipboard = draw_textarea(6, x1 + 32, y1 + 23 * 3, 370, 300, selection_copied, "Edit the clipboard's values.\nI hope you know what you are doing.") 
+if (a != clipboard) changed = 1
+
+if (draw_button2(x1 + 320, y1 + 398, 72, "OK")) {
+	selection_copied = clipboard
+	window = 0
+}
+if (draw_button2(x1 + 20, y1 + 398, 72, "Cancel")) {
+	window = 0
+}
 window_set_cursor(curs)
