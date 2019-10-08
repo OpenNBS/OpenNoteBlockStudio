@@ -96,6 +96,7 @@ buffer_write_byte(realstereo)
 buffer_write_byte(show_piano)
 buffer_write_byte(rhval)
 buffer_write_byte(w_midi_vel)
+buffer_write_string(patternfolder);
 
 buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)
