@@ -340,3 +340,4 @@ leg_sus = 20
 port_cent = 0
 porta_reverse = 0
 stereo_width = 50
+times_clipedited = 0
