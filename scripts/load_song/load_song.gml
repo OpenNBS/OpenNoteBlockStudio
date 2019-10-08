@@ -101,7 +101,7 @@ if (file_ext = ".nbs") {
 			if song_nbs_version>=4 {
 				var vel = buffer_read_byte();
 				var pan = buffer_read_byte();
-				var pit = buffer_read_byte_signed();
+				var pit = buffer_read_short();
 			} else {
 				vel = 100
 				pan = 100
