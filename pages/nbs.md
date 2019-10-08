@@ -219,15 +219,15 @@ permalink: /nbs
 						<span class="newversion"> 
 						<td>Byte</td>
 						<td>Note block velocity</td>
-						<td>The velocity/volume of the note block, from 0%-100%.</td>
+						<td>The velocity/volume of the note block, from 0% to 100%.</td>
 					</tr>
 						<td>Byte</td>
 						<td>Note block panning</td>
 						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
 					<tr>
-						<td>Byte (Signed)</td>
+						<td>Short (Signed)</td>
 						<td>Note block pitch</td>
-						<td>The fine pitch of the note block, from -128 - 127 cents. 0 is no fine tuning. +-100 cents is a single semitone difference. After reading this, we go back to Step 2.</td>
+						<td>The fine pitch of the note block, from -32,768 to 32,767 cents (but the max in Note Block Studio is limited to -1200 and +1200). 0 is no fine tuning. +-100 cents is a single semitone difference. After reading this, we go back to Step 2.</td>
 						</span>
 					</tr>
 				</tbody>
