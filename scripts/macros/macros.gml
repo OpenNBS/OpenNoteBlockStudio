@@ -11,6 +11,7 @@
 #macro data_directory		working_directory + "Data\\"
 #macro sounds_directory		data_directory + "Sounds\\"
 #macro songs_directory		data_directory + "Songs\\"
+#macro pattern_directory	data_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 

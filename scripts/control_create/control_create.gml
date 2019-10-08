@@ -33,6 +33,7 @@ vers = version
 soundsystem = 0
 menu_shown = ""
 songfolder = songs_directory
+patternfolder = pattern_directory
 icons_init()
 refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0

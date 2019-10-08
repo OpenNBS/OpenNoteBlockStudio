@@ -1,12 +1,12 @@
 // pattern_export()
 var fn, fsave, temp_enda, temp_endb, temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, a, b;
-fn = argument0
+fn = ""
 if (selected = 0) return 0
-if (fn = "" || filename_ext(filename) != ".nbp") {
+if (fn = "") {
 	playing = 0
 	fsave = filename_name(filename)
-	if (!directory_exists(songfolder)) songfolder = songs_directory
-	fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, songfolder, "Save pattern"))
+	if (!directory_exists(patternfolder)) patternfolder = pattern_directory
+	fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, patternfolder, "Save pattern"))
     if (fn = "") return 0
 }
 buffer = buffer_create(8, buffer_grow, 1)

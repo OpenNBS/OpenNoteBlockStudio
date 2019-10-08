@@ -335,6 +335,14 @@
             }
         },
         {
+            "Key": "140aed13-b412-4d1b-bf2b-c78963853e5b",
+            "Value": {
+                "id": "340417e3-0537-4165-a694-6aab456bdcc4",
+                "resourcePath": "views\\140aed13-b412-4d1b-bf2b-c78963853e5b.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "1501c0c9-c863-4723-9ccc-f004078dc78d",
             "Value": {
                 "id": "15ac3451-8a41-44aa-95c8-eaea11ea2917",
@@ -1047,6 +1055,22 @@
             }
         },
         {
+            "Key": "48d20047-cbf4-48e1-8992-fdd30cffad95",
+            "Value": {
+                "id": "f13020c0-6de4-4c23-9243-30cc6cb36adb",
+                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "494b16e5-ae65-4983-bf81-199e2ed78e3a",
+            "Value": {
+                "id": "6072a3c1-25b7-4869-816a-971932226304",
+                "resourcePath": "datafiles_yy\\Patterns\\Drum Example.nbp.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "495cb438-b385-47c7-b749-2d5f1721a3aa",
             "Value": {
                 "id": "5973cd6a-474e-4543-b02e-dbee9f9c9e77",
@@ -1164,6 +1188,14 @@
                 "id": "13c31562-dcbc-44ab-9fa5-401d3cb22cc5",
                 "resourcePath": "scripts\\block_walkway\\block_walkway.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "5307fcb5-a4fe-41e3-8b9c-42a7d94d5e6e",
+            "Value": {
+                "id": "d4d43c3d-58dc-4811-87ef-8bdbf69e317d",
+                "resourcePath": "views\\5307fcb5-a4fe-41e3-8b9c-42a7d94d5e6e.yy",
+                "resourceType": "GMFolder"
             }
         },
         {

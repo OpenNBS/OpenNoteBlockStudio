@@ -79,19 +79,35 @@ if (selected_tab = 0) {
 
 	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
-    if (draw_button2(x1 + 22, y1 + 286, 76, "Open")) {
+    if (draw_button2(x1 + 22, y1 + 276, 76, "Open")) {
         if (!directory_exists_lib(songfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(songfolder)
         }
     }
-    if (draw_button2(x1 + 22 + 84, y1 + 286, 76, "Change")) {
+    if (draw_button2(x1 + 22 + 84, y1 + 276, 76, "Change")) {
         message("Select the directory where saving/loading should be opened in.", "")
         a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
         if (a != "") songfolder = filename_dir(a)
     }
-    if (draw_button2(x1 + 22 + 84 + 84, y1 + 286, 96, "Use default")) songfolder = songs_directory
+    if (draw_button2(x1 + 22 + 84 + 84, y1 + 276, 96, "Use default")) songfolder = songs_directory
+	
+	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_maxwidth(patternfolder, 360) + condstr(string_width(patternfolder) > 360, "..."))
+    popup_set_window(x1 + 22, y1 + 300, 430, 18, patternfolder)
+    if (draw_button2(x1 + 22, y1 + 326, 76, "Open")) {
+        if (!directory_exists_lib(patternfolder)) {
+            message("The indicated folder doesn't exist!", "Error")
+        } else {
+            open_url(patternfolder)
+        }
+    }
+    if (draw_button2(x1 + 22 + 84, y1 + 326, 76, "Change")) {
+        message("Select the directory where patterns can be imported/exported to.", "")
+        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
+        if (a != "") patternfolder = filename_dir(a)
+    }
+    if (draw_button2(x1 + 22 + 84 + 84, y1 + 326, 96, "Use default")) patternfolder = pattern_directory
 } else if (selected_tab = 1) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 150, "Note blocks")
     if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) draw_type = 0

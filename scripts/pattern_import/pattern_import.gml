@@ -1,11 +1,11 @@
 // selection_import()
 // Can successfully read and store all the below into the arrays/variables, but can't seem to display or place the imported selection.
 var a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, byte1, byte2;
-fn = argument0
+fn = ""
 if (selected != 0) return 0
 if (fn = "") {
-    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-    fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", songfolder, "Load pattern"))
+    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
+    fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, "Load pattern"))
 }
 if (fn = "" || !file_exists_lib(fn)) return 0
 
