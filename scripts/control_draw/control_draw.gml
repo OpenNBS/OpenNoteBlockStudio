@@ -377,7 +377,9 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
 										"Ctrl+Shift+Q$Fade In|"+
 										"Ctrl+Shift+W$Fade Out|"+
 										"Ctrl+Shift+E$Replace Key|"+
-										"Ctrl+Shift+R$Reset Vol/Pan/Pit|"+
+										"Ctrl+Shift+R$Set Velocity|"+
+										"Ctrl+Shift+T$Set Panning|"+
+										"Ctrl+Shift+Y$Reset Vol/Pan/Pit|"+
 										"/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
@@ -514,6 +516,14 @@ if (window = 0 && text_focus = -1) {
 				macro_replacekey()
 				}
 			if (keyboard_check_pressed(ord("R"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_setvelocity
+				}
+			if (keyboard_check_pressed(ord("T"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_setpanning
+				}
+			if (keyboard_check_pressed(ord("Y"))&& keyboard_check(vk_shift)) {
 				playing = 0 
 				macro_reset()
 				}
@@ -886,7 +896,9 @@ if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo(
 if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
 if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
 if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-if (draw_macroicon(11, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
+if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
 }
 
 // Tabs

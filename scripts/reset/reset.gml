@@ -115,3 +115,20 @@ with (obj_instrument) {
 }
 user_instruments = 0
 instrument = instrument_list[| 0]
+
+// Macros
+stereo_reverse = 0
+tremolotype = 0
+trem_spacing = 1
+fade_auto = 1
+leg_dec = 20
+leg_sus = 20
+port_cent = 0
+porta_reverse = 0
+stereo_width = 50
+times_clipedited = 0
+setvel = 100
+setpan = 0
+
+// Saving
+save_version = nbs_version

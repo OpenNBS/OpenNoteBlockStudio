@@ -26,4 +26,6 @@ switch (window mod w_menu) {
     case w_stagger: draw_window_macro_stagger() break
     case w_portamento: draw_window_macro_portamento() break
     case w_saveoptions: draw_window_save_options() break
+    case w_setvelocity: draw_window_macro_setvelocity() break
+    case w_setpanning: draw_window_macro_setpanning() break
 }

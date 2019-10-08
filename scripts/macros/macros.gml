@@ -65,6 +65,8 @@
 #macro w_stagger 34
 #macro w_portamento 35
 #macro w_saveoptions 36
+#macro w_setvelocity 37
+#macro w_setpanning 38
 
 #macro br "\r\n"
 
