@@ -32,31 +32,34 @@ for (d = 0; d < total_cols; d++;) {
 		}
 		break
 	}
-	if arr_temp[val] >= 1 replength = arr_temp[val]
+	if arr_temp[val] >= 1 replength = real(arr_temp[val] / trem_spacing)
 //	show_debug_message("repeat length is " + replength)
 	arr_temp[val] = 1
 	for (var a = 0; a < replength; a++) {
 		for (var b = 0; b < e; b++) {
-			if b = 0 arr_col[b] = 1
+			if b = 0 arr_col[b] = trem_spacing
 			arr_data[c] = arr_col[b]
 			c++
 		}
 	}
-    show_debug_message("End loop. arr_data is now " + string(array_to_selection(arr_data, c)))
+    // show_debug_message("End loop. arr_data is now " + string(array_to_selection(arr_data, c)))
 	colcount++
 	current_colsegment = string_count("-1", string(array_to_selection(arr_data, c))) - previous_colsegment
 	tremolo_duration = (real(array_length_1d(arr_data)) - prevlength) // Calculate Fade-In
 	f = 0
 	if fade_auto = 1 {
 		if (current_colsegment - 4 > 0) decr = 100 / (current_colsegment - 4)
-		else if (current_colsegment - 2 > 0) decr = 100 / current_colsegment - 2
+		else if (current_colsegment - 2 > 0) decr = 100 / (current_colsegment - 2)
 		else decr = 100 / current_colsegment
 	} else decr = leg_dec
 	inc = decr
 	while (f < tremolo_duration) {
 		f += 4
-		if  (0 + decr < leg_sus) arr_data[f + prevlength] = 0 + decr
-		else if fade_auto = 1 arr_data[f + prevlength] = 80
+		if fade_auto = 1 {
+			if  (0 + decr <= 80) arr_data[f + prevlength] = 0 + decr
+			else arr_data[f + prevlength] = 80
+		}
+		else if  (0 + decr < leg_sus) arr_data[f + prevlength] = 0 + decr 
 		else arr_data[f + prevlength] = leg_sus
 		f += 3
 		while arr_data[f + prevlength] != -1 {
