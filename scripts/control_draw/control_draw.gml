@@ -584,7 +584,9 @@ if (playing = 1 || forward<>0) {
     }
 	//metronome
 	if (metronome) {
-		var pos = floor(marker_pos)
+		if room_speed = 60 {
+		var pos = floor(marker_pos -0.1)
+		} else pos = floor(marker_pos -0.4)
 		if (tempo = 30) pos -= 1
 		show_debug_message(marker_pos)
 		if ((pos mod 4 == 0) && (metronome_played < pos)) {
