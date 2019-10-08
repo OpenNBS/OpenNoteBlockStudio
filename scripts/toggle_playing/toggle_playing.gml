@@ -23,8 +23,6 @@ if (playing = 1) {
             for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
                 if (song_exists[xx, b]) {
                     a = 1
-                    c = 100
-					d = 100
 					e = 0
 					if (b < endb2) {
 						c = (layervol[b] / 100 ) * song_vel[xx, b]

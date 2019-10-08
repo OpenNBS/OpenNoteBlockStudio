@@ -239,11 +239,9 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
         for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
             if (song_exists[xx, b]) {
                 a = 1
-                c = 100
-				d = 100
                 if (b < endb2) {
-					c = (layervol[b] / 100) * song_vel[xx, b]
-					d = (layerstereo[b] / 100) * song_pan[xx, b]
+					c = (layervol[b] /100) * song_vel[xx, b]
+					d = (layerstereo[b] + song_pan[xx, b]) / 2
 					e = song_pit[xx, b]
 				}
                 if (solostr != "") {
