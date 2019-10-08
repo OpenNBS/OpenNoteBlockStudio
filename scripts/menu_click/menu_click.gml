@@ -39,8 +39,8 @@ switch (m) {
         }
         if (sel = b + 4) save_song(filename)
         if (sel = b + 5) save_song("")
-        if (sel = b + 7) pattern_export("")
         if (sel = b + 6) pattern_import("")
+        if (sel = b + 7) pattern_export("")
         if (sel = b + 8) open_midi("")
         if (sel = b + 9) open_schematic("")
         if (sel = b + 10) window = w_mp3_export
@@ -143,7 +143,8 @@ switch (m) {
         if (sel = b + 3) window = w_properties
         if (sel = b + 4) {selection_place(0) window = w_stats}
         if (sel = b + 5) window = w_mididevices
-        if (sel = b + 6) window = w_preferences
+        if (sel = b + 6) window = w_saveoptions
+        if (sel = b + 7) window = w_preferences
         break
     }
     case "help": {

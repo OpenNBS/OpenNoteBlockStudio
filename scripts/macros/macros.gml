@@ -64,6 +64,7 @@
 #macro w_tremolo 33
 #macro w_stagger 34
 #macro w_portamento 35
+#macro w_saveoptions 36
 
 #macro br "\r\n"
 

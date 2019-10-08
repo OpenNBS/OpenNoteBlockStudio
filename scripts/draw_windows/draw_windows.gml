@@ -25,4 +25,5 @@ switch (window mod w_menu) {
     case w_tremolo: draw_window_macro_tremolo() break
     case w_stagger: draw_window_macro_stagger() break
     case w_portamento: draw_window_macro_portamento() break
+    case w_saveoptions: draw_window_save_options() break
 }

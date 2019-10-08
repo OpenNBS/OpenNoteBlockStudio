@@ -11,14 +11,18 @@ if (fn = "" || filename_ext(filename) != ".nbs") {
 if (selected > 0) selection_place(0)
 buffer = buffer_create(8, buffer_grow, 1)
 
+if save_version >= 1 {
 //First 2 bytes 0 to indicate new nbs format
 buffer_write_short(0)
 
-buffer_write_byte(nbs_version)
+buffer_write_byte(save_version)
 buffer_write_byte(first_custom_index)
+}
 
+if save_version = 0 || save_version >= 3 {
 //song length (ticks)
 buffer_write_short(enda)
+}
 
 //layer count
 buffer_write_short(endb2)
@@ -40,8 +44,11 @@ buffer_write_int(work_add)
 buffer_write_int(work_remove)
 
 buffer_write_string_int(midifile)
+
+if save_version >= 4 {
 buffer_write_byte(loop)
 buffer_write_byte(loopstart)
+}
 
 ca = 0
 for (a = 0; a <= enda; a += 1) {
@@ -57,9 +64,11 @@ for (a = 0; a <= enda; a += 1) {
                 cb = 0
                 buffer_write_byte(ds_list_find_index(instrument_list, song_ins[a, b]))
                 buffer_write_byte(song_key[a, b])
+				if save_version >= 4 {
 				buffer_write_byte(song_vel[a, b])
 				buffer_write_byte(song_pan[a, b])
 				buffer_write_short(song_pit[a, b])
+				}
             }
         }
         buffer_write_short(0)
@@ -70,7 +79,9 @@ buffer_write_short(0)
 for (b = 0; b < endb2; b += 1) {
     buffer_write_string_int(layername[b])
     buffer_write_byte(layervol[b])
+	if save_version >= 2 {
 	buffer_write_byte(layerstereo[b])
+	}
 }
 
 // Custom instruments
