@@ -1071,14 +1071,6 @@
             }
         },
         {
-            "Key": "48d20047-cbf4-48e1-8992-fdd30cffad95",
-            "Value": {
-                "id": "f13020c0-6de4-4c23-9243-30cc6cb36adb",
-                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "494b16e5-ae65-4983-bf81-199e2ed78e3a",
             "Value": {
                 "id": "6072a3c1-25b7-4869-816a-971932226304",
@@ -2844,6 +2836,14 @@
                 "id": "6df93347-05ee-4bf7-8456-49f33a392b4d",
                 "resourcePath": "scripts\\condstr\\condstr.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "c03f3b8b-ba1a-4d32-9051-23b8572bd22b",
+            "Value": {
+                "id": "e63bab99-dfa0-45c0-9aa1-826d12440c6f",
+                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
