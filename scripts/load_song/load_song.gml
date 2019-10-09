@@ -27,7 +27,10 @@ if (file_ext = ".nbs") {
 	if(byte1 = 0 && byte2 = 0){
 		song_nbs_version = buffer_read_byte()
 		if song_nbs_version < nbs_version message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
-		if song_nbs_version > nbs_version message("Warning: You are opening an NBS file created in a later version of Note Block Studio. It may crash when opening.","Warning")
+		if song_nbs_version > nbs_version {
+			message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a V4 file or lower via the Save Options menu.","Error")
+			return -1
+		}
 		song_first_custom_index = buffer_read_byte()
 		custom_index_diff = first_custom_index - song_first_custom_index
 		
