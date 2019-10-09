@@ -343,3 +343,9 @@ setpan = 0
 
 // Saving
 save_version = nbs_version
+
+// Open song
+if (parameter_count() > 0) {
+	filename = parameter_string(1)
+	if (filename != "") load_song(filename)
+}
