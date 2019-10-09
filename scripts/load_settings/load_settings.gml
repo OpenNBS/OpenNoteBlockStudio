@@ -1,8 +1,23 @@
 // load_settings()
-var a;
+var a, settings_ver_loaded;
 log("Load settings")
 if (!file_exists_lib(data_directory + "settings.onbs")) return 0
 buffer = buffer_import(data_directory + "settings.onbs")
+
+byte1 = buffer_read_byte()
+byte2 = buffer_read_byte()
+
+if(byte1 = 69 && byte2 = 69) {
+	settings_ver_loaded = buffer_read_byte()
+	if settings_ver_loaded > settings_version {
+		message("The settings file being read was made in a later version of Note Block Studio!\nFailed to load program.","Error")
+		return -1
+	}
+} else {
+	settings_ver_loaded = 0
+    buffer_skip(-2)
+}
+
 // Recent songs
 for (a = 0; a < 11; a += 1) {
     recent_song[a] = buffer_read_string()
@@ -101,6 +116,8 @@ fade = buffer_read_byte()
 realstereo = buffer_read_byte()
 show_piano = buffer_read_byte()
 rhval = buffer_read_byte()
-w_midi_vel = buffer_read_byte()
+if settings_ver_loaded >= 1 {
+	w_midi_vel = buffer_read_byte()
+}
 buffer_delete(buffer)
 return 1

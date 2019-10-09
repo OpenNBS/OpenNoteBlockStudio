@@ -3,6 +3,7 @@
 #macro version "3.7.0"
 #macro nbs_version 4
 #macro pat_version 1
+#macro settings_version 1
 
 #macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
 #macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"

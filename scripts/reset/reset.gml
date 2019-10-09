@@ -132,3 +132,6 @@ setpan = 0
 
 // Saving
 save_version = nbs_version
+
+//Loop
+loopstart = 0
