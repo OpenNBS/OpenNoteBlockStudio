@@ -190,7 +190,7 @@
 								<strong>11 = </strong>Cow Bell (Soul Sand)<br>
 								<strong>12 = </strong>Didgeridoo (Pumpkin)<br>
 								<strong>13 = </strong>Bit (Block of Emerald)<br>
-								<strong>14 = </strong>Bajo (Hay)<br>
+								<strong>14 = </strong>Banjo (Hay)<br>
 								<strong>15 = </strong>Pling (Glowstone)
 							</span>
 						</td>
