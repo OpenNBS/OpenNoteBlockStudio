@@ -140,6 +140,11 @@
 						<td>The amount of times the user have added a note block.</td>
 					</tr>
 					<tr>
+						<td>Integer</td>
+						<td>Note blocks removed</td>
+						<td>The amount of times the user have removed a note block.</td>
+					</tr>
+					<tr>
 						<td>String</td>
 						<td>MIDI/Schematic file name</td>
 						<td>If the song has been imported from a .mid or .schematic file, that file name is stored here (Only the name of the file, not the path).</td>
