@@ -28,7 +28,8 @@ for (a = 0; a <= o.enda; a++) {
 					
 					// Add command to result
 					if(o.dat_enableradius) str += "execute at @s run playsound "+ soundname +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
-					else str += "playsound "+ soundname +" "+source+" @s ^" + string(blockposition*2) + " ^ ^ "+string(blockvolume)+ " " + string(pitch) + " 1" + br	
+					else str += "playsound "+ soundname +" "+source+" @s ^" + string(blockposition*2) + " ^ ^ "+string(blockvolume)+ " " + string(pitch) + " 1" + br 
+// Visualizer					+ "summon minecraft:falling_block " + "-" + string(o.song_key[a, b]) + " " + string(100) + " " + string((o.song_ins[a, b]-100000) * 2) + " " + "{BlockState:{Name:\"minecraft:note_block\"},Time:1b,DropItem:0,Motion:[0.0d,1.0d,1.0d]}" + br
 	            }
 	        }
 		}
