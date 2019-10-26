@@ -12,7 +12,8 @@
         "8f252975-cc91-4271-9c1e-3ba33e25cff1",
         "fe69e6df-7e13-4935-99d0-6f5629ac7d22",
         "4756f83f-caf8-4253-8464-427c453bfc07",
-        "073ae102-6a93-46fe-a9db-9234940759ff"
+        "073ae102-6a93-46fe-a9db-9234940759ff",
+        "91326cc8-1410-4e7e-acab-eb36809a0932"
     ],
     "filterType": "GMScript",
     "folderName": "Datapack",

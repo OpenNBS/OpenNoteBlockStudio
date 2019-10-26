@@ -29,8 +29,34 @@ for (a = 0; a <= o.enda; a++) {
 					// Add command to result
 					if(o.dat_enableradius) str += "execute at @s run playsound "+ soundname +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
 					else str += "playsound "+ soundname +" "+source+" @s ^" + string(blockposition*2) + " ^ ^ "+string(blockvolume)+ " " + string(pitch) + " 1" + br 
-// Visualizer					+ "summon minecraft:falling_block " + "-" + string(o.song_key[a, b]) + " " + string(100) + " " + string((o.song_ins[a, b]-100000) * 2) + " " + "{BlockState:{Name:\"minecraft:note_block\"},Time:1b,DropItem:0,Motion:[0.0d,1.0d,1.0d]}" + br
-	            }
+					if o.vis_type = "3D Arc" { // 3D Arc
+					str += "summon minecraft:falling_block " + "-" + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.0d,1.0d,1.0d]}" + br
+					} 
+					if o.vis_type = "Fall" { // Fall
+					str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
+					} 
+					if o.vis_type = "2D" { // 2D
+					str += "summon minecraft:falling_block " + "-" + string(o.song_key[a, b]) + " 100 0 " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-50,DropItem:0,NoGravity:1,Motion:[0.0d,0.0d,2.0d]}" + br
+					+ "particle minecraft:note " + "-" + string(o.song_key[a, b]) + " 100 0 0.5 0 0.5 1 4 force @p" + br
+					} 
+					if o.vis_type = "Rise" { // Rise
+					str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-50,DropItem:0,NoGravity:1,Motion:[0.0d,1.0d,0.0d]}" + br
+					} 
+					if o.vis_type = "Bounce" { // Bounce
+					str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.0d,1.3d,0.0d]}" + br
+					} 
+					if o.vis_type = "Fountain" { // Fountain
+						if o.song_key[a, b] > 45 {
+						str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.5d,1.5d,0.0d]}" + br
+						} else
+						str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45) + " " + string(100) + " " + string((o.song_ins[a, b]-100002) * 2) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[-0.5d,1.5d,0.0d]}" + br
+					} 
+					if o.vis_type = "Rittai Onkyou" { // Rittai Onkyou
+					str += "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(100) + " " + string(blockvolume * 48) + " " +"{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
+					+ "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(100) + " " + string((blockvolume * 48) - 1) + " " +"{BlockState:{Name:\"minecraft:note_block\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
+					+ "particle minecraft:note " + string(blockposition * 48) + " " + string(100) + " " + string((blockvolume * 48) - 2) + " 0 0 0 1 1 force @p" + br
+					} 
+				}
 	        }
 		}
 		if(a < o.enda) str += "scoreboard players set @s " + objective + "_t " + string(a)
