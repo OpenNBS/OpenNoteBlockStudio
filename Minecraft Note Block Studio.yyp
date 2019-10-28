@@ -2695,6 +2695,14 @@
             }
         },
         {
+            "Key": "b388b550-2b8c-4063-b058-e9ed3b451129",
+            "Value": {
+                "id": "42ac082a-9d26-4c5c-a5db-ced4a023fe6f",
+                "resourcePath": "datafiles_yy\\Data\\instrumenttextures.zip.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "b3a588d3-62de-4d76-aed2-f9ee7aaa1d6e",
             "Value": {
                 "id": "ace5f76b-2233-4c1f-9c52-ef975720816d",
@@ -2884,6 +2892,14 @@
                 "id": "28703cf7-2bfe-41b6-a3ec-3735dde10481",
                 "resourcePath": "fonts\\fnt_small\\fnt_small.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "c36c058f-b1af-446d-beba-bda1b54d240d",
+            "Value": {
+                "id": "e9242f46-30b3-4677-b63f-b6ffee9ceffa",
+                "resourcePath": "scripts\\datapack_getinstextures\\datapack_getinstextures.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -3983,6 +3999,7 @@
         "fe69e6df-7e13-4935-99d0-6f5629ac7d22",
         "4756f83f-caf8-4253-8464-427c453bfc07",
         "073ae102-6a93-46fe-a9db-9234940759ff",
+        "c36c058f-b1af-446d-beba-bda1b54d240d",
         "91326cc8-1410-4e7e-acab-eb36809a0932"
     ],
     "tutorial": ""

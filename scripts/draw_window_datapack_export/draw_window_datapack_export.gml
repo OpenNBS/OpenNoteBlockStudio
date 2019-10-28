@@ -65,7 +65,7 @@ selected_tab_sch += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk
 if (selected_tab_sch < 0) selected_tab_sch = 1
 if (selected_tab_sch > 1) selected_tab_sch = 0
 if (selected_tab_sch = 0) {
-	draw_sprite(spr_datapack_exp, sch_exp_layout, x1 + 18, y1 + 55)
+	draw_sprite(spr_datapack_exp, 2, x1 + 66, y1 + -40)
 	draw_theme_color()
 
 	//Name
@@ -140,15 +140,29 @@ if (selected_tab_sch = 0) {
 	popup_set_window(x1 + 380, y1 + 329, 125, 21, "Tick the song will jump to at the end of playback")
 	draw_theme_color()
 } else {
+	if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
 	//Type
-	draw_text(x1 + 187, y1 + 208, "Visualizer Type")
-	if (draw_radiobox(x1 + 192, y1 + 228, vis_type = "Arc", "3D Arc", "Controlled by Ambient/Environment slider")) vis_type = "3D Arc"
-	if (draw_radiobox(x1 + 192, y1 + 247, vis_type = "Fall", "Fall", "Controlled by Blocks slider")) vis_type = "Fall"
-	if (draw_radiobox(x1 + 192, y1 + 266, vis_type = "Rise", "Rise", "Controlled by Hostile Creatures slider")) vis_type = "Rise"
-	if (draw_radiobox(x1 + 192, y1 + 285, vis_type = "Bounce", "Bounce", "Controlled by Master Volume slider")) vis_type = "Bounce"
-	if (draw_radiobox(x1 + 192, y1 + 305, vis_type = "2D", "2D", "Controlled by Master Volume slider")) vis_type = "2D"
-	if (draw_radiobox(x1 + 192, y1 + 325, vis_type = "Fountain", "Fountain", "Controlled by Master Volume slider")) vis_type = "Fountain"
-	if (draw_radiobox(x1 + 192, y1 + 345, vis_type = "Rittai Onkyou", "Rittai Onkyou", "Controlled by Master Volume slider")) vis_type = "Rittai Onkyou"
+	draw_sprite(spr_datapack_exp, 1, x1 + 125, y1 + 55)
+	draw_text(x1 + 33, y1 + 75, "Visualizer Type")
+	if (draw_radiobox(x1 + 33, y1 + 95, vis_type = "Arc", "Arc", "Controlled by Ambient/Environment slider")) vis_type = "Arc"
+	if (draw_radiobox(x1 + 33, y1 + 115, vis_type = "Fall", "Fall", "Controlled by Blocks slider")) vis_type = "Fall"
+	if (draw_radiobox(x1 + 33, y1 + 135, vis_type = "Rise", "Rise", "Controlled by Hostile Creatures slider")) vis_type = "Rise"
+	if (draw_radiobox(x1 + 33, y1 + 155, vis_type = "Bounce", "Bounce", "Controlled by Master Volume slider")) vis_type = "Bounce"
+	if (draw_radiobox(x1 + 33, y1 + 175, vis_type = "Piano Roll", "Piano Roll", "Controlled by Master Volume slider")) vis_type = "Piano Roll"
+	if (draw_radiobox(x1 + 33, y1 + 195, vis_type = "Fountain", "Fountain", "Controlled by Master Volume slider")) vis_type = "Fountain"
+	if (draw_radiobox(x1 + 33, y1 + 215, vis_type = "Rittai Onkyou", "Rittai Onkyou", "Controlled by Master Volume slider")) vis_type = "Rittai Onkyou"
+	if (draw_checkbox(x1 + 33, y1 + 235, glow, "Add Glow", "Whether to add a glow to each instrument.")) glow=!glow
+	draw_text(x1 + 33, y1 + 255, "Spawn Height:")
+	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
+	draw_text(x1 + 33, y1 + 295, "Position In Map:")
+	draw_text(x1 + 33, y1 + 318, "X Value:")
+	dat_xval = draw_inputbox(23,x1 + 83, y1 + 315,40,dat_xval,"X value")
+	draw_text(x1 + 33, y1 + 338, "Z Value:")
+	dat_zval = draw_inputbox(24,x1 + 83, y1 + 335,40,dat_zval,"Z value")
+	//Get extra notes button
+	if (draw_button2(x1 + 13, y1 + 360, 152, "Get Note Block Textures")) {
+		datapack_getinstextures()
+	}
 }
 if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 
