@@ -63,7 +63,11 @@ iconcolor = c_black
 if (theme = 2) iconcolor = c_white
 
 // Calculate area
-totalcols = floor((rw - 270) / 32)
+if (show_layers) {
+	totalcols = floor((rw - 270) / 32)
+} else {
+	totalcols = floor(rw / 32)
+}
 if show_piano = 1 {
 	rhval = 270
 }
@@ -77,7 +81,10 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     }
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
-x1 = 264
+x1 = 4
+if (show_layers) {
+	x1 = 264
+}
 y1 = 52
 if ((window = 0 || select > 0) && playing = 0) {
     if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
@@ -742,168 +749,170 @@ starta = draw_scrollbar(scrollbarh, 264, y1 + totalrows * 32 + 34, 32, totalcols
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 
 // Draw layers
-for (b = 0; b < totalrows; b += 1) {
-    x1 = 4
-    y1 = 54 + 32 + b * 32 - 1
-    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
-    // Name
-    if (startb + b >= endb2) {
-        layername[startb + b] = ""
-        layerlock[startb + b] = 0
-        layervol[startb + b] = 100
-		layerstereo[startb + b] = 100
-        rowamount[startb + b] = 0
-        endb2 = startb + b + 1
-    }
-    m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
-    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
-	draw_set_font(fnt_small)
-	layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
-	if (layername[startb + b] = "") {
-        draw_set_color(c_gray)
-		if(theme = 2) draw_set_color(c_white)
-        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
-    }
-    draw_theme_color()
-    // Vol
-    if (realvolume) {
-        c = ((dragvolb = startb + b && window = w_dragvol) || (mouse_rectangle(x1 + 88, y1 + 5, 16, 25) && window = 0))
-        if (startb + b >= endb2) {
-            a = 100
-        } else {
-            a = layervol[startb + b]
-        }
-        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-        popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
-        if (c) {
-            draw_set_font(fnt_small)
-            draw_set_halign(fa_center)
-            draw_text(x1 + 98, y1 + 18, string(a) + "%")
-            draw_set_halign(fa_left)
-            draw_set_font(fnt_main)
-            curs = cr_size_ns
-            if (mouse_check_button_pressed(mb_left)) {
-                window = w_dragvol
-                dragvolb = startb + b
-                dragvol = layervol[startb + b]
-            }
-        }
-    }
-	// Stereo
-    if (!realstereo) {
-        c = ((dragstereob = startb + b && window2 = w_dragstereo) || (mouse_rectangle(x1 + 108, y1 + 5, 16, 25) && window2 = 0))
-        if (startb + b >= endb2) {
-            a = 100
-        } else {
-            a = layerstereo[startb + b]
-        }
-        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
-        if (c) {
-            draw_set_font(fnt_small)
-            draw_set_halign(fa_center)
-			if a > 100 {draw_text(x1 + 120, y1 + 18, "R " + string(a-100))}
-			if a = 100 {draw_text(x1 + 120, y1 + 18, "MONO")}
-			if a < 100 {draw_text(x1 + 120, y1 + 18, "L " + string((a-100)*-1))	}
-            draw_set_halign(fa_left)
-            draw_set_font(fnt_main)
-            curs = cr_size_ns
-            if (mouse_check_button_pressed(mb_left)) {
-                window2 = w_dragstereo
-                dragstereob = startb + b
-                dragstereo = layerstereo[startb + b]
-            }
-        }
+if (show_layers) {
+	for (b = 0; b < totalrows; b += 1) {
+	    x1 = 4
+	    y1 = 54 + 32 + b * 32 - 1
+	    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
+	    // Name
+	    if (startb + b >= endb2) {
+	        layername[startb + b] = ""
+	        layerlock[startb + b] = 0
+	        layervol[startb + b] = 100
+			layerstereo[startb + b] = 100
+	        rowamount[startb + b] = 0
+	        endb2 = startb + b + 1
+	    }
+	    m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
+	    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
+		draw_set_font(fnt_small)
+		layername[startb + b] = draw_text_edit(100 + startb + b, "", x1 + 11, y1 + 10, 72, 14, 1, 0)
+		if (layername[startb + b] = "") {
+	        draw_set_color(c_gray)
+			if(theme = 2) draw_set_color(c_white)
+	        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
+	    }
+	    draw_theme_color()
+	    // Vol
+	    if (realvolume) {
+	        c = ((dragvolb = startb + b && window = w_dragvol) || (mouse_rectangle(x1 + 88, y1 + 5, 16, 25) && window = 0))
+	        if (startb + b >= endb2) {
+	            a = 100
+	        } else {
+	            a = layervol[startb + b]
+	        }
+	        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
+	        popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
+	        if (c) {
+	            draw_set_font(fnt_small)
+	            draw_set_halign(fa_center)
+	            draw_text(x1 + 98, y1 + 18, string(a) + "%")
+	            draw_set_halign(fa_left)
+	            draw_set_font(fnt_main)
+	            curs = cr_size_ns
+	            if (mouse_check_button_pressed(mb_left)) {
+	                window = w_dragvol
+	                dragvolb = startb + b
+	                dragvol = layervol[startb + b]
+	            }
+	        }
+	    }
+		// Stereo
+	    if (!realstereo) {
+	        c = ((dragstereob = startb + b && window2 = w_dragstereo) || (mouse_rectangle(x1 + 108, y1 + 5, 16, 25) && window2 = 0))
+	        if (startb + b >= endb2) {
+	            a = 100
+	        } else {
+	            a = layerstereo[startb + b]
+	        }
+	        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
+	        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
+	        if (c) {
+	            draw_set_font(fnt_small)
+	            draw_set_halign(fa_center)
+				if a > 100 {draw_text(x1 + 120, y1 + 18, "R " + string(a-100))}
+				if a = 100 {draw_text(x1 + 120, y1 + 18, "MONO")}
+				if a < 100 {draw_text(x1 + 120, y1 + 18, "L " + string((a-100)*-1))	}
+	            draw_set_halign(fa_left)
+	            draw_set_font(fnt_main)
+	            curs = cr_size_ns
+	            if (mouse_check_button_pressed(mb_left)) {
+	                window2 = w_dragstereo
+	                dragstereob = startb + b
+	                dragstereo = layerstereo[startb + b]
+	            }
+	        }
+		}
+	    // Lock button
+	    p = 0
+	    if (startb + b < endb2) p = (layerlock[startb + b] = 1)
+	    if (draw_layericon(0, x1 + 126-!realvolume-realstereo * 10, y1 + 8, "Lock this layer", 0, p)) {
+	        if (layerlock[startb + b] = 2) solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
+	        if (layerlock[startb + b] = 1) {layerlock[startb + b] = 0} else {layerlock[startb + b] = 1}
+	    }
+	    // Solo button
+	    p = 0
+	    if (startb + b < endb2) p = (layerlock[startb + b] = 2)
+	    if (draw_layericon(1, x1 + 144 - !realvolume-realstereo * 10, y1 + 8, "Solo this layer", 0, p)) {
+	        if (layerlock[startb + b] = 2) {
+	            layerlock[startb + b] = 0
+	            solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
+	        } else {
+	            layerlock[startb + b] = 2
+	            solostr += "|" + string(startb + b) + "|"
+	        }
+	    }
+		// Select all
+	    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
+	        playing = 0
+	        selection_place(0)
+	        selection_add(0, startb + b, enda, startb + b, 0, 0)
+	    }
+		// Add layer
+	    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, "Add empty layer here", 0, 0)) {
+	        playing = 0
+			add_layer(startb + b, false)
+	    }
+		// Remove layer
+		if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, "Remove this layer", 0, 0)) {
+	        playing = 0
+			remove_layer(startb + b, false)
+		}
+		// Shift layer up
+		if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, "Shift layer up", 0, 0)) {
+		    playing = 0
+			shift_layers(startb + b, startb + b - 1, false)
+		}
+		// Shift layer down
+		if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, "Shift layer down", 0, 0)) {
+		    playing = 0
+			shift_layers(startb + b, startb + b + 1, false)
+		}
 	}
-    // Lock button
-    p = 0
-    if (startb + b < endb2) p = (layerlock[startb + b] = 1)
-    if (draw_layericon(0, x1 + 126-!realvolume-realstereo * 10, y1 + 8, "Lock this layer", 0, p)) {
-        if (layerlock[startb + b] = 2) solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
-        if (layerlock[startb + b] = 1) {layerlock[startb + b] = 0} else {layerlock[startb + b] = 1}
-    }
-    // Solo button
-    p = 0
-    if (startb + b < endb2) p = (layerlock[startb + b] = 2)
-    if (draw_layericon(1, x1 + 144 - !realvolume-realstereo * 10, y1 + 8, "Solo this layer", 0, p)) {
-        if (layerlock[startb + b] = 2) {
-            layerlock[startb + b] = 0
-            solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
-        } else {
-            layerlock[startb + b] = 2
-            solostr += "|" + string(startb + b) + "|"
-        }
-    }
-	// Select all
-    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer", 0, 0)) {
-        playing = 0
-        selection_place(0)
-        selection_add(0, startb + b, enda, startb + b, 0, 0)
-    }
-	// Add layer
-    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, "Add empty layer here", 0, 0)) {
-        playing = 0
-		add_layer(startb + b, false)
-    }
-	// Remove layer
-	if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, "Remove this layer", 0, 0)) {
-        playing = 0
-		remove_layer(startb + b, false)
+	if (window = w_dragvol) {
+	    dragvol += (mouse_yprev - mouse_y) * 2
+	    dragvol = median(0, dragvol, 100)
+	    layervol[dragvolb] = floor(dragvol / 10) * 10
+	    if (!mouse_check_button(mb_left)) {
+	        window = w_releasemouse
+	    }
 	}
-	// Shift layer up
-	if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, "Shift layer up", 0, 0)) {
-	    playing = 0
-		shift_layers(startb + b, startb + b - 1, false)
+	if (window2 = w_dragstereo) {
+	    dragstereo += (mouse_yprev - mouse_y) * 2
+	    dragstereo = median(0, dragstereo, 200)
+	    layerstereo[dragstereob] = floor(dragstereo / 10) * 10
+	    if (!mouse_check_button(mb_left)) {
+	        window2 = w_releasemouse
+			window2 = 0
+	    }
 	}
-	// Shift layer down
-	if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, "Shift layer down", 0, 0)) {
-	    playing = 0
-		shift_layers(startb + b, startb + b + 1, false)
+	// Macro Bar
+	if selected != 0 {
+	draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+	xx = x1 + 6
+	var yy = y1+37
+	if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+	if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
+	if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+	if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
+	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+	if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
+	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
+	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo()} xx += 25
+	if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+	if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
+	if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+	if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+	if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+	if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
 	}
 }
-if (window = w_dragvol) {
-    dragvol += (mouse_yprev - mouse_y) * 2
-    dragvol = median(0, dragvol, 100)
-    layervol[dragvolb] = floor(dragvol / 10) * 10
-    if (!mouse_check_button(mb_left)) {
-        window = w_releasemouse
-    }
-}
-if (window2 = w_dragstereo) {
-    dragstereo += (mouse_yprev - mouse_y) * 2
-    dragstereo = median(0, dragstereo, 200)
-    layerstereo[dragstereob] = floor(dragstereo / 10) * 10
-    if (!mouse_check_button(mb_left)) {
-        window2 = w_releasemouse
-		window2 = 0
-    }
-}
-// Macro Bar
-if selected != 0 {
-draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
-draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
-draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
-xx = x1 + 6
-var yy = y1+37
-if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
-if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
-if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
-if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
-if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
-if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
-if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo()} xx += 25
-if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
-if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
-}
-
 // Tabs
 if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 tab_x = 1
+draw_set_font(fnt_small)
 if (draw_tab("File")) {
     str = ""
     for (b = 0; b < 11; b += 1) {
@@ -1118,56 +1127,60 @@ else str = "MIDI devices: " + str
 draw_text(rw - 6, rh - 18, str)
 draw_set_halign(fa_left)
 
-// Marker position
-draw_set_halign(fa_right)
-draw_theme_color()
-draw_set_font(fnt_info_med_bold)
-draw_text(93, 52, time_str(marker_pos / tempo))
+if (show_layers) {
+	// Marker position
+	draw_set_halign(fa_right)
+	draw_theme_color()
+	draw_set_font(fnt_info_med_bold)
+	draw_text(93, 52, time_str(marker_pos / tempo))
 
-// Song length
-draw_set_font(fnt_small)
-draw_text(93, 69, "/ " + time_str(enda / tempo))
-draw_set_font(fnt_main)
+	// Song length
+	draw_set_font(fnt_small)
+	draw_text(93, 69, "/ " + time_str(enda / tempo))
+	draw_set_font(fnt_main)
 
-// Bars-beats-sixteenths
-draw_sprite(spr_tempobox, 0, 184, 57)
-draw_set_halign(fa_right)
-draw_text(215, 60, ".")
-draw_text(230, 60, ".")
-draw_text(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
-draw_text(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
-draw_text(240, 60, floor(marker_pos mod 4) + 1)
-popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
+	// Bars-beats-sixteenths
+	draw_sprite(spr_tempobox, 0, 184, 57)
+	draw_set_halign(fa_right)
+	draw_text(215, 60, ".")
+	draw_text(230, 60, ".")
+	draw_text(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
+	draw_text(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
+	draw_text(240, 60, floor(marker_pos mod 4) + 1)
+	popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
 
-// Tempo
-draw_sprite(spr_tempobox, 0, 108, 57)
-draw_set_halign(fa_center)
-draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
-draw_set_halign(fa_left)
-a = mouse_rectangle(108, 57, 64, 22)
-popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
+	// Tempo
+	draw_sprite(spr_tempobox, 0, 108, 57)
+	draw_set_halign(fa_center)
+	draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
+	draw_set_halign(fa_left)
+	a = mouse_rectangle(108, 57, 64, 22)
+	popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
 
-if (a && window = 0 && window2 = 0) {
-    curs = cr_size_ns
-    if (mouse_check_button(mb_left)) {
-        tempodrag = tempo
-        window = w_dragtempo
-    }
-    if (mouse_check_button_pressed(mb_right)) tempo = 10
-}
-if (window = w_dragtempo) {
-    curs = cr_size_ns
-    tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
-    tempodrag = median(0.25, tempodrag, 30)
-    a = tempo
-    tempo = floor(tempodrag * 4) / 4
-    if (a != tempo) changed = 1
-    if (!mouse_check_button(mb_left)) window = w_releasemouse
+	if (a && window = 0 && window2 = 0) {
+	    curs = cr_size_ns
+	    if (mouse_check_button(mb_left)) {
+	        tempodrag = tempo
+	        window = w_dragtempo
+	    }
+	    if (mouse_check_button_pressed(mb_right)) tempo = 10
+	}
+	if (window = w_dragtempo) {
+	    curs = cr_size_ns
+	    tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
+	    tempodrag = median(0.25, tempodrag, 30)
+	    a = tempo
+	    tempo = floor(tempodrag * 4) / 4
+	    if (a != tempo) changed = 1
+	    if (!mouse_check_button(mb_left)) window = w_releasemouse
+	}
 }
 
 // Piano
-draw_piano(floor(rw / 2 - (keysshow * 39) / 2), rh - 154, keysshow, totalcols)
-if (mouse_rectangle(floor(rw / 2 - (keysshow * 39) / 2), rh - 162, keysshow * 39, 136) && window = 0) curs = cr_handpoint
+if (show_piano) {
+	draw_piano(floor(rw / 2 - (keysshow * 39) / 2), rh - 154, keysshow, totalcols)
+	if (mouse_rectangle(floor(rw / 2 - (keysshow * 39) / 2), rh - 162, keysshow * 39, 136) && window = 0) curs = cr_handpoint
+}
 
 // End selecting
 if (select > 0) {

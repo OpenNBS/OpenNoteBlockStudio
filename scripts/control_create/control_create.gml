@@ -150,6 +150,7 @@ dragincyd = 0
 dragincyu = 0
 
 // Layers
+show_layers = 1
 realvolume = 1
 realstereo = 0
 layername[0] = ""
