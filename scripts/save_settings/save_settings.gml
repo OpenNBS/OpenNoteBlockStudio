@@ -2,6 +2,10 @@
 var a, b;
 buffer = buffer_create(8, buffer_grow, 1)
 
+buffer_write_byte(69) // Couldn't choose zero as the old format had the same bytes when the recent file list was empty. Decided to use le epik funny number 69 instead.
+buffer_write_byte(69)
+buffer_write_byte(settings_version)
+
 // Recent songs
 for (a = 0; a < 11; a += 1) {
 	buffer_write_string(recent_song[a]);

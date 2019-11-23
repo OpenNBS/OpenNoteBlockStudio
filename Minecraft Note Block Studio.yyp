@@ -1071,14 +1071,6 @@
             }
         },
         {
-            "Key": "48d20047-cbf4-48e1-8992-fdd30cffad95",
-            "Value": {
-                "id": "f13020c0-6de4-4c23-9243-30cc6cb36adb",
-                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "494b16e5-ae65-4983-bf81-199e2ed78e3a",
             "Value": {
                 "id": "6072a3c1-25b7-4869-816a-971932226304",
@@ -2175,6 +2167,14 @@
             }
         },
         {
+            "Key": "91326cc8-1410-4e7e-acab-eb36809a0932",
+            "Value": {
+                "id": "cbdcb303-8321-464a-a148-6ff066d5646f",
+                "resourcePath": "scripts\\block_get_namespaced_id\\block_get_namespaced_id.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "91f6b839-aba4-422a-9992-a736e55fb77f",
             "Value": {
                 "id": "dc3bb9e5-0340-483b-abd9-12a1b538269a",
@@ -2695,6 +2695,14 @@
             }
         },
         {
+            "Key": "b388b550-2b8c-4063-b058-e9ed3b451129",
+            "Value": {
+                "id": "42ac082a-9d26-4c5c-a5db-ced4a023fe6f",
+                "resourcePath": "datafiles_yy\\Data\\instrumenttextures.zip.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "b3a588d3-62de-4d76-aed2-f9ee7aaa1d6e",
             "Value": {
                 "id": "ace5f76b-2233-4c1f-9c52-ef975720816d",
@@ -2847,6 +2855,14 @@
             }
         },
         {
+            "Key": "c03f3b8b-ba1a-4d32-9051-23b8572bd22b",
+            "Value": {
+                "id": "e63bab99-dfa0-45c0-9aa1-826d12440c6f",
+                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "c1ae4275-cc48-48bb-bc3a-7c638ac064ec",
             "Value": {
                 "id": "7165a370-b987-42b6-9d50-f2c7ef8c2fb9",
@@ -2876,6 +2892,14 @@
                 "id": "28703cf7-2bfe-41b6-a3ec-3735dde10481",
                 "resourcePath": "fonts\\fnt_small\\fnt_small.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "c36c058f-b1af-446d-beba-bda1b54d240d",
+            "Value": {
+                "id": "e9242f46-30b3-4677-b63f-b6ffee9ceffa",
+                "resourcePath": "scripts\\datapack_getinstextures\\datapack_getinstextures.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -3974,7 +3998,9 @@
         "8f252975-cc91-4271-9c1e-3ba33e25cff1",
         "fe69e6df-7e13-4935-99d0-6f5629ac7d22",
         "4756f83f-caf8-4253-8464-427c453bfc07",
-        "073ae102-6a93-46fe-a9db-9234940759ff"
+        "073ae102-6a93-46fe-a9db-9234940759ff",
+        "c36c058f-b1af-446d-beba-bda1b54d240d",
+        "91326cc8-1410-4e7e-acab-eb36809a0932"
     ],
     "tutorial": ""
 }

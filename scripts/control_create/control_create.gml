@@ -296,6 +296,7 @@ selected_tab_mc = 0
 
 // Schematic
 reset_schematic_export(0)
+block_color = 0
 
 //Datapack
 dat_name = ""
@@ -310,6 +311,12 @@ dat_radius = 16
 dat_radiusvalue = 0
 dat_enablelooping = 0
 loopstart = 0
+vis_type = "Arc"
+glow = 1
+dat_yval = 100
+dat_xval = 0
+dat_zval = 0
+dat_visualizer = 0
 
 //MP3
 mp3_includelocked = 0

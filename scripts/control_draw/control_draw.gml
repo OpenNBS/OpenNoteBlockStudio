@@ -445,7 +445,7 @@ if (window = 0 && text_focus = -1) {
         marker_pos = 0
         marker_prevpos = 0
     }
-    if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols)
+	if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols)
     if (keyboard_check_pressed(vk_f1)) {
         open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
     }
