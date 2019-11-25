@@ -34,7 +34,7 @@ if (str[1] != "")
     h += 16
 if (str[2] != "")
     h += 16
-if (midifile != "")
+if (song_midi != "")
     h += 10
 if (window = w_songinfoedit)
     h += 32
@@ -70,15 +70,15 @@ if (song_author != "") {
     }
 }
 draw_theme_color()
-if (midifile != "") {
+if (song_midi != "") {
     draw_set_font(fnt_main)
-    a = string_width("Imported from ")
-    draw_set_font(fnt_mainbold)
-    b = string_width(midifile)
-    draw_set_font(fnt_mainbold)
-    draw_text(x1 + floor(w / 2 + a / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), midifile)
-    draw_set_font(fnt_main)
-    draw_text(x1 + floor(w / 2 - b / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), "Imported from ")
+	a = string_width("Imported from ")
+	draw_set_font(fnt_mainbold)
+	b = string_width(song_midi)
+	draw_set_font(fnt_mainbold)
+	draw_text(x1 + floor(w / 2 + a / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), string(song_midi))
+	draw_set_font(fnt_main)
+	draw_text(x1 + floor(w / 2 - b / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), "Imported from ")
 }
 draw_set_font(fnt_main) 
 draw_text(x1 + floor(w / 2), y1 + h - 20 - 32 * (window = w_songinfoedit), condstr(window = w_songinfo, "Click anywhere to dismiss") + condstr(window = w_songinfoedit, "This message is shown when the file is opened."))

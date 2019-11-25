@@ -21,7 +21,7 @@ if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "Keep within octave range", 
 if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
 if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
 if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi()}
-if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {w_midi_tab = 0 midifile = "" window = 0}
+if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {w_midi_tab = 0 window = 0}
 if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
     if (question("Are you sure?", "Confirm")) { 
         midi_instruments()

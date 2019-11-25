@@ -183,6 +183,5 @@ if (w_midi_remember = 1) {
 global.popup = 0
 with (obj_popup) instance_destroy()
 window = 0
-filename = midifile
 changed = 0
 for (a = 0; a < 200; a += 1) text_exists[a] = 0

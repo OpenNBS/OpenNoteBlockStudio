@@ -81,11 +81,18 @@ if (file_ext = ".nbs") {
     work_remove = max(0, a)
     // MIDI FILENAME
     a = buffer_read_string_int()
-    if (filename_ext(a) = ".mid" || filename_ext(a) = ".midi") midifile = a
+    if (filename_ext(a) = ".mid" || filename_ext(a) = ".midi") song_midi = a
+	else song_midi = ""
 	// LOOP
 	if(song_nbs_version >= 4){
 	loop = buffer_read_byte()
+	if string_count("format4beta", filename_name(fn)) = 1 {
 	loopstart = buffer_read_byte()
+	loopmax = 0
+	} else {
+		loopmax = buffer_read_byte()
+		loopstart = buffer_read_short()
+		}
 	}
     // Note blocks
     ca = -1
@@ -126,12 +133,15 @@ if (file_ext = ".nbs") {
     // Layer names
     for (b = 0; b < hei; b += 1) {
         layername[b] = buffer_read_string_int()
-        layerlock[b] = 0
+		if song_nbs_version >= 4 && string_count("format4beta", filename_name(fn)) != 1 {
+			layerlock[b] = buffer_read_byte()
+		}
+        else layerlock[b] = 0
         layervol[b] = buffer_read_byte()
         if (layervol[b] = -1) layervol[b] = 100
         layervol[b] = median(0, layervol[b], 100)
         if (layervol[b] < 100) realvolume = 1
-		if song_nbs_version>=2 {
+		if song_nbs_version >= 2 {
 			layerstereo[b] = buffer_read_byte()
 		}
 		else {

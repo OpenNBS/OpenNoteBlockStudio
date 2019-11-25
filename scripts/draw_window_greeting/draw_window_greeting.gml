@@ -75,7 +75,7 @@ a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left))
 draw_sprite(spr_frame2, a + 3 * theme, b, c)
 draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
 draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
-if (a = 2 && mouse_check_button_released(mb_left)) window = 0
+if (a = 2 && mouse_check_button_released(mb_left)) window = 0 song_midi = ""
 
 c += 44
 b = x1 + 300

@@ -43,11 +43,12 @@ buffer_write_int(work_right)
 buffer_write_int(work_add)
 buffer_write_int(work_remove)
 
-buffer_write_string_int(midifile)
+buffer_write_string_int(song_midi)
 
 if save_version >= 4 {
 buffer_write_byte(loop)
-buffer_write_byte(loopstart)
+buffer_write_byte(loopmax)
+buffer_write_short(loopstart)
 }
 
 ca = 0
@@ -78,6 +79,9 @@ buffer_write_short(0)
 // Layer names
 for (b = 0; b < endb2; b += 1) {
     buffer_write_string_int(layername[b])
+	if save_version >= 4 {
+	buffer_write_byte(layerlock[b])
+	}
     buffer_write_byte(layervol[b])
 	if save_version >= 2 {
 	buffer_write_byte(layerstereo[b])

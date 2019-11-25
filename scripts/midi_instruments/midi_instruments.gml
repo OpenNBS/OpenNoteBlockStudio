@@ -121,7 +121,7 @@ midi_ins[a, 0] = "Cello" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 6 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Contrabass" midi_ins[a, 3] = ""
 midi_ins[a, 1] = 6 midi_ins[a, 2] = 0 a += 1
-midi_ins[a, 0] = "volumelfo Strings" midi_ins[a, 3] = "T. Strings"
+midi_ins[a, 0] = "Tremolo Strings" midi_ins[a, 3] = "T. Strings"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1
 midi_ins[a, 0] = "Pizzicato Strings" midi_ins[a, 3] = "P. Strings"
 midi_ins[a, 1] = 0 midi_ins[a, 2] = 0 a += 1

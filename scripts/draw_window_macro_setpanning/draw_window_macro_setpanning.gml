@@ -16,7 +16,7 @@ if (theme = 0) {
     draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 }
 draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Panning")
-setpan = median(-100, draw_dragvalue(10, x1 + 55, y1 + 65, setpan, 0.1), 100)
+setpan = median(-100, draw_dragvalue(12, x1 + 55, y1 + 65, setpan, 0.1), 100)
 
 draw_theme_color()
 if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
