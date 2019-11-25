@@ -1,4 +1,4 @@
-// macro_volumelfo()
+// macro_velocitylfo()
 var str, total_vals, val, decr
 str = selection_code
 if (selected = 0) return 0

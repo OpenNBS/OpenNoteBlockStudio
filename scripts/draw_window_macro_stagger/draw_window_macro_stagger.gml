@@ -7,14 +7,9 @@ y1 = floor(window_height / 2 - 70)
 draw_window(x1, y1, x1 + 140, y1 + 140)
 draw_theme_color()
 draw_set_font(fnt_mainbold)
-draw_text(x1 + 8, y1 + 8, "Stagger")
+draw_text(x1 + 8, y1 + 8, "Stagger (WARNING: CANNOT BE UNDONE)")
 pattern = ""
 if (selected = 0) return 0
-str = selection_code
-arr_data = selection_to_array(str)
-total_vals = string_count("|", str)
-val = 0
-conf = 0
 draw_set_font(fnt_main)
 if (theme = 0) {
     draw_set_color(c_white)
@@ -36,8 +31,12 @@ if (draw_button2(x1 + 10, y1 + 108, 60, "OK")) {
 		message("Stagger can only extend downwards!", "Error")
 		return -1
 	}
-
 	window = 0
+	str = selection_code
+	arr_data = selection_to_array(str)
+	total_vals = string_count("|", str)
+	val = 0
+	conf = 0
 	pattern = string(pattern + "|")
 	arp = selection_to_array(pattern)
 	arplen = string_count("|", pattern)

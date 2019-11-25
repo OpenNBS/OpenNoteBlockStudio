@@ -373,7 +373,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
 										"Ctrl+Shift+G$Vibrato|"+
 										"Ctrl+Shift+H$Stagger|"+
 										"Ctrl+Shift+J$Chorus|"+
-										"Ctrl+Shift+K$Volume LFO|"+
+										"Ctrl+Shift+K$Velocity LFO|"+
 										"Ctrl+Shift+Q$Fade In|"+
 										"Ctrl+Shift+W$Fade Out|"+
 										"Ctrl+Shift+E$Replace Key|"+
@@ -438,7 +438,7 @@ if (window = 0 && text_focus = -1) {
         marker_pos = 0
         marker_prevpos = 0
     }
-	if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols)
+	if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols) timestoloop = real(loopmax)
     if (keyboard_check_pressed(vk_f1)) {
         open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
     }
@@ -501,7 +501,7 @@ if (window = 0 && text_focus = -1) {
 				}
 			if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
 				playing = 0 
-				macro_volumelfo()
+				macro_velocitylfo()
 				}
 			if (keyboard_check_pressed(ord("Q"))&& keyboard_check(vk_shift)) {
 				playing = 0 
@@ -610,12 +610,33 @@ if (playing = 1 || forward<>0) {
 		}
 	}
 	//loop song
-	if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
-        starta = loopstart
-        marker_pos = starta
+	if looptobarend = 1 {
+		if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
+			timestoloop --
+		    starta = loopstart
+		    marker_pos = starta
+			metronome_played = -1
+		    sb_val[scrollbarh] = starta
+			if loopmax != 0 {
+				if timestoloop < 0 {
+					playing = 0
+					timestoloop = real(loopmax)
+				}
+			} 
+	    }
+	} else 	if (loop = 1 && marker_pos > enda + 1) {
+		timestoloop --
+		starta = loopstart
+		marker_pos = starta
 		metronome_played = -1
-        sb_val[scrollbarh] = starta
-    }
+		sb_val[scrollbarh] = starta
+		if loopmax != 0 {
+			if timestoloop < 0 {
+				playing = 0
+				timestoloop = real(loopmax)
+			}
+		} 
+	}
     if (marker_pos > enda + totalcols) {
         marker_pos = enda + totalcols
         playing = 0
@@ -892,7 +913,7 @@ if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_porta
 if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
 if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
 if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo()} xx += 25
+if (draw_macroicon(7, xx, yy, "Velocity LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
 if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
 if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
 if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
@@ -952,7 +973,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Volume LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan/Pit|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Velocity LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan/Pit|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {
@@ -986,9 +1007,9 @@ if (draw_icon(icons.NEW, xx, "New song", 0, 0)) {new_song()} xx += 25
 if (draw_icon(icons.OPEN, xx, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25
 if (draw_icon(icons.SAVE, xx, "Save song", 0, 0)) {save_song(filename)} xx += 25 + 4
 draw_separator(xx, 26) xx += 4
-if (draw_icon(icons.PLAY + playing, xx, "Play / Pause song", 0, 0)) toggle_playing(totalcols)
+if (draw_icon(icons.PLAY + playing, xx, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 xx += 25
-if (draw_icon(icons.STOP, xx, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0} xx += 25
+if (draw_icon(icons.STOP, xx, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
 forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25

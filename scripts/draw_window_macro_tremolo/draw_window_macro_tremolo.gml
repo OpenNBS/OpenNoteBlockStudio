@@ -6,7 +6,7 @@ x1 = floor(window_width / 2 - 72)
 y1 = floor(window_height / 2 - 145)
 draw_window(x1, y1, x1 + 140, y1 + 240)
 draw_set_font(fnt_mainbold)
-draw_text(x1 + 8, y1 + 8, "Tremolo")
+draw_text(x1 + 8, y1 + 8, "Tremolo (WARNING: CANNOT BE UNDONE)")
 if (selected = 0) return 0
 draw_set_font(fnt_main)
 if (theme = 0) {

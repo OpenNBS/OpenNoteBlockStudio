@@ -24,6 +24,8 @@ r = buffer_read_short_be()
 if (r != 0 && r != 1 && r != 2) {message("Error loading MIDI file:\n\nFormat not supported.", "Error") reset_midi() buffer_delete(buffer) return 0}
 
 midi_tracks = buffer_read_short_be()
+midifile = filename_name(fn)
+song_midi = string(midifile)
 midi_trackamount[midi_tracks] = 0
 reset_midi()
 midi_tempo = buffer_read_short_be()
@@ -221,5 +223,4 @@ for (a = 24 a < 88 a += 1) {
 }
 midi_percamount = a - 24*/
 midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000
-midifile = filename_name(fn)
 return 1

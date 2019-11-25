@@ -282,7 +282,7 @@
             "Key": "11313390-ea0d-4d1e-8bbd-9870958e217d",
             "Value": {
                 "id": "041a0efb-bb7e-4396-84a9-8353f66f635a",
-                "resourcePath": "scripts\\macro_volumelfo\\macro_volumelfo.yy",
+                "resourcePath": "scripts\\macro_velocitylfo\\macro_velocitylfo.yy",
                 "resourceType": "GMScript"
             }
         },

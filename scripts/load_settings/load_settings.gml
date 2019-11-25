@@ -118,6 +118,8 @@ show_piano = buffer_read_byte()
 rhval = buffer_read_byte()
 if settings_ver_loaded >= 1 {
 	w_midi_vel = buffer_read_byte()
+	patternfolder = buffer_read_string()
+	looptobarend = buffer_read_byte()
 }
 buffer_delete(buffer)
 return 1

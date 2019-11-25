@@ -119,7 +119,7 @@ if (selected_tab = 0) {
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No Fading", "Disables transparency animations on note block sprites")) fade = !fade
 
 	
-    draw_areaheader(x1 + 22, y1 + 240, 456, 110, "Piano")
+    draw_areaheader(x1 + 22, y1 + 240, 456, 120, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 256, show_piano, "Show Piano", "Whether the piano should be visible.")) {
 		show_piano=!show_piano
 		keysmax=0
@@ -132,9 +132,11 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 276, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
     if (draw_checkbox(x1 + 40, y1 + 296, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
     if (draw_checkbox(x1 + 40, y1 + 316, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-    draw_text(x1 + 40, y1 + 336, "Keys to show:")
-    keysmax = median(0, draw_dragvalue(4, x1 + 120, y1 + 336, keysmax, 2), 50)
-    popup_set_window(x1 + 40, y1 + 322, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+    if show_piano = 1 {
+		draw_text(x1 + 40, y1 + 336, "Keys to show:")
+		keysmax = median(0, draw_dragvalue(4, x1 + 120, y1 + 336, keysmax, 2), 50)
+		popup_set_window(x1 + 40, y1 + 322, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+	}
 } else if (selected_tab = 2) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Mouse wheel")
     if (draw_radiobox(x1 + 40, y1 + 90, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0
@@ -156,7 +158,8 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
     draw_areaheader(x1 + 22, y1 + 224, 456, 65, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
-if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable Stereo", "Disables stereo playback.")) realstereo = !realstereo
+	if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable Stereo", "Disables stereo playback.")) realstereo = !realstereo
+	if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop To Bar End", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 }
 if (draw_button2(x1 + 420, y1 + 368, 72, "OK")) window = 0
 window_set_cursor(curs)

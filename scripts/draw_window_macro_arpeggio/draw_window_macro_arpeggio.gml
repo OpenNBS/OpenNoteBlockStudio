@@ -9,10 +9,6 @@ draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Arpeggio")
 pattern = ""
 if (selected = 0) return 0
-str = selection_code
-arr_data = selection_to_array(str)
-total_vals = string_count("|", str)
-val = 0
 draw_set_font(fnt_main)
 if (theme = 0) {
     draw_set_color(c_white)
@@ -31,6 +27,10 @@ if string_count("|", pattern) = 0 {
 	return 1
 }
 window = 0
+str = selection_code
+arr_data = selection_to_array(str)
+total_vals = string_count("|", str)
+val = 0
 pattern = string(pattern + "|")
 arp = selection_to_array(pattern)
 arplen = string_count("|", pattern)

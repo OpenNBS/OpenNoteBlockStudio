@@ -79,7 +79,7 @@ switch (m) {
         if (sel = 25 + ds_list_size(instrument_list)) macro_vibrato()
 		if (sel = 26 + ds_list_size(instrument_list)) window = w_stagger
         if (sel = 27 + ds_list_size(instrument_list)) macro_chorus()
-        if (sel = 28 + ds_list_size(instrument_list)) macro_volumelfo()
+        if (sel = 28 + ds_list_size(instrument_list)) macro_velocitylfo()
         if (sel = 29 + ds_list_size(instrument_list)) macro_fadein()
         if (sel = 30 + ds_list_size(instrument_list)) macro_fadeout()
         if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()
@@ -125,7 +125,7 @@ switch (m) {
         if (sel = 25 + ds_list_size(instrument_list)) macro_vibrato()
 		if (sel = 26 + ds_list_size(instrument_list)) window = w_stagger
         if (sel = 27 + ds_list_size(instrument_list)) macro_chorus()
-        if (sel = 28 + ds_list_size(instrument_list)) macro_volumelfo()
+        if (sel = 28 + ds_list_size(instrument_list)) macro_velocitylfo()
         if (sel = 29 + ds_list_size(instrument_list)) macro_fadein()
         if (sel = 30 + ds_list_size(instrument_list)) macro_fadeout()
         if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()

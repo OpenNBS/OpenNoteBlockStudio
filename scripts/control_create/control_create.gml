@@ -230,6 +230,10 @@ asso_sch = 0
 w_asso_start = 1
 wmenu = 0
 loop = 0
+loopmax = 0
+loopstart = 0
+looptobarend = 1
+timestoloop = loopmax
 
 // Midi export / import
 w_midi_remember = 1
@@ -309,7 +313,6 @@ dat_enableradius = 0
 dat_radius = 16
 dat_radiusvalue = 0
 dat_enablelooping = 0
-loopstart = 0
 vis_type = "Arc"
 glow = 1
 dat_yval = 100
