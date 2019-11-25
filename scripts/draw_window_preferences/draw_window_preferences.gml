@@ -118,8 +118,8 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No Fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
-    draw_areaheader(x1 + 22, y1 + 240, 456, 120, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 256, show_piano, "Show Piano", "Whether the piano should be visible.")) {
+    draw_areaheader(x1 + 22, y1 + 260, 456, 90, "Piano")
+    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show Piano", "Whether the piano should be visible.")) {
 		show_piano=!show_piano
 		rhval=130
 		if show_piano = 1 {
@@ -130,14 +130,14 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 316, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
     if (draw_checkbox(x1 + 40, y1 + 336, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
     if (!show_piano) draw_set_color(c_gray)
-	draw_text(x1 + 180, y1 + 276, "Keys to show:")
+	draw_text(x1 + 180, y1 + 275, "Keys to show:")
 	if (show_piano) {
-		keysmax = median(20, draw_dragvalue(4, x1 + 260, y1 + 276, keysmax, 2), 50)
+		keysmax = median(20, draw_dragvalue(4, x1 + 260, y1 + 275, keysmax, 2), 50)
 	} else {
-		draw_text(x1 + 260, y1 + 276, keysmax)
+		draw_text(x1 + 260, y1 + 275, keysmax)
 	}
 	draw_theme_color()
-    popup_set_window(x1 + 180, y1 + 276, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+    popup_set_window(x1 + 180, y1 + 275, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
 } else if (selected_tab = 2) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Mouse wheel")
     if (draw_radiobox(x1 + 40, y1 + 90, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0
