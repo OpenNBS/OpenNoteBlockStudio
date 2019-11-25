@@ -921,7 +921,7 @@ if (show_layers) {
 	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
 	if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
 	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_volumelfo()} xx += 25
+	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
 	if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
 	if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
 	if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
