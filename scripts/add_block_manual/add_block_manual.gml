@@ -1,4 +1,4 @@
-// add_block_manual(x, y, ins, key, vel, pan)
+// add_block_manual(x, y, ins, key, vel, pan, pit)
 var a, b, c, xx, yy, ins, key, vel, pan, pit;
 xx = argument0
 yy = argument1

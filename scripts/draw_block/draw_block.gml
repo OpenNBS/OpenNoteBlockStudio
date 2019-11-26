@@ -1,11 +1,14 @@
-// draw_block(x, y, ins, key, alpha, selalpha)
-var xx, yy, ins, key, alpha, salpha, index;
+// draw_block(x, y, ins, key, pan, vel, pit, alpha, selalpha)
+var xx, yy, ins, key, pan, vel, pit, alpha, salpha, index;
 xx = argument0
 yy = argument1
 ins = argument2
 key = argument3
-alpha = argument4
-salpha = argument5
+pan = argument4
+vel = argument5
+pit = argument6
+alpha = argument7
+salpha = argument8
 
 index = ds_list_find_index(instrument_list, ins)
 
@@ -17,6 +20,17 @@ if(index >= first_custom_index) {
 	draw_sprite_ext(spr_block, 48, xx, yy, 1, 1, 0, -1, alpha)
 } else {
 	draw_sprite_ext(spr_block, index +  (16 * draw_type), xx, yy, 1, 1, 0, -1, alpha)
+}
+
+//Draw a red or blue tint in the block when the pitch is off
+if (pit < 0) {
+	draw_set_color(c_red)
+	draw_set_alpha(min(0.5, (-pit / 100) * alpha * 0.25))
+	draw_rectangle(xx, yy, xx + 32, yy + 32, false)
+} else if (pit > 0) {
+	draw_set_color(c_blue)
+	draw_set_alpha(min(0.5, (pit / 100) * alpha * 0.25))
+	draw_rectangle(xx, yy, xx + 32, yy + 32, false)
 }
 
 if (ins.user || key < 33 || key > 57) {
