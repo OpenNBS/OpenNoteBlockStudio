@@ -1128,16 +1128,46 @@ draw_separator(xx, rh - 20)
 draw_theme_color()
 
 xx += 4
-draw_text(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 120
+draw_text(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 160
+draw_separator(xx, rh - 20)
 draw_theme_color()
 
-if (autosave && filename_ext(filename) = ".nbs") {
-    draw_separator(xx, rh - 20)
-    draw_theme_color()
-    xx += 4
-    draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s")) xx += 180
-   // draw_separator(xx, rh - 20)
-    draw_theme_color()
+if (sela > -1 && selb > -1) {
+	if (selbx < arraylength && selby < arrayheight) {
+		if (song_exists[selbx, selby]) {
+			xx += 4
+			draw_text(xx, rh - 18, "Key: " + get_keyname(song_key[selbx, selby], 1))
+			xx += 90
+			draw_separator(xx, rh - 20)
+			draw_theme_color()
+			xx += 4
+			draw_text(xx, rh - 18, "Velocity: " + string_format(song_vel[selbx, selby], 1, 0))
+			xx += 110
+			draw_separator(xx, rh - 20)
+			draw_theme_color()
+			xx += 4
+			if (song_pan[selbx, selby] != 100) {
+				draw_text(xx, rh - 18, "Panning: " + condstr(song_pan[selbx, selby] < 100, "L ", "R ") + " " + string(abs(song_pan[selbx, selby] - 100)))
+			} else {
+				draw_text(xx, rh - 18, "Panning: Center")
+			}
+			xx += 120
+			draw_separator(xx, rh - 20)
+			draw_theme_color()
+			xx += 4
+			draw_text(xx, rh - 18, "Pitch: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + " cents")
+			draw_theme_color()
+		} else { // If no note exists, draw auto-save remaining time
+			if (autosave && filename_ext(filename) = ".nbs") {
+			    draw_separator(xx, rh - 20)
+			    draw_theme_color()
+			    xx += 4
+			    draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s")) xx += 180
+			   // draw_separator(xx, rh - 20)
+			   draw_theme_color()
+			}
+		}
+	}
 }
 
 
