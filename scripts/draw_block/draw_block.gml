@@ -45,7 +45,12 @@ if (salpha > 0) {
 } else {
     draw_set_alpha(alpha + 0.25)
 }
-if (show_numbers) draw_text(xx + 16 - 8 * (draw_type = 1), yy + 16, condstr(key < 33, " < ") + condstr(key > 57, " > ") + condstr(key > 32 && key < 58, string(key - 33)))
+if (show_numbers) {
+	if (editmode == 0) draw_text(xx + 16 - 8 * (draw_type = 1), yy + 16, condstr(key < 33, " < ") + condstr(key > 57, " > ") + condstr(key > 32 && key < 58, string(key - 33)))
+	else if (editmode == 1) draw_text(xx + 16 - 8 * (draw_type = 1), yy + 16, string_format(vel, 1, 0))
+	else if (editmode == 2) draw_text(xx + 16 - 8 * (draw_type = 1), yy + 16, condstr(pan < 100, "L ") + condstr(pan > 100, "R ") + string_format(abs(pan - 100), 1, 0))
+	else if (editmode == 3) draw_text(xx + 16 - 8 * (draw_type = 1), yy + 16, condstr(pit > 0, "+") + string_format(pit, 1, 0))
+}
 if(theme=2) draw_set_color(c_white)
 else draw_set_color(c_yellow)
 draw_text(xx + 16, yy + 4, get_keyname(key, show_octaves))

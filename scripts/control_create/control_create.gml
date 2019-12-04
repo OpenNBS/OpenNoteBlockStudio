@@ -27,6 +27,7 @@ check_update = 1
 show_welcome = 1
 scroll_wheel = 0
 theme = 0
+editmode = 0
 clickinarea = 0
 dontplace = 0
 vers = version
@@ -113,7 +114,7 @@ changepitch = 1
 // History
 historypos = 0
 historylen = 0
-for (a = 0; a < 9; a += 1) history[0, 8] = 0
+for (a = 0; a < 16; a += 1) history[0, 15] = 0
 
 // Selecting
 select = 0

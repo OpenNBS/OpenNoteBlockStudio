@@ -29,6 +29,12 @@
 #macro h_changeblock 2
 #macro h_removeblock 1
 #macro h_addblock 0
+
+#macro m_key 0
+#macro m_vel 1
+#macro m_pan 2
+#macro m_pit 3
+
 #macro w_menu 100
 #macro w_releasemouse 29
 #macro w_mididevices 28

@@ -20,7 +20,9 @@
         "31425fd9-3440-4595-8547-88223ea2205e",
         "67a65457-8382-4ab5-931c-ab1695518787",
         "e17df64b-a821-4577-910d-ed0d4693a335",
-        "dbc83193-0877-4ba7-87ae-8ba0acb9323a"
+        "dbc83193-0877-4ba7-87ae-8ba0acb9323a",
+        "17b4c791-d578-45ac-909f-435724e6c61c",
+        "ea6198c3-d6ef-4377-8b31-7e9e6a171257"
     ],
     "filterType": "GMScript",
     "folderName": "Note Blocks",

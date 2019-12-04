@@ -150,8 +150,30 @@ if ((sela > -1 && selb > -1) || select > 0) {
     if (select = 0 && selected = 0 && selbx < arraylength && selby < arrayheight) {
         exist = song_exists[selbx, selby]
         if (exist && cursmarker = 0) {
-            if (changepitch && ((mouse_wheel_up() && song_key[selbx, selby] < 87) || (mouse_wheel_down() && song_key[selbx, selby] > 0))) {
-                change_block_manual(selbx, selby, song_ins[selbx, selby], song_key[selbx, selby] + mouse_wheel_up() - mouse_wheel_down())
+            if (changepitch && (mouse_wheel_up() || mouse_wheel_down())) {
+				var diff = mouse_wheel_up() - mouse_wheel_down()
+				// If shift is not pressed, do increments of a single key or 10 steps at once.
+				if (!keyboard_check(vk_shift) && (editmode != m_key)) {
+					diff *= 10
+				}
+				// If shift is pressed, do increments of a whole octave or fine-tune increments to one step
+				if (keyboard_check(vk_shift) && (editmode = m_key)) {
+					diff *= 12
+				}
+				var key = song_key[selbx, selby]
+				var vel = song_vel[selbx, selby]
+				var pan = song_pan[selbx, selby]
+				var pit = song_pit[selbx, selby]
+				if (editmode = m_key) {
+					key = median(0, key + diff, 87)
+				} else if (editmode = m_vel) {
+					vel = median(0, vel + diff, 100)
+				} else if (editmode = m_pan) {
+					pan = median(0, pan + diff, 200)
+				} else if (editmode = m_pit) {
+					pit += diff
+				}
+				change_block_manual(selbx, selby, song_ins[selbx, selby], key, vel, pan, pit)
             }
         }
     }
@@ -318,7 +340,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
         if (selected = 0) {
             if (dontplace = 0) {
                 if (exist = 1) {
-                    change_block_manual(selbx, selby, instrument, selected_key)
+                    change_block_manual(selbx, selby, instrument, selected_key, 100, 100, 0)
                 } else {
                     add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100, 0)
                     draw_set_halign(fa_center)
@@ -351,7 +373,7 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                     customstr += "...to " + clean(ins.name) + "|"
                 else
                     str += "...to " + clean(ins.name) + "|"
-            }
+            }			
             menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
                                       inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
                                       inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
@@ -363,12 +385,10 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                       inactive(totalblocks = 0 || selbx <= 0) + "Select all to the left <-|-|"+
                                       inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
                                       inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
-                                        inactive(selected = 0) + "Ctrl+E$Increase octave|"+
-                                        inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
-                                        inactive(selected = 0) + "Ctrl+R$Increase key|"+
-                                        inactive(selected = 0) + "Ctrl+F$Decrease key|"+
-                                        inactive(selected = 0) + "Ctrl+T$Detune +10 Cents|"+
-                                        inactive(selected = 0) + "Ctrl+G$Detune -10 Cents|"+
+                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
+                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
+                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
+                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -413,12 +433,10 @@ if (window = 0 && text_focus = -1) {
             }
             if (keyboard_check_pressed(ord("Z"))) action_undo()
             if (keyboard_check_pressed(ord("Y"))) action_redo()
-            if (keyboard_check_pressed(ord("E"))) selection_changekey(12)
-            if (keyboard_check_pressed(ord("D"))) selection_changekey(-12)
-            if (keyboard_check_pressed(ord("R"))) selection_changekey(1)
-            if (keyboard_check_pressed(ord("F"))) selection_changekey(-1)
-            if (keyboard_check_pressed(ord("T"))) selection_changepit(10)
-            if (keyboard_check_pressed(ord("G"))) selection_changepit(-10)
+            if (keyboard_check_pressed(ord("E"))) mode_action(1)
+            if (keyboard_check_pressed(ord("D"))) mode_action(2)
+            if (keyboard_check_pressed(ord("R"))) mode_action(3)
+            if (keyboard_check_pressed(ord("F"))) mode_action(4)
         }
         if (keyboard_check_pressed(vk_delete) && selected > 0) selection_delete(0)
         if (sb_sel = 0) {
@@ -974,12 +992,10 @@ if (draw_tab("Edit")) {
                               inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
                               inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
                               inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
-                                inactive(selected = 0) + "Ctrl+E$Increase octave|"+
-                                inactive(selected = 0) + "Ctrl+D$Decrease octave|"+
-                                inactive(selected = 0) + "Ctrl+R$Increase key|"+
-                                inactive(selected = 0) + "Ctrl+F$Decrease key|"+
-	                            inactive(selected = 0) + "Ctrl+T$Detune +10 Cents|"+
-	                            inactive(selected = 0) + "Ctrl+G$Detune -10 Cents|"+
+                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
+                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
+                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
+                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -1034,6 +1050,11 @@ if metronome {
 if(draw_icon(metricon, xx, "Toggle metronome", 0, 0)) metronome = !metronome
 xx += 25 + 4
 if (playing = 0) record = 0
+draw_separator(xx, 26) xx += 4
+if (draw_icon(icons.EDITMODE_KEY, xx, "Edit note key", 0, editmode = 0)) {editmode = 0} xx += 25
+if (draw_icon(icons.EDITMODE_VEL, xx, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  xx += 25
+if (draw_icon(icons.EDITMODE_PAN, xx, "Edit note panning", 0, editmode = 2)) {editmode = 2} xx += 25
+if (draw_icon(icons.EDITMODE_PIT, xx, "Edit note pitch", 0, editmode = 3)) {editmode = 3} xx += 25 + 4
 draw_separator(xx, 26) xx += 4
 for (a = 0; a < ds_list_size(instrument_list); a += 1) {
     var ins = instrument_list[| a];

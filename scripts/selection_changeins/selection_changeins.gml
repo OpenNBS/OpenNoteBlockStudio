@@ -7,7 +7,7 @@ for (a = 0; a < selection_l; a += 1) {
     if (selection_colfirst[a] > -1) {
         for (b = selection_colfirst[a]; b <= selection_collast[a]; b += 1) {
             if (selection_exists[a, b]) {
-                selection_ins[a, b] = inst
+
             }
         }
     }

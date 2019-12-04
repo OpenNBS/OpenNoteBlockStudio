@@ -90,7 +90,7 @@ for (a = 0; a < 200; a += 1) text_exists[a] = 0
 // History
 historypos = 0
 for (a = 0; a <= historylen; a += 1) {
-    for (b = 0; b < 9; b += 1) history[a, b] = 0
+    for (b = 0; b < 16; b += 1) history[a, b] = 0
 }
 historylen = 0
 

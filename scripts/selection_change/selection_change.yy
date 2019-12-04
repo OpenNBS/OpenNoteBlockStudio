@@ -1,8 +1,8 @@
 {
-    "id": "91988f4a-d6c8-4703-89a7-72f6dc514063",
+    "id": "00cf6bfe-de6c-474d-8b00-440eacfa0c27",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "selection_changepit",
+    "name": "selection_change",
     "IsCompatibility": false,
     "IsDnD": false
 }
