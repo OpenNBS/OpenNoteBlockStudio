@@ -48,4 +48,3 @@ arr_data[0] = 0
 str = array_to_selection(arr_data, c)
 selection_load(selection_x, selection_y,str,true)
 if(!keyboard_check(vk_alt)) selection_place(false)
-history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
