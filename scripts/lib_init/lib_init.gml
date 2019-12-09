@@ -11,7 +11,8 @@ path_window = data_directory + "window.dll"
 path_midiinput = data_directory + "midiinput.dll"
 
 globalvar lib_open_url, lib_execute, lib_gzunzip, lib_gzzip, lib_program_path;
-globalvar lib_file_copy, lib_file_delete
+globalvar lib_file_rename, lib_file_copy, lib_file_delete, lib_file_exists;
+globalvar lib_directory_create, lib_directory_delete, lib_directory_exists;
 globalvar lib_audio_init, lib_audio_file_decode, lib_audio_file_add, lib_audio_sound_add, lib_audio_start, lib_audio_combine;
 globalvar lib_window_maximize, lib_window_set_focus, lib_message_yesnocancel;
 globalvar lib_midi_input_devices, lib_midi_input_device_name;
@@ -26,8 +27,13 @@ lib_execute = external_define(path_file, "execute", dll_cdecl, ty_real, 3, ty_st
 lib_gzunzip = external_define(path_file, "gzunzip", dll_cdecl, ty_real, 2, ty_string, ty_string)
 lib_gzzip = external_define(path_file, "gzzip", dll_cdecl, ty_real, 2, ty_string, ty_string)
 lib_program_path = external_define(path_file, "program_path", dll_cdecl, ty_string, 0)
+lib_file_rename = external_define(path_file, "file_rename", dll_cdecl, ty_real, 2, ty_string, ty_string)
 lib_file_copy = external_define(path_file, "file_copy", dll_cdecl, ty_real, 2, ty_string, ty_string)
 lib_file_delete = external_define(path_file, "file_delete", dll_cdecl, ty_real, 1, ty_string)
+lib_file_exists = external_define(path_file, "file_exists", dll_cdecl, ty_real, 1, ty_string)
+lib_directory_create = external_define(path_file, "directory_create", dll_cdecl, ty_real, 1, ty_string)
+lib_directory_delete = external_define(path_file, "directory_delete", dll_cdecl, ty_real, 1, ty_string)
+lib_directory_exists = external_define(path_file, "directory_exists", dll_cdecl, ty_real, 1, ty_string)
 
 log("Audio", path_file)
 
