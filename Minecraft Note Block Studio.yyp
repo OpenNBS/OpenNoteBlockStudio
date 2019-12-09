@@ -2799,6 +2799,14 @@
             }
         },
         {
+            "Key": "be3a7a3b-b19f-412b-b920-44b4fe8bea6a",
+            "Value": {
+                "id": "ed23e093-caa0-4f0e-af91-722d153a78ac",
+                "resourcePath": "scripts\\file_delete_lib\\file_delete_lib.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "be5e8a3c-dc93-4cd9-9e1b-eb887682d207",
             "Value": {
                 "id": "92cfdc65-59d7-4e8f-b5a6-951e489da063",
@@ -3075,6 +3083,14 @@
             "Value": {
                 "id": "6d1d30e3-ca17-465f-ae82-fa9bc9a68027",
                 "resourcePath": "scripts\\midi_input_instrument\\midi_input_instrument.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "d422f16c-dff5-47c9-9696-fb57289533ff",
+            "Value": {
+                "id": "a6218f0a-e075-4dd2-81f2-3b134411aba3",
+                "resourcePath": "scripts\\file_copy_lib\\file_copy_lib.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -3859,6 +3875,8 @@
         "739c0cd4-9709-42b9-96dd-4427a62971ea",
         "57572790-b84a-4f89-bc4b-623a79a6c546",
         "13f83e12-7dac-42cd-812d-6fa5b92a5e92",
+        "be3a7a3b-b19f-412b-b920-44b4fe8bea6a",
+        "d422f16c-dff5-47c9-9696-fb57289533ff",
         "6940f8e3-d9c5-4eaa-acf8-d675502d6a66",
         "e8bc012f-c785-4603-a813-5089df264b7e",
         "93d04ba3-c733-404a-8511-2c8d4685c1df",

@@ -1,7 +1,6 @@
 // selection_changeins(ins)
 var a, b, str, inst;
 inst = argument0
-show_debug_message(inst)
 str = selection_code
 if (selected = 0) return 0
 for (a = 0; a < selection_l; a += 1) {
