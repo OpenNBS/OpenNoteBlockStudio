@@ -9,7 +9,8 @@
         "70bbf7ea-8588-4b94-a09a-9e3bcc80d3a5",
         "59b53962-dddb-49a5-8e79-d92e3e1cd3a5",
         "931e1250-843a-4a37-95f1-00e3dcd3d69f",
-        "3540f9ab-6a76-441c-9fe5-f9c1e575b840"
+        "3540f9ab-6a76-441c-9fe5-f9c1e575b840",
+        "20c11c22-04c5-4cb3-8888-a3c374b46278"
     ],
     "filterType": "GMScript",
     "folderName": "Schematic",
