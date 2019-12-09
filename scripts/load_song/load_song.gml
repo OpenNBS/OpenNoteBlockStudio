@@ -6,7 +6,7 @@ if (fn = "") {
     if (!directory_exists(songfolder)) songfolder = songs_directory
     fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, "Load song"))
 }
-if (fn = "" || !file_exists(fn)) return 0
+if (fn = "" || !file_exists_lib(fn)) return 0
 reset()
 file_ext = filename_ext(fn)
 if (file_ext = ".mid" || file_ext = ".midi") {
