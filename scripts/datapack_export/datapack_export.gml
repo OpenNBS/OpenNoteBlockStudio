@@ -143,7 +143,7 @@ with (new(obj_dummy2)) {
 		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
 	}
 	
-	directory_delete_lib(tempdir)
+	directory_destroy(tempdir)
 	instance_destroy()
 }
 message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")

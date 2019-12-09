@@ -3,7 +3,7 @@ var fn, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, 
 fn = argument0
 if (confirm() < 0) return 0
 if (fn = "") {
-    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
+    if (!directory_exists(songfolder)) songfolder = songs_directory
     fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, "Load song"))
 }
 if (fn = "" || !file_exists(fn)) return 0
