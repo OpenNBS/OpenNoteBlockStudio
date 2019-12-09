@@ -67,7 +67,7 @@ switch (m) {
         if (sel = 12) mode_action(2)
         if (sel = 13) mode_action(3)
         if (sel = 14) mode_action(4)
-        if (sel > 17 && sel < 18 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 18])
+        if (sel > 15 && sel < 18 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 18])
         if (sel = 18 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 19 + ds_list_size(instrument_list)) selection_compress()
         if (sel = 21 + ds_list_size(instrument_list)) window = w_tremolo
@@ -111,7 +111,7 @@ switch (m) {
         if (sel = 12) mode_action(2)
         if (sel = 13) mode_action(3)
         if (sel = 14) mode_action(4)
-        if (sel > 17 && sel < 18 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 18])
+        if (sel > 15 && sel < 18 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 16])
         if (sel = 18 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 19 + ds_list_size(instrument_list)) selection_compress()
         if (sel = 21 + ds_list_size(instrument_list)) window = w_tremolo
