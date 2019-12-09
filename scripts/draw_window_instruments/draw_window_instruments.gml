@@ -91,9 +91,9 @@ for (a = 0; a <= 10; a += 1) {
         if (mouse_check_button_pressed(mb_left)) {
             if (ins.user) {
                 fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "Load sound file"))
-                if (file_exists_lib(fn)) {
+                if (file_exists(fn)) {
                     var newfn = sounds_directory + filename_name(fn);
-                    file_copy_lib(fn, newfn)
+                    file_copy(fn, newfn)
                     changed = true
                     with (ins) {
                         filename = filename_name(newfn)

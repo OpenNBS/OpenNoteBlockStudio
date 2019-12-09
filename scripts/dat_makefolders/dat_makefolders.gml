@@ -25,24 +25,24 @@ if path != "" {
 var tempdir = data_directory + "TempDatapack\\"
 if (directory_exists(tempdir)) directory_delete_lib(tempdir)
 
-directory_create_lib(tempdir)
-directory_create_lib(tempdir + "data\\")
-directory_create_lib(tempdir + "data\\minecraft\\")
-directory_create_lib(tempdir + "data\\minecraft\\tags\\")
-directory_create_lib(tempdir + "data\\minecraft\\tags\\functions\\")
-directory_create_lib(tempdir + "data\\" + namespace +"\\")
+directory_create(tempdir)
+directory_create(tempdir + "data\\")
+directory_create(tempdir + "data\\minecraft\\")
+directory_create(tempdir + "data\\minecraft\\tags\\")
+directory_create(tempdir + "data\\minecraft\\tags\\functions\\")
+directory_create(tempdir + "data\\" + namespace +"\\")
 
 var functiondir = tempdir + "data\\" + namespace + "\\functions\\"
-directory_create_lib(functiondir)
+directory_create(functiondir)
 
 // Dinamically create function folder
 if (array_length_1d(folders) > 0) {
 	for (i = 0; i <= foldercount; i++) {
 		functiondir += folders[i] + "\\"
-		directory_create_lib(functiondir)
+		directory_create(functiondir)
 	}
 }
-directory_create_lib(functiondir + "notes")
-directory_create_lib(functiondir + "tree")
+directory_create(functiondir + "notes")
+directory_create(functiondir + "tree")
 
 return functiondir

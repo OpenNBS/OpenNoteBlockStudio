@@ -1,7 +1,7 @@
 // load_settings()
 var a, settings_ver_loaded;
 log("Load settings")
-if (!file_exists_lib(data_directory + "settings.onbs")) return 0
+if (!file_exists(data_directory + "settings.onbs")) return 0
 buffer = buffer_import(data_directory + "settings.onbs")
 
 byte1 = buffer_read_byte()

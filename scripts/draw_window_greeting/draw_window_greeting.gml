@@ -101,7 +101,7 @@ for (a = 0; a < 11; a += 1) {
     m = mouse_rectangle(b, c, 320, 16)
     m += m && mouse_check_button(mb_left)
     if (m > 0 && mouse_check_button_released(mb_left)) {
-        if (!file_exists_lib(recent_song[a])) {
+        if (!file_exists(recent_song[a])) {
             message("Could not find file:\n" + recent_song[a], "Error")
             for (d = 0; d < 10; d += 1) {
                 if (recent_song[d] = recent_song[a]) {

@@ -7,7 +7,7 @@ if (fn = "") {
     if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
     fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, "Load pattern"))
 }
-if (fn = "" || !file_exists_lib(fn)) return 0
+if (fn = "" || !file_exists(fn)) return 0
 
 file_ext = filename_ext(fn)
 if (file_ext != ".nbp") {message("Error: This file is not a pattern.", "Error") return 0}
