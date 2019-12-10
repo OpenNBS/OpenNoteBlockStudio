@@ -104,6 +104,7 @@ buffer_write_string(patternfolder)
 buffer_write_byte(looptobarend)
 buffer_write_byte(sch_exp_stereo)
 buffer_write_byte(sch_br_layer)
+buffer_write_byte(sch_exp_velocity)
 
 buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)

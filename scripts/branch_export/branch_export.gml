@@ -10,33 +10,31 @@ schematic_start();
 var mySchematic = schematic_create();
 sch_len = enda * 2 + 4
 var sellayer = real(sch_br_layer) - 1
-schematic_size(mySchematic, 33, sch_len, 2 );
-
-// 80 = snow
-// 93 = repeater
-// 55 = redstone
-// 25 = note block
+if sch_exp_velocity = 1 schematic_size(mySchematic, 33, sch_len, 2 )
+else schematic_size(mySchematic, 1, sch_len, 2 )
 
 schematic_cell_set(mySchematic, 0, 0, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Setup activation blocks
 schematic_cell_set(mySchematic, 0, 0, 1, 77, 5) // Start button
 schematic_cell_set(mySchematic, 0, 1, 1, 93, 7) // MaxVel line's 2-tick repeater
-schematic_cell_set(mySchematic, 1, 0, 1, 93, 2) // HalfVel line's 1-tick repeater
-schematic_cell_set(mySchematic, 16, 1, 1, 93, 3) // HalfVel line's 1-tick repeater
-schematic_fill(mySchematic, 1, 0, 0, 16, 0, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Setup Line
-schematic_fill(mySchematic, 2, 0, 1, 16, 0, 1, 55, 0) // Setup Wire
-
 schematic_fill(mySchematic, 0, 1, 0, 0, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // MaxVel line
-schematic_fill(mySchematic, 16, 1, 0, 16, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // HalfVel line
+
+if sch_exp_velocity = 1 {
+	schematic_cell_set(mySchematic, 1, 0, 1, 93, 2) // HalfVel line's 1-tick repeater
+	schematic_cell_set(mySchematic, 16, 1, 1, 93, 3) // HalfVel line's 1-tick repeater
+	schematic_fill(mySchematic, 1, 0, 0, 16, 0, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Setup Line
+	schematic_fill(mySchematic, 2, 0, 1, 16, 0, 1, 55, 0) // Setup Wire
+	schematic_fill(mySchematic, 16, 1, 0, 16, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // HalfVel line
+}
 
 // Repeater Pattern on top
 
 for (a = 0; a <= enda * 2; a++) {
 	if a % 2 == 1 {
 		schematic_cell_set(mySchematic, 0, a + 2, 1, 93, 3)
-		schematic_cell_set(mySchematic, 16, a + 2, 1, 93, 3)
+		if sch_exp_velocity = 1 schematic_cell_set(mySchematic, 16, a + 2, 1, 93, 3)
 	} else {
 		schematic_cell_set(mySchematic, 0, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-		schematic_cell_set(mySchematic, 16, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+		if sch_exp_velocity = 1 schematic_cell_set(mySchematic, 16, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
 	}
 }
 
@@ -87,7 +85,7 @@ nblocks = 0
 for (a = 0; a <= enda * 2; a++) {
 	if a % 2 == 0 {
 		if nblockkey[nblocks] != 0 { 
-			if nblockvel[nblocks] = 100 {
+			if nblockvel[nblocks] = 100 || sch_exp_velocity = 0 {
 				schematic_cell_set(mySchematic, 0, a + 2, 1, 25, 0)
 				schematic_cell_set(mySchematic, 0, a + 2, 0, sch_exp_ins_block[nblockins[nblocks]], 0)
 				noteblockz[nblocks] = 0

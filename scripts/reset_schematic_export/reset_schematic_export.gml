@@ -39,6 +39,7 @@ sch_exp_notesperrow = 20
 sch_br_layer = 1
 sch_exp_includelocked = 0
 sch_exp_compress = 1
+sch_exp_velocity = 1
 sch_exp_loop = 1
 sch_exp_glass = 1
 sch_exp_minecart = 0

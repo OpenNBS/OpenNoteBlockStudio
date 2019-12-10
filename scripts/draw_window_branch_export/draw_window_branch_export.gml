@@ -75,11 +75,13 @@ if (selected_tab_sch = 0) {
     if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values .")) sch_exp_stereo = 1
     draw_text(x1 + 170, y1 + 220, "Layer to Export:")
     sch_br_layer = median(1, draw_dragvalue(15, x1 + 300, y1 + 220, sch_br_layer, 1), 200)
+    if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_velocity, "Enable Velocity", "Whether to include locked layers in the Schematic.")) sch_exp_velocity=!sch_exp_velocity
+	if sch_exp_velocity = 1 var schwidth = 32 else schwidth = 1
     draw_text(x1 + 380, y1 + 220, "Note blocks:")
     draw_text(x1 + 380, y1 + 220 + 16, "Size:")
     draw_set_halign(fa_right)
     draw_text(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
-    draw_text(x1 + 520, y1 + 220 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(32))
+    draw_text(x1 + 520, y1 + 220 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
     draw_set_halign(fa_left)
 } else {
     if (theme = 1) {

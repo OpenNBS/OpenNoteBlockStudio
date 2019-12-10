@@ -122,6 +122,7 @@ if settings_ver_loaded >= 1 {
 	looptobarend = buffer_read_byte()
 	sch_exp_stereo = buffer_read_byte()
 	sch_br_layer = buffer_read_byte()
+	sch_exp_velocity = buffer_read_byte()
 }
 buffer_delete(buffer)
 return 1
