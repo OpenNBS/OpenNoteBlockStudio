@@ -28,4 +28,5 @@ switch (window mod w_menu) {
     case w_saveoptions: draw_window_save_options() break
     case w_setvelocity: draw_window_macro_setvelocity() break
     case w_setpanning: draw_window_macro_setpanning() break
+    case w_branch_export: draw_window_branch_export() break
 }

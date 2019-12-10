@@ -2,6 +2,7 @@
 if (!argument0) {
     selected_tab_sch = 0
     sch_exp_remember = 1
+	sch_br_remember = 1
 }
 for (a = 0; a < ds_list_size(instrument_list) + 9; a += 1) {
     sch_exp_ins_block[a] = 0
@@ -33,7 +34,9 @@ sch_exp_ground_data = 0
 
 sch_exp_minecraft_old = false
 sch_exp_layout = 1 // 0 = Circular walkway, 1 = Simple walkway, 2 = Classic
+sch_exp_stereo = 4
 sch_exp_notesperrow = 20
+sch_br_layer = 1
 sch_exp_includelocked = 0
 sch_exp_compress = 1
 sch_exp_loop = 1

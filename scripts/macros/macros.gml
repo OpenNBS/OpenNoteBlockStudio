@@ -50,6 +50,7 @@
 #macro w_update 16
 #macro w_minecraft 15
 #macro w_schematic_export 14
+#macro w_branch_export 39
 #macro w_datapack_export 30
 #macro w_mp3_export 31
 #macro w_checkupdates 13

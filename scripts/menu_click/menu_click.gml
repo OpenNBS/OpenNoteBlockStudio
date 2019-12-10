@@ -47,8 +47,11 @@ switch (m) {
         if (sel = b + 11) {
             if (calculate_size()) window = w_schematic_export
         }
-		if(sel = b + 12) window = w_datapack_export
-        if (sel = b + 13) game_end()
+        if (sel = b + 12) {
+            if (calculate_size()) window = w_branch_export
+        }
+		if(sel = b + 13) window = w_datapack_export
+        if (sel = b + 14) game_end()
         break
     }
     case "edit": {

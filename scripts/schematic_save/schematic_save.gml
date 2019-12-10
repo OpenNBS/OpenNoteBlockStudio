@@ -9,9 +9,17 @@
 
 // By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
-var sch, filen;
+var sch, fn, entries, noteblocks;
 sch = argument0;
-filen = argument1;
+fn = argument1;
+entries = argument2;
+noteblocks = 0
+
+for (a = 0; a < entries; a += 1) {
+	if nblockkey[a] != 0 { 
+		noteblocks++
+	}
+}
 
 var file, a, b, c, t;
 file = external_call(global.dll_OpenFileWrite, "temp");
@@ -23,7 +31,17 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_short(file, "Height", sch.zsize);
     nbt_tag_string(file, "Materials", "Alpha");
     nbt_tag_list(file, "Entities", 10, 0);
-    nbt_tag_list(file, "TileEntities", 10, 0);
+    nbt_tag_list(file, "TileEntities", 10, noteblocks);
+	for (a = 0; a < entries; a ++) {
+		if nblockkey[a] != 0 { 
+			nbt_tag_string(file, "id", "minecraft:noteblock")
+			nbt_tag_int(file, "x", - noteblockx[a] + enda * 2 + 3) // why the hell does this work
+			nbt_tag_int(file, "y", noteblocky[a])
+			nbt_tag_int(file, "z", noteblockz[a])
+			nbt_tag_byte(file, "note", noteblocknote[a])
+			nbt_tag_end(file)
+		}
+	}
     nbt_tag_byte_array(file, "Blocks", sch.xsize * sch.ysize * sch.zsize) {
         for (c = 0; c < sch.zsize; c += 1) {
             for (a = 0; a < sch.xsize; a += 1) {
@@ -47,8 +65,5 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_end(file);
 }
 external_call(global.dll_CloseFile, file);
-
-// Compress using Gzip and clean up
-external_call(global.dll_GzipCompress, "temp", filen, 9);
-while (!external_call(global.dll_GzipGetReady)) continue;
+gzzip("temp", fn)
 file_delete("temp");

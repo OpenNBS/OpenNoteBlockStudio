@@ -120,6 +120,8 @@ if settings_ver_loaded >= 1 {
 	w_midi_vel = buffer_read_byte()
 	patternfolder = buffer_read_string()
 	looptobarend = buffer_read_byte()
+	sch_exp_stereo = buffer_read_byte()
+	sch_br_layer = buffer_read_byte()
 }
 buffer_delete(buffer)
 return 1

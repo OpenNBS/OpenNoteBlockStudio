@@ -967,6 +967,7 @@ if (draw_tab("File")) {
                              "Import Pattern...|"+"Export Pattern...|"+"Import from MIDI...|Import from Schematic...|-|"+
                              inactive(totalblocks = 0) + "Export as MP3...|"+
                              inactive(totalblocks = 0) + "Export as Schematic...|"+
+                             inactive(totalblocks = 0) + "Export as Branch Schematic...|"+
 							 inactive(totalblocks = 0) + "Export as Data Pack...|-|" + 
                              "Alt + F4$Exit")
 							
