@@ -169,8 +169,11 @@ if (selected_tab_sch = 0) {
 }
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
     if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
-        message("There are no blocks to export!", "Schematic export")
-    } else {
+        message("There are no blocks to export!", "Branch export")
+    } else if sch_exp_range_start > sch_exp_range_end {
+		message("Starting range must be lower than ending range!", "Branch export")
+	}
+	else {
         branch_export()
     }
 }
