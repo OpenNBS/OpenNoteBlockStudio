@@ -8,7 +8,7 @@ draw_window(x1, y1, x1 + 550, y1 + 350)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 10, y1 + 8, "Instrument Settings")
 draw_set_font(fnt_main)
-draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
+// draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
 draw_set_color(c_white)
 if(theme = 2) draw_set_color(c_dark)
 draw_rectangle(x1 + 12, y1 + 66, x1 + 535, y1 + 310, 0)
@@ -32,7 +32,7 @@ draw_text(x1 + 18 + 194, y1 + 70, "Sound")
 draw_window(x1 + 13, y1 + 67, x1 + 14 + 194, y1 + 67 + 20)
 popup_set_window(x1 + 13, y1 + 67, 194, 20, "The name of this instrument.")
 draw_text(x1 + 18, y1 + 70, "Name")
-if (draw_button2(x1 + 12, y1 + 318, 80, "Import")) load_instruments("")
+// if (draw_button2(x1 + 12, y1 + 318, 80, "Import")) load_instruments("")
 c = 0
 if (draw_button2(x1 + 256, y1 + 318, 80, "Add", user_instruments >= 18) && wmenu = 0) {
     changed = true

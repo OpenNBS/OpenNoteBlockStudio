@@ -1,5 +1,5 @@
 // draw_window_branch_export()
-var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2;
+var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, c1, c2;
 curs = cr_default
 x1 = floor(window_width / 2 - 275)
 y1 = floor(window_height / 2 - 200)
@@ -13,7 +13,7 @@ str[0] = "Design"
 str[1] = "Blocks"
 nsel = -1
 menun = -1
-if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
+if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
 
 if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 for (a = 0; a < 2; a += 1) {
@@ -75,8 +75,10 @@ if (selected_tab_sch = 0) {
     if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values .")) sch_exp_stereo = 1
     draw_text(x1 + 170, y1 + 220, "Layer to Export:")
     sch_br_layer = median(1, draw_dragvalue(15, x1 + 300, y1 + 220, sch_br_layer, 1), 200)
-    if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_velocity, "Enable Velocity", "Whether to include locked layers in the Schematic.")) sch_exp_velocity=!sch_exp_velocity
+    if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_velocity, "Enable Velocity", "Whether to position the note blocks differently due to their velocity.")) sch_exp_velocity=!sch_exp_velocity
 	if sch_exp_velocity = 1 var schwidth = 32 else schwidth = 1
+    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_circuitry, "Export Circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
+	if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_vertical, "Vertical", "Tick this if you want the note blocks to fade vertically.")) sch_exp_vertical=!sch_exp_vertical
     draw_text(x1 + 380, y1 + 220, "Note blocks:")
     draw_text(x1 + 380, y1 + 220 + 16, "Size:")
     draw_set_halign(fa_right)
@@ -151,7 +153,9 @@ if (selected_tab_sch = 0) {
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
     if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
         message("There are no blocks to export!", "Schematic export")
-    } else {
+    } if sch_br_layer - 1 > sch_exp_maxheight[0] {
+		message("The chosen layer does not exist!", "Error")
+	} else {
         branch_export()
     }
 }

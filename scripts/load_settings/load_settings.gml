@@ -97,9 +97,16 @@ sch_exp_loop = buffer_read_byte()
 sch_exp_glass = buffer_read_byte()
 sch_exp_minecart = buffer_read_byte()
 sch_exp_chest = buffer_read_byte()
-for (a = 0; a < 20; a += 1) {
-    sch_exp_ins_block[a] = buffer_read_byte()
-    sch_exp_ins_data[a] = buffer_read_byte()
+if settings_ver_loaded >= 1 {
+	for (a = 0; a < 34; a += 1) {
+	    sch_exp_ins_block[a] = buffer_read_byte()
+	    sch_exp_ins_data[a] = buffer_read_byte()
+	}
+} else {
+	for (a = 0; a < 20; a += 1) {
+	    sch_exp_ins_block[a] = buffer_read_byte()
+	    sch_exp_ins_data[a] = buffer_read_byte()
+	}
 }
 
 // Keyboard keys
@@ -123,6 +130,8 @@ if settings_ver_loaded >= 1 {
 	sch_exp_stereo = buffer_read_byte()
 	sch_br_layer = buffer_read_byte()
 	sch_exp_velocity = buffer_read_byte()
+	sch_exp_circuitry = buffer_read_byte()
+	sch_exp_vertical = buffer_read_byte()
 }
 buffer_delete(buffer)
 return 1

@@ -78,7 +78,7 @@ buffer_write_byte(sch_exp_loop)
 buffer_write_byte(sch_exp_glass)
 buffer_write_byte(sch_exp_minecart)
 buffer_write_byte(sch_exp_chest)
-for (a = 0; a < 20; a += 1) {
+for (a = 0; a < 34; a += 1) {
     buffer_write_byte(sch_exp_ins_block[a])
     buffer_write_byte(sch_exp_ins_data[a])
 }
@@ -105,6 +105,8 @@ buffer_write_byte(looptobarend)
 buffer_write_byte(sch_exp_stereo)
 buffer_write_byte(sch_br_layer)
 buffer_write_byte(sch_exp_velocity)
+buffer_write_byte(sch_exp_circuitry)
+buffer_write_byte(sch_exp_vertical)
 
 buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)
