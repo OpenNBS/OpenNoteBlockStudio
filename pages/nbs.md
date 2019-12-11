@@ -157,6 +157,11 @@ permalink: /nbs
 					</tr>
 					<tr class="newversion">
 						<td>Byte</td>
+						<td>Max Times to Loop</td>
+						<td>0 = Infinite. Other values mean the amount of times the song loops.</td>
+					</tr>
+					<tr class="newversion">
+						<td>Short</td>
 						<td>Loop Start Tick</td>
 						<td>Determines which part of the song (in ticks) it loops back to.</td>
 					</tr>
@@ -255,6 +260,11 @@ permalink: /nbs
 						<td>String</td>
 						<td>Layer name</td>
 						<td>The name of the layer.</td>
+					</tr>
+					<tr class="newversion">
+						<td>Byte</td>
+						<td>Layer lock</td>
+						<td>Whether or not this layer has been marked as locked. 1 = locked.</td>
 					</tr>
 					<tr>
 						<td>Byte</td>
