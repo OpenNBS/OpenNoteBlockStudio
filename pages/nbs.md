@@ -30,7 +30,7 @@ permalink: /nbs
 				<h2>NBS Changelog</h2>
 				<div>
 					<strong>Version 4.0:</strong> 
-					<ul><li>Loop On/Off and Loop Start Tick are now saved.</li><li>Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
+					<ul><li>Loop On/Off, Times to loop, and Loop Start Tick are now saved.</li><li>The program now saves which layers are locked.</li><li>Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
 					<strong>Version 3.0:</strong> 
 					<ul><li>Song length is now saved again after the Vanilla Note Block Instruments count.</li></ul>
 					<strong>Version 2.0:</strong> 
