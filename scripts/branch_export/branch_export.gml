@@ -9,10 +9,16 @@ window = -1
 // Calculate maximum height and note block count
 schematic_start();
 var mySchematic = schematic_create();
+var rangestart = sch_exp_range_start
+var rangeend = sch_exp_range_end
+show_debug_message("rangestart " + string(rangestart))
+show_debug_message("rangeend " + string(rangeend))
+show_debug_message("enda " + string(enda))
 tags = 0
-sch_len = enda * 2 + 4
+sch_len = rangeend * 2 + 4
+schematic_size(mySchematic, 3, sch_len, 2 )
 if sch_exp_velocity = 1 schematic_size(mySchematic, 33, sch_len, 2 )
-else schematic_size(mySchematic, 3, sch_len, 2 )
+if sch_exp_chords > 1 && sch_exp_velocity = 1 schematic_size(mySchematic, 33, sch_len, 3 )
 pass = sch_exp_chords
 if sch_exp_velocity = 1 var lineloc = 16 else lineloc = 1
 sch_layer1 = 0
@@ -29,7 +35,7 @@ var sellayer = real(sch_br_layer2) - 1
 
 		// Repeater Pattern on top
 
-		for (a = 0; a <= enda * 2; a++) {
+		for (a = 0; a <= rangeend * 2; a++) {
 			if a % 2 == 1 {
 				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
 			} else {
@@ -41,7 +47,7 @@ var sellayer = real(sch_br_layer2) - 1
 	// Add Note Blocks to Array
 	nblocks = 0
 
-	for (a = 0; a <= enda; a ++) {
+	for (a = 0; a <= rangeend; a ++) {
 		if (o.song_exists[a, sellayer]) {
 				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
 					if sch_exp_stereo = 4 { // Add all note blocks
@@ -80,7 +86,7 @@ var sellayer = real(sch_br_layer2) - 1
 	b = nblocks
 	nblocks = 0
 
-	for (a = 0; a <= enda * 2; a++) {
+	for (a = 0; a <= rangeend * 2; a++) {
 		if a % 2 == 0 {
 			if nblockkey[z, nblocks] != 0 { 
 				if sch_exp_velocity = 0 {
@@ -105,6 +111,7 @@ var sellayer = real(sch_br_layer2) - 1
 					if sch_exp_circuitry = 1 {
 							schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
 							schematic_cell_set(mySchematic, zvel, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+							schematic_cell_set(mySchematic, zvel, a + 2, 2, 55, 0)
 						if zvel > 16 {
 							schematic_fill(mySchematic, lineloc + 1, a + 2, 1, zvel - 1, a + 2, 1, 55, 0)
 						} 
@@ -114,15 +121,18 @@ var sellayer = real(sch_br_layer2) - 1
 					}
 					if sch_br_layer2 != 0 && z = 1 {
 						schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 					    noteblockx[z, nblocks] = a + 3
 					} else if sch_br_layer3 != 0 && z = 2 {
 						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 1
 					} else {
 						schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 2
@@ -148,7 +158,7 @@ sellayer = real(sch_br_layer3) - 1
 
 		// Repeater Pattern on top
 
-		for (a = 0; a <= enda * 2; a++) {
+		for (a = 0; a <= rangeend * 2; a++) {
 			if a % 2 == 1 {
 				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
 			} else {
@@ -160,7 +170,7 @@ sellayer = real(sch_br_layer3) - 1
 	// Add Note Blocks to Array
 	nblocks = 0
 
-	for (a = 0; a <= enda; a ++) {
+	for (a = 0; a <= rangeend; a ++) {
 		if (o.song_exists[a, sellayer]) {
 				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
 					if sch_exp_stereo = 4 { // Add all note blocks
@@ -199,7 +209,7 @@ sellayer = real(sch_br_layer3) - 1
 	b = nblocks
 	nblocks = 0
 
-	for (a = 0; a <= enda * 2; a++) {
+	for (a = 0; a <= rangeend * 2; a++) {
 		if a % 2 == 0 {
 			if nblockkey[z, nblocks] != 0 { 
 				if sch_exp_velocity = 0 {
@@ -224,6 +234,7 @@ sellayer = real(sch_br_layer3) - 1
 					if sch_exp_circuitry = 1 {
 							schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
 							schematic_cell_set(mySchematic, zvel, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+							schematic_cell_set(mySchematic, zvel, a + 2, 2, 55, 0)
 						if zvel > 16 {
 							schematic_fill(mySchematic, lineloc + 1, a + 2, 1, zvel - 1, a + 2, 1, 55, 0)
 						} 
@@ -233,15 +244,18 @@ sellayer = real(sch_br_layer3) - 1
 					}
 					if sch_br_layer2 != 0 && z = 1 {
 						schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 					    noteblockx[z, nblocks] = a + 3
 					} else if sch_br_layer3 != 0 && z = 2 {
 						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 1
 					} else {
 						schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 2
@@ -267,7 +281,7 @@ sellayer = real(sch_br_layer1) - 1
 
 		// Repeater Pattern on top
 
-		for (a = 0; a <= enda * 2; a++) {
+		for (a = 0; a <= rangeend * 2; a++) {
 			if a % 2 == 1 {
 				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
 			} else {
@@ -279,7 +293,7 @@ sellayer = real(sch_br_layer1) - 1
 	// Add Note Blocks to Array
 	nblocks = 0
 
-	for (a = 0; a <= enda; a ++) {
+	for (a = 0; a <= rangeend; a ++) {
 		if (o.song_exists[a, sellayer]) {
 				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
 					if sch_exp_stereo = 4 { // Add all note blocks
@@ -319,7 +333,7 @@ sellayer = real(sch_br_layer1) - 1
 	b = nblocks
 	nblocks = 0
 
-	for (a = 0; a <= enda * 2; a++) {
+	for (a = 0; a <= rangeend * 2; a++) {
 		if a % 2 == 0 {
 			if nblockkey[z, nblocks] != 0 { 
 				if sch_exp_velocity = 0 {
@@ -344,23 +358,36 @@ sellayer = real(sch_br_layer1) - 1
 					if sch_exp_circuitry = 1 {
 							schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
 						if zvel > 16 {
-							schematic_fill(mySchematic, lineloc + 1, a + 2, 1, zvel, a + 2, 1, 55, 0)
+							var c
+							for (c = lineloc + 1; c <= zvel; c++) {
+								if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
+									schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
+								}
+							}
 						} 
 						if zvel < 16 {
-							schematic_fill(mySchematic, lineloc - 1, a + 2, 1, zvel, a + 2, 1, 55, 0)
+							var c
+							for (c = lineloc - 1; c >= zvel; c--) {
+								if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
+									schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
+								}
+							}
 						}
 					}
 					if sch_br_layer2 != 0 && z = 1 {
 						schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 					    noteblockx[z, nblocks] = a + 3
 					} else if sch_br_layer3 != 0 && z = 2 {
 						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 1
 					} else {
 						schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
+						schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 						schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							
 					    noteblockx[z, nblocks] = a + 2
@@ -378,7 +405,7 @@ sellayer = real(sch_br_layer1) - 1
 ////////////////////////////////////////////////////
 var noteblocks = 0
 
-for (a = 0; a <= enda; a ++) {
+for (a = 0; a <= rangeend; a ++) {
 	if sch_exp_chords = 1 {
 		if o.song_exists[a, real(sch_br_layer1) - 1] { 
 			noteblocks++

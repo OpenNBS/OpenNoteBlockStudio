@@ -59,6 +59,7 @@ for (a = 0; a <= enda; a += 1) {
         if (d > 0) scp_exp_enda[0] = a
     }
 }
+
 // Calculate amount of repeaters
 cnt[0, 0] = 0 // 1 repeater = 4 ticks
 cnt[0, 1] = 0 // 1 repeater = 2 ticks

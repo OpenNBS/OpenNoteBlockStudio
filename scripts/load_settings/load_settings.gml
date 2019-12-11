@@ -135,6 +135,8 @@ if settings_ver_loaded >= 1 {
 	sch_br_layer1 = buffer_read_byte()
 	sch_br_layer2 = buffer_read_byte()
 	sch_br_layer3 = buffer_read_byte()
+	sch_exp_range_start = buffer_read_short()
+	sch_exp_range_end = buffer_read_short()
 }
 buffer_delete(buffer)
 return 1

@@ -27,10 +27,10 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_list(file, "Entities", 10, 0);
     nbt_tag_list(file, "TileEntities", 10, noteblocks);
 	for (z = 0; z < sch_exp_chords; z ++) {
-		for (a = 0; a < 49; a ++) {
+		for (a = 0; a < sch_exp_range_end; a ++) {
 			if nblockkey[z, a] != 0 { 
 				nbt_tag_string(file, "id", "minecraft:noteblock")
-				nbt_tag_int(file, "x", - noteblockx[z, a] + enda * 2 + 3) // why the hell does this work
+				nbt_tag_int(file, "x", - noteblockx[z, a] + sch_exp_range_end * 2 + 3) // why the hell does this work
 				nbt_tag_int(file, "y", noteblocky[z, a])
 				nbt_tag_int(file, "z", noteblockz[z, a])
 				nbt_tag_byte(file, "note", noteblocknote[z, a])

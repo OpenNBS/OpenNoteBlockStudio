@@ -110,6 +110,8 @@ buffer_write_byte(sch_exp_chords)
 buffer_write_byte(sch_br_layer1)
 buffer_write_byte(sch_br_layer2)
 buffer_write_byte(sch_br_layer3)
+buffer_write_short(sch_exp_range_start)
+buffer_write_short(sch_exp_range_end)
 
 buffer_export(buffer, data_directory + "settings.onbs")
 buffer_delete(buffer)
