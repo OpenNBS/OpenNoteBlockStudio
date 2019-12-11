@@ -12,16 +12,10 @@
 var sch, fn, entries, noteblocks;
 sch = argument0;
 fn = argument1;
-entries = argument2;
-noteblocks = 0
+entries = argument2
+noteblocks = argument3;
 
-for (a = 0; a < entries; a += 1) {
-	if nblockkey[a] != 0 { 
-		noteblocks++
-	}
-}
-
-var file, a, b, c, t;
+var file, a, b, c, t, z;
 file = external_call(global.dll_OpenFileWrite, "temp");
 
 // Write NBT tags
@@ -32,14 +26,16 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_string(file, "Materials", "Alpha");
     nbt_tag_list(file, "Entities", 10, 0);
     nbt_tag_list(file, "TileEntities", 10, noteblocks);
-	for (a = 0; a < entries; a ++) {
-		if nblockkey[a] != 0 { 
-			nbt_tag_string(file, "id", "minecraft:noteblock")
-			nbt_tag_int(file, "x", - noteblockx[a] + enda * 2 + 3) // why the hell does this work
-			nbt_tag_int(file, "y", noteblocky[a])
-			nbt_tag_int(file, "z", noteblockz[a])
-			nbt_tag_byte(file, "note", noteblocknote[a])
-			nbt_tag_end(file)
+	for (z = 0; z < sch_exp_chords; z ++) {
+		for (a = 0; a < 49; a ++) {
+			if nblockkey[z, a] != 0 { 
+				nbt_tag_string(file, "id", "minecraft:noteblock")
+				nbt_tag_int(file, "x", - noteblockx[z, a] + enda * 2 + 3) // why the hell does this work
+				nbt_tag_int(file, "y", noteblocky[z, a])
+				nbt_tag_int(file, "z", noteblockz[z, a])
+				nbt_tag_byte(file, "note", noteblocknote[z, a])
+				nbt_tag_end(file)
+			}
 		}
 	}
     nbt_tag_byte_array(file, "Blocks", sch.xsize * sch.ysize * sch.zsize) {

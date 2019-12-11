@@ -128,10 +128,13 @@ if settings_ver_loaded >= 1 {
 	patternfolder = buffer_read_string()
 	looptobarend = buffer_read_byte()
 	sch_exp_stereo = buffer_read_byte()
-	sch_br_layer = buffer_read_byte()
 	sch_exp_velocity = buffer_read_byte()
 	sch_exp_circuitry = buffer_read_byte()
 	sch_exp_vertical = buffer_read_byte()
+	sch_exp_chords = buffer_read_byte()
+	sch_br_layer1 = buffer_read_byte()
+	sch_br_layer2 = buffer_read_byte()
+	sch_br_layer3 = buffer_read_byte()
 }
 buffer_delete(buffer)
 return 1

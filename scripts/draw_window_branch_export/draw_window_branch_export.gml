@@ -73,12 +73,27 @@ if (selected_tab_sch = 0) {
 	if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_stereo = 3, "Center", "Only exports notes which have no panning values.")) sch_exp_stereo = 3
     if (draw_radiobox(x1 + 32, y1 + 280, sch_exp_stereo = 2, "Left", "Only exports notes that have left stereo values.")) sch_exp_stereo = 2
     if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values .")) sch_exp_stereo = 1
-    draw_text(x1 + 170, y1 + 220, "Layer to Export:")
-    sch_br_layer = median(1, draw_dragvalue(15, x1 + 300, y1 + 220, sch_br_layer, 1), 200)
-    if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_velocity, "Enable Velocity", "Whether to position the note blocks differently due to their velocity.")) sch_exp_velocity=!sch_exp_velocity
+	
+	draw_text(x1 + 170, y1 + 220, "Polyphony:")
+	sch_exp_chords = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_chords, 1), 3)
+    draw_text(x1 + 170, y1 + 240, "Main Layer:")
+    sch_br_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_br_layer1, 1), sch_exp_maxheight[0] + 1)
+	draw_text(x1 + 170, y1 + 260, "Chord Layer 1:")
+	draw_text(x1 + 170, y1 + 280, "Chord Layer 2:")
+	if (sch_exp_chords > 1 ) {
+		sch_br_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_br_layer2, 1), sch_exp_maxheight[0] + 1)
+	} else {
+		draw_text(x1 + 260, y1 + 260, "None")
+	}
+	if sch_exp_chords > 2 {
+		sch_br_layer3 = median(1, draw_dragvalue(17, x1 + 260, y1 + 280, sch_br_layer3, 1), sch_exp_maxheight[0] + 1)
+	} else {
+		draw_text(x1 + 260, y1 + 280, "None")
+	}
+    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable Velocity", "Whether to position the note blocks differently due to their velocity.")) sch_exp_velocity=!sch_exp_velocity
 	if sch_exp_velocity = 1 var schwidth = 32 else schwidth = 1
-    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_circuitry, "Export Circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-	if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_vertical, "Vertical", "Tick this if you want the note blocks to fade vertically.")) sch_exp_vertical=!sch_exp_vertical
+    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export Circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
+	if (draw_checkbox(x1 + 170, y1 + 340, sch_exp_vertical, "Vertical (TO DO)", "Tick this if you want the note blocks to fade vertically.")) sch_exp_vertical=!sch_exp_vertical
     draw_text(x1 + 380, y1 + 220, "Note blocks:")
     draw_text(x1 + 380, y1 + 220 + 16, "Size:")
     draw_set_halign(fa_right)
@@ -153,9 +168,7 @@ if (selected_tab_sch = 0) {
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
     if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
         message("There are no blocks to export!", "Schematic export")
-    } if sch_br_layer - 1 > sch_exp_maxheight[0] {
-		message("The chosen layer does not exist!", "Error")
-	} else {
+    } else {
         branch_export()
     }
 }

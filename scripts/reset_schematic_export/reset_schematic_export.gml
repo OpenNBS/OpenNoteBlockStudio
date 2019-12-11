@@ -54,7 +54,10 @@ sch_exp_minecraft_old = false
 sch_exp_layout = 1 // 0 = Circular walkway, 1 = Simple walkway, 2 = Classic
 sch_exp_stereo = 4
 sch_exp_notesperrow = 20
-sch_br_layer = 1
+sch_br_layer1 = 1
+sch_br_layer2 = 1
+sch_br_layer3 = 1
+sch_exp_chords = 0
 sch_exp_includelocked = 0
 sch_exp_compress = 1
 sch_exp_velocity = 1
