@@ -93,14 +93,13 @@ if (selected_tab_sch = 0) {
     if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable Velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
 	if sch_exp_velocity = 1 var schwidth = 32 else schwidth = 1
     if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export Circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-	if (draw_checkbox(x1 + 170, y1 + 340, sch_exp_vertical, "Vertical (TO DO)", "Tick this if you want the note blocks to fade vertically.")) sch_exp_vertical=!sch_exp_vertical
     draw_text(x1 + 380, y1 + 240 + 16, "Size:")
     draw_set_halign(fa_right)
     draw_text(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
 	draw_set_halign(fa_left)
 	draw_text(x1 + 380, y1 + 280, "Range:")
-	sch_exp_range_start = median(0, draw_dragvalue(19, x1 + 380, y1 + 300, sch_exp_range_start, 1), enda)
-	sch_exp_range_end = median(0, draw_dragvalue(21, x1 + 420, y1 + 300, sch_exp_range_end, 1), enda)
+	sch_exp_range_start = draw_inputbox(25,x1 + 380, y1 + 300,40,sch_exp_range_start,"Start Tick")
+	sch_exp_range_end = draw_inputbox(26,x1 + 425, y1 + 300,40,sch_exp_range_end,"End Tick")
     draw_set_halign(fa_left)
 } else {
     if (theme = 1) {
@@ -171,9 +170,11 @@ if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
     if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
         message("There are no blocks to export!", "Branch export")
     } else if sch_exp_range_start > sch_exp_range_end {
-		message("Starting range must be lower than ending range!", "Branch export")
+		message("Starting tick must be lower than ending tick!", "Branch export")
 	} else if sch_exp_range_end = 0 {
 		message("Please enter a range!", "Branch export")
+	} else if sch_exp_range_end > enda {
+		message("The ending tick is larger than the song!\nThe size of the song is " + string(enda) + ".", "Branch export")
 	}
 	else {
         branch_export()
