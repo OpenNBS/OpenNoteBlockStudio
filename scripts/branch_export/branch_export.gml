@@ -490,16 +490,18 @@ for (a = rangestart; a <= rangeend; a ++) {
 entries = rangeend - rangestart
 for (c = 0; c < sch_exp_chords; c ++) { // Corrections hack
 	for (a = 0; a <= entries; a ++) {
-		if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = 25) {
-			schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a], 2, 0)
-		}
-		if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = sch_exp_circuit_block) {
-			noteblockx[c, a] -= 1
-		}
-		if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = sch_exp_circuit_block) || (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = 0) {
-				if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0) != sch_exp_circuit_block) {
-				schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1, 0)
-				schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0, 0)
+		if nblockkey[z, a] != 0 { 
+			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = 25) {
+				schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a], 2, 0)
+			}
+			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = sch_exp_circuit_block) {
+				noteblockx[c, a] -= 1
+			}
+			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = sch_exp_circuit_block) || (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = 0) {
+					if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0) != sch_exp_circuit_block) {
+					schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1, 0)
+					schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0, 0)
+				}
 			}
 		}
 	}
