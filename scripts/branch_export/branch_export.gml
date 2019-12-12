@@ -413,7 +413,19 @@ sellayer = real(sch_br_layer1) - 1
 							schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
 							schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 							noteblockx[z, nblocks] = a + 3
-						} else { 
+							} else if (schematic_block_get(mySchematic, zvel, a + 3, 1) = 25) && (schematic_block_get(mySchematic, zvel, a + 1, 1) = 0) {
+								schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
+								schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
+								schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
+								noteblockx[z, nblocks] = a + 1
+								show_debug_message("note block in way")
+							} else if (schematic_block_get(mySchematic, zvel, a + 1, 1) = 25) && (schematic_block_get(mySchematic, zvel, a + 3, 1) = 0) {
+								schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
+								schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
+								schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
+								noteblockx[z, nblocks] = a + 3
+								show_debug_message("note block in way")
+							} else { 
 							schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
 							schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 							schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)

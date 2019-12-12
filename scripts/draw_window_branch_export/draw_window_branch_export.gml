@@ -172,6 +172,8 @@ if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
         message("There are no blocks to export!", "Branch export")
     } else if sch_exp_range_start > sch_exp_range_end {
 		message("Starting range must be lower than ending range!", "Branch export")
+	} else if sch_exp_range_end = 0 {
+		message("Please enter a range!", "Branch export")
 	}
 	else {
         branch_export()
