@@ -169,14 +169,16 @@ if (selected_tab_sch = 0) {
 if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
     if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
         message("There are no blocks to export!", "Branch export")
-    } else if sch_exp_range_start > sch_exp_range_end {
-		message("Starting tick must be lower than ending tick!", "Branch export")
-	} else if sch_exp_range_end = 0 {
+    } else if sch_exp_range_end = 0 || sch_exp_range_start = "" || sch_exp_range_end = "" {
 		message("Please enter a range!", "Branch export")
-	} else if sch_exp_range_end > enda {
+	} else if real(sch_exp_range_start) > real(sch_exp_range_end) {
+		message("Starting tick must be lower than ending tick!", "Branch export")
+	} else if real(sch_exp_range_end) > enda {
 		message("The ending tick is larger than the song!\nThe size of the song is " + string(enda) + ".", "Branch export")
 	}
 	else {
+		sch_exp_range_start = real(sch_exp_range_start)
+		sch_exp_range_end = real(sch_exp_range_end)
         branch_export()
     }
 }
