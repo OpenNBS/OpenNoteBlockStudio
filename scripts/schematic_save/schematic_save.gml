@@ -9,15 +9,13 @@
 
 // By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
-var sch, fn, entries, noteblocks;
+var sch, filen;
 sch = argument0;
-fn = argument1;
-entries = argument2
-noteblocks = argument3;
+filen = argument1;
 
-var file, a, b, c, t, z;
+var file, a, b, c, t;
 file = external_call(global.dll_OpenFileWrite, "temp");
-
+var c = 0
 // Write NBT tags
 nbt_tag_compound(file, "Schematic") {
     nbt_tag_short(file, "Length", sch.xsize);
@@ -25,19 +23,21 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_short(file, "Height", sch.zsize);
     nbt_tag_string(file, "Materials", "Alpha");
     nbt_tag_list(file, "Entities", 10, 0);
-    nbt_tag_list(file, "TileEntities", 10, noteblocks);
-	for (z = 0; z < sch_exp_chords; z ++) {
-		for (a = 0; a <= entries; a ++) {
-			if nblockkey[z, a] != 0 { 
+    nbt_tag_list(file, "TileEntities", 10, sch_exp_totalnoteblocks);
+	for (a = 0; a < sch_exp_polyphony; a ++) {
+		for (b = 0; b <= sch_exp_range_end - sch_exp_range_start; b ++) {
+			if nblocknote[a, b] != 0 {
 				nbt_tag_string(file, "id", "minecraft:noteblock")
-				nbt_tag_int(file, "x", - noteblockx[z, a] + (sch_exp_range_end - sch_exp_range_start) * 2 + 3) // why the hell does this work
-				nbt_tag_int(file, "y", noteblocky[z, a])
-				nbt_tag_int(file, "z", noteblockz[z, a])
-				nbt_tag_byte(file, "note", noteblocknote[z, a])
+				nbt_tag_int(file, "x", noteblockx[a, b])
+				nbt_tag_int(file, "y", noteblocky[a, b])
+				nbt_tag_int(file, "z", noteblockz[a, b])
+				nbt_tag_byte(file, "note", nblocknote[a, b])
 				nbt_tag_end(file)
+				c++
 			}
 		}
-	}
+	} 
+	show_debug_message("Total NBT TileEntity groups = " + string(d))
     nbt_tag_byte_array(file, "Blocks", sch.xsize * sch.ysize * sch.zsize) {
         for (c = 0; c < sch.zsize; c += 1) {
             for (a = 0; a < sch.xsize; a += 1) {
@@ -61,5 +61,7 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_end(file);
 }
 external_call(global.dll_CloseFile, file);
-gzzip("temp", fn)
+
+// Compress using Gzip and clean up
+gzzip("temp", filen)
 file_delete("temp");

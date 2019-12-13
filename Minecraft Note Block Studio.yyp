@@ -703,6 +703,14 @@
             }
         },
         {
+            "Key": "2bafba25-b387-4f9e-bcfd-b4fafe1d8405",
+            "Value": {
+                "id": "efaf9bdc-4865-4f52-8e1b-e4d7ef0b4de2",
+                "resourcePath": "scripts\\branch_export\\branch_export.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2bbb101b-9227-491d-871c-60c4251f625f",
             "Value": {
                 "id": "9200babe-8938-4762-b23b-dc5c54e7f62a",
@@ -3386,7 +3394,7 @@
             "Key": "d30fc3b8-7392-41d7-88ac-59ecfc0fb31e",
             "Value": {
                 "id": "f6fdce24-d8c8-4341-b1d5-087e8daddf85",
-                "resourcePath": "scripts\\branch_export\\branch_export.yy",
+                "resourcePath": "scripts\\branch_export_old\\branch_export_old.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -4323,6 +4331,7 @@
         "8abed089-b287-45d6-a8ea-8a3070bbc435",
         "75783c41-4693-44e8-acd6-06b830e3fd8c",
         "2709b1fb-de4e-4427-9159-21ef065ab373",
+        "2bafba25-b387-4f9e-bcfd-b4fafe1d8405",
         "6e89a497-2583-4ad5-b7d2-9d64a8a63e7a",
         "c6429838-84ae-4c87-aa49-eeef64fb620e",
         "b6ff2f07-e516-406d-85d3-9c30fb933f80",

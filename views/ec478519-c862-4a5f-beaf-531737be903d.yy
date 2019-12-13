@@ -16,7 +16,8 @@
         "d30fc3b8-7392-41d7-88ac-59ecfc0fb31e",
         "8abed089-b287-45d6-a8ea-8a3070bbc435",
         "75783c41-4693-44e8-acd6-06b830e3fd8c",
-        "2709b1fb-de4e-4427-9159-21ef065ab373"
+        "2709b1fb-de4e-4427-9159-21ef065ab373",
+        "2bafba25-b387-4f9e-bcfd-b4fafe1d8405"
     ],
     "filterType": "GMScript",
     "folderName": "Export",

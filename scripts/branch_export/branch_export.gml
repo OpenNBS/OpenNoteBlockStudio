@@ -1,517 +1,175 @@
 // branch_export()
-var fn, a, b, o, z, sch_len, nblocks, nblockins, nblockvel, zvel, pass, tags, sch_layer1, sch_layer2, sch_layer3, entries
-fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+var a, b, c, d, o
+var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Branch Schematic"))
 if (fn = "") return 0
-//fn = string_replace_all(fn, ".schematic", "")
-//fn += ".schematic"
 o = obj_controller
 window = -1
-// Calculate maximum height and note block count
+// Start the schematic
 schematic_start();
 var mySchematic = schematic_create();
-var rangestart = sch_exp_range_start
-var rangeend = sch_exp_range_end
-show_debug_message("rangestart " + string(rangestart))
-show_debug_message("rangeend " + string(rangeend))
-show_debug_message("enda " + string(enda))
-tags = 0
-sch_len = (rangeend - rangestart) * 2 + 4
-schematic_size(mySchematic, 3, sch_len, 2 )
-if sch_exp_velocity = 1 schematic_size(mySchematic, 33, sch_len, 2 )
-if sch_exp_chords > 1 && sch_exp_velocity = 1 schematic_size(mySchematic, 33, sch_len, 3 )
-pass = sch_exp_chords
-if sch_exp_velocity = 1 var lineloc = 16 else lineloc = 1
-sch_layer1 = 0
-sch_layer2 = 0
-sch_layer3 = 0
 
-if pass >= 2 {
-var sellayer = real(sch_br_layer2) - 1
-	z = 1
-//////////////////////////////////////////////////// for some reason I can't get this working in a for loop, so I'll just repeat it like the hack I am.
-	if sch_exp_circuitry = 1 && z = 0 {
-			schematic_cell_set(mySchematic, lineloc, 1, 1, 93, 3) // First repeater
-			schematic_fill(mySchematic, lineloc, 1, 0, lineloc, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Line
+// Calculate the length of this schematic
+var sch_wid, sch_len, sch_hei, range_len, lineloc
+range_len = sch_exp_range_end - sch_exp_range_start + 1
+sch_len = range_len * 2
 
-		// Repeater Pattern on top
+if sch_exp_velocity = 1 {
+	sch_wid = 35
+	sch_hei = 2
+} else sch_wid = 3
+if sch_exp_polyphony = 1 sch_hei = 2 else sch_hei = 3
 
-		for (a = 0; a <= (rangeend - rangestart) * 2; a++) {
-			if a % 2 == 1 {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
+schematic_size(mySchematic, sch_wid, sch_len + 1, sch_hei )
+
+if sch_exp_circuitry = 1 {
+	// Setup Main Line.
+
+	if sch_exp_velocity = 1 lineloc = 17 else lineloc = 1 
+	schematic_fill(mySchematic, lineloc, 0, 0, lineloc, sch_len - 1, 0, sch_exp_circuit_block, sch_exp_circuit_data)
+
+	// Repeater / Block Pattern
+
+	for (a = 0; a < sch_len; a+= 2) {
+		schematic_cell_set(mySchematic, lineloc, a, 1, 93, 3)
+	}
+	for (a = 1; a < sch_len; a+= 2) {
+		schematic_cell_set(mySchematic, lineloc, a, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+	}
+}
+// Magic future-proofing polyphony / layer value array converter
+
+for (a = 0; a < sch_exp_polyphony; a++) {
+	sch_exp_layer[a] = sch_exp_layer_index[a] - 1
+}
+
+// Calculate which note blocks are to be stored in the array
+
+var nblockins, nblockvel, accepted
+sch_exp_totalnoteblocks = 0
+for (a = 0; a < sch_exp_polyphony; a ++) {
+	var ticks = 0
+	//show_debug_message("LAYER")
+	for (b = 0; b < range_len; b ++) {
+		accepted = 0
+		if (o.song_exists[sch_exp_range_start + b, sch_exp_layer[a]]) {
+			if (o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] > 32 && o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] < 58) {
+				switch (sch_exp_stereo) {
+					case 1: if o.song_pan[b, sch_exp_layer[a]] > 100 accepted = 1; // Right Notes
+					break;
+					case 2: if o.song_pan[b, sch_exp_layer[a]] < 100 accepted = 1; // Left Notes
+					break;
+					case 3: if o.song_pan[b, sch_exp_layer[a]] = 100 accepted = 1; // Center Notes
+					break;
+					case 4: accepted = 1; // All Notes
+					break;
+				}
 			} else {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+				message("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound.", "Error")
+				window = w_branch_export
+				return 0
 			}
-		}
-	}
-
-	// Add Note Blocks to Array
-	nblocks = 0
-
-	for (a = rangestart; a <= rangeend; a ++) {
-		if (o.song_exists[a, sellayer]) {
-				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
-					if sch_exp_stereo = 4 { // Add all note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if sch_exp_stereo = 3 && o.song_pan[a, sellayer] = 100 { // Add centered note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if  sch_exp_stereo = 2 && o.song_pan[a, sellayer] < 100 { // Add left note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if sch_exp_stereo = 1 && o.song_pan[a, sellayer] > 100 { //Add right note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else {
-						nblockkey[z, nblocks] = 0
-						nblocks ++
-					}
-				}
-				//show_debug_message("note read.")
+		} 
+		if accepted = 1 {
+			nblocknote[a, ticks] = o.song_key[b, sch_exp_layer[a]] - 33
+			nblockins[a, ticks] = o.song_ins[b, sch_exp_layer[a]] - 100002
+			nblockvel[a, ticks] = o.song_vel[b, sch_exp_layer[a]]
+			sch_exp_totalnoteblocks += 1
+			accepted = 0
 		} else {
-				nblockkey[z, nblocks] = 0
-				nblocks ++
+			nblocknote[a, ticks] = 0
+			nblockins[a, ticks] = 0
+			nblockvel[a, ticks] = 0
 		}
+		show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
+		ticks ++
 	}
-
-	// Add Note Blocks to Structure
-	b = nblocks
-	nblocks = 0
-
-	for (a = 0; a <= (b - 1) * 2; a++) {
-		if a % 2 == 0 {
-			if nblockkey[z, nblocks] != 0 { 
-				if sch_exp_velocity = 0 {
-					if z = 1 {
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc + 1
-					} else if z = 2 {
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc - 1
-					} else {
-						schematic_cell_set(mySchematic, lineloc, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc
-						//show_debug_message("note written.")
-					}
-				noteblockx[z, nblocks] = a + 2
-				} else {
-					zvel = round(32 - nblockvel[z, nblocks]/100 * 32)
-					if zvel >= 15 && zvel <= 17 zvel = 14
-					if sch_exp_circuitry = 1 {
-							schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
-							schematic_cell_set(mySchematic, zvel, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-							schematic_cell_set(mySchematic, zvel, a + 2, 2, 55, 0)
-						if zvel > 16 {
-							var c
-							for (c = lineloc + 1; c <= zvel; c++) {
-								if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
-									schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
-								}
-							}
-						} 
-						if zvel < 16 {
-							var c
-							for (c = lineloc - 1; c >= zvel; c--) {
-								if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
-									schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
-								}
-							}
-						}
-					}
-					if sch_br_layer2 != 0 && z = 1 {
-						schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-					    noteblockx[z, nblocks] = a + 3
-					} else if sch_br_layer3 != 0 && z = 2 {
-						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
-					    noteblockx[z, nblocks] = a + 1
-					} else {
-						schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
-					    noteblockx[z, nblocks] = a + 2
-					}
-					noteblockz[z, nblocks] = zvel
-				}
-		    noteblocky[z, nblocks] = 1
-			noteblocknote[z, nblocks] = nblockkey[z, nblocks] - 33
-			}
-		nblocks ++
-		}
-	}
-	sch_layer2 = nblocks
 }
-////////////////////////////////////////////////////
-if pass >=3 {
-sellayer = real(sch_br_layer3) - 1
-	z = 2
-//////////////////////////////////////////////////// for some reason I can't get this working in a for loop, so I'll just repeat it like the hack I am.
-	if sch_exp_circuitry = 1 && z = 0 {
-			schematic_cell_set(mySchematic, lineloc, 1, 1, 93, 3) // First repeater
-			schematic_fill(mySchematic, lineloc, 1, 0, lineloc, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Line
 
-		// Repeater Pattern on top
+// Add note blocks to structure
 
-		for (a = 0; a <= (rangeend - rangestart) * 2; a++) {
-			if a % 2 == 1 {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
-			} else {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+var offset, zvel, direc, xpos
+for (a = 0; a < sch_exp_polyphony; a ++) { // layer count
+	b = 1
+	if a = 0 offset = 0 if a = 1 offset = 1 if a = 2 offset = -1
+	for (c = 0; c < range_len; c ++) { // tick count
+		if nblocknote[a, c] != 0 { // if note in array exists on this tick
+			xpos = range_len * 2 - b // invert x coordinates (b) for NBT data only
+			if sch_exp_velocity = 0 {
+				schematic_cell_set(mySchematic, lineloc + offset, b, 1, 25, 0)
+				schematic_cell_set(mySchematic, lineloc + offset, b, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+				noteblockx[a, c] = xpos
+				noteblocky[a, c] = 1
+				noteblockz[a, c] = lineloc + offset
+			} else { // Calulate note block Z and X positions, populate them into an array, then lay down the circuitry.
+				zvel = round(32 - nblockvel[a, c]/100 * 32) + 1 
+				if zvel <= 18 && zvel >= 16 zvel = 15
+				if zvel > 17 direc = -1 else direc = 1
+				noteblockzvel[a, c] = zvel
+				noteblockxpos[a, c] = xpos
+				if sch_exp_circuitry = 1 {
+					schematic_fill(mySchematic, lineloc, b, 0, zvel, b, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
+					schematic_fill(mySchematic, lineloc + -direc, b, 1, zvel, b, 1, 55, 0)
+				}
 			}
 		}
+		b += 2
 	}
-
-	// Add Note Blocks to Array
-	nblocks = 0
-
-	for (a = rangestart; a <= rangeend; a ++) {
-		if (o.song_exists[a, sellayer]) {
-				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
-					if sch_exp_stereo = 4 { // Add all note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if sch_exp_stereo = 3 && o.song_pan[a, sellayer] = 100 { // Add centered note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if  sch_exp_stereo = 2 && o.song_pan[a, sellayer] < 100 { // Add left note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if sch_exp_stereo = 1 && o.song_pan[a, sellayer] > 100 { //Add right note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else {
-						nblockkey[z, nblocks] = 0
-						nblocks ++
-					}
-				}
-				//show_debug_message("note read.")
-		} else {
-				nblockkey[z, nblocks] = 0
-				nblocks ++
-		}
-	}
-
-	// Add Note Blocks to Structure
-	b = nblocks
-	nblocks = 0
-
-	for (a = 0; a <= (b - 1) * 2; a++) {
-		if a % 2 == 0 {
-			if nblockkey[z, nblocks] != 0 { 
-				var nudge = 0
-				if sch_exp_velocity = 0 {
-					if z = 1 {
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc + 1
-					} else if z = 2 {
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc - 1
-					} else {
-						schematic_cell_set(mySchematic, lineloc, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc
-						//show_debug_message("note written.")
-					}
-				noteblockx[z, nblocks] = a + 2
-				} else {
-					zvel = round(32 - nblockvel[z, nblocks]/100 * 32)
-					if zvel >= 15 && zvel <= 17 zvel = 14
-					if sch_exp_circuitry = 1 {
-						schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
-						schematic_cell_set(mySchematic, zvel, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-						schematic_cell_set(mySchematic, zvel, a + 2, 2, 55, 0)
-					}
-					if zvel > 16 {
-						var c
-						for (c = lineloc + 1; c <= zvel; c++) {
-							if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
-								schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
-							}
-						}
-						nudge = 1
-					} 
-					if zvel < 16 {
-						var c
-						for (c = lineloc - 1; c >= zvel; c--) {
-							if (schematic_block_get(mySchematic, zvel + (c - zvel), a + 2, 1) = 0) {
-								schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
-							}
-						}
-						nudge = -1
-					}
-					if (schematic_block_get(mySchematic, zvel, a + 1, 1) = 25) {
-						schematic_cell_set(mySchematic, zvel + nudge, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel + nudge, a + 2, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel + nudge, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						schematic_cell_set(mySchematic, zvel + nudge, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockx[z, nblocks] = a + 2
-						noteblockz[z, nblocks] = zvel + nudge
-						show_debug_message("found blocked pos end of line")
-					} else {
-						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockx[z, nblocks] = a + 1
-						noteblockz[z, nblocks] = zvel
-					}
-				}
-		    noteblocky[z, nblocks] = 1
-			noteblocknote[z, nblocks] = nblockkey[z, nblocks] - 33
-			}
-		nblocks ++
-		}
-	}
-	sch_layer3 = nblocks
 }
-////////////////////////////////////////////////////
-if pass >= 1 {
-sellayer = real(sch_br_layer1) - 1
-	z = 0
-//////////////////////////////////////////////////// for some reason I can't get this working in a for loop, so I'll just repeat it like the hack I am.
-	if sch_exp_circuitry = 1 && z = 0 {
-			schematic_cell_set(mySchematic, lineloc, 1, 1, 93, 3) // First repeater
-			schematic_fill(mySchematic, lineloc, 1, 0, lineloc, sch_len, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Line
 
-		// Repeater Pattern on top
-
-		for (a = 0; a <= (rangeend - rangestart) * 2; a++) {
-			if a % 2 == 1 {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, 93, 3)
-			} else {
-				schematic_cell_set(mySchematic, lineloc, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-			}
-		}
-	}
-
-	// Add Note Blocks to Array
-	nblocks = 0
-
-	for (a = rangestart; a <= rangeend; a ++) {
-		if (o.song_exists[a, sellayer]) {
-				if (o.song_key[a, sellayer] > 32 && o.song_key[a, sellayer] < 58) {
-					if sch_exp_stereo = 4 { // Add all note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if sch_exp_stereo = 3 && o.song_pan[a, sellayer] = 100 { // Add centered note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else if  sch_exp_stereo = 2 && o.song_pan[a, sellayer] < 100 { // Add left note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						show_debug_message(nblockkey[z, nblocks])
-						nblocks ++
-					} else if sch_exp_stereo = 1 && o.song_pan[a, sellayer] > 100 { //Add right note blocks
-						nblockkey[z, nblocks] = o.song_key[a, sellayer]
-						nblockins[z, nblocks] = o.song_ins[a, sellayer] - 100002
-						nblockvel[z, nblocks] = o.song_vel[a, sellayer]
-						nblocks ++
-					} else {
-						nblockkey[z, nblocks] = 0
-						nblocks ++
-					}
-				}
-				//show_debug_message("note read.")
-		} else {
-				nblockkey[z, nblocks] = 0
-				nblocks ++
-		}
-	}
-
-	// Add Note Blocks to Structure
-	b = nblocks
-	nblocks = 0
-
-	for (a = 0; a <= (b - 1) * 2; a++) {
-		if a % 2 == 0 {
-			if nblockkey[z, nblocks] != 0 { 
-				if sch_exp_velocity = 0 {
-					if z = 1 {
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc + 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc + 1
-					} else if z = 2 {
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc - 1, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc - 1
-					} else {
-						schematic_cell_set(mySchematic, lineloc, a + 2, 1, 25, 0)
-						schematic_cell_set(mySchematic, lineloc, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-						noteblockz[z, nblocks] = lineloc
-						//show_debug_message("note written.")
-					}
-				noteblockx[z, nblocks] = a + 2
-				} else {
-					zvel = round(32 - nblockvel[z, nblocks]/100 * 32)
-					if zvel >= 15 && zvel <= 17 zvel = 14
-					if sch_exp_circuitry = 1 {
-							schematic_fill(mySchematic, lineloc, a + 2, 0, zvel, a + 2, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
-						if zvel > 16 {
-							nudge = 1
-							var d
-							var c
-							for (c = lineloc + 1; c <= zvel; c++) {
-								if (schematic_block_get(mySchematic, zvel + (c - zvel) - 1, a + 2, 1) = 0) {
-									schematic_block_set(mySchematic, zvel + (c - zvel) - 1, a + 2, 1, 55)
-								}
-								if (schematic_block_get(mySchematic, zvel + (c - zvel) + 1, a + 2, 1) = 25) {
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 1, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 1, 25, 0)
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 2, 0, 0)
-									schematic_block_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 2, 55)
-								}
-							}
-						} 
-						if zvel < 16 {
-							nudge = -1
-							var c
-							var d
-							for (c = lineloc - 1; c >= zvel; c--) {
-								if (schematic_block_get(mySchematic, zvel + (c - zvel) + 1, a + 2, 1) = 0) {
-									schematic_block_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 1, 55)
-								}
-								if (schematic_block_get(mySchematic, zvel + (c - zvel) + 1, a + 2, 1) = 25) {
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 1, 1, 25, 0)
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 1, 2, 0, 0)
-									schematic_cell_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-									schematic_block_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 2, 55)
-								}
+if sch_exp_velocity = 1 {
+	for (a = 0; a < sch_exp_polyphony; a ++) {
+		b = 1
+		if a = 0 offset = 0 if a = 1 offset = 1 if a = 2 offset = -1
+		for (c = 0; c < range_len; c ++) {
+			if nblocknote[a, c] != 0 { // if note in array exists on this tick
+				xpos = range_len * 2 - b // invert x coordinates (b) for NBT data only
+				var freespace = 0
+					if sch_exp_polyphony > 1 { // Various checks if note blocks conflict.
+						var layer_correction = 0
+						for (d = 0; d < sch_exp_polyphony; d ++) { // Check if note blocks in current tick are at different Z pos.
+							var f = noteblockzvel[d, c] 
+							for (var i = 1; i < sch_exp_polyphony; i++) {
+								if noteblockzvel[i, c] != f { // Adds some redstone next to the noteblock if the velocity is different
+									schematic_cell_set(mySchematic, noteblockzvel[i, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+									schematic_cell_set(mySchematic, noteblockzvel[i, c], b, 2, 55, 0)
+									if noteblockzvel[0, c] > lineloc && noteblockzvel[0, c] < max(noteblockzvel[1, c], noteblockzvel[i, c])  layer_correction = 1
+									else if noteblockzvel[0, c] < lineloc && noteblockzvel[0, c] > min(noteblockzvel[1, c], noteblockzvel[i, c]) layer_correction = 1
+								} 
 							}
 						}
+						if layer_correction = 1 { // Alter layer 0's position and add connecting redstone.
+							/* if noteblockzvel[0, c] = noteblockzvel[1, c] { // If layer 1 noteblock is blocking layer 0
+								if noteblockzvel[0, c] = noteblockzvel[1, c - 1] { // If the previous tick's layer 1 is not behind layer 0.
+									freespace --
+								} else { // shift the note block over
+									noteblockzvel[0, c] ++
+									freespace ++
+								}
+							} else */ freespace ++ 
+							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 2, 55, 0)
+							schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 1, 25, 0)
+							schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+							noteblockx[0, c] = noteblockxpos[0, c] - freespace
+							noteblocky[0, c] = 1
+							noteblockz[0, c] = noteblockzvel[0, c]
+							layer_correction_0 = 0
+							freespace = 0
+						}
 					}
-					if sch_br_layer2 != 0 && z = 1 {
-						schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-					    noteblockx[z, nblocks] = a + 3
-					} else if sch_br_layer3 != 0 && z = 2 {
-						schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
-						schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
-					    noteblockx[z, nblocks] = a + 1
-					} else {
-						if (schematic_block_get(mySchematic, zvel, a + 2, 1) = 55) { // stop the note block blocking other notes further down the branch
-							schematic_cell_set(mySchematic, zvel, a + 2, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-							schematic_block_set(mySchematic, zvel, a + 2, 2, 55)
-							schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
-							schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
-							schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							noteblockx[z, nblocks] = a + 3
-							} else if (schematic_block_get(mySchematic, zvel, a + 3, 1) = 25) && (schematic_block_get(mySchematic, zvel, a + 1, 1) = 0) && (schematic_block_get(mySchematic, zvel + nudge, a + 1, 1) != 0) {
-								schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
-								schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
-								schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-								noteblockx[z, nblocks] = a + 1
-								//show_debug_message("note block in way")
-							} else if (schematic_block_get(mySchematic, zvel, a + 1, 1) = 25) && (schematic_block_get(mySchematic, zvel, a + 3, 1) = 0) && (schematic_block_get(mySchematic, zvel + nudge, a + 1, 1) != 0) {
-								schematic_cell_set(mySchematic, zvel, a + 3, 1, 25, 0)
-								schematic_cell_set(mySchematic, zvel, a + 3, 2, 0, 0)
-								schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-								noteblockx[z, nblocks] = a + 3
-								//show_debug_message("note block in way")
-							} else { 
-							schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
-							schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
-							schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
-						    noteblockx[z, nblocks] = a + 2
-						} 
-					}
-					noteblockz[z, nblocks] = zvel
-				}
-		    noteblocky[z, nblocks] = 1
-			noteblocknote[z, nblocks] = nblockkey[z, nblocks] - 33
+					schematic_cell_set(mySchematic, noteblockzvel[a, c], b + offset, 1, 25, 0)
+					schematic_cell_set(mySchematic, noteblockzvel[a, c], b + offset, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+					noteblockx[a, c] = noteblockxpos[a, c] - offset
+					noteblocky[a, c] = 1
+					noteblockz[a, c] = noteblockzvel[a, c]
 			}
-		nblocks ++
-		}
-	}
-	sch_layer1 = nblocks
-}
-////////////////////////////////////////////////////
-var noteblocks = 0
-
-for (a = rangestart; a <= rangeend; a ++) {
-	if sch_exp_chords = 1 {
-		if o.song_exists[a, real(sch_br_layer1) - 1] { 
-			noteblocks++
-		}
-	}
-	if sch_exp_chords = 2 {
-		if o.song_exists[a, real(sch_br_layer1) - 1] { 
-			noteblocks++
-		}
-		if o.song_exists[a, real(sch_br_layer2) - 1] { 
-			noteblocks++
-		}
-	}
-	if sch_exp_chords = 3 {
-		if o.song_exists[a, real(sch_br_layer1) - 1] { 
-			noteblocks++
-		}
-		if o.song_exists[a, real(sch_br_layer2) - 1] { 
-			noteblocks++
-		}
-		if o.song_exists[a, real(sch_br_layer3) - 1] { 
-			noteblocks++
+			b += 2
 		}
 	}
 }
-entries = rangeend - rangestart
-for (c = 0; c < sch_exp_chords; c ++) { // Corrections hack
-	for (a = 0; a <= entries; a ++) {
-		if nblockkey[z, a] != 0 { 
-			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = 25) {
-				schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a], 2, 0)
-			}
-			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = sch_exp_circuit_block) {
-				noteblockx[c, a] -= 1
-			}
-			if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = sch_exp_circuit_block) || (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1) = 0) {
-					if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0) != sch_exp_circuit_block) {
-					schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 1, 0)
-					schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a] - 1, 0, 0)
-				}
-			}
-		}
-	}
-}	
 
-show_debug_message(sch_layer1)
-show_debug_message(sch_layer2)
-show_debug_message(sch_layer3)
-show_debug_message(noteblocks)
-schematic_save(mySchematic, fn, entries, noteblocks);
+show_debug_message("total note blocks = " + string(sch_exp_totalnoteblocks))
+schematic_save(mySchematic, fn);
 schematic_destroy(mySchematic);
 schematic_end();
 message("Schematic saved!", "Schematic Export")

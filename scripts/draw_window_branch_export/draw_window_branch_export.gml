@@ -75,23 +75,27 @@ if (selected_tab_sch = 0) {
     if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values .")) sch_exp_stereo = 1
 	
 	draw_text(x1 + 170, y1 + 220, "Polyphony:")
-	sch_exp_chords = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_chords, 1), 3)
+	sch_exp_polyphony = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_polyphony, 1), 3)
     draw_text(x1 + 170, y1 + 240, "Main Layer:")
-    sch_br_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_br_layer1, 1), sch_exp_maxheight[0] + 1)
+    sch_exp_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_exp_layer1, 1), sch_exp_maxheight[0] + 1)
+	sch_exp_layer_index[0] = sch_exp_layer1
 	draw_text(x1 + 170, y1 + 260, "Chord Layer 1:")
 	draw_text(x1 + 170, y1 + 280, "Chord Layer 2:")
-	if (sch_exp_chords > 1 ) {
-		sch_br_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_br_layer2, 1), sch_exp_maxheight[0] + 1)
+	if (sch_exp_polyphony > 1 ) {
+		sch_exp_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_exp_layer2, 1), sch_exp_maxheight[0] + 1)
+		sch_exp_layer_index[1] = sch_exp_layer2
 	} else {
 		draw_text(x1 + 260, y1 + 260, "None")
 	}
-	if sch_exp_chords > 2 {
-		sch_br_layer3 = median(1, draw_dragvalue(17, x1 + 260, y1 + 280, sch_br_layer3, 1), sch_exp_maxheight[0] + 1)
+	if sch_exp_polyphony > 2 {
+		sch_exp_layer3 = median(1, draw_dragvalue(17, x1 + 260, y1 + 280, sch_exp_layer3, 1), sch_exp_maxheight[0] + 1)
+		sch_exp_layer_index[2] = sch_exp_layer3
 	} else {
 		draw_text(x1 + 260, y1 + 280, "None")
 	}
     if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable Velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
-	if sch_exp_velocity = 1 var schwidth = 32 else schwidth = 1
+	if sch_exp_velocity = 1 var schwidth = 35 else schwidth = 1
+	if sch_exp_polyphony > 1 && sch_exp_velocity = 0 var schwidth = 3
     if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export Circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
     draw_text(x1 + 380, y1 + 240 + 16, "Size:")
     draw_set_halign(fa_right)
