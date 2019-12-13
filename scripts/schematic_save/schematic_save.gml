@@ -13,7 +13,7 @@ var sch, filen;
 sch = argument0;
 filen = argument1;
 
-var file, a, b, c, t;
+var file, a, b, c, d, t;
 file = external_call(global.dll_OpenFileWrite, "temp");
 var c = 0
 // Write NBT tags
@@ -24,6 +24,7 @@ nbt_tag_compound(file, "Schematic") {
     nbt_tag_string(file, "Materials", "Alpha");
     nbt_tag_list(file, "Entities", 10, 0);
     nbt_tag_list(file, "TileEntities", 10, sch_exp_totalnoteblocks);
+	var d = 0
 	for (a = 0; a < sch_exp_polyphony; a ++) {
 		for (b = 0; b <= sch_exp_range_end - sch_exp_range_start; b ++) {
 			if nblocknote[a, b] != 0 {
@@ -33,7 +34,7 @@ nbt_tag_compound(file, "Schematic") {
 				nbt_tag_int(file, "z", noteblockz[a, b])
 				nbt_tag_byte(file, "note", nblocknote[a, b])
 				nbt_tag_end(file)
-				c++
+				d++
 			}
 		}
 	} 

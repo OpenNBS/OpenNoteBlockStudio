@@ -54,11 +54,11 @@ for (a = 0; a < sch_exp_polyphony; a ++) {
 		if (o.song_exists[sch_exp_range_start + b, sch_exp_layer[a]]) {
 			if (o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] > 32 && o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] < 58) {
 				switch (sch_exp_stereo) {
-					case 1: if o.song_pan[b, sch_exp_layer[a]] > 100 accepted = 1; // Right Notes
+					case 1: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] > 100 accepted = 1; // Right Notes
 					break;
-					case 2: if o.song_pan[b, sch_exp_layer[a]] < 100 accepted = 1; // Left Notes
+					case 2: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] < 100 accepted = 1; // Left Notes
 					break;
-					case 3: if o.song_pan[b, sch_exp_layer[a]] = 100 accepted = 1; // Center Notes
+					case 3: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] = 100 accepted = 1; // Center Notes
 					break;
 					case 4: accepted = 1; // All Notes
 					break;
@@ -70,17 +70,19 @@ for (a = 0; a < sch_exp_polyphony; a ++) {
 			}
 		} 
 		if accepted = 1 {
-			nblocknote[a, ticks] = o.song_key[b, sch_exp_layer[a]] - 33
-			nblockins[a, ticks] = o.song_ins[b, sch_exp_layer[a]] - 100002
-			nblockvel[a, ticks] = o.song_vel[b, sch_exp_layer[a]]
-			sch_exp_totalnoteblocks += 1
+			nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] - 33
+			nblockins[a, ticks] = o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]] - 100002
+			nblockvel[a, ticks] = o.song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
+			sch_exp_totalnoteblocks ++
 			accepted = 0
 		} else {
 			nblocknote[a, ticks] = 0
 			nblockins[a, ticks] = 0
 			nblockvel[a, ticks] = 0
 		}
-		// show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
+		show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
+		noteblockzvel[a, ticks] = 0
+		noteblockxpos[a, ticks] = 0
 		ticks ++
 	}
 }
@@ -107,12 +109,8 @@ for (a = 0; a < sch_exp_polyphony; a ++) { // layer count
 				noteblockzvel[a, c] = zvel
 				noteblockxpos[a, c] = xpos
 				if sch_exp_circuitry = 1 {
-					if sch_exp_polyphony != 3 {
 					schematic_fill(mySchematic, lineloc, b, 0, zvel, b, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
 					schematic_fill(mySchematic, lineloc + -direc, b, 1, zvel, b, 1, 55, 0)
-					} else
-					schematic_fill(mySchematic, lineloc, b, 0, noteblockzvel[0, c], b, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
-					schematic_fill(mySchematic, lineloc + -direc, b, 1, noteblockzvel[0, c], b, 1, 55, 0)
 				}
 			}
 		}
@@ -131,10 +129,15 @@ if sch_exp_velocity = 1 { // When polyphony is 1 or 2, make velocity independent
 				if sch_exp_polyphony = 2 { // Various checks if note blocks conflict.
 					var layer_correction = 0
 					if noteblockzvel[0, c] != noteblockzvel[1, c] { // Adds some redstone next to the noteblock if the velocity is different
-						schematic_cell_set(mySchematic, noteblockzvel[1, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-						schematic_cell_set(mySchematic, noteblockzvel[1, c], b, 2, 55, 0)
-						if noteblockzvel[0, c] > lineloc && noteblockzvel[0, c] < noteblockzvel[1, c]  layer_correction = 1
-						else if noteblockzvel[0, c] < lineloc && noteblockzvel[0, c] > noteblockzvel[1, c] layer_correction = 1
+						if noteblockzvel[0, c] != 0 j = 0 else if noteblockzvel[1, c] != 0 j = 1
+						if j != 0 {
+							schematic_cell_set(mySchematic, noteblockzvel[j, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+							schematic_cell_set(mySchematic, noteblockzvel[j, c], b, 2, 55, 0)
+							if noteblockzvel[0, c] != 0 && noteblockzvel[1, c] != 0 {
+								if noteblockzvel[0, c] > lineloc && noteblockzvel[0, c] < noteblockzvel[1, c]  layer_correction = 1
+								else if noteblockzvel[0, c] < lineloc && noteblockzvel[0, c] > noteblockzvel[1, c] layer_correction = 1
+							}
+						}
 					}
 					if layer_correction = 1 { // Alter layer 0's position and add connecting redstone.
 						freespace ++ 
@@ -155,24 +158,30 @@ if sch_exp_velocity = 1 { // When polyphony is 1 or 2, make velocity independent
 					noteblockz[a, c] = noteblockzvel[a, c]
 				}
 				if sch_exp_polyphony = 3 { // if polyphony = 3 then base all velocity values off layer 0.
-					if a = 1 var fix = 1 else fix = 0
+					if a = 1 var fix = 1 else fix = 0 // only offset the 2nd layer
 					var shiftblock = 0
-					if a = 2 {
-						if noteblockzvel[0, c] > 17 shiftblock = 1 else shiftblock = -1
-						fix = 0
+					var j = 0
+					if noteblockzvel[0, c] != 0 j = 0 else if noteblockzvel[1, c] != 0 j = 1 else if noteblockzvel[2, c] != 0 j = 2
+					if noteblockzvel[0, c] = 0 {
+						schematic_cell_set(mySchematic, noteblockzvel[j, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data) // Adds some redstone next to the chosen layer's noteblock
+						schematic_cell_set(mySchematic, noteblockzvel[j, c], b, 2, 55, 0)
 					}
-					schematic_cell_set(mySchematic, noteblockzvel[0, c] + shiftblock, b + fix, 1, 25, 0)
-					schematic_cell_set(mySchematic, noteblockzvel[0, c] + shiftblock, b + fix, 0, sch_exp_ins_block[nblockins[a, c]], 0)
-					noteblockx[a, c] = noteblockxpos[0, c] - fix
+					if a = 2 {
+						if noteblockzvel[2, c] > 17 shiftblock = 1 else shiftblock = -1
+					}
+					schematic_cell_set(mySchematic, noteblockzvel[j, c] + shiftblock, b + fix, 1, 25, 0)
+					schematic_cell_set(mySchematic, noteblockzvel[j, c] + shiftblock, b + fix, 2, 0, 0)
+					schematic_cell_set(mySchematic, noteblockzvel[j, c] + shiftblock, b + fix, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+					noteblockx[a, c] = noteblockxpos[j, c] - fix
 					noteblocky[a, c] = 1
-					noteblockz[a, c] = noteblockzvel[0, c] + shiftblock
+					noteblockz[a, c] = noteblockzvel[j, c] + shiftblock
 				}
 			}
 			b += 2
 		}
 	}
 }
-
+show_debug_message("total note blocks = " + string(sch_exp_totalnoteblocks))
 schematic_save(mySchematic, fn);
 schematic_destroy(mySchematic);
 schematic_end();
