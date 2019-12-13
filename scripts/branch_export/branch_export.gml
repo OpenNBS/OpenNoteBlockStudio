@@ -70,15 +70,17 @@ for (a = 0; a < sch_exp_polyphony; a ++) {
 			}
 		} 
 		if accepted = 1 {
-			nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] - 33
+			nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] 
 			nblockins[a, ticks] = o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]] - 100002
 			nblockvel[a, ticks] = o.song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
+			nblockkey[a, ticks] = nblocknote[a, ticks] - 33
 			sch_exp_totalnoteblocks ++
 			accepted = 0
 		} else {
 			nblocknote[a, ticks] = 0
 			nblockins[a, ticks] = 0
 			nblockvel[a, ticks] = 0
+			nblockkey[a, ticks] = 0
 		}
 		show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
 		noteblockzvel[a, ticks] = 0

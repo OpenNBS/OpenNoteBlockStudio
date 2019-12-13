@@ -32,7 +32,7 @@ nbt_tag_compound(file, "Schematic") {
 				nbt_tag_int(file, "x", noteblockx[a, b])
 				nbt_tag_int(file, "y", noteblocky[a, b])
 				nbt_tag_int(file, "z", noteblockz[a, b])
-				nbt_tag_byte(file, "note", nblocknote[a, b])
+				nbt_tag_byte(file, "note", nblockkey[a, b])
 				nbt_tag_end(file)
 				d++
 			}
