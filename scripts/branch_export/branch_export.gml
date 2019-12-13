@@ -1,5 +1,5 @@
 // branch_export()
-var a, b, c, d, o
+var a, b, c, o
 var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Branch Schematic"))
 if (fn = "") return 0
 o = obj_controller
@@ -80,7 +80,7 @@ for (a = 0; a < sch_exp_polyphony; a ++) {
 			nblockins[a, ticks] = 0
 			nblockvel[a, ticks] = 0
 		}
-		show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
+		// show_debug_message("WROTE nblocknote" + string(a) + "," + string(ticks) + " val " + string(nblocknote[a, ticks]))
 		ticks ++
 	}
 }
@@ -107,8 +107,12 @@ for (a = 0; a < sch_exp_polyphony; a ++) { // layer count
 				noteblockzvel[a, c] = zvel
 				noteblockxpos[a, c] = xpos
 				if sch_exp_circuitry = 1 {
+					if sch_exp_polyphony != 3 {
 					schematic_fill(mySchematic, lineloc, b, 0, zvel, b, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
 					schematic_fill(mySchematic, lineloc + -direc, b, 1, zvel, b, 1, 55, 0)
+					} else
+					schematic_fill(mySchematic, lineloc, b, 0, noteblockzvel[0, c], b, 0, sch_exp_circuit_block, sch_exp_circuit_data) // Connects a redstone line to the block
+					schematic_fill(mySchematic, lineloc + -direc, b, 1, noteblockzvel[0, c], b, 1, 55, 0)
 				}
 			}
 		}
@@ -116,7 +120,7 @@ for (a = 0; a < sch_exp_polyphony; a ++) { // layer count
 	}
 }
 
-if sch_exp_velocity = 1 {
+if sch_exp_velocity = 1 { // When polyphony is 1 or 2, make velocity independent.
 	for (a = 0; a < sch_exp_polyphony; a ++) {
 		b = 1
 		if a = 0 offset = 0 if a = 1 offset = 1 if a = 2 offset = -1
@@ -124,51 +128,51 @@ if sch_exp_velocity = 1 {
 			if nblocknote[a, c] != 0 { // if note in array exists on this tick
 				xpos = range_len * 2 - b // invert x coordinates (b) for NBT data only
 				var freespace = 0
-					if sch_exp_polyphony > 1 { // Various checks if note blocks conflict.
-						var layer_correction = 0
-						for (d = 0; d < sch_exp_polyphony; d ++) { // Check if note blocks in current tick are at different Z pos.
-							var f = noteblockzvel[d, c] 
-							for (var i = 1; i < sch_exp_polyphony; i++) {
-								if noteblockzvel[i, c] != f { // Adds some redstone next to the noteblock if the velocity is different
-									schematic_cell_set(mySchematic, noteblockzvel[i, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-									schematic_cell_set(mySchematic, noteblockzvel[i, c], b, 2, 55, 0)
-									if noteblockzvel[0, c] > lineloc && noteblockzvel[0, c] < max(noteblockzvel[1, c], noteblockzvel[i, c])  layer_correction = 1
-									else if noteblockzvel[0, c] < lineloc && noteblockzvel[0, c] > min(noteblockzvel[1, c], noteblockzvel[i, c]) layer_correction = 1
-								} 
-							}
-						}
-						if layer_correction = 1 { // Alter layer 0's position and add connecting redstone.
-							/* if noteblockzvel[0, c] = noteblockzvel[1, c] { // If layer 1 noteblock is blocking layer 0
-								if noteblockzvel[0, c] = noteblockzvel[1, c - 1] { // If the previous tick's layer 1 is not behind layer 0.
-									freespace --
-								} else { // shift the note block over
-									noteblockzvel[0, c] ++
-									freespace ++
-								}
-							} else */ freespace ++ 
-							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
-							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 2, 55, 0)
-							schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 1, 25, 0)
-							schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 0, sch_exp_ins_block[nblockins[a, c]], 0)
-							noteblockx[0, c] = noteblockxpos[0, c] - freespace
-							noteblocky[0, c] = 1
-							noteblockz[0, c] = noteblockzvel[0, c]
-							layer_correction_0 = 0
-							freespace = 0
-						}
+				if sch_exp_polyphony = 2 { // Various checks if note blocks conflict.
+					var layer_correction = 0
+					if noteblockzvel[0, c] != noteblockzvel[1, c] { // Adds some redstone next to the noteblock if the velocity is different
+						schematic_cell_set(mySchematic, noteblockzvel[1, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+						schematic_cell_set(mySchematic, noteblockzvel[1, c], b, 2, 55, 0)
+						if noteblockzvel[0, c] > lineloc && noteblockzvel[0, c] < noteblockzvel[1, c]  layer_correction = 1
+						else if noteblockzvel[0, c] < lineloc && noteblockzvel[0, c] > noteblockzvel[1, c] layer_correction = 1
 					}
+					if layer_correction = 1 { // Alter layer 0's position and add connecting redstone.
+						freespace ++ 
+						schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
+						schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 2, 55, 0)
+						schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 1, 25, 0)
+						schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+						noteblockx[0, c] = noteblockxpos[0, c] - freespace
+						layer_correction = 0
+						freespace = 0
+					}
+				}
+				if sch_exp_polyphony != 3 {
 					schematic_cell_set(mySchematic, noteblockzvel[a, c], b + offset, 1, 25, 0)
 					schematic_cell_set(mySchematic, noteblockzvel[a, c], b + offset, 0, sch_exp_ins_block[nblockins[a, c]], 0)
 					noteblockx[a, c] = noteblockxpos[a, c] - offset
 					noteblocky[a, c] = 1
 					noteblockz[a, c] = noteblockzvel[a, c]
+				}
+				if sch_exp_polyphony = 3 { // if polyphony = 3 then base all velocity values off layer 0.
+					if a = 1 var fix = 1 else fix = 0
+					var shiftblock = 0
+					if a = 2 {
+						if noteblockzvel[0, c] > 17 shiftblock = 1 else shiftblock = -1
+						fix = 0
+					}
+					schematic_cell_set(mySchematic, noteblockzvel[0, c] + shiftblock, b + fix, 1, 25, 0)
+					schematic_cell_set(mySchematic, noteblockzvel[0, c] + shiftblock, b + fix, 0, sch_exp_ins_block[nblockins[a, c]], 0)
+					noteblockx[a, c] = noteblockxpos[0, c] - fix
+					noteblocky[a, c] = 1
+					noteblockz[a, c] = noteblockzvel[0, c] + shiftblock
+				}
 			}
 			b += 2
 		}
 	}
 }
 
-show_debug_message("total note blocks = " + string(sch_exp_totalnoteblocks))
 schematic_save(mySchematic, fn);
 schematic_destroy(mySchematic);
 schematic_end();
