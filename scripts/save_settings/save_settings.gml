@@ -1,5 +1,5 @@
 // save_settings()
-var a, b;
+var a;
 
 ini_open(data_directory + "settings.ini")
 
@@ -16,10 +16,11 @@ ini_write_real_clean("preferences", "theme",              theme)
 ini_write_real_clean("preferences", "refresh_rate",       refreshrate)
 ini_write_string(    "preferences", "song_folder",        songfolder)
 ini_write_string(    "preferences", "pattern_folder",     patternfolder)
+ini_write_real_clean("preferences", "draw_type",          draw_type)
 ini_write_real_clean("preferences", "show_numbers",       show_numbers)
 ini_write_real_clean("preferences", "show_octaves",       show_octaves)
 ini_write_real_clean("preferences", "use_fading",         fade)
-ini_write_real_clean("preferences", "draw_type",          draw_type)
+ini_write_real_clean("preferences", "show_layers",        show_layers)
 ini_write_real_clean("preferences", "show_piano",         show_piano)
 ini_write_real_clean("preferences", "keys_to_show",       keysmax)
 ini_write_real_clean("preferences", "show_keynames",      show_keynames)
@@ -35,6 +36,7 @@ ini_write_real_clean("preferences", "marker_end",         marker_end)
 ini_write_real_clean("preferences", "show_layer_volumes", realvolume)
 ini_write_real_clean("preferences", "use_stereo",         realstereo)
 ini_write_real_clean("preferences", "loop_to_bar_end",    looptobarend)
+ini_write_real_clean("preferences", "save_version",       save_version)
 
 // Midi import settings
 ini_write_real_clean("midi_import", "remember",        w_midi_remember)

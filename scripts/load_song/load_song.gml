@@ -17,28 +17,28 @@ if (file_ext = ".schematic") {
     open_schematic(fn)
     return 1
 }
-if (file_ext != ".nbs") {message("Error: This file cannot be opened in this program.", "Error") return 0}
+if (file_ext != ".nbs") { message("Error: This file cannot be opened in this program.", "Error") return 0 }
 if (file_ext = ".nbs") {
     buffer = buffer_import(fn)
 	
 	byte1 = buffer_read_byte()
 	byte2 = buffer_read_byte()
 	
-	if(byte1 = 0 && byte2 = 0){
+	if (byte1 = 0 && byte2 = 0) {
 		song_nbs_version = buffer_read_byte()
 		if song_nbs_version < nbs_version message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 		if song_nbs_version > nbs_version {
-			message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a V4 file or lower via the Save Options menu.","Error")
+			message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
 			return -1
 		}
 		song_first_custom_index = buffer_read_byte()
 		custom_index_diff = first_custom_index - song_first_custom_index
 		
-		//From nbt version 3, we save the song length again
-		if(song_nbs_version >= 3){
+		//From nbs version 3, we save the song length again
+		if(song_nbs_version >= 3) {
 			buffer_read_short()
 		}
-	}else{
+	} else {
 		message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 		song_nbs_version = 0
 		custom_index_diff = 0
@@ -84,14 +84,14 @@ if (file_ext = ".nbs") {
     if (filename_ext(a) = ".mid" || filename_ext(a) = ".midi") song_midi = a
 	else song_midi = ""
 	// LOOP
-	if(song_nbs_version >= 4){
-	loop = buffer_read_byte()
-	if string_count("format4beta", filename_name(fn)) = 1 {
-	loopstart = buffer_read_byte()
-	loopmax = 0
-	} else {
-		loopmax = buffer_read_byte()
-		loopstart = buffer_read_short()
+	if (song_nbs_version >= 4) {
+		loop = buffer_read_byte()
+		if (string_count("format4beta", filename_name(fn)) = 1) {
+			loopstart = buffer_read_byte()
+			loopmax = 0
+		} else {
+			loopmax = buffer_read_byte()
+			loopstart = buffer_read_short()
 		}
 	}
     // Note blocks
@@ -106,7 +106,7 @@ if (file_ext = ".nbs") {
             if (a = 0) break
             cb += a
             var ins = buffer_read_byte();
-			if(ins >= song_first_custom_index)ins += custom_index_diff //If instrument is custom, add custom_index_diff so it works when adding future instruments
+			if(ins >= song_first_custom_index) ins += custom_index_diff //If instrument is custom, add custom_index_diff so it works when adding future instruments
             var key = buffer_read_byte();
 			if song_nbs_version>=4 {
 				var vel = buffer_read_byte();

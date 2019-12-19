@@ -324,20 +324,6 @@ dat_visualizer = 0
 //MP3
 mp3_includelocked = 0
 
-// Settings
-load_settings()
-change_theme()
-if (show_welcome) window = w_greeting
-if (check_update)
-    update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
-else
-    update_http = -1
-if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
-    window = w_update
-    update = 3
-}
-log("Startup OK")
-
 // Macros
 stereo_reverse = 0
 tremolotype = 0
@@ -354,6 +340,20 @@ setpan = 0
 
 // Saving
 save_version = nbs_version
+
+// Settings
+load_settings()
+change_theme()
+if (show_welcome) window = w_greeting
+if (check_update)
+    update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
+else
+    update_http = -1
+if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
+    window = w_update
+    update = 3
+}
+log("Startup OK")
 
 // Open song
 if (parameter_count() > 0) {
