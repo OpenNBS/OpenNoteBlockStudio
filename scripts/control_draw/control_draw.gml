@@ -788,20 +788,21 @@ starta = draw_scrollbar(scrollbarh, x1, y1 + totalrows * 32 + 34, 32, totalcols 
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 
 // Draw layers
-if (show_layers) {
-	for (b = 0; b < totalrows; b += 1) {
+for (b = 0; b < totalrows; b += 1) {
+	if (startb + b >= endb2) {
+	    layername[startb + b] = ""
+	    layerlock[startb + b] = 0
+	    layervol[startb + b] = 100
+		layerstereo[startb + b] = 100
+	    rowamount[startb + b] = 0
+	    endb2 = startb + b + 1
+	}
+	if (show_layers) {
 	    x1 = 4
 	    y1 = 54 + 32 + b * 32 - 1
+		// Name
 	    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
-	    // Name
-	    if (startb + b >= endb2) {
-	        layername[startb + b] = ""
-	        layerlock[startb + b] = 0
-	        layervol[startb + b] = 100
-			layerstereo[startb + b] = 100
-	        rowamount[startb + b] = 0
-	        endb2 = startb + b + 1
-	    }
+
 	    m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 	    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 		draw_set_font(fnt_small)
