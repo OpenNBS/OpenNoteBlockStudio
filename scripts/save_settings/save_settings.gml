@@ -1,118 +1,101 @@
 // save_settings()
 var a, b;
-buffer = buffer_create(8, buffer_grow, 1)
 
-buffer_write_byte(69) // Couldn't choose zero as the old format had the same bytes when the recent file list was empty. Decided to use le epik funny number 69 instead.
-buffer_write_byte(69)
-buffer_write_byte(settings_version)
+ini_open(data_directory + "settings.ini")
 
 // Recent songs
 for (a = 0; a < 11; a += 1) {
-	buffer_write_string(recent_song[a]);
-    buffer_write_double(recent_song_time[a])
+    ini_write_string(    "recent", "recent_song_" + string(a) + "_path", recent_song[a])
+    ini_write_real_clean("recent", "recent_song_" + string(a) + "_time", recent_song_time[a])
 }
 // Preferences
-buffer_write_byte(check_update)
-buffer_write_byte(show_welcome)
-buffer_write_byte(theme)
-buffer_write_string(songfolder);
-buffer_write_byte(show_numbers)
-buffer_write_byte(show_octaves)
-buffer_write_byte(draw_type)
-buffer_write_byte(show_keynames)
-buffer_write_byte(show_keyboard)
-buffer_write_byte(show_notechart)
-buffer_write_byte(keysmax)
-buffer_write_byte(mousewheel)
-buffer_write_byte(changepitch)
-buffer_write_byte(select_lastpressed)
-buffer_write_byte(marker_follow)
-buffer_write_byte(marker_pagebypage)
-buffer_write_byte(marker_start)
-buffer_write_byte(marker_end)
-buffer_write_byte(0)
-buffer_write_byte(0)
-buffer_write_byte(realvolume)
+ini_write_string(    "preferences", "last_version",       version)
+ini_write_real_clean("preferences", "check_update",       check_update)
+ini_write_real_clean("preferences", "show_welcome",       show_welcome)
+ini_write_real_clean("preferences", "theme",              theme)
+ini_write_real_clean("preferences", "refresh_rate",       refreshrate)
+ini_write_string(    "preferences", "song_folder",        songfolder)
+ini_write_string(    "preferences", "pattern_folder",     patternfolder)
+ini_write_real_clean("preferences", "show_numbers",       show_numbers)
+ini_write_real_clean("preferences", "show_octaves",       show_octaves)
+ini_write_real_clean("preferences", "use_fading",         fade)
+ini_write_real_clean("preferences", "draw_type",          draw_type)
+ini_write_real_clean("preferences", "show_piano",         show_piano)
+ini_write_real_clean("preferences", "keys_to_show",       keysmax)
+ini_write_real_clean("preferences", "show_keynames",      show_keynames)
+ini_write_real_clean("preferences", "show_keyboard",      show_keyboard)
+ini_write_real_clean("preferences", "show_notechart",     show_notechart)
+ini_write_real_clean("preferences", "mousewheel",         mousewheel)
+ini_write_real_clean("preferences", "change_pitch",       changepitch)
+ini_write_real_clean("preferences", "select_lastpressed", select_lastpressed)
+ini_write_real_clean("preferences", "marker_follow",      marker_follow)
+ini_write_real_clean("preferences", "marker_pagebypage",  marker_pagebypage)
+ini_write_real_clean("preferences", "marker_start",       marker_start)
+ini_write_real_clean("preferences", "marker_end",         marker_end)
+ini_write_real_clean("preferences", "show_layer_volumes", realvolume)
+ini_write_real_clean("preferences", "use_stereo",         realstereo)
+ini_write_real_clean("preferences", "loop_to_bar_end",    looptobarend)
 
 // Midi import settings
-buffer_write_byte(w_midi_remember)
-buffer_write_byte(w_midi_removesilent)
-buffer_write_byte(w_midi_name)
-buffer_write_byte(w_midi_name_patch)
-buffer_write_byte(w_midi_maxheight)
-buffer_write_byte(w_midi_tempo)
-buffer_write_byte(w_midi_octave)
+ini_write_real_clean("midi_import", "remember",        w_midi_remember)
+ini_write_real_clean("midi_import", "remove_silent",   w_midi_removesilent)
+ini_write_real_clean("midi_import", "name",            w_midi_name)
+ini_write_real_clean("midi_import", "name_patch",      w_midi_name_patch)
+ini_write_real_clean("midi_import", "maxheight",       w_midi_maxheight)
+ini_write_real_clean("midi_import", "enable_velocity", w_midi_vel)
+ini_write_real_clean("midi_import", "tempo",           w_midi_tempo)
+ini_write_real_clean("midi_import", "octave",          w_midi_octave)
 // instruments
 for (a = 0; a < 128; a += 1) {
-    buffer_write_byte(midi_ins[a, 1]) // Instrument
-    buffer_write_byte(midi_ins[a, 2]) // Octave
+    ini_write_real_clean("midi_import", "ins_" + string(a),          midi_ins[a, 1]) // Instrument
+    ini_write_real_clean("midi_import", "ins_" + string(a) + "_oct", midi_ins[a, 2]) // Octave
 }
 // drums
 for (a = 24; a < 88; a += 1) {
-    buffer_write_byte(midi_drum[a, 1]) // Instrument
-    buffer_write_byte(midi_drum[a, 2]) // Key
+    ini_write_real_clean("midi_import", "drum_" + string(a),          midi_drum[a, 1]) // Instrument
+    ini_write_real_clean("midi_import", "drum_" + string(a) + "_key", midi_drum[a, 2]) // Key
 }
-// Midi export settings
-buffer_write_byte(0) // w_midiexp_remember
-buffer_write_byte(0) // w_midiexp_layers
-buffer_write_byte(0) // w_midiexp_open
-for (a = 0; a < 14; a += 1) {
-    buffer_write_byte(0) // w_midiexp_patch[a]
-    buffer_write_byte(0) // w_midiexp_kind[a]
-    buffer_write_byte(0) // w_midiexp_oct[a]
-}
-buffer_write_byte(0) // w_midiexp_ignored
 
 // Schematic export settings
-buffer_write_byte(sch_exp_walkway_block)
-buffer_write_byte(sch_exp_walkway_data)
-buffer_write_byte(sch_exp_circuit_block)
-buffer_write_byte(sch_exp_circuit_data)
-buffer_write_byte(sch_exp_ground_block)
-buffer_write_byte(sch_exp_ground_data)
-buffer_write_byte(sch_exp_layout)
-buffer_write_byte(sch_exp_notesperrow)
-buffer_write_byte(sch_exp_includelocked)
-buffer_write_byte(sch_exp_compress)
-buffer_write_byte(sch_exp_loop)
-buffer_write_byte(sch_exp_glass)
-buffer_write_byte(sch_exp_minecart)
-buffer_write_byte(sch_exp_chest)
+ini_write_real_clean("schematic_export", "use_old_format", sch_exp_minecraft_old)
+ini_write_real_clean("schematic_export", "walkway_block",  sch_exp_walkway_block)
+ini_write_real_clean("schematic_export", "walkway_data",   sch_exp_walkway_data)
+ini_write_real_clean("schematic_export", "circuit_block",  sch_exp_circuit_block)
+ini_write_real_clean("schematic_export", "circuit_data",   sch_exp_circuit_data)
+ini_write_real_clean("schematic_export", "ground_block",   sch_exp_ground_block)
+ini_write_real_clean("schematic_export", "ground_data",    sch_exp_ground_data)
+ini_write_real_clean("schematic_export", "layout",         sch_exp_layout)
+ini_write_real_clean("schematic_export", "notes_per_row",  sch_exp_notesperrow)
+ini_write_real_clean("schematic_export", "include_locked", sch_exp_includelocked)
+ini_write_real_clean("schematic_export", "compress",       sch_exp_compress)
+ini_write_real_clean("schematic_export", "loop",           sch_exp_loop)
+ini_write_real_clean("schematic_export", "glass",          sch_exp_glass)
+ini_write_real_clean("schematic_export", "minecart",       sch_exp_minecart)
+ini_write_real_clean("schematic_export", "chest",          sch_exp_chest)
 for (a = 0; a < 34; a += 1) {
-    buffer_write_byte(sch_exp_ins_block[a])
-    buffer_write_byte(sch_exp_ins_data[a])
+    ini_write_real_clean("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
+    ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 }
 
-// Keyboard keys
-for (a = 0; a < 88; a += 1) buffer_write_short(piano_key[a])
-// Warnings
-buffer_write_byte(warning_octaves)
-buffer_write_byte(warning_instrument)
-buffer_write_byte(warning_schematic)
-// 3.1.1+
-buffer_write_string_int(version)
-buffer_write_byte(sch_exp_minecraft_old)
-buffer_write_byte(soundsystem)
-// OpenNBS Features
-buffer_write_byte(refreshrate)
-buffer_write_byte(fade)
-buffer_write_byte(realstereo)
-buffer_write_byte(show_piano)
-buffer_write_byte(rhval)
-buffer_write_byte(w_midi_vel)
-buffer_write_string(patternfolder)
-buffer_write_byte(looptobarend)
-buffer_write_byte(sch_exp_stereo)
-buffer_write_byte(sch_exp_velocity)
-buffer_write_byte(sch_exp_circuitry)
-buffer_write_byte(sch_exp_vertical)
-buffer_write_byte(sch_exp_polyphony)
-buffer_write_byte(sch_exp_layer1)
-buffer_write_byte(sch_exp_layer2)
-buffer_write_byte(sch_exp_layer3)
-buffer_write_short(sch_exp_range_start)
-buffer_write_short(sch_exp_range_end)
+// Branch export settings
+ini_write_real_clean("branch_export", "stereo",      sch_exp_stereo)
+ini_write_real_clean("branch_export", "velocity",    sch_exp_velocity)
+ini_write_real_clean("branch_export", "circuitry",   sch_exp_circuitry)
+ini_write_real_clean("branch_export", "vertical",    sch_exp_vertical)
+ini_write_real_clean("branch_export", "polyphony",   sch_exp_polyphony)
+ini_write_real_clean("branch_export", "layer1",      sch_exp_layer1)
+ini_write_real_clean("branch_export", "layer2",      sch_exp_layer2)
+ini_write_real_clean("branch_export", "layer3",      sch_exp_layer3)
+ini_write_real_clean("branch_export", "range_start", sch_exp_range_start)
+ini_write_real_clean("branch_export", "range_end",   sch_exp_range_end)
 
-buffer_export(buffer, data_directory + "settings.onbs")
-buffer_delete(buffer)
+// Keyboard keys
+for (a = 0; a < 88; a += 1) ini_write_real_clean("piano_keys", "piano_key_" + string(a), piano_key[a])
+
+// Warnings
+ini_write_real_clean("warnings", "octaves",    warning_octaves)
+ini_write_real_clean("warnings", "instrument", warning_instrument)
+ini_write_real_clean("warnings", "schematics", warning_schematic)
+
+ini_close()
 return 1

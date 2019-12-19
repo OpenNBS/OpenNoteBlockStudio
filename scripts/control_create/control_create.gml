@@ -31,7 +31,6 @@ editmode = 0
 clickinarea = 0
 dontplace = 0
 vers = version
-soundsystem = 0
 menu_shown = ""
 songfolder = songs_directory
 patternfolder = pattern_directory
