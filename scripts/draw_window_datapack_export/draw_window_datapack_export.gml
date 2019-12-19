@@ -15,7 +15,7 @@ nsel = -1
 menun = -1
 for (a = 0; a < 2; a += 1) {
     c = mouse_rectangle(x1 + b, y1 + 28, string_width(str[a]) + 12, 18)
-    if (selected_tab_sch = a) {
+    if (selected_tab_dat = a) {
         stabx = b - 2
         stabw = string_width(str[a]) + 15
     } else {
@@ -40,12 +40,12 @@ if (theme = 0) {
     draw_set_color(c_white)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
     draw_theme_color()
-    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])
 } else if(theme = 1){
     draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
     draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
     draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
-    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])
 }else{
 	draw_set_color(c_dark)
     draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 392, 0) 
@@ -58,13 +58,13 @@ if (theme = 0) {
     draw_set_color(c_dark)
     draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
     draw_theme_color()
-    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])
 }
-if (nsel > -1) selected_tab_sch = nsel
-selected_tab_sch += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
-if (selected_tab_sch < 0) selected_tab_sch = 1
-if (selected_tab_sch > 1) selected_tab_sch = 0
-if (selected_tab_sch = 0) {
+if (nsel > -1) selected_tab_dat = nsel
+selected_tab_dat += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
+if (selected_tab_dat < 0) selected_tab_dat = 1
+if (selected_tab_dat > 1) selected_tab_dat = 0
+if (selected_tab_dat = 0) {
 	draw_sprite(spr_datapack_exp, 2, x1 + 66, y1 + -40)
 	draw_theme_color()
 
@@ -139,19 +139,25 @@ if (selected_tab_sch = 0) {
 	draw_text(x1 + 380, y1 + 333, "Loop start:")
 	popup_set_window(x1 + 380, y1 + 329, 125, 21, "Tick the song will jump to at the end of playback")
 	draw_theme_color()
+	
+	//Get extra notes button
+	if (draw_button2(x1 + 380, y1 + 362, 152, "Get extra notes pack", !dat_includeoutofrange)) {
+		datapack_getextranotes()
+	}
+	
 } else {
 	if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
 	//Type
 	draw_sprite(spr_datapack_exp, 1, x1 + 125, y1 + 55)
 	draw_text(x1 + 33, y1 + 75, "Visualizer Type")
-	if (draw_radiobox(x1 + 33, y1 + 95, vis_type = "Arc", "Arc", "Controlled by Ambient/Environment slider")) vis_type = "Arc"
-	if (draw_radiobox(x1 + 33, y1 + 115, vis_type = "Fall", "Fall", "Controlled by Blocks slider")) vis_type = "Fall"
-	if (draw_radiobox(x1 + 33, y1 + 135, vis_type = "Rise", "Rise", "Controlled by Hostile Creatures slider")) vis_type = "Rise"
-	if (draw_radiobox(x1 + 33, y1 + 155, vis_type = "Bounce", "Bounce", "Controlled by Master Volume slider")) vis_type = "Bounce"
-	if (draw_radiobox(x1 + 33, y1 + 175, vis_type = "Piano Roll", "Piano Roll", "Controlled by Master Volume slider")) vis_type = "Piano Roll"
-	if (draw_radiobox(x1 + 33, y1 + 195, vis_type = "Fountain", "Fountain", "Controlled by Master Volume slider")) vis_type = "Fountain"
-	if (draw_radiobox(x1 + 33, y1 + 215, vis_type = "Rittai Onkyou", "Rittai Onkyou", "Controlled by Master Volume slider")) vis_type = "Rittai Onkyou"
-	if (draw_checkbox(x1 + 33, y1 + 235, glow, "Add Glow", "Whether to add a glow to each instrument.")) glow=!glow
+	if (draw_radiobox(x1 + 33, y1 + 95, dat_vis_type = "Arc", "Arc", "Use Arc visualizer.")) dat_vis_type = "Arc"
+	if (draw_radiobox(x1 + 33, y1 + 115, dat_vis_type = "Fall", "Fall", "Use Fall visualizer.")) dat_vis_type = "Fall"
+	if (draw_radiobox(x1 + 33, y1 + 135, dat_vis_type = "Rise", "Rise", "Use Rise visualizer.")) dat_vis_type = "Rise"
+	if (draw_radiobox(x1 + 33, y1 + 155, dat_vis_type = "Bounce", "Bounce", "Use Bounce visualizer.")) dat_vis_type = "Bounce"
+	if (draw_radiobox(x1 + 33, y1 + 175, dat_vis_type = "Piano Roll", "Piano Roll", "Use Piano Roll visualizer.")) dat_vis_type = "Piano Roll"
+	if (draw_radiobox(x1 + 33, y1 + 195, dat_vis_type = "Fountain", "Fountain", "Use Fountain visualizer.")) dat_vis_type = "Fountain"
+	if (draw_radiobox(x1 + 33, y1 + 215, dat_vis_type = "Rittai Onkyou", "Rittai Onkyou", "Use Rittai Onkyou visualizer.")) dat_vis_type = "Rittai Onkyou"
+	if (draw_checkbox(x1 + 33, y1 + 235, dat_glow, "Add Glow", "Whether to add a dat_glow to each instrument.")) dat_glow=!dat_glow
 	draw_text(x1 + 33, y1 + 255, "Spawn Height:")
 	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
 	draw_text(x1 + 33, y1 + 295, "Position In Map:")
@@ -159,7 +165,7 @@ if (selected_tab_sch = 0) {
 	dat_xval = draw_inputbox(23,x1 + 83, y1 + 315,40,dat_xval,"X value")
 	draw_text(x1 + 33, y1 + 338, "Z Value:")
 	dat_zval = draw_inputbox(24,x1 + 83, y1 + 335,40,dat_zval,"Z value")
-	//Get extra notes button
+	//Get note block textures button
 	if (draw_button2(x1 + 13, y1 + 360, 152, "Get Note Block Textures")) {
 		datapack_getinstextures()
 	}
@@ -179,12 +185,15 @@ if (draw_button2(x1 + 470, y1 + 398, 72, "Export", false)) {
 	}
 }
 
+//Remember changes
+if (draw_checkbox(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.") && wmenu = 0) dat_remember = !dat_remember
+
+//Use default
+if (draw_button2(x1 + 310, y1 + 398, 72, "Use default") && wmenu = 0) {
+    if (question("Are you sure?", "Confirm")) dat_reset(1)
+}
+
 //Cancel button
 if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false)) {
 	window = 0
-}
-
-//Get extra notes button
-if (draw_button2(x1 + 230, y1 + 398, 152, "Get extra notes pack", !dat_includeoutofrange)) {
-	datapack_getextranotes()
 }

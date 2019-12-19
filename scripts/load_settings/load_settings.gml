@@ -100,8 +100,27 @@ sch_exp_layer3 =      ini_read_real("branch_export", "layer3",      sch_exp_laye
 sch_exp_range_start = ini_read_real("branch_export", "range_start", sch_exp_range_start)
 sch_exp_range_end =   ini_read_real("branch_export", "range_end",   sch_exp_range_end)
 
+// Datapack export settings
+dat_name =              ini_read_string("datapack_export", "name",          dat_name)
+dat_namespace =         ini_read_string("datapack_export", "namespace",     dat_namespace)
+dat_path =              ini_read_string("datapack_export", "path",          dat_path)
+dat_source =            ini_read_string("datapack_export", "source",        dat_source)
+dat_usezip =            ini_read_real(  "datapack_export", "use_zip",       dat_usezip)
+dat_includelocked =     ini_read_real(  "datapack_export", "locked",        dat_includelocked)
+dat_includeoutofrange = ini_read_real(  "datapack_export", "out_of_range",  dat_includeoutofrange)
+dat_enableradius =      ini_read_real(  "datapack_export", "enable_radius", dat_enableradius)
+dat_radius =            ini_read_real(  "datapack_export", "radius",        dat_radius)
+dat_enablelooping =     ini_read_real(  "datapack_export", "looping",       dat_enablelooping)
+dat_visualizer =        ini_read_real(  "datapack_export", "visualizer",    dat_visualizer)
+dat_vis_type =          ini_read_string("datapack_export", "vis_type",      dat_vis_type)
+dat_glow =              ini_read_real(  "datapack_export", "vis_glow",      dat_glow)
+dat_xval =              ini_read_real(  "datapack_export", "vis_x",         dat_xval)
+dat_yval =              ini_read_real(  "datapack_export", "vis_y",         dat_yval)
+dat_zval =              ini_read_real(  "datapack_export", "vis_z",         dat_zval)
+
 // Keyboard keys
 for (a = 0; a < 88; a += 1) piano_key[a] = ini_read_real("piano_keys", "piano_key_" + string(a), piano_key[a])
+
 // Warnings
 warning_octaves =    ini_read_real("warnings", "octaves",    warning_octaves)
 warning_instrument = ini_read_real("warnings", "instrument", warning_instrument)

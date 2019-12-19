@@ -455,6 +455,14 @@
             }
         },
         {
+            "Key": "1b976192-3e6d-4561-9a84-3db5eeaf9b76",
+            "Value": {
+                "id": "470009dd-adbf-4cc9-be5a-be7f9dbea1e8",
+                "resourcePath": "scripts\\dat_reset\\dat_reset.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "1cb81dea-069c-46f1-a2fd-8856244ee0e3",
             "Value": {
                 "id": "e5a1ff0b-6bff-402b-a9dc-bc9ae4158cef",
@@ -4392,6 +4400,7 @@
         "f8c9dcee-d730-4640-8ed7-9ae4f7149131",
         "6057982d-0ab7-428a-b0bc-9fb5b93000b2",
         "c599906c-0b1d-4064-baf0-0ee5fb298c4f",
+        "1b976192-3e6d-4561-9a84-3db5eeaf9b76",
         "35da7ebc-caa1-4720-8c30-8f63e25228bf",
         "34ec0d19-615a-4729-90e8-994c82ebca34",
         "f439138d-cb08-4208-85da-e22227eb6ec2",

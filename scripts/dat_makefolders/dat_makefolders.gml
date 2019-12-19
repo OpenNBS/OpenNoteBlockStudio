@@ -2,6 +2,7 @@
 //create folder structure prior to creating the datapack files
 //returns: functiondir
 
+var i
 var path = argument0
 var namespace = argument1
 

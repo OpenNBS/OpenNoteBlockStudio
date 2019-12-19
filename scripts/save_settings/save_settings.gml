@@ -91,6 +91,24 @@ ini_write_real_clean("branch_export", "layer3",      sch_exp_layer3)
 ini_write_real_clean("branch_export", "range_start", sch_exp_range_start)
 ini_write_real_clean("branch_export", "range_end",   sch_exp_range_end)
 
+// Datapack export settings
+ini_write_string(    "datapack_export", "name",          dat_name)
+ini_write_string(    "datapack_export", "namespace",     dat_namespace)
+ini_write_string(    "datapack_export", "path",          dat_path)
+ini_write_string(    "datapack_export", "source",        dat_source)
+ini_write_real_clean("datapack_export", "use_zip",       dat_usezip)
+ini_write_real_clean("datapack_export", "locked",        dat_includelocked)
+ini_write_real_clean("datapack_export", "out_of_range",  dat_includeoutofrange)
+ini_write_real_clean("datapack_export", "enable_radius", dat_enableradius)
+ini_write_real_clean("datapack_export", "radius",        dat_radius)
+ini_write_real_clean("datapack_export", "looping",       dat_enablelooping)
+ini_write_real_clean("datapack_export", "visualizer",    dat_visualizer)
+ini_write_string(    "datapack_export", "vis_type",      dat_vis_type)
+ini_write_real_clean("datapack_export", "vis_glow",      dat_glow)
+ini_write_real_clean("datapack_export", "vis_x",         dat_xval)
+ini_write_real_clean("datapack_export", "vis_y",         dat_yval)
+ini_write_real_clean("datapack_export", "vis_z",         dat_zval)
+
 // Keyboard keys
 for (a = 0; a < 88; a += 1) ini_write_real_clean("piano_keys", "piano_key_" + string(a), piano_key[a])
 

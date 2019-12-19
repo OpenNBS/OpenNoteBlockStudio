@@ -1,6 +1,7 @@
 //dat_getpath(opath)
 //sanitize path input by removing consecutive slashes, slashes at beginning/end of path, and special characters
 
+var i
 var opath = argument0
 var path = ""
 var char
