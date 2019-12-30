@@ -389,6 +389,8 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
                                         inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
                                         inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
+										condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
+										condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
                                         inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -437,6 +439,8 @@ if (window = 0 && text_focus = -1) {
             if (keyboard_check_pressed(ord("D"))) mode_action(2)
             if (keyboard_check_pressed(ord("R"))) mode_action(3)
             if (keyboard_check_pressed(ord("F"))) mode_action(4)
+            if ((editmode != m_key) && (keyboard_check_pressed(ord("T")))) mode_action(5)
+            if ((editmode != m_key) && (keyboard_check_pressed(ord("G")))) mode_action(6)
         }
         if (keyboard_check_pressed(vk_delete) && selected > 0) selection_delete(0)
         if (sb_sel = 0) {
@@ -946,7 +950,8 @@ if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} x
 if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
 if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
 if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
+if (draw_macroicon(13, xx, yy + 16, "Set Pitch", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+if (draw_macroicon(14, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
 }
 
 // Tabs
@@ -997,6 +1002,8 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
                                 inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
                                 inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
+										condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
+										condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+

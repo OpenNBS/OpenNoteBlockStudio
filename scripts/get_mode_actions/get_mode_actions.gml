@@ -10,6 +10,7 @@ switch editmode {
 			case 2: return "Decrease octave" break
 			case 3: return "Increase key" break
 			case 4: return "Decrease key" break
+			default: return ""
 		}
 		break
 	}
@@ -19,6 +20,9 @@ switch editmode {
 			case 2: return "Decrease velocity by 10" break
 			case 3: return "Increase velocity" break
 			case 4: return "Decrease velocity" break
+			case 5: return "Set velocity..." break
+			case 6: return "Reset velocity" break
+			default: return ""
 		}
 		break
 	}
@@ -28,6 +32,9 @@ switch editmode {
 			case 2: return "Pan left by 10" break
 			case 3: return "Pan right" break
 			case 4: return "Pan left" break
+			case 5: return "Set panning..." break
+			case 6: return "Reset panning" break
+			default: return ""
 		}
 		break
 	}
@@ -37,6 +44,9 @@ switch editmode {
 			case 2: return "Detune -10 cents" break
 			case 3: return "Detune +1 cent" break
 			case 4: return "Detune -1 cent" break
+			case 5: return "Set pitch..." break
+			case 6: return "Reset pitch" break
+			default: return ""
 		}
 		break
 	}

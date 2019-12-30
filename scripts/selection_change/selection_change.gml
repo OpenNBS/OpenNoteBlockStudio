@@ -1,8 +1,10 @@
-// selection_change(property, dif)
+// selection_change(property, amount)
 // Change a property in the selection, which can be the key, velocity, panning or pitch (1-4).
-var a, b, str, property, dif, val;
+// If 'add' is true, the value will be added to the property rather than changing it.
+var a, b, str, property, amount, val, add;
 property = argument0
-dif = argument1
+amount = argument1
+add = argument2
 str = selection_code
 if (selected = 0) return 0
 for (a = 0; a < selection_l; a += 1) {
@@ -11,26 +13,42 @@ for (a = 0; a < selection_l; a += 1) {
             if (selection_exists[a, b]) {
 				switch property {
 					case m_key: {
-		                var val = selection_key[a, b]
-		                val += dif
+						if (add) {
+							val = selection_key[a, b]
+							val += amount
+						} else {
+							val = amount
+						}
 						if (val >= 0 && val <= 87) selection_key[a, b] = val
 						break
 					}
 					case m_vel: {
-						val = selection_vel[a, b]
-						val += dif
+						if (add) {
+							val = selection_vel[a, b]
+							val += amount
+						} else {
+							val = amount
+						}
 						if (val >= 0 && val <= 200) selection_vel[a, b] = val
 						break
 					}
 					case m_pan: {
-						val = selection_pan[a, b]
-						val += dif
+						if (add) {
+							val = selection_pan[a, b]
+							val += amount
+						} else {
+							val = amount
+						}
 						if (val >= 0 && val <= 200) selection_pan[a, b] = val
 						break
 					}
 					case m_pit: {
-						val = selection_pit[a, b]
-						val += dif
+						if (add) {
+							val = selection_pit[a, b]
+							val += amount
+						} else {
+							val = amount
+						}
 						selection_pit[a, b] = val
 						break
 					}

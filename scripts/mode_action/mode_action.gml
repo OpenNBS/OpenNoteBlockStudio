@@ -19,6 +19,8 @@ switch editmode {
 			case 2: selection_changevel(-10) break
 			case 3: selection_changevel(1) break
 			case 4: selection_changevel(-1) break
+			case 5: window = w_setvelocity break
+			case 6: selection_setvel(100) break
 		}
 		break
 	}
@@ -28,6 +30,8 @@ switch editmode {
 			case 2: selection_changepan(-10) break
 			case 3: selection_changepan(1) break
 			case 4: selection_changepan(-1) break
+			case 5: window = w_setpanning break
+			case 6: selection_setpan(100) break
 		}
 		break
 	}
@@ -37,6 +41,8 @@ switch editmode {
 			case 2: selection_changepit(-10) break
 			case 3: selection_changepit(1) break
 			case 4: selection_changepit(-1) break
+			case 5: window = w_setpitch break
+			case 6: selection_setpit(0) break
 		}
 		break
 	}

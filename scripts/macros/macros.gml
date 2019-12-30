@@ -49,7 +49,7 @@
 #macro w_update 16
 #macro w_minecraft 15
 #macro w_schematic_export 14
-#macro w_branch_export 39
+#macro w_branch_export 40
 #macro w_datapack_export 30
 #macro w_mp3_export 31
 #macro w_checkupdates 13
@@ -74,6 +74,7 @@
 #macro w_saveoptions 36
 #macro w_setvelocity 37
 #macro w_setpanning 38
+#macro w_setpitch 39
 
 #macro br "\r\n"
 

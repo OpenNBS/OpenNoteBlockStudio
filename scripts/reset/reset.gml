@@ -129,6 +129,7 @@ stereo_width = 50
 times_clipedited = 0
 setvel = 100
 setpan = 0
+setpit = 0
 
 // Saving
 save_version = nbs_version
