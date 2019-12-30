@@ -797,13 +797,12 @@ for (b = 0; b < totalrows; b += 1) {
 	    rowamount[startb + b] = 0
 	    endb2 = startb + b + 1
 	}
+	x1 = 4
+	y1 = 54 + 32 + b * 32 - 1
 	if (show_layers) {
-	    x1 = 4
-	    y1 = 54 + 32 + b * 32 - 1
 		// Name
+		m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 	    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
-
-	    m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 	    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 		draw_set_font(fnt_small)
 		layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
@@ -926,28 +925,28 @@ for (b = 0; b < totalrows; b += 1) {
 			window2 = 0
 	    }
 	}
-	// Macro Bar
-	if selected != 0 {
-	draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
-	draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
-	draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
-	xx = x1 + 6
-	var yy = y1+37
-	if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
-	if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
-	if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
-	if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
-	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
-	if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
-	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
-	if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-	if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
-	if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-	if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-	if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-	if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
-	}
+}
+// Macro Bar
+if selected != 0 {
+draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
+draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
+draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+xx = x1 + 6
+var yy = y1+37
+if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
+if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
+if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
+if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
+if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
+if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
+if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+if (draw_macroicon(13, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
 }
 
 // Tabs
