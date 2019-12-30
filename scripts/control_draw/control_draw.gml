@@ -1231,9 +1231,17 @@ if (show_layers) {
 	popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
 
 	// Tempo
-	draw_sprite(spr_tempobox, 0, 108, 57)
 	draw_set_halign(fa_center)
-	draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
+	if (use_bpm) {
+		draw_sprite(spr_tempobox, 1, 101, 57)
+		bpm = tempo * 15
+		draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
+		popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick and drag to change. Right click to reset.")
+	} else {
+		draw_sprite(spr_tempobox, 0, 108, 57)
+		draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
+		popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick and drag to change. Right click to reset.")
+	}
 	draw_set_halign(fa_left)
 	a = mouse_rectangle(108, 57, 64, 22)
 	popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
