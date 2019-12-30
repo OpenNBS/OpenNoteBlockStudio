@@ -118,7 +118,7 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No Fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
-    draw_areaheader(x1 + 22, y1 + 260, 456, 90, "Piano")
+    draw_areaheader(x1 + 22, y1 + 260, 456, 95, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show Piano", "Whether the piano should be visible.")) {
 		show_piano=!show_piano
 		rhval=130
@@ -157,10 +157,13 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 70, y1 + 130, !marker_pagebypage, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
     if (draw_checkbox(x1 + 40, y1 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
-    draw_areaheader(x1 + 22, y1 + 224, 456, 65, "Playing")
+    draw_areaheader(x1 + 22, y1 + 224, 218, 80, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 	if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable Stereo", "Disables stereo playback.")) realstereo = !realstereo
 	if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop To Bar End", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
+	draw_areaheader(x1 + 233 + 22, y1 + 224, 223, 60, "Tempo unit")
+	if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
+	if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 }
 if (draw_button2(x1 + 420, y1 + 368, 72, "OK")) window = 0
 window_set_cursor(curs)
