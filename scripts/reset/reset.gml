@@ -35,6 +35,8 @@ tonextsave = 0
 playing = 0
 tempo = 10
 tempodrag = 10
+metronome = 0
+metronome_played = -1
 marker_pos = 0
 marker_prevpos = 0
 fade = 0
@@ -75,6 +77,7 @@ key_edit = -1
 
 // Interface
 window = 0
+editmode = 0
 selected_tab = 0
 global.popup = 0
 delay = 0
