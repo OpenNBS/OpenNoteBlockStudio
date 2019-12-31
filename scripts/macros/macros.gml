@@ -1,5 +1,5 @@
 #macro gm_runtime_version "2.2.3.344"
-#macro version_date "2019.10.XX"
+#macro version_date "2019.12.31"
 #macro version "3.7.0"
 #macro nbs_version 4
 #macro pat_version 1
