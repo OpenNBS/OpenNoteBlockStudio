@@ -6,7 +6,7 @@ x1 = floor(window_width / 2 - 80)
 y1 = floor(window_height / 2 - 80)
 draw_window(x1, y1, x1 + 140, y1 + 130)
 draw_set_font(fnt_mainbold)
-draw_text(x1 + 8, y1 + 8, "Set Note Velocity")
+draw_text(x1 + 8, y1 + 8, "Set note velocity")
 if (selected = 0) return 0
 draw_set_font(fnt_main)
 if (theme = 0) {

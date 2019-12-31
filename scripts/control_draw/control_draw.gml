@@ -395,20 +395,21 @@ if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
                                         inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
                                         inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
-										"Ctrl+Shift+A$Tremolo|"+
-										"Ctrl+Shift+S$Stereo|"+
-										"Ctrl+Shift+D$Arpeggio|"+
-										"Ctrl+Shift+F$Portamento|"+
+										"Ctrl+Shift+A$Tremolo...|"+
+										"Ctrl+Shift+S$Stereo...|"+
+										"Ctrl+Shift+D$Arpeggio...|"+
+										"Ctrl+Shift+F$Portamento...|"+
 										"Ctrl+Shift+G$Vibrato|"+
-										"Ctrl+Shift+H$Stagger|"+
+										"Ctrl+Shift+H$Stagger...|"+
 										"Ctrl+Shift+J$Chorus|"+
-										"Ctrl+Shift+K$Velocity LFO|"+
-										"Ctrl+Shift+Q$Fade In|"+
-										"Ctrl+Shift+W$Fade Out|"+
-										"Ctrl+Shift+E$Replace Key|"+
-										"Ctrl+Shift+R$Set Velocity|"+
-										"Ctrl+Shift+T$Set Panning|"+
-										"Ctrl+Shift+Y$Reset Vol/Pan/Pit|"+
+										"Ctrl+Shift+K$Volume LFO|"+
+										"Ctrl+Shift+Q$Fade in|"+
+										"Ctrl+Shift+W$Fade out|"+
+										"Ctrl+Shift+E$Replace key|"+
+										"Ctrl+Shift+R$Set velocity...|"+
+										"Ctrl+Shift+T$Set panning...|"+
+										"Ctrl+Shift+Y$Set pitch...|"+
+										"Ctrl+Shift+U$Reset all properties|"+
 										"/|-|"+
                                         inactive(selected = 0) + "Transpose notes outside octave range")
             menu.menuc = selbx
@@ -553,6 +554,10 @@ if (window = 0 && text_focus = -1) {
 				window = w_setpanning
 				}
 			if (keyboard_check_pressed(ord("Y"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_setpitch
+				}
+			if (keyboard_check_pressed(ord("U"))&& keyboard_check(vk_shift)) {
 				playing = 0 
 				macro_reset()
 				}
@@ -937,21 +942,21 @@ draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
 draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
 xx = x1 + 6
 var yy = y1+37
-if (draw_macroicon(0, xx, yy, "Tremolo", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
-if (draw_macroicon(1, xx, yy, "Stereo", 0, 0)) {playing = 0 window = w_stereo} xx += 25
-if (draw_macroicon(2, xx, yy, "Arpeggio", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
-if (draw_macroicon(3, xx, yy, "Portamento", 0, 0)) {playing = 0 window = w_portamento} xx += 25
+if (draw_macroicon(0, xx, yy, "Tremolo...", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
+if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+if (draw_macroicon(3, xx, yy, "Portamento...", 0, 0)) {playing = 0 window = w_portamento} xx += 25
 if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
-if (draw_macroicon(5, xx, yy, "Stagger", 0, 0)) {playing = 0 window = w_stagger} xx += 25
+if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagger} xx += 25
 if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
 if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
-if (draw_macroicon(8, xx, yy, "Fade In", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-if (draw_macroicon(9, xx, yy, "Fade Out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
-if (draw_macroicon(10, xx, yy + 16, "Replace Key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-if (draw_macroicon(11, xx, yy + 16, "Set Velocity", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-if (draw_macroicon(12, xx, yy + 16, "Set Panning", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-if (draw_macroicon(13, xx, yy + 16, "Set Pitch", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-if (draw_macroicon(14, xx, yy + 16, "Reset", 0, 0)) {playing = 0 macro_reset()} xx += 25
+if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
+if (draw_macroicon(10, xx, yy + 16, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+if (draw_macroicon(11, xx, yy + 16, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+if (draw_macroicon(12, xx, yy + 16, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+if (draw_macroicon(13, xx, yy + 16, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+if (draw_macroicon(14, xx, yy + 16, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
 }
 
 // Tabs
@@ -969,11 +974,11 @@ if (draw_tab("File")) {
                              icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
                              icon(icons.SAVE)+"Ctrl+S$Save song|"+
                              icon(icons.SAVE_AS)+"Save song as a new file...|-|"+
-                             "Import Pattern...|"+"Export Pattern...|"+"Import from MIDI...|Import from Schematic...|-|"+
+                             "Import pattern...|"+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
                              inactive(totalblocks = 0) + "Export as MP3...|"+
-                             inactive(totalblocks = 0) + "Export as Schematic...|"+
-                             inactive(totalblocks = 0) + "Export as Branch Schematic...|"+
-							 inactive(totalblocks = 0) + "Export as Data Pack...|-|" + 
+                             inactive(totalblocks = 0) + "Export as schematic...|"+
+                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
+							 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
                              "Alt + F4$Exit")
 							
 }
@@ -1007,7 +1012,7 @@ if (draw_tab("Edit")) {
                                 inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
                                 inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
                                 inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo|"+ "Stereo|"+ "Arpeggio|"+ "Portamento|"+ "Vibrato|"+ "Stagger|"+ "Chorus|"+ "Velocity LFO|"+ "Fade In|"+ "Fade Out|"+ "Replace Key|"+ "Reset Vol/Pan/Pit|"+ "/|-|"+
+                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
                                 inactive(selected = 0) + "Transpose notes outside octave range")
 }
 if (draw_tab("Settings")) {
@@ -1026,7 +1031,7 @@ if (draw_tab("Settings")) {
 		}  
     }
     show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + "-|" + customstr + condstr(customstr != "", "-|") +
-                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Save Options|Preferences...")
+                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Save options...|Preferences...")
 }
 if (draw_tab("Help")) {
     show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|Github")
@@ -1244,8 +1249,6 @@ if (show_layers) {
 	}
 	draw_set_halign(fa_left)
 	a = mouse_rectangle(108, 57, 64, 22)
-	popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second.)\nClick and drag to change. Right click to reset.")
-
 	if (a && window = 0 && window2 = 0) {
 	    curs = cr_size_ns
 	    if (mouse_check_button(mb_left)) {

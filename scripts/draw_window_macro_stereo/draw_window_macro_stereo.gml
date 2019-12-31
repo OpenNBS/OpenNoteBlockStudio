@@ -6,7 +6,7 @@ x1 = floor(window_width / 2 - 80)
 y1 = floor(window_height / 2 - 80)
 draw_window(x1, y1, x1 + 140, y1 + 130)
 draw_set_font(fnt_mainbold)
-draw_text(x1 + 8, y1 + 8, "Stereo Macro")
+draw_text(x1 + 8, y1 + 8, "Stereo")
 if (selected = 0) return 0
 draw_set_font(fnt_main)
 if (theme = 0) {
@@ -16,7 +16,7 @@ if (theme = 0) {
     draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 }
 if (draw_checkbox(x1 + 10, y1 + 30, stereo_reverse, "Reversed", "Delay is done in the inverse direction.")) stereo_reverse=!stereo_reverse
-draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Stereo Width")
+draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Stereo width")
 stereo_width = median(0, draw_dragvalue(11, x1 + 55, y1 + 65, stereo_width, 0.5), 100)
 
 draw_theme_color()

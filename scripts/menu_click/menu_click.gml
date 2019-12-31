@@ -88,8 +88,9 @@ switch (m) {
         if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()
         if (sel = 32 + ds_list_size(instrument_list)) window = w_setvelocity
         if (sel = 33 + ds_list_size(instrument_list)) window = w_setpanning
-        if (sel = 34 + ds_list_size(instrument_list)) macro_reset()
-        if (sel = 35 + ds_list_size(instrument_list)) {
+        if (sel = 34 + ds_list_size(instrument_list)) window = w_setpitch
+        if (sel = 35 + ds_list_size(instrument_list)) macro_reset()
+        if (sel = 36 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break
@@ -134,8 +135,9 @@ switch (m) {
         if (sel = 31 + ds_list_size(instrument_list)) macro_replacekey()
         if (sel = 32 + ds_list_size(instrument_list)) window = w_setvelocity
         if (sel = 33 + ds_list_size(instrument_list)) window = w_setpanning
-        if (sel = 34 + ds_list_size(instrument_list)) macro_reset()
-        if (sel = 35 + ds_list_size(instrument_list)) {
+        if (sel = 34 + ds_list_size(instrument_list)) window = w_setpitch
+        if (sel = 35 + ds_list_size(instrument_list)) macro_reset()
+        if (sel = 36 + ds_list_size(instrument_list)) {
             if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
         }
         break

@@ -67,12 +67,12 @@ timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 358, timesignature, 1
 draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 358, " / 4")
 popup_set_window(x1 + 32, y1 + 356, 110, 18, "The time signature of the song.")
 
-draw_text(x1 + 232, y1 + 348, "Loop Start Tick:")
+draw_text(x1 + 232, y1 + 348, "Loop start tick:")
 loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 348, loopstart, 0.5), obj_controller.enda)
 
-draw_text(x1 + 232, y1 + 368, "Times To Loop:")
+draw_text(x1 + 232, y1 + 368, "Times to loop:")
 loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 368, loopmax, 0.5), 10)
-if loopmax = 0  draw_text(x1 + 340, y1 + 368, "(Infinite)")
+if loopmax = 0  draw_text(x1 + 340, y1 + 368, "(infinite)")
 timestoloop = loopmax
 if (draw_button2(x1 + 320, y1 + 398, 72, "OK")) {window = 0}
 window_set_cursor(curs)

@@ -1,5 +1,5 @@
 // draw_window_preferences()
-var x1, y1, a, b, c, stabx, stabw, nsel, str;
+var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
 curs = cr_default
 nsel = -1
 x1 = floor(window_width / 2 - 250)
@@ -60,9 +60,32 @@ if (selected_tab < 0) selected_tab = 3
 if (selected_tab > 3) selected_tab = 0
 draw_theme_color()
 if (selected_tab = 0) {
-    draw_areaheader(x1 + 22, y1 + 74, 456, 65, "Startup")
-    if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window upon startup", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
-    if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates upon startup", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+    draw_areaheader(x1 + 22, y1 + 74, 218, 65, "Startup")
+    if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
+    if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+	
+	// Auto-saving
+	draw_areaheader(x1 + 258, y1 + 74, 220, 65, "Auto-saving")
+	as = autosave
+	if (draw_checkbox(x1 + 276, y1 + 90, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.")) autosave=!autosave
+	if (as != autosave) {
+	    changed = 1
+	    if (autosave = 0) tonextsave = 0
+	    if (autosave = 1) tonextsave = autosavemins
+	}
+	if (autosave = 0) {
+	    draw_set_color(c_gray)
+	    draw_text(x1 + 306, y1 + 110, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+		draw_text(x1 + 355, y1 + 110, autosavemins)
+	    draw_theme_color()
+	} else {
+		draw_text(x1 + 306, y1 + 110, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+		as = autosavemins
+		autosavemins = median(1, draw_dragvalue(2, x1 + 355, y1 + 110, autosavemins, 1), 60)
+		if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
+	}
+	popup_set_window(x1 + 306, y1 + 110, 180, 16, "The amount of minutes between each auto-save.")
+	
     draw_areaheader(x1 + 22, y1 + 164, 218, 80, "Theme")
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
@@ -116,10 +139,10 @@ if (selected_tab = 0) {
 		
     if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
-	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No Fading", "Disables transparency animations on note block sprites")) fade = !fade
+	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
     draw_areaheader(x1 + 22, y1 + 260, 456, 95, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show Piano", "Whether the piano should be visible.")) {
+    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show piano", "Whether the piano should be visible.")) {
 		show_piano=!show_piano
 		rhval=130
 		if show_piano = 1 {
@@ -159,8 +182,8 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
     draw_areaheader(x1 + 22, y1 + 224, 218, 80, "Playing")
     if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
-	if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable Stereo", "Disables stereo playback.")) realstereo = !realstereo
-	if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop To Bar End", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
+	if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
+	if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 	draw_areaheader(x1 + 233 + 22, y1 + 224, 223, 60, "Tempo unit")
 	if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 	if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1

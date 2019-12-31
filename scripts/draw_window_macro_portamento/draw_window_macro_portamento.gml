@@ -16,7 +16,7 @@ if (theme = 0) {
     draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 }
 if (draw_checkbox(x1 + 10, y1 + 30, porta_reverse, "Reversed", "Portamento is done in the inverse direction.")) porta_reverse=!porta_reverse
-draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Cent Shift")
+draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Cent shift")
 port_cent = median(-1200, draw_dragvalue(11, x1 + 55, y1 + 65, port_cent, 0.1), 1200)
 
 draw_theme_color()

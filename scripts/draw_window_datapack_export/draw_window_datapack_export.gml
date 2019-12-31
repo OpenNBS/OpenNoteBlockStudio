@@ -149,7 +149,7 @@ if (selected_tab_dat = 0) {
 	if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
 	//Type
 	draw_sprite(spr_datapack_exp, 1, x1 + 125, y1 + 55)
-	draw_text(x1 + 33, y1 + 75, "Visualizer Type")
+	draw_text(x1 + 33, y1 + 75, "Visualizer type")
 	if (draw_radiobox(x1 + 33, y1 + 95, dat_vis_type = "Arc", "Arc", "Use Arc visualizer.")) dat_vis_type = "Arc"
 	if (draw_radiobox(x1 + 33, y1 + 115, dat_vis_type = "Fall", "Fall", "Use Fall visualizer.")) dat_vis_type = "Fall"
 	if (draw_radiobox(x1 + 33, y1 + 135, dat_vis_type = "Rise", "Rise", "Use Rise visualizer.")) dat_vis_type = "Rise"
@@ -158,15 +158,15 @@ if (selected_tab_dat = 0) {
 	if (draw_radiobox(x1 + 33, y1 + 195, dat_vis_type = "Fountain", "Fountain", "Use Fountain visualizer.")) dat_vis_type = "Fountain"
 	if (draw_radiobox(x1 + 33, y1 + 215, dat_vis_type = "Rittai Onkyou", "Rittai Onkyou", "Use Rittai Onkyou visualizer.")) dat_vis_type = "Rittai Onkyou"
 	if (draw_checkbox(x1 + 33, y1 + 235, dat_glow, "Add Glow", "Whether to add a dat_glow to each instrument.")) dat_glow=!dat_glow
-	draw_text(x1 + 33, y1 + 255, "Spawn Height:")
+	draw_text(x1 + 33, y1 + 255, "Spawn height:")
 	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
-	draw_text(x1 + 33, y1 + 295, "Position In Map:")
-	draw_text(x1 + 33, y1 + 318, "X Value:")
+	draw_text(x1 + 33, y1 + 295, "Position in map:")
+	draw_text(x1 + 33, y1 + 318, "X value:")
 	dat_xval = draw_inputbox(23,x1 + 83, y1 + 315,40,dat_xval,"X value")
-	draw_text(x1 + 33, y1 + 338, "Z Value:")
+	draw_text(x1 + 33, y1 + 338, "Z value:")
 	dat_zval = draw_inputbox(24,x1 + 83, y1 + 335,40,dat_zval,"Z value")
 	//Get note block textures button
-	if (draw_button2(x1 + 13, y1 + 360, 152, "Get Note Block Textures")) {
+	if (draw_button2(x1 + 13, y1 + 360, 152, "Get note block textures")) {
 		datapack_getinstextures()
 	}
 }
