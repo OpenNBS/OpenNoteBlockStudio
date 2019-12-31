@@ -63,9 +63,9 @@ popup_set_window(x1 + 70, y1 + 310, 180, 16, "The amount of minutes between each
 
 draw_theme_color()
 draw_text(x1 + 32, y1 + 348, "Time signature:")
-timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 358, timesignature, 1), 8)
-draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 358, " / 4")
-popup_set_window(x1 + 32, y1 + 356, 110, 18, "The time signature of the song.")
+timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 348, timesignature, 1), 8)
+draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 348, " / 4")
+popup_set_window(x1 + 32, y1 + 346, 110, 18, "The time signature of the song.")
 
 draw_text(x1 + 232, y1 + 348, "Loop start tick:")
 loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 348, loopstart, 0.5), obj_controller.enda)
