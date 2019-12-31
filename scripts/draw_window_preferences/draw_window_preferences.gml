@@ -166,7 +166,8 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 40, y1 + 90, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0
     if (draw_radiobox(x1 + 40, y1 + 110, mousewheel = 1, "Use mouse wheel to change instrument", "Use the mouse wheel to toggle between\nthe available instruments.")) mousewheel = 1
     if (draw_radiobox(x1 + 40, y1 + 130, mousewheel = 2, "Use mouse wheel to change key", "Use the mouse wheel to toggle\nbetween the keys on the piano.")) mousewheel = 2
-    if (draw_checkbox(x1 + 40, y1 + 158, changepitch, "Change pitch when scrolling over notes", "Whether scrolling when hovering over a\nnote should change its pitch.")) changepitch=!changepitch
+    if (draw_checkbox(x1 + 40, y1 + 158, changepitch, "Change note properties when scrolling over notes", "Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode.")) changepitch=!changepitch
+	//draw_text(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
     draw_areaheader(x1 + 22, y1 + 220, 456, 105, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 236, select_lastpressed, "Set selected key to pressed one", "If the selected key should be set\nto the one pressed using the keyboard.")) select_lastpressed=!select_lastpressed
     draw_text(x1 + 40, y1 + 270, "Right - click on keys to change their shortcuts.")
