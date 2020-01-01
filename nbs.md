@@ -229,9 +229,11 @@
 						<td>Note block velocity</td>
 						<td>The velocity/volume of the note block, from 0% to 100%.</td>
 					</tr>
+					<tr>
 						<td>Byte</td>
 						<td>Note block panning</td>
 						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
+					</tr>
 					<tr>
 						<td>Short (Signed)</td>
 						<td>Note block pitch</td>
