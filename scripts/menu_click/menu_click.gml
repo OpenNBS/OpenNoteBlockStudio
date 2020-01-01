@@ -55,6 +55,9 @@ switch (m) {
         break
     }
     case "edit": {
+		if ((editmode = m_key) && (sel >= 15)) {
+			sel += 2
+		}
         if (sel = 0) action_undo()
         if (sel = 1) action_redo()
         if (sel = 2) action_copy()
@@ -96,6 +99,9 @@ switch (m) {
         break
     }
     case "editext": {
+		if ((editmode = m_key) && (sel >= 15)) {
+			sel += 2
+		}
         if (sel = 0) action_copy()
         if (sel = 1) action_cut()
         if (sel = 2) action_paste(obj_menu.pastex, obj_menu.pastey)
@@ -119,7 +125,7 @@ switch (m) {
         if (sel = 14) mode_action(4)
         if (sel = 15 && editmode != m_key) mode_action(5)
         if (sel = 16 && editmode != m_key) mode_action(6)
-        if (sel > 17 && sel < 16 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 18])
+        if (sel > 17 && sel < 18 + ds_list_size(instrument_list)) selection_changeins(instrument_list[| sel - 18])
         if (sel = 18 + ds_list_size(instrument_list)) selection_expand()
         if (sel = 19 + ds_list_size(instrument_list)) selection_compress()
         if (sel = 21 + ds_list_size(instrument_list)) window = w_tremolo
