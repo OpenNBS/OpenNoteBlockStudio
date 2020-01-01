@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
- {% include head.html %}
+<head>
+  <meta charset="UTF-8">
+  {% seo %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | absolute_url}}" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <script src="{{ '/assets/js/jquery.min.js' | absolute_url}}"></script>
+</head>
 <body class="landing">
   <!-- Header -->
   <header id="header" class="alt">
@@ -9,10 +17,9 @@
       <ul>
         <li><a href="{{ site.url | absolute_url}}">Home</a></li>
         <li><a href="{{'/features' | absolute_url}}">Features</a></li>
-        <li><a href="{{'/songs' | absolute_url}}">Songs</a></li>
-        <li><a href="{{'/nbs' | absolute_url}}">Format</a></li>
+        <li><a href="{{'/nbs' | absolute_url}}">NBS</a></li>
+         <li><a href="https://discord.gg/w35BqQp">Discord</a></li>
         <li><a href="{{ site.github.repository_url }}">GitHub</a></li>
-        <li><a href="{{ '/signin' | absolute_url }}" id="signInLink">Sign In</a></li>
       </ul>
     </nav>
   </header>

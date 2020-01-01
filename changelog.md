@@ -1,7 +1,3 @@
----
-permalink: /changelog
----
-
 <section id="banner">
 	<h2>Changelog</h2>
 	<p></p>
