@@ -3,3 +3,4 @@
 
 confirm(1)
 save_settings()
+backup_clear()

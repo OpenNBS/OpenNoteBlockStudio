@@ -13,6 +13,8 @@ for (a = 0; a < 11; a += 1) {
 vers =               ini_read_string("preferences", "last_version",       version)
 check_update =       ini_read_real(  "preferences", "check_update",       check_update)
 show_welcome =       ini_read_real(  "preferences", "show_welcome",       show_welcome)
+autosave =           ini_read_real(  "preferences", "autosave",           autosave)
+autosavemins =       ini_read_real(  "preferences", "autosavemins",       autosavemins)
 theme =              ini_read_real(  "preferences", "theme",              theme)
 refreshrate =        ini_read_real(  "preferences", "refresh_rate",       refreshrate)
 songfolder =         ini_read_string("preferences", "song_folder",        songfolder)

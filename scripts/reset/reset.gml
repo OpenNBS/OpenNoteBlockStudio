@@ -27,9 +27,6 @@ for (a = 0; a <= enda; a += 1) {
 filename = ""
 changed = 0
 midifile = ""
-autosave = 0
-autosavemins = 10
-tonextsave = 0
 
 // Playback
 playing = 0
@@ -136,6 +133,8 @@ setpit = 0
 
 // Saving
 save_version = nbs_version
+tonextsave = 0
+tonextbackup = 0
 
 //Loop
 loop = 0

@@ -1,12 +1,21 @@
-// load_song(fn)
-var fn, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff
-fn = argument0
+// load_song(fn [, backup])
+var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff
+fn = argument[0]
+backup = false
+if (argument_count > 1) {
+	backup = argument[1]
+}
 if (confirm() < 0) return 0
-if (fn = "") {
+if (!backup && fn = "") {
     if (!directory_exists(songfolder)) songfolder = songs_directory
     fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, "Load song"))
 }
 if (fn = "" || !file_exists_lib(fn)) return 0
+
+// When not opening from auto-recovery, delete the backup file
+if (!backup) {
+	backup_clear()
+}
 reset()
 file_ext = filename_ext(fn)
 if (file_ext = ".mid" || file_ext = ".midi") {
@@ -58,13 +67,10 @@ if (file_ext = ".nbs") {
     song_desc = buffer_read_string_int()
     // TEMPO
     tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 30)
-    // AUTOSAVE
-    a = buffer_read_byte()
-    autosave = median(0, a, 1)
-    // AUTOSAVE MINUTES
-    a = buffer_read_byte()
-    autosavemins = median(0, a, 60)
-    tonextsave = autosavemins
+    // AUTOSAVE (deprecated)
+    buffer_read_byte()
+    // AUTOSAVE MINUTES (deprecated)
+    buffer_read_byte()
     // TIME SIGNATURE
     a = buffer_read_byte()
     timesignature = median(2, a, 8)
@@ -178,9 +184,15 @@ if (file_ext = ".nbs") {
         if (question("This song uses custom instruments. However, some sounds could not be loaded:\n\n" + str+"\nMake sure that you have put the sounds in the \"Sounds\" folder. Open Instrument settings?", "Error")) window = w_instruments
     buffer_delete(buffer)
 }
-add_to_recent(fn)
-if (window != w_instruments) window = w_songinfo
-filename = fn
-changed = 0
+if (!backup) {
+	add_to_recent(fn)
+	if (window != w_instruments) window = w_songinfo
+	filename = fn
+	changed = 0
+}
+else {
+	changed = 1
+}
+backup_clear()
 blocks_set_instruments()
 io_clear()

@@ -38,14 +38,16 @@ icons_init()
 refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
 rhval = 270
+autosave = 0
+autosavemins = 10
+tonextsave = 0
+backupmins = 1
+tonextbackup = 0
 
 // File
 filename = ""
 changed = 0
 midifile = ""
-autosave = 0
-autosavemins = 10
-tonextsave = 0
 for (a = 0; a < 11; a += 1) {
     mididevice_instrument[a] = -1
     recent_song[a] = ""
@@ -341,6 +343,13 @@ if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
     update = 3
 }
 log("Startup OK")
+
+// Auto-recovery
+if (file_exists_lib(backup_file)) {
+	if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
+		load_song(backup_file, true)
+	}
+}
 
 // Open song
 if (parameter_count() > 0) {

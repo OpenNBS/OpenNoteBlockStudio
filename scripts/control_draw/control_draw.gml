@@ -49,9 +49,19 @@ if (key_edit > -1) {
     }
 }
 
+// Autosave
 if (autosave && filename_ext(filename) = ".nbs") {
     tonextsave -= 1 / room_speed / 60
     if (tonextsave <= 0) save_song(filename)
+}
+
+// Auto-recovery
+if (totalblocks > 0) {
+	tonextbackup -= 1 / room_speed / 60
+	if (tonextbackup <= 0) {
+		save_song(backup_file, true)
+		tonextbackup = backupmins
+	}
 }
 
 if (theme = 0) window_background = 15790320

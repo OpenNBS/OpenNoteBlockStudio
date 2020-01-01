@@ -12,6 +12,8 @@ for (a = 0; a < 11; a += 1) {
 ini_write_string(    "preferences", "last_version",       version)
 ini_write_real_clean("preferences", "check_update",       check_update)
 ini_write_real_clean("preferences", "show_welcome",       show_welcome)
+ini_write_real_clean("preferences", "autosave",           autosave)
+ini_write_real_clean("preferences", "autosavemins",       autosavemins)
 ini_write_real_clean("preferences", "theme",              theme)
 ini_write_real_clean("preferences", "refresh_rate",       refreshrate)
 ini_write_string(    "preferences", "song_folder",        songfolder)

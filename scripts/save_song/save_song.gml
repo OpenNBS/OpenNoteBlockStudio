@@ -1,7 +1,11 @@
-// save_song(fn)
-var fn, f, a, ca, cb, fsave;
-fn = argument0
-if (fn = "" || filename_ext(filename) != ".nbs") {
+// save_song(fn[, backup])
+var fn, backup, nbsver, f, a, ca, cb, fsave;
+fn = argument[0]
+backup = false
+if (argument_count > 1) {
+	backup = argument[1]
+}
+if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
     playing = 0
     fsave = filename_name(filename)
     if (!directory_exists(songfolder)) songfolder = songs_directory
@@ -9,17 +13,24 @@ if (fn = "" || filename_ext(filename) != ".nbs") {
     if (fn = "") return 0
 }
 if (selected > 0) selection_place(0)
+
+if (backup) {
+	nbsver = nbs_version
+} else {
+	nbsver = save_version
+}
+
 buffer = buffer_create(8, buffer_grow, 1)
 
-if save_version >= 1 {
+if nbsver >= 1 {
 //First 2 bytes 0 to indicate new nbs format
 buffer_write_short(0)
 
-buffer_write_byte(save_version)
+buffer_write_byte(nbsver)
 buffer_write_byte(first_custom_index)
 }
 
-if save_version = 0 || save_version >= 3 {
+if nbsver = 0 || nbsver >= 3 {
 //song length (ticks)
 buffer_write_short(enda)
 }
@@ -33,6 +44,8 @@ buffer_write_string_int(song_orauthor)
 buffer_write_string_int(song_desc)
 
 buffer_write_short(tempo * 100)
+// Per-song auto-save is deprecated. It is only written to
+// the file to preserve auto-save behavior on older versions
 buffer_write_byte(autosave)
 buffer_write_byte(autosavemins)
 buffer_write_byte(timesignature)
@@ -45,7 +58,7 @@ buffer_write_int(work_remove)
 
 buffer_write_string_int(song_midi)
 
-if save_version >= 4 {
+if nbsver >= 4 {
 buffer_write_byte(loop)
 buffer_write_byte(loopmax)
 buffer_write_short(loopstart)
@@ -65,7 +78,7 @@ for (a = 0; a <= enda; a += 1) {
                 cb = 0
                 buffer_write_byte(ds_list_find_index(instrument_list, song_ins[a, b]))
                 buffer_write_byte(song_key[a, b])
-				if save_version >= 4 {
+				if nbsver >= 4 {
 				buffer_write_byte(song_vel[a, b])
 				buffer_write_byte(song_pan[a, b])
 				buffer_write_short(song_pit[a, b])
@@ -79,11 +92,11 @@ buffer_write_short(0)
 // Layer names
 for (b = 0; b < endb2; b += 1) {
     buffer_write_string_int(layername[b])
-	if save_version >= 4 {
+	if nbsver >= 4 {
 	buffer_write_byte(layerlock[b])
 	}
     buffer_write_byte(layervol[b])
-	if save_version >= 2 {
+	if nbsver >= 2 {
 	buffer_write_byte(layerstereo[b])
 	}
 }
@@ -101,9 +114,14 @@ for (b = 0; b < ds_list_size(instrument_list); b++) {
 }
 buffer_export(buffer, fn)
 buffer_delete(buffer)
-filename = fn
-changed = false
-if (autosave) tonextsave = autosavemins
-add_to_recent(fn)
+
+if (!backup) {
+	filename = fn
+	changed = false
+	if (autosave) tonextsave = autosavemins
+	add_to_recent(fn)
+} else {
+	tonextbackup = backupmins
+}
 
 return true
