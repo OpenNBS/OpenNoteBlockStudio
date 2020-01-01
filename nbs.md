@@ -223,23 +223,23 @@
 						<td>Byte</td>
 						<td>Note block key</td>
 						<td>The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2-octave limit.</td></tr>
-					<tr>
-						<span class="newversion"> 
-						<td>Byte</td>
-						<td>Note block velocity</td>
-						<td>The velocity/volume of the note block, from 0% to 100%.</td>
-					</tr>
-					<tr>
-						<td>Byte</td>
-						<td>Note block panning</td>
-						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
-					</tr>
-					<tr>
-						<td>Short (Signed)</td>
-						<td>Note block pitch</td>
-						<td>The fine pitch of the note block, from -32,768 to 32,767 cents (but the max in Note Block Studio is limited to -1200 and +1200). 0 is no fine-tuning. ±100 cents is a single semitone difference. After reading this, we go back to step 2.</td>
-						</span>
-					</tr>
+					<span class="newversion">
+						<tr> 
+							<td>Byte</td>
+							<td>Note block velocity</td>
+							<td>The velocity/volume of the note block, from 0% to 100%.</td>
+						</tr>
+						<tr>
+							<td>Byte</td>
+							<td>Note block panning</td>
+							<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
+						</tr>
+						<tr>
+							<td>Short (Signed)</td>
+							<td>Note block pitch</td>
+							<td>The fine pitch of the note block, from -32,768 to 32,767 cents (but the max in Note Block Studio is limited to -1200 and +1200). 0 is no fine-tuning. ±100 cents is a single semitone difference. After reading this, we go back to step 2.</td>
+						</tr>
+					</span>
 				</tbody>
 			</table>
 		</div>
