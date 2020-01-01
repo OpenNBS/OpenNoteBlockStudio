@@ -640,7 +640,7 @@ if (playing = 1 || forward<>0) {
 		var pos = floor(marker_pos -0.1)
 		} else pos = floor(marker_pos -0.4)
 		if (tempo = 30) pos -= 1
-		show_debug_message(marker_pos)
+		// show_debug_message(marker_pos)
 		if ((pos mod 4 == 0) && (metronome_played < pos)) {
 			ins = instrument_list[| 4]
 			if (pos mod (4 * timesignature) == 0) {
