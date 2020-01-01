@@ -375,6 +375,14 @@
             }
         },
         {
+            "Key": "142013da-5443-47f3-ad73-a8e011f73159",
+            "Value": {
+                "id": "8228c514-0da4-4e5e-8e1f-49c5a530a919",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\entity.firework.blast_far.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "1501c0c9-c863-4723-9ccc-f004078dc78d",
             "Value": {
                 "id": "15ac3451-8a41-44aa-95c8-eaea11ea2917",
@@ -839,6 +847,14 @@
             }
         },
         {
+            "Key": "322e57e3-b1d8-4b15-972f-1d2cedb5ea57",
+            "Value": {
+                "id": "cef163f7-8bfb-461c-b903-9f7e1fc913d2",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\block.portal.trigger.ogg.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "32f26f43-33fd-426c-8f78-8dfae717e5d3",
             "Value": {
                 "id": "d41b69ac-97cb-47e5-ab8a-13e451ad1772",
@@ -1252,6 +1268,14 @@
                 "id": "955d47fb-e435-4a2b-90bf-f6bef477b82b",
                 "resourcePath": "scripts\\nbt_tag_string\\nbt_tag_string.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "4cfdb4b3-44ca-4194-bc4c-6990710bd363",
+            "Value": {
+                "id": "706f48fa-3dd6-4b46-a5cc-9aa2a883ea1a",
+                "resourcePath": "datafiles_yy\\Songs\\Megalovania - Super Smash Bros. Ultimate.nbs.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
@@ -1700,6 +1724,14 @@
                 "id": "3b388d50-92a9-4d56-a0d0-1a727ba2515e",
                 "resourcePath": "scripts\\schematic_fill_hollow\\schematic_fill_hollow.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "6595b648-fe3f-499c-a913-afef218631a1",
+            "Value": {
+                "id": "32926744-bb72-43fe-91f1-96cc46a0391f",
+                "resourcePath": "datafiles_yy\\Songs\\The Ground's Colour Is Yellow.nbs.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
@@ -3199,14 +3231,6 @@
             }
         },
         {
-            "Key": "c03f3b8b-ba1a-4d32-9051-23b8572bd22b",
-            "Value": {
-                "id": "e63bab99-dfa0-45c0-9aa1-826d12440c6f",
-                "resourcePath": "datafiles_yy\\Songs\\The Grounds Color Is Yellow.nbs.yy",
-                "resourceType": "GMIncludedFile"
-            }
-        },
-        {
             "Key": "c1ae4275-cc48-48bb-bc3a-7c638ac064ec",
             "Value": {
                 "id": "7165a370-b987-42b6-9d50-f2c7ef8c2fb9",
@@ -3892,6 +3916,14 @@
                 "id": "fd5c14a0-fd0b-49e0-9f85-cd360377ca6e",
                 "resourcePath": "sprites\\spr_tooltip_sl_right\\spr_tooltip_sl_right.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ee15ae94-44b2-49f2-839f-1e8c89da5669",
+            "Value": {
+                "id": "f20a11a6-8e3c-4bed-a92a-a35d125ed157",
+                "resourcePath": "datafiles_yy\\Data\\Sounds\\entity.experience_orb.pickup.ogg.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
