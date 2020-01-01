@@ -14,6 +14,7 @@
 #macro pattern_directory	data_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
+#macro settings_file		file_directory + "settings.ini"
 #macro backup_file			file_directory + "backup.nbs"
 
 #macro h_stereoize 12

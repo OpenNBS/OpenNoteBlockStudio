@@ -1,7 +1,7 @@
 // save_settings()
 var a;
 
-ini_open(data_directory + "settings.ini")
+ini_open(settings_file)
 
 // Recent songs
 for (a = 0; a < 11; a += 1) {

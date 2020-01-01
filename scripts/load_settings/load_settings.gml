@@ -1,8 +1,8 @@
 // load_settings()
 var a;
 log("Load settings")
-if (!file_exists(data_directory + "settings.ini")) return 0
-ini_open(data_directory + "settings.ini")
+if (!file_exists(settings_file)) return 0
+ini_open(settings_file)
 
 // Recent songs
 for (a = 0; a < 11; a += 1) {

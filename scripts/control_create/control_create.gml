@@ -338,7 +338,7 @@ if (check_update)
     update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
-if (file_exists_lib(data_directory + "settings.onbs") && vers != version) {
+if (file_exists_lib(settings_file) && vers != version) {
     window = w_update
     update = 3
 }
