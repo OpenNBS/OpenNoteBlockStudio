@@ -9,8 +9,8 @@
 			<div class="7u 12u$(small)">
 				<h2>About NBS</h2>
 				<p>
-					The .nbs format (Note Block Song) was made mainly for the Minecraft Note Block Studio, and contains data about how note blocks are laid out in the program to form a song. <br><br> To make Note Block Studio work better and to make it futureproof, we are using an improved format.<br>The first 2 bytes of the .nbs file have been changed to 0 to indicate this new format.<br><br>
-					All the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
+					The .nbs format (Note Block Song) was created to work with Minecraft Note Block Studio, and contains data about how note blocks are laid out in the program to form a song. <br><br> To bring new features to Note Block Studio and make it future-proof, we are using an improved file format. The first 2 bytes of the .nbs file have been changed to 0 to indicate the new format.<br><br>
+					All the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
 				</p>
 				<ol>
 					<li>Header</li>
@@ -25,13 +25,17 @@
 			<div class="5u 12u$(small)">
 				<h2>NBS Changelog</h2>
 				<div>
+					<strong>Version 4.0:</strong> 
+					<ul><li>Loop on/off, max loop count, and loop start tick are now saved.</li><li>The program now saves which layers are locked.</li><li>Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
 					<strong>Version 3.0:</strong> 
-					<ul><li>Song length is now saved again after the Vanilla Note Block Instruments count.</li></ul>
+					<ul><li>Song length is now saved again after the vanilla instrument count.</li></ul>
 					<strong>Version 2.0:</strong> 
 					<ul><li>Now stereo information is saved for each layer. This means that now the sound can pan to the left/right.</li><li>For every layer, there's now a byte that determines how much that layer pans.<br>0 is 2 blocks right, 100 is centre, 200 is 2 blocks left.</li></ul>
 					<strong>Version 1.0 (initial version):</strong> 
-					<ul><li>The byte after the .nbs version is now the amount of vanilla instruments.<br>
-					This change was necessary, because previously the program didn't know when the custom instruments began. It always just went up to 9, and everything after that was treated as a custom instrument.</li></ul>
+					<ul><li>The first two bytes, which used to indicate the song length, have been changed to 0 to indicate the new format.</li>
+					<li>The NBS version is now stored in the file.</li>
+					<li>The byte after the NBS version is now the amount of vanilla instruments.<br>
+					This change was necessary because, previously, the program didn't know when the custom instruments began. It always went up to 9, and everything after that was treated as a custom instrument.</li></ul>
 				</div>
 			</div>
 		</div>	
@@ -55,8 +59,8 @@
 					<tr class="newversion">
 						<td>Short</td>
 						<td></td>
-						<td>The first 2 bytes are always zero. In the old nbs format, this used to be song length, which can never be zero.<br> 
-						(So this is how you can check whether a .nbs file is using the new format)</td>
+						<td>The first 2 bytes are always zero. In the old NBS format, this used to be song length, which can never be zero.<br> 
+						This is how you can check whether a .nbs file is using the new format.</td>
 					</tr>
 					<tr class="newversion">
 						<td>Byte</td>
@@ -65,19 +69,19 @@
 					</tr>
 					<tr class="newversion">
 						<td>Byte</td>
-						<td>Vanilla Note Block Instruments count</td>
-						<td>Amount of Vanilla Note Block Instruments, this is needed to determine at what index custom instruments start.</td>
+						<td>Vanilla instrument count</td>
+						<td>Amount of default instruments when the song was saved. This is needed to determine at what index custom instruments start.</td>
 					</tr>
 					<tr class="newversion">
 						<td>Short</td>
 						<td>Song length</td>
-						<td>The length of the song, measured in ticks. Divide this by the tempo to get the length of the song in seconds. The Note Block Studio doesn't really care about this value, the song size is calculated in the second part.<br>
-						(Note that this was re-added in nbs version 3)</td>
+						<td>The length of the song, measured in ticks. Divide this by the tempo to get the length of the song in seconds. Note Block Studio doesn't really care about this value, the song size is calculated in the second part.<br>
+						(Note: this was re-added in NBS version 3)</td>
 					</tr>
 					<tr>
 						<td>Short</td>
 						<td>Layer count</td>
-						<td>The last layer with at least one note block in it, or the last layer that have had its name or volume changed.</td>
+						<td>The last layer with at least one note block in it, or the last layer that has had its name, volume or stereo changed.</td>
 					</tr>
 					<tr>
 						<td>String</td>
@@ -102,17 +106,17 @@
 					<tr>
 						<td>Short</td>
 						<td>Song tempo</td>
-						<td>The tempo of the song multiplied by 100 (1225 instead of 12.25 for example). This is measured in ticks per second.</td>
+						<td>The tempo of the song multiplied by 100 (for example, 1225 instead of 12.25). Measured in ticks per second.</td>
 					</tr>
 					<tr>
 						<td>Byte</td>
 						<td>Auto-saving</td>
-						<td>Whether auto-saving has been enabled (0 or 1).</td>
+						<td>Whether auto-saving has been enabled (0 or 1). As of NBS version 4 this value is still saved to the file, but no longer used in the program.</td>
 					</tr>
 					<tr>
 						<td>Byte</td>
 						<td>Auto-saving duration</td>
-						<td>The amount of minutes between each auto-save (if it has been enabled) (1-60).</td>
+						<td>The amount of minutes between each auto-save (if it has been enabled) (1-60). As of NBS version 4 this value is still saved to the file, but no longer used in the program.</td>
 					</tr>
 					<tr>
 						<td>Byte</td>
@@ -122,22 +126,22 @@
 					<tr>
 						<td>Integer</td>
 						<td>Minutes spent</td>
-						<td>The amount of minutes spent on the project.</td>
+						<td>Amount of minutes spent on the project.</td>
 					</tr>
 					<tr>
 						<td>Integer</td>
-						<td>Left clicks</td>
-						<td>The amount of times the user have left clicked.</td>
+						<td>Left-clicks</td>
+						<td>Amount of times the user has left-clicked.</td>
 					</tr>
 					<tr>
 						<td>Integer</td>
-						<td>Right clicks</td>
-						<td>The amount of times the user have right clicked.</td>
+						<td>Right-clicks</td>
+						<td>Amount of times the user has right-clicked.</td>
 					</tr>
 					<tr>
 						<td>Integer</td>
 						<td>Note blocks added</td>
-						<td>The amount of times the user have added a note block.</td>
+						<td>Amount of times the user has added a note block.</td>
 					</tr>
 					<tr>
 						<td>Integer</td>
@@ -147,14 +151,29 @@
 					<tr>
 						<td>String</td>
 						<td>MIDI/Schematic file name</td>
-						<td>If the song has been imported from a .mid or .schematic file, that file name is stored here (Only the name of the file, not the path).</td>
+						<td>If the song has been imported from a .mid or .schematic file, that file name is stored here (only the name of the file, not the path).</td>
+					</tr>
+					<tr class="newversion">
+						<td>Byte</td>
+						<td>Loop on/off</td>
+						<td>Whether looping is on or off. (0 = off, 1 = on)</td>
+					</tr>
+					<tr class="newversion">
+						<td>Byte</td>
+						<td>Max loop count</td>
+						<td>0 = infinite. Other values mean the amount of times the song loops.</td>
+					</tr>
+					<tr class="newversion">
+						<td>Short</td>
+						<td>Loop start tick</td>
+						<td>Determines which part of the song (in ticks) it loops back to.</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<hr>
 		<h2>Part 2: Note blocks</h2>
-		<p>The next part contains the information about how the note blocks are placed, what instruments they have and what note. As you may or may not know, the song is divided into ticks (horizontally) and layers (vertically). Often, a majority of the ticks and layers in the song are empty, which is why we specify the amount of "jumps" to the next active tick or layer, rather than just a bunch of empty slots.<br><br>
+		<p>The next part contains the information about how the note blocks are placed, what instruments they have and what note. As you may know, the song is divided into ticks (horizontally) and layers (vertically). Often, a majority of the ticks and layers in the song are empty, which is why we specify the amount of "jumps" to the next active tick or layer, rather than just a bunch of empty slots.<br><br>
 		The pattern of the note block format is as follows:</p>
 		<div class="table-wrapper">
 			<table class="alt">
@@ -174,7 +193,7 @@
 					<tr>
 						<td>Short</td>
 						<td>Jumps to the next layer</td>
-						<td>Once we have found an active tick, we read the amount of vertical jumps to the next layer. We start at layer -1. If this is 0, we go back to Step 1. If not, we have found a note block!</td>
+						<td>Once we have found an active tick, we read the amount of vertical jumps to the next layer. We start at layer -1. If this is 0, we go back to step 1. If not, we have found a note block!</td>
 					</tr>
 					<tr>
 						<td>Byte</td>
@@ -203,7 +222,21 @@
 					<tr>
 						<td>Byte</td>
 						<td>Note block key</td>
-						<td>The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2 octave limit. After reading this, we go back to Step 2. </td>
+						<td>The key of the note block, from 0-87, where 0 is A0 and 87 is C8. 33-57 is within the 2-octave limit.</td></tr>
+					<tr>
+						<span class="newversion"> 
+						<td>Byte</td>
+						<td>Note block velocity</td>
+						<td>The velocity/volume of the note block, from 0% to 100%.</td>
+					</tr>
+						<td>Byte</td>
+						<td>Note block panning</td>
+						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
+					<tr>
+						<td>Short (Signed)</td>
+						<td>Note block pitch</td>
+						<td>The fine pitch of the note block, from -32,768 to 32,767 cents (but the max in Note Block Studio is limited to -1200 and +1200). 0 is no fine-tuning. ±100 cents is a single semitone difference. After reading this, we go back to step 2.</td>
+						</span>
 					</tr>
 				</tbody>
 			</table>
@@ -214,7 +247,7 @@
 			This part is optional. You can choose to stop writing here and the Note Block Studio will still load the song.
 			However, you cannot simply jump to the next part.<br>
 			<br>
-			Here the information about the layers are stored, which in this case are the layer names, their volumes and their stereo. These values are repeated the same number of layers there are (the song height, specified at the beginning of the file):
+			Here the information about the layers are stored, which includes their name, volume and stereo. These values are repeated the same number of layers in the song (the song height, specified in the header):
 		</p>
 		<div class="table-wrapper">
 			<table class="alt">
@@ -231,6 +264,11 @@
 						<td>Layer name</td>
 						<td>The name of the layer.</td>
 					</tr>
+					<tr class="newversion">
+						<td>Byte</td>
+						<td>Layer lock</td>
+						<td>Whether or not this layer has been marked as locked. 1 = locked.</td>
+					</tr>
 					<tr>
 						<td>Byte</td>
 						<td>Layer volume</td>
@@ -239,7 +277,7 @@
 					<tr class="newversion">
 						<td>Byte</td>
 						<td>Layer stereo</td>
-						<td>How much this layer is panned to the left/right. 0 is 2 blocks right, 100 is centre, 200 is 2 blocks left</td>
+						<td>How much this layer is panned to the left/right. 0 is 2 blocks right, 100 is center, 200 is 2 blocks left.</td>
 					</tr>
 				</tbody>
 			</table>
@@ -286,12 +324,12 @@
 					<tr>
 						<td style="text-align: left">String</td>
 						<td style="text-align: left">Sound file</td>
-						<td style="text-align: left">The sound file of the instrument (just the filename, not the path).</td>
+						<td style="text-align: left">The sound file of the instrument (just the file name, not the path).</td>
 					</tr>
 					<tr>
 						<td style="text-align: left">Byte</td>
 						<td style="text-align: left">Sound pitch</td>
-						<td style="text-align: left">The pitch of the sound file. Just like the note blocks, this ranges from 0-87. Default is 45.</td>
+						<td style="text-align: left">The pitch of the sound file. Just like the note blocks, this ranges from 0-87. Default is 45 (F#4).</td>
 					</tr>
 					<tr>
 						<td style="text-align: left">Byte</td>
