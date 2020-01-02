@@ -7,7 +7,6 @@
 		<li><a href="{{'/changelog' | absolute_url}}" class="button">View changelog</a></li>
 	</ul>
 </section>
-<!-- One -->
 <section id="one" class="wrapper style2 special">
 	<div class="container">
 		<div class="row">

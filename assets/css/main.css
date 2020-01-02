@@ -12,8 +12,16 @@
 		list-style: none;
 	}
 
-	#songList .icon{
+	#songList .icon {
 		font-size:40px;
+	}
+
+	#searchOptions {
+		padding-bottom: 25px;
+	}
+
+	.download_link {
+		padding-left: 20px;
 	}
 
 	#songList ul .songItem {

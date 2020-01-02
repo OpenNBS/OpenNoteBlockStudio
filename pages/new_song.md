@@ -9,7 +9,7 @@ permalink: /songs/new/
 <section id="one" class="wrapper style2">
 <div class="container">
 	<div class="small-middle-container">
-		<form action="#" id="songForm" name="songForm">
+		<form id="songForm" name="songForm" method="POST" action="javascript:;" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="inputName">Song Name</label>
 				<input type="text" name="name" class="form-control" id="inputName" placeholder="Enter song name" required>
@@ -25,10 +25,12 @@ permalink: /songs/new/
 			<div class="form-group">
 				<label for="inputNBS">NBS file</label>
 				<input type="file" name="nbsFile" class="form-control-file" aria-describedby="fileLimit" id="inputNBS" accept=".nbs" required>
-				<small id="fileLimit" class="form-text text-muted">Max file size: 1mb.</small>
+				<small id="fileLimit" class="form-text text-muted">Max file size: 1MB.</small>
 			</div>
 			<br>
-			<button type="submit" id="btnSubmit">Submit</button>
+			<button type="submit" id="btnSubmit"> 
+				<span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none"></span>
+			 Submit</button>
 		</form>
 		<script src="{{ '/assets/js/newsong.js' | absolute_url}}"></script>
 	</div>
