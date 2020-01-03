@@ -20,8 +20,12 @@
 		padding-bottom: 25px;
 	}
 
-	.download_link {
+	#songList .fa-download {
 		padding-left: 20px;
+	}
+
+	#songList .fa-trash {
+		padding-left: 7px;
 	}
 
 	#songList ul .songItem {

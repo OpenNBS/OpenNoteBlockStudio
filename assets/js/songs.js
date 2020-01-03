@@ -22,11 +22,10 @@ $(function () {
         }
     });
 
-    //Get all songs
-    db.collectionGroup("songs").get().then(function (querySnapshot) {
+    //Get all accepted songs
+    db.collectionGroup("songs").where("status", "==", 1).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             var data = doc.data();
-            console.log(data);
             songList.add({
                 name: data.name,
                 author: data.author,

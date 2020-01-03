@@ -15,7 +15,7 @@ permalink: /songs/
 	<div class="container">
 		<div id="songList">
 			<div id="searchOptions">
-			<input class="search" placeholder="Search Song.."/>
+			<input class="search" placeholder="Search"/>
 			<span class="sort button small" data-sort="name">Sort by name</span>
 			<span class="sort button small" data-sort="author">Sort by author</span>
 			<span class="sort button small" data-sort="date">Sort by date</span>

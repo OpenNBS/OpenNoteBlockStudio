@@ -1,12 +1,9 @@
 ---
-permalink: /my_songs/
+permalink: /dashboard/
 ---
 
 <section id="banner">
-	<h2>My songs</h2>
-		<ul class="actions vertical">
-		<li><a class="button special icon fa-upload big" id="uploadSongBtn" href="{{'/songs/new' | absolute_url}}">Submit new song</a></li>
-	</ul>
+	<h2>Dashboard</h2>
 </section>
 <section id="one" class="wrapper style2">
 	<div class="container">
@@ -20,7 +17,6 @@ permalink: /my_songs/
 			<ul class="list">
 			</ul>
 			<ul class="pagination"></ul>
-			<div id="noSongsText" style="display:none;"><h1 class="text-center"> You have no songs :( </h1></div>
 		</div>
 		<!-- List item template -->
 		<div style="display:none;">
@@ -38,16 +34,13 @@ permalink: /my_songs/
 					<strong>Download</strong> <p><a class="download icon fa-download"></a></p>
 				</div>
                 <div class="col-sm">
-					<strong>Edit</strong> <p><a class="update icon fa-pencil"></a></p>
+					<strong>Accept </strong> <p><a class="accept icon fa-check" href="javascript:void(0);" style="color: green;"></a></p>
 				</div>
-                <div class="col-sm">
-					<strong>Delete</strong> <p><a class="delete icon fa-trash" href="javascript:void(0);"></a></p>
-				</div>
-                <div class="col-sm">
-					<strong>Status</strong> <p><a class="status"></a></p>
+				<div class="col-sm">
+					<strong>Deny </strong> <p><a class="deny icon fa-close" href="javascript:void(0);" style="color: red;"></a></p>
 				</div>
 			</li>
 		</div>
-		<script src="{{ '/assets/js/my_songs.js' | absolute_url}}"></script>
+		<script src="{{ '/assets/js/dashboard.js' | absolute_url}}"></script>
 	</div>
 </section>

@@ -1,14 +1,13 @@
 ---
-permalink: /songs/new/
+permalink: /my_songs/update/
 ---
 
 <section id="banner">
-	<h2>Submit New Song</h2>
+	<h2>Update song</h2>
 </section>
-<!-- One -->
 <section id="one" class="wrapper style2">
-<div class="container">
-	<div class="small-middle-container">
+	<div class="container">
+		<div class="small-middle-container">
 		<form id="songForm" name="songForm" method="POST" action="javascript:;" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="inputName">Song Name</label>
@@ -25,12 +24,13 @@ permalink: /songs/new/
 				<small id="fileLimit" class="form-text text-muted">Max file size: 1MB.</small>
 			</div>
 			<br>
-			<button type="submit" id="btnSubmit"> 
-				<span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none"></span>
-			 	<span class="btnText">Submit</span>
-			</button>
+			<button type="submit" id="btnSubmit"> 		
+				<span class="spinner spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+				<span class="btnText">Save changes</span>
+			 </button>
+			 <input type ="Button" onclick="window.location.href='../';" value="Discard">
 		</form>
-		<script src="{{ '/assets/js/new_song.js' | absolute_url}}"></script>
 	</div>
+		<script src="{{ '/assets/js/update_song.js' | absolute_url}}"></script>
 	</div>
 </section>

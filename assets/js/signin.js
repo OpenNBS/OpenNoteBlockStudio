@@ -2,7 +2,7 @@
 
 // FirebaseUI config.
 var uiConfig = {
-    signInSuccessUrl: '../songs',
+    signInSuccessUrl: '../',
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -30,6 +30,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
-        history.back();
+        window.location.replace("../");
     }
 });
