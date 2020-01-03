@@ -1,3 +1,7 @@
+---
+permalink: /nbs
+---
+
 <section id="banner">
 	<h2>NBS Format</h2>
 	<p></p>
@@ -6,7 +10,7 @@
 <section id="one" class="wrapper style1">
 	<div class="container">	
 		<div class="row">
-			<div class="7u 12u$(small)">
+			<div class="col-md-7">
 				<h2>About NBS</h2>
 				<p>
 					The .nbs format (Note Block Song) was created to work with Minecraft Note Block Studio, and contains data about how note blocks are laid out in the program to form a song. <br><br> To bring new features to Note Block Studio and make it future-proof, we are using an improved file format. The first 2 bytes of the .nbs file have been changed to 0 to indicate the new format.<br><br>
@@ -22,7 +26,7 @@
 					<span>If the information provided below differs from the old .nbs format, they are marked </span> <strong><span style="color: #01cc01c7">Green</span></strong>.
 				</p><br>
 			</div>
-			<div class="5u 12u$(small)">
+			<div class="col-md-5">
 				<h2>NBS Changelog</h2>
 				<div>
 					<strong>Version 4.0:</strong> 
@@ -142,6 +146,11 @@
 						<td>Integer</td>
 						<td>Note blocks added</td>
 						<td>Amount of times the user has added a note block.</td>
+					</tr>
+					<tr>
+						<td>Integer</td>
+						<td>Note blocks removed</td>
+						<td>The amount of times the user have removed a note block.</td>
 					</tr>
 					<tr>
 						<td>String</td>

@@ -1,13 +1,17 @@
+---
+permalink: /features
+---
+
 <section id="banner">
 	<h2>Features</h2>
 	<p>What makes us different from the original Note Block Studio</p>
 </section>
 <section id="one" class="wrapper style2 special">
 	<div class="container">
-		<div class="row 100%">
-			<div class="6u 12u$(xsmall)">
+		<div class="row">
+			<div class="col-md">
 				<div class="image fit captioned">
-					<img src="images/datapack_export.jpg" alt="" />
+					<img src="{{'images/datapack_export.jpg' | absolute_url}}" alt="" />
 					<div class="caption">
 						<h2>Datapack export</h2>
 						<span style="text-align:left">
@@ -32,18 +36,20 @@
 					</div>
 				</div>
 			</div>
-			<div class="6u 12u$(xsmall)">
+			<div class="col-md">
 				<div class="image fit captioned">
-					<img src="images/1.14.jpg" alt="" />
+					<img src="{{'images/1.14.jpg' | absolute_url}}" alt="" />
 					<div class="caption">
 						<h2>1.14 Note Block Support</h2>
 						<p>OpenNBS supports all 6 new note block sounds added in Minecraft 1.14!</p>
 					</div>			
 				</div>
 			</div>
-			<div class="6u 12u$(xsmall)">
+			</div>
+			<div class="row">
+			<div class="col-md">
 				<div class="image fit captioned">
-					<img src="images/dark_theme.jpg" alt="" />
+					<img src="{{'images/dark_theme.jpg' | absolute_url}}" alt="" />
 					<div class="caption">
 						<h2>Dark theme</h2>
 						<p>When using Note Block Studio late at night, you might have wondered: why are my eyes burning?
@@ -51,12 +57,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="6u 12u$(xsmall)">
+			<div class="col-md">
 				<div class="image fit captioned">
-					<img src="images/stereo_sound.gif" alt="" />
+					<img src="{{'images/stereo_sound.gif' | absolute_url}}" alt="" />
 					<div class="caption">
 						<h2>Stereo Sound</h2>
-						<p>When exporting as MP3 or datapack, the note block sounds are able to pan to the left or right, which allows stereo sound. With this you can create exceptionally immersive songs!</p>
+						<p>When exporting as a datapack, the note block sounds are able to pan to the left or right, which allows stereo sound. With this you can create exceptionally immersive songs!</p>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,68 @@
+<head>
+    <meta charset="UTF-8">
+    {% seo %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | absolute_url}}" />
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="{{ '/assets/js/jquery.min.js' | absolute_url}}"></script>
+    <script src="{{ '/assets/js/list.js' | absolute_url}}"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-storage.js"></script>
+    <script>
+        signOut = function () {
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+                location.reload();
+            }).catch(function (error) {
+                // An error happened.
+            });
+        }
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB-PnuRaTdwPnmN6WwKOmme4R99e3ZT9Tw",
+            authDomain: "open-note-block-studio.firebaseapp.com",
+            databaseURL: "https://open-note-block-studio.firebaseio.com",
+            projectId: "open-note-block-studio",
+            storageBucket: "gs://open-note-block-studio.appspot.com/",
+            messagingSenderId: "885100213324",
+            appId: "1:885100213324:web:c1199345e9a6e2f0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        initApp = function () {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    user.getIdToken().then(function (accessToken) {
+                        var signInLink = document.getElementById("signInLink");
+                        if (signInLink !== null) {
+                            signInLink.innerHTML = "Sign Out";
+                            signInLink.href = "javascript:signOut()";
+                        }
+                    });
+                } else {
+                    // User is signed out.
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        window.addEventListener('load', function () {
+            initApp();
+        });
+    </script>
+</head>
