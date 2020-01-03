@@ -8,7 +8,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Open Note Block Studio
 description: An open source continuation of Minecraft Note Block Studio with exciting new features.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "OpenNoteBlockStudio" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
