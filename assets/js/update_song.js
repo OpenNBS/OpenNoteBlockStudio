@@ -10,7 +10,7 @@ $(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             // User is not signed in
-            window.location = "/songs";
+            window.location = "songs";
         } else {
             var id = getUrlVars()["id"];
 
@@ -19,7 +19,7 @@ $(function () {
 
                 //If document doesn't exist, go back
                 if (!doc._document) {
-                    window.location = "/my_songs";
+                    window.location = "my_songs";
                 }
                 var data = doc.data();
                 $("#inputName").val(data.name);
@@ -62,7 +62,7 @@ $(function () {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
                 }
             }).done(function () {
-                window.location = "/my_songs";
+                window.location = "my_songs";
             }).fail(function () {
                 $("#songForm :input").prop('readonly', false);
                 $(".spinner").hide();

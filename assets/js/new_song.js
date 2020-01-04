@@ -3,7 +3,7 @@ $(function () {
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (!user) {
 			// User is not signed in
-			window.location = "/songs";
+			window.location = "songs";
 		}
 	});
 
@@ -37,7 +37,7 @@ $(function () {
 					xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 				}
 			}).done(function () {
-				window.location = "/my_songs";
+				window.location = "my_songs";
 			}).fail(function () {
 				alert("Error while submitting song.");
 				$("#songForm :input").prop('readonly', false);
