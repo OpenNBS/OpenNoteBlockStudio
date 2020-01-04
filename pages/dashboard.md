@@ -26,6 +26,9 @@ permalink: /dashboard/
 					<strong>Name</strong> 	<p class="name"></p>
 				</div>
 				<div class="col-sm">
+					<strong>Author</strong> <p class="author"></p>
+				</div>
+				<div class="col-sm">
 					<strong>Original author</strong> <p class="original_author"></p>
 				</div>
 				<div class="col-sm">

@@ -16,16 +16,16 @@
 		font-size:40px;
 	}
 
+	.songItem {
+		text-align: center;
+	}
+
 	#searchOptions {
 		padding-bottom: 25px;
 	}
 
-	#songList .fa-download {
-		padding-left: 20px;
-	}
-
-	#songList .fa-trash {
-		padding-left: 7px;
+	#searchOptions * {
+		margin: 3px;
 	}
 
 	#songList ul .songItem {

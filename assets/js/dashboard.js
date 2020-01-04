@@ -2,6 +2,7 @@ var options = {
     valueNames: [
         'id',
         'name',
+        'author',
         'original_author',
         { name: 'download', attr: 'href' },
         'date',
