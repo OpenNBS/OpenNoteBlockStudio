@@ -25,6 +25,7 @@ permalink: /my_songs/
 		<!-- List item template -->
 		<div style="display:none;">
 			<li id="song-item" class="row songItem">
+				<p class="id" style="display:none;"></p>
 				<div class="col-sm">
 					<strong>Name</strong> 	<p class="name"></p>
 				</div>

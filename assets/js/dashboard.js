@@ -1,5 +1,6 @@
 var options = {
     valueNames: [
+        'id',
         'name',
         'original_author',
         { name: 'download', attr: 'href' },
@@ -31,9 +32,11 @@ $(function () {
 
             //Get all songs
             db.collectionGroup("songs").where("status", "==", 0).get().then(function (querySnapshot) {
+                var itemId = 0;
                 querySnapshot.forEach(function (doc) {
                     var data = doc.data();
                     songList.add({
+                        id: itemId,
                         name: data.name,
                         author: data.author,
                         original_author: data.original_author,
@@ -41,24 +44,27 @@ $(function () {
                         date: data.date.toDate().toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric'
                         }).replace(/ /g, ' '),
-                        accept: "accept_song(\'" + doc.id + "\',1)",
-                        deny: "accept_song(\'" + doc.id + "\',2)",
+                        accept: "accept_song(\'" + doc.id + "\',1,this)",
+                        deny: "accept_song(\'" + doc.id + "\',2,this)",
                     });
+                    itemId++;
                 });
             });
-
         });
     });
 });
 
-function accept_song(id, accept) {
 
+function accept_song(id, accept, element) {
     db.collectionGroup("songs").where('id', '==', id).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             var data = doc.data();
             data.status = accept;
             doc.ref.update(data).then(function () {
-                location.reload();
+                var li = element.closest('li');
+                var itemId = li.childNodes[1].textContent;
+
+                songList.remove('id', itemId);
             }).catch(function (error) {
                 // The document probably doesn't exist.
                 alert("Error updating document: ", error);
@@ -66,5 +72,3 @@ function accept_song(id, accept) {
         });
     });
 }
-
-

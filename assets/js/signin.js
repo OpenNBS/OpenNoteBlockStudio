@@ -2,7 +2,7 @@
 
 // FirebaseUI config.
 var uiConfig = {
-    signInSuccessUrl: '../',
+    signInSuccessUrl: 'songs',
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -13,11 +13,11 @@ var uiConfig = {
     // function.
     // Terms of service url/callback.
     tosUrl: function () {
-        location.href = "../terms_of_service";
+        location.href = "terms_of_service";
     },
     // Privacy policy url/callback.
     privacyPolicyUrl: function () {
-        location.assign('../privacy_policy');
+        location.assign('privacy_policy');
     }
 };
 
@@ -30,6 +30,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
-        window.location.replace("../");
+        window.location = "songs";
     }
 });

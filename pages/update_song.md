@@ -28,7 +28,7 @@ permalink: /my_songs/update/
 				<span class="spinner spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
 				<span class="btnText">Save changes</span>
 			 </button>
-			 <input type ="Button" onclick="window.location.href='../';" value="Discard">
+			 <input type ="Button" onclick="window.location.href='my_songs';" value="Discard">
 		</form>
 	</div>
 		<script src="{{ '/assets/js/update_song.js' | absolute_url}}"></script>

@@ -1,5 +1,6 @@
 var options = {
     valueNames: [
+        'id',
         'name',
         'original_author',
         { name: 'download', attr: 'href' },
@@ -25,6 +26,7 @@ $(function () {
             var songCount = 0;
             //Get all songs from user
             db.collection("users").doc(user.uid).collection("songs").get().then(function (querySnapshot) {
+                var itemId = 0;
                 querySnapshot.forEach(function (doc) {
                     var data = doc.data();
 
@@ -38,6 +40,7 @@ $(function () {
                     }
 
                     songList.add({
+                        id: itemId,
                         name: data.name,
                         author: data.author,
                         original_author: data.original_author,
@@ -45,10 +48,11 @@ $(function () {
                         date: data.date.toDate().toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric'
                         }).replace(/ /g, ' '),
-                        update: "update?id=" + doc.id,
-                        delete: "delete_song(\'" + doc.id + "\')",
+                        update: window.location.href + "update?id=" + doc.id,
+                        delete: "delete_song(\'" + doc.id + "\',this)",
                         status: statusText
                     });
+                    itemId++;
                 });
 
                 if (songCount == 0) {
@@ -59,12 +63,15 @@ $(function () {
     });
 });
 
-function delete_song(id) {
+function delete_song(id, element) {
     var user = firebase.auth().currentUser;
 
     if (confirm("Are you sure you want to delete this song?")) {
         db.collection("users").doc(user.uid).collection("songs").doc(id).delete().then(function () {
-            location.reload();
+            var li = element.closest('li');
+            var itemId = li.childNodes[1].textContent;
+
+            songList.remove('id', itemId);
         }).catch(function (error) {
             alert("Could not delete song. Error: " + error);
         });

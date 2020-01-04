@@ -28,7 +28,7 @@ $(function () {
 				data: formdata,
 				cache: false,
 				contentType: false,
-				async: false,
+				async: true,
 				dataType: "json",
 				crossDomain: true,
 				processData: false,
@@ -37,6 +37,7 @@ $(function () {
 					xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 				}
 			}).done(function () {
+				alert("Song submitted!");
 				window.location = "my_songs";
 			}).fail(function () {
 				alert("Error while submitting song.");
