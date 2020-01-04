@@ -17,7 +17,7 @@ $(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            $('#uploadSongBtn').html("Submit a song").prop("href", window.location.origin + "/songs/new");
+            $('#uploadSongBtn').html("Submit a song").prop("href", "songs/new");
             $('#mySongsBtn').show();
         }
     });
