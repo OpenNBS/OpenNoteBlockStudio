@@ -41,7 +41,7 @@ $(function () {
                         name: data.name,
                         author: data.author,
                         original_author: data.original_author,
-                        download_link: data.download_url,
+                        download: data.download_url,
                         date: data.date.toDate().toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric'
                         }).replace(/ /g, ' '),
