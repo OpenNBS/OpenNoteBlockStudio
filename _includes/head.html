@@ -47,10 +47,11 @@
                 if (user) {
                     // User is signed in.
                     user.getIdToken().then(function (accessToken) {
-                        var signInLink = document.getElementById("signInLink");
-                        if (signInLink !== null) {
-                            signInLink.innerHTML = "Sign Out";
-                            signInLink.href = "javascript:signOut()";
+                        var texts = document.getElementsByClassName("signInTextChange");
+                        var i;
+                        for (i = 0; i < texts.length; i++) {
+                            texts[i].innerHTML = "Sign Out";
+                            texts[i].href = "javascript:signOut()";
                         }
                     });
                 } else {

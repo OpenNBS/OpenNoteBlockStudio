@@ -19,7 +19,7 @@ $(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             // User is not signed in
-            window.location = "/songs";
+            window.location = window.location.origin + "/songs";
         } else {
 
             var songCount = 0;
