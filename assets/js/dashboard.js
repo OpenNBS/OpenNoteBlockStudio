@@ -19,13 +19,13 @@ $(function () {
         db.collection("users").doc(user.uid).get().then(function (doc) {
 
             if (!doc.data()) {
-                window.location = window.location.origin + "/songs";
+                window.location = "/songs";
                 return;
             }
 
             var data = doc.data();
             if (!data.admin) {
-                window.location = window.location.origin + "/songs";
+                window.location = "/songs";
                 return;
             }
 
