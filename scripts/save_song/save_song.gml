@@ -12,7 +12,7 @@ if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
     fn = string(get_save_filename_ext("Note Block Songs (*.nbs)|*.nbs", fsave, songfolder, "Save song"))
     if (fn = "") return 0
 }
-if (selected > 0) selection_place(0)
+if ((!backup) && (selected > 0)) selection_place(0)
 
 if (backup) {
 	nbsver = nbs_version
