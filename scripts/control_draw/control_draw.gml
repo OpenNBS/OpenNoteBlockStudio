@@ -280,7 +280,9 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
                 a = 1
                 if (b < endb2) {
 					c = (layervol[b] /100) * song_vel[xx, b]
-					d = (layerstereo[b] + song_pan[xx, b]) / 2
+					if layerstereo[b] = 100 {
+							d = song_pan[xx, b]
+					} else d = (layerstereo[b] + song_pan[xx, b]) / 2
 					e = song_pit[xx, b]
 				}
                 if (solostr != "") {

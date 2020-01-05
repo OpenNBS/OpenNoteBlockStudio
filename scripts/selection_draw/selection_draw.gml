@@ -18,7 +18,11 @@ if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && m
             if (selection_exists[xx, b]) {
                 a = 1
                 if (selection_y + b < endb2) c = (layervol[selection_y + b] / 100) * selection_vel[xx,b]
-				if (selection_y + b < endb2) d = (layerstereo[selection_y + b] + selection_pan[xx,b]) / 2
+				if (selection_y + b < endb2) {
+					if layerstereo[selection_y + b] = 100 {
+							d = selection_pan[xx,b]
+					} else d = (layerstereo[selection_y + b] + selection_pan[xx,b]) / 2
+				}
 				if (selection_y + b < endb2) e = selection_pit[xx,b]
                 if (solostr != "") {
                     if (string_count("|" + string(selection_y + b) + "|", solostr) = 0) {
