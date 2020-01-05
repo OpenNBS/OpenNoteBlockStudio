@@ -4,7 +4,7 @@ var a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, t
 fn = ""
 if (selected != 0) return 0
 if (fn = "") {
-    if (!directory_exists(patternfolder)) patternfolder = pattern_directory
+    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
     fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, "Load pattern"))
 }
 if (fn = "" || !file_exists_lib(fn)) return 0

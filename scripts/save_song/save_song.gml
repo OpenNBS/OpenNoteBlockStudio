@@ -8,7 +8,7 @@ if (argument_count > 1) {
 if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
     playing = 0
     fsave = filename_name(filename)
-    if (!directory_exists(songfolder)) songfolder = songs_directory
+    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
     fn = string(get_save_filename_ext("Note Block Songs (*.nbs)|*.nbs", fsave, songfolder, "Save song"))
     if (fn = "") return 0
 }
