@@ -859,7 +859,7 @@ for (b = 0; b < totalrows; b += 1) {
 	    }
 		// Stereo
 	    if (!realstereo) {
-	        c = ((dragstereob = startb + b && window2 = w_dragstereo) || (mouse_rectangle(x1 + 108, y1 + 5, 16, 25) && window2 = 0))
+	        c = ((dragstereob = startb + b && window = w_dragstereo) || (mouse_rectangle(x1 + 108, y1 + 5, 16, 25) && window = 0))
 	        if (startb + b >= endb2) {
 	            a = 100
 	        } else {
@@ -877,7 +877,7 @@ for (b = 0; b < totalrows; b += 1) {
 	            draw_set_font(fnt_main)
 	            curs = cr_size_ns
 	            if (mouse_check_button_pressed(mb_left)) {
-	                window2 = w_dragstereo
+	                window = w_dragstereo
 	                dragstereob = startb + b
 	                dragstereo = layerstereo[startb + b]
 	            }
@@ -938,13 +938,12 @@ if (window = w_dragvol) {
 	    window = w_releasemouse
 	}
 }
-if (window2 = w_dragstereo) {
+if (window = w_dragstereo) {
 	dragstereo += (mouse_yprev - mouse_y) * 2
 	dragstereo = median(0, dragstereo, 200)
 	layerstereo[dragstereob] = floor(dragstereo / 10) * 10
 	if (!mouse_check_button(mb_left)) {
-	    window2 = w_releasemouse
-		window2 = 0
+	    window = w_releasemouse
 	}
 }
 // Macro Bar
@@ -1261,7 +1260,7 @@ if (show_layers) {
 	}
 	draw_set_halign(fa_left)
 	a = mouse_rectangle(108, 57, 64, 22)
-	if (a && window = 0 && window2 = 0) {
+	if (a && window = 0) {
 	    curs = cr_size_ns
 	    if (mouse_check_button(mb_left)) {
 	        tempodrag = tempo

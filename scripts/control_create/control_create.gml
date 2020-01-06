@@ -19,7 +19,6 @@ window_set_min_height(100)
 cam_window = camera_create()
 view_set_camera(0, cam_window)
 window_background = c_white
-window2 = 0
 
 // Application
 update = 0
