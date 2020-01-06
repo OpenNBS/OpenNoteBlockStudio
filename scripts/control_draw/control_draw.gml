@@ -929,22 +929,22 @@ for (b = 0; b < totalrows; b += 1) {
 			shift_layers(startb + b, startb + b + 1, false)
 		}
 	}
-	if (window = w_dragvol) {
-	    dragvol += (mouse_yprev - mouse_y) * 2
-	    dragvol = median(0, dragvol, 100)
-	    layervol[dragvolb] = floor(dragvol / 10) * 10
-	    if (!mouse_check_button(mb_left)) {
-	        window = w_releasemouse
-	    }
+}
+if (window = w_dragvol) {
+	dragvol += (mouse_yprev - mouse_y) * 2
+	dragvol = median(0, dragvol, 100)
+	layervol[dragvolb] = floor(dragvol / 10) * 10
+	if (!mouse_check_button(mb_left)) {
+	    window = w_releasemouse
 	}
-	if (window2 = w_dragstereo) {
-	    dragstereo += (mouse_yprev - mouse_y) * 2
-	    dragstereo = median(0, dragstereo, 200)
-	    layerstereo[dragstereob] = floor(dragstereo / 10) * 10
-	    if (!mouse_check_button(mb_left)) {
-	        window2 = w_releasemouse
-			window2 = 0
-	    }
+}
+if (window2 = w_dragstereo) {
+	dragstereo += (mouse_yprev - mouse_y) * 2
+	dragstereo = median(0, dragstereo, 200)
+	layerstereo[dragstereob] = floor(dragstereo / 10) * 10
+	if (!mouse_check_button(mb_left)) {
+	    window2 = w_releasemouse
+		window2 = 0
 	}
 }
 // Macro Bar
