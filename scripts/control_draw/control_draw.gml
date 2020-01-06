@@ -933,17 +933,25 @@ for (b = 0; b < totalrows; b += 1) {
 	}
 }
 if (window = w_dragvol) {
-	dragvol += (mouse_yprev - mouse_y) * 2
+	dragvol += (mouse_yprev - mouse_y)
 	dragvol = median(0, dragvol, 100)
-	layervol[dragvolb] = floor(dragvol / 10) * 10
+	if (!keyboard_check(vk_shift)) {
+		layervol[dragvolb] = floor(dragvol / 10) * 10
+	} else {
+		layervol[dragvolb] = dragvol
+	}
 	if (!mouse_check_button(mb_left)) {
 	    window = w_releasemouse
 	}
 }
 if (window = w_dragstereo) {
-	dragstereo += (mouse_yprev - mouse_y) * 2
+	dragstereo += (mouse_yprev - mouse_y)
 	dragstereo = median(0, dragstereo, 200)
-	layerstereo[dragstereob] = floor(dragstereo / 10) * 10
+	if (!keyboard_check(vk_shift)) {
+		layerstereo[dragstereob] = floor(dragstereo / 10) * 10
+	} else {
+		layerstereo[dragstereob] = dragstereo
+	}
 	if (!mouse_check_button(mb_left)) {
 	    window = w_releasemouse
 	}
