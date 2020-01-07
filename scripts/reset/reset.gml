@@ -116,6 +116,12 @@ with (obj_instrument) {
 user_instruments = 0
 instrument = instrument_list[| 0]
 
+// Reset note count per instrument
+for (a = 0; a < ds_list_size(instrument_list); a++) {
+    var ins = instrument_list[| a]
+    ins.num_blocks = 0
+}
+
 // Macros
 stereo_reverse = 0
 tremolotype = 0
