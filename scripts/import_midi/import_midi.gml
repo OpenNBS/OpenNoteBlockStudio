@@ -130,7 +130,7 @@ for (t = 0; t < midi_tracks; t += 1) {
             // Add block, go lower if failed
             a = 0
             while (1) {
-                if (add_block(pos, yy, instrument_list[| ins], note, vel, 100, true)) break
+                if (add_block(pos, yy, instrument_list[| ins], note, vel, 100, 0, true)) break
                 yy += 1
                 a += 1
                 if (a >= w_midi_maxheight && w_midi_maxheight < 20) break

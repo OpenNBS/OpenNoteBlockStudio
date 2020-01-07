@@ -1,4 +1,4 @@
-// add_block(x, y, ins, key, vel, pan, [insnum])
+// add_block(x, y, ins, key, vel, pan, pit, [insnum])
 var a, b, c, xx, yy, ins, key, vel, pan, pit, insnum;
 xx = argument[0]
 yy = argument[1]

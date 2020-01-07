@@ -444,7 +444,7 @@ with (new(obj_dummy)) {
                     if (debugstr) str += chr(13) + chr(10) + "Added note block no. " + string(queuenoteblocks) + "!"
                     with (obj_controller) {
                         d = sqrt(2000 * 256 * 2000)
-                        while (!add_block(start + cd, b, instrument_list[| a], c)) b += 1
+                        while (!add_block(start + cd, b, instrument_list[| a], c, 100, 100, 0)) b += 1
                     }
                     break
                 }
