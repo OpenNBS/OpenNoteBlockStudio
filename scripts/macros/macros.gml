@@ -1,10 +1,10 @@
 #macro gm_runtime_version "2.2.3.344"
 #macro version_date "2019.12.31"
-#macro version "3.7.0"
+#macro version "3.6.0"
 #macro nbs_version 4
 #macro pat_version 1
 
-#macro link_download "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest"
+#macro link_download "https://hielkeminecraft.github.io/OpenNoteBlockStudio/"
 #macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
 
 #macro file_directory		game_save_id
@@ -14,6 +14,7 @@
 #macro pattern_directory	data_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
+#macro update_file			file_directory + "update.exe"
 #macro settings_file		file_directory + "settings.ini"
 #macro backup_file			file_directory + "backup.nbs"
 
