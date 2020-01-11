@@ -14,7 +14,7 @@
 #macro pattern_directory	data_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
-#macro update_file			file_directory + "update.exe"
+#macro update_file			file_directory + "Minecraft Note Block Studio Setup.exe"
 #macro settings_file		file_directory + "settings.ini"
 #macro backup_file			file_directory + "backup.nbs"
 

@@ -1325,10 +1325,25 @@ if (window = w_releasemouse && !mouse_check_button(mb_left)) window = 0
 draw_windows()
 
 // Draw update progress
-if (update == 4) {
+if (update == 4 or update == 5) {
 	window = -1
-	// show_debug_message(string(downloaded_size) + "/" + string(total_size))
 	draw_loading("Update", "Downloading update...", downloaded_size, total_size)
+	if (update == 5) {
+		if (file_get_size(update_file) == total_size) {
+			update = 1
+			show_message("Download complete! Click OK to begin installing the update.")
+			// At this point, the game is paused until the user dismisses the message
+			ExecuteShell(update_file, false, true)
+			game_end()
+		} else {
+			if (question("Failed to download update. Do you want to open the Note Block Studio website and update manually?", "Failed")) {
+				open_url(link_download)
+			}
+		window = w_greeting
+		update_download = -1
+		update = 1
+		}
+	}
 }
 
 window_set_cursor(curs)
