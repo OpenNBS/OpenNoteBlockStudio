@@ -1327,7 +1327,7 @@ draw_windows()
 // Draw update progress bar
 if (update == 4) {
 	window = -1
-	draw_loading("Update", "Downloading update...", downloaded_size, total_size)
+	draw_downloadprogress("Update", "Downloading update...", downloaded_size, total_size)
 }
 
 window_set_cursor(curs)
