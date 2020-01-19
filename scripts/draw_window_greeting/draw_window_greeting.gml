@@ -118,7 +118,7 @@ for (a = 0; a < 11; a += 1) {
         }
     }
     draw_sprite(spr_frame5, theme * 3 + m, b, c)
-    draw_text(b + 2 + (m = 2), c + 1 + (m = 2), filename_name(recent_song[a]))
+    draw_text(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220))
     draw_set_halign(fa_right)
     draw_text(b + 316 + (m = 2), c + 1 + (m = 2), seconds_to_str(floor(date_second_span(recent_song_time[a], date_current_datetime()))))
     draw_set_halign(fa_left)

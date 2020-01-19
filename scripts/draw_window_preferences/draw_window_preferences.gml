@@ -100,7 +100,7 @@ if (selected_tab = 0) {
 		refreshrate=1
     }
 
-	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
+	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_truncate(songfolder, 360))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
     if (draw_button2(x1 + 22, y1 + 276, 76, "Open")) {
         if (!directory_exists_lib(songfolder)) {
@@ -116,7 +116,7 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 276, 96, "Use default")) songfolder = songs_directory
 	
-	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_maxwidth(patternfolder, 360) + condstr(string_width(patternfolder) > 360, "..."))
+	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_truncate(patternfolder, 360))
     popup_set_window(x1 + 22, y1 + 300, 430, 18, patternfolder)
     if (draw_button2(x1 + 22, y1 + 326, 76, "Open")) {
         if (!directory_exists_lib(patternfolder)) {

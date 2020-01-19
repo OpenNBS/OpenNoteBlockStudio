@@ -989,7 +989,7 @@ if (draw_tab("File")) {
     for (b = 0; b < 11; b += 1) {
         if (recent_song[b] = "") break
         c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
-        str += seconds_to_str(c) + "$" + clean(filename_name(recent_song[b])) + "|"
+        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
     }
     show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
                              icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
