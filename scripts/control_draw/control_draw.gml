@@ -829,7 +829,7 @@ for (b = 0; b < totalrows; b += 1) {
 		layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 		if (layername[startb + b] = "") {
 	        draw_set_color(c_gray)
-			if(theme = 2) draw_set_color(c_white)
+			if(theme = 2) draw_set_color(make_color_rgb(160, 160, 160))
 	        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
 	    }
 	    draw_theme_color()
@@ -1122,6 +1122,7 @@ if (compatible = 1) {
 	draw_sprite(spr_minecraft, 0, rw - 30, 25)
 	draw_sprite(spr_minecraft, 0, rw - 59, 25)
 	draw_set_color(c_green)
+	if (theme == 2) draw_set_color(c_lime)
 	draw_text(rw - 166, 28, "Fully compatible")
 	draw_theme_color()
 	draw_set_font(fnt_main)

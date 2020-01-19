@@ -23,10 +23,11 @@ if (check_update) {
     }
     if (update = 2) {
         draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
         draw_text_center(x1 + 132, y1 + 248, "You are using the latest version!")
     }
     if (update = 3) {
-        draw_set_color(c_green)
+        draw_set_color(c_lime)
         draw_text_center(x1 + 132, y1 + 248, "Successfully updated!")
     }
 } else {
@@ -37,7 +38,7 @@ draw_set_font(fnt_main)
 draw_theme_color()
 draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
 draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
-draw_set_color(c_blue)
+draw_set_color(make_color_rgb(62, 144, 255))
 draw_text_center(x1 + 132, y1 + 296, "www.git.io/fjQH3")
 draw_line(x1 + 85, y1 + 309, x1 + 177, y1 + 309)
 
@@ -50,7 +51,7 @@ if (a) {
 
 draw_theme_color()
 draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
-draw_set_color(c_blue)
+draw_set_color(make_color_rgb(62, 144, 255))
 draw_text_center(x1 + 132, y1 + 356, "www.stuffbydavid.com")
 draw_line(x1 + 70, y1 + 369, x1 + 193, y1 + 369)
 a = mouse_rectangle(x1 + 71, y1 + 358, 123, 12)
