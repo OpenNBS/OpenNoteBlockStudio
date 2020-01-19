@@ -22,7 +22,7 @@ changed = 1
 if (t = h_addblock) {
     remove_block(arg0, arg1)
 } else if (t = h_removeblock) {
-    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 } else if (t = h_changeblock) {
     change_block(arg0, arg1, arg7, arg8, arg9, arg10, arg11)
 } else if (t = h_selectadd) {
