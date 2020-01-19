@@ -1,5 +1,5 @@
 // draw_downloadprogress(caption, desc, downloaded_size, total_size)
-var caption, desc, done, total, done_mb, total_mb, percent, x1, y1;
+var caption, desc, done, total, done_mb, total_mb, done_text, total_text, text, percent, x1, y1;
 caption = argument0
 desc = argument1
 done = argument2
@@ -21,5 +21,13 @@ draw_rectangle(x1 + 30, y1 + 60, x1 + 30 + percent * 240, y1 + 80, 0)
 draw_theme_color()
 draw_rectangle(x1 + 30, y1 + 60, x1 + 270, y1 + 80, 1)
 if (percent > 0.5) draw_set_color(c_white)
-draw_text(floor(window_width / 2), y1 + 65, string_format(done_mb, 0, 2) + "/" + string_format(total_mb, 0, 2) + " MB (" + string(round(percent * 100)) + "%)")
+if (total <= 0) {
+	done_text = "-.--"
+	total_text = "-.--"
+} else {
+	done_text = string_format(done_mb, 0, 2)
+	total_text = string_format(total_mb, 0, 2)
+}
+text = done_text + "/" + total_text + " MB (" + string(round(percent * 100)) + "%)"
+draw_text(floor(window_width / 2), y1 + 65, text)
 draw_set_halign(fa_left)

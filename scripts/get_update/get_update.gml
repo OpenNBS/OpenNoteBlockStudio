@@ -15,7 +15,7 @@ if (async_load[? "id"] == update_download) {
 		if (file_get_size(update_file) == total_size) {
 			show_message("Download complete! Click OK to begin installing the update.")
 			// At this point, the game is paused until the user dismisses the message
-			ExecuteShell(update_file, false, true)
+			ExecuteShell("\"" + update_file + "\"", false, true)
 			game_end()
 		} else {
 			if (question("Failed to download update. Do you want to open the Note Block Studio website and update manually?", "Failed")) {

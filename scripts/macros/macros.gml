@@ -1,6 +1,6 @@
 #macro gm_runtime_version "2.2.3.344"
 #macro version_date "2019.12.31"
-#macro version "3.6.0"
+#macro version "3.7.0"
 #macro nbs_version 4
 #macro pat_version 1
 
@@ -14,7 +14,7 @@
 #macro pattern_directory	data_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
-#macro update_file			file_directory + "Minecraft Note Block Studio Setup.exe"
+#macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
 #macro settings_file		file_directory + "settings.ini"
 #macro backup_file			file_directory + "backup.nbs"
 
