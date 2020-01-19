@@ -333,15 +333,24 @@ save_version = nbs_version
 load_settings()
 change_theme()
 if (show_welcome) window = w_greeting
+
+// Updates
 if (check_update)
     update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
+update_download = -1
+downloaded_size = 0
+total_size = -1
 if (file_exists_lib(settings_file) && vers != version) {
     window = w_update
     update = 3
 }
-log("Startup OK")
+
+// Delete old installer
+if (file_exists_lib(update_file)) {
+	files_delete_lib(update_file)
+}
 
 // Auto-recovery
 if (file_exists_lib(backup_file)) {
@@ -355,3 +364,5 @@ if (parameter_count() > 0) {
 	filename = parameter_string(1)
 	if (filename != "") load_song(filename)
 }
+
+log("Startup OK")

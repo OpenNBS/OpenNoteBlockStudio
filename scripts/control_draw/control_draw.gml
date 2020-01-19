@@ -1323,6 +1323,13 @@ if (mouse_check_button_released(mb_left)) {
 }
 if (window = w_releasemouse && !mouse_check_button(mb_left)) window = 0
 draw_windows()
+
+// Draw update progress bar
+if (update == 4) {
+	window = -1
+	draw_downloadprogress("Update", "Downloading update...", downloaded_size, total_size)
+}
+
 window_set_cursor(curs)
 mouse_xprev = mouse_x
 mouse_yprev = mouse_y
