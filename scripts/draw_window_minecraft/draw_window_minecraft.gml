@@ -140,7 +140,7 @@ if (selected_tab_mc = 0) { // Schematic
 	if (block_custom > 0) {    
 	    draw_set_color(c_red)
 	    if (block_custom = 1) draw_text(x1 + 45, yy + 16, "There is 1 block with custom instruments.")
-	    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + "blocks with custom instruments.")
+	    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + " blocks with custom instruments.")
 	    if (draw_button2(x1 + 45, yy + 34, 160, "Select affected blocks")) {
 	        select_custom()
 	        window = 0
@@ -225,7 +225,7 @@ if (selected_tab_mc = 0) { // Schematic
 		draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 	    draw_set_color(c_orange)
 	    if (block_custom = 1) draw_text(x1 + 45, yy + 32, "There is 1 block with custom instruments.")
-	    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + "blocks with custom instruments.")
+	    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + " blocks with custom instruments.")
 		if (draw_button2(x1 + 45, yy + 50, 160, "Select affected blocks")) {
 	        select_custom()
 	        window = 0
