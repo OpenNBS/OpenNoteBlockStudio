@@ -78,8 +78,9 @@ if (show_layers) {
 } else {
 	totalcols = floor(rw / 32)
 }
-if show_piano = 1 {
-	rhval = 270
+rhval = 270
+if (!show_piano) {
+	rhval = 130
 }
 totalrows = floor((rh - rhval) / 32)
 if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
