@@ -867,13 +867,17 @@ for (b = 0; b < totalrows; b += 1) {
 	            a = layerstereo[startb + b]
 	        }
 	        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-	        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo Pan: " + string(a) + "%\n(Click and drag to change)")
+			var stereostr
+			if (a > 100) { stereostr = "R " + string(a-100) }
+			if (a = 100) { stereostr = "Center" }
+			if (a < 100) { stereostr = "L " + string(-(a-100)) }
+	        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo pan: " + stereostr + "\n(Click and drag to change)")
 	        if (c) {
 	            draw_set_font(fnt_small)
 	            draw_set_halign(fa_center)
-				if a > 100 {draw_text(x1 + 120, y1 + 18, "R " + string(a-100))}
-				if a = 100 {draw_text(x1 + 120, y1 + 18, "MONO")}
-				if a < 100 {draw_text(x1 + 120, y1 + 18, "L " + string((a-100)*-1))	}
+				if a > 100 {draw_text(x1 + 116, y1 + 18, "R " + string(a-100))}
+				if a = 100 {draw_text(x1 + 116, y1 + 18, "MONO")}
+				if a < 100 {draw_text(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
 	            draw_set_halign(fa_left)
 	            draw_set_font(fnt_main)
 	            curs = cr_size_ns
