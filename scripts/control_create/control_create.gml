@@ -47,6 +47,7 @@ tonextbackup = 0
 filename = ""
 changed = 0
 midifile = ""
+song_midi = ""
 for (a = 0; a < 11; a += 1) {
     mididevice_instrument[a] = -1
     recent_song[a] = ""

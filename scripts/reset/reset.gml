@@ -26,6 +26,7 @@ for (a = 0; a <= enda; a += 1) {
 // File
 filename = ""
 changed = 0
+song_midi = midifile
 midifile = ""
 
 // Playback

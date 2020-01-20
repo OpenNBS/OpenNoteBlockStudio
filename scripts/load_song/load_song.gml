@@ -86,9 +86,7 @@ if (file_ext = ".nbs") {
     a = buffer_read_int()
     work_remove = max(0, a)
     // MIDI FILENAME
-    a = buffer_read_string_int()
-    if (filename_ext(a) = ".mid" || filename_ext(a) = ".midi") song_midi = a
-	else song_midi = ""
+    song_midi = buffer_read_string_int()
 	// LOOP
 	if (song_nbs_version >= 4) {
 		loop = buffer_read_byte()

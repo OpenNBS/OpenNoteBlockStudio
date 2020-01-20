@@ -25,7 +25,6 @@ if (r != 0 && r != 1 && r != 2) {message("Error loading MIDI file:\n\nFormat not
 
 midi_tracks = buffer_read_short_be()
 midifile = filename_name(fn)
-song_midi = string(midifile)
 midi_trackamount[midi_tracks] = 0
 reset_midi()
 midi_tempo = buffer_read_short_be()
