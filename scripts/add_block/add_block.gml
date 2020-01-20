@@ -1,4 +1,4 @@
-// add_block(x, y, ins, key, vel, pan, [insnum])
+// add_block(x, y, ins, key, vel, pan, pit, [insnum])
 var a, b, c, xx, yy, ins, key, vel, pan, pit, insnum;
 xx = argument[0]
 yy = argument[1]
@@ -51,6 +51,7 @@ if (!insnum) {
     if (ins.user) block_custom += 1
 }
 if (key < 33 || key > 57) block_outside += 1
+if (pit != 0) block_pitched += 1
 totalblocks += 1
 
 if (colfirst[xx] = -1 || yy < colfirst[xx]) colfirst[xx] = yy

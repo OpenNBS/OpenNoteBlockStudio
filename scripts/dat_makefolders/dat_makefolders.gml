@@ -24,7 +24,7 @@ if path != "" {
 }
 
 var tempdir = data_directory + "TempDatapack\\"
-if (directory_exists(tempdir)) directory_destroy(tempdir)
+if (directory_exists_lib(tempdir)) directory_destroy(tempdir)
 
 directory_create_lib(tempdir)
 directory_create_lib(tempdir + "data\\")

@@ -100,10 +100,10 @@ if (selected_tab = 0) {
 		refreshrate=1
     }
 
-	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_maxwidth(songfolder, 360) + condstr(string_width(songfolder) > 360, "..."))
+	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_truncate(songfolder, 360))
     popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
     if (draw_button2(x1 + 22, y1 + 276, 76, "Open")) {
-        if (!directory_exists(songfolder)) {
+        if (!directory_exists_lib(songfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(songfolder)
@@ -116,10 +116,10 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 276, 96, "Use default")) songfolder = songs_directory
 	
-	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_maxwidth(patternfolder, 360) + condstr(string_width(patternfolder) > 360, "..."))
+	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_truncate(patternfolder, 360))
     popup_set_window(x1 + 22, y1 + 300, 430, 18, patternfolder)
     if (draw_button2(x1 + 22, y1 + 326, 76, "Open")) {
-        if (!directory_exists(patternfolder)) {
+        if (!directory_exists_lib(patternfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(patternfolder)
@@ -142,13 +142,7 @@ if (selected_tab = 0) {
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
     draw_areaheader(x1 + 22, y1 + 260, 456, 95, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show piano", "Whether the piano should be visible.")) {
-		show_piano=!show_piano
-		rhval=130
-		if show_piano = 1 {
-			rhval=270
-		}
-}
+    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show piano", "Whether the piano should be visible.")) show_piano = !show_piano
     if (draw_checkbox(x1 + 40, y1 + 296, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
     if (draw_checkbox(x1 + 40, y1 + 316, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
     if (draw_checkbox(x1 + 40, y1 + 336, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart

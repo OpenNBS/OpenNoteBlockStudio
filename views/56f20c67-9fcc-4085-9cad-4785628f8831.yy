@@ -15,7 +15,9 @@
         "caf03170-c1fc-42ce-abd4-cc04c23cc07e",
         "0ce5a906-0342-42fb-89f3-04f3609f5689",
         "3ef34f15-11b7-471c-aa91-4f191100f959",
-        "0097ab11-b126-461a-8194-e3aaf09a6ddd"
+        "0097ab11-b126-461a-8194-e3aaf09a6ddd",
+        "3c1514e1-5885-49b4-86ef-115f1fdec3ea",
+        "e74f03fa-1407-4d25-93ab-0dccb3eb91ca"
     ],
     "filterType": "GMScript",
     "folderName": "Controller",

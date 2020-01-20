@@ -19,7 +19,6 @@ window_set_min_height(100)
 cam_window = camera_create()
 view_set_camera(0, cam_window)
 window_background = c_white
-window2 = 0
 
 // Application
 update = 0
@@ -48,6 +47,7 @@ tonextbackup = 0
 filename = ""
 changed = 0
 midifile = ""
+song_midi = ""
 for (a = 0; a < 11; a += 1) {
     mididevice_instrument[a] = -1
     recent_song[a] = ""
@@ -99,6 +99,7 @@ song_played[0, 0] = 0
 song_added[0, 0] = 0
 block_outside = 0
 block_custom = 0
+block_pitched = 0
 midi_devices = 0
 
 colamount[0] = 0
@@ -334,15 +335,24 @@ save_version = nbs_version
 load_settings()
 change_theme()
 if (show_welcome) window = w_greeting
+
+// Updates
 if (check_update)
     update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
 else
     update_http = -1
+update_download = -1
+downloaded_size = 0
+total_size = -1
 if (file_exists_lib(settings_file) && vers != version) {
     window = w_update
     update = 3
 }
-log("Startup OK")
+
+// Delete old installer
+if (file_exists_lib(update_file)) {
+	files_delete_lib(update_file)
+}
 
 // Auto-recovery
 if (file_exists_lib(backup_file)) {
@@ -356,3 +366,5 @@ if (parameter_count() > 0) {
 	filename = parameter_string(1)
 	if (filename != "") load_song(filename)
 }
+
+log("Startup OK")

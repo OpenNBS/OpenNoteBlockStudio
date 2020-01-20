@@ -87,6 +87,7 @@ if (selected_tab_mc = 0) { // Schematic
 
 	if (tempo = 10 || tempo = 5 || tempo = 2.5) {    
 		draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 	    draw_text(x1 + 45, yy + 16, "The tempo is " + string(tempo) + " ticks per second.")
 	} else {
 		draw_set_color(c_red)
@@ -126,6 +127,7 @@ if (selected_tab_mc = 0) { // Schematic
 	    }
 	} else {
 	    draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 	    draw_text(x1 + 45, yy + 16, "There are no blocks outside the 2 octave range.")
 	}
 	draw_theme_color()
@@ -138,13 +140,14 @@ if (selected_tab_mc = 0) { // Schematic
 	if (block_custom > 0) {    
 	    draw_set_color(c_red)
 	    if (block_custom = 1) draw_text(x1 + 45, yy + 16, "There is 1 block with custom instruments.")
-	    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + "blocks with custom instruments.")
+	    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + " blocks with custom instruments.")
 	    if (draw_button2(x1 + 45, yy + 34, 160, "Select affected blocks")) {
 	        select_custom()
 	        window = 0
 	    }
 	} else {
 	    draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 	    draw_text(x1 + 45, yy + 16, "There are no blocks with custom instruments.")
 	}
 	draw_theme_color()
@@ -158,6 +161,7 @@ if (selected_tab_mc = 0) { // Schematic
 	if (tempo = 20 || tempo = 10 || tempo = 5 || tempo = 4 || tempo = 2.5 || tempo = 2 || tempo = 1.25 || tempo = 1 || tempo = 0.5 || tempo = 0.25) {    
 		draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)	
 		draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 		draw_text(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
 	} else {
 		draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)	
@@ -207,6 +211,7 @@ if (selected_tab_mc = 0) { // Schematic
 	} else {
 		draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 	    draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 	    draw_text(x1 + 45, yy + 32, "There are no blocks outside the 2 octave range.")
 	}
 	draw_theme_color()
@@ -220,7 +225,7 @@ if (selected_tab_mc = 0) { // Schematic
 		draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 	    draw_set_color(c_orange)
 	    if (block_custom = 1) draw_text(x1 + 45, yy + 32, "There is 1 block with custom instruments.")
-	    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + "blocks with custom instruments.")
+	    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + " blocks with custom instruments.")
 		if (draw_button2(x1 + 45, yy + 50, 160, "Select affected blocks")) {
 	        select_custom()
 	        window = 0
@@ -228,6 +233,7 @@ if (selected_tab_mc = 0) { // Schematic
 	} else {
 		draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 	    draw_set_color(c_green)
+		if (theme == 2) draw_set_color(c_lime)
 	    draw_text(x1 + 45, yy + 32, "There are no blocks with custom instruments.")
 	}
 	draw_theme_color()

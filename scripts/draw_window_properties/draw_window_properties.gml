@@ -3,16 +3,16 @@ var x1, y1, a;
 curs = cr_default
 text_exists[0] = 0
 x1 = floor(window_width / 2 - 220)
-y1 = floor(window_height / 2 - 215)
-draw_window(x1, y1, x1 + 440, y1 + 430)
+y1 = floor(window_height / 2 - 180)
+draw_window(x1, y1, x1 + 440, y1 + 360)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Song Properties")
 draw_set_font(fnt_main)
 if (theme = 0) {
     draw_set_color(c_white)
-    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 392, 0)
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 322, 0)
     draw_set_color(make_color_rgb(137, 140, 149))
-    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 392, 1)
+    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 322, 1)
 }
 draw_areaheader(x1 + 22, y1 + 48, 396, 200, "Information")
 
@@ -41,38 +41,18 @@ a = song_desc
 song_desc = draw_textarea(4, x1 + 158, y1 + 64 + 23 * 3, 240, 100, song_desc, "Enter a description for your song.")
 if (a != song_desc) changed = 1
 
-draw_areaheader(x1 + 22, y1 + 270, 396, 70, "Auto-saving")
-a = autosave
-if (draw_checkbox(x1 + 40, y1 + 290, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.")) autosave=!autosave
-if (a != autosave) {
-    changed = 1
-    if (autosave = 0) tonextsave = 0
-    if (autosave = 1) tonextsave = autosavemins
-}
 draw_theme_color()
-if (autosave = 0) {
-    draw_set_color(c_white)
-    draw_text(x1 + 71, y1 + 311, "Minutes between savings:")
-    draw_set_color(8421504)
-}
-draw_text(x1 + 70, y1 + 310, "Minutes between savings:")
-a = autosavemins
-autosavemins = median(1, draw_dragvalue(2, x1 + 220, y1 + 310, autosavemins, 1, !autosave), 60)
-if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
-popup_set_window(x1 + 70, y1 + 310, 180, 16, "The amount of minutes between each auto-save.")
+draw_text(x1 + 32, y1 + 270, "Time signature:")
+timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 270, timesignature, 1), 8)
+draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 270, " / 4")
+popup_set_window(x1 + 32, y1 + 268, 110, 18, "The time signature of the song.")
 
-draw_theme_color()
-draw_text(x1 + 32, y1 + 348, "Time signature:")
-timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 348, timesignature, 1), 8)
-draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 348, " / 4")
-popup_set_window(x1 + 32, y1 + 346, 110, 18, "The time signature of the song.")
+draw_text(x1 + 232, y1 + 270, "Loop start tick:")
+loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 270, loopstart, 0.5), obj_controller.enda)
 
-draw_text(x1 + 232, y1 + 348, "Loop start tick:")
-loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 348, loopstart, 0.5), obj_controller.enda)
-
-draw_text(x1 + 232, y1 + 368, "Times to loop:")
-loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 368, loopmax, 0.5), 10)
-if loopmax = 0  draw_text(x1 + 340, y1 + 368, "(infinite)")
+draw_text(x1 + 232, y1 + 290, "Times to loop:")
+loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 290, loopmax, 0.5), 10)
+if loopmax = 0  draw_text(x1 + 340, y1 + 290, "(infinite)")
 timestoloop = loopmax
-if (draw_button2(x1 + 320, y1 + 398, 72, "OK")) {window = 0}
+if (draw_button2(x1 + 320, y1 + 328, 72, "OK")) {window = 0}
 window_set_cursor(curs)

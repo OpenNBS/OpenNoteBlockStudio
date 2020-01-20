@@ -26,6 +26,7 @@ for (a = 0; a <= enda; a += 1) {
 // File
 filename = ""
 changed = 0
+song_midi = midifile
 midifile = ""
 
 // Playback
@@ -47,6 +48,7 @@ endb2 = 0
 compatible = 1
 block_outside = 0
 block_custom = 0
+block_pitched = 0
 
 colamount[0] = 0
 rowamount[0] = 0
@@ -115,6 +117,12 @@ with (obj_instrument) {
 }
 user_instruments = 0
 instrument = instrument_list[| 0]
+
+// Reset note count per instrument
+for (a = 0; a < ds_list_size(instrument_list); a++) {
+    var ins = instrument_list[| a]
+    ins.num_blocks = 0
+}
 
 // Macros
 stereo_reverse = 0

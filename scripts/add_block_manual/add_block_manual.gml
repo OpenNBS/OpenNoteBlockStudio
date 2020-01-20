@@ -53,6 +53,7 @@ rowamount[yy] += 1
 ins.num_blocks++
 if (key < 33 || key > 57) block_outside += 1
 if (ins.user) block_custom += 1
+if (pit != 0) block_pitched += 1
 totalblocks += 1
 changed = 1
 work_add += 1

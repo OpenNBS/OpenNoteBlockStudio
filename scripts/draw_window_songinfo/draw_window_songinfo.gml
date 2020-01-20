@@ -1,5 +1,5 @@
 // draw_window_songinfo()
-var x1, y1, a, b, n, str, w, h, yy, w1, w2, w3, w4, col, r, g, b, str2, cut;
+var x1, y1, a, b, n, str, w, h, yy, w1, w2, w3, w4, w5, w6, col, r, g, b, str2, cut;
 with (obj_popup) instance_destroy()
 global.popup = 0
 if (song_name = "" && window = w_songinfo) {window = 0 return 0}
@@ -12,16 +12,22 @@ if (str[0] = "") str[0] = "Untitled song"
 
 str[1] = song_author
 str[2] = song_orauthor
+str[3] = song_midi
 draw_set_font(fnt_info_big)
 w = max(string_width(str[0]) + 32, 400)
 draw_set_font(fnt_info_med_bold)
 w2 = string_width(str[1])
 w4 = string_width(str[2])
+draw_set_font(fnt_mainbold)
+w6 = string_width(str[3])
 draw_set_font(fnt_info_med)
 w1 = string_width("Created by ")
 w3 = string_width("Originally created by ")
-w = max(w1 + w2, w)
+draw_set_font(fnt_main)
+w5 = string_width("Imported from ")
+w = max(w1 + w2 + 32, w)
 w = max(w3 + w4 + 32, w)
+w = max(w5 + w6 + 32, w)
 draw_set_font(fnt_main)
 var songdescwrap, songdeschei;
 songdescwrap = string_word_wrap(song_desc, 216)

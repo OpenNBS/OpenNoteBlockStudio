@@ -21,7 +21,7 @@ arg14 = history[historypos, 15]
 changed = 1
 
 if (t = h_addblock) {
-    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 } else if (t = h_removeblock) {
     remove_block(arg0, arg1)
 } else if (t = h_changeblock) {

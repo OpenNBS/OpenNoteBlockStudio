@@ -2,12 +2,12 @@
 var x1, y1, a, b, str, total_vals, val, decr, inc;
 curs = cr_default
 text_exists[0] = 0
+if (selected = 0) return 0
 x1 = floor(window_width / 2 - 80)
 y1 = floor(window_height / 2 - 80)
 draw_window(x1, y1, x1 + 140, y1 + 130)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Portamento")
-if (selected = 0) return 0
 draw_set_font(fnt_main)
 if (theme = 0) {
     draw_set_color(c_white)

@@ -21,4 +21,4 @@ if (string_lettersdigits(name) = "") {
 	}
 }
 
-return string_maxwidth(preview, 350) + condstr(string_width(preview) > 350, "...")
+return string_truncate(preview, 350)
