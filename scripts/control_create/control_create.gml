@@ -99,6 +99,7 @@ song_played[0, 0] = 0
 song_added[0, 0] = 0
 block_outside = 0
 block_custom = 0
+block_pitched = 0
 midi_devices = 0
 
 colamount[0] = 0

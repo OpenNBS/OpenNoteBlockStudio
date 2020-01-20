@@ -5,6 +5,9 @@ if (block_outside > 0) {
 if (block_custom > 0) {
     if (!question("Some note blocks have a custom instrument assigned to them. Export anyway?", "Minecraft Compatibility")) return 0
 }
+if (block_pitched > 0) {
+    if (!question("Some note blocks have fine pitch tuning, which isn't supported in note blocks. Export anyway?", "Minecraft Compatibility")) return 0
+}
 if (tempo != 10 && tempo != 5 && tempo != 2.5) {
     message("The tempo of the song is not compatible with Minecraft. As a result, the playback speed of the song in-game will differ from the one in the program.", "Tempo")
 }

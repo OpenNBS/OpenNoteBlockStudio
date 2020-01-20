@@ -24,3 +24,5 @@ history_set(h_changeblock, xx, yy, ins, key, vel, pan, pit, pins, pkey, pvel, pp
 changed = 1
 if (pkey >= 33 && pkey <= 57 && (key < 33 || key > 57)) block_outside += 1
 if (key >= 33 && key <= 57 && (pkey < 33 || pkey > 57)) block_outside -= 1
+if (ppit = 0 && pit != 0) block_pitched += 1
+if (ppit != 0 && pit = 0) block_pitched -= 1

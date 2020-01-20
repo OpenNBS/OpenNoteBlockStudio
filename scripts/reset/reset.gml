@@ -48,6 +48,7 @@ endb2 = 0
 compatible = 1
 block_outside = 0
 block_custom = 0
+block_pitched = 0
 
 colamount[0] = 0
 rowamount[0] = 0

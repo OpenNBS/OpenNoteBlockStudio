@@ -8,6 +8,7 @@ song_exists[xx, yy] = 0
 song_ins[xx, yy].num_blocks--
 if (song_key[xx, yy] < 33 || song_key[xx, yy] > 57) block_outside -= 1
 if (song_ins[xx, yy].user) block_custom -= 1
+if (song_pit[xx, yy] != 0) block_pitched -= 1
 
 song_ins[xx, yy] = 0
 song_key[xx, yy] = 0

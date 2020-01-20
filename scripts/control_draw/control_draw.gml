@@ -21,7 +21,7 @@ remove_emitters()
 
 if (selected = 0) {
 	if (block_outside = 0 && block_custom = 0) {
-		if (tempo = 10 || tempo = 5 || tempo = 2.5) compatible = 1
+		if ((tempo = 10 || tempo = 5 || tempo = 2.5) && block_pitched = 0) compatible = 1
 		else compatible = 2
 	} else compatible = 0
 }
