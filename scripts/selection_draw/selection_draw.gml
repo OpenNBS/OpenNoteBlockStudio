@@ -11,7 +11,7 @@ w = argument2
 h = argument3
 draw_set_halign(fa_center)
 // Play
-if (floor(marker_pos) != floor(marker_prevpos) && marker_pos >= selection_x && marker_pos < selection_x + selection_l) {
+if ((floor(marker_pos) != floor(marker_prevpos) || (marker_prevpos == 0 && marker_pos != marker_prevpos)) && marker_pos >= selection_x && marker_pos < selection_x + selection_l) {
     xx = floor(marker_pos) - selection_x
     if (selection_colfirst[xx] > -1) {
         for (b = selection_colfirst[xx]; b <= selection_collast[xx]; b += 1) {
