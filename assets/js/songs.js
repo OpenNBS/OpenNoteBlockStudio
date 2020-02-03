@@ -36,11 +36,8 @@ $(function () {
                 }).replace(/ /g, ' ')
             });
         });
+
+        //Sort songs by date
+        songList.sort("date");
     });
-
-    //Sort songs by date
-    songList.sort("date")
 });
-
-
-
