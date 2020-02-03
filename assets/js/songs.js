@@ -37,6 +37,9 @@ $(function () {
             });
         });
     });
+
+    //Sort songs by date
+    songList.sort("date")
 });
 
 
