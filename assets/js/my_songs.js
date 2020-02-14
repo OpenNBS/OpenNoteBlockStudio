@@ -7,10 +7,11 @@ var options = {
         { name: 'update', attr: 'href' },
         { name: 'delete', attr: 'onclick' },
         'date',
+        { name: 'timestamp', attr: 'data-timestamp' },
         'status'
     ],
     page: 10,
-    pagination: true,
+    pagination: [{ left: 5, right: 10 }],
     item: 'song-item'
 };
 
@@ -48,12 +49,16 @@ $(function () {
                         date: data.date.toDate().toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric'
                         }).replace(/ /g, ' '),
+                        timestamp: data.date.toDate().getTime(),
                         update: window.location.href + "update?id=" + doc.id,
                         delete: "delete_song(\'" + doc.id + "\',this)",
                         status: statusText
                     });
                     itemId++;
                 });
+
+                //Sort songs by date
+                songList.sort("timestamp", { order: "desc" });
 
                 if (songCount == 0) {
                     $("#noSongsText").show();
