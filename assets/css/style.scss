@@ -1,6 +1,10 @@
 ---
 ---
 
-.newversion{
-	background-color: #00ff0054;
+table tbody tr:nth-child(2n).newversion {
+	background-color: #00ff0032
+}
+
+table tbody tr:nth-child(2n+1).newversion {
+	background-color: #00ff0049
 }
