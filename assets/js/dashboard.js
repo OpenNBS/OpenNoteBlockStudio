@@ -4,11 +4,12 @@ var options = {
         'original_author',
         { name: 'download', attr: 'href' },
         'date',
+        { name: 'timestamp', attr: 'data-timestamp' },
         { name: 'accept', attr: 'onclick' },
         { name: 'deny', attr: 'onclick' }
     ],
     page: 10,
-    pagination: true,
+    pagination: [{ left: 5, right: 10 }],
     item: 'song-item'
 };
 
@@ -41,10 +42,14 @@ $(function () {
                         date: data.date.toDate().toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric'
                         }).replace(/ /g, ' '),
-                        accept: "accept_song(\'" + doc.id + "\',1)",
-                        deny: "accept_song(\'" + doc.id + "\',2)",
+                        timestamp: data.date.toDate().getTime(),
+                        accept: "accept_song(\'" + doc.id + "\',1,this)",
+                        deny: "accept_song(\'" + doc.id + "\',2,this)",
                     });
                 });
+
+                //Sort songs by date
+                songList.sort("timestamp", { order: "desc" });
             });
 
         });

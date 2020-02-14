@@ -18,7 +18,7 @@ permalink: /songs/
 			<input class="search" placeholder="Search"/>
 			<span class="sort button small" data-sort="name">Sort by name</span>
 			<span class="sort button small" data-sort="author">Sort by author</span>
-			<span class="sort button small" data-sort="date">Sort by date</span>
+			<span class="sort button small" data-sort="timestamp">Sort by date</span>
 		</div>
 			<ul class="list">
 			</ul>
@@ -37,7 +37,7 @@ permalink: /songs/
 					<strong>Original author:</strong> <p class="original_author"></p>
 				</div>
 				<div class="col-sm">
-					<strong>Date:</strong> 	<p class="date"></p>
+					<strong>Date:</strong> 	<p class="date timestamp" data-timestamp=""></p>
 				</div>
 				<div class="col-sm">
 					<strong>Download:</strong> <p><a class="download_link icon fa-download"></a></p>

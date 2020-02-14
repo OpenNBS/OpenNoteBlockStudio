@@ -4,10 +4,11 @@ var options = {
         'author',
         'original_author',
         { name: 'download_link', attr: 'href' },
-        'date'
+        'date',
+        { name: 'timestamp', attr: 'data-timestamp' }
     ],
     page: 10,
-    pagination: true,
+    pagination: [{ left: 5, right: 10 }],
     item: 'song-item'
 };
 
@@ -33,11 +34,12 @@ $(function () {
                 download_link: data.download_url,
                 date: data.date.toDate().toLocaleDateString('en-GB', {
                     day: 'numeric', month: 'short', year: 'numeric'
-                }).replace(/ /g, ' ')
+                }).replace(/ /g, ' '),
+                timestamp: data.date.toDate().getTime()
             });
         });
 
         //Sort songs by date
-        songList.sort("date");
+        songList.sort("timestamp", { order: "desc" });
     });
 });
