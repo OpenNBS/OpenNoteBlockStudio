@@ -171,7 +171,7 @@ if (d = 1 && !mouse_check_button(mb_left)) {
 }
 // Check key presses
 if (window = 0 && text_focus = -1 && key_edit = -1 && !keyboard_check(vk_control)) {
-for (a = 0 ;a < 87; a += 1) {
+for (a = 0; a <= 87; a += 1) {
     if (piano_key[a] > 0) {
         if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
             if (select_lastpressed) selected_key = a
