@@ -78,7 +78,7 @@ section_exists = 0
 section_start = 0
 section_end = 0
 timeline_pressa = -1
-for (a = 0; a < 200; a += 1) text_exists[a] = 0
+for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 
 // Note blocks
 starta = 0

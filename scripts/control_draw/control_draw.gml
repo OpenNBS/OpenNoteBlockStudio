@@ -52,13 +52,13 @@ if (key_edit > -1) {
 // Autosave
 if (autosave && filename_ext(filename) = ".nbs") {
     tonextsave -= 1 / room_speed / 60
-    if (tonextsave <= 0) save_song(filename)
+    if (tonextsave <= 0 && playing == 0) save_song(filename)
 }
 
 // Auto-recovery
 if (totalblocks > 0) {
 	tonextbackup -= 1 / room_speed / 60
-	if (tonextbackup <= 0) {
+	if (tonextbackup <= 0 && playing == 0) {
 		save_song(backup_file, true)
 		tonextbackup = backupmins
 	}
@@ -74,9 +74,9 @@ if (theme = 2) iconcolor = c_white
 
 // Calculate area
 if (show_layers) {
-	totalcols = floor((rw - 270) / 32)
+	totalcols = floor((rw - 8 - 270) / 32)
 } else {
-	totalcols = floor(rw / 32)
+	totalcols = floor((rw - 8) / 32)
 }
 rhval = 270
 if (!show_piano) {
