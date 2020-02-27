@@ -1479,6 +1479,14 @@
             }
         },
         {
+            "Key": "6d864c38-717b-4510-b4bc-8f213333c00a",
+            "Value": {
+                "id": "bd33d0a9-bdab-4bbf-86b9-4908327803c4",
+                "resourcePath": "views\\6d864c38-717b-4510-b4bc-8f213333c00a.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "6e497571-8f59-4cd1-8d53-e3ef4d9dcc37",
             "Value": {
                 "id": "369be765-3998-4fbc-9b2c-2f0557a6ea5e",
@@ -3287,6 +3295,14 @@
             }
         },
         {
+            "Key": "f7c202ec-35c3-481f-bd53-1884954bc294",
+            "Value": {
+                "id": "8445918c-0ecc-46ca-9c52-43ee7e2cd1c4",
+                "resourcePath": "views\\f7c202ec-35c3-481f-bd53-1884954bc294.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "f80612c3-df64-4a8f-9e50-a46f75511b9a",
             "Value": {
                 "id": "ca3c635b-7de8-4929-9434-7ffc4d9e2d3b",
@@ -3300,6 +3316,14 @@
                 "id": "0b0ae3da-c874-4876-a01d-ba1c6a3fb375",
                 "resourcePath": "options\\xboxone\\options_xboxone.yy",
                 "resourceType": "GMXBoxOneOptions"
+            }
+        },
+        {
+            "Key": "f8b92b61-5941-4f39-a5c3-fb9870354d12",
+            "Value": {
+                "id": "8f91f6af-7895-419e-a375-9073cedcfd11",
+                "resourcePath": "views\\f8b92b61-5941-4f39-a5c3-fb9870354d12.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
