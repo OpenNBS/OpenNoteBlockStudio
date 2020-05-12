@@ -15,6 +15,10 @@ permalink: /songs/new/
 				<input type="text" name="name" class="form-control" id="inputName" placeholder="Enter song name" required>
 			</div>
 			<div class="form-group">
+				<label for="inputOriginalAuthor">Author</label>
+				<input type="text" name="author" class="form-control" id="inputAuthor" data-toggle="tooltip" placeholder="Author" title="Cannot be changed. Please use another account if you don't want people to see this." disabled>
+			</div>
+			<div class="form-group">
 				<label for="inputOriginalAuthor">Original Author (optional)</label>
 				<input type="text" name="originalAuthor" class="form-control" id="inputOriginalAuthor" placeholder="Original Author">
 			</div>

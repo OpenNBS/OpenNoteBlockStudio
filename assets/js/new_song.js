@@ -4,6 +4,10 @@ $(function () {
 		if (!user) {
 			// User is not signed in
 			window.location = "/songs";
+		}else{
+
+			// Put username in author field
+			$("#inputAuthor").val(user.displayName);
 		}
 	});
 
