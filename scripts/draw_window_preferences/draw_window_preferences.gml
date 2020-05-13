@@ -90,7 +90,7 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
     if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
-    draw_areaheader(x1+258,y1+164,220,60,"Room Speed (Experimental)")
+    draw_areaheader(x1+258,y1+164,220,60,"Max frame rate (experimental)")
     if (draw_radiobox(x1+274,y1+164+16,!refreshrate,"30FPS","Run the program at 30FPS.")) {
         game_set_speed(30,gamespeed_fps)
 		refreshrate=0
