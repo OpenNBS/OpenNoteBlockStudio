@@ -19,44 +19,49 @@ var songList = new List('songList', options);
 
 $(function () {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).get().then(function (doc) {
+        if (!user) {
+            // User is not signed in
+            window.location = "songs";
+        } else {
+            db.collection("users").doc(user.uid).get().then(function (doc) {
 
-            if (!doc.data()) {
-                window.location = "songs";
-                return;
-            }
+                if (!doc.data()) {
+                    window.location = "songs";
+                    return;
+                }
 
-            var data = doc.data();
-            if (!data.admin) {
-                window.location = "songs";
-                return;
-            }
+                var data = doc.data();
+                if (!data.admin) {
+                    window.location = "songs";
+                    return;
+                }
 
-            //Get all songs
-            db.collectionGroup("songs").where("status", "==", 0).get().then(function (querySnapshot) {
-                var itemId = 0;
-                querySnapshot.forEach(function (doc) {
-                    var data = doc.data();
-                    songList.add({
-                        id: itemId,
-                        name: data.name,
-                        author: data.author,
-                        original_author: data.original_author,
-                        download: data.download_url,
-                        date: data.date.toDate().toLocaleDateString('en-GB', {
-                            day: 'numeric', month: 'short', year: 'numeric'
-                        }).replace(/ /g, ' '),
-                        timestamp: data.date.toDate().getTime(),
-                        accept: "accept_song(\'" + doc.id + "\',1,this)",
-                        deny: "accept_song(\'" + doc.id + "\',2,this)",
+                //Get all songs
+                db.collectionGroup("songs").where("status", "==", 0).get().then(function (querySnapshot) {
+                    var itemId = 0;
+                    querySnapshot.forEach(function (doc) {
+                        var data = doc.data();
+                        songList.add({
+                            id: itemId,
+                            name: data.name,
+                            author: data.author,
+                            original_author: data.original_author,
+                            download: data.download_url,
+                            date: data.date.toDate().toLocaleDateString('en-GB', {
+                                day: 'numeric', month: 'short', year: 'numeric'
+                            }).replace(/ /g, ' '),
+                            timestamp: data.date.toDate().getTime(),
+                            accept: "accept_song(\'" + doc.id + "\',1,this)",
+                            deny: "accept_song(\'" + doc.id + "\',2,this)",
+                        });
+                        itemId++;
                     });
-                    itemId++;
-                });
 
-                //Sort songs by date
-                songList.sort("timestamp", { order: "desc" });
+                    //Sort songs by date
+                    songList.sort("timestamp", { order: "desc" });
+                });
             });
-        });
+        }
     });
 });
 
