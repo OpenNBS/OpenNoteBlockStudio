@@ -133,7 +133,7 @@ a = mouse_rectangle(b, c, 224, 32)
 a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 draw_sprite(spr_frame2, a + 3 * theme, b, c)
 draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
-draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of sound file")
+draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
 if (a = 2 && mouse_check_button_released(mb_left)) open_midi("")
 
 b = x1 + 300
