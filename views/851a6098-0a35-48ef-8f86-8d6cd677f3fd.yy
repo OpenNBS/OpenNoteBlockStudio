@@ -31,7 +31,8 @@
         "06542021-ad62-4bba-857f-09ba0f0f8534",
         "ab93f4d7-71bd-4260-85f1-366e065b1656",
         "fca0f17f-26af-492a-84ef-996e87cb1bb6",
-        "796c8fe4-8c63-4006-854e-09d8afd9f16a"
+        "796c8fe4-8c63-4006-854e-09d8afd9f16a",
+        "40098377-e7c6-4b5e-a120-da03737a0214"
     ],
     "filterType": "GMScript",
     "folderName": "Interface",
