@@ -37,6 +37,9 @@ with (new(obj_dummy2)) {
 	
 	// Create folder structure
 	tempdir = data_directory + "TempDatapack\\"
+	if (directory_exists_lib(tempdir)) {
+		directory_delete_lib(tempdir)
+	}
 	functiondir = dat_makefolders(path, namespace)
 	
 	//pack.mcmeta
@@ -143,7 +146,7 @@ with (new(obj_dummy2)) {
 		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
 	}
 	
-	directory_destroy(tempdir)
+	directory_delete_lib(tempdir)
 	instance_destroy()
 }
 message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")
