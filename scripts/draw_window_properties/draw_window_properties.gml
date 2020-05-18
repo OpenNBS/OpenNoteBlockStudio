@@ -47,12 +47,13 @@ timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 270, timesignature, 1
 draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 270, " / 4")
 popup_set_window(x1 + 32, y1 + 268, 110, 18, "The time signature of the song.")
 
-draw_text(x1 + 232, y1 + 270, "Loop start tick:")
-loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 270, loopstart, 0.5), obj_controller.enda)
+if (draw_checkbox(x1 + 232, y1 + 270, loop, "Enable looping", "Whether to loop this song back to"+br+"the start at the end of playback.")) loop=!loop
+draw_text(x1 + 232, y1 + 290, "Loop start tick:")
+loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 290, loopstart, 0.5), obj_controller.enda)
 
-draw_text(x1 + 232, y1 + 290, "Times to loop:")
-loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 290, loopmax, 0.5), 10)
-if loopmax = 0  draw_text(x1 + 340, y1 + 290, "(infinite)")
+draw_text(x1 + 232, y1 + 310, "Times to loop:")
+loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 310, loopmax, 0.5), 10)
+if loopmax = 0  draw_text(x1 + 340, y1 + 310, "(infinite)")
 timestoloop = loopmax
 if (draw_button2(x1 + 320, y1 + 328, 72, "OK")) {window = 0}
 window_set_cursor(curs)

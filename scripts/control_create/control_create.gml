@@ -235,6 +235,7 @@ asso_midi = 0
 asso_sch = 0
 w_asso_start = 1
 wmenu = 0
+loop_toggle = 0
 loop = 0
 loopmax = 0
 loopstart = 0

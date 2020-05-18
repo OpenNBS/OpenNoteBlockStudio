@@ -1079,7 +1079,7 @@ forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
 if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-if (draw_icon(icons.LOOP_INACTIVE + loop, xx, "Toggle looping", 0, 0)) loop = !loop xx += 25
+if (draw_icon(icons.LOOP_INACTIVE + loop_toggle, xx, "Toggle looping", 0, 0)) loop_toggle = !loop_toggle xx += 25
 if metronome {
 	if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 	else metricon = icons.METRONOME_2
