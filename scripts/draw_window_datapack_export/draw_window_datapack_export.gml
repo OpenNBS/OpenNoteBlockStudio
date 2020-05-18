@@ -73,21 +73,21 @@ if (selected_tab_dat = 0) {
 	if (song_name != "") dat_name = song_name
 	else if (filename != "") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
 	else dat_name = ""
-	dat_name = draw_inputbox(20,x1 + 16, y1 + 225,145,dat_name,"This name will be used in the command"+br+"for playing the song inside the game.")
+	dat_name = draw_inputbox(50,x1 + 16, y1 + 225,145,dat_name,"This name will be used in the command"+br+"for playing the song inside the game.")
 
 	//Namespace
 	draw_set_color(c_gray)
 	if ((string_path(dat_name) != "") && (string_path(dat_namespace) != "")) draw_theme_color()
 	draw_text(x1 + 16, y1 + 255, "Namespace:")
 	draw_theme_color()
-	dat_namespace = draw_inputbox(21,x1 + 16, y1 + 272,145,dat_namespace,"(optional) Use this to place the functions under a custom namespace."+br+"If empty, namespace will be the name of the song.")
+	dat_namespace = draw_inputbox(51,x1 + 16, y1 + 272,145,dat_namespace,"(optional) Use this to place the functions under a custom namespace."+br+"If empty, namespace will be the name of the song.")
 
 	//Path
 	draw_set_color(c_gray)
 	if ((string_path(dat_name) != "") && (string_path(dat_namespace) != "") && dat_getpath(dat_path) != "") draw_theme_color()
 	draw_text(x1 + 16, y1 + 301, "Path:")
 	draw_theme_color()
-	dat_path = draw_inputbox(22,x1 + 16, y1 + 318,145,dat_path,"(optional) Path to the song from the main 'functions'"+br+"folder. You can use '/' to add subfolders.")
+	dat_path = draw_inputbox(52,x1 + 16, y1 + 318,145,dat_path,"(optional) Path to the song from the main 'functions'"+br+"folder. You can use '/' to add subfolders.")
 
 	//Preview
 	draw_text(x1 + 16, y1 + 348, "Command preview:")
@@ -162,9 +162,9 @@ if (selected_tab_dat = 0) {
 	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
 	draw_text(x1 + 33, y1 + 295, "Position in map:")
 	draw_text(x1 + 33, y1 + 318, "X value:")
-	dat_xval = draw_inputbox(23,x1 + 83, y1 + 315,40,dat_xval,"X value")
+	dat_xval = draw_inputbox(53,x1 + 83, y1 + 315,40,dat_xval,"X value")
 	draw_text(x1 + 33, y1 + 338, "Z value:")
-	dat_zval = draw_inputbox(24,x1 + 83, y1 + 335,40,dat_zval,"Z value")
+	dat_zval = draw_inputbox(54,x1 + 83, y1 + 335,40,dat_zval,"Z value")
 	//Get note block textures button
 	if (draw_button2(x1 + 13, y1 + 360, 152, "Get note block textures")) {
 		datapack_getinstextures()

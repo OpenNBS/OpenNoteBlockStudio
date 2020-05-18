@@ -102,8 +102,8 @@ if (selected_tab_sch = 0) {
     draw_text(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
 	draw_set_halign(fa_left)
 	draw_text(x1 + 380, y1 + 280, "Range:")
-	sch_exp_range_start = draw_inputbox(25,x1 + 380, y1 + 300,40,sch_exp_range_start,"Start Tick")
-	sch_exp_range_end = draw_inputbox(26,x1 + 425, y1 + 300,40,sch_exp_range_end,"End Tick")
+	sch_exp_range_start = draw_inputbox(55,x1 + 380, y1 + 300,40,sch_exp_range_start,"Start Tick")
+	sch_exp_range_end = draw_inputbox(56,x1 + 425, y1 + 300,40,sch_exp_range_end,"End Tick")
     draw_set_halign(fa_left)
 } else {
     if (theme = 1) {

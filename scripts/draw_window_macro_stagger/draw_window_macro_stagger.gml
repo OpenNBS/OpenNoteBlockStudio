@@ -22,7 +22,7 @@ if (theme = 0) {
 }
 draw_areaheader(x1 + 15, y1 + 53, 120, 35, "Pattern")
 
-pattern = draw_textarea(5, x1 + 20, y1 + 60, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
+pattern = draw_textarea(58, x1 + 20, y1 + 60, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
 draw_set_font(fnt_main)
 draw_text(x1 + 25, y1 + 92,"This may replace \nlower note blocks!")
 if (draw_button2(x1 + 15, y1 + 128, 60, "OK")) {

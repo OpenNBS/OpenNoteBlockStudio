@@ -18,7 +18,7 @@ if (theme = 0) {
 }
 draw_areaheader(x1 + 10, y1 + 43, 120, 35, "Pattern")
 
-pattern = draw_textarea(7, x1 + 15, y1 + 50, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
+pattern = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
 
 draw_theme_color()
 if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
