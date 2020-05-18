@@ -45,26 +45,34 @@ draw_theme_color()
 draw_areaheader(x1 + 22, y1 + 268, 396, 85, "Playback")
 
 draw_text(x1 + 37, y1 + 285, "Time signature:")
+a = timesignature
 timesignature = median(2, draw_dragvalue(3, x1 + 135, y1 + 285, timesignature, 1), 8)
+if (a != timesignature) changed = 1
 draw_text(x1 + 135 + string_width(string(timesignature)), y1 + 285, " / 4")
 popup_set_window(x1 + 37, y1 + 283, 110, 18, "The time signature of the song.")
 
+a = loop
 if (draw_checkbox(x1 + 232, y1 + 285, loop, "Enable looping", "Whether to loop this song back to"+br+"the start at the end of playback.")) loop=!loop
+if (a != loop) changed = 1
 if (!loop) draw_set_color(c_gray)
 draw_text(x1 + 232, y1 + 305, "Loop start tick:")
+a = loopstart
 if (loop) {
 	loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 305, loopstart, 0.5), obj_controller.enda)
 } else {
 	draw_text(x1 + 320, y1 + 305, loopstart)
 }
+if (a != loopstart) changed = 1
 
 draw_text(x1 + 232, y1 + 325, "Times to loop:")
+a = loopmax
 if (loop) {
 	loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 325, loopmax, 0.5), 10)
 } else {
 	draw_text(x1 + 320, y1 + 325, loopmax)
 }
 if (loopmax = 0) draw_text(x1 + 340, y1 + 325, "(infinite)")
+if (a != loopmax) changed = 1
 timestoloop = loopmax
 draw_theme_color()
 
