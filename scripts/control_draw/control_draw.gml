@@ -1,5 +1,5 @@
 // control_draw()
-var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx
+var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx, prev
 rw = window_width
 rh = window_height
 curs = cr_default
@@ -827,12 +827,14 @@ for (b = 0; b < totalrows; b += 1) {
 	    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
 	    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 		draw_set_font(fnt_small)
+		prev = layername[startb + b]
 		layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 		if (layername[startb + b] = "") {
 	        draw_set_color(c_gray)
 			if(theme = 2) draw_set_color(make_color_rgb(160, 160, 160))
 	        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
 	    }
+		if (prev != layername[startb + b]) changed = 1
 	    draw_theme_color()
 	    // Vol
 	    if (realvolume) {
@@ -894,6 +896,7 @@ for (b = 0; b < totalrows; b += 1) {
 	    if (draw_layericon(0, x1 + 126-!realvolume-realstereo * 10, y1 + 8, "Lock this layer", 0, p)) {
 	        if (layerlock[startb + b] = 2) solostr = string_replace_all(solostr, "|" + string(startb + b) + "|", "")
 	        if (layerlock[startb + b] = 1) {layerlock[startb + b] = 0} else {layerlock[startb + b] = 1}
+			changed = 1
 	    }
 	    // Solo button
 	    p = 0
@@ -938,6 +941,7 @@ for (b = 0; b < totalrows; b += 1) {
 	}
 }
 if (window = w_dragvol) {
+	prev = layervol[dragvolb]
 	dragvol += (mouse_yprev - mouse_y)
 	dragvol = median(0, dragvol, 100)
 	if (!keyboard_check(vk_shift)) {
@@ -945,11 +949,13 @@ if (window = w_dragvol) {
 	} else {
 		layervol[dragvolb] = dragvol
 	}
+	if (layervol[dragvolb] != prev) changed = 1
 	if (!mouse_check_button(mb_left)) {
 	    window = w_releasemouse
 	}
 }
 if (window = w_dragstereo) {
+	prev = layerstereo[dragstereob]
 	dragstereo += (mouse_yprev - mouse_y)
 	dragstereo = median(0, dragstereo, 200)
 	if (!keyboard_check(vk_shift)) {
@@ -957,6 +963,7 @@ if (window = w_dragstereo) {
 	} else {
 		layerstereo[dragstereob] = dragstereo
 	}
+	if (layerstereo[dragstereob] != prev) changed = 1
 	if (!mouse_check_button(mb_left)) {
 	    window = w_releasemouse
 	}
