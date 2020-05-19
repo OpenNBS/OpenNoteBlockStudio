@@ -37,6 +37,7 @@ icons_init()
 refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
 rhval = 270
+fullscreen = 0
 autosave = 0
 autosavemins = 10
 tonextsave = 0

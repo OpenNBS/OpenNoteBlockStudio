@@ -73,7 +73,7 @@ iconcolor = c_black
 if (theme = 2) iconcolor = c_white
 
 // Calculate area
-if (show_layers) {
+if (!fullscreen && show_layers) {
 	totalcols = floor((rw - 8 - 270) / 32)
 } else {
 	totalcols = floor((rw - 8) / 32)
@@ -81,6 +81,9 @@ if (show_layers) {
 rhval = 270
 if (!show_piano) {
 	rhval = 130
+}
+if (fullscreen) {
+	rhval = 42
 }
 totalrows = floor((rh - rhval) / 32)
 if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
@@ -93,10 +96,14 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
 x1 = 4
-if (show_layers) {
+if (!fullscreen && show_layers) {
 	x1 = 264
 }
-y1 = 52
+if (fullscreen) {
+	y1 = 0
+} else {
+	y1 = 52
+}
 if ((window = 0 || select > 0) && playing = 0) {
     if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
         sela = floor((mouse_x - (x1 + 2)) / 32)
@@ -575,7 +582,10 @@ if (window = 0 && text_focus = -1) {
 				macro_reset()
 				}
 		}
-		
+	}
+	// Toggle fullscreen
+	if (keyboard_check_pressed(vk_f11)) {
+		fullscreen = !fullscreen
 	}
 }
 // Selecting note blocks
@@ -821,7 +831,7 @@ for (b = 0; b < totalrows; b += 1) {
 	}
 	x1 = 4
 	y1 = 54 + 32 + b * 32 - 1
-	if (show_layers) {
+	if (!fullscreen && show_layers) {
 		// Name
 		m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 	    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
@@ -993,6 +1003,7 @@ if (draw_macroicon(14, xx, yy + 16, "Reset all properties", 0, 0)) {playing = 0 
 }
 
 // Tabs
+if (!fullscreen) {
 if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 tab_x = 1
 draw_set_font(fnt_small)
@@ -1237,8 +1248,6 @@ if (sela > -1 && selb > -1) {
 		}
 	}
 }
-
-
 draw_set_halign(fa_right)
 str = ""
 for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
@@ -1246,8 +1255,9 @@ if (midi_devices = 0) str = "No connected MIDI devices"
 else str = "MIDI devices: " + str
 draw_text(rw - 6, rh - 18, str)
 draw_set_halign(fa_left)
+}
 
-if (show_layers) {
+if (!fullscreen && show_layers) {
 	// Marker position
 	draw_set_halign(fa_right)
 	draw_theme_color()
@@ -1303,7 +1313,7 @@ if (show_layers) {
 }
 
 // Piano
-if (show_piano) {
+if (!fullscreen && show_piano) {
 	draw_piano(floor(rw / 2 - (keysshow * 39) / 2), rh - 154, keysshow, totalcols)
 	if (mouse_rectangle(floor(rw / 2 - (keysshow * 39) / 2), rh - 162, keysshow * 39, 136) && window = 0) curs = cr_handpoint
 }
