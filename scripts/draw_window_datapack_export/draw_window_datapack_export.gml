@@ -157,7 +157,7 @@ if (selected_tab_dat = 0) {
 	if (draw_radiobox(x1 + 33, y1 + 175, dat_vis_type = "Piano Roll", "Piano Roll", "Use Piano Roll visualizer.")) dat_vis_type = "Piano Roll"
 	if (draw_radiobox(x1 + 33, y1 + 195, dat_vis_type = "Fountain", "Fountain", "Use Fountain visualizer.")) dat_vis_type = "Fountain"
 	if (draw_radiobox(x1 + 33, y1 + 215, dat_vis_type = "Rittai Onkyou", "Rittai Onkyou", "Use Rittai Onkyou visualizer.")) dat_vis_type = "Rittai Onkyou"
-	if (draw_checkbox(x1 + 33, y1 + 235, dat_glow, "Add Glow", "Whether to add a dat_glow to each instrument.")) dat_glow=!dat_glow
+	if (draw_checkbox(x1 + 33, y1 + 235, dat_glow, "Add glow", "Whether to add a glowing effect to each note block.")) dat_glow=!dat_glow
 	draw_text(x1 + 33, y1 + 255, "Spawn height:")
 	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
 	draw_text(x1 + 33, y1 + 295, "Position in map:")
