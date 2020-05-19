@@ -921,9 +921,9 @@ for (b = 0; b < totalrows; b += 1) {
 	        }
 	    }
 		// Select all
-	    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer\n(Hold Shift to select multiple layers)", 0, 0)) {
+	    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, "Select all note blocks in this layer\n(Hold Ctrl to select multiple layers)", 0, 0)) {
 	        playing = 0
-			if (!keyboard_check(vk_shift)) {
+			if (!keyboard_check(vk_control)) {
 				selection_place(0)
 			}
 	        selection_add(0, startb + b, enda, startb + b, 0, 0)
