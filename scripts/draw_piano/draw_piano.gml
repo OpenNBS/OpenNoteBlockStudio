@@ -175,7 +175,7 @@ for (a = 0; a <= 87; a += 1) {
     if (piano_key[a] > 0) {
         if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
             if (select_lastpressed) selected_key = a
-            if (playing = 0) play_sound(instrument, a, 100 ,100, 0)
+            if (record = 0) play_sound(instrument, a, 100 ,100, 0)
             if (playing = 0.25) toggle_playing(totalcols)
             if (playing && record) {
                 b = 0
