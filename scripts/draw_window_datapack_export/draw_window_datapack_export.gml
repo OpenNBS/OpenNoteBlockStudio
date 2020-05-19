@@ -159,7 +159,7 @@ if (selected_tab_dat = 0) {
 	if (draw_radiobox(x1 + 33, y1 + 215, dat_vis_type = "Rittai Onkyou", "Rittai Onkyou", "Use Rittai Onkyou visualizer.")) dat_vis_type = "Rittai Onkyou"
 	if (draw_checkbox(x1 + 33, y1 + 235, dat_glow, "Add glow", "Whether to add a glowing effect to each note block.")) dat_glow=!dat_glow
 	draw_text(x1 + 33, y1 + 255, "Spawn height:")
-	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 256)
+	dat_yval = median(0, draw_dragvalue(11, x1 + 33, y1 + 275, dat_yval, 0.5), 255)
 	draw_text(x1 + 33, y1 + 295, "Position in map:")
 	draw_text(x1 + 33, y1 + 318, "X value:")
 	dat_xval = draw_inputbox(53,x1 + 83, y1 + 315,40,dat_xval,"X value")
