@@ -133,11 +133,11 @@ if (selected_tab = 0) {
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 326, 96, "Use default")) patternfolder = pattern_directory
 } else if (selected_tab = 1) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 170, "Note blocks")
-    if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments of the note blocks\nshould be recognized by different colors.")) draw_type = 0
-    if (draw_radiobox(x1 + 40, y1 + 110, draw_type = 1, "Show instrument icons", "If the instruments of the note blocks should\nbe recognized by their respective icons.")) draw_type = 1
-	if (draw_radiobox(x1 + 40, y1 + 130, draw_type = 2, "Use different shapes for each instrument", "Whether each instrument should have a different shape\nto make them more distinquisable.")) draw_type = 2
+    if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) draw_type = 0
+    if (draw_radiobox(x1 + 40, y1 + 110, draw_type = 1, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) draw_type = 1
+	if (draw_radiobox(x1 + 40, y1 + 130, draw_type = 2, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) draw_type = 2
 		
-    if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right - clicks required\nfor each note block.")) show_numbers=!show_numbers
+    if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
@@ -164,7 +164,7 @@ if (selected_tab = 0) {
 	//draw_text(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
     draw_areaheader(x1 + 22, y1 + 220, 456, 105, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 236, select_lastpressed, "Set selected key to pressed one", "If the selected key should be set\nto the one pressed using the keyboard.")) select_lastpressed=!select_lastpressed
-    draw_text(x1 + 40, y1 + 270, "Right - click on keys to change their shortcuts.")
+    draw_text(x1 + 40, y1 + 270, "Right-click on keys to change their shortcuts.")
     if (draw_button2(x1 + 40, y1 + 290, 160, "Reset key shortcuts")) {
         if (question("Are you sure?", "Confirm")) init_keys()
     }
