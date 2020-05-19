@@ -39,7 +39,7 @@ for (a = 0; a <= o.enda; a++) {
 							}
 						str += "Time:-120,DropItem:0,Motion:[0.0d,1.0d,1.0d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						}
 					
@@ -50,7 +50,7 @@ for (a = 0; a <= o.enda; a++) {
 							}
 						str += "Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						} 
 					
@@ -61,7 +61,7 @@ for (a = 0; a <= o.enda; a++) {
 							}
 						str += "Time:-50,DropItem:0,NoGravity:1,Motion:[0.0d,0.0d,2.5d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						str += "particle minecraft:note " + "-" + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "0.5 0 0.5 1 4 force @p" + br
 						} 
@@ -73,7 +73,7 @@ for (a = 0; a <= o.enda; a++) {
 							}
 						str += "Time:-50,DropItem:0,Glowing:1,NoGravity:1,Motion:[0.0d,1.0d,0.0d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						} 
 					
@@ -84,7 +84,7 @@ for (a = 0; a <= o.enda; a++) {
 							}
 						str += "Time:-80,DropItem:0,Motion:[0.0d,1.3d,0.0d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						} 
 						if o.dat_vis_type = "Fountain" { // Fountain
@@ -96,7 +96,7 @@ for (a = 0; a <= o.enda; a++) {
 								str += "Time:-80,DropItem:0,Motion:[0.5d,1.5d,0.0d]}" + br
 							} else str += "Time:-80,DropItem:0,Motion:[-0.5d,1.5d,0.0d]}" + br
 							if o.dat_glow = 1 {
-								str += "team join " + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
+								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
 						} 
 						if o.dat_vis_type = "Rittai Onkyou" { // Rittai Onkyou
