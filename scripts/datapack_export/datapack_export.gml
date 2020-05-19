@@ -22,6 +22,7 @@ with (new(obj_dummy2)) {
 	var functionpath
 	var functiondir
 	var inputString
+	var add_teams = (o.dat_visualizer && o.dat_glow)
 	
 	if namespace = "" {
 		path = ""
@@ -73,40 +74,9 @@ with (new(obj_dummy2)) {
 	//play.mcfunction
 	inputString = "tag @s add " + tag + br
 	inputString += "scoreboard players set @s " + objective + "_t -1" + br
-	inputString += "team add 1" + br
-	inputString += "team add 2" + br
-	inputString += "team add 3" + br
-	inputString += "team add 4" + br
-	inputString += "team add 5" + br
-	inputString += "team add 6" + br
-	inputString += "team add 7" + br
-	inputString += "team add 8" + br
-	inputString += "team add 9" + br
-	inputString += "team add 10" + br
-	inputString += "team add 11" + br
-	inputString += "team add 12" + br
-	inputString += "team add 13" + br
-	inputString += "team add 14" + br
-	inputString += "team add 15" + br
-	inputString += "team add 16" + br
-	inputString += "team add 17" + br
-	inputString += "team modify 1 color dark_gray" + br
-	inputString += "team modify 2 color red" + br
-	inputString += "team modify 3 color black" + br
-	inputString += "team modify 4 color yellow" + br
-	inputString += "team modify 5 color light_purple" + br
-	inputString += "team modify 6 color green" + br
-	inputString += "team modify 7 color dark_red" + br
-	inputString += "team modify 8 color dark_aqua" + br
-	inputString += "team modify 9 color dark_green" + br
-	inputString += "team modify 10 color blue" + br
-	inputString += "team modify 11 color aqua" + br
-	inputString += "team modify 12 color dark_blue" + br
-	inputString += "team modify 13 color dark_gray" + br
-	inputString += "team modify 14 color dark_green" + br
-	inputString += "team modify 15 color gray" + br
-	inputString += "team modify 16 color gold" + br
-	inputString += "team modify 17 color white"
+	if (add_teams) {
+		inputString += "function " + functionpath + "add_teams"
+	}
 	dat_writefile(inputString, functiondir + "play.mcfunction")
 	
 	//pause.mcfunction
@@ -116,25 +86,71 @@ with (new(obj_dummy2)) {
 	//stop.mcfunction
 	inputString = "tag @s remove " + tag + br
 	inputString += "scoreboard players reset @s " + objective + br
-	inputString += "scoreboard players reset @s " + objective + "_t" + br 
-	inputString += "team remove 1" + br
-	inputString += "team remove 2" + br
-	inputString += "team remove 3" + br
-	inputString += "team remove 4" + br
-	inputString += "team remove 5" + br
-	inputString += "team remove 6" + br
-	inputString += "team remove 7" + br
-	inputString += "team remove 8" + br
-	inputString += "team remove 9" + br
-	inputString += "team remove 10" + br
-	inputString += "team remove 11" + br
-	inputString += "team remove 12" + br
-	inputString += "team remove 13" + br
-	inputString += "team remove 14" + br
-	inputString += "team remove 15" + br
-	inputString += "team remove 16" + br
-	inputString += "team remove 17"
+	inputString += "scoreboard players reset @s " + objective + "_t" + br
+	if (add_teams) {
+		inputString += "function " + functionpath + "remove_teams"
+	}
+
 	dat_writefile(inputString, functiondir + "stop.mcfunction")
+	
+	if (add_teams) {
+		//add_teams.mcfunction
+		inputString = "team add 1" + br
+		inputString += "team add 2" + br
+		inputString += "team add 3" + br
+		inputString += "team add 4" + br
+		inputString += "team add 5" + br
+		inputString += "team add 6" + br
+		inputString += "team add 7" + br
+		inputString += "team add 8" + br
+		inputString += "team add 9" + br
+		inputString += "team add 10" + br
+		inputString += "team add 11" + br
+		inputString += "team add 12" + br
+		inputString += "team add 13" + br
+		inputString += "team add 14" + br
+		inputString += "team add 15" + br
+		inputString += "team add 16" + br
+		inputString += "team add 17" + br
+		inputString += "team modify 1 color dark_gray" + br
+		inputString += "team modify 2 color red" + br
+		inputString += "team modify 3 color black" + br
+		inputString += "team modify 4 color yellow" + br
+		inputString += "team modify 5 color light_purple" + br
+		inputString += "team modify 6 color green" + br
+		inputString += "team modify 7 color dark_red" + br
+		inputString += "team modify 8 color dark_aqua" + br
+		inputString += "team modify 9 color dark_green" + br
+		inputString += "team modify 10 color blue" + br
+		inputString += "team modify 11 color aqua" + br
+		inputString += "team modify 12 color dark_blue" + br
+		inputString += "team modify 13 color dark_gray" + br
+		inputString += "team modify 14 color dark_green" + br
+		inputString += "team modify 15 color gray" + br
+		inputString += "team modify 16 color gold" + br
+		inputString += "team modify 17 color white"
+		dat_writefile(inputString, functiondir + "add_teams.mcfunction")
+		
+		//remove_teams.mcfunction
+		inputString = "team remove 1" + br
+		inputString += "team remove 2" + br
+		inputString += "team remove 3" + br
+		inputString += "team remove 4" + br
+		inputString += "team remove 5" + br
+		inputString += "team remove 6" + br
+		inputString += "team remove 7" + br
+		inputString += "team remove 8" + br
+		inputString += "team remove 9" + br
+		inputString += "team remove 10" + br
+		inputString += "team remove 11" + br
+		inputString += "team remove 12" + br
+		inputString += "team remove 13" + br
+		inputString += "team remove 14" + br
+		inputString += "team remove 15" + br
+		inputString += "team remove 16" + br
+		inputString += "team remove 17"
+		dat_writefile(inputString, functiondir + "remove_teams.mcfunction")
+	}
 	
 	//Generate binary tree and notes
 	dat_generate(functionpath, functiondir, objective)
