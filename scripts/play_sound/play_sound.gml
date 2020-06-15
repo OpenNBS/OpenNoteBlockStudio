@@ -22,6 +22,7 @@ if (realstereo = 0) audio_emitter_position(emitter,pan,0,0)
 else audio_emitter_position(emitter,100,0,0)
 
 audio_play_sound_on(emitter,ins.sound, 0, 0)
+sounds++
 
 //Schedule emitter to be deleted from memory
 newemitter = ds_list_create()

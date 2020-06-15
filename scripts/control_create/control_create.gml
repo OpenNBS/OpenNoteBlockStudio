@@ -22,6 +22,7 @@ window_background = c_white
 
 // Audio
 channels = 256
+sounds = 0
 audio_channel_num(channels)
 
 // Application

@@ -1211,9 +1211,11 @@ draw_text(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblo
 draw_separator(xx, rh - 20)
 draw_theme_color()
 
+var hovernote = 0
 if (sela > -1 && selb > -1) {
 	if (selbx < arraylength && selby < arrayheight) {
 		if (song_exists[selbx, selby]) {
+			hovernote = 1
 			xx += 4
 			draw_text(xx, rh - 18, "Key: " + get_keyname(song_key[selbx, selby], 1))
 			xx += 90
@@ -1236,18 +1238,30 @@ if (sela > -1 && selb > -1) {
 			xx += 4
 			draw_text(xx, rh - 18, "Pitch: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + " cents")
 			draw_theme_color()
-		} else { // If no note exists, draw auto-save remaining time
-			if (autosave && filename_ext(filename) = ".nbs") {
-			    draw_separator(xx, rh - 20)
-			    draw_theme_color()
-			    xx += 4
-			    draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s")) xx += 180
-			   // draw_separator(xx, rh - 20)
-			   draw_theme_color()
-			}
 		}
 	}
 }
+if (!hovernote) {
+	// Auto-save remaining time
+	if (autosave && filename_ext(filename) = ".nbs") {
+		draw_theme_color()
+		xx += 4
+		draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s"))
+		xx += 210
+		draw_separator(xx, rh - 20)
+		draw_theme_color()
+	}
+	// Active sounds count
+	if (true) {
+		xx += 4
+		if (sounds > channels) {
+			draw_set_color(c_red)
+		}
+		draw_text(xx, rh - 18, "Sounds: " + string(sounds) + " / " + string(channels))
+		draw_theme_color()
+	}
+}
+
 draw_set_halign(fa_right)
 str = ""
 for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
