@@ -20,6 +20,10 @@ cam_window = camera_create()
 view_set_camera(0, cam_window)
 window_background = c_white
 
+// Audio
+channels = 256
+audio_channel_num(channels)
+
 // Application
 update = 0
 check_update = 1
