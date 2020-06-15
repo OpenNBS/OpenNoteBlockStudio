@@ -78,7 +78,7 @@ for (a = 0; a <= 10; a += 1) {
     if (ins.user) draw_theme_color()
     if (insselect = b) draw_set_color(c_white)
     // INS NAME
-    ins.name = draw_text_edit(b + 5, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < 10)
+    ins.name = draw_text_edit(b + 5, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < first_custom_index)
     // INS SOUND
     draw_set_color(make_color_rgb(120, 120, 120))
     if (ins.user) {draw_theme_color()}
