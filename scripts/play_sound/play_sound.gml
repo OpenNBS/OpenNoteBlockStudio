@@ -26,5 +26,6 @@ audio_play_sound_on(emitter,ins.sound, 0, 0)
 //Schedule emitter to be deleted from memory
 newemitter = ds_list_create()
 ds_list_add(newemitter,emitter) //store emitter id
-ds_list_add(newemitter, (audio_sound_length(ins.sound) * 1000000 * (1/audio_emitter_get_pitch(emitter))) + get_timer()) //store moment at which the emitter should be removed
+var length = audio_sound_length(ins.sound) / 4 * (1/audio_emitter_get_pitch(emitter))
+ds_list_add(newemitter, (get_timer() + length * 1000000)) //store moment at which the emitter should be removed
 ds_list_add(emitters_to_remove, newemitter)
