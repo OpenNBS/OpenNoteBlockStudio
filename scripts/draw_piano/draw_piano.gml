@@ -1,5 +1,5 @@
 // draw_piano(x, y, keys, totalcols)
-var a, b, c, d, t, out, xx, yy, k, alpha, down, c1, c2, k1, k2, col, selectedkey, totalcols;
+var a, b, c, d, t, out, xx, yy, k, alpha, down, c1, c2, k1, k2, showclicks1, showclicks2, col, selectedkey, totalcols;
 draw_set_color(0)
 xx = argument0
 yy = argument1
@@ -54,6 +54,7 @@ for (a = 0; a < k; a += 1) {
         }
         // White
         out = (c2 < 33 || c2 > 57)
+		showclicks2 = !out && show_notechart
         col = c_white
         down[1] = 0
         if (out) col = 8224255
@@ -65,6 +66,7 @@ for (a = 0; a < k; a += 1) {
         // Black
         down[0] = 0
         out = (c1 < 33 || c1 > 57)
+		showclicks1 = !out && show_notechart
         col = c_white
         if (out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
@@ -80,21 +82,30 @@ for (a = 0; a < k; a += 1) {
         if (show_keynames) {
             draw_set_font(fnt_mainbold)
             draw_set_color(0)
-            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard), get_keyname(c2, 1))
+            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks2) - 6 * (showclicks2), get_keyname(c2, 1))
             draw_set_color(c_white)
-            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard), get_keyname(c1, 1))
-            draw_set_font(fnt_main)
+            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * (showclicks1), get_keyname(c1, 1))
         }
+		draw_set_font(fnt_mainbold)
+		if (showclicks2) {
+			draw_set_color(0)
+			draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down[1]) - 8 * (k2 && show_keyboard), string(c2 - 33))
+		}
+		if (showclicks1) {
+			draw_set_color(c_white)
+			draw_text(xx + 39 * a, yy + 24 + 5 + floor(7 * down[0]) - 8 * (k1 && show_keyboard), string(c1 - 33))
+		}
+		draw_set_font(fnt_main)
         if (k2) {
             if (show_keyboard) {
                 draw_set_color(0)
-                if ((editline mod 15) < 7 || key_edit != c2) draw_text(xx + 39 * a + 20, yy + 93 + floor(7 * down[1]), chr(piano_key[c2]))
+                if ((editline mod 15) < 7 || key_edit != c2) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down[1]), chr(piano_key[c2]))
             }
         }
         if (k1) {
             if (show_keyboard) {
                 draw_set_color(c_white)
-                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a, yy + 32 + floor(7 * down[0]), chr(piano_key[c1]))
+                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a, yy + 34 + floor(7 * down[0]), chr(piano_key[c1]))
             }
         }
         draw_set_halign(fa_left)
@@ -121,6 +132,7 @@ for (a = 0; a < k; a += 1) {
             key_click[c1] = 0
         }
         out = (c1 < 33 || c1 > 57)
+		showclicks1 = !out && show_notechart
         col = c_white
         down = 0
         if (out) col = 8224255
@@ -135,13 +147,18 @@ for (a = 0; a < k; a += 1) {
         if (show_keynames) {
             draw_set_color(0)
             draw_set_font(fnt_mainbold)
-            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard), get_keyname(c1, 1))
-            draw_set_font(fnt_main)
+            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * showclicks1, get_keyname(c1, 1))
         }
+		if (showclicks1) {
+			draw_set_font(fnt_mainbold)
+			draw_set_color(0)
+			draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down) - 8 * (k1 && show_keyboard), string(c1 - 33))
+		}
+		draw_set_font(fnt_main)
         if (k1) {
             if (show_keyboard) {
                 draw_set_color(0)
-                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a + 20, yy + 93 + floor(7 * down), chr(piano_key[c1]))
+                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down), chr(piano_key[c1]))
             }
         }
         draw_set_halign(fa_left)
