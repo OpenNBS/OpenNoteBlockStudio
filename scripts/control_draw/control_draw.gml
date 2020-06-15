@@ -1252,7 +1252,7 @@ if (!hovernote) {
 		draw_theme_color()
 	}
 	// Active sounds count
-	if (true) {
+	if (show_soundcount) {
 		xx += 4
 		if (sounds > channels) {
 			draw_set_color(c_red)

@@ -24,6 +24,7 @@ window_background = c_white
 channels = 256
 sounds = 0
 audio_channel_num(channels)
+show_soundcount = 0
 
 // Application
 update = 0

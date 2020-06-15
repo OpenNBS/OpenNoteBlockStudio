@@ -39,6 +39,7 @@ marker_end =         ini_read_real(  "preferences", "marker_end",         marker
 realvolume =         ini_read_real(  "preferences", "show_layer_volumes", realvolume)
 realstereo =         ini_read_real(  "preferences", "use_stereo",         realstereo)
 looptobarend =       ini_read_real(  "preferences", "loop_to_bar_end",    looptobarend)
+show_soundcount =    ini_read_real(  "preferences", "show_soundcount",    show_soundcount)
 use_bpm =            ini_read_real(  "preferences", "use_bpm",            use_bpm)
 save_version =       ini_read_real(  "preferences", "save_version",       save_version)
 
