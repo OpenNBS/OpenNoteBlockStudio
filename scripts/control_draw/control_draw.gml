@@ -289,40 +289,40 @@ draw_set_halign(fa_left)
 // Play column
 if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (floor(marker_pos) != section_end || window = w_dragmarker || forward<>0 || marker_end = 0 || marker_prevpos >= section_end)) {
     for (i = floor(marker_prevpos) + 1; i <= floor(marker_pos); i++) {
-	xx = i
-    if (colamount[xx] > 0) {
-        for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
-            if (song_exists[xx, b]) {
-                a = 1
-                if (b < endb2) {
-					c = (layervol[b] /100) * song_vel[xx, b]
-					if layerstereo[b] = 100 {
-							d = song_pan[xx, b]
-					} else d = (layerstereo[b] + song_pan[xx, b]) / 2
-					e = song_pit[xx, b]
-				}
-                if (solostr != "") {
-                    if (string_count("|" + string(b) + "|", solostr) = 0) {
-                        a = 0
-                    } else if (layerlock[b] = 1) {
-                        a = 0
-                    }
-                } else if (b < endb2) {
-                    if (layerlock[b] = 1) {
-                        a = 0
-                    }
-                }
-                if (record = 1 && playing = 1) {
-                    if (current_time - song_added[xx, b] < 1000) a = 0
-                }
-                if (a) {
-                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d, e)
-                    if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
-                    song_played[xx, b] = current_time
-                }
-            }
-        }
-    }
+		xx = i
+	    if (colamount[xx] > 0) {
+	        for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
+	            if (song_exists[xx, b]) {
+	                a = 1
+	                if (b < endb2) {
+						c = (layervol[b] /100) * song_vel[xx, b]
+						if layerstereo[b] = 100 {
+								d = song_pan[xx, b]
+						} else d = (layerstereo[b] + song_pan[xx, b]) / 2
+						e = song_pit[xx, b]
+					}
+	                if (solostr != "") {
+	                    if (string_count("|" + string(b) + "|", solostr) = 0) {
+	                        a = 0
+	                    } else if (layerlock[b] = 1) {
+	                        a = 0
+	                    }
+	                } else if (b < endb2) {
+	                    if (layerlock[b] = 1) {
+	                        a = 0
+	                    }
+	                }
+	                if (record = 1 && playing = 1) {
+	                    if (current_time - song_added[xx, b] < 1000) a = 0
+	                }
+	                if (a) {
+	                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d, e)
+	                    if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
+	                    song_played[xx, b] = current_time
+	                }
+	            }
+	        }
+	    }
 	}
 }
 if (window = w_dragselection) {
