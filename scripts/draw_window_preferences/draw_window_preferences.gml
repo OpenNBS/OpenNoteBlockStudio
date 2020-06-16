@@ -136,16 +136,16 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) draw_type = 0
     if (draw_radiobox(x1 + 40, y1 + 110, draw_type = 1, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) draw_type = 1
 	if (draw_radiobox(x1 + 40, y1 + 130, draw_type = 2, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) draw_type = 2
-		
     if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
-    draw_areaheader(x1 + 22, y1 + 260, 456, 95, "Piano")
+    draw_areaheader(x1 + 22, y1 + 260, 456, 115, "Piano")
     if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show piano", "Whether the piano should be visible.")) show_piano = !show_piano
     if (draw_checkbox(x1 + 40, y1 + 296, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-    if (draw_checkbox(x1 + 40, y1 + 316, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-    if (draw_checkbox(x1 + 40, y1 + 336, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
+    if (draw_checkbox(x1 + 40, y1 + 316, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
+    if (draw_checkbox(x1 + 40, y1 + 336, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
+    if (draw_checkbox(x1 + 40, y1 + 356, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
     if (!show_piano) draw_set_color(c_gray)
 	draw_text(x1 + 180, y1 + 275, "Keys to show:")
 	if (show_piano) {

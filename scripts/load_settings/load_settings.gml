@@ -27,6 +27,7 @@ show_layers =        ini_read_real(  "preferences", "show_layers",        show_l
 show_piano =         ini_read_real(  "preferences", "show_piano",         show_piano)
 keysmax =            ini_read_real(  "preferences", "keys_to_show",       keysmax)
 show_keynames =      ini_read_real(  "preferences", "show_keynames",      show_keynames)
+show_keynumbers =    ini_read_real(  "preferences", "show_keynumbers",    show_keynumbers)
 show_keyboard =      ini_read_real(  "preferences", "show_keyboard",      show_keyboard)
 show_notechart =     ini_read_real(  "preferences", "show_notechart",     show_notechart)
 mousewheel =         ini_read_real(  "preferences", "mousewheel",         mousewheel)

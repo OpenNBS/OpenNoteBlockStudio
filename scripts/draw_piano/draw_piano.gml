@@ -41,7 +41,7 @@ for (a = 0; a < k; a += 1) {
             key_click[c2] = 0
         }
         if (window = 0 && mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71)) {
-            if (show_notechart && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
+            if (show_keynumbers && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
             if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
             t = key_click[c1]
             key_click[c1] = mouse_check_button(mb_left)
@@ -54,7 +54,7 @@ for (a = 0; a < k; a += 1) {
         }
         // White
         out = (c2 < 33 || c2 > 57)
-		showclicks2 = !out && show_notechart
+		showclicks2 = !out && show_keynumbers
         col = c_white
         down[1] = 0
         if (out) col = 8224255
@@ -66,7 +66,7 @@ for (a = 0; a < k; a += 1) {
         // Black
         down[0] = 0
         out = (c1 < 33 || c1 > 57)
-		showclicks1 = !out && show_notechart
+		showclicks1 = !out && show_keynumbers
         col = c_white
         if (out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
@@ -132,7 +132,7 @@ for (a = 0; a < k; a += 1) {
             key_click[c1] = 0
         }
         out = (c1 < 33 || c1 > 57)
-		showclicks1 = !out && show_notechart
+		showclicks1 = !out && show_keynumbers
         col = c_white
         down = 0
         if (out) col = 8224255

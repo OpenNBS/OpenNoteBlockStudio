@@ -178,6 +178,7 @@ dragstereo = 0
 // Piano
 show_piano = 1
 show_keynames = 1
+show_keynumbers = 0
 show_keyboard = 1
 show_notechart = 0
 editline = 0
