@@ -1,19 +1,16 @@
 // control_draw()
 var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx, prev
+
+var targetspeed = 1000000 / room_speed
+var currspeed = targetspeed / delta_time
+
 rw = window_width
 rh = window_height
 curs = cr_default
 showmenu = 0
 cursmarker = 0
 compx = 180
-
-var targetspeed = 1000000 / room_speed
-var currspeed = targetspeed / delta_time
-if (current_time % 1 == 0) window_set_caption("(" + string_format(currspeed * 100, 1, 0) + "%) " + condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
-var a = 0
-for (i = 0; i < 200000; i++) {
-	a++
-}
+window_set_caption("(" + string_format(currspeed * 100, 1, 0) + "%) " + condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
 draw_set_alpha(1)
 draw_theme_color()
 draw_set_font(fnt_main)
