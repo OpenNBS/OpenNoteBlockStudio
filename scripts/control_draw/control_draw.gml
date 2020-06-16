@@ -6,7 +6,10 @@ curs = cr_default
 showmenu = 0
 cursmarker = 0
 compx = 180
-window_set_caption(condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
+
+var targetspeed = 1000000 / room_speed
+var currspeed = targetspeed / delta_time
+if (current_time % 1 == 0) window_set_caption("(" + string_format(currspeed * 100, 1, 0) + "%) " + condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
 draw_set_alpha(1)
 draw_theme_color()
 draw_set_font(fnt_main)
