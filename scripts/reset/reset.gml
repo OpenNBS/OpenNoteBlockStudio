@@ -145,6 +145,7 @@ tonextbackup = 0
 
 //Loop
 loop = 0
+loop_session = 0
 loopstart = 0
 loopmax = 0
 looptobarend = 1

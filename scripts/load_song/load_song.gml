@@ -90,7 +90,7 @@ if (file_ext = ".nbs") {
 	// LOOP
 	if (song_nbs_version >= 4) {
 		loop = buffer_read_byte()
-		loop_toggle = loop
+		loop_session = loop
 		if (string_count("format4beta", filename_name(fn)) = 1) {
 			loopstart = buffer_read_byte()
 			loopmax = 0

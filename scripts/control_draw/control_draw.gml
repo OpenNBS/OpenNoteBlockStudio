@@ -673,21 +673,7 @@ if (playing = 1 || forward<>0) {
 		}
 	}
 	//loop song
-	if looptobarend = 1 {
-		if (loop = 1 && marker_pos > enda + 1 && marker_pos mod (timesignature * 4) < 1) {
-			timestoloop --
-		    starta = loopstart
-		    marker_pos = starta
-			metronome_played = -1
-		    sb_val[scrollbarh] = starta
-			if loopmax != 0 {
-				if timestoloop < 0 {
-					playing = 0
-					timestoloop = real(loopmax)
-				}
-			} 
-	    }
-	} else 	if (loop = 1 && marker_pos > enda + 1) {
+	if (loop_session = 1 && marker_pos > enda + 1 && (!looptobarend || marker_pos mod (timesignature * 4) < 1)) {
 		timestoloop --
 		starta = loopstart
 		marker_pos = starta
@@ -1103,7 +1089,7 @@ forward = 0
 if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
 if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
 if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-if (draw_icon(icons.LOOP_INACTIVE + loop_toggle, xx, "Toggle looping", 0, 0)) loop_toggle = !loop_toggle xx += 25
+if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, "Toggle looping", 0, 0)) loop_session = !loop_session xx += 25
 if metronome {
 	if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 	else metricon = icons.METRONOME_2
