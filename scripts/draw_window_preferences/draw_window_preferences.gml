@@ -133,9 +133,9 @@ if (selected_tab = 0) {
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 326, 96, "Use default")) patternfolder = pattern_directory
 } else if (selected_tab = 1) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 170, "Note blocks")
-    if (draw_radiobox(x1 + 40, y1 + 90, draw_type = 0, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) draw_type = 0
-    if (draw_radiobox(x1 + 40, y1 + 110, draw_type = 1, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) draw_type = 1
-	if (draw_radiobox(x1 + 40, y1 + 130, draw_type = 2, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) draw_type = 2
+    if (draw_checkbox(x1 + 40, y1 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
+    if (draw_checkbox(x1 + 40, y1 + 110, use_icons, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) use_icons=!use_icons
+	if (draw_checkbox(x1 + 40, y1 + 130, use_shapes, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) use_shapes=!use_shapes
     if (draw_checkbox(x1 + 40, y1 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade

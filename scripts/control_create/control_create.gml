@@ -116,7 +116,9 @@ collast[0] = -1
 
 show_numbers = 1
 show_octaves = 0
-draw_type = 0
+use_colors = 1
+use_icons = 0
+use_shapes = 0
 totalblocks = 0
 
 mousewheel = 0
