@@ -650,9 +650,9 @@ for (a = 0; a <= totalcols; a += 1) {
 // Marker
 if (playing = 0) metronome_played = -1
 if (playing = 1 || forward<>0) {
-    if (playing = 1) marker_pos += (tempo / room_speed)
+    if (playing = 1) marker_pos += (tempo / room_speed) * (1 / currspeed)
     if (forward != 0) {
-        marker_pos += (tempo / room_speed) * (forward - (forward < 0 && playing = 1))
+        marker_pos += (tempo / room_speed) * (1 / currspeed) * (forward - (forward < 0 && playing = 1))
     }
 	//metronome
 	if (metronome) {
