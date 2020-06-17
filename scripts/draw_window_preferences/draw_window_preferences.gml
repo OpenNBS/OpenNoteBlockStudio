@@ -3,8 +3,8 @@ var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
 curs = cr_default
 nsel = -1
 x1 = floor(window_width / 2 - 250)
-y1 = floor(window_height / 2 - 200)
-draw_window(x1, y1, x1 + 500, y1 + 400)
+y1 = floor(window_height / 2 - 250)
+draw_window(x1, y1, x1 + 500, y1 + 500)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Preferences")
 draw_set_font(fnt_main)
@@ -14,7 +14,7 @@ str[1] = "Appearance"
 str[2] = "Usability"
 str[3] = "Playback"
 if (theme = 1) {
-    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 364)
+    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 464)
 }
 for (a = 0; a < 4; a += 1) {
     c = mouse_rectangle(x1 + b, y1 + 28, string_width(str[a]) + 12, 18)
@@ -33,9 +33,9 @@ for (a = 0; a < 4; a += 1) {
 if (theme = 0 || theme = 2) {
     draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
-    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 0)
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 462, 0)
     draw_set_color(make_color_rgb(137, 140, 149))
-    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 362, 1)
+    draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 462, 1)
     draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
     draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
@@ -47,7 +47,7 @@ if (theme = 0 || theme = 2) {
     draw_theme_color()
     draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
     draw_set_color(make_color_rgb(213, 223, 229))
-    if(theme = 0) draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 358, 1)
+    if(theme = 0) draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 458, 1)
 }else{
     draw_sprite(spr_tabbuttons, 18, x1 + stabx - 1, y1 + 26)
     draw_sprite_ext(spr_tabbuttons, 19, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
@@ -184,5 +184,5 @@ if (selected_tab = 0) {
 	if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 	if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 }
-if (draw_button2(x1 + 420, y1 + 368, 72, "OK")) window = 0
+if (draw_button2(x1 + 420, y1 + 468, 72, "OK")) window = 0
 window_set_cursor(curs)
