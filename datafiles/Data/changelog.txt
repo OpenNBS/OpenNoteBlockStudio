@@ -1,0 +1,205 @@
+Changes in v3.7.2 (2020.02.27):
+* Auto-saving will now wait until you pause the song to prevent stuttering.
+* Fixed notes in the first tick of a song not playing when selected.
+* Fixed C8 key on piano not being playable through keyboard shortcuts.
+* Fixed a crash when scrolling down to layer 200.
+* Fixed scrollbar in the note block area getting outside the screen in some
+window sizes.
+* Fixed compatibility indicator being incorrect in some circumstances.
+
+Changes in v3.7.1 (2020.01.20):
+* Added an auto-updater. When a new version is available, Note Block Studio
+will now be able to download and install it automatically. You don't even need
+to open your browser!
+* Pressing Shift while clicking 'Select all note blocks in this layer' will add those
+notes to the selection rather than clearing it.
+* Holding Shift while dragging layer volumes/stereo will change them in
+increments of 1, allowing a finer control.
+* Note panning is now prioritized over layer panning. Layers that haven't had
+their panning changed will not have any effect on note panning.
+* Re-added the option to import instruments from another song.
+* Bugfixes and improvements:
+   * Fixed layer volume and stereo controls being too sensitive.
+   * Fixed selection being automatically cleared once every minute.
+   * Fixed contents of macro windows not being shown in some circumstances,
+forcing you to quit the program.
+   * Fixed MIDI import setting pitch of all notes to +1.
+   * Fixed lower notes not playing all the way through/stopping too early.
+   * Fixed note count on 'Song stats' not being reset when creating a new song
+(and showing wrong percentages).
+   * Fixed a crash when redoing a manual block placement.
+   * Fixed a crash when opening the program with the greeting window disabled.
+   * Fixed long recent file names overflowing the greeting window.
+   * Fixed song area height being calculated incorrectly when the piano is
+disabled.
+   * Improved contrast of various pieces of text in the dark theme.
+   * Removed the ability to drag the layer stereo controls with a window open.
+
+Changes in v3.7.0 (2019.12.31):
+* Added a cool demo song to showcase the new features in 3.7.0!
+* It's now possible to set velocity, panning and detune on each individual note.
+* Added a metronome.
+* Added an option to display tempo as BPM rather than t/s.
+* Auto-save is now a global preference rather than being saved per song.
+* Added an auto-recovery feature so work is not lost if the program crashes.
+* Added Patterns. You can export note block data as a pattern, and import it
+into whatever song you wish.
+* Note block songs now save song looping.
+* Added a bars/beats/sixteenths display.
+* Added lines that mark each bar in a song.
+* Added an option to choose if looping should wait for the end of the bar.
+* Added an option to show or hide layer boxes.
+* Added four edit modes, which allow you to change different properties of
+notes (key/velocity/panning/pitch).
+* Holding Shift while scrolling over a note will change a whole octave, or
+fine-tune its velocity/panning/pitch.
+* Added Macros:
+(Accessible by right-clicking a selection, or from the new macro bar)
+   * Tremolo
+   * Stereo
+   * Arpeggio
+   * Portamento
+   * Vibrato
+   * Stagger
+   * Chorus
+   * Volume LFO
+   * Fade in
+   * Fade out
+   * Replace key
+   * Set velocity
+   * Set panning
+   * Set pitch
+* Added branch export, a new layout for exporting as schematics.
+* Added a metronome function.
+* Added layer management buttons (shift layers up and down, insert, delete).
+* Added a secret clipboard editor for power users.
+* (Slightly) Improved MIDI import, and made it support note velocity.
+* Improved data pack performance; impact on tick rate should be negligible.
+* Data packs can now export notes outside the octave range by providing
+a resource pack.
+* Data packs can now be exported as ZIP.
+* Data packs now allow any tempo to be imported into Minecraft.
+* It's now possible to set a custom namespace and path for data pack functions.
+* Added six types of visualizers to data packs.
+* Double-clicking a NBS file will now open the song.
+* Added the ability to export songs in previous NBS format versions
+via the Save Options window.
+* Note Block Studio will now refuse to load NBS versions made in the future.
+* NBS format updated to version 4.
+* Improved contrast of layer icons in dark theme.
+* Prevented dragging layer stereo from changing the song tempo.
+* Fixed 'Keys to show' resetting to 20 when enabling the piano.
+* Fixed crash in MP3 and data pack export.
+* Fixed crash on opening after updating.
+* Fixed memory leak from audio emitters piling up.
+
+Changes in v3.6.0 (2019.08.08):
+* Added MP3 export option to select whether you want to include
+   locked layers.
+* Added loop button to loop the current song.
+* Readded colored note blocks, added option for the shaped ones.
+* Added option to toggle piano visibility.
+* Updated icon.
+* NBS format updated to version 3. Now stores song length again.
+* Fixed an issue where there was an unintended gradient over sprites.
+* Fixed typo in preferences.
+* Fixed instrument icons being blank.
+* Fixed preferences not saving.
+
+Changes in v3.5.1 (2019.07.14):
+* Fixed MIDI Import crash
+
+Changes in v3.5.0 (2019.07.11):
+* Added Stereo.
+* Stereo added to Datapack Export.
+* Improved MIDI import, again.
+* Added settings to enhance performance.
+ *Added new sprites for note blocks.
+
+Changes in v3.4.0 (2019.05.11):
+* Added dark theme.
+* Datapack export: added option to let nearby players hear your music too.
+* Improved MIDI import.
+* NBS format now stores its version for future proofing. This means that
+   songs made here can't be opened in older versions of Note Block Studio.
+
+Changes in v3.3.8 (2019.03.21):
+* Fixed a glitch with layer names.
+* Fixed a glitch with compatibility indicator.
+
+
+Changes in v3.3.7 (2019.03.13):
+* Changed fonts.
+* Added support for cyrillic characters.
+* Updated desktop icon.
+* Fixed crash while checking for updates.
+
+Changes in v3.3.6 (2019.03.02):
+* Added new note block sounds: Iron Xylophone, Cow Bell, Didgeridoo,
+   Bit, Banjo and Pling.
+* Updated icon.
+* Updated note block texture
+
+Changes in v3.3.5 (2019.01.20):
+* Added option to export song as datapack. File -> Export as Datapack
+
+Changes in v3.3.4 (2018.02.01):
+* Fixed a crash when importing certain MIDI files.
+
+Changes in v3.3.3 (2017.06.10):
+* Stability fixes.
+
+Changes in v3.3.2 (2017.06.02):
+* Added new note block sounds: Guitar, Flute, Bell, Chime and Xylophone.
+* Added new blocks to the schematic exporter.
+* Added an option to export schematics for old Minecraft versions.
+* Fixed an audio stuttering bug for imported sounds.
+
+Changes in v3.3.1 (2017.03.25):
+* Schematics fixed for new Minecraft entity names.
+* Error fixed when importing MIDIs.
+
+Changes in v3.3.0 (2016.03.20):
+* MP3 export (MIDI export removed).
+* New blocks when exporting schematic.
+* Red outline around invalid blocks.
+* Piano renamed to Harp.
+* Improved performance.
+* New audio engine.
+* Schematic height limit increased to 256.
+
+Changes in v3.2.1 (2013.10.27):
+* Added 20 new songs.
+* Fixed a glitch with the info box.
+
+Changes in v3.2.0 (2013.10.26):
+* Added support for MIDI devices.
+* Added recording button.
+* Better text boxes.
+* Better menus.
+* Fixed an error in the help file.
+
+Changes in v3.1.3 (2012.04.01):
+* Fixed a glitch when creating Minecart schematics with more than one layer.
+* Added option to change the sound system, for users with audio problems.
+
+Changes in v3.1.2 (2012.03.20):
+* 2.5 and 5 tick / second songs are now compatible with Minecraft.
+* Removed support for Minecraft versions below 1.8.1.
+* Compress selection feature (found in the edit menu.)
+* Ctrl to add new blocks to a selection, Alt to clone.
+
+Changes in v3.1.1 (2011.12.03):
+* Schematic exporting updated to v1.0.0 of Minecraft.
+* Added list of changes upon startup of new version.
+* Custom instruments can now be in the .wav and .mp3 format.
+* Fixed a few grammatical errors in the help file.
+
+Changes in v3.1.0 (2011.11.05):
+* Added links to tutorial videos in the program and help file.
+* You will now need to hold Shift while selecting to add blocks to the selection.
+* Fixed some issues with looping the song when exporting as Schematic.
+* Slight performance boosting.
+* Removed an old debugging feature.
+* Fixed a glitch with redoing a selection.
+* Fixed some rounding errors when drawing shapes.
