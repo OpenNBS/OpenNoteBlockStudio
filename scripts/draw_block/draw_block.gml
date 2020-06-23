@@ -1,5 +1,5 @@
 // draw_block(x, y, ins, key, pan, vel, pit, alpha, selalpha)
-var xx, yy, ins, key, pan, vel, pit, alpha, salpha, index, frame;
+var xx, yy, ins, key, pan, vel, pit, alpha, salpha, index, sprite, frame;
 xx = argument0
 yy = argument1
 ins = argument2
@@ -11,24 +11,26 @@ alpha = argument7
 salpha = argument8
 
 index = ds_list_find_index(instrument_list, ins)
+frame = index
 
 //If index isnt found, don't draw
 if(index = -1)return;
 
 if (use_colors) {
-	if (!use_shapes) {
-		frame = index
+	if (use_shapes) {
+		sprite = spr_block_color_shape
 	} else {
-		frame = index + 32
+		sprite = spr_block_color
 	}
 } else {
-	if (!use_shapes) {
-		frame = 48
+	if (use_shapes) {
+		sprite = spr_block_shape
 	} else {
-		frame = index + 16
+		sprite = spr_block
+		frame = 1
 	}
 }
-draw_sprite_ext(spr_block, frame, xx, yy, 1, 1, 0, -1, alpha)
+draw_sprite_ext(sprite, frame, xx, yy, 1, 1, 0, -1, alpha)
 draw_set_alpha(1)
 if (use_icons) {
 	draw_sprite_ext(spr_instrumenticons, index, xx + 16, yy + 16, 1, 1, 0, -1, alpha)
