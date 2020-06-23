@@ -1,5 +1,5 @@
-// select_outside()
-// Selects all the note blocks outside the 2 octave range.
+// select_outside(lower, higher)
+// Selects all the note blocks below and/or above the 2 octave range.
 var a, b, str, ins, key, vel, pan, pit;
 str = selection_code
 if (selected > 0) selection_place(1)
@@ -30,7 +30,7 @@ for (a = 0; a <= enda; a += 1) {
                 vel = song_vel[a, b]
                 pan = song_pan[a, b]
                 pit = song_pit[a, b]
-                if (key < 33 || key > 57) {
+                if ((argument0 && key < 33) || (argument1 && key > 57)) {
                     selection_exists[a, b] = 1
                     selection_ins[a, b] = ins
                     selection_key[a, b] = key
