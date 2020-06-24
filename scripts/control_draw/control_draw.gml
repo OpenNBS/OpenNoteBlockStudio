@@ -99,7 +99,7 @@ if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     }
 }
 keysshow = min(keysmax, floor((rw - 32) / 39))
-x1 = 4
+x1 = 0
 if (!fullscreen && show_layers) {
 	x1 = 264
 }
@@ -797,16 +797,19 @@ draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2), x1 + 2 + a, y1 + 2, 1, totalrow
 
 
 draw_set_font(fnt_main)
-draw_set_color(15790320)
-if (theme = 1) draw_set_color(13160660)
-if (theme = 2) draw_set_color(c_dark)
-draw_rectangle(0, 0, x1, rh, 0)
-draw_rectangle(0, 0, rw, y1, 0)
-draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
-draw_rectangle(x1 + totalcols * 32 + 20, 0, rw, rh, 0)
-draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
-draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
+if (!fullscreen) {
+	draw_set_color(15790320)
+	if (theme = 1) draw_set_color(13160660)
+	if (theme = 2) draw_set_color(c_dark)
+	draw_rectangle(0, 0, x1, rh, 0)
+	draw_rectangle(0, 0, rw, y1, 0)
+	draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
+	draw_rectangle(x1 + totalcols * 32 + 20, 0, rw, rh, 0)
+	draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
+	draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
+}
 draw_theme_color()
+
 // Scrollbars
 starta = draw_scrollbar(scrollbarh, x1, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
