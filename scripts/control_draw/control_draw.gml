@@ -815,12 +815,20 @@ if (!fullscreen) {
 	starta = draw_scrollbar(scrollbarh, x1, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
 	startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 } else {
-	if mouse_rectangle(0, rh - 25, rw, rh) {
-		starta = draw_scrollbar(scrollbarh, 0, rh - 16, 32, ((rw - 16) / 32) - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+	// horizontal rise animation
+	if (mouse_rectangle(0, rh - 25, rw, rh)) {
+		if (sbh_anim < 16) sbh_anim += (2 * 30 / room_speed)
+	} else {
+		if (sbh_anim > 0) sbh_anim -= (2 * 30 / room_speed)
 	}
-	if mouse_rectangle(rw - 25, 0, rw, rh) {
-		startb = draw_scrollbar(scrollbarv, rw - 16, 34, 32, ((rh - rhval - 8) / 32) - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
+	// vertical rise animation
+	if (mouse_rectangle(rw - 25, 0, rw, rh)) {
+		if (sbv_anim < 16) sbv_anim += (2 * 30 / room_speed)
+	} else {
+		if (sbv_anim > 0) sbv_anim -= (2 * 30 / room_speed)
 	}
+	starta = draw_scrollbar(scrollbarh, 0, rh - sbh_anim, 32, ((rw - 16) / 32) - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+	startb = draw_scrollbar(scrollbarv, rw - sbv_anim, 34, 32, ((rh - rhval - 8) / 32) - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
 	// the fifth parameters are totalrows & totalcols before rounding: ((rh - rhval) / 32), ((rw - 8) / 32)
 	// this is so it stretches to fill the whole width/height of the screen instead of clipping to the note block area size
 }
