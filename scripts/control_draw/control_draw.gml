@@ -80,16 +80,17 @@ if (theme = 2) iconcolor = c_white
 if (!fullscreen && show_layers) {
 	totalcols = floor((rw - 8 - 270) / 32)
 } else {
-	totalcols = floor((rw + 10) / 32)
+	totalcols = floor(rw / 32) + 1
 }
 rhval = 270
 if (!show_piano) {
 	rhval = 130
 }
 if (fullscreen) {
-	rhval = 34
+	rhval = 32
 }
 totalrows = floor((rh - rhval) / 32)
+if (fullscreen) totalrows += 1
 if (min(keysmax, floor((rw - 32) / 39)) != keysshow) {
     startkey = 27 - floor(min(keysmax, floor((rw - 32) / 39)) / 2)
     sharpkeys = 0
@@ -827,8 +828,8 @@ if (!fullscreen) {
 	} else {
 		if (sbv_anim > 0) sbv_anim -= (2 * 30 / room_speed)
 	}
-	starta = draw_scrollbar(scrollbarh, 0, rh - sbh_anim, 32, ((rw - 16) / 32) - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
-	startb = draw_scrollbar(scrollbarv, rw - sbv_anim, 34, 32, ((rh - rhval - 16) / 32) - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
+	starta = draw_scrollbar(scrollbarh, 0, rh - sbh_anim, 32, ((rw - 16) / 32) - 1, enda + totalcols - 2, (exist && changepitch) || mousewheel > 0, 0)
+	startb = draw_scrollbar(scrollbarv, rw - sbv_anim, rhval, 32, ((rh - rhval - 16) / 32) - 1, endb + totalrows - 2, (exist && changepitch) || mousewheel > 0, 0)
 	// the fifth parameters are totalrows & totalcols before rounding: ((rh - rhval) / 32), ((rw - 8) / 32)
 	// this is so it stretches to fill the whole width/height of the screen instead of clipping to the note block area size
 }
