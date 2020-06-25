@@ -811,8 +811,15 @@ if (!fullscreen) {
 draw_theme_color()
 
 // Scrollbars
-starta = draw_scrollbar(scrollbarh, x1, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
-startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
+if (!fullscreen) {
+	starta = draw_scrollbar(scrollbarh, x1, y1 + totalrows * 32 + 34, 32, totalcols - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+	startb = draw_scrollbar(scrollbarv, x1 + totalcols * 32 + 2, y1 + 34, 32, totalrows - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
+} else {
+	starta = draw_scrollbar(scrollbarh, 0, rh - 16, 32, ((rw - 16) / 32) - 1, enda + totalcols - 1, (exist && changepitch) || mousewheel > 0, 0)
+	startb = draw_scrollbar(scrollbarv, rw - 16, 34, 32, ((rh - rhval - 8) / 32) - 1, endb + totalrows - 1, (exist && changepitch) || mousewheel > 0, 0)
+	// the fifth parameters are totalrows & totalcols before rounding: ((rh - rhval) / 32), ((rw - 8) / 32)
+	// this is so it stretches to fill the whole width/height of the screen instead of clipping to the note block area size
+}
 
 // Draw layers
 for (b = 0; b < totalrows; b += 1) {
