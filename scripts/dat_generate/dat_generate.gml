@@ -63,7 +63,6 @@ for (a = 0; a <= o.enda; a++) {
 							if o.dat_glow = 1 {
 								str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=" + string(o.song_ins[a, b]-100001) + "]" + br
 							}
-						str += "particle minecraft:note " + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "0.5 0 0.5 1 4 force @p" + br
 						} 
 					
 						if o.dat_vis_type = "Rise" { // Rise
