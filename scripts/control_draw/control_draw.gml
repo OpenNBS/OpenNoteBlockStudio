@@ -286,8 +286,13 @@ draw_set_halign(fa_left)
 
 // Play column
 if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (floor(marker_pos) != section_end || window = w_dragmarker || forward<>0 || marker_end = 0 || marker_prevpos >= section_end)) {
-    for (i = floor(marker_prevpos) + 1; i <= floor(marker_pos); i++) {
-		xx = i
+    var diff = floor(marker_pos) - floor(marker_prevpos)
+    var start
+    if (diff < 0 || diff > 3) {
+        start = floor(marker_pos)
+    } else {
+        start = floor(marker_prevpos) + 1
+    }
 	    if (colamount[xx] > 0) {
 	        for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
 	            if (song_exists[xx, b]) {
