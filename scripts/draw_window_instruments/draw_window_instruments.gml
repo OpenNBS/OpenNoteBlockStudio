@@ -1,5 +1,5 @@
 // draw_window_instruments()
-var x1, y1, a, b, c, str, menun, menua, menub;
+var x1, y1, a, b, c, str, menun, menua, menub, prev;
 curs = cr_default
 menun = -1
 x1 = floor(window_width / 2 - 275)
@@ -78,7 +78,9 @@ for (a = 0; a <= 10; a += 1) {
     if (ins.user) draw_theme_color()
     if (insselect = b) draw_set_color(c_white)
     // INS NAME
+	prev = ins.name
     ins.name = draw_text_edit(b + 5, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < first_custom_index)
+	if (ins.name != prev) changed = 1
     // INS SOUND
     draw_set_color(make_color_rgb(120, 120, 120))
     if (ins.user) {draw_theme_color()}
