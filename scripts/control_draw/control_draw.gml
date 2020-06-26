@@ -1159,7 +1159,7 @@ if (showinsbox) {
 	}
 	xx += ins_icons * 25
 	// 'Collapse' button
-	draw_icon_insbox(icons.BACK, xx, yy, "Less instruments", 0) // it's a fake button since clicking anywhere works :D
+	draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "Less instruments", 0) // it's a fake button since clicking anywhere works :D
 	xx += 25
 } else {
 	for (a = 0; a < ins_icons; a += 1) {
@@ -1167,7 +1167,7 @@ if (showinsbox) {
 	    if (draw_icon(icons.INS_1 + a, xx, yy, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
 	}
 	if (ins_icons < ds_list_size(instrument_list)) {
-		if (draw_icon(icons.EDITMODE_KEY, xx, yy, "More instruments...", 0, 0)) {showinsbox = 1}
+		if (draw_icon(icons.INSBOX_EXPAND, xx, yy, "More instruments...", 0, 0)) {showinsbox = 1}
 		xx += 25
 	}
 }
