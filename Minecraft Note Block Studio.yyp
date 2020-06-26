@@ -3575,6 +3575,14 @@
             }
         },
         {
+            "Key": "d67337c4-393c-4726-b910-8b59d93c9370",
+            "Value": {
+                "id": "62ad5e16-817a-4ae4-8c83-ea890adc3aad",
+                "resourcePath": "scripts\\draw_icon_insbox\\draw_icon_insbox.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d68e2897-946a-48c2-99a1-5605c6133f82",
             "Value": {
                 "id": "ef3db0eb-9b08-42d5-b937-7a566ba2b409",
@@ -4374,6 +4382,7 @@
         "2bbb101b-9227-491d-871c-60c4251f625f",
         "e6bece63-3d7c-4f94-9c4b-cc10c5dd5ebf",
         "df4f777a-ec71-49f8-8f9e-8b25350626c4",
+        "d67337c4-393c-4726-b910-8b59d93c9370",
         "bcc4cc3e-1061-409b-9610-433c5b682eae",
         "28131748-b621-459e-952c-fcd16de0bd8b",
         "36bf530d-9afd-4915-8e0f-6d9162ea03b2",
