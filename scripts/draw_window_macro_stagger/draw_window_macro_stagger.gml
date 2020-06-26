@@ -40,6 +40,7 @@ if (draw_button2(x1 + 15, y1 + 128, 60, "OK")) {
 	total_vals = string_count("|", str)
 	val = 0
 	conf = 0
+	pattern = string_digits_symbol(pattern, "|")
 	pattern = string(pattern + "|")
 	arp = selection_to_array(pattern)
 	arplen = string_count("|", pattern)

@@ -31,6 +31,7 @@ str = selection_code
 arr_data = selection_to_array(str)
 total_vals = string_count("|", str)
 val = 0
+pattern = string_digits_symbol(pattern, "|")
 pattern = string(pattern + "|")
 arp = selection_to_array(pattern)
 arplen = string_count("|", pattern)
