@@ -1101,55 +1101,53 @@ draw_sprite(spr_iconbar, 0, 0, 20)
 draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
 draw_sprite(spr_iconbar, 2, rw - 2, 20)
 xx = 6
-if (draw_icon(icons.NEW, xx, "New song", 0, 0)) {new_song()} xx += 25
-if (draw_icon(icons.OPEN, xx, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25
-if (draw_icon(icons.SAVE, xx, "Save song", 0, 0)) {save_song(filename)} xx += 25 + 4
-draw_separator(xx, 26) xx += 4
-if (draw_icon(icons.PLAY + playing, xx, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
+yy = 23
+if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} xx += 25
+if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25
+if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} xx += 25 + 4
+draw_separator(xx, yy + 3) xx += 4
+if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 xx += 25
-if (draw_icon(icons.STOP, xx, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
+if (draw_icon(icons.STOP, xx, yy, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
 forward = 0
-if (draw_icon(icons.BACK, xx, "Rewind song", 0, 0)) {forward = -1} xx += 25
-if (draw_icon(icons.FORWARD, xx, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-if (draw_icon(icons.RECORD, xx, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, "Toggle looping", 0, 0)) loop_session = !loop_session xx += 25
+if (draw_icon(icons.BACK, xx, yy, "Rewind song", 0, 0)) {forward = -1} xx += 25
+if (draw_icon(icons.FORWARD, xx, yy, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
+if (draw_icon(icons.RECORD, xx, yy, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
+if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "Toggle looping", 0, 0)) loop_session = !loop_session xx += 25
 if metronome {
 	if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 	else metricon = icons.METRONOME_2
 } else {
 	metricon = icons.METRONOME_INACTIVE
 }
-if(draw_icon(metricon, xx, "Toggle metronome", 0, 0)) metronome = !metronome
+if(draw_icon(metricon, xx, yy, "Toggle metronome", 0, 0)) metronome = !metronome
 xx += 25 + 4
 if (playing = 0) record = 0
-draw_separator(xx, 26) xx += 4
-if (draw_icon(icons.EDITMODE_KEY, xx, "Edit note key", 0, editmode = 0)) {editmode = 0} xx += 25
-if (draw_icon(icons.EDITMODE_VEL, xx, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  xx += 25
-if (draw_icon(icons.EDITMODE_PAN, xx, "Edit note panning", 0, editmode = 2)) {editmode = 2} xx += 25
-if (draw_icon(icons.EDITMODE_PIT, xx, "Edit note pitch", 0, editmode = 3)) {editmode = 3} xx += 25 + 4
-draw_separator(xx, 26) xx += 4
-for (a = 0; a < ds_list_size(instrument_list); a += 1) {
-    var ins = instrument_list[| a];
-    if (draw_icon(icons.INS_1 + a, xx, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
+draw_separator(xx, yy + 3) xx += 4
+if (draw_icon(icons.EDITMODE_KEY, xx, yy, "Edit note key", 0, editmode = 0)) {editmode = 0} xx += 25
+if (draw_icon(icons.EDITMODE_VEL, xx, yy, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  xx += 25
+if (draw_icon(icons.EDITMODE_PAN, xx, yy, "Edit note panning", 0, editmode = 2)) {editmode = 2} xx += 25
+if (draw_icon(icons.EDITMODE_PIT, xx, yy, "Edit note pitch", 0, editmode = 3)) {editmode = 3} xx += 25 + 4
+draw_separator(xx, yy + 3) xx += 4
 }
-xx += 4 draw_separator(xx, 26) xx += 4
+xx += 4 draw_separator(xx, yy + 3) xx += 4
 while (1) {
-if (draw_icon(icons.UNDO, xx, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.REDO, xx, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.COPY, xx, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.CUT, xx, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.PASTE, xx, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.DELETE, xx, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break
-xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 190) break
-if (draw_icon(icons.INFORMATION, xx, "View song info")) {playing = 0 window = w_songinfoedit} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.PROPERTIES, xx, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.INSTRUMENTS, xx, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.MIDI_INPUT, xx, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 190) break
-xx += 4 draw_separator(xx, 26) xx += 4 if (xx > rw - 190) break
-if (draw_icon(icons.HELP, xx, "Watch tutorial videos")) {
+if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break
+xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break
+if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {playing = 0 window = w_songinfoedit} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.INSTRUMENTS, xx, yy, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 190) break
+xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break
+if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
     open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 } xx += 25 if (xx > rw - 190) break
-if (draw_icon(icons.INTERNET, xx, "Visit the Minecraft Forums topic")) {open_url(link_topic)} xx += 25 if (xx > rw - 190) break
+if (draw_icon(icons.INTERNET, xx, yy, "Visit the Minecraft Forums topic")) {open_url(link_topic)} xx += 25 if (xx > rw - 190) break
 break
 }
 
