@@ -40,6 +40,7 @@
 #macro w_menu 100
 #macro w_releasemouse 29
 #macro w_mididevices 28
+#macro w_insbox 42
 #macro w_dragvol 27
 #macro w_dragstereo 41
 #macro w_dragsection_end 26
