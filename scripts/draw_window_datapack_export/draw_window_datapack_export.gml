@@ -174,7 +174,7 @@ if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 
 //Submit button
 if (draw_button2(x1 + 470, y1 + 398, 72, "Export", false)) {
-	if(string_replace_all(dat_name," ", "") != "") {
+	if(string_lettersdigits(dat_name) != "") {
 		if(string_count("/", dat_getpath(dat_path)) >= 5) {
 			message("Path can only contain up to 5 subfolders", "Error")
 		} else {
