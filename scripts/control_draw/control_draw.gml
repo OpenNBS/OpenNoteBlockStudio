@@ -1129,6 +1129,42 @@ if (draw_icon(icons.EDITMODE_VEL, xx, yy, "Edit note velocity", 0, editmode = 1)
 if (draw_icon(icons.EDITMODE_PAN, xx, yy, "Edit note panning", 0, editmode = 2)) {editmode = 2} xx += 25
 if (draw_icon(icons.EDITMODE_PIT, xx, yy, "Edit note pitch", 0, editmode = 3)) {editmode = 3} xx += 25 + 4
 draw_separator(xx, yy + 3) xx += 4
+
+// Expandable instrument box
+var ins_count = ds_list_size(instrument_list)
+var ins_icons = median(5, ceil((rw - 920) / 25), ins_count)
+if (ins_icons = ins_count - 1) ins_icons += 1
+var ins_rows = ceil(ins_count / ins_icons)
+if (showinsbox) {
+	window = w_insbox
+	draw_theme_color()
+	draw_window(xx - 2, yy - 2, xx + (ins_icons * 25) + 2, yy + (ins_rows * 25) + 2)
+	for (a = 0; a < ins_rows; a += 1) {
+		for (b = 0; b < ins_icons; b += 1) {
+			var insindex = (a * ins_icons + b)
+			if (insindex >= ds_list_size(instrument_list)) break
+			var ins = instrument_list[| insindex];
+			if (draw_icon_insbox(icons.INS_1 + insindex, xx + b * 25, yy + a * 25, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100, 100, 0) instrument = ins}
+		}
+	}
+	// Click away
+	if (mouse_check_button_released(mb_left)) && !(mouse_rectangle(xx, yy, ins_icons * 25, ins_rows * 25)) {
+		showinsbox = 0
+		window = 0
+	}
+	xx += ins_icons * 25
+	// 'Collapse' button
+	draw_icon_insbox(icons.BACK, xx, yy, "Less instruments", 0) // it's a fake button since clicking anywhere works :D
+	xx += 25
+} else {
+	for (a = 0; a < ins_icons; a += 1) {
+	    var ins = instrument_list[| a];
+	    if (draw_icon(icons.INS_1 + a, xx, yy, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
+	}
+	if (ins_icons < ds_list_size(instrument_list)) {
+		if (draw_icon(icons.EDITMODE_KEY, xx, yy, "More instruments...", 0, 0)) {showinsbox = 1}
+		xx += 25
+	}
 }
 xx += 4 draw_separator(xx, yy + 3) xx += 4
 while (1) {

@@ -237,6 +237,7 @@ sch_exp_scrollbar = create_scrollbar(1)
 update_scrollbar = create_scrollbar(1)
 sbh_anim = 0
 sbv_anim = 0
+showinsbox = 0
 delay = 0
 insedit = -1
 insselect = -1
