@@ -93,7 +93,7 @@ for (a = 0; a <= 10; a += 1) {
                 fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "Load sound file"))
                 if (file_exists_lib(fn)) {
                     var newfn = sounds_directory + filename_name(fn);
-                    file_copy(fn, newfn)
+                    files_copy_lib(fn, newfn)
                     changed = true
                     with (ins) {
                         filename = filename_name(newfn)
