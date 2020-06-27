@@ -47,7 +47,7 @@ if (pit < 0) {
 	draw_rectangle(xx, yy, xx + 32, yy + 32, false)
 }
 
-if (ins.user || key < 33 || key > 57) {
+if (show_incompatible && (ins.user || key < 33 || key > 57)) {
     draw_set_color(c_red)
     draw_set_alpha(1)
     draw_rectangle(xx, yy, xx + 32, yy + 32, 1)

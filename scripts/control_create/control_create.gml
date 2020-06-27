@@ -119,6 +119,7 @@ show_octaves = 0
 use_colors = 1
 use_icons = 0
 use_shapes = 0
+show_incompatible = 1
 totalblocks = 0
 
 mousewheel = 0
