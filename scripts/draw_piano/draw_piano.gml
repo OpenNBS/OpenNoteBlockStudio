@@ -57,7 +57,7 @@ for (a = 0; a < k; a += 1) {
 		showclicks2 = !out && show_keynumbers
         col = c_white
         down[1] = 0
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c2 && playing = 0) col = 16753828
         if (current_time - key_played[c2] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c2]) / 300) down[1] = ((current_time - key_played[c2]) / 300) * 2 if (down[1] > 1) down[1] = 2 - down[1] down[1] = floor(down[1] * 3) / 3}
         if (key_midipress[c2] || key_press[c2] || key_click[c2]) down[1] = 0.75
@@ -68,7 +68,7 @@ for (a = 0; a < k; a += 1) {
         out = (c1 < 33 || c1 > 57)
 		showclicks1 = !out && show_keynumbers
         col = c_white
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
         if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down[0] = ((current_time - key_played[c1]) / 300) * 2 if (down[0] > 1) down[0] = 2 - down[0] down[0] = floor(down[0] * 3) / 3}
         if (key_midipress[c1] || key_press[c1] || key_click[c1]) down[0] = 0.75
@@ -135,7 +135,7 @@ for (a = 0; a < k; a += 1) {
 		showclicks1 = !out && show_keynumbers
         col = c_white
         down = 0
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
         if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down = ((current_time - key_played[c1]) / 300) * 2 if (down > 1) down = 2 - down down = floor(down * 3) / 3}
         if (key_midipress[c1] || key_press[c1] || key_click[c1]) down = 0.75

@@ -184,6 +184,7 @@ show_keynames = 1
 show_keynumbers = 0
 show_keyboard = 1
 show_notechart = 0
+show_outofrange = 1
 editline = 0
 piano_key[87] = 0
 key_press[87] = 0

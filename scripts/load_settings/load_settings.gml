@@ -33,6 +33,7 @@ show_keynames =      ini_read_real(  "preferences", "show_keynames",      show_k
 show_keynumbers =    ini_read_real(  "preferences", "show_keynumbers",    show_keynumbers)
 show_keyboard =      ini_read_real(  "preferences", "show_keyboard",      show_keyboard)
 show_notechart =     ini_read_real(  "preferences", "show_notechart",     show_notechart)
+show_outofrange =    ini_read_real(  "preferences", "show_outofrange",    show_outofrange)
 mousewheel =         ini_read_real(  "preferences", "mousewheel",         mousewheel)
 changepitch =        ini_read_real(  "preferences", "change_pitch",       changepitch)
 select_lastpressed = ini_read_real(  "preferences", "select_lastpressed", select_lastpressed)
