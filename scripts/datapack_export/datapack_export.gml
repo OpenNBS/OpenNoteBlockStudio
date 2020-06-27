@@ -86,12 +86,27 @@ with (new(obj_dummy2)) {
 	//stop.mcfunction
 	inputString = "tag @s remove " + tag + br
 	inputString += "scoreboard players reset @s " + objective + br
-	inputString += "scoreboard players reset @s " + objective + "_t" + br
+	inputString += "scoreboard players reset @s " + objective + "_t"
 	if (add_teams) {
-		inputString += "function " + functionpath + "remove_teams"
+		inputString += br + "function " + functionpath + "remove_teams"
 	}
-
 	dat_writefile(inputString, functiondir + "stop.mcfunction")
+	
+	//uninstall.mcfunction
+	inputString = "tag @e remove " + tag + br
+	inputString += "scoreboard objectives remove " + objective + br
+	inputString += "scoreboard objectives remove " + objective + "_t" + br
+	if (add_teams) {
+		inputString += "function " + functionpath + "remove_teams" + br
+		inputString += "kill @e[type=falling_block,tag=nbs]"
+	}
+	if (o.dat_usezip) {
+		inputString += "datapack disable \"file/" + filename_name(fn) + "\"" + br
+	} else {
+		inputString += "datapack disable \"" + filename_name(fn) + "\"" + br
+	}
+	inputString += "tellraw @s [\"\",{\"text\":\"Data pack \",\"color\":\"yellow\"},{\"text\":\"" + filename_name(fn) + "\",\"color\":\"gold\",\"underline\":\"true\"},{\"text\":\" uninstalled successfully. You may now remove it from your data pack folder.\",\"color\":\"yellow\"}]"
+	dat_writefile(inputString, functiondir + "uninstall.mcfunction")
 	
 	if (add_teams) {
 		//add_teams.mcfunction
@@ -165,5 +180,6 @@ with (new(obj_dummy2)) {
 	directory_delete_lib(tempdir)
 	instance_destroy()
 }
-message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")
+
+message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "If you wish to uninstall it from" + br + "your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the " + br + "'datapacks' folder.","Data Pack Export")
 window = w_datapack_export
