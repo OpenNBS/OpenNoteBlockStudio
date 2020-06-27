@@ -999,12 +999,19 @@ if (window = w_dragstereo) {
 	}
 }
 // Macro Bar
-if selected != 0 {
-draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
-draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
-draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+if (selected != 0 && show_piano) {
+if (show_layers) {
+	draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+} else {
+	draw_sprite_ext(spr_iconbar, 0, x1, y1+52 ,1, 0.75, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 1, x1, y1+52, 383, 0.75, 0, -1, 1)
+	draw_sprite_ext(spr_iconbar, 2, 383, y1+52, 1, 0.75, 0, -1, 1)
+}
 xx = x1 + 6
 var yy = y1+37
+if (!show_layers) yy += 18
 if (draw_macroicon(0, xx, yy, "Tremolo...", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
 if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
 if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
@@ -1014,12 +1021,16 @@ if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagg
 if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
 if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
 if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx = x1 + 6
-if (draw_macroicon(10, xx, yy + 16, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-if (draw_macroicon(11, xx, yy + 16, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-if (draw_macroicon(12, xx, yy + 16, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-if (draw_macroicon(13, xx, yy + 16, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-if (draw_macroicon(14, xx, yy + 16, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
+if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+if (show_layers) {
+	xx = x1 + 6
+	yy += 16
+}
+if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+if (draw_macroicon(11, xx, yy, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+if (draw_macroicon(12, xx, yy, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
 }
 
 // Tabs
