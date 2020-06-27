@@ -1037,7 +1037,7 @@ if (draw_tab("File")) {
     show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
                              icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
                              icon(icons.SAVE)+"Ctrl+S$Save song|"+
-                             icon(icons.SAVE_AS)+"Save song as a new file...|-|"+
+                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
                              "Import pattern...|"+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
                              inactive(totalblocks = 0) + "Export as MP3...|"+
                              inactive(totalblocks = 0) + "Export as schematic...|"+
@@ -1095,7 +1095,7 @@ if (draw_tab("Settings")) {
 		}  
     }
     show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + "-|" + customstr + condstr(customstr != "", "-|") +
-                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Save options...|Preferences...")
+                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Preferences...")
 }
 if (draw_tab("Help")) {
     show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|GitHub")
