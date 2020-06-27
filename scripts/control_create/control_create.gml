@@ -67,6 +67,7 @@ audio_listener_orientation(0,1,0, 0,0,1)
 audio_listener_position(100,0,1)
 playing = 0
 record = 0
+mastervol = 1
 tempo = 10
 tempodrag = 10
 bpm = 0
