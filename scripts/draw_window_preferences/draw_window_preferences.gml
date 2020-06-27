@@ -132,7 +132,7 @@ if (selected_tab = 0) {
     }
     if (draw_button2(x1 + 22 + 84 + 84, y1 + 326, 96, "Use default")) patternfolder = pattern_directory
 } else if (selected_tab = 1) {
-    draw_areaheader(x1 + 22, y1 + 74, 456, 170, "Note blocks")
+    draw_areaheader(x1 + 22, y1 + 74, 456, 176, "Note blocks")
     if (draw_checkbox(x1 + 40, y1 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
     if (draw_checkbox(x1 + 40, y1 + 110, use_icons, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) use_icons=!use_icons
 	if (draw_checkbox(x1 + 40, y1 + 130, use_shapes, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) use_shapes=!use_shapes
@@ -140,18 +140,18 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	if (draw_checkbox(x1 + 40, y1 + 200, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 	if (draw_checkbox(x1 + 40, y1 + 220, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
-    draw_areaheader(x1 + 22, y1 + 260, 456, 115, "Piano")
-    if (draw_checkbox(x1 + 40, y1 + 276, show_piano, "Show piano", "Whether the piano should be visible.")) show_piano = !show_piano
-    if (draw_checkbox(x1 + 40, y1 + 296, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-    if (draw_checkbox(x1 + 40, y1 + 316, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
-    if (draw_checkbox(x1 + 40, y1 + 336, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-    if (draw_checkbox(x1 + 40, y1 + 356, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
+    draw_areaheader(x1 + 22, y1 + 274, 456, 151, "Piano")
+    if (draw_checkbox(x1 + 40, y1 + 290, show_piano, "Show piano", "Whether the piano should be visible.")) show_piano = !show_piano
+    if (draw_checkbox(x1 + 40, y1 + 335, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
+    if (draw_checkbox(x1 + 40, y1 + 355, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
+    if (draw_checkbox(x1 + 40, y1 + 375, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
+    if (draw_checkbox(x1 + 40, y1 + 395, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
     if (!show_piano) draw_set_color(c_gray)
-	draw_text(x1 + 180, y1 + 275, "Keys to show:")
+	draw_text(x1 + 70, y1 + 310, "Keys to show:")
 	if (show_piano) {
-		keysmax = median(20, draw_dragvalue(4, x1 + 260, y1 + 275, keysmax, 2), 50)
+		keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 310, keysmax, 2), 50)
 	} else {
-		draw_text(x1 + 260, y1 + 275, keysmax)
+		draw_text(x1 + 150, y1 + 310, keysmax)
 	}
 	draw_theme_color()
     popup_set_window(x1 + 180, y1 + 275, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
