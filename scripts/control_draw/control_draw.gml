@@ -293,6 +293,8 @@ if (floor(marker_pos) != floor(marker_prevpos) && floor(marker_pos) <= enda && (
     } else {
         start = floor(marker_prevpos) + 1
     }
+    for (i = start; i <= floor(marker_pos); i++) {
+        xx = i
 	    if (colamount[xx] > 0) {
 	        for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
 	            if (song_exists[xx, b]) {
