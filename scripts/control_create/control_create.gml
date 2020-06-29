@@ -32,6 +32,7 @@ check_update = 1
 show_welcome = 1
 scroll_wheel = 0
 theme = 0
+blackout = 0
 editmode = 0
 clickinarea = 0
 dontplace = 0

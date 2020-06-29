@@ -241,14 +241,20 @@ for (b = 0; b <= totalrows; b += 1) {
         }
     }
 }
+if (blackout) {
+	draw_set_color(c_black)
+	draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+}
 for (a = 0; a < totalcols; a += 1) {
-	if ((starta + a) mod (timesignature * 4) == 0) {
-		draw_set_alpha(0.3)
-		draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
-	} else {
-	    draw_set_alpha(0.1)
-		if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
-		draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+	if (!blackout) {
+		if ((starta + a) mod (timesignature * 4) == 0) {
+			draw_set_alpha(0.3)
+			draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
+		} else {
+			draw_set_alpha(0.1)
+			if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
+			draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+		}
 	}
     for (b = 0; b < totalrows; b += 1) {
         if (starta + a <= enda) {
@@ -596,6 +602,10 @@ if (window = 0 && text_focus = -1) {
 				macro_reset()
 				}
 		}
+	}
+	// Toggle blackout mode
+	if (keyboard_check_pressed(vk_f10)) {
+		blackout = !blackout
 	}
 	// Toggle fullscreen
 	if (keyboard_check_pressed(vk_f11)) {
