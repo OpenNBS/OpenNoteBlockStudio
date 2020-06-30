@@ -811,8 +811,8 @@ if (section_exists) {
 
 marker_pos = median(0, marker_pos, enda + totalcols)
 a = floor(marker_pos * 32 - starta * 32)
-draw_sprite(spr_marker, 0 + 6 * (theme = 2), x1 + 2 + a, y1 + 2)
-draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 6, 0, -1, 1)
+draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2)
+draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 6, 0, -1, 1)
 
 
 draw_set_font(fnt_main)
