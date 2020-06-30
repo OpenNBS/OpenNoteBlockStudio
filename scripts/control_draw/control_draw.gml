@@ -68,6 +68,15 @@ if (totalblocks > 0) {
 	}
 }
 
+// Toggle blackout mode
+if (keyboard_check_pressed(vk_f10)) {
+	blackout = !blackout
+}
+// Toggle fullscreen
+if (keyboard_check_pressed(vk_f11)) {
+	fullscreen = !fullscreen
+}
+
 if (theme = 0) window_background = 15790320
 if (theme = 1) window_background = 13160660
 if (theme = 2) window_background = c_dark
@@ -602,14 +611,6 @@ if (window = 0 && text_focus = -1) {
 				macro_reset()
 				}
 		}
-	}
-	// Toggle blackout mode
-	if (keyboard_check_pressed(vk_f10)) {
-		blackout = !blackout
-	}
-	// Toggle fullscreen
-	if (keyboard_check_pressed(vk_f11)) {
-		fullscreen = !fullscreen
 	}
 }
 // Selecting note blocks
