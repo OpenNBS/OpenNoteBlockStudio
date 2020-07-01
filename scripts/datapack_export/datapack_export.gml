@@ -97,15 +97,15 @@ with (new(obj_dummy2)) {
 	inputString += "scoreboard objectives remove " + objective + br
 	inputString += "scoreboard objectives remove " + objective + "_t" + br
 	if (add_teams) {
+		inputString += "kill @e[type=falling_block,tag=nbs]" + br
 		inputString += "function " + functionpath + "remove_teams" + br
-		inputString += "kill @e[type=falling_block,tag=nbs]"
 	}
 	if (o.dat_usezip) {
 		inputString += "datapack disable \"file/" + filename_name(fn) + "\"" + br
 	} else {
 		inputString += "datapack disable \"" + filename_name(fn) + "\"" + br
 	}
-	inputString += "tellraw @s [\"\",{\"text\":\"Data pack \",\"color\":\"yellow\"},{\"text\":\"" + filename_name(fn) + "\",\"color\":\"gold\",\"underline\":\"true\"},{\"text\":\" uninstalled successfully. You may now remove it from your data pack folder.\",\"color\":\"yellow\"}]"
+	inputString += "tellraw @s [\"\",{\"text\":\"[NBS] \",\"color\":\"gold\",\"bold\":\"true\"},{\"text\":\"Data pack \",\"color\":\"yellow\"},{\"text\":\"" + filename_name(fn) + "\",\"color\":\"gold\",\"underlined\":\"true\"},{\"text\":\" uninstalled successfully. You may now remove it from your data pack folder.\",\"color\":\"yellow\"}]"
 	dat_writefile(inputString, functiondir + "uninstall.mcfunction")
 	
 	if (add_teams) {
