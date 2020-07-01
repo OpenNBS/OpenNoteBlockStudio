@@ -836,13 +836,13 @@ if (!fullscreen) {
 } else {
 	// horizontal rise animation
 	if (mouse_rectangle(0, rh - 25, rw, rh)) {
-		if (sbh_anim < 16) sbh_anim += (2 * 30 / room_speed)
+		if (window = 0 && sbh_anim < 16) sbh_anim += (2 * 30 / room_speed)
 	} else if (sb_drag = -1) {
 		if (sbh_anim > 0) sbh_anim -= (2 * 30 / room_speed)
 	}
 	// vertical rise animation
 	if (mouse_rectangle(rw - 25, 0, rw, rh)) {
-		if (sbv_anim < 16) sbv_anim += (2 * 30 / room_speed)
+		if (window = 0 && sbv_anim < 16) sbv_anim += (2 * 30 / room_speed)
 	} else if (sb_drag = -1) {
 		if (sbv_anim > 0) sbv_anim -= (2 * 30 / room_speed)
 	}
@@ -865,6 +865,7 @@ if (theme = 2) draw_set_color(c_dark)
 draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
 	fullscreen = !fullscreen
+	dontplace = 1
 }
 
 // Draw layers
