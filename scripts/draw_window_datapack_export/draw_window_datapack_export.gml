@@ -116,8 +116,8 @@ if (selected_tab_dat = 0) {
 	//Locked layers
 	if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.")) dat_includelocked=!dat_includelocked
 
-	//Out of range notes
-	if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out of range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
+	//Out-of-range notes
+	if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out-of-range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
 
 	//Radius
 	if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius

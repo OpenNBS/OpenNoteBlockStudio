@@ -147,7 +147,7 @@ if (selected_tab = 0) {
     if (draw_checkbox(x1 + 40, y1 + 375, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
     if (draw_checkbox(x1 + 40, y1 + 395, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
     if (draw_checkbox(x1 + 40, y1 + 415, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-    if (draw_checkbox(x1 + 40, y1 + 435, show_outofrange, "Highlight out of range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
+    if (draw_checkbox(x1 + 40, y1 + 435, show_outofrange, "Highlight out-of-range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
     if (!show_piano) draw_set_color(c_gray)
 	draw_text(x1 + 70, y1 + 330, "Keys to show:")
 	if (show_piano) {
