@@ -635,6 +635,8 @@ if (select > 0) {
 draw_sprite_ext(spr_timeline, (0 + theme = 2) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
 draw_set_font(fnt_small)
 draw_set_halign(fa_left)
+draw_theme_color()
+if (blackout) draw_set_color(c_white)
 c = 1
 if (tempo < 3.5) c = 5
 if (tempo < 1) c = 10
