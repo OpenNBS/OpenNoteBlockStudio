@@ -16,6 +16,7 @@ show_welcome =       ini_read_real(  "preferences", "show_welcome",       show_w
 autosave =           ini_read_real(  "preferences", "autosave",           autosave)
 autosavemins =       ini_read_real(  "preferences", "autosavemins",       autosavemins)
 theme =              ini_read_real(  "preferences", "theme",              theme)
+blackout =           ini_read_real(  "preferences", "blackout",           blackout)
 refreshrate =        ini_read_real(  "preferences", "refresh_rate",       refreshrate)
 songfolder =         ini_read_string("preferences", "song_folder",        songfolder)
 patternfolder =      ini_read_string("preferences", "pattern_folder",     patternfolder)

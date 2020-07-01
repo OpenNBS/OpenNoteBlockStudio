@@ -90,6 +90,7 @@ if (selected_tab = 0) {
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
     if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
+	if (draw_checkbox(x1 + 40, y1 + 164 + 16 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.")) blackout = !blackout
     draw_areaheader(x1+258,y1+164,220,60,"Max frame rate (experimental)")
     if (draw_radiobox(x1+274,y1+164+16,!refreshrate,"30FPS","Run the program at 30FPS.")) {
         game_set_speed(30,gamespeed_fps)
