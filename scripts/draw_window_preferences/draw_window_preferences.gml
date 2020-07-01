@@ -86,7 +86,7 @@ if (selected_tab = 0) {
 	}
 	popup_set_window(x1 + 306, y1 + 110, 180, 16, "The amount of minutes between each auto-save.")
 	
-    draw_areaheader(x1 + 22, y1 + 164, 218, 80, "Theme")
+    draw_areaheader(x1 + 22, y1 + 164, 218, 110, "Theme")
     if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 	if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
     if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
@@ -100,37 +100,37 @@ if (selected_tab = 0) {
 		refreshrate=1
     }
 
-	draw_text(x1 + 22, y1 + 260, "Song folder: " + string_truncate(songfolder, 360))
-    popup_set_window(x1 + 22, y1 + 260, 430, 18, songfolder)
-    if (draw_button2(x1 + 22, y1 + 276, 76, "Open")) {
+	draw_text(x1 + 22, y1 + 290, "Song folder: " + string_truncate(songfolder, 360))
+    popup_set_window(x1 + 22, y1 + 290, 430, 18, songfolder)
+    if (draw_button2(x1 + 22, y1 + 306, 76, "Open")) {
         if (!directory_exists_lib(songfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(songfolder)
         }
     }
-    if (draw_button2(x1 + 22 + 84, y1 + 276, 76, "Change")) {
+    if (draw_button2(x1 + 22 + 84, y1 + 306, 76, "Change")) {
         message("Select the directory where saving/loading should be opened in.", "")
         a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
         if (a != "") songfolder = filename_dir(a)
     }
-    if (draw_button2(x1 + 22 + 84 + 84, y1 + 276, 96, "Use default")) songfolder = songs_directory
+    if (draw_button2(x1 + 22 + 84 + 84, y1 + 306, 96, "Use default")) songfolder = songs_directory
 	
-	draw_text(x1 + 22, y1 + 310, "Pattern folder: " + string_truncate(patternfolder, 360))
-    popup_set_window(x1 + 22, y1 + 300, 430, 18, patternfolder)
-    if (draw_button2(x1 + 22, y1 + 326, 76, "Open")) {
+	draw_text(x1 + 22, y1 + 340, "Pattern folder: " + string_truncate(patternfolder, 360))
+    popup_set_window(x1 + 22, y1 + 340, 430, 18, patternfolder)
+    if (draw_button2(x1 + 22, y1 + 356, 76, "Open")) {
         if (!directory_exists_lib(patternfolder)) {
             message("The indicated folder doesn't exist!", "Error")
         } else {
             open_url(patternfolder)
         }
     }
-    if (draw_button2(x1 + 22 + 84, y1 + 326, 76, "Change")) {
+    if (draw_button2(x1 + 22 + 84, y1 + 356, 76, "Change")) {
         message("Select the directory where patterns can be imported/exported to.", "")
         a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
         if (a != "") patternfolder = filename_dir(a)
     }
-    if (draw_button2(x1 + 22 + 84 + 84, y1 + 326, 96, "Use default")) patternfolder = pattern_directory
+    if (draw_button2(x1 + 22 + 84 + 84, y1 + 356, 96, "Use default")) patternfolder = pattern_directory
 } else if (selected_tab = 1) {
     draw_areaheader(x1 + 22, y1 + 74, 456, 196, "Note blocks")
     if (draw_checkbox(x1 + 40, y1 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
