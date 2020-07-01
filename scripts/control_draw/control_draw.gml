@@ -851,6 +851,21 @@ if (!fullscreen) {
 	// the fifth parameters are totalrows & totalcols before rounding: ((rh - rhval) / 32), ((rw - 8) / 32)
 	// this is so it stretches to fill the whole width/height of the screen instead of clipping to the note block area size
 }
+// Fullscreen button
+if (fullscreen) {
+	xx = rw - sbv_anim
+	yy = rh - 16
+} else {
+	xx = x1 + totalcols * 32
+	yy = y1 + totalrows * 32 + 34
+}
+if (theme = 0) draw_set_color(15790320)
+if (theme = 1) draw_set_color(13160660)
+if (theme = 2) draw_set_color(c_dark)
+draw_rectangle(xx, yy, xx + 16, yy + 16, false)
+if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
+	fullscreen = !fullscreen
+}
 
 // Draw layers
 for (b = 0; b < totalrows; b += 1) {
