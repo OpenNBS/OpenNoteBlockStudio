@@ -1,5 +1,5 @@
 // draw_piano(x, y, keys, totalcols)
-var a, b, c, d, t, out, xx, yy, k, alpha, down, c1, c2, k1, k2, col, selectedkey, totalcols;
+var a, b, c, d, t, out, xx, yy, k, alpha, down, c1, c2, k1, k2, showclicks1, showclicks2, col, selectedkey, totalcols;
 draw_set_color(0)
 xx = argument0
 yy = argument1
@@ -41,7 +41,7 @@ for (a = 0; a < k; a += 1) {
             key_click[c2] = 0
         }
         if (window = 0 && mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71)) {
-            if (show_notechart && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
+            if (show_keynumbers && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
             if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
             t = key_click[c1]
             key_click[c1] = mouse_check_button(mb_left)
@@ -54,9 +54,10 @@ for (a = 0; a < k; a += 1) {
         }
         // White
         out = (c2 < 33 || c2 > 57)
+		showclicks2 = !out && show_keynumbers
         col = c_white
         down[1] = 0
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c2 && playing = 0) col = 16753828
         if (current_time - key_played[c2] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c2]) / 300) down[1] = ((current_time - key_played[c2]) / 300) * 2 if (down[1] > 1) down[1] = 2 - down[1] down[1] = floor(down[1] * 3) / 3}
         if (key_midipress[c2] || key_press[c2] || key_click[c2]) down[1] = 0.75
@@ -65,8 +66,9 @@ for (a = 0; a < k; a += 1) {
         // Black
         down[0] = 0
         out = (c1 < 33 || c1 > 57)
+		showclicks1 = !out && show_keynumbers
         col = c_white
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
         if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down[0] = ((current_time - key_played[c1]) / 300) * 2 if (down[0] > 1) down[0] = 2 - down[0] down[0] = floor(down[0] * 3) / 3}
         if (key_midipress[c1] || key_press[c1] || key_click[c1]) down[0] = 0.75
@@ -80,21 +82,30 @@ for (a = 0; a < k; a += 1) {
         if (show_keynames) {
             draw_set_font(fnt_mainbold)
             draw_set_color(0)
-            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard), get_keyname(c2, 1))
+            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks2) - 6 * (showclicks2), get_keyname(c2, 1))
             draw_set_color(c_white)
-            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard), get_keyname(c1, 1))
-            draw_set_font(fnt_main)
+            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * (showclicks1), get_keyname(c1, 1))
         }
+		draw_set_font(fnt_mainbold)
+		if (showclicks2) {
+			draw_set_color(0)
+			draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down[1]) - 8 * (k2 && show_keyboard), string(c2 - 33))
+		}
+		if (showclicks1) {
+			draw_set_color(c_white)
+			draw_text(xx + 39 * a, yy + 24 + 5 + floor(7 * down[0]) - 8 * (k1 && show_keyboard), string(c1 - 33))
+		}
+		draw_set_font(fnt_main)
         if (k2) {
             if (show_keyboard) {
                 draw_set_color(0)
-                if ((editline mod 15) < 7 || key_edit != c2) draw_text(xx + 39 * a + 20, yy + 93 + floor(7 * down[1]), chr(piano_key[c2]))
+                if ((editline mod 15) < 7 || key_edit != c2) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down[1]), chr(piano_key[c2]))
             }
         }
         if (k1) {
             if (show_keyboard) {
                 draw_set_color(c_white)
-                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a, yy + 32 + floor(7 * down[0]), chr(piano_key[c1]))
+                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a, yy + 34 + floor(7 * down[0]), chr(piano_key[c1]))
             }
         }
         draw_set_halign(fa_left)
@@ -121,9 +132,10 @@ for (a = 0; a < k; a += 1) {
             key_click[c1] = 0
         }
         out = (c1 < 33 || c1 > 57)
+		showclicks1 = !out && show_keynumbers
         col = c_white
         down = 0
-        if (out) col = 8224255
+        if (show_outofrange && out) col = 8224255
         if (selected_key = c1 && playing = 0) col = 16753828
         if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down = ((current_time - key_played[c1]) / 300) * 2 if (down > 1) down = 2 - down down = floor(down * 3) / 3}
         if (key_midipress[c1] || key_press[c1] || key_click[c1]) down = 0.75
@@ -135,13 +147,18 @@ for (a = 0; a < k; a += 1) {
         if (show_keynames) {
             draw_set_color(0)
             draw_set_font(fnt_mainbold)
-            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard), get_keyname(c1, 1))
-            draw_set_font(fnt_main)
+            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * showclicks1, get_keyname(c1, 1))
         }
+		if (showclicks1) {
+			draw_set_font(fnt_mainbold)
+			draw_set_color(0)
+			draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down) - 8 * (k1 && show_keyboard), string(c1 - 33))
+		}
+		draw_set_font(fnt_main)
         if (k1) {
             if (show_keyboard) {
                 draw_set_color(0)
-                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a + 20, yy + 93 + floor(7 * down), chr(piano_key[c1]))
+                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down), chr(piano_key[c1]))
             }
         }
         draw_set_halign(fa_left)
@@ -175,7 +192,7 @@ for (a = 0; a <= 87; a += 1) {
     if (piano_key[a] > 0) {
         if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
             if (select_lastpressed) selected_key = a
-            if (playing = 0) play_sound(instrument, a, 100 ,100, 0)
+            if (record = 0) play_sound(instrument, a, 100 ,100, 0)
             if (playing = 0.25) toggle_playing(totalcols)
             if (playing && record) {
                 b = 0

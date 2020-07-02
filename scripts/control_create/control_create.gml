@@ -20,12 +20,19 @@ cam_window = camera_create()
 view_set_camera(0, cam_window)
 window_background = c_white
 
+// Audio
+channels = 256
+sounds = 0
+audio_channel_num(channels)
+show_soundcount = 0
+
 // Application
 update = 0
 check_update = 1
 show_welcome = 1
 scroll_wheel = 0
 theme = 0
+blackout = 0
 editmode = 0
 clickinarea = 0
 dontplace = 0
@@ -37,6 +44,7 @@ icons_init()
 refreshrate = 0 //0 = 30fps, 1 = 60fps
 fade = 0
 rhval = 270
+fullscreen = 0
 autosave = 0
 autosavemins = 10
 tonextsave = 0
@@ -60,6 +68,7 @@ audio_listener_orientation(0,1,0, 0,0,1)
 audio_listener_position(100,0,1)
 playing = 0
 record = 0
+mastervol = 1
 tempo = 10
 tempodrag = 10
 bpm = 0
@@ -109,7 +118,10 @@ collast[0] = -1
 
 show_numbers = 1
 show_octaves = 0
-draw_type = 0
+use_colors = 1
+use_icons = 0
+use_shapes = 0
+show_incompatible = 1
 totalblocks = 0
 
 mousewheel = 0
@@ -171,8 +183,10 @@ dragstereo = 0
 // Piano
 show_piano = 1
 show_keynames = 1
+show_keynumbers = 0
 show_keyboard = 1
 show_notechart = 0
+show_outofrange = 1
 editline = 0
 piano_key[87] = 0
 key_press[87] = 0
@@ -225,6 +239,9 @@ midi_sb3 = create_scrollbar(1)
 midi_sb4 = create_scrollbar(1)
 sch_exp_scrollbar = create_scrollbar(1)
 update_scrollbar = create_scrollbar(1)
+sbh_anim = 0
+sbv_anim = 0
+showinsbox = 0
 delay = 0
 insedit = -1
 insselect = -1
@@ -235,6 +252,7 @@ asso_midi = 0
 asso_sch = 0
 w_asso_start = 1
 wmenu = 0
+loop_session = 0
 loop = 0
 loopmax = 0
 loopstart = 0
@@ -323,7 +341,6 @@ leg_sus = 20
 port_cent = 0
 porta_reverse = 0
 stereo_width = 50
-times_clipedited = 0
 setvel = 100
 setpan = 0
 setpit = 0

@@ -3,8 +3,8 @@ var x1, y1, a;
 curs = cr_default
 text_exists[0] = 0
 x1 = floor(window_width / 2 - 220)
-y1 = floor(window_height / 2 - 180)
-draw_window(x1, y1, x1 + 440, y1 + 360)
+y1 = floor(window_height / 2 - 200)
+draw_window(x1, y1, x1 + 440, y1 + 400)
 draw_set_font(fnt_mainbold)
 draw_text(x1 + 8, y1 + 8, "Song Properties")
 draw_set_font(fnt_main)
@@ -42,17 +42,39 @@ song_desc = draw_textarea(4, x1 + 158, y1 + 64 + 23 * 3, 240, 100, song_desc, "E
 if (a != song_desc) changed = 1
 
 draw_theme_color()
-draw_text(x1 + 32, y1 + 270, "Time signature:")
-timesignature = median(2, draw_dragvalue(3, x1 + 120, y1 + 270, timesignature, 1), 8)
-draw_text(x1 + 120 + string_width(string(timesignature)), y1 + 270, " / 4")
-popup_set_window(x1 + 32, y1 + 268, 110, 18, "The time signature of the song.")
+draw_areaheader(x1 + 22, y1 + 268, 396, 85, "Playback")
 
-draw_text(x1 + 232, y1 + 270, "Loop start tick:")
-loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 270, loopstart, 0.5), obj_controller.enda)
+draw_text(x1 + 37, y1 + 285, "Time signature:")
+a = timesignature
+timesignature = median(2, draw_dragvalue(3, x1 + 135, y1 + 285, timesignature, 1), 8)
+if (a != timesignature) changed = 1
+draw_text(x1 + 135 + string_width(string(timesignature)), y1 + 285, " / 4")
+popup_set_window(x1 + 37, y1 + 283, 110, 18, "The time signature of the song.")
 
-draw_text(x1 + 232, y1 + 290, "Times to loop:")
-loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 290, loopmax, 0.5), 10)
-if loopmax = 0  draw_text(x1 + 340, y1 + 290, "(infinite)")
+a = loop
+if (draw_checkbox(x1 + 232, y1 + 285, loop, "Enable looping", "Whether to loop this song back to"+br+"the start at the end of playback.")) loop=!loop
+if (a != loop) changed = 1
+if (!loop) draw_set_color(c_gray)
+draw_text(x1 + 232, y1 + 305, "Loop start tick:")
+a = loopstart
+if (loop) {
+	loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 305, loopstart, 0.5), obj_controller.enda)
+} else {
+	draw_text(x1 + 320, y1 + 305, loopstart)
+}
+if (a != loopstart) changed = 1
+
+draw_text(x1 + 232, y1 + 325, "Times to loop:")
+a = loopmax
+if (loop) {
+	loopmax = median(0, draw_dragvalue(13, x1 + 320, y1 + 325, loopmax, 0.5), 10)
+} else {
+	draw_text(x1 + 320, y1 + 325, loopmax)
+}
+if (loopmax = 0) draw_text(x1 + 340, y1 + 325, "(infinite)")
+if (a != loopmax) changed = 1
 timestoloop = loopmax
-if (draw_button2(x1 + 320, y1 + 328, 72, "OK")) {window = 0}
+draw_theme_color()
+
+if (draw_button2(x1 + 430 - 72, y1 + 366, 72, "OK")) {window = 0}
 window_set_cursor(curs)

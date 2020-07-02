@@ -134,7 +134,6 @@ leg_sus = 20
 port_cent = 0
 porta_reverse = 0
 stereo_width = 50
-times_clipedited = 0
 setvel = 100
 setpan = 0
 setpit = 0
@@ -146,6 +145,7 @@ tonextbackup = 0
 
 //Loop
 loop = 0
+loop_session = 0
 loopstart = 0
 loopmax = 0
 looptobarend = 1

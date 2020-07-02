@@ -22,6 +22,7 @@ with (new(obj_dummy2)) {
 	var functionpath
 	var functiondir
 	var inputString
+	var add_teams = (o.dat_visualizer && o.dat_glow)
 	
 	if namespace = "" {
 		path = ""
@@ -37,6 +38,9 @@ with (new(obj_dummy2)) {
 	
 	// Create folder structure
 	tempdir = data_directory + "TempDatapack\\"
+	if (directory_exists_lib(tempdir)) {
+		directory_delete_lib(tempdir)
+	}
 	functiondir = dat_makefolders(path, namespace)
 	
 	//pack.mcmeta
@@ -70,40 +74,9 @@ with (new(obj_dummy2)) {
 	//play.mcfunction
 	inputString = "tag @s add " + tag + br
 	inputString += "scoreboard players set @s " + objective + "_t -1" + br
-	inputString += "team add 1" + br
-	inputString += "team add 2" + br
-	inputString += "team add 3" + br
-	inputString += "team add 4" + br
-	inputString += "team add 5" + br
-	inputString += "team add 6" + br
-	inputString += "team add 7" + br
-	inputString += "team add 8" + br
-	inputString += "team add 9" + br
-	inputString += "team add 10" + br
-	inputString += "team add 11" + br
-	inputString += "team add 12" + br
-	inputString += "team add 13" + br
-	inputString += "team add 14" + br
-	inputString += "team add 15" + br
-	inputString += "team add 16" + br
-	inputString += "team add 17" + br
-	inputString += "team modify 1 color dark_gray" + br
-	inputString += "team modify 2 color red" + br
-	inputString += "team modify 3 color black" + br
-	inputString += "team modify 4 color yellow" + br
-	inputString += "team modify 5 color light_purple" + br
-	inputString += "team modify 6 color green" + br
-	inputString += "team modify 7 color dark_red" + br
-	inputString += "team modify 8 color dark_aqua" + br
-	inputString += "team modify 9 color dark_green" + br
-	inputString += "team modify 10 color blue" + br
-	inputString += "team modify 11 color aqua" + br
-	inputString += "team modify 12 color dark_blue" + br
-	inputString += "team modify 13 color dark_gray" + br
-	inputString += "team modify 14 color dark_green" + br
-	inputString += "team modify 15 color gray" + br
-	inputString += "team modify 16 color gold" + br
-	inputString += "team modify 17 color white"
+	if (add_teams) {
+		inputString += "function " + functionpath + "add_teams"
+	}
 	dat_writefile(inputString, functiondir + "play.mcfunction")
 	
 	//pause.mcfunction
@@ -113,25 +86,86 @@ with (new(obj_dummy2)) {
 	//stop.mcfunction
 	inputString = "tag @s remove " + tag + br
 	inputString += "scoreboard players reset @s " + objective + br
-	inputString += "scoreboard players reset @s " + objective + "_t" + br 
-	inputString += "team remove 1" + br
-	inputString += "team remove 2" + br
-	inputString += "team remove 3" + br
-	inputString += "team remove 4" + br
-	inputString += "team remove 5" + br
-	inputString += "team remove 6" + br
-	inputString += "team remove 7" + br
-	inputString += "team remove 8" + br
-	inputString += "team remove 9" + br
-	inputString += "team remove 10" + br
-	inputString += "team remove 11" + br
-	inputString += "team remove 12" + br
-	inputString += "team remove 13" + br
-	inputString += "team remove 14" + br
-	inputString += "team remove 15" + br
-	inputString += "team remove 16" + br
-	inputString += "team remove 17"
+	inputString += "scoreboard players reset @s " + objective + "_t"
+	if (add_teams) {
+		inputString += br + "function " + functionpath + "remove_teams"
+	}
 	dat_writefile(inputString, functiondir + "stop.mcfunction")
+	
+	//uninstall.mcfunction
+	inputString = "tag @e remove " + tag + br
+	inputString += "scoreboard objectives remove " + objective + br
+	inputString += "scoreboard objectives remove " + objective + "_t" + br
+	if (add_teams) {
+		inputString += "kill @e[type=falling_block,tag=nbs]" + br
+		inputString += "function " + functionpath + "remove_teams" + br
+	}
+	if (o.dat_usezip) {
+		inputString += "datapack disable \"file/" + filename_name(fn) + "\"" + br
+	} else {
+		inputString += "datapack disable \"" + filename_name(fn) + "\"" + br
+	}
+	inputString += "tellraw @s [\"\",{\"text\":\"[NBS] \",\"color\":\"gold\",\"bold\":\"true\"},{\"text\":\"Data pack \",\"color\":\"yellow\"},{\"text\":\"" + filename_name(fn) + "\",\"color\":\"gold\",\"underlined\":\"true\"},{\"text\":\" uninstalled successfully. You may now remove it from your data pack folder.\",\"color\":\"yellow\"}]"
+	dat_writefile(inputString, functiondir + "uninstall.mcfunction")
+	
+	if (add_teams) {
+		//add_teams.mcfunction
+		inputString = "team add nbs_1" + br
+		inputString += "team add nbs_2" + br
+		inputString += "team add nbs_3" + br
+		inputString += "team add nbs_4" + br
+		inputString += "team add nbs_5" + br
+		inputString += "team add nbs_6" + br
+		inputString += "team add nbs_7" + br
+		inputString += "team add nbs_8" + br
+		inputString += "team add nbs_9" + br
+		inputString += "team add nbs_10" + br
+		inputString += "team add nbs_11" + br
+		inputString += "team add nbs_12" + br
+		inputString += "team add nbs_13" + br
+		inputString += "team add nbs_14" + br
+		inputString += "team add nbs_15" + br
+		inputString += "team add nbs_16" + br
+		inputString += "team add nbs_17" + br
+		inputString += "team modify nbs_1 color dark_gray" + br
+		inputString += "team modify nbs_2 color red" + br
+		inputString += "team modify nbs_3 color black" + br
+		inputString += "team modify nbs_4 color yellow" + br
+		inputString += "team modify nbs_5 color light_purple" + br
+		inputString += "team modify nbs_6 color green" + br
+		inputString += "team modify nbs_7 color dark_red" + br
+		inputString += "team modify nbs_8 color dark_aqua" + br
+		inputString += "team modify nbs_9 color dark_green" + br
+		inputString += "team modify nbs_10 color blue" + br
+		inputString += "team modify nbs_11 color aqua" + br
+		inputString += "team modify nbs_12 color dark_blue" + br
+		inputString += "team modify nbs_13 color dark_gray" + br
+		inputString += "team modify nbs_14 color dark_green" + br
+		inputString += "team modify nbs_15 color gray" + br
+		inputString += "team modify nbs_16 color gold" + br
+		inputString += "team modify nbs_17 color white"
+		dat_writefile(inputString, functiondir + "add_teams.mcfunction")
+		
+		//remove_teams.mcfunction
+		inputString = "team remove nbs_1" + br
+		inputString += "team remove nbs_2" + br
+		inputString += "team remove nbs_3" + br
+		inputString += "team remove nbs_4" + br
+		inputString += "team remove nbs_5" + br
+		inputString += "team remove nbs_6" + br
+		inputString += "team remove nbs_7" + br
+		inputString += "team remove nbs_8" + br
+		inputString += "team remove nbs_9" + br
+		inputString += "team remove nbs_10" + br
+		inputString += "team remove nbs_11" + br
+		inputString += "team remove nbs_12" + br
+		inputString += "team remove nbs_13" + br
+		inputString += "team remove nbs_14" + br
+		inputString += "team remove nbs_15" + br
+		inputString += "team remove nbs_16" + br
+		inputString += "team remove nbs_17"
+		dat_writefile(inputString, functiondir + "remove_teams.mcfunction")
+	}
 	
 	//Generate binary tree and notes
 	dat_generate(functionpath, functiondir, objective)
@@ -143,8 +177,9 @@ with (new(obj_dummy2)) {
 		ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
 	}
 	
-	directory_destroy(tempdir)
+	directory_delete_lib(tempdir)
 	instance_destroy()
 }
-message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop","Data Pack Export")
+
+message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "If you wish to uninstall it from" + br + "your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the " + br + "'datapacks' folder.","Data Pack Export")
 window = w_datapack_export

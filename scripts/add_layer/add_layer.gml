@@ -72,4 +72,5 @@ layerlock[num] = lock
 layervol[num] = vol
 layerstereo[num] = pan
 
+changed = 1
 if (!argument[1]) history_set(h_addlayer, num, blocks, xx, name, lock, vol, pan)

@@ -56,4 +56,5 @@ for (l = num; l < endb2 - 1; l++) {
 
 endb2 -= 1
 
+changed = 1
 if (!argument1) history_set(h_removelayer, num, blocks, xx, name, lock, vol, pan)

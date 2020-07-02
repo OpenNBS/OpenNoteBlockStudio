@@ -28,7 +28,7 @@ with (new(obj_dummy2)) {
     block_ground_data = o.sch_exp_ground_data
     blockspr = o.sch_exp_notesperrow                          // Blocks per row
     layout = o.sch_exp_layout                                 // Layout number
-    loop = (o.sch_exp_loop && layout = 0)                       // Whether to loop
+    sch_loop = (o.sch_exp_loop && layout = 0)                       // Whether to loop
     minecart = (o.sch_exp_minecart && layout < 2)               // Whether to add minecart tracks
     chest = (o.sch_exp_chest && minecart)                     // Whether to add a minecart chest
     blocksam = o.sch_exp_totalblocks[o.sch_exp_includelocked] // Amount of blocks
@@ -102,7 +102,7 @@ with (new(obj_dummy2)) {
         block_other(1, yy + 1, hei - 1, 35, 11)
         block_other(2, yy, hei - 1, 68, 3) // Button
         block_other(2, yy + 1, hei - 1, 77, 3)
-        if (loop) {
+        if (sch_loop) {
             block_other(2, yy, hei - 2, 68, 3)
             block_other(2, yy + 1, hei - 2, 69, 3 + 8)
             block_other(1, yy + 1, hei - 3, WIRE, 15)
@@ -345,7 +345,7 @@ with (new(obj_dummy2)) {
             block_other(len - 1, cyy + 2, hei - 2, RAIL, 1)
             block_other(len - 1, cyy + 3, hei - 2, RAIL, 9)
         }
-        if (loop && lturnx > -1) { // Loop
+        if (sch_loop && lturnx > -1) { // Loop
             xx = lturnx
             yy = lturny
             zz = (layers - 1) * 3
@@ -568,7 +568,7 @@ with (new(obj_dummy2)) {
             buffer_write_float_be(0)
         TAG_End()
     }
-    TAG_List("TileEntities", 1 + noteblocks + loop + chest, 10)
+    TAG_List("TileEntities", 1 + noteblocks + sch_loop + chest, 10)
         if (o.sch_exp_minecraft_old)
             TAG_String("id", "Sign")
         else
@@ -588,7 +588,7 @@ with (new(obj_dummy2)) {
             TAG_String("Text4", "{\"text\": \"Block Studio\"}")
         }
         TAG_End()
-        if (loop) {
+        if (sch_loop) {
             if (o.sch_exp_minecraft_old)
                 TAG_String("id", "Sign")
             else

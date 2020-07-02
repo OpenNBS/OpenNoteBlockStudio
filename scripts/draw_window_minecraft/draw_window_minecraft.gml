@@ -114,11 +114,15 @@ if (selected_tab_mc = 0) { // Schematic
 	    } else {
 	        draw_text(x1 + 45, yy + 16, "There are " + string(block_outside) + " blocks outside the 2 octave range.")
 	    }
-	    if (draw_button2(x1 + 45, yy + 34, 130, "Select affected blocks")) {
-	        select_outside()
+	    if (draw_button2(x1 + 45, yy + 34, 120, "Select lower blocks")) {
+	        select_outside(true, false)
 	        window = 0
 	    }
-	    if (draw_button2(x1 + 185, yy + 34, 100, "Transpose notes")) {
+		if (draw_button2(x1 + 175, yy + 34, 120, "Select higher blocks")) {
+	        select_outside(false, true)
+	        window = 0
+	    }
+	    if (draw_button2(x1 + 305, yy + 34, 100, "Transpose notes")) {
 	        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
 	            select_all(-1, 0)
 	            selection_transpose()
@@ -197,11 +201,15 @@ if (selected_tab_mc = 0) { // Schematic
 	    } else {
 	        draw_text(x1 + 45, yy + 32, "There are " + string(block_outside) + " blocks outside the 2 octave range.")
 	    }
-	    if (draw_button2(x1 + 45, yy + 50, 130, "Select affected blocks")) {
-	        select_outside()
+	    if (draw_button2(x1 + 45, yy + 50, 120, "Select lower blocks")) {
+	        select_outside(true, false)
 	        window = 0
 	    }
-	    if (draw_button2(x1 + 185, yy + 50, 100, "Transpose notes")) {
+		if (draw_button2(x1 + 175, yy + 50, 120, "Select higher blocks")) {
+	        select_outside(false, true)
+	        window = 0
+	    }
+	    if (draw_button2(x1 + 305, yy + 50, 100, "Transpose notes")) {
 	        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
 	            select_all(-1, 0)
 	            selection_transpose()

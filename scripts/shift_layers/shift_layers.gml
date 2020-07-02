@@ -51,4 +51,5 @@ layerstereo[l2] = templayerstereo
 // Swap name boxes
 swap_text_edit(100 + l1, 100 + l2)
 
+changed = 1
 if (!argument2) history_set(h_swaplayer, l1, l2)
