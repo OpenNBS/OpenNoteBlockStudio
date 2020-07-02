@@ -1,3 +1,68 @@
+Changes in v3.8.0 (2020.07.02):
+* Massive performance improvements! Songs should now rarely slow down,
+skip notes, or cut off when too many sounds are playing at once.
+* Added an option to expand the workspace to cover the whole screen,
+accessible from the button at the lower right corner of the workspace or by
+pressing F11.
+* Added a blackout mode, which makes the workspace completely black so
+you can key it out in your video editor when recording the screen.
+It's acessible from the Preferences or by pressing F10.
+* Added a sound count display to the status bar. It will turn red when too many
+sounds are playing at once, meaning sounds may be skipped.
+* Added a preference to display the number of right-clicks on piano keys
+inside the 2-octave range.
+* Added a preference toggle for the red outline on incompatible blocks.
+* Added a preference toggle for the red tint on out-of-range piano keys.
+* Changed the note block display modes to three individual toggles, so you
+can control them independently.
+* Added colors and shapes to custom instruments.
+* It's now possible to select lower and higher out-of-range notes separately
+in the Compatibility window.
+* Added an uninstall function to data packs, which will remove all tags and
+objectives pertinent to the song and disable the data pack.
+* Added an 'Enable looping' checkbox to Song properties, which must be
+ticked to enable looping persistently in a song.
+* The loop button in the toolbar will now only control looping for the current
+session.
+* The 'Save options' setting was moved from Settings to the File menu.
+* The song will now be marked as having unsaved changes when you edit a
+layer, change the song properties, or rename a custom instrument.
+* Instruments in the toolbar will now collapse into a box when there are too
+many to fit the screen width.
+* Bugfixes and improvements:
+   * The marker will no longer skip notes during a slowdown, or when playing
+at faster playback rates. 
+   * The song playback will no longer slow down when the performance isn't
+optimal.
+   * The amount of sounds that can be played concurrently was increased,
+meaning you can now have many more notes playing at once before they
+begin to cut off.
+   * The macro bar will no longer overlap with the workspace when the piano
+or the layer boxes are hidden.
+   * The key that must be held to select multiple layers was changed from Shift
+to Control.
+   * Fixed loaded sound files not being copied to the Sounds folder when picked
+from a different location.
+   * Fixed piano keys not emitting sounds when played with the keyboard
+during the song playback.
+   * Fixed data packs containing functions from previously exported ones.
+   * Fixed data pack visualizer allowing spawn heights up to 256 instead of 255.
+   * Data pack commands related to the visualizer will now only be included
+when it's enabled.
+   * Fixed a double minus sign being added to some data pack commands,
+preventing them from loading properly in-game.
+   * Fixed being able to create a data pack with no alphanumeric characters in
+the name.
+   * Updated the included resource packs to pack format 5.
+   * Fixed a crash when entering non-numeric values in the Arpeggio and
+Stagger macros.
+   * Fixed custom instruments in the Song stats window having the wrong icons.
+   * Fixed the pattern export dialog adding the wrong extension to the file name.
+   * Fixed being able to rename some of the default instruments.
+   * Changed the Open Note Block Studio's website URL in the greeting window.
+   * Improved layout of the Preferences window.
+   * Fixed typos and improved wording across various places.
+
 Changes in v3.7.2 (2020.02.27):
 * Auto-saving will now wait until you pause the song to prevent stuttering.
 * Fixed notes in the first tick of a song not playing when selected.
