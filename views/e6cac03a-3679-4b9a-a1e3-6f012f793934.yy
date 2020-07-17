@@ -19,7 +19,10 @@
         "d8651506-5796-430e-883f-f79e489fc92c",
         "e5dfde89-f0c1-46a3-8b26-1f2e45a48c35",
         "132dbf39-4ce2-487d-8a3b-03fd1e679fb9",
-        "be6e08ca-7dae-4763-a711-044af44a7b07"
+        "be6e08ca-7dae-4763-a711-044af44a7b07",
+        "142013da-5443-47f3-ad73-a8e011f73159",
+        "ee15ae94-44b2-49f2-839f-1e8c89da5669",
+        "322e57e3-b1d8-4b15-972f-1d2cedb5ea57"
     ],
     "filterType": "GMIncludedFile",
     "folderName": "Sounds",
