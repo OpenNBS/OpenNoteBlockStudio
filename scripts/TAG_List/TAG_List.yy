@@ -1,8 +1,12 @@
 {
-    "id": "6310e5a7-0b7c-48f8-8379-cad8500dd5d2",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "TAG_List",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Tags",
+    "path": "folders/Scripts/Schematic/Export/Tags.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "TAG_List",
+  "tags": [],
+  "resourceType": "GMScript",
 }

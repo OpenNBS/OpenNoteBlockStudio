@@ -1,8 +1,12 @@
 {
-    "id": "d7fa9b4a-fe17-445f-94c8-b256eef49385",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "macro_tremolo",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Macros",
+    "path": "folders/Scripts/Note Blocks/Macros.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "macro_tremolo",
+  "tags": [],
+  "resourceType": "GMScript",
 }

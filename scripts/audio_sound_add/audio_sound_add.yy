@@ -1,8 +1,12 @@
 {
-    "id": "98e2e6c6-16e2-4c86-958d-4c6f3357273d",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "audio_sound_add",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "audio",
+    "path": "folders/Scripts/Libraries/audio.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "audio_sound_add",
+  "tags": [],
+  "resourceType": "GMScript",
 }

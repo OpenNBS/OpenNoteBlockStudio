@@ -1,8 +1,12 @@
 {
-    "id": "2757357a-9ec7-43ec-8451-b7bec6caf290",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "TAG_Byte_Array",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Tags",
+    "path": "folders/Scripts/Schematic/Export/Tags.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "TAG_Byte_Array",
+  "tags": [],
+  "resourceType": "GMScript",
 }

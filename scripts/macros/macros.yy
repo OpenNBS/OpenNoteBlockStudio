@@ -1,8 +1,12 @@
 {
-    "id": "7f18e6d5-a952-4bb8-98a8-75edbc680a8e",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "macros",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "macros",
+  "tags": [],
+  "resourceType": "GMScript",
 }

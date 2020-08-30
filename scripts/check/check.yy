@@ -1,8 +1,12 @@
 {
-    "id": "1faf465f-0920-424a-ac54-965f1eb75b69",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "check",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Popup",
+    "path": "folders/Scripts/Interface/Menu/Popup.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "check",
+  "tags": [],
+  "resourceType": "GMScript",
 }

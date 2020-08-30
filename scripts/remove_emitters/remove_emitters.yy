@@ -1,8 +1,12 @@
 {
-    "id": "dbc83193-0877-4ba7-87ae-8ba0acb9323a",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "remove_emitters",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Note Blocks",
+    "path": "folders/Scripts/Note Blocks.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "remove_emitters",
+  "tags": [],
+  "resourceType": "GMScript",
 }

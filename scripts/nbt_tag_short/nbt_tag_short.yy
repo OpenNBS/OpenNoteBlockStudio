@@ -1,8 +1,12 @@
 {
-    "id": "76c1c5fe-37c1-4ab3-98bc-30c8496b924b",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "nbt_tag_short",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "NBT",
+    "path": "folders/Scripts/Schematic/GMSchematic/NBT.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "nbt_tag_short",
+  "tags": [],
+  "resourceType": "GMScript",
 }

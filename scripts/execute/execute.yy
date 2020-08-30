@@ -1,8 +1,12 @@
 {
-    "id": "02075b5e-2cd0-48e0-994a-855a7c91c003",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "execute",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "file",
+    "path": "folders/Scripts/Libraries/file.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "execute",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -1,8 +1,12 @@
 {
-    "id": "200d66e6-7b00-4232-b48e-fd664e81a946",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "string_digits_symbol",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Strings",
+    "path": "folders/Scripts/Functions/Strings.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "string_digits_symbol",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -1,11 +1,15 @@
-// string_truncate(str, maxwidth)
-// Truncates a string to maxwidth and adds ellipses (...) at the end
+function string_truncate(argument0, argument1) {
+	// string_truncate(str, maxwidth)
+	// Truncates a string to maxwidth and adds ellipses (...) at the end
 
-var str, maxwidth
-str = argument0
-maxwidth = argument1
+	var str, maxwidth
+	str = argument0
+	maxwidth = argument1
 
-if (string_width(str) > maxwidth) {
-	return string_maxwidth(str, maxwidth) + "..."
+	if (string_width(str) > maxwidth) {
+		return string_maxwidth(str, maxwidth) + "..."
+	}
+	return str
+
+
 }
-return str

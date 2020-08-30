@@ -1,8 +1,12 @@
 {
-    "id": "36bf530d-9afd-4915-8e0f-6d9162ea03b2",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "draw_macroicon",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Interface",
+    "path": "folders/Scripts/Interface.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "draw_macroicon",
+  "tags": [],
+  "resourceType": "GMScript",
 }

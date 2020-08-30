@@ -1,23 +1,27 @@
-// load_text(filename)
-// Loads a text file into a string.
+function load_text(argument0) {
+	// load_text(filename)
+	// Loads a text file into a string.
 
-if (file_exists_lib(argument0)) {
+	if (file_exists_lib(argument0)) {
 
-    var file, str
+	    var file, str
 
-    file = file_text_open_read(argument0)
-    str = ""
+	    file = file_text_open_read(argument0)
+	    str = ""
 
-    while (!file_text_eof(file)) {
-        str += file_text_readln(file)
-    }
+	    while (!file_text_eof(file)) {
+	        str += file_text_readln(file)
+	    }
 
-    file_text_close(file)
+	    file_text_close(file)
 	
-	return str
+		return str
 
-} else {
+	} else {
 	
-	return 0
+		return 0
+
+	}
+
 
 }

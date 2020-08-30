@@ -1,8 +1,12 @@
 {
-    "id": "8dad8688-dcad-4f45-976f-2e06a0a1b217",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "test",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Functions",
+    "path": "folders/Scripts/Functions.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "test",
+  "tags": [],
+  "resourceType": "GMScript",
 }

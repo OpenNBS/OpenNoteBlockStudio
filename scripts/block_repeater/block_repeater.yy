@@ -1,8 +1,12 @@
 {
-    "id": "6a2ab064-5ae2-4804-bb5f-06fa0632a25c",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "block_repeater",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Export",
+    "path": "folders/Scripts/Schematic/Export.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "block_repeater",
+  "tags": [],
+  "resourceType": "GMScript",
 }

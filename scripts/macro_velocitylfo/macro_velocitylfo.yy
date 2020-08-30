@@ -1,8 +1,12 @@
 {
-    "id": "11313390-ea0d-4d1e-8bbd-9870958e217d",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "macro_velocitylfo",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Macros",
+    "path": "folders/Scripts/Note Blocks/Macros.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "macro_velocitylfo",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -1,8 +1,12 @@
 {
-    "id": "34ec0d19-615a-4729-90e8-994c82ebca34",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "dat_instrument",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Datapack",
+    "path": "folders/Scripts/Datapack.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "dat_instrument",
+  "tags": [],
+  "resourceType": "GMScript",
 }

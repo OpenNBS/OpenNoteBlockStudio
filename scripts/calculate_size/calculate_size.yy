@@ -1,8 +1,12 @@
 {
-    "id": "a2e89fa1-cfb4-4595-a924-a76b06b21dfc",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "calculate_size",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Export",
+    "path": "folders/Scripts/Schematic/Export.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "calculate_size",
+  "tags": [],
+  "resourceType": "GMScript",
 }

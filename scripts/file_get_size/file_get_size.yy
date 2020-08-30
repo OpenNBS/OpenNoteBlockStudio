@@ -1,8 +1,12 @@
 {
-    "id": "f136e3ca-963a-4648-ae87-60c3ee8476a9",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "file_get_size",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "File",
+    "path": "folders/Scripts/File.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "file_get_size",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -1,8 +1,12 @@
 {
-    "id": "31425fd9-3440-4595-8547-88223ea2205e",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "update_songsize",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Note Blocks",
+    "path": "folders/Scripts/Note Blocks.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "update_songsize",
+  "tags": [],
+  "resourceType": "GMScript",
 }

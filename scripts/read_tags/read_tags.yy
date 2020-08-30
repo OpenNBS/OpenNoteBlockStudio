@@ -1,8 +1,12 @@
 {
-    "id": "1cb81dea-069c-46f1-a2fd-8856244ee0e3",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "read_tags",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Import",
+    "path": "folders/Scripts/Schematic/Import.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "read_tags",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -1,8 +1,12 @@
 {
-    "id": "4756f83f-caf8-4253-8464-427c453bfc07",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "dat_makefolders",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Datapack",
+    "path": "folders/Scripts/Datapack.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "dat_makefolders",
+  "tags": [],
+  "resourceType": "GMScript",
 }
