@@ -1,8 +1,12 @@
 {
-    "id": "45f85a77-6b67-4044-94f8-0dec934bb015",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "reset",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Controller",
+    "path": "folders/Scripts/Controller.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "reset",
+  "tags": [],
+  "resourceType": "GMScript",
 }

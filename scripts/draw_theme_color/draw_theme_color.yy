@@ -1,8 +1,12 @@
 {
-    "id": "fca0f17f-26af-492a-84ef-996e87cb1bb6",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "draw_theme_color",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Interface",
+    "path": "folders/Scripts/Interface.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "draw_theme_color",
+  "tags": [],
+  "resourceType": "GMScript",
 }

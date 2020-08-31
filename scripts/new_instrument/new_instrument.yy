@@ -1,8 +1,12 @@
 {
-    "id": "02b31b14-2614-4665-90d0-1ee076f259ab",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "new_instrument",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Instruments",
+    "path": "folders/Scripts/Instruments.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "new_instrument",
+  "tags": [],
+  "resourceType": "GMScript",
 }

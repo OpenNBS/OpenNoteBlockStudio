@@ -1,8 +1,12 @@
 {
-    "id": "dd5c1910-1887-4a4f-8da1-0570be027908",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "mp3_export",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Controller",
+    "path": "folders/Scripts/Controller.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "mp3_export",
+  "tags": [],
+  "resourceType": "GMScript",
 }

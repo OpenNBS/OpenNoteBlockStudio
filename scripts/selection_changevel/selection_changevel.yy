@@ -1,8 +1,12 @@
 {
-    "id": "63a2935d-520e-4b1c-b87e-8b95af2fc3a1",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "selection_changevel",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Selection",
+    "path": "folders/Scripts/Note Blocks/Selection.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "selection_changevel",
+  "tags": [],
+  "resourceType": "GMScript",
 }

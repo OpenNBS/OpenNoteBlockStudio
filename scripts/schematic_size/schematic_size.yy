@@ -1,8 +1,12 @@
 {
-    "id": "a5471489-0a15-4bbf-a39c-5c9de139603e",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "schematic_size",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "GMSchematic",
+    "path": "folders/Scripts/Schematic/GMSchematic.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "schematic_size",
+  "tags": [],
+  "resourceType": "GMScript",
 }

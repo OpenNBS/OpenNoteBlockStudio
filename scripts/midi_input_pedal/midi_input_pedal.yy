@@ -1,8 +1,12 @@
 {
-    "id": "0dbb2465-26fd-49ea-b1de-e81064895b39",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "midi_input_pedal",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "midiinput",
+    "path": "folders/Scripts/Libraries/midiinput.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "midi_input_pedal",
+  "tags": [],
+  "resourceType": "GMScript",
 }

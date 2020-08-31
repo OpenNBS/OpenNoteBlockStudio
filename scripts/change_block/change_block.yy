@@ -1,8 +1,12 @@
 {
-    "id": "dd00bca5-943a-4c05-aec5-8bbe9c6cf15b",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "change_block",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Note Blocks",
+    "path": "folders/Scripts/Note Blocks.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "change_block",
+  "tags": [],
+  "resourceType": "GMScript",
 }

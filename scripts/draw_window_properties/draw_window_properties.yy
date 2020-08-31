@@ -1,8 +1,12 @@
 {
-    "id": "bced0341-fa02-480d-adda-d9372d1f5c0e",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "draw_window_properties",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Windows",
+    "path": "folders/Scripts/Interface/Windows.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "draw_window_properties",
+  "tags": [],
+  "resourceType": "GMScript",
 }

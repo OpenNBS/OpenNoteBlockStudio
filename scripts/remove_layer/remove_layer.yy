@@ -1,8 +1,12 @@
 {
-    "id": "11d66464-127c-4513-b0f4-58159c8010b3",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "remove_layer",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Layers",
+    "path": "folders/Scripts/Note Blocks/Layers.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "remove_layer",
+  "tags": [],
+  "resourceType": "GMScript",
 }

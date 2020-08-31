@@ -1,8 +1,12 @@
 {
-    "id": "453cbb7a-3111-41e6-aa4b-2fab1225569a",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "selection_expand",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Selection",
+    "path": "folders/Scripts/Note Blocks/Selection.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "selection_expand",
+  "tags": [],
+  "resourceType": "GMScript",
 }

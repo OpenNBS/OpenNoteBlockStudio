@@ -1,8 +1,12 @@
 {
-    "id": "6ce31156-5e21-4b1c-9bbe-279d00759d0d",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "nbt_string_write",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "NBT",
+    "path": "folders/Scripts/Schematic/GMSchematic/NBT.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "nbt_string_write",
+  "tags": [],
+  "resourceType": "GMScript",
 }

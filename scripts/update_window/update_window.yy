@@ -1,8 +1,12 @@
 {
-    "id": "caf03170-c1fc-42ce-abd4-cc04c23cc07e",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "update_window",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Controller",
+    "path": "folders/Scripts/Controller.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "update_window",
+  "tags": [],
+  "resourceType": "GMScript",
 }

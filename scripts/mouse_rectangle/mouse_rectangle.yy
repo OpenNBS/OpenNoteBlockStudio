@@ -1,8 +1,12 @@
 {
-    "id": "d16acd0d-150b-41a6-a65f-f7ab7bdfb2cb",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "mouse_rectangle",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Functions",
+    "path": "folders/Scripts/Functions.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "mouse_rectangle",
+  "tags": [],
+  "resourceType": "GMScript",
 }

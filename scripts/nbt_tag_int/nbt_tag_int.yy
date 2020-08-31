@@ -1,8 +1,12 @@
 {
-    "id": "fc739041-82e5-42b1-8aff-2c3f2dfb39c6",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "nbt_tag_int",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "NBT",
+    "path": "folders/Scripts/Schematic/GMSchematic/NBT.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "nbt_tag_int",
+  "tags": [],
+  "resourceType": "GMScript",
 }

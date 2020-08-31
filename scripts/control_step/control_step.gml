@@ -1,1 +1,6 @@
-update_window()
+function control_step() {
+	update_window()
+
+
+
+}

@@ -1,8 +1,12 @@
 {
-    "id": "2bafba25-b387-4f9e-bcfd-b4fafe1d8405",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "branch_export",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Export",
+    "path": "folders/Scripts/Schematic/Export.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "branch_export",
+  "tags": [],
+  "resourceType": "GMScript",
 }

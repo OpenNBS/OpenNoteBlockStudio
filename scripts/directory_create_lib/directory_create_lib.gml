@@ -1,3 +1,8 @@
-// directory_create_lib(dir)
+function directory_create_lib(argument0) {
+	// directory_create_lib(dir)
 
-return external_call(lib_directory_create, argument0)
+	return external_call(lib_directory_create, argument0)
+
+
+
+}

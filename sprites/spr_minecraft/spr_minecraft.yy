@@ -1,114 +1,86 @@
 {
-    "id": "f6c72d6f-a880-4b21-bb5f-f5fcf13b3af6",
-    "modelName": "GMSprite",
-    "mvc": "1.12",
-    "name": "spr_minecraft",
-    "For3D": false,
-    "HTile": false,
-    "VTile": false,
-    "bbox_bottom": 19,
-    "bbox_left": 1,
-    "bbox_right": 18,
-    "bbox_top": 0,
-    "bboxmode": 0,
-    "colkind": 1,
-    "coltolerance": 0,
-    "edgeFiltering": false,
-    "frames": [
-        {
-            "id": "61867e0e-1cda-4186-b7c2-31e9ac65f8e1",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "f6c72d6f-a880-4b21-bb5f-f5fcf13b3af6",
-            "compositeImage": {
-                "id": "cf56f950-a757-49b5-b2cb-9b5b454f3d67",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "61867e0e-1cda-4186-b7c2-31e9ac65f8e1",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "c953660f-8d19-4c34-9d42-d37b85a72305",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "61867e0e-1cda-4186-b7c2-31e9ac65f8e1",
-                    "LayerId": "fb02363e-9d7e-4951-9f98-0eb91274e7c7"
-                }
-            ]
-        },
-        {
-            "id": "b75fa22e-07bf-4f57-ac9a-7fc38ba57651",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "f6c72d6f-a880-4b21-bb5f-f5fcf13b3af6",
-            "compositeImage": {
-                "id": "a91b2744-bd5b-4aa0-af5a-0aefb43e7ff2",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "b75fa22e-07bf-4f57-ac9a-7fc38ba57651",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "673159ab-f6d5-4cba-a91e-390d7841e520",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "b75fa22e-07bf-4f57-ac9a-7fc38ba57651",
-                    "LayerId": "fb02363e-9d7e-4951-9f98-0eb91274e7c7"
-                }
-            ]
-        },
-        {
-            "id": "d93f5da1-5486-4262-91d0-07513e6a9408",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "f6c72d6f-a880-4b21-bb5f-f5fcf13b3af6",
-            "compositeImage": {
-                "id": "7ef14fc1-e9b4-4d68-bd5f-4123ae31f0a7",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "d93f5da1-5486-4262-91d0-07513e6a9408",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "49e53542-aa10-4345-9d07-c0d996ef100f",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "d93f5da1-5486-4262-91d0-07513e6a9408",
-                    "LayerId": "fb02363e-9d7e-4951-9f98-0eb91274e7c7"
-                }
-            ]
-        }
-    ],
-    "gridX": 0,
-    "gridY": 0,
-    "height": 20,
-    "layers": [
-        {
-            "id": "fb02363e-9d7e-4951-9f98-0eb91274e7c7",
-            "modelName": "GMImageLayer",
-            "mvc": "1.0",
-            "SpriteId": "f6c72d6f-a880-4b21-bb5f-f5fcf13b3af6",
-            "blendMode": 0,
-            "isLocked": false,
-            "name": "default",
-            "opacity": 100,
-            "visible": true
-        }
-    ],
-    "origin": 0,
-    "originLocked": false,
-    "playbackSpeed": 1,
+  "bboxMode": 0,
+  "collisionKind": 1,
+  "type": 0,
+  "origin": 0,
+  "preMultiplyAlpha": false,
+  "edgeFiltering": false,
+  "collisionTolerance": 0,
+  "swfPrecision": 2.525,
+  "bbox_left": 1,
+  "bbox_right": 18,
+  "bbox_top": 0,
+  "bbox_bottom": 19,
+  "HTile": false,
+  "VTile": false,
+  "For3D": false,
+  "width": 20,
+  "height": 20,
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
+  },
+  "swatchColours": null,
+  "gridX": 0,
+  "gridY": 0,
+  "frames": [
+    {"compositeImage":{"FrameId":{"name":"61867e0e-1cda-4186-b7c2-31e9ac65f8e1","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"61867e0e-1cda-4186-b7c2-31e9ac65f8e1","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"61867e0e-1cda-4186-b7c2-31e9ac65f8e1","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"b75fa22e-07bf-4f57-ac9a-7fc38ba57651","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"b75fa22e-07bf-4f57-ac9a-7fc38ba57651","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"b75fa22e-07bf-4f57-ac9a-7fc38ba57651","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft/spr_minecraft.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","name":"d93f5da1-5486-4262-91d0-07513e6a9408","tags":[],"resourceType":"GMSpriteFrame",},
+  ],
+  "sequence": {
+    "spriteId": {"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},
+    "timeUnits": 1,
+    "playback": 1,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
-    "premultiplyAlpha": false,
-    "sepmasks": false,
-    "swatchColours": null,
-    "swfPrecision": 2.525,
-    "textureGroupId": "1225f6b0-ac20-43bd-a82e-be73fa0b6f4f",
-    "type": 0,
-    "width": 20,
-    "xorig": 0,
-    "yorig": 0
+    "autoRecord": true,
+    "volume": 1.0,
+    "length": 3.0,
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
+    "tracks": [
+      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"737c71c2-d0c0-4fc6-958c-01cb31827349","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"61867e0e-1cda-4186-b7c2-31e9ac65f8e1","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"00e89e15-5aaf-450d-aa80-e5166a2d5bbb","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b75fa22e-07bf-4f57-ac9a-7fc38ba57651","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"e5d21065-538d-450e-96b7-c6989d89f60f","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft/spr_minecraft.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
+    ],
+    "visibleRange": {"x":0.0,"y":0.0,},
+    "lockOrigin": false,
+    "showBackdrop": true,
+    "showBackdropImage": false,
+    "backdropImagePath": "",
+    "backdropImageOpacity": 0.5,
+    "backdropWidth": 1920,
+    "backdropHeight": 1080,
+    "backdropXOffset": 0.0,
+    "backdropYOffset": 0.0,
+    "xorigin": 0,
+    "yorigin": 0,
+    "eventToFunction": {},
+    "eventStubScript": null,
+    "parent": {"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},
+    "resourceVersion": "1.3",
+    "name": "",
+    "tags": [],
+    "resourceType": "GMSequence",
+  },
+  "layers": [
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","tags":[],"resourceType":"GMImageLayer",},
+  ],
+  "parent": {
+    "name": "Other",
+    "path": "folders/Sprites/Other.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "spr_minecraft",
+  "tags": [],
+  "resourceType": "GMSprite",
 }
