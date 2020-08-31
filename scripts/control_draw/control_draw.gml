@@ -1193,7 +1193,7 @@ function control_draw() {
 				var insindex = (a * ins_icons + b)
 				if (insindex >= ds_list_size(instrument_list)) break
 				var ins = instrument_list[| insindex];
-				if (draw_icon_insbox(icons.INS_1 + insindex, xx + b * 25, yy + a * 25, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100, 100, 0) instrument = ins}
+				if (draw_icon_insbox(insindex, xx + b * 25, yy + a * 25, "Change instrument to " + ins.name, true, false, instrument = ins)) {play_sound(ins, selected_key, 100, 100, 0) instrument = ins}
 			}
 		}
 		// Click away
@@ -1203,15 +1203,15 @@ function control_draw() {
 		}
 		xx += ins_icons * 25
 		// 'Collapse' button
-		draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "Less instruments", 0) // it's a fake button since clicking anywhere works :D
+		draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "Less instruments", true) // it's a fake button since clicking anywhere works :D
 		xx += 25
 	} else {
 		for (a = 0; a < ins_icons; a += 1) {
 		    var ins = instrument_list[| a];
-		    if (draw_icon(icons.INS_1 + a, xx, yy, "Change instrument to " + ins.name, 0, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
+		    if (draw_icon_insbox(a, xx, yy, "Change instrument to " + ins.name, false, false, instrument = ins)) {play_sound(ins, selected_key, 100 ,100, 0) instrument = ins} xx += 25
 		}
 		if (ins_icons < ds_list_size(instrument_list)) {
-			if (draw_icon(icons.INSBOX_EXPAND, xx, yy, "More instruments...", 0, 0)) {showinsbox = 1}
+			if (draw_icon_insbox(icons.INSBOX_EXPAND, xx, yy, "More instruments...", false, true, 0)) {showinsbox = 1}
 			xx += 25
 		}
 	}

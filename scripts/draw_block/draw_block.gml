@@ -1,6 +1,6 @@
 function draw_block(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8) {
 	// draw_block(x, y, ins, key, pan, vel, pit, alpha, selalpha)
-	var xx, yy, ins, key, pan, vel, pit, alpha, salpha, index, sprite, frame;
+	var xx, yy, ins, key, pan, vel, pit, alpha, salpha, index, iscustom, sprite, frame, ins, num1, num2;
 	xx = argument0
 	yy = argument1
 	ins = argument2
@@ -12,10 +12,16 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	salpha = argument8
 
 	index = ds_list_find_index(instrument_list, ins)
-	frame = index
 
 	//If index isnt found, don't draw
 	if(index = -1)return;
+	
+	iscustom = (index >= first_custom_index)
+	if (iscustom) {
+		frame = (index - first_custom_index) % 18 + first_custom_index
+	} else {
+		frame = index
+	}
 
 	if (use_colors) {
 		if (use_shapes) {
@@ -35,6 +41,13 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	draw_set_alpha(1)
 	if (use_icons) {
 		draw_sprite_ext(spr_instrumenticons, index, xx + 16, yy + 16, 1, 1, 0, -1, alpha)
+		if (iscustom) {
+			ins = (index - first_custom_index + 1) % 100
+			num1 = floor(ins / 10)
+			num2 = ins % 10
+			draw_sprite(spr_numbers_mc, num1, xx + 16 + 3, yy + 16 + 4)
+			draw_sprite(spr_numbers_mc, num2, xx + 16 + 9, yy + 16 + 4)
+		}
 	}
 
 	//Draw a red or blue tint in the block when the pitch is off

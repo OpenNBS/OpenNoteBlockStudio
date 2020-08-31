@@ -35,7 +35,7 @@ function draw_window_instruments() {
 	draw_text(x1 + 18, y1 + 70, "Name")
 	if (draw_button2(x1 + 12, y1 + 318, 80, "Import")) load_instruments("")
 	c = 0
-	if (draw_button2(x1 + 256, y1 + 318, 80, "Add", user_instruments >= 18) && wmenu = 0) {
+	if (draw_button2(x1 + 256, y1 + 318, 80, "Add", false) && wmenu = 0) {
 	    changed = true
 	    insselect = ds_list_size(instrument_list)
 	    ds_list_add(instrument_list, new_instrument("Custom instrument #" + string(user_instruments + 1), "", true))
