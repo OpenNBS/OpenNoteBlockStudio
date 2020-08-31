@@ -175,7 +175,7 @@ function load_song() {
 	        var press = buffer_read_byte();
 	        var ins = new_instrument(name, insfn, true, press, key);
 	        with (ins)
-	            if (!instrument_load())
+	            if (!instrument_load() && insfn != "")
 	                str += insfn + "\n"
 	        ds_list_add(instrument_list, ins)
 	    }
