@@ -45,13 +45,13 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 			display = (ins + 1) % 100
 			num1 = floor(display / 10)
 			num2 = display % 10
-			color1 = make_color_hsv((ins * 16) % 256, 128, 255)
-			color2 = make_color_hsv((ins * 16) % 256, 255, 48)
+			color1 = make_color_hsv((ins * 16) % 256, 192, 255)
+			color2 = make_color_hsv((ins * 16) % 256, 255, 128)
 			draw_sprite_ext(spr_instrumenticons, first_custom_index, xx + 16, yy + 16, 1, 1, 0, color1, alpha)
 			draw_sprite_ext(spr_numbers_mc, num1, xx + 16 + 3, yy + 16 + 5, 1, 1, 0, color2, alpha)
 			draw_sprite_ext(spr_numbers_mc, num2, xx + 16 + 9, yy + 16 + 5, 1, 1, 0, color2, alpha)
-			draw_sprite(spr_numbers_mc, num1, xx + 16 + 2, yy + 16 + 4)
-			draw_sprite(spr_numbers_mc, num2, xx + 16 + 8, yy + 16 + 4)
+			draw_sprite_ext(spr_numbers_mc, num1, xx + 16 + 2, yy + 16 + 4, 1, 1, 0, -1, alpha)
+			draw_sprite_ext(spr_numbers_mc, num2, xx + 16 + 8, yy + 16 + 4, 1, 1, 0, -1, alpha)
 		} else {
 			draw_sprite_ext(spr_instrumenticons, index, xx + 16, yy + 16, 1, 1, 0, -1, alpha)
 		}

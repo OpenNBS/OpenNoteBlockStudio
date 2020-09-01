@@ -27,11 +27,13 @@ function draw_icon_insbox() {
 		display = (ins + 1) % 100
 		num1 = floor(display / 10)
 		num2 = display % 10
-		color1 = make_color_hsv((ins * 16) % 256, 165, 255)
-		color2 = make_color_hsv((ins * 16) % 256, 255, 120)
+		color1 = make_color_hsv((ins * 16) % 256, 192, 255)
+		color2 = make_color_hsv((ins * 16) % 256, 255, 128)
 		draw_sprite_ext(spr_icons, icons.CUSTOM_INS_OVERLAY, xx + push, yy + push, 1, 1, 0, color1, 1)
-		draw_sprite_ext(spr_numbers, num1, xx + 11 + push, yy + 12 + push, 1, 1, 0, color2, 1)
-		draw_sprite_ext(spr_numbers, num2, xx + 16 + push, yy + 12 + push, 1, 1, 0, color2, 1)
+		draw_sprite_ext(spr_numbers, num1, xx + 12 + push, yy + 13 + push, 1, 1, 0, color2, 1)
+		draw_sprite_ext(spr_numbers, num2, xx + 16 + push, yy + 13 + push, 1, 1, 0, color2, 1)
+		draw_sprite(spr_numbers, num1, xx + 11 + push, yy + 12 + push)
+		draw_sprite(spr_numbers, num2, xx + 15 + push, yy + 12 + push)
 	}
 	if (i = 7 || i = 8) return (a = 2)
 	return (a && mouse_check_button_released(mb_left))
