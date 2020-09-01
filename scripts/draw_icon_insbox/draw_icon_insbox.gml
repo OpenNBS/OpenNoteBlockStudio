@@ -1,6 +1,6 @@
 function draw_icon_insbox() {
 	// draw_icon(i, xx, yy, str[, boxed[, isaction[, pressed]]])
-	var i, a, xx, yy, str, boxed, isaction, pressed, clickable, sprite, ins, num1, num2;
+	var i, a, xx, yy, str, boxed, isaction, pressed, clickable, sprite, push, ins, display, num1, num2, color1, color2;
 	i = argument[0]
 	xx = argument[1]
 	yy = argument[2]
@@ -20,13 +20,18 @@ function draw_icon_insbox() {
 	    draw_sprite(spr_frame1, a + 3 * theme, xx, yy)
 	}
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
-	draw_sprite(spr_icons, sprite, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
+	push = (a = 2 || pressed = 1)
+	draw_sprite(spr_icons, sprite, xx + push, yy + push)
 	if (!isaction && i >= first_custom_index) {
-		ins = (i - first_custom_index + 1) % 100
-		num1 = floor(ins / 10)
-		num2 = ins % 10
-		draw_sprite(spr_numbers, num1, xx + 11 + (a = 2 || pressed = 1), yy + 12+ (a = 2 || pressed = 1))
-		draw_sprite(spr_numbers, num2, xx + 16 + (a = 2 || pressed = 1), yy + 12 + (a = 2 || pressed = 1))
+		ins = i - first_custom_index
+		display = (ins + 1) % 100
+		num1 = floor(display / 10)
+		num2 = display % 10
+		color1 = make_color_hsv((ins * 16) % 256, 165, 255)
+		color2 = make_color_hsv((ins * 16) % 256, 255, 120)
+		draw_sprite_ext(spr_icons, icons.CUSTOM_INS_OVERLAY, xx + push, yy + push, 1, 1, 0, color1, 1)
+		draw_sprite_ext(spr_numbers, num1, xx + 11 + push, yy + 12 + push, 1, 1, 0, color2, 1)
+		draw_sprite_ext(spr_numbers, num2, xx + 16 + push, yy + 12 + push, 1, 1, 0, color2, 1)
 	}
 	if (i = 7 || i = 8) return (a = 2)
 	return (a && mouse_check_button_released(mb_left))
