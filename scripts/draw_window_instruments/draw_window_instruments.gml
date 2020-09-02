@@ -45,6 +45,15 @@ function draw_window_instruments() {
 	if (insselect > -1 && instrument_list[| insselect].user)
 	    userselect = instrument_list[| insselect]
 	if (draw_button2(x1 + 340, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
+		for (a = 0; a <= enda; a += 1) {
+		    if (colamount[a] > 0) {
+		        for (b = colfirst[a]; b <= collast[a]; b += 1) {
+		            if (song_exists[a, b] && song_ins[a, b] = userselect) {
+						remove_block(a, b)
+					}
+				}
+			}
+		}
 	    changed = 1
 	    with (userselect) {
 	        instrument_free()
