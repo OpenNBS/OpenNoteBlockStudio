@@ -1071,6 +1071,7 @@ function control_draw() {
 	if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 	tab_x = 1
 	draw_set_font(fnt_small)
+	draw_theme_color()
 	if (draw_tab("File")) {
 	    str = ""
 	    for (b = 0; b < 11; b += 1) {
