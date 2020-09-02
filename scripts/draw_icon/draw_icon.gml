@@ -20,6 +20,7 @@ function draw_icon() {
 	    draw_sprite(spr_frame1, a + 3 * theme, xx, yy)
 	}
 	draw_sprite(spr_icons, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
+	// Repeat trigger when holding fast-forward and rewind
 	if (i = 7 || i = 8) return (a = 2)
 	return (a && mouse_check_button_released(mb_left))
 

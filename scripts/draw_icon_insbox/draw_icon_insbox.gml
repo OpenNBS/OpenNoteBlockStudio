@@ -35,7 +35,6 @@ function draw_icon_insbox() {
 		draw_sprite(spr_numbers, num1, xx + 11 + push, yy + 12 + push)
 		draw_sprite(spr_numbers, num2, xx + 15 + push, yy + 12 + push)
 	}
-	if (i = 7 || i = 8) return (a = 2)
 	return (a && mouse_check_button_released(mb_left))
 
 
