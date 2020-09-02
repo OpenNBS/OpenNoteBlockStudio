@@ -45,26 +45,28 @@ function draw_window_instruments() {
 	if (insselect > -1 && instrument_list[| insselect].user)
 	    userselect = instrument_list[| insselect]
 	if (draw_button2(x1 + 340, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
-		for (a = 0; a <= enda; a += 1) {
-		    if (colamount[a] > 0) {
-		        for (b = colfirst[a]; b <= collast[a]; b += 1) {
-		            if (song_exists[a, b] && song_ins[a, b] = userselect) {
-						remove_block(a, b)
+		if ((userselect.num_blocks == 0) || (message_yesnocancel("This will remove " + string(userselect.num_blocks) + " block" + condstr(userselect.num_blocks > 1, "s") + " using this instrument and cannot be undone. Confirm?", "Warning"))) {
+			for (a = 0; a <= enda; a += 1) {
+			    if (colamount[a] > 0) {
+			        for (b = colfirst[a]; b <= collast[a]; b += 1) {
+			            if (song_exists[a, b] && song_ins[a, b] = userselect) {
+							remove_block(a, b)
+						}
 					}
 				}
 			}
+		    changed = 1
+		    with (userselect) {
+		        instrument_free()
+		        ds_list_delete_value(other.instrument_list, userselect)
+		        instance_destroy()
+		    }
+		    insselect = min(ds_list_size(instrument_list) - 1, insselect)
+		    if (instrument = userselect)
+		        instrument = instrument_list[| 0]
+		    user_instruments--
+		    c = 1
 		}
-	    changed = 1
-	    with (userselect) {
-	        instrument_free()
-	        ds_list_delete_value(other.instrument_list, userselect)
-	        instance_destroy()
-	    }
-	    insselect = min(ds_list_size(instrument_list) - 1, insselect)
-	    if (instrument = userselect)
-	        instrument = instrument_list[| 0]
-	    user_instruments--
-	    c = 1
 	}
 	if (draw_button2(x1 + 455, y1 + 318, 80, "OK") && wmenu = 0) window = 0
 	if (mouse_check_button_pressed(mb_left)) {
