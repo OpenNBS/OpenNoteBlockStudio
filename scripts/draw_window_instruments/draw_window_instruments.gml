@@ -97,6 +97,10 @@ function draw_window_instruments() {
 	                if (file_exists_lib(fn)) {
 	                    var newfn = sounds_directory + filename_name(fn);
 	                    files_copy_lib(fn, newfn)
+						if (string_copy(ins.name, 0, 19) == "Custom instrument #") {
+							ins.name = filename_change_ext(filename_name(fn), "")
+							text_exists[b + 5] = 0
+						}
 	                    changed = true
 	                    with (ins) {
 	                        filename = filename_name(newfn)
