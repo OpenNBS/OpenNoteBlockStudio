@@ -1211,6 +1211,8 @@ function control_draw() {
 		draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "Less instruments", true) // it's a fake button since clicking anywhere works :D
 		xx += 25
 	} else {
+		// Prevent overflow when an instrument is deleted
+		insbox_start = min(insbox_start, ds_list_size(instrument_list) - ins_icons)
 		for (a = insbox_start; a < insbox_start + ins_icons; a += 1) {
 		    var ins = instrument_list[| a];
 		    if (draw_icon_insbox(a, xx, yy, "Change instrument to " + ins.name, false, false, instrument = ins)) {
