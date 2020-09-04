@@ -178,7 +178,7 @@ function control_draw() {
 	}
 	exist = 0
 	if ((sela > -1 && selb > -1) || select > 0) {
-	    if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) clickinarea = 1
+	    if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_middle)) clickinarea = 1
 	    selbx = starta + sela
 	    selby = startb + selb
 	    if (select = 0 && selected = 0 && selbx < arraylength && selby < arrayheight) {
@@ -406,6 +406,14 @@ function control_draw() {
 	        }
 	        dontplace = 0
 	    }
+		if (mouse_check_button_pressed(mb_middle)) {
+			if (exist = 1) {
+				selected_key = song_key[selbx, selby]
+				instrument = song_ins[selbx, selby]
+				play_sound(instrument, selected_key, 100, 100, 0)
+			}
+				
+		}
 	    if (mouse_check_button(mb_right)) {
 	        if ((starta + sela != select_pressa || startb + selb != select_pressb) && select_pressx != -1) {
 	            select = 2
