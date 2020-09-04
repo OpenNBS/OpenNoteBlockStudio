@@ -10,9 +10,9 @@ function midi_input_set_key(argument0, argument1) {
 	            if (midi_input_key_press_note(d, k) = key + 21) {
 	                var ins, vel;
 	                ins = mididevice_instrument[d]
-					vel = midi_input_key_press_velocity(d, k)
 	                if (ins < 0) ins = instrument
 	                if (playing = 0) play_sound(ins, key, vel ,100, 0)
+					vel = min(midi_input_key_press_velocity(d, k), 100)
 	                if (select_lastpressed) selected_key = key
 	                if (playing = 0.25) toggle_playing(totalcols)
 	                if (playing && record) {
