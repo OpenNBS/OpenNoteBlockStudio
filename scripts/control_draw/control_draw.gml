@@ -879,6 +879,7 @@ function control_draw() {
 		fullscreen = !fullscreen
 		dontplace = 1
 	}
+	draw_theme_color()
 
 	// Draw layers
 	for (b = 0; b < totalrows; b += 1) {
