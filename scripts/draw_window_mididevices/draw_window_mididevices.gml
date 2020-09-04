@@ -48,7 +48,7 @@ function draw_window_mididevices() {
 	        inslist = check(mididevice_instrument[a] = -3) + "Disable device|" + check(mididevice_instrument[a] = -2) + "None|" + check(mididevice_instrument[a] = -1) + "Use selected|-|"
 	        for (b = 0; b < ds_list_size(instrument_list); b += 1) {
 	            var ins = instrument_list[| b];
-	            if (ins.user) inslist += "-|"
+	            if (b = first_custom_index) inslist += "-|"
 	            inslist += check(mididevice_instrument[a] = ins) + clean(ins.name) +"|"
 	        }
 	        menu = show_menu_ext("mididevices_ins", x1 + 18 + 250 + 70, y1 + 86 + 20 * a + 20, inslist)
