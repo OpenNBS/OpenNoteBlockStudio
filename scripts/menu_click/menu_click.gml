@@ -246,10 +246,10 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "mididevices_ins": {
-	        if (sel - 1 < 0)
-	            mididevice_instrument[obj_menu.mididevice] = -1
+	        if (sel - 3 < 0)
+	            mididevice_instrument[obj_menu.mididevice] = sel - 3
 	        else
-	            mididevice_instrument[obj_menu.mididevice] = instrument_list[| sel - 1]
+	            mididevice_instrument[obj_menu.mididevice] = instrument_list[| sel - 3]
 	        break
 	    }
 	}

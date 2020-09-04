@@ -38,12 +38,14 @@ function draw_window_mididevices() {
 	    draw_theme_color()
 	    draw_text(x1 + 18, y1 + 90 + 20 * a, midi_input_device_name(a))
 	    var insname;
-	    if (mididevice_instrument[a] < 0) insname = "Use selected"
+	    if (mididevice_instrument[a] = -3) insname = "Disable device"
+		else if (mididevice_instrument[a] = -2) insname = "None"
+		else if (mididevice_instrument[a] = -1) insname = "Use selected"
 	    else insname = string_replace_all(mididevice_instrument[a].name, "\n", "\\\n")
 	    draw_text(x1 + 18 + 250 + 75, y1 + 90 + 20 * a, insname)
 	    if (draw_abutton(x1 + 18 + 250 + 75 + 64 + 85 - 24, y1 + 88 + 20 * a)) {
 	        var inslist, menu;
-	        inslist = check(mididevice_instrument[a] = -1) + "Use selected|-|"
+	        inslist = check(mididevice_instrument[a] = -3) + "Disable device|" + check(mididevice_instrument[a] = -2) + "None|" + check(mididevice_instrument[a] = -1) + "Use selected|-|"
 	        for (b = 0; b < ds_list_size(instrument_list); b += 1) {
 	            var ins = instrument_list[| b];
 	            if (ins.user) inslist += "-|"
