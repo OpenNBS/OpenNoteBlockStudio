@@ -2,6 +2,8 @@
 
 var num, solonum, solostrnew, i, char, blocks, xx, name, lock, vol, pan, l
 
+
+//Checking for arguments
 num = argument[0]
 if (argument_count > 2) {
 	blocks = argument[2]
