@@ -113,6 +113,7 @@
     {"id":{"name":"buffer_write_double","path":"scripts/buffer_write_double/buffer_write_double.yy",},"order":16,},
     {"id":{"name":"buffer_write_double_be","path":"scripts/buffer_write_double_be/buffer_write_double_be.yy",},"order":17,},
     {"id":{"name":"buffer_write_float_be","path":"scripts/buffer_write_float_be/buffer_write_float_be.yy",},"order":18,},
+    {"id":{"name":"instrument_remove","path":"scripts/instrument_remove/instrument_remove.yy",},"order":4,},
     {"id":{"name":"buffer_write_int","path":"scripts/buffer_write_int/buffer_write_int.yy",},"order":19,},
     {"id":{"name":"buffer_write_int_be","path":"scripts/buffer_write_int_be/buffer_write_int_be.yy",},"order":20,},
     {"id":{"name":"buffer_write_short","path":"scripts/buffer_write_short/buffer_write_short.yy",},"order":21,},
