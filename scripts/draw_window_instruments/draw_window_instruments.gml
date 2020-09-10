@@ -86,22 +86,7 @@ function draw_window_instruments() {
 	    if (mouse_rectangle(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20) && insselect = b && wmenu = 0) {
 	        if (mouse_check_button_pressed(mb_left)) {
 	            if (ins.user) {
-	                fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "Load sound file"))
-	                if (file_exists_lib(fn)) {
-	                    var newfn = sounds_directory + filename_name(fn);
-	                    files_copy_lib(fn, newfn)
-						if (string_copy(ins.name, 0, 19) == "Custom instrument #") {
-							ins.name = filename_change_ext(filename_name(fn), "")
-							text_exists[b + 5] = 0
-						}
-	                    changed = true
-	                    with (ins) {
-	                        filename = filename_name(newfn)
-	                        if (loaded)
-	                            instrument_free()
-	                        instrument_load()
-	                    }
-	                }
+					instrument_change(ins)
 	            } else {
 	                message("The sound file for this instrument cannot be changed.", "Error")
 	            }

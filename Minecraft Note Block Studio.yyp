@@ -242,6 +242,7 @@
     {"id":{"name":"spr_numbers","path":"sprites/spr_numbers/spr_numbers.yy",},"order":7,},
     {"id":{"name":"gzunzip","path":"scripts/gzunzip/gzunzip.yy",},"order":8,},
     {"id":{"name":"gzzip","path":"scripts/gzzip/gzzip.yy",},"order":9,},
+    {"id":{"name":"instrument_change","path":"scripts/instrument_change/instrument_change.yy",},"order":5,},
     {"id":{"name":"open_url","path":"scripts/open_url/open_url.yy",},"order":10,},
     {"id":{"name":"program_path","path":"scripts/program_path/program_path.yy",},"order":11,},
     {"id":{"name":"midi_input_devices","path":"scripts/midi_input_devices/midi_input_devices.yy",},"order":0,},
