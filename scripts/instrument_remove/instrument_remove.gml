@@ -8,14 +8,11 @@ function instrument_remove(ins) {
 			}
 		}
 	}
-	changed = 1
 	with (ins) {
 		instrument_free()
 		ds_list_delete_value(other.instrument_list, ins)
 		instance_destroy()
 	}
-	insselect = min(ds_list_size(instrument_list) - 1, insselect)
-	if (instrument = ins)
-		instrument = instrument_list[| 0]
 	user_instruments--
+	changed = 1
 }

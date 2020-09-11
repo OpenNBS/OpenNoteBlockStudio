@@ -47,6 +47,9 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 340, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
 		if ((userselect.num_blocks == 0) || (message_yesnocancel("This will remove " + string(userselect.num_blocks) + " block" + condstr(userselect.num_blocks > 1, "s") + " using this instrument and cannot be undone. Confirm?", "Warning"))) {
 			instrument_remove(userselect)
+			insselect = min(ds_list_size(instrument_list) - 1, insselect)
+			if (instrument = userselect)
+				instrument = instrument_list[| 0]
 			c = 1
 		}
 	}
