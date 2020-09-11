@@ -68,7 +68,9 @@ function draw_window_instruments() {
 	    insedit = -1
 	}
 	if (mouse_check_button_released(mb_left) && c = 0) {
-	    if (!mouse_rectangle(x1 + 14, y1 + 88, 476, min(ds_list_size(instrument_list) * 20, 220))) insselect = -1
+	    if (!mouse_rectangle(x1 + 14, y1 + 88, 476, min(ds_list_size(instrument_list) * 20, 220)) && (!mouse_rectangle(x1 + 14, y1 + 318, 476, 24))) {
+			insselect = -1
+		}
 	}
 	// Instruments
 	for (a = 0; a <= 10; a += 1) {
