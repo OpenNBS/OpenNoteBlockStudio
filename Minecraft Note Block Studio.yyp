@@ -366,6 +366,7 @@
     {"id":{"name":"sch_data_write","path":"scripts/sch_data_write/sch_data_write.yy",},"order":5,},
     {"id":{"name":"schematic_start","path":"scripts/schematic_start/schematic_start.yy",},"order":0,},
     {"id":{"name":"schematic_create","path":"scripts/schematic_create/schematic_create.yy",},"order":1,},
+    {"id":{"name":"instrument_swap","path":"scripts/instrument_swap/instrument_swap.yy",},"order":6,},
     {"id":{"name":"schematic_load","path":"scripts/schematic_load/schematic_load.yy",},"order":2,},
     {"id":{"name":"schematic_size","path":"scripts/schematic_size/schematic_size.yy",},"order":3,},
     {"id":{"name":"schematic_cell_set","path":"scripts/schematic_cell_set/schematic_cell_set.yy",},"order":4,},

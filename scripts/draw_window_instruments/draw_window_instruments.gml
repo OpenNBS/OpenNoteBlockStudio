@@ -35,7 +35,7 @@ function draw_window_instruments() {
 	draw_text(x1 + 18, y1 + 70, "Name")
 	if (draw_button2(x1 + 12, y1 + 318, 80, "Import")) load_instruments("")
 	c = 0
-	if (draw_button2(x1 + 256, y1 + 318, 80, "Add", false) && wmenu = 0) {
+	if (draw_button2(x1 + 106, y1 + 318, 80, "Add", false) && wmenu = 0) {
 	    changed = true
 	    insselect = ds_list_size(instrument_list)
 	    ds_list_add(instrument_list, new_instrument("Custom instrument #" + string(user_instruments + 1), "", true))
@@ -44,7 +44,7 @@ function draw_window_instruments() {
 	var userselect = -1;
 	if (insselect > -1 && instrument_list[| insselect].user)
 	    userselect = instrument_list[| insselect]
-	if (draw_button2(x1 + 340, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
+	if (draw_button2(x1 + 190, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
 		if ((userselect.num_blocks == 0) || (message_yesnocancel("This will remove " + string(userselect.num_blocks) + " block" + condstr(userselect.num_blocks > 1, "s") + " using this instrument and cannot be undone. Confirm?", "Warning"))) {
 			instrument_remove(userselect)
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
@@ -52,6 +52,16 @@ function draw_window_instruments() {
 				instrument = instrument_list[| 0]
 			c = 1
 		}
+	}
+	if (draw_button2(x1 + 274, y1 + 318, 80, "Shift up", (userselect < 0) || (user_instruments <= 1) || (insselect == first_custom_index)) && wmenu = 0) {
+		insselect -= 1
+		instrument_swap(userselect, instrument_list[| insselect])
+		c = 1
+	}
+	if (draw_button2(x1 + 358, y1 + 318, 80, "Shift down", (userselect < 0) || (user_instruments <= 1) || (insselect == ds_list_size(instrument_list) - 1) && wmenu = 0)) {
+		insselect += 1
+		instrument_swap(userselect, instrument_list[| insselect])
+		c = 1
 	}
 	if (draw_button2(x1 + 455, y1 + 318, 80, "OK") && wmenu = 0) window = 0
 	if (mouse_check_button_pressed(mb_left)) {
