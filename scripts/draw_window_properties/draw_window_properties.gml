@@ -11,9 +11,9 @@ function draw_window_properties() {
 	draw_set_font(fnt_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
-	    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 322, 0)
+	    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 359, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 322, 1)
+	    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 359, 1)
 	}
 	draw_areaheader(x1 + 22, y1 + 48, 396, 200, "Information")
 
