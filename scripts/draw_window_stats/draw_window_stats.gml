@@ -20,7 +20,11 @@ function draw_window_stats() {
 	    n = floor(sb_val[statscrollbarv]) + a
 	    if (n >= ds_list_size(instrument_list)) break
 	    ins = instrument_list[| n];
-	    draw_sprite(spr_instrumenticons, n, x1 + 32, y1 + 64 + 18 * a)
+		if (ins.user) {
+			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true)
+		} else {
+			draw_sprite(spr_instrumenticons, n, x1 + 32, y1 + 64 + 18 * a)
+		}
 	    draw_text(x1 + 50, y1 + 65 + 18 * a, "x" + string(ins.num_blocks) + " (" + string(floor(ins.num_blocks / max(0.001, totalblocks) * 100)) + "%)")
 	    popup_set_window(x1 + 32, y1 + 64 + 18 * a, 100, 18, ins.name)
 	}
