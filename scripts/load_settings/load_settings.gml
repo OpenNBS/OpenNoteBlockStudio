@@ -132,6 +132,12 @@ function load_settings() {
 	// Keyboard keys
 	for (a = 0; a < 88; a += 1) piano_key[a] = ini_read_real("piano_keys", "piano_key_" + string(a), piano_key[a])
 
+	// Default instrument presses
+	for (a = 0; a < first_custom_index; a += 1) {
+		var ins = ds_list_find_value(instrument_list, a)
+		ins.press = ini_read_real("instruments", "ins_" + string(a) + "_press", ins.press)
+	}
+
 	// Warnings
 	warning_octaves =    ini_read_real("warnings", "octaves",    warning_octaves)
 	warning_instrument = ini_read_real("warnings", "instrument", warning_instrument)
