@@ -154,6 +154,7 @@
     {"id":{"name":"ExecuteShell","path":"scripts/ExecuteShell/ExecuteShell.yy",},"order":6,},
     {"id":{"name":"instrument_free","path":"scripts/instrument_free/instrument_free.yy",},"order":0,},
     {"id":{"name":"instrument_load","path":"scripts/instrument_load/instrument_load.yy",},"order":1,},
+    {"id":{"name":"draw_icon_customins","path":"scripts/draw_icon_customins/draw_icon_customins.yy",},"order":30,},
     {"id":{"name":"load_instruments","path":"scripts/load_instruments/load_instruments.yy",},"order":2,},
     {"id":{"name":"new_instrument","path":"scripts/new_instrument/new_instrument.yy",},"order":3,},
     {"id":{"name":"check","path":"scripts/check/check.yy",},"order":0,},
