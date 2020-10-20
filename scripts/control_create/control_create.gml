@@ -307,6 +307,7 @@ function control_create() {
 
 	instrument = instrument_list[| 0]
 	insbox_start = 0
+	insmenu = 0
 	first_custom_index = ds_list_size(instrument_list)
 	user_instruments = 0
 	emitters_to_remove = ds_list_create()

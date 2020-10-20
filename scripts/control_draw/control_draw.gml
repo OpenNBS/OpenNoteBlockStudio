@@ -426,13 +426,18 @@ function control_draw() {
 	        if (starta + sela = select_pressa && startb + selb = select_pressb && select_pressx != -1) {
 	            str = ""
 	            customstr = ""
+				insmenu = 1
 	            for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	                var ins = instrument_list[| a];
 	                if (ins.user)
 	                    customstr += "...to " + clean(ins.name) + "|"
 	                else
 	                    str += "...to " + clean(ins.name) + "|"
-	            }			
+					if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+						customstr += "-|More...|\\|"
+						insmenu++
+					}
+				}
 	            menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
 	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
 	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
@@ -450,7 +455,7 @@ function control_draw() {
 	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                        inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + "/|-|"+
+	                                        inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
 	                                        inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
