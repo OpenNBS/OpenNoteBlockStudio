@@ -154,16 +154,16 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "settings": {
-	        b = ds_list_size(instrument_list)
-	        for (a = 0; a < b; a += 1) {
-	            if (sel = a + 1) instrument = instrument_list[| a]
-	        }
-	        if (sel = b + 1) window = w_instruments
-	        if (sel = b + 2) window = w_songinfoedit
-	        if (sel = b + 3) window = w_properties
-	        if (sel = b + 4) {selection_place(0) window = w_stats}
-	        if (sel = b + 5) window = w_mididevices
-	        if (sel = b + 6) window = w_preferences
+			var insoffset = ds_list_size(instrument_list) + insmenu - 1
+			var ins = sel - 1
+			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
+	        if (sel < insoffset + 1) instrument = instrument_list[| ins]
+	        if (sel = insoffset + 1) window = w_instruments
+	        if (sel = insoffset + 2) window = w_songinfoedit
+	        if (sel = insoffset + 3) window = w_properties
+	        if (sel = insoffset + 4) {selection_place(0) window = w_stats}
+	        if (sel = insoffset + 5) window = w_mididevices
+	        if (sel = insoffset + 6) window = w_preferences
 	        break
 	    }
 	    case "help": {

@@ -1141,6 +1141,7 @@ function control_draw() {
 	if (draw_tab("Settings")) {
 	    str = ""
 	    customstr = ""
+		insmenu = 1
 	    for (a = 0; a < ds_list_size(instrument_list); a++) {
 	        var ins = instrument_list[| a];
 	        if (ins.user)
@@ -1150,10 +1151,14 @@ function control_draw() {
 					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 				}else{
 				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
-				}	
-			}  
+				}
+			}
+			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+				customstr += "-|More...|\\|"
+				insmenu++
+			}
 	    }
-	    show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + "-|" + customstr + condstr(customstr != "", "-|") +
+	    show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
 	                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Preferences...")
 	}
 	if (draw_tab("Help")) {
