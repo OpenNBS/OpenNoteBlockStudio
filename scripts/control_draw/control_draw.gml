@@ -1108,12 +1108,17 @@ function control_draw() {
 	if (draw_tab("Edit")) {
 	    str = ""
 	    customstr = ""
+		insmenu = 1
 	    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	        var ins = instrument_list[| a];
 	        if (ins.user)
 	            customstr += "...to " + clean(ins.name) + "|"
 	        else
 	            str += "...to " + clean(ins.name) + "|"
+			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+				customstr += "-|More...|\\|"
+				insmenu++
+			}
 	    }
 	    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$Undo|"+
 	                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$Redo|-|"+
@@ -1132,7 +1137,7 @@ function control_draw() {
 	                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + "/|-|"+
+	                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
 	                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
