@@ -2,6 +2,7 @@ function instrument_load() {
 	// instrument_load()
 
 	var fn = sounds_directory + filename;
+	fn = string_replace(fn, "/", "\\");
 
 	log("Load instrument", fn)
 
