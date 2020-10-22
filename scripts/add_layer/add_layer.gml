@@ -59,7 +59,7 @@ function add_layer() {
 		layerlock[l] = layerlock[l - 1]
 		layervol[l] = layervol[l - 1]
 		layerstereo[l] = layerstereo[l - 1]
-		swap_text_edit(100 + l, 100 + l - 1)
+		swap_text_edit(300 + l, 300 + l - 1)
 	}
 
 	// Place layer back

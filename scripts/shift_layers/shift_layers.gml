@@ -50,7 +50,7 @@ function shift_layers(argument0, argument1, argument2) {
 	layerstereo[l2] = templayerstereo
 
 	// Swap name boxes
-	swap_text_edit(100 + l1, 100 + l2)
+	swap_text_edit(300 + l1, 300 + l2)
 
 	changed = 1
 	if (!argument2) history_set(h_swaplayer, l1, l2)

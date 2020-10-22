@@ -905,7 +905,7 @@ function control_draw() {
 		    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 			draw_set_font(fnt_small)
 			prev = layername[startb + b]
-			layername[startb + b] = draw_text_edit(100 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
+			layername[startb + b] = draw_text_edit(300 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
 				if(theme = 2) draw_set_color(make_color_rgb(160, 160, 160))

@@ -52,7 +52,7 @@ function remove_layer(argument0, argument1) {
 		layerlock[l] = layerlock[l + 1]
 		layervol[l] = layervol[l + 1]
 		layerstereo[l] = layerstereo[l + 1]
-		swap_text_edit(100 + l, 100 + l + 1)
+		swap_text_edit(300 + l, 300 + l + 1)
 	}
 
 	endb2 -= 1

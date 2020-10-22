@@ -185,7 +185,7 @@ function import_midi() {
 	with (obj_popup) instance_destroy()
 	window = 0
 	changed = 0
-	for (a = 0; a < 200; a += 1) text_exists[a] = 0
+	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 
 
 

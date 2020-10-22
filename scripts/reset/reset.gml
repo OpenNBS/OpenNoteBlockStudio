@@ -88,7 +88,7 @@ function reset() {
 	sb_val[2] = 0
 	sb_val[3] = 0
 	sb_sel = 0
-	for (a = 0; a < 200; a += 1) text_exists[a] = 0
+	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 
 	// History
 	historypos = 0

@@ -217,7 +217,7 @@ function control_create() {
 	globalvar text_sline, text_spos, text_eline, text_epos, text_cline, text_cpos, text_mline, text_mpos;
 	globalvar text_click, text_marker, text_key_delay, text_lastwidth, text_laststr, text_lastfocus, text_mouseover, text_chars;
 	text_select = -1
-	text_exists[300] = 0
+	text_exists[10000] = 0
 	text_click = current_time
 	text_marker = 0
 	text_key_delay[7] = 0
