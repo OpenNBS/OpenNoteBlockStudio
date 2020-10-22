@@ -12,7 +12,7 @@ function instrument_change(ins) {
 		}
 		if (string_copy(ins.name, 0, 19) == "Custom instrument #") {
 			ins.name = filename_change_ext(filename_name(newfn), "")
-			text_exists[ds_list_find_index(instrument_list, ins) + 5] = 0
+			text_exists[60 + ds_list_find_index(instrument_list, ins)] = 0
 		}
 	    changed = true
 	    with (ins) {
