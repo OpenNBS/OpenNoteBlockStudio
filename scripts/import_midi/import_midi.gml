@@ -4,7 +4,7 @@ function import_midi() {
 	var ins1notes, ins2notes, ins3notes, ins4notes, ins5notes, ins6notes, ins7notes, ins8notes, ins9notes, ins10notes;
 	io_clear()
 	reset()
-	deltapertick = (midi_tempo & $7FFF) / 4
+	deltapertick = (midi_tempo & $7FFF) / 4 / (w_midi_precision + 1)
 	// Calculate channel heights
 	for (a = 0; a <= midi_channels; a += 1) {
 	    channelheight[a] = 0
@@ -141,7 +141,7 @@ function import_midi() {
 	}
 	// Set tempo
 	if (w_midi_tempo && enda > 0 && midi_songlength > 0) {
-	    tempo = median(0.25, 10 / ((midi_songlength) / (enda / 10)), 20)
+	    tempo = median(0.25, 10 / ((midi_songlength) / (enda / 10)), 30)
 	    tempo = floor(tempo * 4) / 4
 	}
 	// Name
@@ -180,6 +180,7 @@ function import_midi() {
 	    w_midi_maxheight = 2
 	    w_midi_tempo = 1
 	    w_midi_octave = 1
+		w_midi_precision = 0
 	}
 	global.popup = 0
 	with (obj_popup) instance_destroy()
