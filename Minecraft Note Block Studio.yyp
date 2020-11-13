@@ -416,6 +416,7 @@
     {"id":{"name":"fnt_info_med","path":"fonts/fnt_info_med/fnt_info_med.yy",},"order":5,},
     {"id":{"name":"fnt_info_med_bold","path":"fonts/fnt_info_med_bold/fnt_info_med_bold.yy",},"order":6,},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":0,},
+    {"id":{"name":"pack_instruments","path":"scripts/pack_instruments/pack_instruments.yy",},"order":7,},
     {"id":{"name":"obj_popup","path":"objects/obj_popup/obj_popup.yy",},"order":1,},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},"order":2,},
     {"id":{"name":"obj_dummy","path":"objects/obj_dummy/obj_dummy.yy",},"order":3,},

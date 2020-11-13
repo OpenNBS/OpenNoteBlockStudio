@@ -118,6 +118,8 @@ function reset() {
 	}
 	user_instruments = 0
 	instrument = instrument_list[| 0]
+	insselect = -1
+	insedit = -1
 
 	// Reset note count per instrument
 	for (a = 0; a < ds_list_size(instrument_list); a++) {

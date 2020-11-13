@@ -19,7 +19,8 @@ function draw_window_instruments() {
 	} else {
 	    draw_area(x1 + 11, y1 + 65, x1 + 535, y1 + 312)
 	}
-	if (draw_button2(x1 + 455, y1 + 34, 80, "Open Folder")) open_url(sounds_directory)
+	if (draw_button2(x1 + 455, y1 + 9, 80, "Import")) load_instruments("")
+	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder")) open_url(sounds_directory)
 	// Tabs
 	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88, y1 + 67 + 20)
 	popup_set_window(x1 + 13 + 194 + 160 + 80, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")
@@ -33,7 +34,15 @@ function draw_window_instruments() {
 	draw_window(x1 + 13, y1 + 67, x1 + 14 + 194, y1 + 67 + 20)
 	popup_set_window(x1 + 13, y1 + 67, 194, 20, "The name of this instrument.")
 	draw_text(x1 + 18, y1 + 70, "Name")
-	if (draw_button2(x1 + 12, y1 + 318, 80, "Import")) load_instruments("")
+	
+	var sounds = 0;
+	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {
+		var ins = ds_list_find_value(instrument_list, i)
+		if (ins.filename != "" && ins.loaded) {
+			sounds++
+		}
+	}
+	if (draw_button2(x1 + 12, y1 + 318, 80, "Pack to ZIP", (user_instruments == 0 || sounds == 0))) pack_instruments()
 	c = 0
 	if (draw_button2(x1 + 106, y1 + 318, 80, "Add", false) && wmenu = 0) {
 	    changed = true
