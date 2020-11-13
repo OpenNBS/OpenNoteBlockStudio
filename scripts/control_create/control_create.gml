@@ -376,11 +376,15 @@ function control_create() {
 	}
 
 	// Auto-recovery
+	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196
+	// Implement in a better way that takes multiple instances into account.
+	/*
 	if (file_exists_lib(backup_file)) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
 			load_song(backup_file, true)
 		}
 	}
+	*/
 
 	// Open song
 	if (parameter_count() > 0) {
