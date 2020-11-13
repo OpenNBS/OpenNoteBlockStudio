@@ -182,6 +182,7 @@ function import_midi() {
 	    w_midi_octave = 1
 		w_midi_precision = 0
 	}
+	save_settings()
 	global.popup = 0
 	with (obj_popup) instance_destroy()
 	window = 0

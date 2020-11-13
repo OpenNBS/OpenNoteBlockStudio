@@ -190,6 +190,7 @@ function draw_window_preferences() {
 	}
 	if (draw_button2(x1 + 420, y1 + 478, 72, "OK")) window = 0
 	window_set_cursor(curs)
+	save_settings()
 
 
 

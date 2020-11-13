@@ -155,7 +155,7 @@ function draw_window_instruments() {
 	draw_line(x1 + 13 + 194 + 160 + 80, y1 + 87, x1 + 13 + 194 + 160 + 80, y1 + 86 + 20 * a)
 	draw_scrollbar(insscrollbar, x1 + 14 + 194 + 160 + 80 + 70, y1 + 88, 21, 9, ds_list_size(instrument_list) - 2, 0, 1)
 	window_set_cursor(curs)
-
+	save_settings()
 
 
 }

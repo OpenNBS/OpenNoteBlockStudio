@@ -27,6 +27,7 @@ function menu_click(argument0) {
 	                    }
 	                    recent_song[10] = ""
 	                    recent_song_time[10] = 0
+						save_settings()
 	                } else {
 	                    load_song(recent_song[c])
 	                }
@@ -37,6 +38,7 @@ function menu_click(argument0) {
 	                recent_song[c] = ""
 	                recent_song_time[c] = 0
 	            }
+				save_settings()
 	        }
 	        if (sel = b + 4) save_song(filename)
 	        if (sel = b + 5) save_song("")
