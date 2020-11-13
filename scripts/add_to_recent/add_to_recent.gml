@@ -17,6 +17,6 @@ function add_to_recent(argument0) {
 	recent_song[a] = fn
 	recent_song_time[a] = date_current_datetime()
 
-
+	save_settings()
 
 }
