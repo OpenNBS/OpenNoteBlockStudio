@@ -266,11 +266,11 @@ function control_create() {
 	w_midi_name = 1
 	w_midi_name_patch = 1
 	w_midi_tab = 0
-	w_midi_maxheight = 2
+	w_midi_maxheight = 20
 	w_midi_tempo = 1
-	w_midi_octave = 1
-	w_midi_vel = 0
-	w_midi_precision = 0
+	w_midi_octave = 0
+	w_midi_vel = 1
+	w_midi_precision = 1
 	w_isdragging = 0
 	w_dragvalue = 0
 	init_midi()
