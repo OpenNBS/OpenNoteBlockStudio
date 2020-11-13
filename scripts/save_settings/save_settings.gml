@@ -58,6 +58,7 @@ function save_settings() {
 	ini_write_real_clean("midi_import", "enable_velocity", w_midi_vel)
 	ini_write_real_clean("midi_import", "tempo",           w_midi_tempo)
 	ini_write_real_clean("midi_import", "octave",          w_midi_octave)
+	ini_write_real_clean("midi_import", "precision",       w_midi_precision)
 	// instruments
 	for (a = 0; a < 128; a += 1) {
 	    ini_write_real_clean("midi_import", "ins_" + string(a),          midi_ins[a, 1]) // Instrument
