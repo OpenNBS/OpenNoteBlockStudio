@@ -1240,13 +1240,10 @@ function control_draw() {
 	} else {
 		// Ensure current instrument appears
 		a = ds_list_find_index(instrument_list, instrument)
-		show_debug_message(string(insbox_start) + " " + string(a) + " " + string(insbox_start + ins_icons))
 		if (a < insbox_start) {
-			show_debug_message("lower")
 			insbox_start -= ins_icons
 			insbox_start = floor(insbox_start / ins_icons) * ins_icons
 		} else if (a > insbox_start + ins_icons - 1) {
-			show_debug_message("higher")
 			insbox_start += ins_icons
 			insbox_start = floor(insbox_start / ins_icons) * ins_icons
 		}
