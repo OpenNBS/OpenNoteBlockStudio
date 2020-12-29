@@ -497,10 +497,10 @@
     {"folderPath":"folders/Rooms.yy","order":59,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
-    {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},
+    {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
     {"CopyToMask":9223372036854775807,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"bdrum.ogg","resourceType":"GMIncludedFile",},
@@ -747,7 +747,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":"extranotes.zip","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.1.536",
+    "IDEVersion": "2.3.1.542",
   },
   "resourceVersion": "1.4",
   "name": "Minecraft Note Block Studio",
