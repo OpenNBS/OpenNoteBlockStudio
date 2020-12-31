@@ -104,7 +104,7 @@ function draw_window_instruments() {
 	    if (ins.user) {draw_theme_color()}
 	    if (!ins.loaded) draw_set_color(c_red)
 	    if (insselect = b) draw_set_color(c_white)
-	    draw_text(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "None") + ins.filename)
+	    draw_text(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "None") + string_truncate(ins.filename, 144, true))
 	    if (ins.filename = "") popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "No sound file has been selected\nfor this instrument.")
 	    else if (!ins.loaded) popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "This sound file could not be found.")
 	    if (mouse_rectangle(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20) && insselect = b && wmenu = 0) {
