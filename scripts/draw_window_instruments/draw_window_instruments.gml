@@ -72,7 +72,13 @@ function draw_window_instruments() {
 		instrument_swap(userselect, instrument_list[| insselect])
 		c = 1
 	}
-	if (draw_button2(x1 + 455, y1 + 318, 80, "OK") && wmenu = 0) window = 0
+	if (draw_button2(x1 + 456, y1 + 318, 80, "OK") && wmenu = 0) {
+		window = 0
+		if (save_version < 5 && user_instruments > 18) {
+			show_message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
+			save_version = nbs_version
+		}
+	}
 	if (mouse_check_button_pressed(mb_left)) {
 	    insedit = -1
 	}
