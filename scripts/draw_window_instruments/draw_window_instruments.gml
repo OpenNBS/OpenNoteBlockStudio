@@ -42,9 +42,9 @@ function draw_window_instruments() {
 			sounds++
 		}
 	}
-	if (draw_button2(x1 + 12, y1 + 318, 80, "Pack to ZIP", (user_instruments == 0 || sounds == 0))) pack_instruments()
+	if (draw_button2(x1 + 12, y1 + 318, 85, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
 	c = 0
-	if (draw_button2(x1 + 106, y1 + 318, 80, "Add", false) && wmenu = 0) {
+	if (draw_button2(x1 + 110, y1 + 318, 80, "Add", false) && wmenu = 0) {
 	    changed = true
 	    insselect = ds_list_size(instrument_list)
 	    ds_list_add(instrument_list, new_instrument("Custom instrument #" + string(user_instruments + 1), "", true))
@@ -53,7 +53,7 @@ function draw_window_instruments() {
 	var userselect = -1;
 	if (insselect > -1 && instrument_list[| insselect].user)
 	    userselect = instrument_list[| insselect]
-	if (draw_button2(x1 + 190, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
+	if (draw_button2(x1 + 194, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
 		if ((userselect.num_blocks == 0) || (message_yesnocancel("This will remove " + string(userselect.num_blocks) + " block" + condstr(userselect.num_blocks > 1, "s") + " using this instrument and cannot be undone. Confirm?", "Warning"))) {
 			instrument_remove(userselect)
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
@@ -62,12 +62,12 @@ function draw_window_instruments() {
 			c = 1
 		}
 	}
-	if (draw_button2(x1 + 274, y1 + 318, 80, "Shift up", (userselect < 0) || (user_instruments <= 1) || (insselect == first_custom_index)) && wmenu = 0) {
+	if (draw_button2(x1 + 278, y1 + 318, 80, "Shift up", (userselect < 0) || (user_instruments <= 1) || (insselect == first_custom_index)) && wmenu = 0) {
 		insselect -= 1
 		instrument_swap(userselect, instrument_list[| insselect])
 		c = 1
 	}
-	if (draw_button2(x1 + 358, y1 + 318, 80, "Shift down", (userselect < 0) || (user_instruments <= 1) || (insselect == ds_list_size(instrument_list) - 1) && wmenu = 0)) {
+	if (draw_button2(x1 + 362, y1 + 318, 80, "Shift down", (userselect < 0) || (user_instruments <= 1) || (insselect == ds_list_size(instrument_list) - 1) && wmenu = 0)) {
 		insselect += 1
 		instrument_swap(userselect, instrument_list[| insselect])
 		c = 1
