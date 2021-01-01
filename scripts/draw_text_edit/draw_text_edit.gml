@@ -506,7 +506,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	    for (l = text_start[i]*!singleline; l < text_lines[i]; l += 1) {
 	        ly = l - text_start[i]*!singleline  // Current line y value
 	        if ((ly + 1) * lh > h) break  // Exit if beyond box
-	        if (window = 0 || i < 100) && ((mouseover && text_select = -1) || text_select = i) {
+	        if (window = 0 || i < 400) && ((mouseover && text_select = -1) || text_select = i) {
 	            if (l = text_lines[i] - 1) hh = h - ly * lh
 	            else hh = lh
 	            if ((mouse_x >= xx || text_select = i) &&
