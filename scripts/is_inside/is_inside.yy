@@ -1,8 +1,12 @@
 {
-    "id": "24294793-1838-4e02-8f8d-dd3d195c0847",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "is_inside",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Functions",
+    "path": "folders/Scripts/Functions.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "is_inside",
+  "tags": [],
+  "resourceType": "GMScript",
 }

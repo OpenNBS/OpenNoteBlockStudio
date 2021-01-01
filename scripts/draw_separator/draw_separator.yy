@@ -1,8 +1,12 @@
 {
-    "id": "bb77e968-5a4f-4c9d-954b-7ddca77d2c0a",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "draw_separator",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Interface",
+    "path": "folders/Scripts/Interface.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "draw_separator",
+  "tags": [],
+  "resourceType": "GMScript",
 }

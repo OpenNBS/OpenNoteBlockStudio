@@ -1,11 +1,15 @@
-// schematic_destroy(id)
-//  id      Schematic to destroy
+function schematic_destroy(argument0) {
+	// schematic_destroy(id)
+	//  id      Schematic to destroy
 
-// Use this when you are done with a schematic.
+	// Use this when you are done with a schematic.
 
-// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
+	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
-var sch;
-sch = argument0;
+	var sch;
+	sch = argument0;
 
-with (sch) instance_destroy();
+	with (sch) instance_destroy();
+
+
+}

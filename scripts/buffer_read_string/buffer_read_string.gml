@@ -1,4 +1,8 @@
-// buffer_read_string()
-// Reads string
+function buffer_read_string() {
+	// buffer_read_string()
+	// Reads string
 
-return buffer_read(buffer, buffer_string)
+	return buffer_read(buffer, buffer_string)
+
+
+}

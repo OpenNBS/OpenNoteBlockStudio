@@ -1,510 +1,158 @@
 {
-    "id": "2002e355-2af0-4b45-8485-2b23df0181af",
-    "modelName": "GMSprite",
-    "mvc": "1.12",
-    "name": "spr_tabbuttons",
-    "For3D": false,
-    "HTile": true,
-    "VTile": false,
-    "bbox_bottom": 20,
-    "bbox_left": 0,
-    "bbox_right": 1,
-    "bbox_top": 0,
-    "bboxmode": 0,
-    "colkind": 1,
-    "coltolerance": 0,
-    "edgeFiltering": false,
-    "frames": [
-        {
-            "id": "416fac94-f495-4e07-9097-9087ed8f0786",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "3adf7aeb-be0a-40e5-92c7-dcb35aca7105",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "416fac94-f495-4e07-9097-9087ed8f0786",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "aff67913-2630-4cae-9850-637ce6e60341",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "416fac94-f495-4e07-9097-9087ed8f0786",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "ba27b043-c5db-4c0f-acb8-066466862a91",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "681abf50-ec4d-4114-8264-386db898ef8d",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "ba27b043-c5db-4c0f-acb8-066466862a91",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "70145349-9be7-41d1-824e-4857ec77cb36",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "ba27b043-c5db-4c0f-acb8-066466862a91",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "392256af-2333-4ac3-85fa-1e652065dbe1",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "3a21d40f-2714-446c-a0c3-7b9949167e16",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "392256af-2333-4ac3-85fa-1e652065dbe1",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "86853e91-6ed8-472b-8cbb-70f278363364",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "392256af-2333-4ac3-85fa-1e652065dbe1",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "e4e36ad7-cefe-4467-8355-c8ce4b5a2cb2",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "a9cf625d-626c-4882-ba99-457c0016f885",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "ad31db6a-f05e-4823-8dba-5deb4eb13047",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "c0129655-5a6e-4a41-8fdc-54781403d715",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "ad31db6a-f05e-4823-8dba-5deb4eb13047",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "52d8d5eb-6104-4cbc-8c12-a578b2f2b860",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "ad31db6a-f05e-4823-8dba-5deb4eb13047",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "887681a1-3ba2-49be-9638-5ebc9c03f7cb",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "48bff310-06a6-4656-bcb9-70d3e94555ce",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "887681a1-3ba2-49be-9638-5ebc9c03f7cb",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "f97154e9-21fd-47a2-a9c1-47aa2dd36e79",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "887681a1-3ba2-49be-9638-5ebc9c03f7cb",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "d458501a-7c69-4b59-aa2e-79d6fdb9344b",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "006eb27d-2136-4756-a649-03f7b98b460e",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "d458501a-7c69-4b59-aa2e-79d6fdb9344b",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "091b8001-1e7a-45f4-b346-b2d5e0072cbf",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "d458501a-7c69-4b59-aa2e-79d6fdb9344b",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "a47edc69-3643-4432-a90d-8ca9a921190d",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "de400fde-e9b3-469c-9b5e-41e0a83f73f2",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "a47edc69-3643-4432-a90d-8ca9a921190d",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "67c3dcda-591c-43f2-93d0-5793b8cb5866",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "a47edc69-3643-4432-a90d-8ca9a921190d",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "a33bd3ff-464f-4064-b411-b17c3b211802",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "242b04c4-fa3e-409f-b932-f0308b2c777d",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "a33bd3ff-464f-4064-b411-b17c3b211802",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "4a98fb12-f03c-464c-acfb-28bc2588cfaf",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "a33bd3ff-464f-4064-b411-b17c3b211802",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "407ff552-6f54-4dbd-b434-3418aa6cdfc2",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "130d721b-d3d4-44b1-9ca8-8ad3bdcf264f",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "407ff552-6f54-4dbd-b434-3418aa6cdfc2",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "524fd32c-698b-42bd-9835-1258eaf8b5ba",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "407ff552-6f54-4dbd-b434-3418aa6cdfc2",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "f25544ac-d01d-4d2b-9e14-c0550f282019",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "7f892f2c-2a76-4bac-b164-47b535c4f3ec",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "f25544ac-d01d-4d2b-9e14-c0550f282019",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "1500c720-bf00-41d0-a8cc-dda594c96cfc",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "f25544ac-d01d-4d2b-9e14-c0550f282019",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "0961dea8-3a42-4e0e-a3e6-68c084c66285",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "5b87cf16-c3c2-46a8-9288-0e4ad5f5286c",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "0961dea8-3a42-4e0e-a3e6-68c084c66285",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "4c71f8e3-9fb5-4e77-a4bd-71d739f1cf66",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "0961dea8-3a42-4e0e-a3e6-68c084c66285",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "8b592598-e9d2-4d1d-b85e-a6f46b6d63ed",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "8c865987-2b66-48f5-a0e9-1d2430d7e8a5",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "8b592598-e9d2-4d1d-b85e-a6f46b6d63ed",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "a1184394-0076-4f35-8e86-c704a6e6895f",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "8b592598-e9d2-4d1d-b85e-a6f46b6d63ed",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "4602b0b9-f634-46fc-b046-1c85deb87549",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "be8ca0e0-ab35-478a-a23b-099ad9c166fb",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "4602b0b9-f634-46fc-b046-1c85deb87549",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "01cebe27-892c-48a1-afb5-fa29de845894",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "4602b0b9-f634-46fc-b046-1c85deb87549",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "16621b1f-fbdf-4072-a97c-f6b1eeb2b919",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "733a2899-d33e-49eb-8365-ba665d2eaf63",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "16621b1f-fbdf-4072-a97c-f6b1eeb2b919",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "04776d87-e41e-4d34-8caa-0e2de80797bf",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "16621b1f-fbdf-4072-a97c-f6b1eeb2b919",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "19d3a9d4-9548-4b3c-862e-0d0c08f06e23",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "4de4e3b9-42db-4829-9126-2ab0deda225f",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "19d3a9d4-9548-4b3c-862e-0d0c08f06e23",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "5f824ce1-4813-4d29-b670-af262ff5b1d1",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "19d3a9d4-9548-4b3c-862e-0d0c08f06e23",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "1ddac673-4ca5-4758-9773-9d1be1ec8fb3",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "bfbdffbb-3648-43eb-9dd6-170b6ea227ae",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "1ddac673-4ca5-4758-9773-9d1be1ec8fb3",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "be35284c-dd0d-45c6-9be5-20949100836a",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "1ddac673-4ca5-4758-9773-9d1be1ec8fb3",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "444dd865-661c-4b3f-89a5-720d9f96512c",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "5f24d5f1-3beb-4873-9884-cfe114c96b07",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "444dd865-661c-4b3f-89a5-720d9f96512c",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "d9714a08-bad1-4343-a7ec-8c0bc2f0ffb3",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "444dd865-661c-4b3f-89a5-720d9f96512c",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "4b75dd77-628c-4128-bf7a-c2569f493c1a",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "c66866f1-2e9e-427d-8aed-bb7825534cde",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "4b75dd77-628c-4128-bf7a-c2569f493c1a",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "40921cb5-6c0e-4a6c-8e42-af349550b8cf",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "4b75dd77-628c-4128-bf7a-c2569f493c1a",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "82114165-b7d5-4d33-92e2-283bcd4d0c1b",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "70e38c1a-da52-496a-85be-4b816357ba3c",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "82114165-b7d5-4d33-92e2-283bcd4d0c1b",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "bb9b120d-6aa6-4766-82cd-5247f39d14e6",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "82114165-b7d5-4d33-92e2-283bcd4d0c1b",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        },
-        {
-            "id": "43803b9f-d603-46fb-bb8f-6fec5cd3b01e",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "compositeImage": {
-                "id": "894cb4a8-9dfb-48fc-9343-d6c870d0fc85",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "43803b9f-d603-46fb-bb8f-6fec5cd3b01e",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "d967a7a8-64c7-46d5-9cc9-2394b182f545",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "43803b9f-d603-46fb-bb8f-6fec5cd3b01e",
-                    "LayerId": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e"
-                }
-            ]
-        }
-    ],
-    "gridX": 0,
-    "gridY": 0,
-    "height": 21,
-    "layers": [
-        {
-            "id": "e7604aaf-a7ef-42a1-8a08-49bab68ce61e",
-            "modelName": "GMImageLayer",
-            "mvc": "1.0",
-            "SpriteId": "2002e355-2af0-4b45-8485-2b23df0181af",
-            "blendMode": 0,
-            "isLocked": false,
-            "name": "default",
-            "opacity": 100,
-            "visible": true
-        }
-    ],
-    "origin": 0,
-    "originLocked": false,
-    "playbackSpeed": 1,
+  "bboxMode": 0,
+  "collisionKind": 1,
+  "type": 0,
+  "origin": 0,
+  "preMultiplyAlpha": false,
+  "edgeFiltering": false,
+  "collisionTolerance": 0,
+  "swfPrecision": 2.525,
+  "bbox_left": 0,
+  "bbox_right": 1,
+  "bbox_top": 0,
+  "bbox_bottom": 20,
+  "HTile": true,
+  "VTile": false,
+  "For3D": false,
+  "width": 2,
+  "height": 21,
+  "textureGroupId": {
+    "name": "Default",
+    "path": "texturegroups/Default",
+  },
+  "swatchColours": null,
+  "gridX": 0,
+  "gridY": 0,
+  "frames": [
+    {"compositeImage":{"FrameId":{"name":"416fac94-f495-4e07-9097-9087ed8f0786","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"416fac94-f495-4e07-9097-9087ed8f0786","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"416fac94-f495-4e07-9097-9087ed8f0786","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"ba27b043-c5db-4c0f-acb8-066466862a91","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"ba27b043-c5db-4c0f-acb8-066466862a91","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"ba27b043-c5db-4c0f-acb8-066466862a91","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"392256af-2333-4ac3-85fa-1e652065dbe1","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"392256af-2333-4ac3-85fa-1e652065dbe1","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"392256af-2333-4ac3-85fa-1e652065dbe1","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"ad31db6a-f05e-4823-8dba-5deb4eb13047","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"ad31db6a-f05e-4823-8dba-5deb4eb13047","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"ad31db6a-f05e-4823-8dba-5deb4eb13047","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"887681a1-3ba2-49be-9638-5ebc9c03f7cb","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"887681a1-3ba2-49be-9638-5ebc9c03f7cb","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"887681a1-3ba2-49be-9638-5ebc9c03f7cb","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"d458501a-7c69-4b59-aa2e-79d6fdb9344b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"d458501a-7c69-4b59-aa2e-79d6fdb9344b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"d458501a-7c69-4b59-aa2e-79d6fdb9344b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"a47edc69-3643-4432-a90d-8ca9a921190d","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"a47edc69-3643-4432-a90d-8ca9a921190d","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"a47edc69-3643-4432-a90d-8ca9a921190d","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"a33bd3ff-464f-4064-b411-b17c3b211802","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"a33bd3ff-464f-4064-b411-b17c3b211802","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"a33bd3ff-464f-4064-b411-b17c3b211802","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"407ff552-6f54-4dbd-b434-3418aa6cdfc2","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"407ff552-6f54-4dbd-b434-3418aa6cdfc2","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"407ff552-6f54-4dbd-b434-3418aa6cdfc2","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"f25544ac-d01d-4d2b-9e14-c0550f282019","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"f25544ac-d01d-4d2b-9e14-c0550f282019","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"f25544ac-d01d-4d2b-9e14-c0550f282019","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0961dea8-3a42-4e0e-a3e6-68c084c66285","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0961dea8-3a42-4e0e-a3e6-68c084c66285","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"0961dea8-3a42-4e0e-a3e6-68c084c66285","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"8b592598-e9d2-4d1d-b85e-a6f46b6d63ed","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"8b592598-e9d2-4d1d-b85e-a6f46b6d63ed","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"8b592598-e9d2-4d1d-b85e-a6f46b6d63ed","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"4602b0b9-f634-46fc-b046-1c85deb87549","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"4602b0b9-f634-46fc-b046-1c85deb87549","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"4602b0b9-f634-46fc-b046-1c85deb87549","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"16621b1f-fbdf-4072-a97c-f6b1eeb2b919","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"16621b1f-fbdf-4072-a97c-f6b1eeb2b919","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"16621b1f-fbdf-4072-a97c-f6b1eeb2b919","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"19d3a9d4-9548-4b3c-862e-0d0c08f06e23","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"19d3a9d4-9548-4b3c-862e-0d0c08f06e23","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"19d3a9d4-9548-4b3c-862e-0d0c08f06e23","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"1ddac673-4ca5-4758-9773-9d1be1ec8fb3","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"1ddac673-4ca5-4758-9773-9d1be1ec8fb3","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"1ddac673-4ca5-4758-9773-9d1be1ec8fb3","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"444dd865-661c-4b3f-89a5-720d9f96512c","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"444dd865-661c-4b3f-89a5-720d9f96512c","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"444dd865-661c-4b3f-89a5-720d9f96512c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"4b75dd77-628c-4128-bf7a-c2569f493c1a","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"4b75dd77-628c-4128-bf7a-c2569f493c1a","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"4b75dd77-628c-4128-bf7a-c2569f493c1a","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"82114165-b7d5-4d33-92e2-283bcd4d0c1b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"82114165-b7d5-4d33-92e2-283bcd4d0c1b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"82114165-b7d5-4d33-92e2-283bcd4d0c1b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"43803b9f-d603-46fb-bb8f-6fec5cd3b01e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"43803b9f-d603-46fb-bb8f-6fec5cd3b01e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"LayerId":{"name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","name":"43803b9f-d603-46fb-bb8f-6fec5cd3b01e","tags":[],"resourceType":"GMSpriteFrame",},
+  ],
+  "sequence": {
+    "spriteId": {"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},
+    "timeUnits": 1,
+    "playback": 1,
+    "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
-    "premultiplyAlpha": false,
-    "sepmasks": false,
-    "swatchColours": null,
-    "swfPrecision": 2.525,
-    "textureGroupId": "1225f6b0-ac20-43bd-a82e-be73fa0b6f4f",
-    "type": 0,
-    "width": 2,
-    "xorig": 0,
-    "yorig": 0
+    "autoRecord": true,
+    "volume": 1.0,
+    "length": 21.0,
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
+    "tracks": [
+      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"275cc066-7122-45cc-a263-041f308e7251","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"416fac94-f495-4e07-9097-9087ed8f0786","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3b89610e-77ce-4125-aeca-4b59394e2b0f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ba27b043-c5db-4c0f-acb8-066466862a91","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"67978773-868e-4d91-970c-2640e0d3d05b","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"392256af-2333-4ac3-85fa-1e652065dbe1","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"04257988-abde-4154-8107-a90293831a51","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3e6e141a-e2ff-4ee7-a335-a5fcbe38c56e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d41434da-4c16-48c6-98a9-28eabeed9f76","Key":4.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ad31db6a-f05e-4823-8dba-5deb4eb13047","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"4893218c-dce2-45c5-ba81-a4fc9f3263aa","Key":5.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"887681a1-3ba2-49be-9638-5ebc9c03f7cb","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"01cea08f-c125-4547-82f2-fbbe31d830a8","Key":6.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d458501a-7c69-4b59-aa2e-79d6fdb9344b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"63f56122-b31f-449a-9b8b-df3f00491cf4","Key":7.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a47edc69-3643-4432-a90d-8ca9a921190d","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3c9f2e44-4cf1-4834-b759-c05271d77d68","Key":8.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a33bd3ff-464f-4064-b411-b17c3b211802","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"cf43037c-05f0-436a-b135-a130c5a0473f","Key":9.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"407ff552-6f54-4dbd-b434-3418aa6cdfc2","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"2757c135-e781-40fb-b5ed-64ca873c68e9","Key":10.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f25544ac-d01d-4d2b-9e14-c0550f282019","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"dd896def-3ed1-4ab7-b4b5-d6c2d791bb36","Key":11.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0961dea8-3a42-4e0e-a3e6-68c084c66285","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d9d4067d-50b9-4337-a493-707d854d5f82","Key":12.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8b592598-e9d2-4d1d-b85e-a6f46b6d63ed","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"9a2fd463-72d5-4658-8534-17b82a3a48fa","Key":13.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4602b0b9-f634-46fc-b046-1c85deb87549","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"482f0f8f-d178-483a-ad64-b3863acfdd44","Key":14.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"16621b1f-fbdf-4072-a97c-f6b1eeb2b919","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"9b6150b1-4b23-4bfd-b8de-23e356de8162","Key":15.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"19d3a9d4-9548-4b3c-862e-0d0c08f06e23","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"a1754ed9-63b4-4011-a3fa-21c3735fffbe","Key":16.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1ddac673-4ca5-4758-9773-9d1be1ec8fb3","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3b058d3c-6b9a-411e-838a-27ed541e1fe3","Key":17.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"444dd865-661c-4b3f-89a5-720d9f96512c","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"160d5816-63ab-421f-912b-362b175b76b9","Key":18.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4b75dd77-628c-4128-bf7a-c2569f493c1a","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"57391bc0-bf2f-4b20-aea1-26efd01dfbcb","Key":19.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"82114165-b7d5-4d33-92e2-283bcd4d0c1b","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"428f9367-e5d0-4aae-95ed-8b8a066be32d","Key":20.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"43803b9f-d603-46fb-bb8f-6fec5cd3b01e","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
+    ],
+    "visibleRange": {"x":0.0,"y":0.0,},
+    "lockOrigin": false,
+    "showBackdrop": true,
+    "showBackdropImage": false,
+    "backdropImagePath": "",
+    "backdropImageOpacity": 0.5,
+    "backdropWidth": 1920,
+    "backdropHeight": 1080,
+    "backdropXOffset": 0.0,
+    "backdropYOffset": 0.0,
+    "xorigin": 0,
+    "yorigin": 0,
+    "eventToFunction": {},
+    "eventStubScript": null,
+    "parent": {"name":"spr_tabbuttons","path":"sprites/spr_tabbuttons/spr_tabbuttons.yy",},
+    "resourceVersion": "1.3",
+    "name": "",
+    "tags": [],
+    "resourceType": "GMSequence",
+  },
+  "layers": [
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"e7604aaf-a7ef-42a1-8a08-49bab68ce61e","tags":[],"resourceType":"GMImageLayer",},
+  ],
+  "parent": {
+    "name": "Interface",
+    "path": "folders/Sprites/Interface.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "spr_tabbuttons",
+  "tags": [],
+  "resourceType": "GMSprite",
 }

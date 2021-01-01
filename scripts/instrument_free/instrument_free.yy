@@ -1,8 +1,12 @@
 {
-    "id": "dcf996ae-2d05-46a1-b33c-a4773d2050e8",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "instrument_free",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Instruments",
+    "path": "folders/Scripts/Instruments.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "instrument_free",
+  "tags": [],
+  "resourceType": "GMScript",
 }

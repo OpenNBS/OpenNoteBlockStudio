@@ -1,3 +1,50 @@
+Changes in v3.8.1 (2020.12.31):
+* Increased max number of custom instruments from 18 to 240.
+* It's now possible to reorder custom instruments on the instrument settings.
+* Unnamed custom instruments will now be renamed automatically based on
+the name of the sound file.
+* Custom sound files can now be stored in subfolders of the 'Sounds' folder.
+* Added an option to pack all sound files in a song to a ZIP file.
+* Reordered custom instrument colors for better visualization.
+* The 'Press' setting is now saved for the default instruments.
+* The 'Press' setting will now be on for all melodic instruments by default.
+* Added a 'Pick block' command. Hover the mouse over a note and press the
+middle mouse button to select its properties.
+* Added an option to import MIDIs with double time precision.
+* Tweaked the default settings on MIDI import to provide the best results.
+* It's now possible to mute or disable individual MIDI devices.
+* NBS version changed to 5.
+* Bugfixes and improvements:
+   * Auto-recovery was disabled temporarily while a critical issue is
+investigated.
+   * When collapsed, the instrument row in the top bar will change to display
+the currently selected instrument.
+   * Custom instrument icons now have different colors and an improved font.
+   * Sound file names are now truncated to fit their text boxes.
+   * Custom sound files used in the demo songs are now in a separate folder.
+   * It won't be possible to save a song in a legacy version if it contains more
+than 18 instruments.
+   * All settings are now saved to disk after closing each window, not only when
+quitting the program.
+   * Recent songs are now saved to disk when the list is updated.
+   * Fixed wrong file names in the extra notes resource pack, causing missing
+sounds.
+   * Fixed missing cow bell sound in the extra notes resource pack.
+   * Fixed missing subtitles in extra notes resource pack.
+   * Updated bundled resource packs to pack format 6 (compatible with Java
+Edition 1.16+).
+   * Fixed missing sounds warning asking for instruments without a sound file
+selected.
+   * Fixed a crash when deleting custom instruments still being used in the
+song.
+   * Added a confirmation dialog when deleting an instrument still used in the
+song.
+   * Fixed MIDI input placing note blocks with velocity higher than 100.
+   * Fixed first layer on the screen having the wrong color in the Dark theme.
+   * Fixed menu bar using wrong colors in dark theme.
+   * Fixed container box in 'Song properties' having the wrong size with the
+Aqua theme.
+
 Changes in v3.8.0 (2020.07.02):
 * Massive performance improvements! Songs should now rarely slow down,
 skip notes, or cut off when too many sounds are playing at once.

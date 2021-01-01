@@ -1,2 +1,7 @@
-// inactive(cond)
-return condstr(argument0, "^!")
+function inactive(argument0) {
+	// inactive(cond)
+	return condstr(argument0, "^!")
+
+
+
+}

@@ -1,8 +1,12 @@
 {
-    "id": "e74f03fa-1407-4d25-93ab-0dccb3eb91ca",
-    "modelName": "GMScript",
-    "mvc": "1.0",
-    "name": "get_update",
-    "IsCompatibility": false,
-    "IsDnD": false
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Controller",
+    "path": "folders/Scripts/Controller.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "get_update",
+  "tags": [],
+  "resourceType": "GMScript",
 }
