@@ -61,7 +61,7 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	if (show_incompatible && (ins.user || key < 33 || key > 57)) {
 	    draw_set_color(c_red)
 	    draw_set_alpha(1)
-	    draw_rectangle(xx, yy, xx + 32, yy + 32, 1)
+	    draw_rectangle(xx + 1, yy + 1, xx + 31, yy + 31, 1)
 	}
 	draw_set_color(c_white)
 	if (salpha > 0) {
