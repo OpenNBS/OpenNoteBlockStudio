@@ -75,7 +75,7 @@ function calculate_size() {
 	    for (b = 0; b < 2; b += 1) {
 	        if (a <= scp_exp_enda[b]) {
 	            sch_exp_repeaters[b, 2] += 1
-	            if (sch_colamount[a] > 0) {
+	            if (sch_colamount[b, a] > 0) {
 	                sch_exp_repeaters[b, 0] += 1
 	                cnt[b, 0] = 0
 	                sch_exp_repeaters[b, 1] += 1
