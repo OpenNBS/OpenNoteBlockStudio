@@ -11,9 +11,9 @@ function draw_window_save_options() {
 	draw_set_font(fnt_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
-	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 117, 0)
+	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 132, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 117, 1)
+	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 132, 1)
 	}
 	draw_theme_color()
 	

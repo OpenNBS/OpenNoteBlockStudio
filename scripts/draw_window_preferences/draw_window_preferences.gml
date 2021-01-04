@@ -188,10 +188,11 @@ function draw_window_preferences() {
 		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 	}
-	if (draw_button2(x1 + 420, y1 + 478, 72, "OK")) window = 0
-	window_set_cursor(curs)
-	save_settings()
-
+	if (draw_button2(x1 + 420, y1 + 478, 72, "OK")) {
+		window = 0
+		window_set_cursor(curs)
+		save_settings()
+	}
 
 
 }

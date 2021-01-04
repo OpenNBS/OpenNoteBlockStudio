@@ -1,5 +1,10 @@
 function calculate_size() {
 	var a, b, c;
+	if (warning_schematic == 0) {
+		message("The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, first create a world in 1.12, import the schematic, then open the world in 1.13 or above. Newer versions may be supported in the future.\n\nThis warning will never be shown again.", "Warning")
+		warning_schematic = 1
+		save_settings()
+	}
 	if (block_outside > 0) {
 	    if (!question("Some note blocks are outside of Minecraft's 2 octave limit. Do you want to export a Schematic anyway, ignoring the affected blocks?", "Minecraft Compatibility")) return 0
 	}
@@ -75,7 +80,7 @@ function calculate_size() {
 	    for (b = 0; b < 2; b += 1) {
 	        if (a <= scp_exp_enda[b]) {
 	            sch_exp_repeaters[b, 2] += 1
-	            if (sch_colamount[a] > 0) {
+	            if (sch_colamount[b, a] > 0) {
 	                sch_exp_repeaters[b, 0] += 1
 	                cnt[b, 0] = 0
 	                sch_exp_repeaters[b, 1] += 1

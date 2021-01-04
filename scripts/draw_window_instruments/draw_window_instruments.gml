@@ -42,7 +42,7 @@ function draw_window_instruments() {
 			sounds++
 		}
 	}
-	if (draw_button2(x1 + 12, y1 + 318, 85, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
+	if (draw_button2(x1 + 12, y1 + 318, 86, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
 	c = 0
 	if (draw_button2(x1 + 110, y1 + 318, 80, "Add", user_instruments >= 240) && wmenu = 0) {
 	    changed = true
@@ -78,6 +78,7 @@ function draw_window_instruments() {
 			show_message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
 			save_version = nbs_version
 		}
+		save_settings()
 	}
 	if (mouse_check_button_pressed(mb_left)) {
 	    insedit = -1
@@ -170,7 +171,6 @@ function draw_window_instruments() {
 	draw_line(x1 + 13 + 194 + 160 + 80, y1 + 87, x1 + 13 + 194 + 160 + 80, y1 + 86 + 20 * a)
 	draw_scrollbar(insscrollbar, x1 + 14 + 194 + 160 + 80 + 70, y1 + 88, 21, 9, ds_list_size(instrument_list) - 2, 0, 1)
 	window_set_cursor(curs)
-	save_settings()
 
 
 }
