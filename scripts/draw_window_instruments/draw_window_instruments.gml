@@ -42,7 +42,7 @@ function draw_window_instruments() {
 			sounds++
 		}
 	}
-	if (draw_button2(x1 + 12, y1 + 318, 85, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
+	if (draw_button2(x1 + 12, y1 + 318, 86, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
 	c = 0
 	if (draw_button2(x1 + 110, y1 + 318, 80, "Add", user_instruments >= 240) && wmenu = 0) {
 	    changed = true
