@@ -38,6 +38,7 @@ function draw_window_update() {
 	if (draw_button2(x1 + 220, y1 + 340, 72, "OK")) {
 	    if (window = w_update) {
 	        window = w_greeting
+			save_settings() // Save new version number
 	    } else {
 	        window = 0
 	    }

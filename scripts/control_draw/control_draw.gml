@@ -49,9 +49,11 @@ function control_draw() {
 	    if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_escape)) {
 	        piano_key[key_edit] = 0
 	        key_edit = -1
+			save_settings()
 	    } else if (keyboard_check_pressed(vk_anykey)) {
 	        piano_key[key_edit] = keyboard_lastkey
 	        key_edit = -1
+			save_settings()
 	    }
 	}
 

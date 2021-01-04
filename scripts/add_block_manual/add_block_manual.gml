@@ -35,9 +35,11 @@ function add_block_manual(argument0, argument1, argument2, argument3, argument4,
 	if ((key < 33  || key > 57) && warning_octaves = 0) {
 	    message("NOTE: Since this block is outside the 2 octave limit, you won't be able to import it into Minecraft without a resource pack.\n\nThis warning will never be shown again.", "Warning")
 	    warning_octaves = 1
+		save_settings()
 	} else if (ins.user && warning_instrument = 0) {
 	    message("NOTE: Since this block has a custom instrument, you won't be able to import it into Minecraft without mods or resource packs.\n\nThis warning will never be shown again.", "Warning")
 	    warning_instrument = 1
+		save_settings()
 	}
 
 	// Add block
