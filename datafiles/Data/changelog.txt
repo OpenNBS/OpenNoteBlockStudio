@@ -1,3 +1,12 @@
+Changes in v3.8.2 (2021.01.04):
+* Added a warning about version compatibility when exporting a schematic.
+* Fixed a crash when trying to export a schematic.
+* Fixed settings being saved too often, causing high disk and CPU usage.
+* Fixed wrong note block counts in Compatibility and Song stats.
+* Fixed red outline on out-of-range blocks being too large.
+* Fixed a glitch in the Save options window when using the Aqua theme.
+* Fixed a blurry button in Instrument settings.
+
 Changes in v3.8.1 (2020.12.31):
 * Increased max number of custom instruments from 18 to 240.
 * It's now possible to reorder custom instruments on the instrument settings.
@@ -238,7 +247,6 @@ Changes in v3.4.0 (2019.05.11):
 Changes in v3.3.8 (2019.03.21):
 * Fixed a glitch with layer names.
 * Fixed a glitch with compatibility indicator.
-
 
 Changes in v3.3.7 (2019.03.13):
 * Changed fonts.
