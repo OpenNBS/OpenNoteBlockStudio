@@ -62,10 +62,9 @@ function menu_click(argument0) {
 			if ((editmode = m_key) && (sel >= 15)) {
 				sel += 2
 			}
-			var insoffset = ds_list_size(instrument_list) + insmenu - 2
+			var insoffset = ds_list_size(instrument_list) + insmenu - 1
 			var ins = sel - 18
 			ins -= floor(ins / 26) // subtract the "More..." entries to get the instrument number
-			show_debug_message(string(sel) + " " + string(ins))
 	        if (sel = 0) action_undo()
 	        if (sel = 1) action_redo()
 	        if (sel = 2) action_copy()
