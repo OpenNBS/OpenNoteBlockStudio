@@ -29,17 +29,24 @@ permalink: /nbs
 			<div class="col-md-5">
 				<h2>NBS Changelog</h2>
 				<div>
-					<strong>Version 4.0:</strong> 
+					<strong>Version 5:</strong>
+					<ul><li>May now hold up to 240 custom instruments, previously 18.</li>
+					<li>The path to custom sound files may contain slash characters, as a result of allowing custom sounds to be loaded from subfolders.</li>
+					<li>No fields have been added or removed, so version 5 files may be read identically to version 4.</li></ul>
+					<strong>Version 4:</strong> 
 					<ul><li>Loop on/off, max loop count, and loop start tick are now saved.</li><li>The program now saves which layers are locked.</li><li>Note blocks now store velocity, panning, and pitch. These work in conjunction with layer volume and layer stereo.</li></ul>
-					<strong>Version 3.0:</strong> 
+					<strong>Version 3:</strong> 
 					<ul><li>Song length is now saved again after the vanilla instrument count.</li></ul>
-					<strong>Version 2.0:</strong> 
+					<strong>Version 2:</strong>
 					<ul><li>Now stereo information is saved for each layer. This means that now the sound can pan to the left/right.</li><li>For every layer, there's now a byte that determines how much that layer pans.<br>0 is 2 blocks right, 100 is centre, 200 is 2 blocks left.</li></ul>
-					<strong>Version 1.0 (initial version):</strong> 
+					<strong>Version 1:</strong> 
 					<ul><li>The first two bytes, which used to indicate the song length, have been changed to 0 to indicate the new format.</li>
 					<li>The NBS version is now stored in the file.</li>
 					<li>The byte after the NBS version is now the amount of vanilla instruments.<br>
 					This change was necessary because, previously, the program didn't know when the custom instruments began. It always went up to 9, and everything after that was treated as a custom instrument.</li></ul>
+					<strong>Classic (Version 0):</strong> 
+					<ul><li>This version is used by the original Minecraft Note Block Studio, which precedes the transition to Open Note Block Studio. You can find the original specification <a href="https://www.stuffbydavid.com/mcnbs/format" target="_blank">here</a>.</li>					
+					</ul>
 				</div>
 			</div>
 		</div>	
