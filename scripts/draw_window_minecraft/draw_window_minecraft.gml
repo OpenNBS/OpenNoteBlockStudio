@@ -2,8 +2,8 @@ function draw_window_minecraft() {
 	// draw_window_minecraft()
 	var x1, y1, a, b, c, stabx, stabw, str, nsel;
 	curs = cr_default
-	x1 = floor(window_width / 2 - 245)
-	y1 = floor(window_height / 2 - 225)
+	x1 = floor(rw / 2 - 245)
+	y1 = floor(rh / 2 - 225)
 	draw_window(x1, y1, x1 + 490, y1 + 450)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Minecraft Compatibility")

@@ -4,8 +4,8 @@ function draw_window_macro_tremolo() {
 	curs = cr_default
 	text_exists[0] = 0
 	if (selected = 0) return 0
-	x1 = floor(window_width / 2 - 72)
-	y1 = floor(window_height / 2 - 145)
+	x1 = floor(rw / 2 - 72)
+	y1 = floor(rh / 2 - 145)
 	draw_window(x1, y1, x1 + 150, y1 + 240)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Tremolo")

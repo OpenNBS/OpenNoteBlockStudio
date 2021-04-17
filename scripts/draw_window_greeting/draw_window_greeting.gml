@@ -2,8 +2,8 @@ function draw_window_greeting() {
 	// draw_window_greeting()
 	var x1, y1, a, b, c, d, e, m;
 	curs = cr_default
-	x1 = floor(window_width / 2 - 350)
-	y1 = floor(window_height / 2 - 210)
+	x1 = floor(rw / 2 - 350)
+	y1 = floor(rh / 2 - 210)
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, 1)
 	draw_set_font(fnt_info_med_bold)

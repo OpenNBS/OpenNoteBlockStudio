@@ -2,8 +2,8 @@ function draw_window_clip_editor() {
 	// draw_window_clip_editor()
 	var x1, y1; 
 	curs = cr_default
-	x1 = floor(window_width / 2 - 220)
-	y1 = floor(window_height / 2 - 215)
+	x1 = floor(rw / 2 - 220)
+	y1 = floor(rh / 2 - 215)
 	draw_window(x1, y1, x1 + 440, y1 + 430)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Secret Clipboard Editor")

@@ -3,8 +3,8 @@ function draw_window_preferences() {
 	var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
 	curs = cr_default
 	nsel = -1
-	x1 = floor(window_width / 2 - 250)
-	y1 = floor(window_height / 2 - 255)
+	x1 = floor(rw / 2 - 250)
+	y1 = floor(rh / 2 - 255)
 	draw_window(x1, y1, x1 + 500, y1 + 510)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Preferences")

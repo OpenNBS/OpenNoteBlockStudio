@@ -11,8 +11,8 @@ function draw_window_update() {
 	    }
 		return 0
 	}
-	x1 = floor(window_width / 2 - 250)
-	y1 = floor(window_height / 2 - 200)
+	x1 = floor(rw / 2 - 250)
+	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 500, y1 + 400)
 	draw_set_font(fnt_mainbold)
 	if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
