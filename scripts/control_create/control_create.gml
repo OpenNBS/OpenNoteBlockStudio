@@ -20,6 +20,10 @@ function control_create() {
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
+	window_scale = 1
+	prev_scale = -1
+	rw = 0
+	rh = 0
 
 	// Audio
 	channels = 256

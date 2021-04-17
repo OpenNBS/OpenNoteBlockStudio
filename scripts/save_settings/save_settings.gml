@@ -17,6 +17,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "autosavemins",       autosavemins)
 	ini_write_real_clean("preferences", "theme",              theme)
 	ini_write_real_clean("preferences", "blackout",           blackout)
+	ini_write_real_clean("preferences", "window_scale",       window_scale)
 	ini_write_real_clean("preferences", "refresh_rate",       refreshrate)
 	ini_write_string(    "preferences", "song_folder",        songfolder)
 	ini_write_string(    "preferences", "pattern_folder",     patternfolder)

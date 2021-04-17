@@ -87,7 +87,7 @@ function draw_window_preferences() {
 		}
 		popup_set_window(x1 + 306, y1 + 110, 180, 16, "The amount of minutes between each auto-save.")
 	
-	    draw_areaheader(x1 + 22, y1 + 164, 218, 110, "Theme")
+	    draw_areaheader(x1 + 22, y1 + 164, 218, 120, "Theme")
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
@@ -97,11 +97,18 @@ function draw_window_preferences() {
 	        game_set_speed(30,gamespeed_fps)
 			refreshrate=0
 	    }
-	    if (draw_radiobox(x1+274,y1+164+16+20,refreshrate,"60FPS","Run the program at 60FPS.")) {
+		if (draw_radiobox(x1+274,y1+164+16+20,refreshrate,"60FPS","Run the program at 60FPS.")) {
 	        game_set_speed(60,gamespeed_fps)
 			refreshrate=1
 	    }
 
+		draw_areaheader(x1 + 258, y1 + 240, 220, 44, "Window")
+		draw_text(x1 + 276, y1 + 256, "Scale:             %")
+		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
+		if (draw_button2(x1 + 394, y1 + 251, 72, "Reset", (window_scale == 1))) {
+			window_scale = 1
+		}
+		
 		draw_text(x1 + 22, y1 + 290, "Song folder: " + string_truncate(songfolder, 360))
 	    popup_set_window(x1 + 22, y1 + 290, 430, 18, songfolder)
 	    if (draw_button2(x1 + 22, y1 + 306, 76, "Open")) {

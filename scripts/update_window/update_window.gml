@@ -15,8 +15,8 @@ function update_window() {
 	    window_set_rectangle(xx, yy, ww, hh)
 	    surface_resize(application_surface, ww, hh)
 	
-		camera_set_view_pos(cam_window, 0, 0)
-	    camera_set_view_size(cam_window, ww, hh)
+		camera_set_view_pos(cam_window, 0, 0) 
+	    camera_set_view_size(cam_window, ww * (1 / window_scale), hh * (1 / window_scale))
 		view_set_wport(0, ww);
 		view_set_hport(0, hh);
     

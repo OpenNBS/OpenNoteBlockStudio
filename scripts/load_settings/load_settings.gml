@@ -18,6 +18,7 @@ function load_settings() {
 	autosavemins =       ini_read_real(  "preferences", "autosavemins",       autosavemins)
 	theme =              ini_read_real(  "preferences", "theme",              theme)
 	blackout =           ini_read_real(  "preferences", "blackout",           blackout)
+	window_scale =       ini_read_real(  "preferences", "window_scale",       window_scale)
 	refreshrate =        ini_read_real(  "preferences", "refresh_rate",       refreshrate)
 	songfolder =         ini_read_string("preferences", "song_folder",        songfolder)
 	patternfolder =      ini_read_string("preferences", "pattern_folder",     patternfolder)
