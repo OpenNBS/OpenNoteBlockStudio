@@ -75,6 +75,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"b99c01c4-2368-42f1-9eb2-9e6a3b93cabc","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "horizontal",
     "path": "folders/Sprites/Interface/scrollbar/horizontal.yy",
