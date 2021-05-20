@@ -93,14 +93,22 @@ function draw_window_preferences() {
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 		if (draw_checkbox(x1 + 40, y1 + 164 + 16 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.")) blackout = !blackout
 	    draw_areaheader(x1+258,y1+164,220,60,"Max frame rate (experimental)")
-	    if (draw_radiobox(x1+274,y1+164+16,!refreshrate,"30FPS","Run the program at 30FPS.")) {
+	    if (draw_radiobox(x1+274,y1+164+16,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
 	        game_set_speed(30,gamespeed_fps)
 			refreshrate=0
 	    }
-		if (draw_radiobox(x1+274,y1+164+16+20,refreshrate,"60FPS","Run the program at 60FPS.")) {
+	    if (draw_radiobox(x1+274,y1+164+16+20,refreshrate == 1,"60FPS","Run the program at 60FPS.")) {
 	        game_set_speed(60,gamespeed_fps)
 			refreshrate=1
 	    }
+		if (draw_radiobox(x1+274+64,y1+164+16,refreshrate == 2,"120FPS","Run the program at 120FPS.")) {
+			game_set_speed(120,gamespeed_fps)
+			refreshrate=2
+		}
+		if (draw_radiobox(x1+274+64,y1+164+16+20,refreshrate == 3,"144FPS","Run the program at 144FPS.")) {
+			game_set_speed(144,gamespeed_fps)
+			refreshrate=3
+		}
 
 		draw_areaheader(x1 + 258, y1 + 240, 220, 44, "Window")
 		draw_text(x1 + 276, y1 + 256, "Scale:             %")
