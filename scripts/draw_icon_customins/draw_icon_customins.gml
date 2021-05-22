@@ -12,7 +12,11 @@ function draw_icon_customins(xx, yy, ins, alpha, large) {
 		draw_sprite_ext(spr_numbers_mc, num1, xx + 2, yy + 4, 1, 1, 0, -1, alpha)
 		draw_sprite_ext(spr_numbers_mc, num2, xx + 8, yy + 4, 1, 1, 0, -1, alpha)
 	} else {
+		if(theme != 3) {
 		draw_sprite_ext(spr_icons, icons.CUSTOM_INS_OVERLAY, xx, yy, 1, 1, 0, color1, 1)
+		} else {
+		draw_sprite_ext(spr_icons_f, icons.CUSTOM_INS_OVERLAY, xx, yy, 1, 1, 0, color1, 1)
+		}
 		draw_sprite_ext(spr_numbers, num1, xx + 12, yy + 13, 1, 1, 0, color2, 1)
 		draw_sprite_ext(spr_numbers, num2, xx + 16, yy + 13, 1, 1, 0, color2, 1)
 		draw_sprite(spr_numbers, num1, xx + 11, yy + 12)

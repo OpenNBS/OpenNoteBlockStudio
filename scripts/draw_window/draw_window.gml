@@ -8,6 +8,7 @@ function draw_window(argument0, argument1, argument2, argument3) {
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
+	if (theme = 3) draw_set_color(c_white)
 	draw_rectangle(x1, y1, x2 - 1, y2 - 1, 0)
 	draw_sprite(spr_interface2, 0 + 8 * theme, x1, y1)
 	draw_sprite_ext(spr_interface2, 1 + 8 * theme, x1, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, 1)

@@ -7,8 +7,10 @@ function draw_window_greeting() {
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, 1)
 	draw_set_font(fnt_info_med_bold)
+		if (theme = 3) draw_set_font(fnt_segoe_info_med_bald)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
@@ -36,6 +38,7 @@ function draw_window_greeting() {
 	    draw_text_center(x1 + 132, y1 + 248, "Update checking disabled by user")
 	}
 	draw_set_font(fnt_main)
+		if (theme = 3) draw_set_font(fnt_segoe)
 	draw_theme_color()
 	draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
 	draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
@@ -58,7 +61,11 @@ function draw_window_greeting() {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	if (theme != 3) {
 	draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
+	} else {
+	draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
+	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
 	if (a = 2 && mouse_check_button_released(mb_left)) window = 0
 
@@ -67,7 +74,11 @@ function draw_window_greeting() {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	if (theme != 3) {
 	draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
+	} else {
+	draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
+	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 	    load_song("")
@@ -116,7 +127,11 @@ function draw_window_greeting() {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	if (theme != 3) {
 	draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
+	} else {
+	draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
+	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
 	if (a = 2 && mouse_check_button_released(mb_left)) open_midi("")
 
@@ -125,7 +140,11 @@ function draw_window_greeting() {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	if (theme != 3) {
 	draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
+	} else {
+	draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
+	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Watch tutorial videos")
 	if (a = 2 && mouse_check_button_released(mb_left)) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 
