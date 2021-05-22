@@ -184,7 +184,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_interface2","path":"sprites/spr_interface2/spr_interface2.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_interface2",
+    "name": "",
     "tags": [],
     "resourceType": "GMSequence",
   },

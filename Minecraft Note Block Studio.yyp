@@ -22,6 +22,7 @@
     {"id":{"name":"spr_tempobox","path":"sprites/spr_tempobox/spr_tempobox.yy",},"order":19,},
     {"id":{"name":"spr_textbox","path":"sprites/spr_textbox/spr_textbox.yy",},"order":20,},
     {"id":{"name":"spr_timeline","path":"sprites/spr_timeline/spr_timeline.yy",},"order":21,},
+    {"id":{"name":"spr_shadow","path":"sprites/spr_shadow/spr_shadow.yy",},"order":36,},
     {"id":{"name":"spr_volume","path":"sprites/spr_volume/spr_volume.yy",},"order":22,},
     {"id":{"name":"spr_yesno","path":"sprites/spr_yesno/spr_yesno.yy",},"order":23,},
     {"id":{"name":"spr_datapack_exp","path":"sprites/spr_datapack_exp/spr_datapack_exp.yy",},"order":24,},
