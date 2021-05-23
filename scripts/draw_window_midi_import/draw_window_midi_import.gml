@@ -312,7 +312,7 @@ function draw_window_midi_import() {
 	}
 	xx = x1 + 588
 	for (a = tabs - 1; a >= 0; a -= 1) {
-	    draw_window(xx - tabw[a], y1 + 151, xx, y1 + 151 + 20)
+	    draw_window(xx - tabw[a], y1 + 151, xx, y1 + 151 + 20, 1)
 	    popup_set_window(xx - tabw[a], y1 + 151, tabw[a], 20, tabtip[a])
 	    draw_text(xx - tabw[a] + 4, y1 + 154, tabstr[a])
 	    xx -= tabw[a] - 1

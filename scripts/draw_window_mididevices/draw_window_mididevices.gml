@@ -19,15 +19,16 @@ function draw_window_mididevices() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 12, y1 + 66, x1 + 488, y1 + 310, 1)
 	} else {
-	    draw_area(x1 + 11, y1 + 65, x1 + 489, y1 + 312)
+	    if (theme != 3) draw_area(x1 + 11, y1 + 65, x1 + 489, y1 + 312)
+	    else draw_area(x1 + 11, y1 + 65 + 2, x1 + 489, y1 + 312)
 	}
 	// Tabs
-	draw_window(x1 + 13 + 250 + 75, y1 + 67, x1 + 14 + 250 + 75 + 64 + 85, y1 + 67 + 20) 
+	draw_window(x1 + 13 + 250 + 75, y1 + 67, x1 + 14 + 250 + 75 + 64 + 85 + 1, y1 + 67 + 20, 1) 
 	popup_set_window(x1 + 13 + 250 + 75, y1 + 67, 64 + 85, 20, "The instrument that note block added by this device\nwhen recording should have.")
 	draw_text(x1 + 18 + 250 + 75, y1 + 70, "Instrument")
 
-	draw_window(x1 + 13, y1 + 67, x1 + 14 + 250 + 75, y1 + 67 + 20)
-	popup_set_window(x1 + 13, y1 + 67, 250 + 75, 20, "The name of the device.")
+	draw_window(x1 + 13 - 2, y1 + 67, x1 + 14 + 250 + 75, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 - 2, y1 + 67, 250 + 75, 20, "The name of the device.")
 	draw_text(x1 + 18, y1 + 70, "Name")
 
 	if (draw_button2(x1 + 408, y1 + 318, 80, "OK") && wmenu = 0) window = 0
