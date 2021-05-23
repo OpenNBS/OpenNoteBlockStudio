@@ -1,15 +1,19 @@
-function draw_window(argument0, argument1, argument2, argument3) {
-	// draw_window(x1, y1, x2, y2)
-	var x1, y1, x2, y2;
-	x1 = argument0
-	y1 = argument1
-	x2 = argument2
-	y2 = argument3
+function draw_window() {
+	// draw_window(x1, y1, x2, y2[, sml])
+	var x1, y1, x2, y2, sml;
+	x1 = argument[0]
+	y1 = argument[1]
+	x2 = argument[2]
+	y2 = argument[3]
+	sml = 0
+	if (argument_count > 4) {
+		sml = argument[4]
+	}
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
 	if (theme = 3) draw_set_color(c_white)
-	if (theme = 3) {
+	if (theme = 3 && sml = 0) {
 		draw_sprite(spr_shadow, 0, x1 - 16, y1 - 16)
 		draw_sprite_ext(spr_shadow, 1, x1 - 16, y1, 1, y2 - y1, 0, -1, 1)
 		draw_sprite(spr_shadow, 2, x1 - 16, y2 + 1)

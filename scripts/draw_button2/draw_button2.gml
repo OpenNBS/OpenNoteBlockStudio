@@ -20,7 +20,7 @@ function draw_button2() {
 		draw_sprite_ext(spr_button, 46, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
 	    draw_sprite(spr_button, 45, xx, yy)
 	    draw_sprite(spr_button, 47, xx + w - 3, yy)
-	    draw_set_color(10526880)
+	    draw_set_color(8355711)
 		}
 	} else {
 	    m = mouse_rectangle(xx, yy, w, 23) && w_isdragging = 0

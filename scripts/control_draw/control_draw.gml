@@ -776,22 +776,26 @@ function control_draw() {
 	    a = starta
 	    b = startb
 	    if (mouse_x > x1 + 2 + 32 * totalcols - 32) {
-	        dragincxr += 0.1
+	        if (refreshrate >= 2) dragincxr += 0.025
+	        else dragincxr += 0.1
 	        dragincxr = min(dragincxr, 4)
 	        starta += ceil(dragincxr)
 	    } else dragincxr = 0
 	    if (mouse_x < x1 + 32) {
-	        dragincxl += 0.1
+	        if (refreshrate >= 2) dragincxl += 0.025
+	        else dragincxl += 0.1
 	        dragincxl = min(dragincxl, 4)
 	        starta -= ceil(dragincxl)
 	    } else dragincxl = 0
 	    if (mouse_y > y1 + 34 + totalrows * 32) {
-	        dragincyd += 0.1
+	        if (refreshrate >= 2) dragincyd += 0.025
+	        else dragincyd += 0.1
 	        dragincyd = min(dragincyd, 4)
 	        startb += ceil(dragincyd)
 	    } else dragincyd = 0
 	    if (mouse_y < y1 + 34 + 32) {
-	        dragincyu += 0.1
+	        if (refreshrate >= 2) dragincyu += 0.025
+	        else dragincyu += 0.1
 	        dragincyu = min(dragincyu, 4)
 	        startb -= ceil(dragincyu)
 	    } else dragincyu = 0
@@ -1479,16 +1483,18 @@ function control_draw() {
 
 	if (!fullscreen && show_layers) {
 		// Marker position
-		draw_set_halign(fa_right)
+		if (theme != 3) draw_set_halign(fa_right)
 		draw_theme_color()
 		draw_set_font(fnt_info_med_bold)
 		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
-		draw_text(93, 52, time_str(marker_pos / tempo))
+		if (theme != 3) draw_text(93, 52, time_str(marker_pos / tempo))
+		else draw_text(93 - 84, 52, time_str(marker_pos / tempo))
 
 		// Song length
 		draw_set_font(fnt_small)
 		if (theme = 3) draw_set_font(fnt_wslui_small)
-		draw_text(93, 69, "/ " + time_str(enda / tempo))
+		if (theme != 3) draw_text(93, 69, "/ " + time_str(enda / tempo))
+		else draw_text(93 - 67, 69, "/ " + time_str(enda / tempo))
 		draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_wslui)
 

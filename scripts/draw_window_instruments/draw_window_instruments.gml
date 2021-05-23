@@ -19,23 +19,24 @@ function draw_window_instruments() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 12, y1 + 66, x1 + 535, y1 + 310, 1)
 	} else {
-	    draw_area(x1 + 11, y1 + 65, x1 + 535, y1 + 312)
+	    if (theme != 3) draw_area(x1 + 11, y1 + 65, x1 + 535, y1 + 312)
+	    else draw_area(x1 + 11, y1 + 67, x1 + 535, y1 + 312)
 	}
 	if (draw_button2(x1 + 455, y1 + 9, 80, "Import")) load_instruments("")
 	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder")) open_url(sounds_directory)
 	// Tabs
-	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88, y1 + 67 + 20)
-	popup_set_window(x1 + 13 + 194 + 160 + 80, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")
-	draw_text(x1 + 18 + 194 + 160 + 80, y1 + 70, "Press")
-	draw_window(x1 + 13 + 194 + 160, y1 + 67, x1 + 14 + 194 + 160 + 80, y1 + 67 + 20)
+	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")
+	draw_text(x1 + 18 + 194 + 160 + 80 - 1, y1 + 70, "Press")
+	draw_window(x1 + 13 + 194 + 160, y1 + 67, x1 + 14 + 194 + 160 + 80, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160, y1 + 67, 80, 20, "The default key pitch of the sound file.")
 	draw_text(x1 + 18 + 194 + 160, y1 + 70, "Pitch")
-	draw_window(x1 + 13 + 194, y1 + 67, x1 + 14 + 194 + 160, y1 + 67 + 20)
+	draw_window(x1 + 13 + 194, y1 + 67, x1 + 14 + 194 + 160, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194, y1 + 67, 160, 20, "The sound file of this instrument.")
 	draw_text(x1 + 18 + 194, y1 + 70, "Sound")
-	draw_window(x1 + 13, y1 + 67, x1 + 14 + 194, y1 + 67 + 20)
-	popup_set_window(x1 + 13, y1 + 67, 194, 20, "The name of this instrument.")
-	draw_text(x1 + 18, y1 + 70, "Name")
+	draw_window(x1 + 13 - 2, y1 + 67, x1 + 14 + 194, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 - 2, y1 + 67, 194, 20, "The name of this instrument.")
+	draw_text(x1 + 18 - 2, y1 + 70, "Name")
 	
 	var sounds = 0;
 	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {

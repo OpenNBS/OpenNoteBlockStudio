@@ -142,15 +142,15 @@ function draw_window_preferences() {
 	        game_set_speed(60,gamespeed_fps)
 			refreshrate=1
 	    }
-		if (draw_radiobox(x1+274+64,y1+164+16,refreshrate == 2,"120FPS","Run the program at 120FPS.")) {
+		if (draw_radiobox(x1+274+64-6,y1+164+16,refreshrate == 2,"120FPS","Run the program at 120FPS.")) {
 			game_set_speed(120,gamespeed_fps)
 			refreshrate=2
 		}
-		if (draw_radiobox(x1+274+64,y1+164+16+20,refreshrate == 3,"144FPS","Run the program at 144FPS.")) {
+		if (draw_radiobox(x1+274+64-6,y1+164+16+20,refreshrate == 3,"144FPS","Run the program at 144FPS.")) {
 			game_set_speed(144,gamespeed_fps)
 			refreshrate=3
 		}
-		if (draw_radiobox(x1+274+128,y1+164+16+10,refreshrate == 4,"114514FPS","Choose this option with cautious (May cause very high CPU usage).")) {
+		if (draw_radiobox(x1+274+128-6,y1+164+16+10,refreshrate == 4,"Unlimited","Choose this option with cautious (May cause very high CPU usage).")) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate=4
 		}
