@@ -17,7 +17,8 @@ function menu_draw() {
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
 	    if (dy + hei > o.rh) dy = o.rh - hei
 	    iy = 8
-	    draw_set_color(window_background)
+	    if (o.theme != 3) draw_set_color(window_background)
+	    else draw_set_color(15921906)
 		if (o.theme = 3) {
 			draw_sprite(spr_shadowext, 0, dx + 4, dy + hei + 2)
 			draw_sprite_ext(spr_shadowext, 1, dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
@@ -28,10 +29,10 @@ function menu_draw() {
 	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
 	    draw_theme_color()
-	    draw_line(dx + 29, dy + 3, dx + 29, dy + hei - 3)
+	    if (o.theme != 3) draw_line(dx + 29, dy + 3, dx + 29, dy + hei - 3)
 	    draw_set_alpha(1)
 	    draw_set_color(c_white)
-	    draw_line(dx + 30, dy + 3, dx + 30, dy + hei - 3)
+	    if (o.theme != 3) draw_line(dx + 30, dy + 3, dx + 30, dy + hei - 3)
 	    draw_theme_color()
 	    draw_set_alpha(0.25)
 	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 1)
@@ -70,9 +71,15 @@ function menu_draw() {
 	            }
 	            draw_theme_color()
 	            if (issel) {
+					if (o.theme != 3) {
 	                draw_set_color(16684072)
 	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
 	                draw_set_color(c_white)
+					} else {
+					draw_set_color(16238993)
+	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
+	                draw_set_color(c_black)
+					}
 	            }
 	            draw_set_alpha(1 - 0.5 * item_inactive[m, i])
 	            draw_text(dx + 36, dy + iy, item_str[m, i])
