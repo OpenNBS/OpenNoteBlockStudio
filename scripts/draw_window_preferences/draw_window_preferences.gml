@@ -77,10 +77,18 @@ function draw_window_preferences() {
 		if (theme = 3) draw_set_font(fnt_segoe)
 		if (theme != 3) {
 		if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
-	    if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+	    if (RUN_FROM_IDE != 1) {
+			draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", 1)
+		} else {
+			if (draw_checkbox(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+		}
 		} else {
 	    if (draw_switch(x1 + 40, y1 + 90, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
-	    if (draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+	    if (RUN_FROM_IDE != 1) {
+			draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.",1)
+		} else {
+			if (draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+		}
 		}
 	
 		// Auto-saving

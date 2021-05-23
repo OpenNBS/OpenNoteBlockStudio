@@ -11,6 +11,7 @@ function control_create() {
 	lib_init()
 
 	// Window
+	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 	window_width = 0
 	window_height = 0
 	window_maximize()

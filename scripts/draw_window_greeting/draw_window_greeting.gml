@@ -11,7 +11,9 @@ function draw_window_greeting() {
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_segoe_bold)
-	if (check_update) {
+	if (RUN_FROM_IDE != 1) {
+		draw_text_center(x1 + 132, y1 + 248, "Running from the GameMaker IDE.")
+	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
 	        draw_text_center(x1 + 132, y1 + 248, "Could not check for updates")
@@ -40,7 +42,11 @@ function draw_window_greeting() {
 	draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_segoe)
 	draw_theme_color()
-	draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
+	if (RUN_FROM_IDE != 1) {
+		draw_text_center(x1 + 132, y1 + 233, "Version Local Release")
+	} else {
+		draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
+	}
 	draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
 	draw_set_color(make_color_rgb(62, 144, 255))
 	draw_text_url(x1 + 132, y1 + 296, "opennbs.org", "https://git.io/fjQH3")

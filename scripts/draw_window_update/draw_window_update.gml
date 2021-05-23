@@ -16,8 +16,14 @@ function draw_window_update() {
 	draw_window(x1, y1, x1 + 500, y1 + 400)
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_segoe_bold)
-	if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
-	else draw_text(x1 + 8, y1 + 8, "Changelist")
+	
+	if (RUN_FROM_IDE != 1) {
+		draw_text(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
+	} else {
+		if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
+		else draw_text(x1 + 8, y1 + 8, "Changelist")
+	}
+	
 	draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_segoe)
 	if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")

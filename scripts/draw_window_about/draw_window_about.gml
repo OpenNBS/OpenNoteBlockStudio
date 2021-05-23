@@ -14,7 +14,11 @@ function draw_window_about() {
 	draw_text(x1 + 150, y1 + 200, "Open Note Block Studio")
 	draw_set_font(fnt_main) 
 		if (theme = 3) draw_set_font(fnt_segoe)
-	draw_text(x1 + 150, y1 + 217, "Version " + version + " - Released " + version_date + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Norgren. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
+	if (RUN_FROM_IDE != 1){
+		draw_text(x1 + 150, y1 + 217, "Version Local Release" + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Norgren. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
+	} else {
+		draw_text(x1 + 150, y1 + 217, "Version " + version + " - Released " + version_date + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Norgren. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
+	}
 	draw_set_halign(fa_left)
 	if (draw_button2(x1 + 120, y1 + 370, 72, "OK", false)) window = 0
 

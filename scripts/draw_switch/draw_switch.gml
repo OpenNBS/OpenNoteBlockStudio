@@ -12,6 +12,7 @@ function draw_switch() {
 	if (tip != "") popup_set_window(xx, yy, 13 + string_width(str) + 8, 13, tip)
 	if (lock = 1) {
 	    draw_sprite(spr_switch, 6, xx, yy)
+		if (expression) draw_sprite(spr_switch, 7, xx, yy)
 	    draw_set_color(make_color_rgb(204, 204, 204))
 	    if (theme) {
 	        draw_set_color(c_white)
