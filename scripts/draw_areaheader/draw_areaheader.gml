@@ -20,6 +20,9 @@ function draw_areaheader(argument0, argument1, argument2, argument3, argument4) 
 			draw_frame(xx, yy, xx + w, yy + h)
 			draw_set_color(c_dark)
 			break;
+		case 3:
+			draw_set_color(c_white)
+			break;
 	}
 	draw_rectangle(xx + 12, yy - 6, xx + 12 + string_width(str) + 6, yy + 6, 0)
 	draw_theme_color()

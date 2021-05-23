@@ -5,8 +5,10 @@ function draw_window_stats() {
 	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 300, y1 + 400)
 	draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Song Stats")
 	draw_set_font(fnt_main)
+		if (theme = 3) draw_set_font(fnt_segoe)
 	if (!theme) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 294, y1 + 362, 0)

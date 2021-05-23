@@ -375,7 +375,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_icons","path":"sprites/spr_icons/spr_icons.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_icons",
     "tags": [],
     "resourceType": "GMSequence",
   },

@@ -82,12 +82,14 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        draw_set_halign(fa_center)
 	        if (show_keynames) {
 	            draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	            draw_set_color(0)
 	            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks2) - 6 * (showclicks2), get_keyname(c2, 1))
 	            draw_set_color(c_white)
 	            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * (showclicks1), get_keyname(c1, 1))
 	        }
 			draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 			if (showclicks2) {
 				draw_set_color(0)
 				draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down[1]) - 8 * (k2 && show_keyboard), string(c2 - 33))
@@ -97,6 +99,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 				draw_text(xx + 39 * a, yy + 24 + 5 + floor(7 * down[0]) - 8 * (k1 && show_keyboard), string(c1 - 33))
 			}
 			draw_set_font(fnt_main)
+		if (theme = 3) draw_set_font(fnt_segoe)
 	        if (k2) {
 	            if (show_keyboard) {
 	                draw_set_color(0)
@@ -148,14 +151,17 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        if (show_keynames) {
 	            draw_set_color(0)
 	            draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * showclicks1, get_keyname(c1, 1))
 	        }
 			if (showclicks1) {
 				draw_set_font(fnt_mainbold)
+		if (theme = 3) draw_set_font(fnt_segoe_bold)
 				draw_set_color(0)
 				draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down) - 8 * (k1 && show_keyboard), string(c1 - 33))
 			}
 			draw_set_font(fnt_main)
+		if (theme = 3) draw_set_font(fnt_segoe)
 	        if (k1) {
 	            if (show_keyboard) {
 	                draw_set_color(0)
