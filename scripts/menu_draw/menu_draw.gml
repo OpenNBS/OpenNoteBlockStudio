@@ -1,7 +1,8 @@
 function menu_draw() {
 	// menu_draw()
-	if (ani < 1) ani += 0.1
-	var m, menux, menuy, noclick, o, theme;
+	if (obj_controller.refreshrate >= 2) if (ani < 1) ani += 0.05
+	else if (ani < 1) ani += 0.1
+	var m, menux, menuy, noclick, o, theme, cm;
 	theme = obj_controller.theme;
 	menux[0] = sx
 	menuy[0] = sy
@@ -14,6 +15,7 @@ function menu_draw() {
 		dx = menux[m]
 	    dx = menux[m] - (dx + menu_wid[m] > window_width) * menu_wid[m]
 	    dy = menuy[m]
+		cm = floor(m * 0.5)
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
 	    if (dy + hei > o.rh) dy = o.rh - hei
 	    iy = 8
