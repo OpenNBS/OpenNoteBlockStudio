@@ -51,7 +51,9 @@ function menu_draw() {
 	            iy += 6
 	        } else {
 	            var issel;
+				var inaissel;
 	            issel = (mouse_rectangle(dx + 3, dy + iy - 5, menu_wid[m] - 5, 22))
+	            inaissel = (mouse_rectangle(dx + 3, dy + iy - 5, menu_wid[m] - 5, 22))
 	            if (issel) { // Close higher menus
 	                var om;
 	                for (om = m + 1; om < menus; om += 1) menu_show[om] = 0
@@ -82,7 +84,13 @@ function menu_draw() {
 	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
 	                draw_set_color(c_black)
 					}
-	            }
+	            } else if (inaissel) {
+					if (o.theme = 3) {
+	                draw_set_color(15132390)
+	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
+	                draw_set_color(c_black)
+					}
+				}
 	            draw_set_alpha(1 - 0.5 * item_inactive[m, i])
 	            draw_text(dx + 36, dy + iy, item_str[m, i])
 	            if (item_shortcut[m, i] != "") {
