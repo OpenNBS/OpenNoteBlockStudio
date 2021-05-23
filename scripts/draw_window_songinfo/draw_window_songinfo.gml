@@ -74,19 +74,21 @@ function draw_window_songinfo() {
 	    draw_text(x1 + floor(w / 2 + w1 / 2) + 1, yy + 1, str[1])
 	    draw_set_color(col[1])
 	    draw_text(x1 + floor(w / 2 + w1 / 2), yy, str[1])
-	    if (song_orauthor != "") {
-	        yy += 20
-	        draw_set_font(fnt_info_med)
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
-	        draw_theme_color()
-	        draw_text(x1 + floor(w / 2 - w4 / 2), yy, "Originally created by ")
-	        draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_segoe_info_med_bald)
-	        draw_text(x1 + floor(w / 2 + w3 / 2) + 1, yy + 1, str[2])
-	        draw_set_color(col[2])
-	        draw_text(x1 + floor(w / 2 + w3 / 2), yy, str[2])
-	    }
 	}
+	if (song_orauthor != "") {
+	    yy += 20
+		if (song_author = "") yy += 12
+	    draw_set_font(fnt_info_med)
+		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+	    draw_theme_color()
+	    draw_text(x1 + floor(w / 2 - w4 / 2), yy, "Originally created by ")
+	    draw_set_font(fnt_info_med_bold)
+		if (theme = 3) draw_set_font(fnt_segoe_info_med_bald)
+	    draw_text(x1 + floor(w / 2 + w3 / 2) + 1, yy + 1, str[2])
+	    draw_set_color(col[2])
+	    draw_text(x1 + floor(w / 2 + w3 / 2), yy, str[2])
+	}
+	
 	draw_theme_color()
 	if (song_midi != "") {
 	    draw_set_font(fnt_main)
