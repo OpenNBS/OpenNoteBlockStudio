@@ -15,7 +15,7 @@ function draw_window_update() {
 	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 500, y1 + 400)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	
 	if (RUN_FROM_IDE != 1) {
 		draw_text(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
@@ -25,7 +25,7 @@ function draw_window_update() {
 	}
 	
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
 	draw_area(x1 + 16, y1 + 58, x1 + 487, y1 + 310)
 	n = string_count("\n", fullstr) 
@@ -38,13 +38,13 @@ function draw_window_update() {
 	for (a = sb_val[update_scrollbar]; a < sb_val[update_scrollbar] + 15; a += 1) {
 	    if (a >= n) break
 	    if (strb[a]) draw_set_font(fnt_mainbold)
-		if (theme = 3 || strb[a]) draw_set_font(fnt_segoe_bold)
+		if (theme = 3 || strb[a]) draw_set_font(fnt_wslui_bold)
 	    else draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    draw_text(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
 	}
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 18, n, 0, 1)
 	if (draw_button2(x1 + 220, y1 + 340, 72, "OK")) {
 	    if (window = w_update) {

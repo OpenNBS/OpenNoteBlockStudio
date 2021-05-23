@@ -3,7 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
-  "fontName": "Segoe UI",
+  "fontName": "WeblySleek UI Semibold",
   "styleName": "Semibold",
   "size": 11.0,
   "bold": true,
@@ -473,7 +473,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fnt_segoe_info_med_bald",
+  "name": "fnt_wslui_info_med_bald",
   "tags": [],
   "resourceType": "GMFont",
 }

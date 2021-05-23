@@ -12,10 +12,10 @@ function draw_window_preferences() {
 	draw_set_color(c_black)
 	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	draw_text(x1 + 8, y1 + 8, "Preferences")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	b = 8
 	str[0] = "General"
 	str[1] = "Appearance"
@@ -72,9 +72,9 @@ function draw_window_preferences() {
 	if (selected_tab > 3) selected_tab = 0
 	draw_theme_color()
 	if (selected_tab = 0) {
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74, 218, 65, "Startup")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (theme != 3) {
 		if (draw_checkbox(x1 + 40, y1 + 90, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
 	    if (RUN_FROM_IDE != 1) {
@@ -85,16 +85,16 @@ function draw_window_preferences() {
 		} else {
 	    if (draw_switch(x1 + 40, y1 + 90, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
 	    if (RUN_FROM_IDE != 1) {
-			draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.",1)
+			draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", 1)
 		} else {
 			if (draw_switch(x1 + 40, y1 + 110, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
 		}
 		}
 	
 		// Auto-saving
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 258, y1 + 74, 220, 65, "Auto-saving")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		as = autosave
 		if (theme != 3) {
 		if (draw_checkbox(x1 + 276, y1 + 90, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.")) autosave=!autosave
@@ -119,9 +119,9 @@ function draw_window_preferences() {
 		}
 		popup_set_window(x1 + 306, y1 + 110, 180, 16, "The amount of minutes between each auto-save.")
 	
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 164, 218, 120, "Theme")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
@@ -131,9 +131,9 @@ function draw_window_preferences() {
 		} else {
 		if (draw_switch(x1 + 40, y1 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.")) blackout = !blackout
 		}
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1+258,y1+164,220,60,"Max frame rate (experimental)")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_radiobox(x1+274,y1+164+16,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
 	        game_set_speed(30,gamespeed_fps)
 			refreshrate=0
@@ -155,9 +155,9 @@ function draw_window_preferences() {
 			refreshrate=4
 		}
 
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 258, y1 + 240, 220, 44, "Window")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 276, y1 + 256, "Scale:             %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
 		if (draw_button2(x1 + 394, y1 + 251, 72, "Reset", (window_scale == 1))) {
@@ -196,9 +196,9 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 356, 96, "Use default")) patternfolder = pattern_directory
 	} else if (selected_tab = 1) {
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74, 456, 196, "Note blocks")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 40, y1 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
 	    if (draw_checkbox(x1 + 40, y1 + 110, use_icons, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) use_icons=!use_icons
 		if (draw_checkbox(x1 + 40, y1 + 130, use_shapes, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) use_shapes=!use_shapes
@@ -207,9 +207,9 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + 200, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
 		if (draw_checkbox(x1 + 40, y1 + 220, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 		if (draw_checkbox(x1 + 40, y1 + 240, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294, 456, 171, "Piano")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (theme != 3) {
 		if (draw_checkbox(x1 + 40, y1 + 310, show_piano, "Enable piano", "Whether the piano should be visible.")) show_piano = !show_piano
 		} else {
@@ -230,41 +230,41 @@ function draw_window_preferences() {
 		draw_theme_color()
 	    popup_set_window(x1 + 180, y1 + 275, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
 	} else if (selected_tab = 2) {
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74, 456, 120, "Mouse wheel")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_radiobox(x1 + 40, y1 + 90, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0
 	    if (draw_radiobox(x1 + 40, y1 + 110, mousewheel = 1, "Use mouse wheel to change instrument", "Use the mouse wheel to toggle between\nthe available instruments.")) mousewheel = 1
 	    if (draw_radiobox(x1 + 40, y1 + 130, mousewheel = 2, "Use mouse wheel to change key", "Use the mouse wheel to toggle\nbetween the keys on the piano.")) mousewheel = 2
 	    if (draw_checkbox(x1 + 40, y1 + 158, changepitch, "Change note properties when scrolling over notes", "Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode.")) changepitch=!changepitch
 		//draw_text(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 220, 456, 105, "Piano")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 40, y1 + 236, select_lastpressed, "Set selected key to pressed one", "If the selected key should be set\nto the one pressed using the keyboard.")) select_lastpressed=!select_lastpressed
 	    draw_text(x1 + 40, y1 + 270, "Right-click on keys to change their shortcuts.")
 	    if (draw_button2(x1 + 40, y1 + 290, 160, "Reset key shortcuts")) {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }
 	} else if (selected_tab = 3) {
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74, 456, 125, "Marker")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 40, y1 + 90, marker_follow, "Follow marker when playing", "Automatically scroll along with the\nmarker when playing the song.")) marker_follow=!marker_follow
 	    if (draw_radiobox(x1 + 70, y1 + 110, marker_pagebypage, "Page by page", "Scroll with the marker every page.", !marker_follow)) marker_pagebypage = 1
 	    if (draw_radiobox(x1 + 70, y1 + 130, !marker_pagebypage, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
 	    if (draw_checkbox(x1 + 40, y1 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
 	    if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 224, 218, 100, "Playing")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
 		if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 		if (draw_checkbox(x1 + 32, y1 + 284 + 16, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
-		if (theme = 3) draw_set_font(fnt_segoe_info_med)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 233 + 22, y1 + 224, 223, 60, "Tempo unit")
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 	}

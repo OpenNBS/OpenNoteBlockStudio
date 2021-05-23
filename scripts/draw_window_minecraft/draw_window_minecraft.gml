@@ -11,10 +11,10 @@ function draw_window_minecraft() {
 	draw_set_color(c_black)
 	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	draw_text(x1 + 8, y1 + 8, "Minecraft Compatibility")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	draw_text(x1 + 16, y1 + 32, "Due to the limitations of note blocks, the song must meet certain criteria in order\nto be properly imported into Minecraft.")
 
 	yy = y1 + 50
@@ -102,10 +102,10 @@ function draw_window_minecraft() {
 		}
 
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "The tempo must be either 2.5, 5 or 10 ticks per second.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 
 		if (tempo = 10 || tempo = 5 || tempo = 2.5) {    
 			draw_set_color(c_green)
@@ -131,10 +131,10 @@ function draw_window_minecraft() {
 		draw_sprite(spr_yesno_f, block_outside = 0, x1 + 25, yy + 8)
 		}
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "All blocks must be within Minecraft's 2 octave range.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (block_outside > 0) {    
 		    draw_set_color(c_red)
 		    if (block_outside = 1) {
@@ -171,10 +171,10 @@ function draw_window_minecraft() {
 		draw_sprite(spr_yesno_f, block_custom = 0, x1 + 25, yy + 8)
 		}
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "No custom instruments must be used.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (block_custom > 0) {    
 		    draw_set_color(c_red)
 		    if (block_custom = 1) draw_text(x1 + 45, yy + 16, "There is 1 block with custom instruments.")
@@ -192,10 +192,10 @@ function draw_window_minecraft() {
 	
 	} else { // Datapack
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "Any tempo works when exporting as a data pack.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 45, yy + 16, "However, the tempos 0.25, 0.5, 1, 1.25, 2, 2.5, 4, 5, 10 and 20 t/s work better.")
 
 		if (tempo = 20 || tempo = 10 || tempo = 5 || tempo = 4 || tempo = 2.5 || tempo = 2 || tempo = 1.25 || tempo = 1 || tempo = 0.5 || tempo = 0.25) {    
@@ -234,10 +234,10 @@ function draw_window_minecraft() {
 
 		yy += 90
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "Using a resource pack, you may extend the supported range to 6 octaves.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 45, yy + 16, "To play without one, all blocks must be within Minecraft's 2 octave range.")	
 		if (block_outside > 0) {
 		if (theme != 3) {
@@ -280,10 +280,10 @@ function draw_window_minecraft() {
 
 		yy += 90
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 		draw_text(x1 + 45, yy, "Using a resource pack, you may play custom instruments in Minecraft.")
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 45, yy + 16, "To play without one, no custom instruments must be used.")
 		if (block_custom > 0) {
 			if (theme != 3) {

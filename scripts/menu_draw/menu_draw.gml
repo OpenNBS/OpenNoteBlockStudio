@@ -11,12 +11,20 @@ function menu_draw() {
 	for (m = 0; m < menus; m += 1) {
 	    if (!menu_show[m]) continue
 	    var dx, dy, i, iy, hei;
-	    dx = menux[m]
+		dx = menux[m]
+	    dx = menux[m] - (dx + menu_wid[m] > window_width) * menu_wid[m]
 	    dy = menuy[m]
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
 	    if (dy + hei > o.rh) dy = o.rh - hei
 	    iy = 8
 	    draw_set_color(window_background)
+		if (o.theme = 3) {
+			draw_sprite(spr_shadowext, 0, dx + 4, dy + hei + 2)
+			draw_sprite_ext(spr_shadowext, 1, dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
+			draw_sprite(spr_shadowext, 2, dx + menu_wid[m] + 1, dy + hei + 1)
+			draw_sprite_ext(spr_shadowext, 3, dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
+			draw_sprite(spr_shadowext, 4, dx + menu_wid[m] + 2, dy + 4)
+		}
 	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
 	    draw_theme_color()

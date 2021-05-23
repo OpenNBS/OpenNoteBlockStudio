@@ -23,7 +23,7 @@ function control_draw() {
 	draw_set_alpha(1)
 	draw_theme_color()
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	editline += 1
 	if refreshrate = 1 game_set_speed(60,gamespeed_fps)
 	if refreshrate = 2 game_set_speed(120,gamespeed_fps)
@@ -664,7 +664,7 @@ function control_draw() {
 	// Timeline and markers
 	draw_sprite_ext(spr_timeline, (0 + theme = 2) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
 	draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 	draw_set_halign(fa_left)
 	draw_theme_color()
 	if (blackout) draw_set_color(c_white)
@@ -850,7 +850,7 @@ function control_draw() {
 
 
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	if (!fullscreen) {
 		draw_set_color(15790320)
 		if (theme = 1) draw_set_color(13160660)
@@ -924,7 +924,7 @@ function control_draw() {
 		    draw_sprite(spr_layerbox, 0 + (theme = 2) + 2 * (theme = 3), x1, y1)
 		    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 			draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 			prev = layername[startb + b]
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
@@ -954,12 +954,12 @@ function control_draw() {
 		        popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
 		        if (c) {
 		            draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 		            draw_set_halign(fa_center)
 		            draw_text(x1 + 98, y1 + 18, string(a) + "%")
 		            draw_set_halign(fa_left)
 		            draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		            curs = cr_size_ns
 		            if (mouse_check_button_pressed(mb_left)) {
 		                window = w_dragvol
@@ -988,14 +988,14 @@ function control_draw() {
 		        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo pan: " + stereostr + "\n(Click and drag to change)")
 		        if (c) {
 		            draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 		            draw_set_halign(fa_center)
 					if a > 100 {draw_text(x1 + 116, y1 + 18, "R " + string(a-100))}
 					if a = 100 {draw_text(x1 + 116, y1 + 18, "MONO")}
 					if a < 100 {draw_text(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
 		            draw_set_halign(fa_left)
 		            draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		            curs = cr_size_ns
 		            if (mouse_check_button_pressed(mb_left)) {
 		                window = w_dragstereo
@@ -1122,7 +1122,7 @@ function control_draw() {
 	if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 	tab_x = 1
 	draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 	draw_theme_color()
 	if (draw_tab("File")) {
 	    str = ""
@@ -1328,7 +1328,7 @@ function control_draw() {
 	// Compatible
 	draw_separator(rw - 34, 26)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	if (compatible = 1) {
 		if (theme != 3) {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
@@ -1342,7 +1342,7 @@ function control_draw() {
 		draw_text(rw - 166, 28, "Fully compatible")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
 	} else if (compatible = 2) {
 		if (theme != 3) {
@@ -1356,7 +1356,7 @@ function control_draw() {
 		draw_text(rw - 154, 28, "Data pack only")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
 	} else {
 		if (theme != 3) {
@@ -1370,7 +1370,7 @@ function control_draw() {
 		draw_text(rw - 180, 28, "Resource pack only")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
 	}
 
@@ -1482,15 +1482,15 @@ function control_draw() {
 		draw_set_halign(fa_right)
 		draw_theme_color()
 		draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_segoe_info_med_bald)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
 		draw_text(93, 52, time_str(marker_pos / tempo))
 
 		// Song length
 		draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
+		if (theme = 3) draw_set_font(fnt_wslui_small)
 		draw_text(93, 69, "/ " + time_str(enda / tempo))
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 
 		// Bars-beats-sixteenths
 		draw_sprite(spr_tempobox, 0, 184, 57)

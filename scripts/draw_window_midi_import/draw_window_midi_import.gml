@@ -13,10 +13,10 @@ function draw_window_midi_import() {
 	draw_set_color(c_black)
 	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	draw_text(x1 + 8, y1 + 8, "MIDI Import")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "Remove silent parts at beginning", "Whether to remove any silent parts\nat the beginning of the song.") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "Name layers...", "If the layers should be given names\ndepending on the data in the MIDI file.") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "...after patches", "If the layers should be named\nafter the instruments in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
@@ -120,14 +120,14 @@ function draw_window_midi_import() {
 	draw_set_halign(fa_right)
 	draw_text(x1 + 590, y1 + 6, midifile)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	if (midi_songlength > 0) {
 	    draw_text(x1 + 590, y1 + 6 + string_height(midifile), time_str(midi_songlength))
 	} else {
 	    draw_text(x1 + 590, y1 + 6 + string_height(midifile), "Song tempo never defined")
 	}
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 	draw_set_halign(fa_left)
 	if (w_midi_tab = 0) {
 	    tabs = 5

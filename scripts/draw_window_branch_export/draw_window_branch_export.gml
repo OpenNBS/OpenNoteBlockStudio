@@ -11,10 +11,10 @@ function draw_window_branch_export() {
 	draw_set_color(c_black)
 	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
+		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	draw_text(x1 + 8, y1 + 8, "Branch Export")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
+		if (theme = 3) draw_set_font(fnt_wslui)
 
 	b = 8
 	str[0] = "Design"
