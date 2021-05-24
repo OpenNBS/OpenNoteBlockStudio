@@ -173,7 +173,7 @@ function draw_window_schematic_export() {
 	    draw_scrollbar(sch_exp_scrollbar, x1 + 524, y1 + 71, 17, 9, ds_list_size(instrument_list), 0, 1)
 	    xx = x1 + 524 + 16
 	    for (a = tabs - 1; a >= 0; a -= 1) {
-	        draw_window(xx - tabw[a], y1 + 51, xx, y1 + 51 + 20)
+	        draw_window(xx - tabw[a], y1 + 51, xx, y1 + 51 + 20, 1)
 	        popup_set_window(xx - tabw[a], y1 + 51, tabw[a], 20, tabtip[a])
 	        draw_text(xx - tabw[a] + 4, y1 + 54, tabstr[a])
 	        xx -= tabw[a] - 1
