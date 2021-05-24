@@ -163,6 +163,8 @@ function draw_window_preferences() {
 		if (draw_button2(x1 + 394, y1 + 251, 72, "Reset", (window_scale == 1))) {
 			window_scale = 1
 		}
+		if (theme != 2) draw_set_color(c_black)
+		else draw_set_color(c_white)
 		
 		draw_text(x1 + 22, y1 + 290, "Song folder: " + string_truncate(songfolder, 360))
 	    popup_set_window(x1 + 22, y1 + 290, 430, 18, songfolder)
