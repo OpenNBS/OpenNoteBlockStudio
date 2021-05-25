@@ -1188,7 +1188,8 @@ function control_draw() {
 	                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
-	                                inactive(selected = 0) + "Transpose notes outside octave range")
+	                                inactive(selected = 0) + "Transpose notes outside octave range|-|"+
+									"Ctrl+Shift+I$Set song tempo")
 	}
 	if (draw_tab("Settings")) {
 	    str = ""
