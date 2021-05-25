@@ -67,7 +67,7 @@ function load_song() {
 	    // SONG DESCRIPTION
 	    song_desc = buffer_read_string_int()
 	    // TEMPO
-	    tempo = median(0.25, floor((buffer_read_short() / 100) * 4) / 4, 30)
+	    tempo = buffer_read_short() / 100
 	    // AUTOSAVE (deprecated)
 	    buffer_read_byte()
 	    // AUTOSAVE MINUTES (deprecated)
