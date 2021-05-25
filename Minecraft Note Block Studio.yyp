@@ -184,6 +184,7 @@
     {"id":{"name":"draw_window_update","path":"scripts/draw_window_update/draw_window_update.yy",},"order":1,},
     {"id":{"name":"draw_window_minecraft","path":"scripts/draw_window_minecraft/draw_window_minecraft.yy",},"order":2,},
     {"id":{"name":"draw_window_greeting","path":"scripts/draw_window_greeting/draw_window_greeting.yy",},"order":3,},
+    {"id":{"name":"draw_window_set_tempo","path":"scripts/draw_window_set_tempo/draw_window_set_tempo.yy",},"order":26,},
     {"id":{"name":"draw_window_instruments","path":"scripts/draw_window_instruments/draw_window_instruments.yy",},"order":4,},
     {"id":{"name":"draw_window_mididevices","path":"scripts/draw_window_mididevices/draw_window_mididevices.yy",},"order":5,},
     {"id":{"name":"draw_window_midi_import","path":"scripts/draw_window_midi_import/draw_window_midi_import.yy",},"order":6,},

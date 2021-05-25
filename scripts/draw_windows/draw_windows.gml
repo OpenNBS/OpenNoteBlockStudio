@@ -31,6 +31,7 @@ function draw_windows() {
 	    case w_setpanning: draw_window_macro_setpanning() break
 		case w_setpitch: draw_window_macro_setpitch() break
 	    case w_branch_export: draw_window_branch_export() break
+	    case w_settempo: draw_window_set_tempo() break
 	}
 
 

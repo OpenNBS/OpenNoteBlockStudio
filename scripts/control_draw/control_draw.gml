@@ -579,6 +579,10 @@ function control_draw() {
 				playing = 0 
 				window = w_clip_editor
 				}
+			if (keyboard_check_pressed(ord("I"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_settempo
+				}
 			// Macro Hotkeys
 			if selected != 0 {
 				if (keyboard_check_pressed(ord("A"))&& keyboard_check(vk_shift)) {
