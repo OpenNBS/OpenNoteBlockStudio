@@ -491,7 +491,8 @@ function control_draw() {
 											"Ctrl+Shift+Y$Set pitch...|"+
 											"Ctrl+Shift+U$Reset all properties|"+
 											"/|-|"+
-	                                        inactive(selected = 0) + "Transpose notes outside octave range")
+	                                        inactive(selected = 0) + "Transpose notes outside octave range|-|"+
+											"Ctrl+Shift+I$Set song tempo")
 	            menu.menuc = selbx
 	            menu.pastex = selbx
 	            menu.pastey = selby

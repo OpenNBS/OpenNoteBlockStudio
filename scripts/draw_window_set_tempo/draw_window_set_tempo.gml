@@ -1,6 +1,6 @@
 function draw_window_set_tempo() {
 	// draw_window_set_tempo()
-	var x1, y1, tempoo
+	var x1, y1, tempoo, e
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 80)
@@ -25,9 +25,14 @@ function draw_window_set_tempo() {
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
-	window = 0
-	if (use_bpm) tempo = floor(tempoo) / 15
-	else tempo = tempoo
+		try {
+			if (use_bpm) tempo = floor(tempoo) / 15
+			else tempo = tempoo
+			window = 0
+		}
+		catch(e) {
+			message("Please enter a number!\n\n" + string(e), "Set tempo")
+		}
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel")) {window = 0}
 	window_set_cursor(curs)
