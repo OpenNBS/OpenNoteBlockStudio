@@ -524,7 +524,10 @@ function control_draw() {
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T")))) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G")))) mode_action(6)
 	        }
-	        if (keyboard_check_pressed(vk_delete) && selected > 0) selection_delete(0)
+	        if (keyboard_check_pressed(vk_delete) && selected > 0) {
+				selection_delete(0)
+				changed = 1
+			}
 	        if (sb_sel = 0) {
 	            if (keyboard_check_pressed(vk_home)) starta = 0
 	            if (keyboard_check_pressed(vk_end)) starta = enda
