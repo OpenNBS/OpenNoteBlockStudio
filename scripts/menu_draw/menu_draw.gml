@@ -1,7 +1,7 @@
 function menu_draw() {
 	// menu_draw()
-	if (obj_controller.refreshrate >= 2) if (ani < 1) ani += 0.05
-	else if (ani < 1) ani += 0.1
+	if (obj_controller.refreshrate >= 2) {if (ani < 1) ani += 0.05}
+	else {if (ani < 1) ani += 0.1}
 	var m, menux, menuy, noclick, o, theme, cm;
 	theme = obj_controller.theme;
 	menux[0] = sx
