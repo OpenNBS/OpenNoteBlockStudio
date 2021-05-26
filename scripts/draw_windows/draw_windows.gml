@@ -7,7 +7,13 @@ function draw_windows() {
 	    case w_greeting: draw_window_greeting() break
 	    case w_songinfo: draw_window_songinfo() break
 	    case w_songinfoedit: draw_window_songinfo() break
-	    case w_preferences: draw_window_preferences() break
+	    case w_preferences: 
+		if (theme != 3) {
+			draw_window_preferences() 
+		} else {
+			draw_window_preferences_f()
+		}
+		break
 	    case w_midi: draw_window_midi_import() break
 	    case w_schematic_export: draw_window_schematic_export() break
 		case w_datapack_export: draw_window_datapack_export() break
