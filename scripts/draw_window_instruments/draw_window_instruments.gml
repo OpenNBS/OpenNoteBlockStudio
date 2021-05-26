@@ -22,8 +22,8 @@ function draw_window_instruments() {
 	    if (theme != 3) draw_area(x1 + 11, y1 + 65, x1 + 535, y1 + 312)
 	    else draw_area(x1 + 11, y1 + 67, x1 + 535, y1 + 312)
 	}
-	if (draw_button2(x1 + 455, y1 + 9, 80, "Import")) load_instruments("")
-	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder")) open_url(sounds_directory)
+	if (draw_button2(x1 + 455, y1 + 9, 80, "Import", 0, 1)) load_instruments("")
+	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder", 0, 1)) open_url(sounds_directory)
 	// Tabs
 	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")

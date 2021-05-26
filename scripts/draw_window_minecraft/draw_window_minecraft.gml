@@ -114,7 +114,7 @@ function draw_window_minecraft() {
 		} else {
 			draw_set_color(c_red)
 		    draw_text(x1 + 45, yy + 16, "The tempo is " + string(tempo) + " ticks per second.")
-		    if (draw_button2(x1 + 45, yy + 34, 140, "Fix tempo for schematic")) {
+		    if (draw_button2(x1 + 45, yy + 34, 140, "Fix tempo for schematic", 0, 1)) {
 		        var otempo = tempo
 		        if (otempo > 10) tempo = 10
 		        if (otempo < 10) tempo = 10
@@ -142,15 +142,15 @@ function draw_window_minecraft() {
 		    } else {
 		        draw_text(x1 + 45, yy + 16, "There are " + string(block_outside) + " blocks outside the 2 octave range.")
 		    }
-		    if (draw_button2(x1 + 45, yy + 34, 120, "Select lower blocks")) {
+		    if (draw_button2(x1 + 45, yy + 34, 120, "Select lower blocks", 0, 1)) {
 		        select_outside(true, false)
 		        window = 0
 		    }
-			if (draw_button2(x1 + 175, yy + 34, 120, "Select higher blocks")) {
+			if (draw_button2(x1 + 175, yy + 34, 120, "Select higher blocks", 0, 1)) {
 		        select_outside(false, true)
 		        window = 0
 		    }
-		    if (draw_button2(x1 + 305, yy + 34, 100, "Transpose notes")) {
+		    if (draw_button2(x1 + 305, yy + 34, 100, "Transpose notes", 0, 1)) {
 		        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
 		            select_all(-1, 0)
 		            selection_transpose()
@@ -179,7 +179,7 @@ function draw_window_minecraft() {
 		    draw_set_color(c_red)
 		    if (block_custom = 1) draw_text(x1 + 45, yy + 16, "There is 1 block with custom instruments.")
 		    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + " blocks with custom instruments.")
-		    if (draw_button2(x1 + 45, yy + 34, 160, "Select affected blocks")) {
+		    if (draw_button2(x1 + 45, yy + 34, 160, "Select affected blocks", 0, 1)) {
 		        select_custom()
 		        window = 0
 		    }
@@ -215,7 +215,7 @@ function draw_window_minecraft() {
 			}
 		    draw_set_color(c_orange)
 		    draw_text(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
-			if (draw_button2(x1 + 45, yy + 50, 180, "Optimize tempo for data pack")) {
+			if (draw_button2(x1 + 45, yy + 50, 180, "Optimize tempo for data pack", 0, 1)) {
 			    var otempo
 				otempo = tempo
 				if (otempo >= 15) tempo = 20
@@ -251,15 +251,15 @@ function draw_window_minecraft() {
 		    } else {
 		        draw_text(x1 + 45, yy + 32, "There are " + string(block_outside) + " blocks outside the 2 octave range.")
 		    }
-		    if (draw_button2(x1 + 45, yy + 50, 120, "Select lower blocks")) {
+		    if (draw_button2(x1 + 45, yy + 50, 120, "Select lower blocks", 0, 1)) {
 		        select_outside(true, false)
 		        window = 0
 		    }
-			if (draw_button2(x1 + 175, yy + 50, 120, "Select higher blocks")) {
+			if (draw_button2(x1 + 175, yy + 50, 120, "Select higher blocks", 0, 1)) {
 		        select_outside(false, true)
 		        window = 0
 		    }
-		    if (draw_button2(x1 + 305, yy + 50, 100, "Transpose notes")) {
+		    if (draw_button2(x1 + 305, yy + 50, 100, "Transpose notes", 0, 1)) {
 		        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
 		            select_all(-1, 0)
 		            selection_transpose()
@@ -294,7 +294,7 @@ function draw_window_minecraft() {
 		    draw_set_color(c_orange)
 		    if (block_custom = 1) draw_text(x1 + 45, yy + 32, "There is 1 block with custom instruments.")
 		    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + " blocks with custom instruments.")
-			if (draw_button2(x1 + 45, yy + 50, 160, "Select affected blocks")) {
+			if (draw_button2(x1 + 45, yy + 50, 160, "Select affected blocks", 0, 1)) {
 		        select_custom()
 		        window = 0
 		    }
