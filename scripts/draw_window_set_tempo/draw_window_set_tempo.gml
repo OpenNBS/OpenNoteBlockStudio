@@ -27,7 +27,7 @@ function draw_window_set_tempo() {
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
 		try {
 			if (use_bpm) tempo = floor(tempoo) / 15
-			else tempo = tempoo
+			else tempo = floor(real(tempoo) * 100) / 100
 			window = 0
 		}
 		catch(e) {
