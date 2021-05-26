@@ -166,7 +166,7 @@ function draw_window_datapack_export() {
 		draw_theme_color()
 	
 		//Get extra notes button
-		if (draw_button2(x1 + 380, y1 + 362, 152, "Get extra notes pack", !dat_includeoutofrange)) {
+		if (draw_button2(x1 + 380, y1 + 362, 152, "Get extra notes pack", !dat_includeoutofrange, 1)) {
 			datapack_getextranotes()
 		}
 	
@@ -195,7 +195,7 @@ function draw_window_datapack_export() {
 		draw_text(x1 + 33, y1 + 338, "Z value:")
 		dat_zval = draw_inputbox(54,x1 + 83, y1 + 335,40,dat_zval,"Z value")
 		//Get note block textures button
-		if (draw_button2(x1 + 13, y1 + 360, 152, "Get note block textures")) {
+		if (draw_button2(x1 + 13, y1 + 360, 152, "Get note block textures", 0, 1)) {
 			datapack_getinstextures()
 		}
 	}
