@@ -24,6 +24,7 @@ function draw_window_preferences_f() {
 			window = 0
 			window_set_cursor(curs)
 			save_settings()
+			selected_tab = 0
 		}
 	}
 	draw_sprite(spr_back, 0, x1 + 12, y1 + 30 + 12)
@@ -246,6 +247,7 @@ function draw_window_preferences_f() {
 		window = 0
 		window_set_cursor(curs)
 		save_settings()
+		selected_tab = 0
 	}
 
 

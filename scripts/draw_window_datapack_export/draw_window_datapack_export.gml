@@ -229,6 +229,7 @@ function draw_window_datapack_export() {
 	//Cancel button
 	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false)) {
 		window = 0
+		selected_tab_dat = 0
 	}
 
 

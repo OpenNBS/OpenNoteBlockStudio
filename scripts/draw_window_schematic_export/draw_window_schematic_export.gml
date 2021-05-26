@@ -228,7 +228,10 @@ function draw_window_schematic_export() {
 	        schematic_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0) window = 0
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0) {
+		window = 0
+		selected_tab_sch = 0
+	}
 	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
 	}
