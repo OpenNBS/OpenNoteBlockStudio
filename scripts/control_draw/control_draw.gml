@@ -663,8 +663,13 @@ function control_draw() {
 	    y2 = mouse_y
 	    if (starta = 0) x2 = max(x1 + 2, mouse_x)
 	    if (startb = 0) y2 = max(y1 + 34, mouse_y)
-	    draw_set_color(c_blue)
-	    if (select = 2) draw_set_color(c_red)
+		if (theme != 3) {
+			draw_set_color(c_blue)
+			if (select = 2) draw_set_color(c_red)
+		} else {
+			draw_set_color(14120960)
+			if (select = 2) draw_set_color(c_red)
+		}
 	    draw_set_alpha(0.25)
 	    draw_rectangle(select_pressx, select_pressy, x2, y2, 0)
 	    draw_set_alpha(1)
