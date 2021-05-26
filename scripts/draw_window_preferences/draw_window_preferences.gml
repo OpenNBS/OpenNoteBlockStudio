@@ -258,12 +258,13 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
 	    if (draw_checkbox(x1 + 40, y1 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
-	    draw_areaheader(x1 + 22, y1 + 224, 218, 100, "Playing")
+	    draw_areaheader(x1 + 22, y1 + 224, 218, 120, "Playing")
 		if (theme = 3) draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 32, y1 + 224 + 16, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
 		if (draw_checkbox(x1 + 32, y1 + 264 + 16, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 		if (draw_checkbox(x1 + 32, y1 + 284 + 16, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16, channelstoggle, "More audio channels", "Increase the amount of sounds that can\nplay at once.")) channelstoggle = !channelstoggle
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 233 + 22, y1 + 224, 223, 60, "Tempo unit")
 		if (theme = 3) draw_set_font(fnt_wslui)

@@ -50,6 +50,7 @@ function load_settings() {
 	show_soundcount =    ini_read_real(  "preferences", "show_soundcount",    show_soundcount)
 	use_bpm =            ini_read_real(  "preferences", "use_bpm",            use_bpm)
 	save_version =       ini_read_real(  "preferences", "save_version",       save_version)
+	channelstoggle =     ini_read_real(  "preferences", "channelstoggle",     channelstoggle)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)

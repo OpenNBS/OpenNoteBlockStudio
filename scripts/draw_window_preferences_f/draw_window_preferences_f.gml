@@ -237,6 +237,7 @@ function draw_window_preferences_f() {
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
 		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + 22, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + 22, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + 22, channelstoggle, "More audio channels", "Increase the amount of sounds that can\nplay at once.")) channelstoggle = !channelstoggle
 		draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 233 + 22, y1 + 224 + 22, 223, 60, "Tempo unit")
 		draw_set_font(fnt_wslui)

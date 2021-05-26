@@ -14,6 +14,9 @@ function control_draw() {
 	}
 	prev_scale = window_scale
 	
+	if (channelstoggle) channels = 32768
+	else channels = 256
+	
 	curs = cr_default
 	showmenu = 0
 	cursmarker = 0

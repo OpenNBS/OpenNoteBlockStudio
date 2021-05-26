@@ -28,6 +28,7 @@ function control_create() {
 
 	// Audio
 	channels = 256
+	channelstoggle = 0
 	sounds = 0
 	audio_channel_num(channels)
 	show_soundcount = 0
