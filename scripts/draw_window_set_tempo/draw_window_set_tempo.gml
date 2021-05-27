@@ -25,7 +25,7 @@ function draw_window_set_tempo() {
 	tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, "OK") && windowopen = 1) {
 		try {
 			if (use_bpm) tempo = floor(tempoo) / 15
 			else tempo = floor(real(tempoo) * 100) / 100

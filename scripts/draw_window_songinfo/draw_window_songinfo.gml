@@ -125,7 +125,7 @@ function draw_window_songinfo() {
 
 	if (window = w_songinfoedit) {
 	    if (draw_button2(x1 + floor(w / 2) - 70, y1 + h - 30, 70, "Edit")) window = w_properties
-	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "OK")) windowclose = 1
+	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "OK") && windowopen = 1) windowclose = 1
 	} else {
 	    if (mouse_check_button_pressed(mb_left)) window = w_releasemouse
 	}

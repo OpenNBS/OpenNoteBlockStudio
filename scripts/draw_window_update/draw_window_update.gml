@@ -47,7 +47,7 @@ function draw_window_update() {
 	draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_wslui)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 18, n, 0, 1)
-	if (draw_button2(x1 + 220, y1 + 340, 72, "OK")) {
+	if (draw_button2(x1 + 220, y1 + 340, 72, "OK") && windowopen = 1) {
 	    if (window = w_update) {
 	        window = w_greeting
 			save_settings() // Save new version number

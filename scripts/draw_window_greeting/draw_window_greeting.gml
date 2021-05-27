@@ -74,7 +74,7 @@ function draw_window_greeting() {
 	draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
-	if (a = 2 && mouse_check_button_released(mb_left)) windowclose = 1
+	if (a = 2 && mouse_check_button_released(mb_left) && windowopen = 1) windowclose = 1
 
 	c += 44
 	b = x1 + 300

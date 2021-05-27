@@ -21,7 +21,7 @@ function draw_window_preferences_f() {
 		draw_set_color(13487565)
 		if (mouse_check_button(mb_left)) draw_set_color(12105912)
 		draw_rectangle(x1 + 1, y1 + 30, x1 + 39, y1 + 69, 0)
-		if (mouse_check_button_released(mb_left)) {
+		if (mouse_check_button_released(mb_left && windowopen = 1)) {
 			windowclose = 1
 		}
 	}

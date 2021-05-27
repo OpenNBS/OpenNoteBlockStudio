@@ -11,7 +11,7 @@ function draw_switch() {
 	    lock = argument[5]
 	if (tip != "") popup_set_window(xx, yy, 13 + string_width(str) + 8, 13, tip)
 	if (lock = 1) {
-	    draw_sprite(spr_switch, 6, xx, yy)
+	    if (!expression) draw_sprite(spr_switch, 6, xx, yy)
 		if (expression) draw_sprite(spr_switch, 7, xx, yy)
 	    draw_set_color(make_color_rgb(204, 204, 204))
 	    if (theme) {
@@ -25,7 +25,7 @@ function draw_switch() {
 	    m = mouse_rectangle(xx, yy, 26 + string_width(str) + 8, 13)
 	    if (w_isdragging > 0) m = 0
 	    if (m) m += mouse_check_button(mb_left)
-	    draw_sprite(spr_switch, m, xx, yy)
+	    if (!expression) draw_sprite(spr_switch, m, xx, yy)
 	    if (expression) draw_sprite(spr_switch, m + 3, xx, yy)
 	    draw_text(xx + 31, yy - 1, str)
 	    return (m && mouse_check_button_released(mb_left))

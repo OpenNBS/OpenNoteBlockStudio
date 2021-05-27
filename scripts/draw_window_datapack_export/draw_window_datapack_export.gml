@@ -228,7 +228,7 @@ function draw_window_datapack_export() {
 	}
 
 	//Cancel button
-	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false)) {
+	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false) && windowopen = 1) {
 		windowclose = 1
 	}
 	window_set_cursor(cr_default)
