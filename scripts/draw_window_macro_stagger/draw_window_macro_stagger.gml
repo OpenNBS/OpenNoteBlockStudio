@@ -1,6 +1,7 @@
 function draw_window_macro_stagger() {
 	// draw_window_macro_stagger()
 	var x1, y1, a, b, i, pattern, str, total_vals, val, arplen, maxlength, conf;
+	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	text_exists[0] = 0
 	if (selected = 0) return 0
@@ -84,8 +85,44 @@ function draw_window_macro_stagger() {
 		selection_code_update()
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	}
-	if (draw_button2(x1 + 75, y1 + 128, 60, "Cancel")) {window = 0}
+	if (draw_button2(x1 + 75, y1 + 128, 60, "Cancel")) {windowclose = 1}
 	window_set_cursor(curs)
-
+	window_set_cursor(cr_default)
+	if (windowopen = 0 && theme = 3) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
+		} else {
+			windowalpha = 1
+			windowopen = 1
+		}
+	}
+	if(theme = 3) {
+		if (windowclose = 1) {
+			if (windowalpha > 0) {
+				if (refreshrate = 0) windowalpha -= 1/3.75
+				else if (refreshrate = 1) windowalpha -= 1/7.5
+				else if (refreshrate = 2) windowalpha -= 1/15
+				else if (refreshrate = 3) windowalpha -= 1/18
+				else windowalpha -= 1/20
+			} else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
+				window = 0
+				window_set_cursor(curs)
+				save_settings()
+			}
+		}
+	} else {
+		if (windowclose = 1) {
+			windowclose = 0
+			window = 0
+		}
+	}
+	draw_set_alpha(1)
 
 }

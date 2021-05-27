@@ -1,6 +1,7 @@
 function draw_window_greeting() {
 	// draw_window_greeting()
 	var x1, y1, a, b, c, d, e, m;
+	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 350)
 	y1 = floor(rh / 2 - 210)
@@ -73,7 +74,7 @@ function draw_window_greeting() {
 	draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
-	if (a = 2 && mouse_check_button_released(mb_left)) window = 0
+	if (a = 2 && mouse_check_button_released(mb_left)) windowclose = 1
 
 	c += 44
 	b = x1 + 300
@@ -155,7 +156,43 @@ function draw_window_greeting() {
 	if (a = 2 && mouse_check_button_released(mb_left)) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 
 	window_set_cursor(curs)
-
+	window_set_cursor(cr_default)
+	if (windowopen = 0 && theme = 3) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
+		} else {
+			windowalpha = 1
+			windowopen = 1
+		}
+	}
+	if(theme = 3) {
+		if (windowclose = 1) {
+			if (windowalpha > 0) {
+				if (refreshrate = 0) windowalpha -= 1/3.75
+				else if (refreshrate = 1) windowalpha -= 1/7.5
+				else if (refreshrate = 2) windowalpha -= 1/15
+				else if (refreshrate = 3) windowalpha -= 1/18
+				else windowalpha -= 1/20
+			} else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
+				window = 0
+				window_set_cursor(curs)
+				save_settings()
+			}
+		}
+	} else {
+		if (windowclose = 1) {
+			windowclose = 0
+			window = 0
+		}
+	}
+	draw_set_alpha(1)
 
 
 }

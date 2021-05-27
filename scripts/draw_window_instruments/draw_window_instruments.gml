@@ -1,6 +1,7 @@
 function draw_window_instruments() {
 	// draw_window_instruments()
 	var x1, y1, a, b, c, str, menun, menua, menub, prev;
+	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	menun = -1
 	x1 = floor(rw / 2 - 275)
@@ -76,7 +77,7 @@ function draw_window_instruments() {
 		c = 1
 	}
 	if (draw_button2(x1 + 456, y1 + 318, 80, "OK") && wmenu = 0) {
-		window = 0
+		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
 			show_message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
 			save_version = nbs_version
@@ -174,6 +175,42 @@ function draw_window_instruments() {
 	draw_line(x1 + 13 + 194 + 160 + 80, y1 + 87, x1 + 13 + 194 + 160 + 80, y1 + 86 + 20 * a)
 	draw_scrollbar(insscrollbar, x1 + 14 + 194 + 160 + 80 + 70, y1 + 88, 21, 9, ds_list_size(instrument_list) - 2, 0, 1)
 	window_set_cursor(curs)
-
-
+	window_set_cursor(cr_default)
+	if (windowopen = 0 && theme = 3) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
+		} else {
+			windowalpha = 1
+			windowopen = 1
+		}
+	}
+	if(theme = 3) {
+		if (windowclose = 1) {
+			if (windowalpha > 0) {
+				if (refreshrate = 0) windowalpha -= 1/3.75
+				else if (refreshrate = 1) windowalpha -= 1/7.5
+				else if (refreshrate = 2) windowalpha -= 1/15
+				else if (refreshrate = 3) windowalpha -= 1/18
+				else windowalpha -= 1/20
+			} else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
+				window = 0
+				window_set_cursor(curs)
+				save_settings()
+			}
+		}
+	} else {
+		if (windowclose = 1) {
+			windowclose = 0
+			window = 0
+		}
+	}
+	draw_set_alpha(1)
+	
 }

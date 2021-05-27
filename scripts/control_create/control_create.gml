@@ -25,9 +25,9 @@ function control_create() {
 	prev_scale = -1
 	rw = 0
 	rh = 0
-	preferencesalpha = 0
-	preferencesopen = 0
-	preferencesclose = 0
+	windowalpha = 0
+	windowopen = 0
+	windowclose = 0
 
 	// Audio
 	channels = 256

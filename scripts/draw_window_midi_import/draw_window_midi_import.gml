@@ -1,6 +1,7 @@
 function draw_window_midi_import() {
 	// draw_window_midi_import()
 	var x1, y1, xx, a, b, c, menun, menua, menub, stabx, stabw, nsel, tabs, tabw, tabstr, tabtip, str;
+	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	menun = -1
 	nsel = -1
@@ -34,7 +35,7 @@ function draw_window_midi_import() {
 	if (draw_switch(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
 	}
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi()}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {midifile = "" w_midi_tab = 0 window = 0}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {midifile = "" w_midi_tab = 0 windowclose = 1}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) { 
 	        midi_instruments()
@@ -324,7 +325,45 @@ function draw_window_midi_import() {
 	draw_theme_color()
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 	window_set_cursor(curs)
-
+	window_set_cursor(cr_default)
+	if (windowopen = 0 && theme = 3) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
+		} else {
+			windowalpha = 1
+			windowopen = 1
+		}
+	}
+	if(theme = 3) {
+		if (windowclose = 1) {
+			if (windowalpha > 0) {
+				if (refreshrate = 0) windowalpha -= 1/3.75
+				else if (refreshrate = 1) windowalpha -= 1/7.5
+				else if (refreshrate = 2) windowalpha -= 1/15
+				else if (refreshrate = 3) windowalpha -= 1/18
+				else windowalpha -= 1/20
+			} else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
+				window = 0
+				window_set_cursor(curs)
+				save_settings()
+				w_midi_tab = 0
+			}
+		}
+	} else {
+		if (windowclose = 1) {
+			windowclose = 0
+			window = 0
+			w_midi_tab = 0
+		}
+	}
+	draw_set_alpha(1)
 
 
 }

@@ -1,5 +1,6 @@
 function draw_window_songinfo() {
 	// draw_window_songinfo()
+	if (theme = 3) draw_set_alpha(windowalpha)
 	var x1, y1, a, b, n, str, w, h, yy, w1, w2, w3, w4, w5, w6, col, r, g, b, str2, cut;
 	with (obj_popup) instance_destroy()
 	global.popup = 0
@@ -124,11 +125,47 @@ function draw_window_songinfo() {
 
 	if (window = w_songinfoedit) {
 	    if (draw_button2(x1 + floor(w / 2) - 70, y1 + h - 30, 70, "Edit")) window = w_properties
-	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "OK")) window = 0
+	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "OK")) windowclose = 1
 	} else {
 	    if (mouse_check_button_pressed(mb_left)) window = w_releasemouse
 	}
-
+	window_set_cursor(cr_default)
+	if (windowopen = 0 && theme = 3) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
+		} else {
+			windowalpha = 1
+			windowopen = 1
+		}
+	}
+	if(theme = 3) {
+		if (windowclose = 1) {
+			if (windowalpha > 0) {
+				if (refreshrate = 0) windowalpha -= 1/3.75
+				else if (refreshrate = 1) windowalpha -= 1/7.5
+				else if (refreshrate = 2) windowalpha -= 1/15
+				else if (refreshrate = 3) windowalpha -= 1/18
+				else windowalpha -= 1/20
+			} else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
+				window = 0
+				window_set_cursor(curs)
+				save_settings()
+			}
+		}
+	} else {
+		if (windowclose = 1) {
+			windowclose = 0
+			window = 0
+		}
+	}
+	draw_set_alpha(1)
 
 
 }

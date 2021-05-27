@@ -1,7 +1,7 @@
 function draw_window_preferences_f() {
 	// draw_window_preferences_f()
 	var x1, y1, a, b, c, as, nsel, str;
-	draw_set_alpha(preferencesalpha)
+	draw_set_alpha(windowalpha)
 	curs = cr_default
 	nsel = -1
 	x1 = floor(rw / 2 - 250)
@@ -22,7 +22,7 @@ function draw_window_preferences_f() {
 		if (mouse_check_button(mb_left)) draw_set_color(12105912)
 		draw_rectangle(x1 + 1, y1 + 30, x1 + 39, y1 + 69, 0)
 		if (mouse_check_button_released(mb_left)) {
-			preferencesclose = 1
+			windowclose = 1
 		}
 	}
 	draw_sprite(spr_back, 0, x1 + 12, y1 + 30 + 12)
@@ -250,29 +250,29 @@ function draw_window_preferences_f() {
 	//}
 	
 	//opening and closing animation
-	if (preferencesopen = 0) {
-		if (preferencesalpha < 1) {
-			if (refreshrate = 0) preferencesalpha += 1/3.75
-			else if (refreshrate = 1) preferencesalpha += 1/7.5
-			else if (refreshrate = 2) preferencesalpha += 1/15
-			else if (refreshrate = 3) preferencesalpha += 1/18
-			else preferencesalpha += 1/20
+	if (windowopen = 0) {
+		if (windowalpha < 1) {
+			if (refreshrate = 0) windowalpha += 1/3.75
+			else if (refreshrate = 1) windowalpha += 1/7.5
+			else if (refreshrate = 2) windowalpha += 1/15
+			else if (refreshrate = 3) windowalpha += 1/18
+			else windowalpha += 1/20
 		} else {
-			preferencesalpha = 1
-			preferencesopen = 1
+			windowalpha = 1
+			windowopen = 1
 		}
 	}
-	if (preferencesclose = 1) {
-		if (preferencesalpha > 0) {
-			if (refreshrate = 0) preferencesalpha -= 1/3.75
-			else if (refreshrate = 1) preferencesalpha -= 1/7.5
-			else if (refreshrate = 2) preferencesalpha -= 1/15
-			else if (refreshrate = 3) preferencesalpha -= 1/18
-			else preferencesalpha -= 1/20
+	if (windowclose = 1) {
+		if (windowalpha > 0) {
+			if (refreshrate = 0) windowalpha -= 1/3.75
+			else if (refreshrate = 1) windowalpha -= 1/7.5
+			else if (refreshrate = 2) windowalpha -= 1/15
+			else if (refreshrate = 3) windowalpha -= 1/18
+			else windowalpha -= 1/20
 		} else {
-			preferencesalpha = 0
-			preferencesclose = 0
-			preferencesopen = 0
+			windowalpha = 0
+			windowclose = 0
+			windowopen = 0
 			window = 0
 			window_set_cursor(curs)
 			save_settings()
