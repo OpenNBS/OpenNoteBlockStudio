@@ -248,6 +248,8 @@ function draw_window_preferences_f() {
 	//	save_settings()
 	//	selected_tab = 0
 	//}
+	
+	//opening and closing animation
 	if (preferencesopen = 0) {
 		if (preferencesalpha < 1) {
 			if (refreshrate = 0) preferencesalpha += 1/3.75
