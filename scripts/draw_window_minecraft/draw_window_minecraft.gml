@@ -145,11 +145,11 @@ function draw_window_minecraft() {
 		    }
 		    if (draw_button2(x1 + 45, yy + 34, 120, "Select lower blocks", 0, 1)) {
 		        select_outside(true, false)
-		        window = 0
+		        windowclose = 1
 		    }
 			if (draw_button2(x1 + 175, yy + 34, 120, "Select higher blocks", 0, 1)) {
 		        select_outside(false, true)
-		        window = 0
+		        windowclose = 1
 		    }
 		    if (draw_button2(x1 + 305, yy + 34, 100, "Transpose notes", 0, 1)) {
 		        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
@@ -182,7 +182,7 @@ function draw_window_minecraft() {
 		    else draw_text(x1 + 45, yy + 16, "There are " + string(block_custom) + " blocks with custom instruments.")
 		    if (draw_button2(x1 + 45, yy + 34, 160, "Select affected blocks", 0, 1)) {
 		        select_custom()
-		        window = 0
+		        windowclose = 1
 		    }
 		} else {
 		    draw_set_color(c_green)
@@ -254,11 +254,11 @@ function draw_window_minecraft() {
 		    }
 		    if (draw_button2(x1 + 45, yy + 50, 120, "Select lower blocks", 0, 1)) {
 		        select_outside(true, false)
-		        window = 0
+		        windowclose = 1
 		    }
 			if (draw_button2(x1 + 175, yy + 50, 120, "Select higher blocks", 0, 1)) {
 		        select_outside(false, true)
-		        window = 0
+		        windowclose = 1
 		    }
 		    if (draw_button2(x1 + 305, yy + 50, 100, "Transpose notes", 0, 1)) {
 		        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
@@ -297,7 +297,7 @@ function draw_window_minecraft() {
 		    else draw_text(x1 + 45, yy + 32, "There are " + string(block_custom) + " blocks with custom instruments.")
 			if (draw_button2(x1 + 45, yy + 50, 160, "Select affected blocks", 0, 1)) {
 		        select_custom()
-		        window = 0
+		        windowclose = 1
 		    }
 		} else {
 			if (theme != 3) {

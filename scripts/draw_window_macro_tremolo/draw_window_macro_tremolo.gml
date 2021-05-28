@@ -56,6 +56,9 @@ function draw_window_macro_tremolo() {
 		if tremolotype = 0 macro_tremolo()
 		if tremolotype = 1 macro_tremolo_fadein()
 		if tremolotype = 2 macro_tremolo_fadeout()
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
 		window = 0
 	}
 	if (draw_button2(x1 + 80, y1 + 215, 60, "Cancel") && windowopen = 1) {windowclose = 1}

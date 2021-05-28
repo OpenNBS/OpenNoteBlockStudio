@@ -39,6 +39,9 @@ function draw_window_macro_stagger() {
 			message("Stagger can only extend downwards!", "Error")
 			return -1
 		}
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
 		window = 0
 		str = selection_code
 		arr_data = selection_to_array(str)

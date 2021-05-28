@@ -25,6 +25,9 @@ function draw_window_macro_portamento() {
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
 		str = selection_code
 		val = 0
 		decr = port_cent / string_count("-1", str)

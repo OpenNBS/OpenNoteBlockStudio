@@ -34,7 +34,7 @@ function draw_window_midi_import() {
 	} else {
 	if (draw_switch(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
 	}
-	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi()}
+	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && windowopen = 1) {midifile = "" w_midi_tab = 0 windowclose = 1}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) { 

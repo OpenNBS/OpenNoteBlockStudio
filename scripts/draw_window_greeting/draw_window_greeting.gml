@@ -88,6 +88,9 @@ function draw_window_greeting() {
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
 	    load_song("")
 	    return 1
 	}
@@ -117,6 +120,9 @@ function draw_window_greeting() {
 	            recent_song[10] = ""
 	            recent_song_time[10] = 0
 	        } else {
+				windowalpha = 0
+				windowclose = 0
+				windowopen = 0
 	            load_song(recent_song[a])
 	        }
 	    }
@@ -140,7 +146,12 @@ function draw_window_greeting() {
 	draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
-	if (a = 2 && mouse_check_button_released(mb_left)) open_midi("")
+	if (a = 2 && mouse_check_button_released(mb_left)) {
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
+		open_midi("")
+	}
 
 	b = x1 + 300
 	c += 44

@@ -30,6 +30,9 @@ function draw_window_macro_arpeggio() {
 		message("Please add pipes ( | ) to separate values!", "Error")
 		return 1
 	}
+	windowalpha = 0
+	windowclose = 0
+	windowopen = 0
 	window = 0
 	str = selection_code
 	arr_data = selection_to_array(str)

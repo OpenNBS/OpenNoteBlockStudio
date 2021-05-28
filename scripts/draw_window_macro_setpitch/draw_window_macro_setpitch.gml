@@ -24,6 +24,9 @@ function draw_window_macro_setpitch() {
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
+		windowalpha = 0
+		windowclose = 0
+		windowopen = 0
 		str = selection_code
 		val = 0
 		arr_data = selection_to_array(str)
