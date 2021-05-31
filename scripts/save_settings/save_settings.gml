@@ -50,6 +50,8 @@ function save_settings() {
 	ini_write_real_clean("preferences", "use_bpm",            use_bpm)
 	ini_write_real_clean("preferences", "save_version",       save_version)
 	ini_write_real_clean("preferences", "channelstoggle",     channelstoggle)
+	ini_write_real_clean("preferences", "presence",           presence)
+	ini_write_real_clean("preferences", "presencems",         presencems)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

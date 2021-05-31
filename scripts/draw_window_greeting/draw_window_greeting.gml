@@ -203,6 +203,10 @@ function draw_window_greeting() {
 			window = 0
 		}
 	}
+	if (theme != 3) {
+		windowopen = 1
+		windowalpha = 1
+	}
 	draw_set_alpha(1)
 
 

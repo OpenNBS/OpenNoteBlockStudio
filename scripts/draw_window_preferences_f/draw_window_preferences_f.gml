@@ -219,6 +219,16 @@ function draw_window_preferences_f() {
 	    if (draw_button2(x1 + 40, y1 + 290 + 22, 160, "Reset key shortcuts", 0, 1)) {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }
+		draw_set_font(fnt_wslui_info_med)
+		draw_areaheader(x1 + 22, y1 + 290 + 62 + 22, 456, 65, "Discord")
+		draw_set_font(fnt_wslui)
+		if (draw_switch(x1 + 40, y1 + 290 + 62 + 16 + 22, presence, "Turn Discord Rich Presence on or off", "Displays song info in your discord profile.")) {
+		    presence = !presence
+			if (presence = 1) {
+				np_setpresence_timestamps(date_current_datetime(), 0, false);
+			}
+		}
+		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16 + 20 + 22, presencems, "Millisecond precision", "The time display format in discord.", !presence)) presencems = !presencems
 	} else if (selected_tab = 3) {
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + 22, 456, 125, "Marker")

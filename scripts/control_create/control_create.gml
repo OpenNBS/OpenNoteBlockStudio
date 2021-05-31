@@ -60,6 +60,8 @@ function control_create() {
 	tonextsave = 0
 	backupmins = 1
 	tonextbackup = 0
+	presence = 1
+	presencems = 0
 
 	// File
 	filename = ""
