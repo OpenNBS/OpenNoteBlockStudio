@@ -1603,6 +1603,6 @@ function control_draw() {
 	mouse_xprev = mouse_x
 	mouse_yprev = mouse_y
 
-
+	
 
 }
