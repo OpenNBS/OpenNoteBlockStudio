@@ -228,7 +228,7 @@ function draw_window_preferences_f() {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
 			}
 		}
-		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16 + 20 + 22, presencems, "Millisecond precision", "The time display format in discord.", !presence)) presencems = !presencems
+		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16 + 20 + 22, presencewindow, "Show window status", "Displays which window you're on in Rich Presence.", !presence)) presencewindow = !presencewindow
 	} else if (selected_tab = 3) {
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + 22, 456, 125, "Marker")

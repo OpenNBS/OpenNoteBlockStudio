@@ -52,7 +52,7 @@ function load_settings() {
 	save_version =       ini_read_real(  "preferences", "save_version",       save_version)
 	channelstoggle =     ini_read_real(  "preferences", "channelstoggle",     channelstoggle)
 	presence =           ini_read_real(  "preferences", "presence",           presence)
-	presencems =         ini_read_real(  "preferences", "presencems",         presencems)
+	presencewindow =     ini_read_real(  "preferences", "presencewindow",     presencewindow)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
