@@ -2,7 +2,7 @@ function control_step() {
 	update_window()
 	if (presence = 1 && obj_presence.ready = true) {
 		if (presencewindow = 1) {
-			np_setpresence(condstr(filename = "", "Unsaved song") + condstr(filename != "", "Editing ") + filename_name(filename), 
+			np_setpresence(condstr(filename = "", "Unsaved song") + condstr(filename != "", "Editing ") + filename_name(filename) + condstr(totalblocks != 0, " - " + string(totalblocks) + " Notes"), 
 			condstr(window = 0 || window = w_menu || window = w_dragtempo || window = w_dragsection_start || window = w_dragsection_end || window = w_dragstereo || window = w_dragvol || window = w_dragmarker, "Editor") + 
 			condstr(window = w_greeting, "Welcome Menu") + 
 			condstr(window = w_songinfo, "Song Info") + 
@@ -32,7 +32,7 @@ function control_step() {
 			condstr(window = w_branch_export, "Branch Schematic Export") + 
 			condstr(window = w_settempo, "Set Tempo"), "note", "");
 		} else {
-			np_setpresence(condstr(filename = "", "Unsaved song") + condstr(filename != "", "Editing ") + filename_name(filename), "", "note", "");
+			np_setpresence(condstr(filename = "", "Unsaved song") + condstr(filename != "", "Editing ") + filename_name(filename) + condstr(totalblocks != 0, " - " + string(totalblocks) + " Notes"), "", "note", "");
 		}
 	} else {
 		np_clearpresence()
