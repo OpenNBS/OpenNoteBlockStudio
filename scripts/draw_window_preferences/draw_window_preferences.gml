@@ -150,7 +150,7 @@ function draw_window_preferences() {
 			game_set_speed(144,gamespeed_fps)
 			refreshrate=3
 		}
-		if (draw_radiobox(x1+274+128-6,y1+164+16+10,refreshrate == 4,"Unlimited","Choose this option with cautious (May cause very high CPU usage).")) {
+		if (draw_radiobox(x1+274+128-6,y1+164+16+10,refreshrate == 4,"Unlimited","Run the program with unlimited FPS.\nMay cause very high CPU usage. Use this option with caution!")) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate=4
 		}
@@ -249,7 +249,7 @@ function draw_window_preferences() {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }
 		draw_areaheader(x1 + 22, y1 + 290 + 62, 456, 65, "Discord")
-		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16, presence, "Turn Discord Rich Presence on or off", "Displays song info in your discord profile.")) {
+		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.")) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
