@@ -22,11 +22,7 @@ function draw_window_schematic_export() {
 	str[1] = "Blocks"
 	nsel = -1
 	menun = -1
-	if (theme != 3) {
-	if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.") && wmenu = 0) sch_exp_remember=!sch_exp_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.") && wmenu = 0) sch_exp_remember=!sch_exp_remember
-	}
+	if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 	for (a = 0; a < 2; a += 1) {
@@ -95,26 +91,13 @@ function draw_window_schematic_export() {
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
 	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
-	    if (theme != 3) {
-		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.")) sch_exp_compress=!sch_exp_compress
-		} else {
-		if (draw_switch(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_switch(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.")) sch_exp_compress=!sch_exp_compress
-		}
+		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
+	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.", false, true)) sch_exp_compress=!sch_exp_compress
 		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-			if (theme != 3) {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.")) sch_exp_minecart=!sch_exp_minecart
-			} else {
-			if (draw_switch(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.")) sch_exp_minecart=!sch_exp_minecart
-			}
+	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.", false, true)) sch_exp_minecart=!sch_exp_minecart
 	        if (draw_checkbox(x1 + 170 + 16, y1 + 310, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
 			if (sch_exp_layout = 0) {
-				if (theme != 3) {
-	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.")) sch_exp_loop=!sch_exp_loop
-				} else {
-				if (draw_switch(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.")) sch_exp_loop=!sch_exp_loop
-				}
+	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
 			}
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass

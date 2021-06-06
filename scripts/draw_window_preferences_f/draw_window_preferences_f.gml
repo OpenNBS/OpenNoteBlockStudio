@@ -69,11 +69,11 @@ function draw_window_preferences_f() {
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + 22, 218, 65, "Startup")
 		draw_set_font(fnt_wslui)
-	    if (draw_switch(x1 + 40, y1 + 90 + 22, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
+	    //if (draw_switch(x1 + 40, y1 + 90 + 22, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.")) show_welcome=!show_welcome
 	    if (RUN_FROM_IDE != 1) {
-			draw_switch(x1 + 40, y1 + 110 + 22, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", 1)
+		//	draw_switch(x1 + 40, y1 + 110 + 22, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", 1)
 		} else {
-			if (draw_switch(x1 + 40, y1 + 110 + 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
+		//	if (draw_switch(x1 + 40, y1 + 110 + 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.")) check_update=!check_update
 		}
 	
 		// Auto-saving
@@ -81,7 +81,7 @@ function draw_window_preferences_f() {
 		draw_areaheader(x1 + 258, y1 + 74 + 22, 220, 65, "Auto-saving")
 		draw_set_font(fnt_wslui)
 		as = autosavemins
-		if (draw_switch(x1 + 276, y1 + 90 + 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.")) autosave=!autosave
+		//if (draw_switch(x1 + 276, y1 + 90 + 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.")) autosave=!autosave
 		if (as != autosave) {
 		    changed = 1
 		    if (autosave = 0) tonextsave = 0
@@ -107,7 +107,7 @@ function draw_window_preferences_f() {
 		if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 22, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20 + 22, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    if (draw_radiobox(x1 + 40, y1 + 164 + 16 + 20 + 20 + 20 + 22, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
-		if (draw_switch(x1 + 40, y1 + 164 + 16 + 20 + 20 + 20 + 25 + 22, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.")) blackout = !blackout
+		//if (draw_switch(x1 + 40, y1 + 164 + 16 + 20 + 20 + 20 + 25 + 22, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.")) blackout = !blackout
 	    draw_areaheader(x1+258,y1+164 + 22,220,60,"Max frame rate (experimental)")
 		draw_set_font(fnt_wslui)
 	    if (draw_radiobox(x1+274,y1+164+16 + 22,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
@@ -135,7 +135,7 @@ function draw_window_preferences_f() {
 		draw_areaheader(x1 + 258, y1 + 240 + 22, 220, 44, "Window")
 		draw_set_font(fnt_wslui)
 		draw_text(x1 + 276, y1 + 256 + 22, "Scale:             %")
-		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
+		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + 22, window_scale * 100, (1/power(window_scale, 3)) ), 400) / 100
 		if (draw_button2(x1 + 394, y1 + 251 + 22, 72, "Reset", (window_scale == 1))) {
 			window_scale = 1
 		}
@@ -187,7 +187,7 @@ function draw_window_preferences_f() {
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294 + 22, 456, 171, "Piano")
 		draw_set_font(fnt_wslui)
-	    if (draw_switch(x1 + 40, y1 + 310 + 22, show_piano, "Enable piano", "Whether the piano should be visible.")) show_piano = !show_piano
+	    //if (draw_switch(x1 + 40, y1 + 310 + 22, show_piano, "Enable piano", "Whether the piano should be visible.")) show_piano = !show_piano
 		if (draw_checkbox(x1 + 40, y1 + 355 + 22, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
 	    if (draw_checkbox(x1 + 40, y1 + 375 + 22, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
 	    if (draw_checkbox(x1 + 40, y1 + 395 + 22, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
@@ -222,12 +222,11 @@ function draw_window_preferences_f() {
 		draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 22, y1 + 290 + 62 + 22, 456, 65, "Discord")
 		draw_set_font(fnt_wslui)
-		if (draw_switch(x1 + 40, y1 + 290 + 62 + 16 + 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.")) {
+		//if (draw_switch(x1 + 40, y1 + 290 + 62 + 16 + 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.")) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
 			}
-		}
 	} else if (selected_tab = 3) {
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + 22, 456, 125, "Marker")
