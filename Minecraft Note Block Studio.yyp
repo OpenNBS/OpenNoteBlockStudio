@@ -32,6 +32,7 @@
     {"id":{"name":"spr_scrollbar_h_bar_fill","path":"sprites/spr_scrollbar_h_bar_fill/spr_scrollbar_h_bar_fill.yy",},"order":0,},
     {"id":{"name":"spr_scrollbar_h_bar_handle","path":"sprites/spr_scrollbar_h_bar_handle/spr_scrollbar_h_bar_handle.yy",},"order":1,},
     {"id":{"name":"spr_scrollbar_h_bar_left","path":"sprites/spr_scrollbar_h_bar_left/spr_scrollbar_h_bar_left.yy",},"order":2,},
+    {"id":{"name":"string_format_thousands","path":"scripts/string_format_thousands/string_format_thousands.yy",},"order":10,},
     {"id":{"name":"spr_scrollbar_h_bar_right","path":"sprites/spr_scrollbar_h_bar_right/spr_scrollbar_h_bar_right.yy",},"order":3,},
     {"id":{"name":"spr_scrollbar_h_button_left","path":"sprites/spr_scrollbar_h_button_left/spr_scrollbar_h_button_left.yy",},"order":0,},
     {"id":{"name":"spr_scrollbar_h_button_right","path":"sprites/spr_scrollbar_h_button_right/spr_scrollbar_h_button_right.yy",},"order":1,},
