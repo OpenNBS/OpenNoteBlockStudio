@@ -33,8 +33,8 @@ function draw_button2() {
 		} else {
 		draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 12 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
 		}
-	    draw_sprite(spr_button, m * 3 + 12 * theme + 12 * a, xx, yy)
-	    draw_sprite(spr_button, 2 + m * 3 + 12 * theme + 12 * a, xx + w - 3, yy)
+	    draw_sprite(spr_button, m * 3 + 12 * theme + 12 * a * (theme = 3), xx, yy)
+	    draw_sprite(spr_button, 2 + m * 3 + 12 * theme + 12 * a * (theme = 3), xx + w - 3, yy)
 	    draw_theme_color()
 	}
 	draw_set_halign(fa_center)
