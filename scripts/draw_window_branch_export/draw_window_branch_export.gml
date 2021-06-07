@@ -22,11 +22,7 @@ function draw_window_branch_export() {
 	str[1] = "Blocks"
 	nsel = -1
 	menun = -1
-	if (theme != 3) {
-	if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
-	}
+	if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.", false, true) && wmenu = 0) sch_br_remember=!sch_br_remember
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 	for (a = 0; a < 2; a += 1) {
@@ -110,18 +106,10 @@ function draw_window_branch_export() {
 		} else {
 			draw_text(x1 + 260, y1 + 280, "None")
 		}
-		if (theme != 3) {
-	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
-		} else {
-		if (draw_switch(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
-		}
+	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.", false, true)) sch_exp_velocity=!sch_exp_velocity
 		if sch_exp_velocity = 1 var schwidth = 35 else schwidth = 1
 		if sch_exp_polyphony > 1 && sch_exp_velocity = 0 var schwidth = 3
-		if (theme != 3) {
-	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-		} else {
-		if (draw_switch(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-		}
+	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.", true, true)) sch_exp_circuitry=!sch_exp_circuitry
 		draw_text(x1 + 380, y1 + 240 + 16, "Size:")
 	    draw_set_halign(fa_right)
 	    draw_text(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))

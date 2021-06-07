@@ -125,24 +125,18 @@ function draw_window_datapack_export() {
 		if (draw_radiobox(x1 + 264, y1 + 285, dat_source = "voice", "voice", "Controlled by Voice/Speech slider")) dat_source = "voice"
 		if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "weather", "Controlled by Weather slider")) dat_source = "weather"
 
-		if (theme != 3) {
 		//Export as ZIP
-		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
+		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.", false, true)) dat_usezip=!dat_usezip
 
 		//Locked layers
-		if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.")) dat_includelocked=!dat_includelocked
+		if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.", false, true)) dat_includelocked=!dat_includelocked
 
 		//Out-of-range notes
-		if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out-of-range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
+		if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out-of-range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.", false, true)) dat_includeoutofrange = !dat_includeoutofrange
 
 		//Radius
-		if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
-		} else {
-		if (draw_switch(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
-		if (draw_switch(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.")) dat_includelocked=!dat_includelocked
-		if (draw_switch(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out-of-range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
-		if (draw_switch(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
-		}
+		if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.", false, true)) dat_enableradius = !dat_enableradius
+
 		if(dat_enableradius) { 
 			dat_radius = median(16, draw_dragvalue(6, x1 + 490, y1 + 283, dat_radius, 2),100000) 
 			dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
@@ -153,11 +147,7 @@ function draw_window_datapack_export() {
 		draw_theme_color()
 
 		//Looping
-		if (theme != 3) {
-		if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
-		} else {
-		if (draw_switch(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
-		}
+		if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.", false, true)) dat_enablelooping = !dat_enablelooping
 		if(dat_enablelooping) { 
 			loopstart = median(0, draw_dragvalue(7, x1 + 490, y1 + 333, loopstart, 0.5), obj_controller.enda)
 		}
@@ -172,11 +162,7 @@ function draw_window_datapack_export() {
 		}
 	
 	} else {
-		if (theme != 3) {
-		if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
-		} else {
-		if (draw_switch(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
-		}
+		if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!", false, true)) dat_visualizer=!dat_visualizer
 		//Type
 		draw_sprite(spr_datapack_exp, 1, x1 + 125, y1 + 55)
 		draw_text(x1 + 33, y1 + 75, "Visualizer type")
@@ -216,11 +202,7 @@ function draw_window_datapack_export() {
 	}
 
 	//Remember changes
-	if (theme != 3) {
-	if (draw_checkbox(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.") && wmenu = 0) dat_remember = !dat_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.") && wmenu = 0) dat_remember = !dat_remember
-	}
+	if (draw_checkbox(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.", false, true) && wmenu = 0) dat_remember = !dat_remember
 
 	//Use default
 	if (draw_button2(x1 + 310, y1 + 398, 72, "Use default") && wmenu = 0) {

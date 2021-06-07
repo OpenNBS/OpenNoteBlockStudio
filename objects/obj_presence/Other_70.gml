@@ -2,9 +2,8 @@ var o = obj_controller;
 
 var ev_type = async_load[? "event_type"];
 
-if (ev_type == "DiscordReady" || ready = true || o.presence = 1)
+if (ev_type == "DiscordReady" || ready || o.presence)
 {
-	window_set_caption("We're ready!");
 	show_debug_message("date: " + string(date_current_datetime()));
 	np_setpresence_timestamps(date_current_datetime(), 0, false);
 	np_setpresence_more("Minecraft Note Block Studio", "", false);

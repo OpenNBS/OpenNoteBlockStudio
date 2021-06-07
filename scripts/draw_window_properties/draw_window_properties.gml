@@ -56,7 +56,7 @@ function draw_window_properties() {
 	popup_set_window(x1 + 37, y1 + 283, 110, 18, "The time signature of the song.")
 
 	a = loop
-	if (draw_checkbox(x1 + 232, y1 + 285, loop, "Enable looping", "Whether to loop this song back to"+br+"the start at the end of playback.")) loop=!loop
+	if (draw_checkbox(x1 + 232, y1 + 285, loop, "Enable looping", "Whether to loop this song back to"+br+"the start at the end of playback.", false, true)) loop=!loop
 	if (a != loop) changed = 1
 	if (!loop) draw_set_color(c_gray)
 	draw_text(x1 + 232, y1 + 305, "Loop start tick:")

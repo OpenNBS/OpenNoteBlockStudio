@@ -19,11 +19,7 @@ function draw_window_mp3_export() {
 	}
 
 	//Locked layers
-	if (theme != 3) {
-	if (draw_checkbox(x1 + 16, y1 + 190, mp3_includelocked, "Include locked layers", "Whether to export locked layers in the MP3.")) mp3_includelocked= !mp3_includelocked
-	} else {
-	if (draw_switch(x1 + 16, y1 + 190, mp3_includelocked, "Include locked layers", "Whether to export locked layers in the MP3.")) mp3_includelocked= !mp3_includelocked
-	}
+	if (draw_checkbox(x1 + 16, y1 + 190, mp3_includelocked, "Include locked layers", "Whether to export locked layers in the MP3.", false, true)) mp3_includelocked= !mp3_includelocked
  
 	//Submit button
 	if (draw_button2(x1 + 165, y1 + 238, 72, "Export", false)) mp3_export()

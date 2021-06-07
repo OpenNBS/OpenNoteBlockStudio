@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Interface",
-    "path": "folders/Scripts/Interface.yy",
+    "name": "Strings",
+    "path": "folders/Scripts/Functions/Strings.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_checkbox",
+  "name": "string_format_thousands",
   "tags": [],
   "resourceType": "GMScript",
 }

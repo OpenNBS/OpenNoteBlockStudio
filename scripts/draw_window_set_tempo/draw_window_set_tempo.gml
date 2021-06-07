@@ -32,7 +32,7 @@ function draw_window_set_tempo() {
 			windowclose = 1
 		}
 		catch(e) {
-			message("Please enter a number!\n\n" + string(e), "Set tempo")
+			message("Please enter a number!", "Set tempo")
 		}
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel")) {windowclose = 1}
