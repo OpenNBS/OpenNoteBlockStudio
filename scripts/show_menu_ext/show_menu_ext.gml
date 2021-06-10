@@ -32,6 +32,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	submenu = 0
 	n = 0
 	wmenu = 2
+	if (windowsound && theme = 3) play_sound(soundshow, 45, 100, 100, 0)
 
 	str = string_replace_all(argument3 + "|", "||", "|")
 	while (str != "") {

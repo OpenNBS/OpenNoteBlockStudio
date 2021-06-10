@@ -14,6 +14,7 @@ function draw_text_url(argument0, argument1, argument2, argument3) {
 	    curs = cr_handpoint
 	    if (mouse_check_button_pressed(mb_left)) {
 			if (theme = 3) draw_set_color(make_color_rgb(181, 181, 181))
+			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 	        open_url(url)
 		} else {
 			if (theme = 3) draw_set_color(make_color_rgb(137, 137, 137))

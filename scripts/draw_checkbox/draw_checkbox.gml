@@ -35,6 +35,7 @@ function draw_checkbox() {
 		draw_text(xx + x_offset, yy - 1, str)
 		draw_theme_color()
 	} else {
+		
 		m = mouse_rectangle(xx, yy, 26 + string_width(str) + 8, 13)
 		if (w_isdragging > 0) m = 0
 		if (m) m += mouse_check_button(mb_left)
@@ -46,6 +47,7 @@ function draw_checkbox() {
 			if (expression) draw_sprite(spr_checkbox, 3 + 6 * theme, xx, yy)
 		}
 		draw_text(xx + x_offset, yy - 1, str)
+		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		return (m && mouse_check_button_released(mb_left))
 	}
 }

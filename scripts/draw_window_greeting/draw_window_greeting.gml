@@ -74,7 +74,10 @@ function draw_window_greeting() {
 	draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
-	if (a = 2 && mouse_check_button_released(mb_left) && windowopen = 1) windowclose = 1
+	if (a = 2 && mouse_check_button_released(mb_left) && windowopen = 1) {
+		if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
+		windowclose = 1
+	}
 
 	c += 44
 	b = x1 + 300
@@ -88,6 +91,7 @@ function draw_window_greeting() {
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
+		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
@@ -107,6 +111,7 @@ function draw_window_greeting() {
 	    m = mouse_rectangle(b, c, 320, 16)
 	    m += m && mouse_check_button(mb_left)
 	    if (m > 0 && mouse_check_button_released(mb_left)) {
+			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 	        if (!file_exists_lib(recent_song[a])) {
 	            message("Could not find file:\n" + recent_song[a], "Error")
 	            for (d = 0; d < 10; d += 1) {
@@ -147,6 +152,7 @@ function draw_window_greeting() {
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
+		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
@@ -164,7 +170,10 @@ function draw_window_greeting() {
 	draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Watch tutorial videos")
-	if (a = 2 && mouse_check_button_released(mb_left)) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+	if (a = 2 && mouse_check_button_released(mb_left)) {
+		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
+		open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+	}
 
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)

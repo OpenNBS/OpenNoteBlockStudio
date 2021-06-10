@@ -27,7 +27,8 @@ function draw_window_preferences() {
 			draw_set_color(13487565)
 			if (mouse_check_button(mb_left)) draw_set_color(12105912)
 			draw_rectangle(x1 + 1, y1 + 30, x1 + 39, y1 + 69, 0)
-			if (mouse_check_button_released(mb_left && windowopen = 1)) {
+			if (mouse_check_button_released(mb_left) && windowopen = 1) {
+				if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
 				windowclose = 1
 			}
 		}
@@ -152,6 +153,7 @@ function draw_window_preferences() {
 	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
+		if (theme = 3) if (draw_checkbox(x1 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, windowsound, "Navigation sound", "Activate sound when navigating.")) windowsound = !windowsound
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1+258,y1+164 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
 		if (theme = 3) draw_set_font(fnt_wslui)
@@ -306,7 +308,6 @@ function draw_window_preferences() {
 			if (windowopen = 1) windowclose = 1
 		}
 	}
-	show_debug_message(windowalpha)
 	//opening and closing animation
 	if (windowopen = 0 && theme = 3) {
 		if (windowalpha < 1) {

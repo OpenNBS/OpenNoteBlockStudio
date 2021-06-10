@@ -28,6 +28,7 @@ function control_create() {
 	windowalpha = 0
 	windowopen = 0
 	windowclose = 0
+	windowsound = 0
 
 	// Audio
 	channels = 256
@@ -316,6 +317,23 @@ function control_create() {
 	ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
+	
+	soundinvoke = create(obj_instrument)
+	soundinvoke.key = 45
+	soundinvoke.filename = "invoke.ogg"
+	soundinvoke.user = 0
+	soundshow =   create(obj_instrument)
+	soundshow.key =   45
+	soundshow.filename =     "show.ogg"
+	soundshow.user =   0
+	soundhide =   create(obj_instrument)
+	soundhide.key =   45
+	soundhide.filename =     "hide.ogg"
+	soundhide.user =   0
+	soundgoback = create(obj_instrument)
+	soundgoback.key = 45
+	soundgoback.filename = "goback.ogg"
+	soundgoback.user = 0
 
 	instrument = instrument_list[| 0]
 	insbox_start = 0

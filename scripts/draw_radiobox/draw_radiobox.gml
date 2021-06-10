@@ -27,6 +27,7 @@ function draw_radiobox() {
 	    draw_sprite(spr_radiobox, m + 6 * theme, xx, yy)
 	    if (expression) draw_sprite(spr_radiobox, 3 + 6 * theme, xx, yy)
 	    draw_text(xx + 18, yy - 1, str)
+		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 	    return (m && mouse_check_button_released(mb_left))
 	}
 
