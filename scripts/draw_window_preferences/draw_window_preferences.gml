@@ -265,7 +265,9 @@ function draw_window_preferences() {
 	    if (draw_button2(x1 + 40, y1 + 290 + (theme = 3) * 22, 160, "Reset key shortcuts")) {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 22, y1 + 290 + 62 + (theme = 3) * 22, 456, 65, "Discord")
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16 + (theme = 3) * 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
