@@ -9,8 +9,10 @@ function draw_window_preferences() {
 	draw_window(x1, y1, x1 + 500, y1 + 510)
 	if (theme = 3){
 	draw_set_color(15132390)
+	if (fdark) draw_set_color(1513239)
 	draw_rectangle(x1+1,y1+30,x1+498,y1+69,0) //48
 	draw_set_color(c_black)
+	if (fdark) draw_set_color(c_white)
 	}
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui)
@@ -25,14 +27,18 @@ function draw_window_preferences() {
 	if (theme = 3) {
 		if (mouse_rectangle(x1, y1 + 30, 40, 40)) {
 			draw_set_color(13487565)
-			if (mouse_check_button(mb_left)) draw_set_color(12105912)
+			if (fdark) draw_set_color(4539717)
+			if (mouse_check_button(mb_left)) {
+				draw_set_color(12105912)
+				if (fdark) draw_set_color(5789784)
+			}
 			draw_rectangle(x1 + 1, y1 + 30, x1 + 39, y1 + 69, 0)
 			if (mouse_check_button_released(mb_left) && windowopen = 1) {
 				if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
 				windowclose = 1
 			}
 		}
-		draw_sprite(spr_back, 0, x1 + 12, y1 + 30 + 12)
+		draw_sprite(spr_back, fdark, x1 + 12, y1 + 30 + 12)
 	}
 	if (theme = 1) {
 	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474)
@@ -59,7 +65,7 @@ function draw_window_preferences() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 472, 1)
 	    draw_set_color(c_white)
-		if(theme = 2) draw_set_color(c_dark)
+		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    if (theme = 3) {
 			draw_roundrect(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 25, 0)
 		} else {
@@ -68,7 +74,7 @@ function draw_window_preferences() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
-		if(theme = 2) draw_set_color(c_dark)
+		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
@@ -84,22 +90,24 @@ function draw_window_preferences() {
 	draw_set_font(fnt_wslui_med)
 	for (a = 0; a < 4; a += 1) {
 		draw_set_color(c_black)
+		if (fdark) draw_set_color(c_white)
 	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
 		
 		if (mouse_check_button(mb_left) && c) {
-			draw_sprite(spr_tabbuttons_f, 6, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 7, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 8, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+			draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+			draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
 		} else {
-			draw_sprite(spr_tabbuttons_f, 0 + 3 * c, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 2 + 3 * c, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+			draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+			draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
 		}
 	    if (selected_tab = a) {
 			draw_set_color(14120960)
 	        draw_line(x1 + b + 5, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 19 - 6)
 			draw_set_color(c_black)
+			if (fdark) draw_set_color(c_white)
 	    }
 	    draw_text(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a
@@ -154,6 +162,11 @@ function draw_window_preferences() {
 	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
 		if (theme = 3) if (draw_checkbox(x1 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, windowsound, "Navigation sound", "Activate sound when navigating.")) windowsound = !windowsound
+		if (theme = 3) draw_text(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
+		if (theme = 3) {
+			if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20, !fdark, "Light", "Use the light mode.")) fdark = 0
+			if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
+		}
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1+258,y1+164 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
 		if (theme = 3) draw_set_font(fnt_wslui)
@@ -186,7 +199,7 @@ function draw_window_preferences() {
 		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == 1))) {
 			window_scale = 1
 		}
-		if (theme != 2) draw_set_color(c_black)
+		if (theme != 2 && !fdark) draw_set_color(c_black)
 		else draw_set_color(c_white)
 		
 		draw_text(x1 + 22, y1 + 290 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 360))

@@ -99,10 +99,11 @@ function control_draw() {
 	if (theme = 1) window_background = 13160660
 	if (theme = 2) window_background = c_dark
 	if (theme = 3) window_background = c_white
+	if (theme = 3 && fdark) window_background = 0
 	draw_clear(window_background)
 
 	iconcolor = c_black
-	if (theme = 2) iconcolor = c_white
+	if (theme = 2 || (fdark && theme = 3)) iconcolor = c_white
 
 	// Calculate area
 	if (!fullscreen && show_layers) {
@@ -679,7 +680,7 @@ function control_draw() {
 	}
 
 	// Timeline and markers
-	draw_sprite_ext(spr_timeline, (0 + theme = 2) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
+	draw_sprite_ext(spr_timeline, (0 + theme = 2 + (fdark && theme = 3)) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
 	draw_set_font(fnt_small)
 		if (theme = 3) draw_set_font(fnt_wslui_small)
 	draw_set_halign(fa_left)
@@ -866,8 +867,8 @@ function control_draw() {
 
 	marker_pos = median(0, marker_pos, enda + totalcols)
 	a = floor(marker_pos * 32 - starta * 32)
-	draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2)
-	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2)
+	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
 
 
 	draw_set_font(fnt_main)
@@ -877,6 +878,7 @@ function control_draw() {
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
 		if (theme = 3) draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 		draw_rectangle(0, 0, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
 		draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
@@ -920,6 +922,7 @@ function control_draw() {
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
 	if (theme = 3) draw_set_color(c_white)
+	if (theme = 3 && fdark) draw_set_color(0)
 	draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
 		fullscreen = !fullscreen
@@ -942,7 +945,7 @@ function control_draw() {
 		if (!fullscreen && show_layers) {
 			// Name
 			m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
-		    draw_sprite(spr_layerbox, 0 + (theme = 2) + 2 * (theme = 3), x1, y1)
+		    draw_sprite(spr_layerbox, 0 + (theme = 2) + (2 + fdark) * (theme = 3), x1, y1)
 		    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 			draw_set_font(fnt_small)
 		if (theme = 3) draw_set_font(fnt_wslui_small)
@@ -954,7 +957,7 @@ function control_draw() {
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
-				if(theme = 2) draw_set_color(make_color_rgb(160, 160, 160))
+				if(theme = 2 || (fdark && theme = 3)) draw_set_color(make_color_rgb(160, 160, 160))
 		        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
 		    }
 			if (prev != layername[startb + b]) changed = 1
@@ -1236,9 +1239,9 @@ function control_draw() {
 	draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
 	draw_sprite(spr_iconbar, 2, rw - 2, 20)
 	} else {
-	draw_sprite(spr_iconbar, 3, 0, 20)
-	draw_sprite_ext(spr_iconbar, 4, 2, 20, (rw - 4), 1, 0, -1, 1)
-	draw_sprite(spr_iconbar, 5, rw - 2, 20)
+	draw_sprite(spr_iconbar, 3 + fdark * 3, 0, 20)
+	draw_sprite_ext(spr_iconbar, 4 + fdark * 3, 2, 20, (rw - 4), 1, 0, -1, 1)
+	draw_sprite(spr_iconbar, 5 + fdark * 3, rw - 2, 20)
 	}
 	xx = 6
 	yy = 23
@@ -1356,8 +1359,8 @@ function control_draw() {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
 		draw_sprite(spr_minecraft, 0, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 0, rw - 59, 25)
+		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
+		draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_green)
 		if (theme == 2) draw_set_color(c_lime)
@@ -1371,8 +1374,8 @@ function control_draw() {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
 		draw_sprite(spr_minecraft, 1, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1, rw - 59, 25)
+		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
+		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_orange)
 		draw_text(rw - 154, 28, "Data pack only")
@@ -1385,8 +1388,8 @@ function control_draw() {
 		draw_sprite(spr_minecraft, 2, rw - 30, 25)
 		draw_sprite(spr_minecraft, 1, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, 2, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1, rw - 59, 25)
+		draw_sprite(spr_minecraft_f, 2 + fdark * 3, rw - 30, 25)
+		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_red)
 		draw_text(rw - 180, 28, "Resource pack only")

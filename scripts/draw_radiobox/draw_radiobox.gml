@@ -11,7 +11,7 @@ function draw_radiobox() {
 	    lock = argument[5]
 	if (tip != "") popup_set_window(xx, yy, 12 + string_width(str) + 8, 12, tip)
 	if (lock = 1) {
-	    draw_sprite(spr_radiobox, 4 + expression + 6 * theme, xx, yy)
+	    draw_sprite(spr_radiobox, 4 + expression + 6 * theme + 6 * (theme = 3) * fdark, xx, yy)
 	    draw_set_color(make_color_rgb(204, 204, 204))
 	    if (theme) {
 	        draw_set_color(c_white)
@@ -24,7 +24,7 @@ function draw_radiobox() {
 	    m = mouse_rectangle(xx, yy, 12 + string_width(str) + 8, 12)
 	    if (w_isdragging > 0) m = 0
 	    if (m) m += mouse_check_button(mb_left)
-	    draw_sprite(spr_radiobox, m + 6 * theme, xx, yy)
+	    draw_sprite(spr_radiobox, m + 6 * theme + 6 * (theme = 3) * fdark, xx, yy)
 	    if (expression) draw_sprite(spr_radiobox, 3 + 6 * theme, xx, yy)
 	    draw_text(xx + 18, yy - 1, str)
 		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)

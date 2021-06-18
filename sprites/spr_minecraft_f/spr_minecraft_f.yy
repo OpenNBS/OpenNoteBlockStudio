@@ -9,8 +9,8 @@
   "swfPrecision": 2.525,
   "bbox_left": 1,
   "bbox_right": 18,
-  "bbox_top": 0,
-  "bbox_bottom": 19,
+  "bbox_top": 1,
+  "bbox_bottom": 18,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -33,6 +33,15 @@
     {"compositeImage":{"FrameId":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":null,"resourceVersion":"1.0","name":"composite","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"d93f5da1-5486-4262-91d0-07513e6a9408","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"5a3fb3d7-e47b-424f-b99d-6f13b3a83c95","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"5a3fb3d7-e47b-424f-b99d-6f13b3a83c95","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"5a3fb3d7-e47b-424f-b99d-6f13b3a83c95","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"953752ed-186e-41b9-8a90-e017ee14fefd","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"953752ed-186e-41b9-8a90-e017ee14fefd","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"953752ed-186e-41b9-8a90-e017ee14fefd","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"2eb00e81-0c28-4037-98c5-466898cc7822","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"2eb00e81-0c28-4037-98c5-466898cc7822","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"LayerId":{"name":"fb02363e-9d7e-4951-9f98-0eb91274e7c7","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","name":"2eb00e81-0c28-4037-98c5-466898cc7822","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},
@@ -42,7 +51,7 @@
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 3.0,
+    "length": 6.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
@@ -50,6 +59,9 @@
             {"id":"48e1a797-471b-4182-bc5c-a3ebfc80b0e8","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"61867e0e-1cda-4186-b7c2-31e9ac65f8e1","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"952168b0-7346-42ae-b35c-76ca792a158e","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b75fa22e-07bf-4f57-ac9a-7fc38ba57651","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"4cd89d2f-3c9d-4af9-9af0-7bd231c65051","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d93f5da1-5486-4262-91d0-07513e6a9408","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d481baee-3653-42dd-b406-c79370156f0e","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5a3fb3d7-e47b-424f-b99d-6f13b3a83c95","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"b3a751a7-bf50-4e82-b8da-42dea10dc2e2","Key":4.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"953752ed-186e-41b9-8a90-e017ee14fefd","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"1d0c1910-f378-46c0-9b09-78f7c1c6b680","Key":5.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2eb00e81-0c28-4037-98c5-466898cc7822","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
