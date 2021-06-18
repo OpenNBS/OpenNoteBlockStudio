@@ -42,6 +42,7 @@ function control_create() {
 	show_welcome = 1
 	scroll_wheel = 0
 	theme = 0
+	fdark = 0
 	blackout = 0
 	editmode = 0
 	clickinarea = 0
