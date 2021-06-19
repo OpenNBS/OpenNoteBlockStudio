@@ -8,8 +8,10 @@ function draw_window_minecraft() {
 	draw_window(x1, y1, x1 + 490, y1 + 450)
 	if (theme = 3){
 	draw_set_color(13421772)
+	if (fdark) draw_set_color(3355443)
 	draw_rectangle(x1+1,y1+1,x1+488,y1+98,0)
 	draw_set_color(c_black)
+	draw_theme_color()
 	}
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
@@ -32,9 +34,9 @@ function draw_window_minecraft() {
 	        stabx = b - 2
 	        stabw = string_width(str[a]) + 15
 	    } else {
-	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, yy + 28)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, yy + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, yy + 28)
+	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, yy + 28)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, yy + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, yy + 28)
 	        draw_text(x1 + b + 6, yy + 30, str[a])
 	    }
 	    if (mouse_check_button_pressed(mb_left) && c) nsel = a
@@ -46,6 +48,7 @@ function draw_window_minecraft() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, yy + 46, x1 + 484, yy + 350, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 		if (theme != 3) {
 		draw_rectangle(x1 + stabx, yy + 26, x1 + stabx + stabw, yy + 26 + 20, 0)
 		} else {
@@ -54,6 +57,7 @@ function draw_window_minecraft() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + stabx, yy + 26, x1 + stabx + stabw, yy + 26 + 20, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 	    draw_rectangle(x1 + stabx + 1, yy + 46, x1 + stabx + stabw - 1, yy + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, yy + 28, str[selected_tab_mc])
@@ -91,14 +95,14 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
-			draw_sprite(spr_yesno_f, 1, x1 + 25, yy + 8)
+			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		} else {
 			// not compatible
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 0, x1 + 25, yy + 8)
 			} else {
-			draw_sprite(spr_yesno_f, 0, x1 + 25, yy + 8)
+			draw_sprite(spr_yesno_f, 0 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		}
 
@@ -129,7 +133,7 @@ function draw_window_minecraft() {
 		if (theme != 3) {
 		draw_sprite(spr_yesno, block_outside = 0, x1 + 25, yy + 8)
 		} else {
-		draw_sprite(spr_yesno_f, block_outside = 0, x1 + 25, yy + 8)
+		draw_sprite(spr_yesno_f, (block_outside = 0) + 3 * fdark, x1 + 25, yy + 8)
 		}
 		draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
@@ -169,7 +173,7 @@ function draw_window_minecraft() {
 		if (theme != 3) {
 		draw_sprite(spr_yesno, block_custom = 0, x1 + 25, yy + 8)
 		} else {
-		draw_sprite(spr_yesno_f, block_custom = 0, x1 + 25, yy + 8)
+		draw_sprite(spr_yesno_f, (block_custom = 0) + 3 * fdark, x1 + 25, yy + 8)
 		}
 		draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
@@ -203,7 +207,7 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)	
 			} else {
-			draw_sprite(spr_yesno_f, 1, x1 + 25, yy + 8)	
+			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)	
 			}
 			draw_set_color(c_green)
 			if (theme == 2) draw_set_color(c_lime)
@@ -212,7 +216,7 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)	
 			} else {
-			draw_sprite(spr_yesno_f, 2, x1 + 25, yy + 8)	
+			draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)	
 			}
 		    draw_set_color(c_orange)
 		    draw_text(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
@@ -244,7 +248,7 @@ function draw_window_minecraft() {
 		if (theme != 3) {
 		draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 		} else {
-		draw_sprite(spr_yesno_f, 2, x1 + 25, yy + 8)
+		draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)
 		}
 		    draw_set_color(c_orange)
 		    if (block_outside = 1) {
@@ -271,7 +275,7 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
-			draw_sprite(spr_yesno_f, 1, x1 + 25, yy + 8)
+			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		    draw_set_color(c_green)
 			if (theme == 2) draw_set_color(c_lime)
@@ -290,7 +294,7 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 			} else {
-			draw_sprite(spr_yesno_f, 2, x1 + 25, yy + 8)
+			draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		    draw_set_color(c_orange)
 		    if (block_custom = 1) draw_text(x1 + 45, yy + 32, "There is 1 block with custom instruments.")
@@ -303,7 +307,7 @@ function draw_window_minecraft() {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
-			draw_sprite(spr_yesno_f, 1, x1 + 25, yy + 8)
+			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		    draw_set_color(c_green)
 			if (theme == 2) draw_set_color(c_lime)

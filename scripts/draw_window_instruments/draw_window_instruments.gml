@@ -15,6 +15,7 @@ function draw_window_instruments() {
 	draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
 	draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
+	if (fdark && theme = 3) draw_set_color(2829099)
 	draw_rectangle(x1 + 12, y1 + 66, x1 + 535, y1 + 310, 0)
 	if (!theme) {
 	    draw_set_color(make_color_rgb(137, 140, 149))

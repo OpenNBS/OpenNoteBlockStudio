@@ -10,8 +10,9 @@ function draw_window_midi_import() {
 	draw_window(x1, y1, x1 + 600, y1 + 400)
 	if (theme = 3){
 	draw_set_color(13421772)
+	if (fdark) draw_set_color(3355443)
 	draw_rectangle(x1+1,y1+1,x1+598,y1+148,0)
-	draw_set_color(c_black)
+	draw_theme_color()
 	}
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
@@ -66,9 +67,9 @@ function draw_window_midi_import() {
 	        stabx = b - 2
 	        stabw = string_width(str[a]) + 15
 	    } else {
-	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 128)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 128, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 128)
+	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 128)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 128, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 128)
 	        draw_text(x1 + b + 6, y1 + 130, str[a])
 	    }
 	    if (mouse_check_button_pressed(mb_left) && c) nsel = a
@@ -80,6 +81,7 @@ function draw_window_midi_import() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 		if (theme != 3) {
 	    draw_rectangle(x1 + stabx + 1, y1 + 127, x1 + stabx + stabw, y1 + 126 + 20, 0)
 		} else {
@@ -88,6 +90,7 @@ function draw_window_midi_import() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 	    draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])

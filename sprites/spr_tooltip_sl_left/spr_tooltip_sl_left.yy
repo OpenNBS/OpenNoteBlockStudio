@@ -36,6 +36,9 @@
     {"compositeImage":{"FrameId":{"name":"c01e0ddd-56dd-4dfb-b66a-d96e790011a5","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"c01e0ddd-56dd-4dfb-b66a-d96e790011a5","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"LayerId":{"name":"6f04142d-e857-4fc8-a788-0bc2c7b523a8","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_tooltip_sl_left","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","name":"c01e0ddd-56dd-4dfb-b66a-d96e790011a5","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"1190e544-78be-4de9-a572-67dd51d31413","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"1190e544-78be-4de9-a572-67dd51d31413","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"LayerId":{"name":"6f04142d-e857-4fc8-a788-0bc2c7b523a8","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_tooltip_sl_left","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","name":"1190e544-78be-4de9-a572-67dd51d31413","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_tooltip_sl_left","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},
@@ -45,7 +48,7 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 4.0,
+    "length": 5.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
@@ -54,6 +57,7 @@
             {"id":"c0ccde90-6ec9-47e3-9270-331ad86740f2","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c4e57ce3-6c52-4079-bdcc-f97b722ad992","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"686fcbc1-5181-428c-a26c-e90680ca4628","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"6d2397b0-34b1-40ac-ba22-5edd385bc1ae","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"900612d9-5de6-412c-9373-dde65c11bf1d","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c01e0ddd-56dd-4dfb-b66a-d96e790011a5","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"0890a84b-4090-42ee-91bc-39b24ba8426b","Key":4.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1190e544-78be-4de9-a572-67dd51d31413","path":"sprites/spr_tooltip_sl_left/spr_tooltip_sl_left.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,

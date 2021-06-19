@@ -68,7 +68,7 @@ function draw_window_greeting() {
 	c = y1 + 48
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	if (theme != 3) {
 	draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
 	} else {
@@ -82,7 +82,7 @@ function draw_window_greeting() {
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	if (theme != 3) {
 	draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
 	} else {
@@ -129,7 +129,7 @@ function draw_window_greeting() {
 	            load_song(recent_song[a])
 	        }
 	    }
-	    draw_sprite(spr_frame5, theme * 3 + m, b, c)
+	    draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
 	    draw_text(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220))
 	    draw_set_halign(fa_right)
 	    draw_text(b + 316 + (m = 2), c + 1 + (m = 2), seconds_to_str(floor(date_second_span(recent_song_time[a], date_current_datetime()))))
@@ -142,7 +142,7 @@ function draw_window_greeting() {
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	if (theme != 3) {
 	draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
 	} else {
@@ -161,7 +161,7 @@ function draw_window_greeting() {
 	c += 44
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme, b, c)
+	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	if (theme != 3) {
 	draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
 	} else {

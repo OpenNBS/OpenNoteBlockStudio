@@ -15,17 +15,18 @@ if (singleline) {
 }
 } else {
 if (singleline) {
-    draw_sprite_ext(spr_tooltip_sl_left, theme, x, y, 1, 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_sl_middle, theme, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_sl_right, theme, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_sl_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_sl_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_sl_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
 } else {
-    draw_sprite_ext(spr_tooltip_ml_left, theme, x, y, 1, 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_ml_middle, theme, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_ml_right, theme, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_ml_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_ml_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_ml_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
 }
 }
 draw_set_alpha(alpha)
-draw_set_color(make_color_rgb(75, 75, 75)*!obj_controller.theme)
+if (obj_controller.fdark && theme = 3) draw_set_color(c_white)
+else draw_set_color(make_color_rgb(75, 75, 75)*!obj_controller.theme)
 if(theme != 3) {
 draw_text(x + 7 - 2 * theme, y + 3, str)
 } else {

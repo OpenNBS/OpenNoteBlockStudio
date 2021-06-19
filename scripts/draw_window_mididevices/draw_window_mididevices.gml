@@ -15,6 +15,7 @@ function draw_window_mididevices() {
 	draw_text(x1 + 12, y1 + 32, "Here you can see the MIDI devices connected via USB.\nMore than one device can be connected at the same time.")
 	draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
+	if (fdark && theme = 3) draw_set_color(2829099)
 	draw_rectangle(x1 + 12, y1 + 66, x1 + 488, y1 + 310, 0)
 	if (theme = 0) {
 	    draw_set_color(make_color_rgb(137, 140, 149))
