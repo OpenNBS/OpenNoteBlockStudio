@@ -15,7 +15,7 @@ function draw_window_mp3_export() {
 	if (theme != 3){
 	draw_sprite(spr_mp3_exp, sch_exp_layout, x1 + 20, y1)
 	} else {
-	draw_sprite(spr_mp3_exp_f, sch_exp_layout, x1 + 20, y1)
+	draw_sprite(spr_mp3_exp_f, fdark, x1 + 20, y1)
 	}
 
 	//Locked layers

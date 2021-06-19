@@ -8,8 +8,9 @@ function draw_window_datapack_export() {
 	draw_window(x1, y1, x1 + 550, y1 + 430)
 	if (theme = 3){
 	draw_set_color(13421772)
+	if (fdark) draw_set_color(3355443)
 	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
-	draw_set_color(c_black)
+	draw_theme_color()
 	}
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
@@ -28,9 +29,9 @@ function draw_window_datapack_export() {
 	        stabx = b - 2
 	        stabw = string_width(str[a]) + 15
 	    } else {
-	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 28)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 28)
+	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 28)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 28)
 	        draw_text(x1 + b + 6, y1 + 30, str[a])
 	    }
 	    if (mouse_check_button_pressed(mb_left) && c && wmenu = 0) nsel = a
@@ -43,6 +44,7 @@ function draw_window_datapack_export() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 		if (theme != 3) {
 	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
 		} else {
@@ -51,6 +53,7 @@ function draw_window_datapack_export() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(0)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])

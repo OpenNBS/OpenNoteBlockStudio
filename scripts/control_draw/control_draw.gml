@@ -274,6 +274,10 @@ function control_draw() {
 		draw_set_color(c_black)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
+	if (fdark && theme = 3 && !blackout) {
+		draw_set_color(2829099)
+		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+	}
 	for (a = 0; a < totalcols; a += 1) {
 		if (!blackout) {
 			if ((starta + a) mod (timesignature * 4) == 0) {

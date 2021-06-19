@@ -21,12 +21,13 @@ function menu_draw() {
 	    iy = 8
 	    if (o.theme != 3) draw_set_color(window_background)
 	    else draw_set_color(15921906)
+		if (obj_controller.fdark && theme = 3) draw_set_color(2829099)
 		if (o.theme = 3) {
-			draw_sprite(spr_shadowext, 0, dx + 4, dy + hei + 2)
-			draw_sprite_ext(spr_shadowext, 1, dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
-			draw_sprite(spr_shadowext, 2, dx + menu_wid[m] + 1, dy + hei + 1)
-			draw_sprite_ext(spr_shadowext, 3, dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
-			draw_sprite(spr_shadowext, 4, dx + menu_wid[m] + 2, dy + 4)
+			draw_sprite(spr_shadowext, 0 + 5 * (obj_controller.fdark && theme = 3), dx + 4, dy + hei + 2)
+			draw_sprite_ext(spr_shadowext, 1 + 5 * (obj_controller.fdark && theme = 3), dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
+			draw_sprite(spr_shadowext, 2 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + hei + 1)
+			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
+			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 4)
 		}
 	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
@@ -81,10 +82,11 @@ function menu_draw() {
 	                draw_set_color(c_white)
 					} else {
 					draw_set_color(16238993)
+					if (obj_controller.fdark) draw_set_color(4276545)
 	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
-	                draw_set_color(c_black)
+	                draw_theme_color()
 					}
-	            } else if (inaissel) {
+	            } else if (inaissel && !obj_controller.fdark) {
 					if (o.theme = 3) {
 	                draw_set_color(15132390)
 	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
@@ -101,7 +103,11 @@ function menu_draw() {
 				if (theme != 3) {
 	            if (item_image[m, i] > -1) draw_sprite(spr_icons, item_image[m, i], dx + 2, dy + iy - 6)
 				} else {
-				if (item_image[m, i] > -1) draw_sprite(spr_icons_f, item_image[m, i], dx + 2, dy + iy - 6)
+					if (obj_controller.fdark && theme = 3) {
+						if (item_image[m, i] > -1) draw_sprite(spr_icons_d, item_image[m, i], dx + 2, dy + iy - 6)
+					} else {
+						if (item_image[m, i] > -1) draw_sprite(spr_icons_f, item_image[m, i], dx + 2, dy + iy - 6)
+					}
 				}
 				var color;
 				if(obj_controller.theme = 2) {
@@ -114,7 +120,11 @@ function menu_draw() {
 				if (theme != 3) {
 	            if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
 				} else {
-				if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_f, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
+					if (obj_controller.fdark && theme = 3) {
+						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_d, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
+					} else {
+						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_f, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
+					}
 				}
 	            draw_set_alpha(1)
 	            iy += 22
