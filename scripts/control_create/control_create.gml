@@ -272,6 +272,11 @@ function control_create() {
 	loopstart = 0
 	looptobarend = 1
 	timestoloop = loopmax
+	taptempo = 0
+	tapping = 0
+	ltime = 0
+	taps = 0
+	tapdouble = 0
 
 	// Midi export / import
 	w_midi_remember = 1

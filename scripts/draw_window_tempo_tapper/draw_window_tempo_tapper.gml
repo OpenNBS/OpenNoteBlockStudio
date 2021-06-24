@@ -1,16 +1,17 @@
-function draw_window_set_tempo() {
-	// draw_window_set_tempo()
+function draw_window_tempo_tapper() {
+	// draw_window_tempo_tapper()
 	if (theme = 3) draw_set_alpha(windowalpha)
-	var x1, y1, tempoo, e
+	var x1, y1, e, ltempo, ctempo, ins
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 80)
 	y1 = floor(rh / 2 - 80)
 	draw_window(x1, y1, x1 + 140, y1 + 130)
+	ltempo = taptempo
+	ins = instrument_list[| 4]
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
-	draw_text(x1 + 8, y1 + 8, "Set tempo")
-	tempoo = tempo * 15
+	draw_text(x1 + 8, y1 + 8, "Tempo tapper")
 	draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_wslui)
 	if (theme = 0) {
@@ -19,23 +20,47 @@ function draw_window_set_tempo() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
-	if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM")
-	else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS")
+	if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
+	else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (T to tap)")
 
-	tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
+	//tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
+	if (keyboard_check_pressed(ord("T"))) {
+		if (tapping) taptempo = ((60 / ((current_time - ltime) / 1000)) + ltempo * taps) / ((taps + 1) * (ltempo != 0) + (!ltempo))
+		if (floor(60 / ((current_time - ltime) / 1000) + 0.5) <= ltempo / 2 && ltempo != 0) {
+			taptempo = 0
+			taps = 0
+		}
+		tapping = 1
+		ltime = current_time
+		taps += 1
+		if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
+	}
+	ctempo = floor(taptempo + 0.5)
+	if (tapping && taptempo != 0) {
+		if (use_bpm) draw_text(x1 + 60, y1 + 55, ctempo)
+		else draw_text(x1 + 60, y1 + 55, ctempo / 15)
+	}
+	if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "Double tempo", "Double the tempo to apply.", 0, 1)) tapdouble = !tapdouble
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK") && windowopen = 1) {
 		try {
-			if (use_bpm) tempo = floor(tempoo) / 15
-			else tempo = floor(real(tempoo) * 100) / 100
+			tempo = (ctempo * (1 + tapdouble)) / 15
+			taptempo = 0
+			tapping = 0
+			ltime = 0
 			windowclose = 1
 		}
 		catch(e) {
-			message("Please enter a number!", "Set tempo")
+			message("An error occurred.", "Tempo tapper")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel")) {windowclose = 1}
+	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel")) {
+		taptempo = 0
+		tapping = 0
+		ltime = 0
+		windowclose = 1
+	}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {

@@ -54,6 +54,7 @@ function load_settings() {
 	presence =           ini_read_real(  "preferences", "presence",           presence)
 	windowsound =        ini_read_real(  "preferences", "windowsound",        windowsound)
 	fdark =              ini_read_real(  "preferences", "fdark",              fdark)
+	tapdouble =          ini_read_real(  "preferences", "tapdouble",          tapdouble)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)

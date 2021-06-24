@@ -32,6 +32,7 @@ function draw_windows() {
 		case w_setpitch: draw_window_macro_setpitch() break
 	    case w_branch_export: draw_window_branch_export() break
 	    case w_settempo: draw_window_set_tempo() break
+	    case w_tempotapper: draw_window_tempo_tapper() break
 	}
 
 
