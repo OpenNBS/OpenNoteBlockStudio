@@ -52,6 +52,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "channelstoggle",     channelstoggle)
 	ini_write_real_clean("preferences", "presence",           presence)
 	ini_write_real_clean("preferences", "fdark",              fdark)
+	ini_write_real_clean("preferences", "tapdouble",          tapdouble)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

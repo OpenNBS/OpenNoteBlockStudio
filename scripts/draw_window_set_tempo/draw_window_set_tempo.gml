@@ -10,7 +10,7 @@ function draw_window_set_tempo() {
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
 	draw_text(x1 + 8, y1 + 8, "Set tempo")
-	tempoo = ""
+	tempoo = tempo * 15
 	draw_set_font(fnt_main)
 		if (theme = 3) draw_set_font(fnt_wslui)
 	if (theme = 0) {

@@ -275,6 +275,7 @@ function control_create() {
 	tapping = 0
 	ltime = 0
 	taps = 0
+	tapdouble = 0
 
 	// Midi export / import
 	w_midi_remember = 1

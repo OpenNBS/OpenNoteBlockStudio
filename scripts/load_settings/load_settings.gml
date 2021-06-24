@@ -53,6 +53,7 @@ function load_settings() {
 	channelstoggle =     ini_read_real(  "preferences", "channelstoggle",     channelstoggle)
 	presence =           ini_read_real(  "preferences", "presence",           presence)
 	fdark =              ini_read_real(  "preferences", "fdark",              fdark)
+	tapdouble =          ini_read_real(  "preferences", "tapdouble",          tapdouble)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
