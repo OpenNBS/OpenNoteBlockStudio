@@ -1538,19 +1538,19 @@ function control_draw() {
 			draw_sprite(spr_tempobox, 1, 101, 57)
 			bpm = tempo * 15
 			draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick and drag to change. Right click to reset.")
+			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick to change. Right click to reset.")
 		} else {
 			draw_sprite(spr_tempobox, 0, 108, 57)
 			draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick and drag to change. Right click to reset.")
+			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick to change. Right click to reset.")
 		}
 		draw_set_halign(fa_left)
 		a = mouse_rectangle(108, 57, 64, 22)
 		if (a && window = 0) {
-		    curs = cr_size_ns
-		    if (mouse_check_button(mb_left)) {
-		        tempodrag = tempo
-		        window = w_dragtempo
+		    curs = cr_handpoint
+		    if (mouse_check_button_released(mb_left)) {
+		        //tempodrag = tempo
+		        window = w_settempo
 		    }
 		    if (mouse_check_button_pressed(mb_right)) tempo = 10
 		}
