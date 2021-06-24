@@ -500,7 +500,7 @@ function control_draw() {
 											"Ctrl+Shift+U$Reset all properties|"+
 											"/|-|"+
 	                                        inactive(selected = 0) + "Transpose notes outside octave range|-|"+
-											"Ctrl+Shift+I$Set song tempo")
+											"Ctrl+Shift+I$Tempo tapper")
 	            menu.menuc = selbx
 	            menu.pastex = selbx
 	            menu.pastey = selby
@@ -593,7 +593,7 @@ function control_draw() {
 				}
 			if (keyboard_check_pressed(ord("I"))&& keyboard_check(vk_shift)) {
 				playing = 0 
-				window = w_settempo
+				window = w_tempotapper
 				}
 			// Macro Hotkeys
 			if selected != 0 {
@@ -1207,7 +1207,7 @@ function control_draw() {
 	                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
 	                                inactive(selected = 0) + "Transpose notes outside octave range|-|"+
-									"Ctrl+Shift+I$Set song tempo")
+									"Ctrl+Shift+I$Tempo tapper")
 	}
 	if (draw_tab("Settings")) {
 	    str = ""

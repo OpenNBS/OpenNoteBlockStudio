@@ -81,6 +81,7 @@ function macros() {
 #macro w_setpanning 38
 #macro w_setpitch 39
 #macro w_settempo 43
+#macro w_tempotapper 44
 
 #macro br "\r\n"
 

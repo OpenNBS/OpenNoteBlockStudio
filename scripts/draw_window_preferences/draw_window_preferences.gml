@@ -319,7 +319,7 @@ function draw_window_preferences() {
 			if (windowopen = 1) windowclose = 1
 		}
 	}
-	show_debug_message(windowalpha)
+	//show_debug_message(windowalpha)
 	//opening and closing animation
 	if (windowopen = 0 && theme = 3) {
 		if (windowalpha < 1) {
