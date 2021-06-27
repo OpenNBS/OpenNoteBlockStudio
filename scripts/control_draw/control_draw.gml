@@ -532,6 +532,7 @@ function control_draw() {
 	            if (keyboard_check_pressed(ord("F"))) mode_action(4)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T")))) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G")))) mode_action(6)
+	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
 	        }
 	        if (keyboard_check_pressed(vk_delete) && selected > 0) {
 				selection_delete(0)
@@ -659,6 +660,29 @@ function control_draw() {
 					macro_reset()
 					}
 			}
+		}
+	}
+	if (keyboard_check_pressed(vk_f7)) {
+	    if (refreshrate = 0){
+			game_set_speed(60,gamespeed_fps)
+			refreshrate = 1
+			set_msg("FPS => 60")
+		} else if (refreshrate = 1) {
+			game_set_speed(120,gamespeed_fps)
+			refreshrate = 2
+			set_msg("FPS => 120")
+		} else if (refreshrate = 2) {
+			game_set_speed(144,gamespeed_fps)
+			refreshrate = 3
+			set_msg("FPS => 144")
+		} else if (refreshrate = 3) {
+			game_set_speed(114514,gamespeed_fps)
+			refreshrate = 4
+			set_msg("FPS => Unlimited")
+		} else if (refreshrate = 4) {
+			game_set_speed(30,gamespeed_fps)
+			refreshrate = 0
+			set_msg("FPS => 30")
 		}
 	}
 	// Selecting note blocks
@@ -1600,6 +1624,7 @@ function control_draw() {
 	}
 	if (window = w_releasemouse && !mouse_check_button(mb_left)) window = 0
 	draw_windows()
+	if (showmsg) draw_msg()
 
 	// Draw update progress bar
 	if (update == 4) {

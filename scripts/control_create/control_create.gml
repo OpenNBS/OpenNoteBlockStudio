@@ -29,6 +29,10 @@ function control_create() {
 	windowopen = 0
 	windowclose = 0
 	windowsound = 0
+	msgalpha = 1
+	showmsg = 0
+	msgcontent = ""
+	msgstart = 0
 
 	// Audio
 	channels = 256
