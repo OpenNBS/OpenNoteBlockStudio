@@ -10,7 +10,7 @@ function draw_window_preferences() {
 	if (theme = 3){
 	draw_set_color(15132390)
 	if (fdark) draw_set_color(1513239)
-	draw_rectangle(x1+1,y1+30,x1+498,y1+69,0) //48
+	// draw_rectangle(x1+1,y1+30,x1+498,y1+69,0) //48
 	draw_set_color(c_black)
 	if (fdark) draw_set_color(c_white)
 	}
@@ -25,20 +25,21 @@ function draw_window_preferences() {
 	str[2] = "Usability"
 	str[3] = "Playback"
 	if (theme = 3) {
+		c = (mouse_check_button(mb_left))
 		if (mouse_rectangle(x1, y1 + 30, 40, 40)) {
-			draw_set_color(13487565)
+			draw_set_color(15395562)
 			if (fdark) draw_set_color(4539717)
-			if (mouse_check_button(mb_left)) {
-				draw_set_color(12105912)
+			if (c) {
+				draw_set_color(15658734)
 				if (fdark) draw_set_color(5789784)
 			}
-			draw_rectangle(x1 + 1, y1 + 30, x1 + 39, y1 + 69, 0)
+			draw_roundrect(x1 + 1, y1 + 31, x1 + 41, y1 + 67, 0)
 			if (mouse_check_button_released(mb_left) && windowopen = 1) {
 				if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
 				windowclose = 1
 			}
 		}
-		draw_sprite(spr_back, fdark, x1 + 12, y1 + 30 + 12)
+		draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 13, y1 + 30 + 12)
 	}
 	if (theme = 1) {
 	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474)
@@ -92,23 +93,33 @@ function draw_window_preferences() {
 		draw_set_color(c_black)
 		if (fdark) draw_set_color(c_white)
 	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
-		
-		if (mouse_check_button(mb_left) && c) {
-			draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
-		} else {
-			draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
-		}
 	    if (selected_tab = a) {
+			draw_set_color(15581318)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 20 - 6)
+			draw_set_color(15049472)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(14120960)
-	        draw_line(x1 + b + 5, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 18 - 6)
-	        draw_line(x1 + b + 5, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(c_black)
 			if (fdark) draw_set_color(c_white)
 	    }
+		if (mouse_check_button(mb_left) && c) {
+			// draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+			// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+			// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			draw_set_color(7631988)
+			if (selected_tab = a) draw_set_color(10000536)
+		} else if (c) {
+			// draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+			// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+			// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			if (selected_tab = a) draw_set_color(7631988)
+		}
 	    draw_text(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a
 	    b += string_width(str[a]) + 12

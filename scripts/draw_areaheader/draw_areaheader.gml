@@ -21,7 +21,7 @@ function draw_areaheader(argument0, argument1, argument2, argument3, argument4) 
 			draw_set_color(c_dark)
 			break;
 		case 3:
-			draw_set_color(c_white)
+			draw_set_color(15987699)
 			if (fdark) draw_set_color(0)
 			break;
 	}

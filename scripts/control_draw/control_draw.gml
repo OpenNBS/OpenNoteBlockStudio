@@ -98,7 +98,8 @@ function control_draw() {
 	if (theme = 0) window_background = 15790320
 	if (theme = 1) window_background = 13160660
 	if (theme = 2) window_background = c_dark
-	if (theme = 3) window_background = c_white
+	// if (theme = 3) window_background = c_white
+	if (theme = 3) window_background = 15987699
 	if (theme = 3 && fdark) window_background = 0
 	draw_clear(window_background)
 
@@ -274,8 +275,9 @@ function control_draw() {
 		draw_set_color(c_black)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
-	if (fdark && theme = 3 && !blackout) {
-		draw_set_color(2829099)
+	if (theme = 3 && !blackout) {
+		draw_set_color(16382457)
+		if (fdark) draw_set_color(2829099)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
 	for (a = 0; a < totalcols; a += 1) {
