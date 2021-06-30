@@ -77,6 +77,7 @@
     {"id":{"name":"spr_block_color","path":"sprites/spr_block_color/spr_block_color.yy",},"order":1,},
     {"id":{"name":"spr_block_shape","path":"sprites/spr_block_shape/spr_block_shape.yy",},"order":2,},
     {"id":{"name":"spr_block_color_shape","path":"sprites/spr_block_color_shape/spr_block_color_shape.yy",},"order":3,},
+    {"id":{"name":"draw_theme_font","path":"scripts/draw_theme_font/draw_theme_font.yy",},"order":32,},
     {"id":{"name":"spr_minecraft","path":"sprites/spr_minecraft/spr_minecraft.yy",},"order":4,},
     {"id":{"name":"spr_block_sel","path":"sprites/spr_block_sel/spr_block_sel.yy",},"order":5,},
     {"id":{"name":"spr_instrumenticons","path":"sprites/spr_instrumenticons/spr_instrumenticons.yy",},"order":6,},
