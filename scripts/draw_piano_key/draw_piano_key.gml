@@ -2,35 +2,40 @@
 /// @description Draw a piano key.
 function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showclicks, ispressed) {
 	
+	var sprite_offset = 0;
+	if (theme == 3) {
+		sprite_offset = 6;
+	}
+	
 	// Black
 	if (isblack) {
 		
 		// Key
-		draw_sprite_ext(spr_piano, 2, xx, yy, 1, 1, 0, color, 1)
+		draw_sprite_ext(spr_piano, 2 + sprite_offset, xx, yy, 1, 1, 0, color, 1)
 		if (alpha < 3) draw_sprite_ext(spr_piano, 5 + (theme == 3) * 6, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
 		
-	    draw_sprite_ext(spr_piano, 1, xx, yy + floor(7 * ispressed), 1, 1, 0, color, 1)
+	    draw_sprite_ext(spr_piano, 1 + sprite_offset, xx, yy + floor(7 * ispressed), 1, 1, 0, color, 1)
 	    if (alpha < 3) draw_sprite_ext(spr_piano, 4 + (theme == 3) * 6, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
 	    
 		// Text
 	    draw_set_alpha(alpha / 3)
 	    draw_set_halign(fa_center)
-		draw_set_font(fnt_mainbold)
+		draw_theme_font(font_main_bold)
 		
 	    if (show_keynames) {
 	        draw_set_color(c_white)
-	        draw_text(xx + 19, yy + 24 + floor(7 * ispressed) - 4 * (showkeybind) - 4 * (showkeybind && showclicks) - 6 * (showclicks), get_keyname(key, 1))
+	        draw_text(xx + 19, yy + 29 + floor(7 * ispressed) - 4 * (showkeybind) - 4 * (showkeybind && showclicks) - 6 * (showclicks), get_keyname(key, 1))
 	    }
 		
 		if (showclicks) {
 			draw_set_color(c_white)
-			draw_text(xx + 19, yy + 29 + floor(7 * ispressed) - 8 * showkeybind, string(key - 33))
+			draw_text(xx + 19, yy + 34 + floor(7 * ispressed) - 8 * showkeybind, string(key - 33))
 		}
 		
 		draw_set_font(fnt_main)
 	    if (showkeybind) {
 	        draw_set_color(c_white)
-	        if ((editline mod 15) < 7 || key_edit != key) draw_text(xx + 19, yy + 34 + floor(7 * ispressed), chr(piano_key[key]))
+	        if ((editline mod 15) < 7 || key_edit != key) draw_text(xx + 19, yy + 39 + floor(7 * ispressed), chr(piano_key[key]))
 	    }
 		
 	    draw_set_halign(fa_left)
@@ -40,13 +45,13 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 	else {
 		
 		// Key
-	    draw_sprite_ext(spr_piano, 0, xx, yy, 1, 1, 0, color, 1)
-	    if (alpha < 3) draw_sprite_ext(spr_piano, 3, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
+	    draw_sprite_ext(spr_piano, 0 + sprite_offset, xx, yy, 1, 1, 0, color, 1)
+	    if (alpha < 3) draw_sprite_ext(spr_piano, 3 + sprite_offset, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
 		
 		// Text
 		draw_set_alpha(alpha / 3)
 	    draw_set_halign(fa_center)
-		draw_set_font(fnt_mainbold)
+		draw_theme_font(font_main_bold)
 		
 	    if (show_keynames) {
 			draw_set_color(0)
@@ -58,7 +63,7 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 			draw_text(xx + 20, yy + 85 + 5 - 8 * showkeybind, string(key - 33))
 		}
 		
-		draw_set_font(fnt_main)
+		draw_theme_font(font_main)
 	    if (showkeybind) {
 	        draw_set_color(0)
 	        if ((editline mod 15) < 7 || key_edit != key) draw_text(xx + 20, yy + 95, chr(piano_key[key]))
