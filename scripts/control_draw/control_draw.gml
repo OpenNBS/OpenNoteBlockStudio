@@ -1535,7 +1535,7 @@ function control_draw() {
 		if (theme != 3) draw_set_halign(fa_right)
 		draw_theme_color()
 		draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med_bold)
 		if (theme != 3) draw_text(93, 52, time_str(marker_pos / tempo))
 		else draw_text(93 - 84, 52, time_str(marker_pos / tempo))
 

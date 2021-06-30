@@ -11,7 +11,7 @@ function draw_window_about() {
 	draw_sprite_ext(spr_logo, 0, x1 + 86, y1 + 50, 0.55, 0.55, 0, c_white, 1)
 	draw_set_halign(fa_center)
 	draw_set_font(fnt_info_med_bold) 
-		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med_bold)
 	draw_text(x1 + 150, y1 + 200, "Open Note Block Studio")
 	draw_set_font(fnt_main) 
 		if (theme = 3) draw_set_font(fnt_wslui)

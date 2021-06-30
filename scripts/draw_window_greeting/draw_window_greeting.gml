@@ -8,7 +8,7 @@ function draw_window_greeting() {
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, 1)
 	draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
+		if (theme = 3) draw_set_font(fnt_wslui_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_set_font(fnt_mainbold)
 		if (theme = 3) draw_set_font(fnt_wslui_bold)
