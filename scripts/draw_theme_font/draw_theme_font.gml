@@ -1,6 +1,6 @@
 function draw_theme_font(type) {
 	var font;
-	var fluent = (theme == 3);
+	var fluent = (theme != 3);
 	switch (type) {
 		case font_info_big:
 			font = fluent ? fnt_info_big : fnt_wslui_info_big;

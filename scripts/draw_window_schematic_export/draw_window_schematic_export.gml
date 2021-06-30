@@ -12,11 +12,9 @@ function draw_window_schematic_export() {
 	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
 	draw_theme_color()
 	}
-	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_wslui_bold)
+	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Schematic Export")
-	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_wslui)
+	draw_theme_font(font_main)
 
 	b = 8
 	str[0] = "Design"
@@ -223,7 +221,7 @@ function draw_window_schematic_export() {
 	}
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 
-	draw_set_font(fnt_small)
+	draw_theme_font(font_small)
 	if (menun > -1) {
 	    if (menun = 0) {
 	        if (menub = 0) {
