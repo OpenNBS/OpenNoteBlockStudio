@@ -27,6 +27,7 @@
     {"id":{"name":"spr_yesno","path":"sprites/spr_yesno/spr_yesno.yy",},"order":23,},
     {"id":{"name":"spr_datapack_exp","path":"sprites/spr_datapack_exp/spr_datapack_exp.yy",},"order":24,},
     {"id":{"name":"spr_mp3_exp","path":"sprites/spr_mp3_exp/spr_mp3_exp.yy",},"order":25,},
+    {"id":{"name":"draw_piano_key","path":"scripts/draw_piano_key/draw_piano_key.yy",},"order":4,},
     {"id":{"name":"spr_volume_f","path":"sprites/spr_volume_f/spr_volume_f.yy",},"order":32,},
     {"id":{"name":"spr_stereo","path":"sprites/spr_stereo/spr_stereo.yy",},"order":26,},
     {"id":{"name":"spr_scrollbar_h_bar_fill","path":"sprites/spr_scrollbar_h_bar_fill/spr_scrollbar_h_bar_fill.yy",},"order":0,},
