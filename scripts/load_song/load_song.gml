@@ -57,7 +57,6 @@ function load_song() {
 	
 		hei = buffer_read_short()
     
-	    draw_set_font(fnt_main)
 	    // SONG NAME
 	    song_name = buffer_read_string_int()
 	    // SONG AUTHOR

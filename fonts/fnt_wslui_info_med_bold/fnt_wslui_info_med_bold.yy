@@ -473,7 +473,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fnt_wslui_info_med_bald",
+  "name": "fnt_wslui_info_med_bold",
   "tags": [],
   "resourceType": "GMFont",
 }

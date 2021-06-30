@@ -2,8 +2,7 @@ function draw_msg(){
 	draw_set_alpha(msgalpha)
 	var x1, x2, y1, y2, str;
 	str = msgcontent
-	draw_set_font(fnt_info_med_bold)
-	if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
+	draw_theme_font(font_main_bold)
 	x1 = (window_width - string_width(str)) / 2
 	x2 = (window_width + string_width(str)) / 2
 	y1 = window_height * 0.8

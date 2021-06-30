@@ -13,10 +13,9 @@ function draw_window_datapack_export() {
 	draw_set_color(c_black)
 	draw_theme_color()
 	}
-	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_wslui_bold)
+	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Data Pack Export")
-	draw_set_font(fnt_main) 
+	draw_theme_font(font_main) 
 		if (theme = 3) draw_set_font(fnt_wslui)
 
 	b = 8
@@ -110,12 +109,10 @@ function draw_window_datapack_export() {
 
 		//Preview
 		draw_text(x1 + 16, y1 + 348, "Command preview:")
-		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_wslui_bold)
+		draw_theme_font(font_main_bold)
 		if (string_path(dat_name) = "") draw_set_color(c_gray)
 		draw_text(x1 + 16, y1 + 365, dat_preview(dat_name, dat_namespace, dat_path))
-		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_wslui)
+		draw_theme_font(font_main)
 		draw_theme_color()
 
 		//Source

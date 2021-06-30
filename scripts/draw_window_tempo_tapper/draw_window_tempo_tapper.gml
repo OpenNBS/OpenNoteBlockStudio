@@ -9,11 +9,9 @@ function draw_window_tempo_tapper() {
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	ltempo = taptempo
 	ins = instrument_list[| 4]
-	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_wslui_bold)
+	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Tempo tapper")
-	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_wslui)
+	draw_theme_font(font_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 0)

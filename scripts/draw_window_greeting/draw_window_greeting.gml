@@ -7,11 +7,9 @@ function draw_window_greeting() {
 	y1 = floor(rh / 2 - 210)
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, 1)
-	draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_wslui_info_med_bald)
+	draw_theme_font(font_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
-	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_wslui_bold)
+	draw_theme_font(font_main_bold)
 	if (RUN_FROM_IDE != 1) {
 		draw_text_center(x1 + 132, y1 + 248, "Running from the GameMaker IDE.")
 	} else if (check_update) {
@@ -40,8 +38,7 @@ function draw_window_greeting() {
 	    draw_set_color(c_red)
 	    draw_text_center(x1 + 132, y1 + 248, "Update checking disabled by user")
 	}
-	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_wslui)
+	draw_theme_font(font_main)
 	draw_theme_color()
 	if (RUN_FROM_IDE != 1) {
 		draw_text_center(x1 + 132, y1 + 233, "Version Local Release")
