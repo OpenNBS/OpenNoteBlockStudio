@@ -12,8 +12,8 @@ function draw_window() {
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
-	// if (theme = 3 && !fdark) draw_set_color(c_white)
-	if (theme = 3 && fdark) draw_set_color(0)
+	if (theme = 3 && !fdark) draw_set_color(15987699)
+	if (theme = 3 && fdark) draw_set_color(2105376)
 	if (theme = 3 && sml = 0) {
 		if (sml = 0) {
 			draw_sprite(spr_shadow, 0 + 8 * fdark, x1 - 16, y1 - 16)
@@ -25,9 +25,10 @@ function draw_window() {
 			draw_sprite(spr_shadow, 6 + 8 * fdark, x2, y1 - 16)
 			draw_sprite_ext(spr_shadow, 7 + 8 * fdark, x1, y1 - 16, x2 - x1, 1, 0, -1, 1)
 		}
-		if (!fdark) draw_set_color(15987699)
+		draw_set_color(15987699)
+		if (fdark) draw_set_color(2105376)
 		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 0)
-		if (!fdark) draw_set_color(7368816)
+		draw_set_color(7368816)
 		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 1)
 	} else {
 		draw_rectangle(x1, y1, x2 - 1, y2 - 1, 0)

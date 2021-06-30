@@ -100,7 +100,7 @@ function control_draw() {
 	if (theme = 2) window_background = c_dark
 	// if (theme = 3) window_background = c_white
 	if (theme = 3) window_background = 15987699
-	if (theme = 3 && fdark) window_background = 0
+	if (theme = 3 && fdark) window_background = 2105376
 	draw_clear(window_background)
 
 	iconcolor = c_black
@@ -277,7 +277,7 @@ function control_draw() {
 	}
 	if (theme = 3 && !blackout) {
 		draw_set_color(16382457)
-		if (fdark) draw_set_color(2829099)
+		if (fdark) draw_set_color(2565927)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
 	for (a = 0; a < totalcols; a += 1) {
@@ -907,8 +907,8 @@ function control_draw() {
 		draw_set_color(15790320)
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
-		if (theme = 3) draw_set_color(c_white)
-		if (theme = 3 && fdark) draw_set_color(0)
+		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && fdark) draw_set_color(2105376)
 		draw_rectangle(0, 0, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
 		draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
@@ -951,8 +951,8 @@ function control_draw() {
 	if (theme = 0) draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
-	if (theme = 3) draw_set_color(c_white)
-	if (theme = 3 && fdark) draw_set_color(0)
+	if (theme = 3) draw_set_color(15987699)
+	if (theme = 3 && fdark) draw_set_color(2105376)
 	draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
 		fullscreen = !fullscreen

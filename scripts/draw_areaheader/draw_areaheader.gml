@@ -22,7 +22,7 @@ function draw_areaheader(argument0, argument1, argument2, argument3, argument4) 
 			break;
 		case 3:
 			draw_set_color(15987699)
-			if (fdark) draw_set_color(0)
+			if (fdark) draw_set_color(2105376)
 			break;
 	}
 	draw_rectangle(xx + 12, yy - 6, xx + 12 + string_width(str) + 6, yy + 6, 0)

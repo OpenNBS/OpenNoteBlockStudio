@@ -39,7 +39,7 @@ function draw_window_preferences() {
 				windowclose = 1
 			}
 		}
-		draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 13, y1 + 30 + 12)
+		draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 14, y1 + 30 + 12)
 	}
 	if (theme = 1) {
 	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474)
@@ -95,9 +95,11 @@ function draw_window_preferences() {
 	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
 	    if (selected_tab = a) {
 			draw_set_color(15581318)
+			if (fdark) draw_set_color(5319936)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(15049472)
+			if (fdark) draw_set_color(9786112)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 19 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 20 - 6)
@@ -113,12 +115,15 @@ function draw_window_preferences() {
 			// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
 			// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
 			draw_set_color(7631988)
+			if (fdark) draw_set_color(11579568)
 			if (selected_tab = a) draw_set_color(10000536)
+			if (selected_tab = a && fdark) draw_set_color(10724259)
 		} else if (c) {
 			// draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
 			// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
 			// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
 			if (selected_tab = a) draw_set_color(7631988)
+			if (selected_tab = a && fdark) draw_set_color(11579568)
 		}
 	    draw_text(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a

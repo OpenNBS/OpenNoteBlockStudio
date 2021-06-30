@@ -49,7 +49,7 @@ function draw_window_minecraft() {
 	    if (theme != 3) draw_rectangle(x1 + 6, yy + 46, x1 + 484, yy + 350, 1)
 	    draw_set_color(c_white)
 		if (theme = 3) draw_set_color(15987699)
-		if (theme = 3 && fdark) draw_set_color(0)
+		if (theme = 3 && fdark) draw_set_color(2105376)
 		if (theme != 3) {
 		draw_rectangle(x1 + stabx, yy + 26, x1 + stabx + stabw, yy + 26 + 20, 0)
 		} else {
@@ -59,7 +59,7 @@ function draw_window_minecraft() {
 	    if (theme != 3) draw_rectangle(x1 + stabx, yy + 26, x1 + stabx + stabw, yy + 26 + 20, 1)
 	    draw_set_color(c_white)
 		if (theme = 3) draw_set_color(15987699)
-		if (theme = 3 && fdark) draw_set_color(0)
+		if (theme = 3 && fdark) draw_set_color(2105376)
 	    draw_rectangle(x1 + stabx + 1, yy + 46, x1 + stabx + stabw - 1, yy + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, yy + 28, str[selected_tab_mc])

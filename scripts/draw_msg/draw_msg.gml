@@ -8,13 +8,21 @@ function draw_msg(){
 	x2 = (window_width + string_width(str)) / 2
 	y1 = window_height * 0.8
 	y2 = window_height * 0.8 - 20
+	draw_set_color(7368816)
+	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
-	if (theme = 3 && !fdark) draw_set_color(c_white)
-	if (theme = 3 && fdark) draw_set_color(0)
-	draw_area(x1 - 10, y1 + 10, x2 + 10, y2 - 10)
-	draw_rectangle(x1 + 2 - 10, y1 + 10, x2 - 3 + 10, y2 - 1 - 10, 0)
+	if (theme = 3 && !fdark) draw_set_color(15987699)
+	if (theme = 3 && fdark) draw_set_color(2105376)
+	if (theme != 3) {
+		draw_area(x1 - 10, y1 + 10, x2 + 10, y2 - 10)
+		draw_rectangle(x1 + 2 - 10, y1 + 10, x2 - 3 + 10, y2 - 1 - 10, 0)
+	} else {
+		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 0)
+		draw_set_color(7368816)
+		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
+	}
 	draw_theme_color()
 	draw_text(x1, y1 - 10 - string_height(str) / 2, str)
 	if (current_time - msgstart >= 1000){

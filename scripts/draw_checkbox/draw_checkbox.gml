@@ -20,8 +20,8 @@ function draw_checkbox() {
 	if (tip != "") popup_set_window(xx, yy, 13 + string_width(str) + 8, 13, tip)
 	if (lock = 1) {
 		if (is_switch) {
-			if (!expression) draw_sprite(spr_switch, 6 + 5 * (fdark), xx, yy)
-			if (expression) draw_sprite(spr_switch, 7 + 5 * (fdark), xx, yy)
+			if (!expression) draw_sprite(spr_switch, 6 + 8 * (fdark), xx, yy)
+			if (expression) draw_sprite(spr_switch, 7 + 8 * (fdark), xx, yy)
 		} else {
 			draw_sprite(spr_checkbox, 4 + expression + 6 * theme + 6 * (fdark) * (theme = 3), xx, yy)
 			draw_set_color(make_color_rgb(204, 204, 204))
@@ -41,7 +41,7 @@ function draw_checkbox() {
 		if (m) m += mouse_check_button(mb_left)
 		if (is_switch) {
 			if (!expression) draw_sprite(spr_switch, m + 8 * (fdark), xx, yy)
-			if (expression) draw_sprite(spr_switch, m + 3, xx, yy)
+			if (expression) draw_sprite(spr_switch, m + 3 + 8 * (fdark), xx, yy)
 		} else {
 			draw_sprite(spr_checkbox, m + 6 * theme + 6 * (fdark) * (theme = 3), xx, yy)
 			if (expression) draw_sprite(spr_checkbox, 3 + 6 * theme + 6 * (fdark) * (theme = 3), xx, yy)

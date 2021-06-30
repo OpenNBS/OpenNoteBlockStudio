@@ -9,13 +9,17 @@ function draw_textarea(argument0, argument1, argument2, argument3, argument4, ar
 	val = argument5
 	str = argument6
 	draw_set_color(c_white)
-	if(theme = 2) draw_set_color(3552822)
-	if (theme = 3 && fdark) draw_set_color(0)
-	draw_rectangle(xx, yy, xx + w, yy + h, 0)
-	popup_set_window(xx, yy, w, h, str)
 
 	on = mouse_rectangle(xx, yy, w, h)
 	focus = text_focus = i
+	
+	if(theme = 2) draw_set_color(3552822)
+	if (theme = 3) draw_set_color(16514043)
+	if (theme = 3 && on && !focus) draw_set_color(16185078)
+	if (theme = 3 && fdark) draw_set_color(2960685)
+	if (theme = 3 && fdark && on && !focus) draw_set_color(3289650)
+	draw_rectangle(xx, yy, xx + w, yy + h, 0)
+	popup_set_window(xx, yy, w, h, str)
 
 	if (theme = 0) {
 	    draw_sprite(spr_textbox, 0 + 8 * on, xx, yy)
