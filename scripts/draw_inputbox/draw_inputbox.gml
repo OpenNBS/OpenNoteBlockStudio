@@ -29,13 +29,13 @@ function draw_inputbox(argument0, argument1, argument2, argument3, argument4, ar
 		draw_sprite(spr_inputbox_f_right, theme, xx + w - 2, yy)
 	} else {
 		if(on){
-			draw_sprite_ext(spr_inputbox_s_middle, theme + fdark, xx + 2, yy, w - 4, 1, 0, -1, 1)
-			draw_sprite(spr_inputbox_s_left, theme + fdark, xx, yy)
-			draw_sprite(spr_inputbox_s_right, theme + fdark, xx + w - 2, yy)
+			draw_sprite_ext(spr_inputbox_s_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, 1)
+			draw_sprite(spr_inputbox_s_left, theme, xx, yy)
+			draw_sprite(spr_inputbox_s_right, theme, xx + w - 2, yy)
 		}else{
-			draw_sprite_ext(spr_inputbox_n_middle, theme + fdark, xx + 2, yy, w - 4, 1, 0, -1, 1)
-			draw_sprite(spr_inputbox_n_left, theme + fdark, xx, yy)
-			draw_sprite(spr_inputbox_n_right, theme + fdark, xx + w - 2, yy)
+			draw_sprite_ext(spr_inputbox_n_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, 1)
+			draw_sprite(spr_inputbox_n_left, theme, xx, yy)
+			draw_sprite(spr_inputbox_n_right, theme, xx + w - 2, yy)
 		}
 	}
 	}

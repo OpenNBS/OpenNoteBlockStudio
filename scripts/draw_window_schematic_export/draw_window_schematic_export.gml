@@ -9,7 +9,8 @@ function draw_window_schematic_export() {
 	if (theme = 3){
 	draw_set_color(13421772)
 	if (fdark) draw_set_color(3355443)
-	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
+	draw_roundrect(x1+1,y1+1,x1+548,y1+48,0)
+	draw_set_color(c_black)
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
@@ -44,7 +45,8 @@ function draw_window_schematic_export() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
-		if (theme = 3 && fdark) draw_set_color(0)
+		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && fdark) draw_set_color(2105376)
 		if (theme != 3) {
 	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
 		} else {
@@ -53,7 +55,8 @@ function draw_window_schematic_export() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
-		if (theme = 3 && fdark) draw_set_color(0)
+		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && fdark) draw_set_color(2105376)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
@@ -128,7 +131,7 @@ function draw_window_schematic_export() {
 	    }
 	    tabs = 3
 	    tabstr[0] = "Instrument"
-	    tabtip[0] = "The name of the instrument"
+	    tabtip[0] = "The name of the instrument."
 	    tabw[0] = 252
 	    tabstr[1] = "Block"
 	    tabtip[1] = "The ID of the block that should be placed\nbelow note blocks of the instrument."

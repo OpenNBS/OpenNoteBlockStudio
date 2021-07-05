@@ -9,13 +9,17 @@ function draw_textarea(argument0, argument1, argument2, argument3, argument4, ar
 	val = argument5
 	str = argument6
 	draw_set_color(c_white)
-	if(theme = 2) draw_set_color(3552822)
-	if (theme = 3 && fdark) draw_set_color(0)
-	draw_rectangle(xx, yy, xx + w, yy + h, 0)
-	popup_set_window(xx, yy, w, h, str)
 
 	on = mouse_rectangle(xx, yy, w, h)
 	focus = text_focus = i
+	
+	if(theme = 2) draw_set_color(3552822)
+	if (theme = 3) draw_set_color(16514043)
+	if (theme = 3 && on && !focus) draw_set_color(16185078)
+	if (theme = 3 && fdark) draw_set_color(2960685)
+	if (theme = 3 && fdark && on && !focus) draw_set_color(3289650)
+	draw_rectangle(xx, yy, xx + w, yy + h, 0)
+	popup_set_window(xx, yy, w, h, str)
 
 	if (theme = 0) {
 	    draw_sprite(spr_textbox, 0 + 8 * on, xx, yy)
@@ -27,14 +31,14 @@ function draw_textarea(argument0, argument1, argument2, argument3, argument4, ar
 	    draw_sprite(spr_textbox, 6 + 8 * on, xx + w - 2, yy)
 	    draw_sprite_ext(spr_textbox, 7 + 8 * on, xx + 2, yy, (w - 4) / 2, 1, 0, -1, 1)
 	} else if (theme = 3) {
-		draw_sprite(spr_textbox_f, 0 + 8 * on + 16 * focus + 32 * fdark, xx, yy)
-	    draw_sprite_ext(spr_textbox_f, 1 + 8 * on + 16 * focus + 32 * fdark, xx, yy + 2, 1, (h - 4) / 2, 0, -1, 1)
-	    draw_sprite(spr_textbox_f, 2 + 8 * on + 16 * focus + 32 * fdark, xx, yy + h - 2)
-	    draw_sprite_ext(spr_textbox_f, 3 + 8 * on + 16 * focus + 32 * fdark, xx + 2, yy + h - 2, (w - 4) / 2, 1, 0, -1, 1)
-	    draw_sprite(spr_textbox_f, 4 + 8 * on + 16 * focus + 32 * fdark, xx + w - 2, yy + h - 2)
-	    draw_sprite_ext(spr_textbox_f, 5 + 8 * on + 16 * focus + 32 * fdark, xx + w - 2, yy + 2, 1, (h - 4) / 2, 0, -1, 1)
-	    draw_sprite(spr_textbox_f, 6 + 8 * on + 16 * focus + 32 * fdark, xx + w - 2, yy)
-	    draw_sprite_ext(spr_textbox_f, 7 + 8 * on + 16 * focus + 32 * fdark, xx + 2, yy, (w - 4) / 2, 1, 0, -1, 1)
+		draw_sprite(spr_textbox_f, 0 + 8 * on + 16 * focus + 32, xx, yy)
+	    draw_sprite_ext(spr_textbox_f, 1 + 8 * on + 16 * focus + 32, xx, yy + 2, 1, (h - 4) / 2, 0, -1, 1)
+	    draw_sprite(spr_textbox_f, 2 + 8 * on + 16 * focus + 32, xx, yy + h - 2)
+	    draw_sprite_ext(spr_textbox_f, 3 + 8 * on + 16 * focus + 32, xx + 2, yy + h - 2, (w - 4) / 2, 1, 0, -1, 1)
+	    draw_sprite(spr_textbox_f, 4 + 8 * on + 16 * focus + 32, xx + w - 2, yy + h - 2)
+	    draw_sprite_ext(spr_textbox_f, 5 + 8 * on + 16 * focus + 32, xx + w - 2, yy + 2, 1, (h - 4) / 2, 0, -1, 1)
+	    draw_sprite(spr_textbox_f, 6 + 8 * on + 16 * focus + 32, xx + w - 2, yy)
+	    draw_sprite_ext(spr_textbox_f, 7 + 8 * on + 16 * focus + 32, xx + 2, yy, (w - 4) / 2, 1, 0, -1, 1)
 	} else {
 	    draw_area(xx, yy, xx + w, yy + h)
 	}
