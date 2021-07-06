@@ -16,10 +16,10 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 		
 		// Key
 		draw_sprite_ext(spr_piano, 2 + sprite_offset + dark, xx, yy, 1, 1, 0, color, 1)
-		if (alpha < 3) draw_sprite_ext(spr_piano, 5 + sprite_offset + dark, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
+		if (alpha < 3) draw_sprite_ext(spr_piano, 5 + sprite_offset, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
 		
 	    draw_sprite_ext(spr_piano, 1 + sprite_offset + dark, xx, yy + floor(7 * ispressed), 1, 1, 0, color, 1)
-	    if (alpha < 3) draw_sprite_ext(spr_piano, 4 + sprite_offset, xx, yy, 1, 1, 0, window_background, 0.8 - alpha / 3)
+	    if (alpha < 3) draw_sprite_ext(spr_piano, 4 + sprite_offset, xx, yy + floor(7 * ispressed), 1, 1, 0, window_background, 0.8 - alpha / 3)
 	    
 		// Text
 	    draw_set_alpha(alpha / 3)
@@ -27,7 +27,7 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 		draw_theme_font(font_main_bold)
 		
 		if (theme == 3 && fdark) {
-			draw_set_color(make_color_rgb(220, 220, 220))
+			draw_set_color(color)
 		} else {
 			draw_set_color(c_white)
 		}
@@ -60,7 +60,7 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 	    draw_set_halign(fa_center)
 		draw_theme_font(font_main_bold)
 		if (theme == 3 && fdark) {
-			draw_set_color(make_color_rgb(220, 220, 220))
+			draw_set_color(color)
 		} else {
 			draw_set_color(c_black)
 		}
