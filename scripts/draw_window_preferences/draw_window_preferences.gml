@@ -172,40 +172,52 @@ function draw_window_preferences() {
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 218, 120, "Theme")
 		if (theme = 3) draw_set_font(fnt_wslui)
-	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
-		if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
-	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
-	    if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
+		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 5)
+		if (draw_abutton(x1 + 140 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        menu = show_menu_ext("theme", x1 + 40, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
+	    }
+	    draw_text(x1 + 43, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
+	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
+		//if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
+	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
+	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
-		if (theme = 3) if (draw_checkbox(x1 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, windowsound, "Navigation sound", "Activate sound when navigating.")) windowsound = !windowsound
-		if (theme = 3) draw_text(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
-		if (theme = 3) {
-			if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20, !fdark, "Light", "Use the light mode.")) fdark = 0
-			if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
-		}
+		if (theme = 3) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating.", false, true)) windowsound = !windowsound
+		if (theme = 3) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", false, true)) fdark = !fdark
+		//if (theme = 3) draw_text(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
+		//if (theme = 3) {
+		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20, !fdark, "Light", "Use the light mode.")) fdark = 0
+		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
+		//}
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1+258,y1+164 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
 		if (theme = 3) draw_set_font(fnt_wslui)
-	    if (draw_radiobox(x1+274,y1+164+16 + (theme = 3) * 22,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
-	        game_set_speed(30,gamespeed_fps)
-			refreshrate=0
+		draw_area(x1 + 274, y1 + 164 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 164 + 16 + 20 + (theme = 3) * 22 + 5)
+		if (draw_abutton(x1 + 374 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        menu = show_menu_ext("refreshrate", x1 + 274, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30FPS|" + check(refreshrate = 1) + "60FPS|" + check(refreshrate = 2) + "120FPS|" + check(refreshrate = 3) + "144FPS|" + check(refreshrate = 4) + "Unlimited")
 	    }
-	    if (draw_radiobox(x1+274,y1+164+16+20 + (theme = 3) * 22,refreshrate == 1,"60FPS","Run the program at 60FPS.")) {
-	        game_set_speed(60,gamespeed_fps)
-			refreshrate=1
-	    }
-		if (draw_radiobox(x1+274+64-6,y1+164+16 + (theme = 3) * 22,refreshrate == 2,"120FPS","Run the program at 120FPS.")) {
-			game_set_speed(120,gamespeed_fps)
-			refreshrate=2
-		}
-		if (draw_radiobox(x1+274+64-6,y1+164+16+20 + (theme = 3) * 22,refreshrate == 3,"144FPS","Run the program at 144FPS.")) {
-			game_set_speed(144,gamespeed_fps)
-			refreshrate=3
-		}
-		if (draw_radiobox(x1+274+128-6,y1+164+16+10 + (theme = 3) * 22,refreshrate == 4,"Unlimited","Run the program with unlimited FPS.\nMay cause very high CPU usage. Use this option with caution!")) {
-			game_set_speed(114514,gamespeed_fps)
-			refreshrate=4
-		}
+	    draw_text(x1 + 277, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30FPS") + condstr(refreshrate = 1, "60FPS") + condstr(refreshrate = 2, "120FPS") + condstr(refreshrate = 3, "144FPS") + condstr(refreshrate = 4, "Unlimited"))
+		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
+	    //if (draw_radiobox(x1+274,y1+164+16 + (theme = 3) * 22,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
+	    //    game_set_speed(30,gamespeed_fps)
+		//	refreshrate=0
+	    //}
+	    //if (draw_radiobox(x1+274,y1+164+16+20 + (theme = 3) * 22,refreshrate == 1,"60FPS","Run the program at 60FPS.")) {
+	    //    game_set_speed(60,gamespeed_fps)
+		//	refreshrate=1
+	    //}
+		//if (draw_radiobox(x1+274+64-6,y1+164+16 + (theme = 3) * 22,refreshrate == 2,"120FPS","Run the program at 120FPS.")) {
+		//	game_set_speed(120,gamespeed_fps)
+		//	refreshrate=2
+		//}
+		//if (draw_radiobox(x1+274+64-6,y1+164+16+20 + (theme = 3) * 22,refreshrate == 3,"144FPS","Run the program at 144FPS.")) {
+		//	game_set_speed(144,gamespeed_fps)
+		//	refreshrate=3
+		//}
+		//if (draw_radiobox(x1+274+128-6,y1+164+16+10 + (theme = 3) * 22,refreshrate == 4,"Unlimited","Run the program with unlimited FPS.\nMay cause very high CPU usage. Use this option with caution!")) {
+		//	game_set_speed(114514,gamespeed_fps)
+		//	refreshrate=4
+		//}
 
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 258, y1 + 240 + (theme = 3) * 22, 220, 44, "Window")
@@ -215,7 +227,7 @@ function draw_window_preferences() {
 		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == 1))) {
 			window_scale = 1
 		}
-		if (theme != 2 && !fdark) draw_set_color(c_black)
+		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
 		
 		draw_text(x1 + 22, y1 + 290 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 360))

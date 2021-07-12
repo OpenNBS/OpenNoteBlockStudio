@@ -29,7 +29,8 @@ function menu_draw() {
 			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
 			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 4)
 		}
-	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
+	    if (theme != 3) draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
+		else draw_roundrect(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
 	    draw_theme_color()
 	    if (o.theme != 3) draw_line(dx + 29, dy + 3, dx + 29, dy + hei - 3)
@@ -38,7 +39,8 @@ function menu_draw() {
 	    if (o.theme != 3) draw_line(dx + 30, dy + 3, dx + 30, dy + hei - 3)
 	    draw_theme_color()
 	    draw_set_alpha(0.25)
-	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 1)
+	    if (theme != 3) draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 1)
+	    else draw_roundrect(dx, dy, dx + menu_wid[m], dy + hei, 1)
 	    draw_set_alpha(1)
 	    for (i = 0; i < items[m]; i += 1) {
 	        if (iy >= hei - 3) break
@@ -83,7 +85,7 @@ function menu_draw() {
 					} else {
 					draw_set_color(15987699)
 					if (obj_controller.fdark) draw_set_color(4276545)
-	                draw_rectangle(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
+	                draw_roundrect(dx + 3, dy + iy - 5, dx + menu_wid[m] - 2, dy + iy - 5 + 22, 0)
 	                draw_theme_color()
 					}
 	            } //else if (inaissel && !obj_controller.fdark) {
