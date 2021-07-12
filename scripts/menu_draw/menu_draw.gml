@@ -19,6 +19,11 @@ function menu_draw() {
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
 	    if (dy + hei > o.rh) dy = o.rh - hei
 	    iy = 8
+	    if (!o.fdark) draw_theme_color()
+	    else draw_set_color(197379)
+	    draw_set_alpha(0.25)
+	    if (theme = 3) draw_rectangle(dx + menu_wid[m] - 7, dy + hei - 7, dx + menu_wid[m] + 1, dy + hei + 1, 0)
+	    draw_set_alpha(1)
 	    if (o.theme != 3) draw_set_color(window_background)
 	    else draw_set_color(16382457)
 		if (obj_controller.fdark && theme = 3) draw_set_color(2829099)
