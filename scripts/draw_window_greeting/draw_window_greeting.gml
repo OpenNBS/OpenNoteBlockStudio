@@ -12,6 +12,8 @@ function draw_window_greeting() {
 	draw_theme_font(font_main_bold)
 	if (RUN_FROM_IDE != 1) {
 		draw_text_center(x1 + 132, y1 + 248, "Running from the GameMaker IDE.")
+	} else if (snapshot) {
+		draw_text_center(x1 + 132, y1 + 248, "Snapshot version.")
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
