@@ -68,6 +68,7 @@ function control_create() {
 	tonextbackup = 0
 	presence = 1
 	presencewindow = 0
+	language = "Chinese"
 
 	// File
 	filename = ""

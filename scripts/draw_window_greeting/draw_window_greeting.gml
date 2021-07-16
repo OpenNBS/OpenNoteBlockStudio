@@ -11,47 +11,47 @@ function draw_window_greeting() {
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_theme_font(font_main_bold)
 	if (RUN_FROM_IDE != 1) {
-		draw_text_center(x1 + 132, y1 + 248, "Running from the GameMaker IDE.")
+		draw_text_center(x1 + 132, y1 + 248, "在IDE中运行")
 	} else if (snapshot) {
-		draw_text_center(x1 + 132, y1 + 248, "Snapshot version.")
+		draw_text_center(x1 + 132, y1 + 248, "快照版本")
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
-	        draw_text_center(x1 + 132, y1 + 248, "Could not check for updates")
+	        draw_text_center(x1 + 132, y1 + 248, "检查更新失败")
 	    }
 	    if (update = 0) {
 	        //draw_set_color(c_gray)
-	        draw_text_center(x1 + 132, y1 + 248, "Checking for updates...")
+	        draw_text_center(x1 + 132, y1 + 248, "正在检查更新……")
 	    }
 	    if (update = 1) {
 	        draw_set_color(33023)
-	        draw_text_center(x1 + 132, y1 + 248, "There is an update available!")
+	        draw_text_center(x1 + 132, y1 + 248, "有新版本！")
 	    }
 	    if (update = 2) {
 	        draw_set_color(c_green)
 			if (theme == 2) draw_set_color(c_lime)
-	        draw_text_center(x1 + 132, y1 + 248, "You are using the latest version!")
+	        draw_text_center(x1 + 132, y1 + 248, "已为最新版本！")
 	    }
 	    if (update = 3) {
 	        draw_set_color(c_lime)
-	        draw_text_center(x1 + 132, y1 + 248, "Successfully updated!")
+	        draw_text_center(x1 + 132, y1 + 248, "更新成功！")
 	    }
 	} else {
 	    draw_set_color(c_red)
-	    draw_text_center(x1 + 132, y1 + 248, "Update checking disabled by user")
+	    draw_text_center(x1 + 132, y1 + 248, "检查更新未开启")
 	}
 	draw_theme_font(font_main)
 	draw_theme_color()
 	if (RUN_FROM_IDE != 1) {
-		draw_text_center(x1 + 132, y1 + 233, "Version Local Release")
+		draw_text_center(x1 + 132, y1 + 233, "本地版本")
 	} else {
-		draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
+		draw_text_center(x1 + 132, y1 + 233, "版本" + version + " - 发布于" + version_date)
 	}
-	draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
+	draw_text_center(x1 + 132, y1 + 280, "开源 Minecraft Note Block Studio")
 	draw_set_color(make_color_rgb(62, 144, 255))
 	draw_text_url(x1 + 132, y1 + 296, "opennbs.org", "https://git.io/fjQH3")
 	draw_theme_color()
-	draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
+	draw_text_center(x1 + 132, y1 + 340, "原作者 David Norgren")
 	draw_text_url(x1 + 132, y1 + 356, "stuffbydavid.com", "https://www.stuffbydavid.com")
 	draw_set_color(c_white)
 	if (fdark && theme = 3) draw_set_color(0)
@@ -61,7 +61,7 @@ function draw_window_greeting() {
 	draw_line(x1 + 269, y1 + 24, x1 + 269, y1 + 396)
 	draw_set_alpha(1)
 	draw_theme_color()
-	draw_text(x1 + 290, y1 + 20, "What do you want to do?")
+	draw_text(x1 + 290, y1 + 20, "要做什么？")
 
 	b = x1 + 300
 	c = y1 + 48
@@ -74,7 +74,7 @@ function draw_window_greeting() {
 	if (!fdark) draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
 	else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
 	}
-	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
+	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "创建歌曲")
 	if (a = 2 && mouse_check_button_released(mb_left) && windowopen = 1) {
 		if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
 		windowclose = 1
@@ -91,7 +91,7 @@ function draw_window_greeting() {
 	if (!fdark) draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
 	else draw_sprite(spr_bigicons_d, 1, b + (a > 1), c + (a > 1))
 	}
-	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
+	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "打开歌曲")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0
@@ -105,7 +105,7 @@ function draw_window_greeting() {
 	    if (recent_song[a] = "") break
 	    if (a = 0) {
 	        c += 36
-	        draw_text(b - 20, c, "Recent songs:")
+	        draw_text(b - 20, c, "最近打开：")
 	        c += 16
 	    }
 
@@ -115,7 +115,7 @@ function draw_window_greeting() {
 	    if (m > 0 && mouse_check_button_released(mb_left)) {
 			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 	        if (!file_exists_lib(recent_song[a])) {
-	            message("Could not find file:\n" + recent_song[a], "Error")
+	            message("找不到文件：\n" + recent_song[a], "错误")
 	            for (d = 0; d < 10; d += 1) {
 	                if (recent_song[d] = recent_song[a]) {
 	                    for (e = d; e < 10; e += 1) {
@@ -153,7 +153,7 @@ function draw_window_greeting() {
 	if (!fdark) draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
 	else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
 	}
-	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
+	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "从MIDI文件生成")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0
@@ -173,7 +173,7 @@ function draw_window_greeting() {
 	if (!fdark) draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
 	else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
 	}
-	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Watch tutorial videos")
+	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
