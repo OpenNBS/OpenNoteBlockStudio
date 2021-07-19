@@ -583,6 +583,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"goback.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"invoke.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"hide.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"NBS Player Mode.bat","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
