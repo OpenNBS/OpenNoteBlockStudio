@@ -65,6 +65,7 @@ function draw_window_greeting() {
 
 	b = x1 + 300
 	c = y1 + 48
+	if (!isplayer) {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
@@ -81,6 +82,7 @@ function draw_window_greeting() {
 	}
 
 	c += 44
+	}
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))

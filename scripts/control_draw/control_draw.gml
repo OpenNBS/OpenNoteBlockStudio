@@ -21,7 +21,7 @@ function control_draw() {
 	showmenu = 0
 	cursmarker = 0
 	compx = 180
-	window_set_caption(condstr(filename = "", "Unsaved song") + filename_name(filename) + condstr(changed && filename != "", "*") + " - Minecraft Note Block Studio")
+	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), "Unsaved song") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -70,6 +70,7 @@ function control_draw() {
 	    }
 	}
 
+	if (!isplayer) {
 	// Autosave
 	if (autosave && filename_ext(filename) = ".nbs") {
 	    tonextsave -= 1 / room_speed / 60
@@ -92,6 +93,7 @@ function control_draw() {
 	// Toggle fullscreen
 	if (keyboard_check_pressed(vk_f11)) {
 		fullscreen = !fullscreen
+	}
 	}
 
 	if (theme = 0) window_background = 15790320
@@ -138,7 +140,7 @@ function control_draw() {
 	} else {
 		y1 = 52
 	}
-	if ((window = 0 || select > 0) && playing = 0) {
+	if ((window = 0 || select > 0) && playing = 0 && !isplayer) {
 	    if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
 	        sela = floor((mouse_x - (x1 + 2)) / 32)
 	        selb = floor((mouse_y - (y1 + 34)) / 32)
@@ -195,7 +197,7 @@ function control_draw() {
 	    }
 	}
 	exist = 0
-	if ((sela > -1 && selb > -1) || select > 0) {
+	if (((sela > -1 && selb > -1) || select > 0) && !isplayer) {
 	    if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_middle)) clickinarea = 1
 	    selbx = starta + sela
 	    selby = startb + selb
@@ -230,7 +232,7 @@ function control_draw() {
 	        }
 	    }
 	}
-	if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0)) {
+	if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer) {
 	    var insindex = ds_list_find_index(instrument_list, instrument)
 	    if (mouse_wheel_down() && insindex > 0) {
 	        insindex--
@@ -243,7 +245,7 @@ function control_draw() {
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	}
-	if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0)) {
+	if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer) {
 	    if (mouse_wheel_down() && selected_key > 0) {
 	        selected_key -= 1
 	        play_sound(instrument, selected_key, 100 ,100, 0)
@@ -270,6 +272,7 @@ function control_draw() {
 	        }
 	    }
 	}
+	if (!isplayer) {
 	if (blackout) {
 		draw_set_color(c_black)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
@@ -279,15 +282,16 @@ function control_draw() {
 		if (fdark) draw_set_color(2565927)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
+	}
 	for (a = 0; a < totalcols; a += 1) {
 		if (!blackout) {
 			if ((starta + a) mod (timesignature * 4) == 0) {
 				draw_set_alpha(0.3)
-				draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
+				if (!isplayer) draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
 			} else {
 				draw_set_alpha(0.1)
 				if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
-				draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+				if (!isplayer) draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
 			}
 		}
 	    for (b = 0; b < totalrows; b += 1) {
@@ -306,7 +310,7 @@ function control_draw() {
 	                                }
 	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            }
-	                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
+	                            if (!isplayer) draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
 	                } else {
@@ -390,6 +394,7 @@ function control_draw() {
 	        window = w_releasemouse
 	    }
 	}
+	if (!isplayer) {
 
 	// Draw locked layers
 	for (b = 0; b < totalrows; b += 1) {
@@ -509,37 +514,38 @@ function control_draw() {
 	        }
 	    }
 	}
+	}
 	// Keyboard shortcuts
 	if (window = 0 && text_focus = -1) {
 	    if (playing = 0) {
 	        if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
-	            if (keyboard_check_pressed(ord("N"))) new_song()
+	            if (keyboard_check_pressed(ord("N")) && !isplayer) new_song()
 	            if (keyboard_check_pressed(ord("O"))) load_song("")
-	            if (keyboard_check_pressed(ord("S"))) save_song(filename)
-	            if (keyboard_check_pressed(ord("A"))) select_all(-1, 0)
-	            if (keyboard_check_pressed(ord("A")) && keyboard_check(vk_shift)) selection_place(0)
-	            if (keyboard_check_pressed(ord("I"))) selection_invert()
-	            if (keyboard_check_pressed(ord("C"))) action_copy()
-	            if (keyboard_check_pressed(ord("X"))) action_cut()
-	            if (keyboard_check_pressed(ord("V"))) {
+	            if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename)
+	            if (keyboard_check_pressed(ord("A")) && !isplayer) select_all(-1, 0)
+	            if (keyboard_check_pressed(ord("A")) && keyboard_check(vk_shift) && !isplayer) selection_place(0)
+	            if (keyboard_check_pressed(ord("I")) && !isplayer) selection_invert()
+	            if (keyboard_check_pressed(ord("C")) && !isplayer) action_copy()
+	            if (keyboard_check_pressed(ord("X")) && !isplayer) action_cut()
+	            if (keyboard_check_pressed(ord("V")) && !isplayer) {
 	                if (selbx > -1 && selby > -1) action_paste(selbx, selby)
 	                else action_paste(starta, startb)
 	            }
-	            if (keyboard_check_pressed(ord("Z"))) action_undo()
-	            if (keyboard_check_pressed(ord("Y"))) action_redo()
-	            if (keyboard_check_pressed(ord("E"))) mode_action(1)
-	            if (keyboard_check_pressed(ord("D"))) mode_action(2)
-	            if (keyboard_check_pressed(ord("R"))) mode_action(3)
-	            if (keyboard_check_pressed(ord("F"))) mode_action(4)
-	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T")))) mode_action(5)
-	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G")))) mode_action(6)
+	            if (keyboard_check_pressed(ord("Z")) && !isplayer) action_undo()
+	            if (keyboard_check_pressed(ord("Y")) && !isplayer) action_redo()
+	            if (keyboard_check_pressed(ord("E")) && !isplayer) mode_action(1)
+	            if (keyboard_check_pressed(ord("D")) && !isplayer) mode_action(2)
+	            if (keyboard_check_pressed(ord("R")) && !isplayer) mode_action(3)
+	            if (keyboard_check_pressed(ord("F")) && !isplayer) mode_action(4)
+	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
+	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
 	        }
-	        if (keyboard_check_pressed(vk_delete) && selected > 0) {
+	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
 				selection_delete(0)
 				changed = 1
 			}
-	        if (sb_sel = 0) {
+	        if (sb_sel = 0 && !isplayer) {
 	            if (keyboard_check_pressed(vk_home)) starta = 0
 	            if (keyboard_check_pressed(vk_end)) starta = enda
 	            if (keyboard_check_pressed(vk_pageup)) starta += totalcols
@@ -547,7 +553,7 @@ function control_draw() {
 	            starta = median(0, starta, enda)
 	            sb_val[0] = starta
 	        }
-	        if (sb_sel = 1) {
+	        if (sb_sel = 1 && !isplayer) {
 	            if (keyboard_check_pressed(vk_home)) startb = 0
 	            if (keyboard_check_pressed(vk_end)) startb = endb
 	            if (keyboard_check_pressed(vk_pageup)) startb += totalrows
@@ -567,6 +573,7 @@ function control_draw() {
 	    if (keyboard_check_pressed(vk_f1)) {
 	        open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 	    }
+		if (!isplayer) {
 		// Instrument shortcuts
 	    if (keyboard_check(vk_control)) {
 		
@@ -662,6 +669,7 @@ function control_draw() {
 					}
 			}
 		}
+		}
 	}
 	if (keyboard_check_pressed(vk_f7)) {
 	    if (refreshrate = 0){
@@ -686,6 +694,7 @@ function control_draw() {
 			set_msg("FPS => 30")
 		}
 	}
+	if (!isplayer) {
 	// Selecting note blocks
 	if (select > 0) {
 	    curs = cr_handpoint
@@ -745,6 +754,7 @@ function control_draw() {
 	        draw_set_halign(fa_left)
 	    }
 	}
+	}
 	// Marker
 	if (playing = 0) metronome_played = -1
 	if (playing = 1 || forward<>0) {
@@ -753,7 +763,7 @@ function control_draw() {
 	        marker_pos += (tempo / room_speed) * (1 / currspeed) * (forward - (forward < 0 && playing = 1))
 	    }
 		//metronome
-		if (metronome) {
+		if (metronome && !isplayer) {
 			if room_speed = 60 {
 			var pos = floor(marker_pos -0.1)
 			} else pos = floor(marker_pos -0.4)
@@ -811,6 +821,7 @@ function control_draw() {
 	        }
 	    }
 	}
+	if (!isplayer) {
 	if (window = w_dragmarker) {
 	    marker_pos = (mouse_x - x1 + 2) / 32 + starta
 	    curs = cr_size_we
@@ -892,8 +903,10 @@ function control_draw() {
 	    draw_sprite(spr_marker, 4 - (section_end < section_start) * 2, x1 + 2 + a, y1 + 2)
 	    draw_sprite_ext(spr_marker, 5 - (section_end < section_start) * 2, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
 	}
+	}
 
 	marker_pos = median(0, marker_pos, enda + totalcols)
+	if (!isplayer) {
 	a = floor(marker_pos * 32 - starta * 32)
 	draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2)
 	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
@@ -1162,6 +1175,7 @@ function control_draw() {
 	if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
 	if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
 	}
+	}
 
 	// Tabs
 	if (!fullscreen) {
@@ -1176,7 +1190,7 @@ function control_draw() {
 	        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 	        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 	    }
-	    show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
+	    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
 	                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
 	                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
 	                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
@@ -1186,9 +1200,10 @@ function control_draw() {
 	                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
 								 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
 	                             "Alt + F4$Exit")
+		else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
 							
 	}
-	if (draw_tab("Edit")) {
+	if (!isplayer) if (draw_tab("Edit")) {
 	    str = ""
 	    customstr = ""
 		insmenu = 1
@@ -1247,8 +1262,9 @@ function control_draw() {
 				insmenu++
 			}
 	    }
-	    show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
+	    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
 	                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Preferences...")
+		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Preferences...")
 	}
 	if (draw_tab("Help")) {
 	    show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|GitHub...")
@@ -1266,40 +1282,45 @@ function control_draw() {
 	}
 	xx = 6
 	yy = 23
-	if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} xx += 25
-	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25
-	if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} xx += 25 + 4
+	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} if (!isplayer) xx += 25
+	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
+	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
 	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
+	if (isplayer) if (draw_icon(icons.PLAY + playing, window_width / 2 - 12, window_height / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 	xx += 25
 	if (draw_icon(icons.STOP, xx, yy, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
+	if (isplayer) if (draw_icon(icons.STOP, window_width / 2 - 12 - 100, window_height / 2 + 50, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
 	forward = 0
 	if (draw_icon(icons.BACK, xx, yy, "Rewind song", 0, 0)) {forward = -1} xx += 25
+	if (isplayer) if (draw_icon(icons.BACK, window_width / 2 - 12 - 50, window_height / 2 + 50, "Rewind song", 0, 0)) {forward = -1}
 	if (draw_icon(icons.FORWARD, xx, yy, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-	if (draw_icon(icons.RECORD, xx, yy, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} xx += 25 
-	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "Toggle looping", 0, 0)) loop_session = !loop_session xx += 25
+	if (isplayer) if (draw_icon(icons.FORWARD, window_width / 2 - 12 + 50, window_height / 2 + 50, "Fast-forward song", 0, 0)) {forward = 1}
+	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25 
+	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer) xx += 25
+	if (isplayer) if (draw_icon(icons.LOOP_INACTIVE + loop_session, window_width / 2 - 12 + 100, window_height / 2 + 50, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer)
 	if metronome {
 		if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 		else metricon = icons.METRONOME_2
 	} else {
 		metricon = icons.METRONOME_INACTIVE
 	}
-	if(draw_icon(metricon, xx, yy, "Toggle metronome", 0, 0)) metronome = !metronome
+	if (!isplayer) if(draw_icon(metricon, xx, yy, "Toggle metronome", 0, 0)) metronome = !metronome
 	xx += 25 + 4
 	if (playing = 0) record = 0
 	draw_separator(xx, yy + 3) xx += 4
-	if (draw_icon(icons.EDITMODE_KEY, xx, yy, "Edit note key", 0, editmode = 0)) {editmode = 0} xx += 25
-	if (draw_icon(icons.EDITMODE_VEL, xx, yy, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  xx += 25
-	if (draw_icon(icons.EDITMODE_PAN, xx, yy, "Edit note panning", 0, editmode = 2)) {editmode = 2} xx += 25
-	if (draw_icon(icons.EDITMODE_PIT, xx, yy, "Edit note pitch", 0, editmode = 3)) {editmode = 3} xx += 25 + 4
-	draw_separator(xx, yy + 3) xx += 4
+	if (!isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, "Edit note key", 0, editmode = 0)) {editmode = 0} if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_VEL, xx, yy, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_PAN, xx, yy, "Edit note panning", 0, editmode = 2)) {editmode = 2} if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_PIT, xx, yy, "Edit note pitch", 0, editmode = 3)) {editmode = 3} if (!isplayer) xx += 25 + 4
+	if (!isplayer) draw_separator(xx, yy + 3) if (!isplayer) xx += 4
 
 	// Expandable instrument box
 	var ins_count = ds_list_size(instrument_list)
 	var ins_icons = median(5, ceil((rw - 920) / 25), ins_count)
 	if (ins_icons = ins_count - 1) ins_icons += 1
 	var ins_rows = ceil(ins_count / ins_icons)
-	if (showinsbox) {
+	if (!isplayer) if (showinsbox) {
 		window = w_insbox
 		draw_theme_color()
 		draw_window(xx - 2, yy - 2, xx + (ins_icons * 25) + 2, yy + (ins_rows * 25) + 2)
@@ -1350,19 +1371,19 @@ function control_draw() {
 			xx += 25
 		}
 	}
-	xx += 4 draw_separator(xx, yy + 3) xx += 4
+	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4}
 	while (1) {
-	if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break
-	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break
-	if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {playing = 0 window = w_songinfoedit} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.INSTRUMENTS, xx, yy, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 190) break
+	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break}
+	if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 190) break
+	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 190) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break
 	if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
 	    open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
@@ -1372,6 +1393,7 @@ function control_draw() {
 	}
 
 	// Compatible
+	if (!isplayer) {
 	draw_separator(rw - 34, 26)
 	draw_theme_font(font_main_bold)
 	if (compatible = 1) {
@@ -1518,21 +1540,67 @@ function control_draw() {
 	draw_text(rw - 6, rh - 18, str)
 	draw_set_halign(fa_left)
 	}
+	
+	}
 
 	if (!fullscreen && show_layers) {
 		// Marker position
 		if (theme != 3) draw_set_halign(fa_right)
 		draw_theme_color()
+		if (!isplayer) {
 		draw_theme_font(font_info_med_bold)
 		if (theme != 3) draw_text(93, 52, time_str(marker_pos / tempo))
 		else draw_text(93 - 84, 52, time_str(marker_pos / tempo))
+		} else {
+		draw_theme_font(font_info_big)
+		if (theme != 3) draw_text(window_width / 2 + 70, window_height / 2 - 50, time_str(marker_pos / tempo))
+		else draw_text(window_width / 2 - 134 + 70, window_height / 2 - 50, time_str(marker_pos / tempo))
+		}
 
 		// Song length
+		if (!isplayer) {
 		draw_theme_font(font_small)
 		if (theme != 3) draw_text(93, 69, "/ " + time_str(enda / tempo))
 		else draw_text(93 - 67, 69, "/ " + time_str(enda / tempo))
+		} else {
+		draw_theme_font(font_info_med)
+		if (theme != 3) draw_text(window_width / 2 + 70, window_height / 2 - 20, "/ " + time_str(enda / tempo))
+		else draw_text(window_width / 2 - 91 + 70, window_height / 2 - 20, "/ " + time_str(enda / tempo))
+		}
 		draw_theme_font(font_main)
+		
+		if (isplayer) {
+			draw_theme_color()
+			draw_rectangle(window_width / 2 - 200, window_height / 2 + 25, window_width / 2 + 200, window_height / 2 + 25 + 2, 0)
+			if (theme != 3) {
+				draw_sprite(spr_icons, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
+			} else {
+				if (!fdark) draw_sprite(spr_icons_f, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
+				else draw_sprite(spr_icons_d, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
+			}
+			a = (mouse_rectangle(window_width / 2 - 200 + (marker_pos / enda) * 400 - 6, window_height / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(window_width / 2 - 200 - 3, window_height / 2 + 25 + 1 - 3, 400 + 6, 6))
+			if (a || aa) {
+				curs = cr_handpoint
+				if (mouse_check_button(mb_left)) {
+					curs = cr_drag
+					aa = 1
+					if (mouse_x >= window_width / 2 - 200 && mouse_x <= window_width / 2 + 200) {
+						marker_pos = ((mouse_x - (window_width / 2 - 200)) / 400) * enda
+					} else if (mouse_x <= window_width / 2 - 200) {
+						marker_pos = 0
+					} else if (mouse_x >= window_width / 2 + 200) {
+						marker_pos = enda
+					}
+				}
+				if (mouse_check_button_released(mb_left)) aa = 0
+			}
+			draw_set_halign(fa_left)
+			draw_theme_font(font_info_med)
+			draw_text(window_width / 2 - 200, window_height / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
+			draw_theme_font(font_main)
+		}
 
+		if (!isplayer) {
 		// Bars-beats-sixteenths
 		draw_sprite(spr_tempobox, 0, 184, 57)
 		draw_set_halign(fa_right)
@@ -1574,10 +1642,12 @@ function control_draw() {
 		    if (a != tempo) changed = 1
 		    if (!mouse_check_button(mb_left)) window = w_releasemouse
 		}
+		}
+		draw_set_halign(fa_left)
 	}
 
 	// Piano
-	if (!fullscreen && show_piano) {
+	if (!fullscreen && show_piano && !isplayer) {
 		draw_piano(floor(rw / 2 - (keysshow * 39) / 2), rh - 154, keysshow, totalcols)
 		if (mouse_rectangle(floor(rw / 2 - (keysshow * 39) / 2), rh - 162, keysshow * 39, 136) && window = 0) curs = cr_handpoint
 	}
@@ -1617,7 +1687,7 @@ function control_draw() {
 		window = -1
 		draw_downloadprogress("Update", "Downloading update...", downloaded_size, total_size)
 	}
-
+	
 	window_set_cursor(curs)
 	mouse_xprev = mouse_x
 	mouse_yprev = mouse_y

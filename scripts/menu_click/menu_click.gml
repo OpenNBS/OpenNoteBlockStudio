@@ -278,6 +278,47 @@ function menu_click(argument0) {
 			else if (sel = 3) theme = 3
 			break
 		}
+		case "filep": {
+	        if (sel = 0) load_song("")
+	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
+	        for (c = 0; c < b; c += 1) {
+	            if (sel = 2 + c && recent_song[c] != "") {
+	                if (!file_exists_lib(recent_song[c])) {
+	                    message("Could not find file:\n" + recent_song[c], "Error")
+	                    for (d = 0; d < 10; d += 1) {
+	                        if (recent_song[d] = recent_song[c]) {
+	                            for (e = d; e < 10; e += 1) {
+	                                recent_song[e] = recent_song[e + 1]
+	                                recent_song_time[e] = recent_song_time[e + 1]
+	                            }
+	                        }
+	                    }
+	                    recent_song[10] = ""
+	                    recent_song_time[10] = 0
+						save_settings()
+	                } else {
+	                    load_song(recent_song[c])
+	                }
+	            }
+	        }
+	        if (sel = b + 2) {
+	            for (c = 0; c < 11; c += 1) {
+	                recent_song[c] = ""
+	                recent_song_time[c] = 0
+	            }
+				save_settings()
+	        }
+	        if (sel = b + 3) open_midi("")
+	        if (sel = b + 4) open_schematic("")
+	        if (sel = b + 5) game_end()
+	        break
+	    }
+		case "settingsp": {
+	        if (sel = 0) window = w_songinfo
+	        if (sel = 1) window = w_stats
+	        if (sel = 2) window = w_preferences
+	        break
+	    }
 	}
 	mouse_clear(mb_left)
 	io_clear()

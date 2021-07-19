@@ -89,7 +89,7 @@ function draw_window_datapack_export() {
 		//Name
 		draw_text(x1 + 16, y1 + 208, "Unique name:")
 		if (song_name != "") dat_name = song_name
-		else if (filename != "") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
+		else if (filename != "" && filename != "-player") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
 		else dat_name = ""
 		dat_name = draw_inputbox(50,x1 + 16, y1 + 225,145,dat_name,"This name will be used in the command"+br+"for playing the song inside the game.")
 

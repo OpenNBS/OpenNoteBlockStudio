@@ -12,12 +12,19 @@ function control_create() {
 
 	// Window
 	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+	p_num = parameter_count()
+	isplayer = 0
+	for (var i = 0; i < p_num; i += 1) {
+		if (parameter_string(i) = "-player") isplayer = 1
+	}
+	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
 	window_height = 0
-	window_maximize()
+	if (!isplayer) window_maximize()
 	window_set_focus()
 	window_set_min_width(100)
 	window_set_min_height(100)
+	if (isplayer) window_set_size(800, 500)
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -57,7 +64,7 @@ function control_create() {
 	songfolder = songs_directory
 	patternfolder = pattern_directory
 	icons_init()
-	refreshrate = 0 //0 = 30fps, 1 = 60fps
+	refreshrate = 0 //0 = 30fps, 1 = 60fps, 2 = 120fps, 3 = 144fps, 4 = Unlimited
 	fade = 0
 	rhval = 270
 	fullscreen = 0
@@ -68,11 +75,13 @@ function control_create() {
 	tonextbackup = 0
 	presence = 1
 	presencewindow = 0
+	aa = 0
 
 	// File
 	filename = ""
 	changed = 0
 	midifile = ""
+	midiname = ""
 	song_midi = ""
 	for (a = 0; a < 11; a += 1) {
 	    mididevice_instrument[a] = -1
@@ -428,7 +437,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "") load_song(filename)
+		if (filename != "" && filename != "-player") load_song(filename)
 	}
 
 	log("Startup OK")

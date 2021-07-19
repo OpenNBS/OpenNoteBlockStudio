@@ -9,7 +9,7 @@ function confirm() {
 	    gameend = 0
 	a = 0
 
-	if (changed) {
+	if (changed && !isplayer) {
 	    if (filename = "") {
 	        if (!gameend)
 	            a = message_yesnocancel("Do you want to save the song?", "Confirm")

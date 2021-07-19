@@ -17,7 +17,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	}
 
 	menu_shown = argument0
-	playing = 0
+	if (!isplayer) playing = 0
 	window += w_menu
 
 	var obj, str, submenu, n;
