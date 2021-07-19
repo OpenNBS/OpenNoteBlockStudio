@@ -1267,7 +1267,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Preferences...")
 	}
 	if (draw_tab("Help")) {
-	    show_menu_ext("help", 109, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|GitHub...")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|GitHub...")
 	}
 
 	// Icons
@@ -1578,7 +1578,7 @@ function control_draw() {
 				if (!fdark) draw_sprite(spr_icons_f, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
 				else draw_sprite(spr_icons_d, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
 			}
-			a = (mouse_rectangle(window_width / 2 - 200 + (marker_pos / enda) * 400 - 6, window_height / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(window_width / 2 - 200 - 3, window_height / 2 + 25 + 1 - 3, 400 + 6, 6))
+			a = (mouse_rectangle(window_width / 2 - 200 + (marker_pos / enda) * 400 - 6, window_height / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(window_width / 2 - 200 - 3, window_height / 2 + 25 + 1 - 3, 400 + 6, 6) && window = 0)
 			if (a || aa) {
 				curs = cr_handpoint
 				if (mouse_check_button(mb_left)) {
