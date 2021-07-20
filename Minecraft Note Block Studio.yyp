@@ -586,7 +586,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"NBS Player Mode.bat","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.2.560",
+    "IDEVersion": "2.3.3.570",
   },
   "resourceVersion": "1.4",
   "name": "Minecraft Note Block Studio",
