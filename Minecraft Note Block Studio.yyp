@@ -252,6 +252,7 @@
     {"id":{"name":"draw_text_url","path":"scripts/draw_text_url/draw_text_url.yy",},"order":29,},
     {"id":{"name":"audio_file_add","path":"scripts/audio_file_add/audio_file_add.yy",},"order":0,},
     {"id":{"name":"audio_file_decode","path":"scripts/audio_file_decode/audio_file_decode.yy",},"order":1,},
+    {"id":{"name":"Taskbar","path":"extensions/Taskbar/Taskbar.yy",},"order":1,},
     {"id":{"name":"fnt_wslui_bold","path":"fonts/fnt_wslui_bold/fnt_wslui_bold.yy",},"order":8,},
     {"id":{"name":"audio_sound_add","path":"scripts/audio_sound_add/audio_sound_add.yy",},"order":2,},
     {"id":{"name":"audio_start","path":"scripts/audio_start/audio_start.yy",},"order":3,},
