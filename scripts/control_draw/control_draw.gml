@@ -1287,18 +1287,18 @@ function control_draw() {
 	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
 	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
-	if (isplayer) if (draw_icon(icons.PLAY + playing, window_width / 2 - 12, window_height / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
+	if (isplayer) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 	xx += 25
 	if (draw_icon(icons.STOP, xx, yy, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
-	if (isplayer) if (draw_icon(icons.STOP, window_width / 2 - 12 - 100, window_height / 2 + 50, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
+	if (isplayer) if (draw_icon(icons.STOP, rw / 2 - 12 - 100, rh / 2 + 50, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
 	forward = 0
 	if (draw_icon(icons.BACK, xx, yy, "Rewind song", 0, 0)) {forward = -1} xx += 25
-	if (isplayer) if (draw_icon(icons.BACK, window_width / 2 - 12 - 50, window_height / 2 + 50, "Rewind song", 0, 0)) {forward = -1}
+	if (isplayer) if (draw_icon(icons.BACK, rw / 2 - 12 - 50, rh / 2 + 50, "Rewind song", 0, 0)) {forward = -1}
 	if (draw_icon(icons.FORWARD, xx, yy, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-	if (isplayer) if (draw_icon(icons.FORWARD, window_width / 2 - 12 + 50, window_height / 2 + 50, "Fast-forward song", 0, 0)) {forward = 1}
+	if (isplayer) if (draw_icon(icons.FORWARD, rw / 2 - 12 + 50, rh / 2 + 50, "Fast-forward song", 0, 0)) {forward = 1}
 	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25 
 	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer) xx += 25
-	if (isplayer) if (draw_icon(icons.LOOP_INACTIVE + loop_session, window_width / 2 - 12 + 100, window_height / 2 + 50, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer)
+	if (isplayer) if (draw_icon(icons.LOOP_INACTIVE + loop_session, rw / 2 - 12 + 100, rh / 2 + 50, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer)
 	if metronome {
 		if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 		else metricon = icons.METRONOME_2
@@ -1553,8 +1553,8 @@ function control_draw() {
 		else draw_text(93 - 84, 52, time_str(marker_pos / tempo))
 		} else {
 		draw_theme_font(font_info_big)
-		if (theme != 3) draw_text(window_width / 2 + 70, window_height / 2 - 50, time_str(marker_pos / tempo))
-		else draw_text(window_width / 2 - 134 + 70, window_height / 2 - 50, time_str(marker_pos / tempo))
+		if (theme != 3) draw_text(rw / 2 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
+		else draw_text(rw / 2 - 134 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
 		}
 
 		// Song length
@@ -1564,31 +1564,31 @@ function control_draw() {
 		else draw_text(93 - 67, 69, "/ " + time_str(enda / tempo))
 		} else {
 		draw_theme_font(font_info_med)
-		if (theme != 3) draw_text(window_width / 2 + 70, window_height / 2 - 20, "/ " + time_str(enda / tempo))
-		else draw_text(window_width / 2 - 91 + 70, window_height / 2 - 20, "/ " + time_str(enda / tempo))
+		if (theme != 3) draw_text(rw / 2 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
+		else draw_text(rw / 2 - 91 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
 		}
 		draw_theme_font(font_main)
 		
 		if (isplayer) {
 			draw_theme_color()
-			draw_rectangle(window_width / 2 - 200, window_height / 2 + 25, window_width / 2 + 200, window_height / 2 + 25 + 2, 0)
+			draw_rectangle(rw / 2 - 200, rh / 2 + 25, rw / 2 + 200, rh / 2 + 25 + 2, 0)
 			if (theme != 3) {
-				draw_sprite(spr_icons, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
+				draw_sprite(spr_icons, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
 			} else {
-				if (!fdark) draw_sprite(spr_icons_f, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
-				else draw_sprite(spr_icons_d, 9, window_width / 2 - 200 + (marker_pos / enda) * 400 - 12, window_height / 2 + 25 + 1 - 11)
+				if (!fdark) draw_sprite(spr_icons_f, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
+				else draw_sprite(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
 			}
-			a = (mouse_rectangle(window_width / 2 - 200 + (marker_pos / enda) * 400 - 6, window_height / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(window_width / 2 - 200 - 3, window_height / 2 + 25 + 1 - 3, 400 + 6, 6) && window = 0)
+			a = (mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(rw / 2 - 200 - 3, rh / 2 + 25 + 1 - 3, 400 + 6, 6) && window = 0)
 			if (a || aa) {
 				curs = cr_handpoint
 				if (mouse_check_button(mb_left)) {
 					curs = cr_drag
 					aa = 1
-					if (mouse_x >= window_width / 2 - 200 && mouse_x <= window_width / 2 + 200) {
-						marker_pos = ((mouse_x - (window_width / 2 - 200)) / 400) * enda
-					} else if (mouse_x <= window_width / 2 - 200) {
+					if (mouse_x >= rw / 2 - 200 && mouse_x <= rw / 2 + 200) {
+						marker_pos = ((mouse_x - (rw / 2 - 200)) / 400) * enda
+					} else if (mouse_x <= rw / 2 - 200) {
 						marker_pos = 0
-					} else if (mouse_x >= window_width / 2 + 200) {
+					} else if (mouse_x >= rw / 2 + 200) {
 						marker_pos = enda
 					}
 				}
@@ -1596,7 +1596,7 @@ function control_draw() {
 			}
 			draw_set_halign(fa_left)
 			draw_theme_font(font_info_med)
-			draw_text(window_width / 2 - 200, window_height / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
+			draw_text(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
 			draw_theme_font(font_main)
 		}
 
