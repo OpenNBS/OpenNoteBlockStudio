@@ -43,6 +43,7 @@ function control_create() {
 	dontplace = 0
 	vers = version
 	menu_shown = ""
+	show_oldwarning = 1
 	songfolder = songs_directory
 	patternfolder = pattern_directory
 	icons_init()
