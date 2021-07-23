@@ -18,11 +18,7 @@ function draw_layericon(argument0, argument1, argument2, argument3, argument4, a
 	} else {
 	    draw_sprite(spr_frame4, a + 3 * theme, xx, yy)
 	}
-	if(theme != 3) {
 	draw_sprite_ext(spr_layericons, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, color, 0.7)
-	} else {
-	draw_sprite_ext(spr_layericons_f, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, color, 0.7)
-	}
 	return (a && mouse_check_button_released(mb_left))
 
 

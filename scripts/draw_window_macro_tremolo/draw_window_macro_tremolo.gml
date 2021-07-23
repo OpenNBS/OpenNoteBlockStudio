@@ -8,13 +8,11 @@ function draw_window_macro_tremolo() {
 	y1 = floor(rh / 2 - 145)
 	draw_window(x1, y1, x1 + 150, y1 + 240)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Tremolo")
 	draw_set_color(c_red)
 	draw_text(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
 	draw_theme_color()
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (theme = 0) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 208, 0)

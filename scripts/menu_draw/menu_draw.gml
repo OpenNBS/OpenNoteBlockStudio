@@ -1,8 +1,7 @@
 function menu_draw() {
 	// menu_draw()
 	if (ani < 1) ani += 0.1
-	var m, menux, menuy, noclick, o, theme;
-	theme = obj_controller.theme;
+	var m, menux, menuy, noclick, o;
 	menux[0] = sx
 	menuy[0] = sy
 	sel = -1
@@ -73,11 +72,7 @@ function menu_draw() {
 	                draw_text(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
 	                draw_set_halign(fa_left)
 	            }
-				if (theme != 3) {
 	            if (item_image[m, i] > -1) draw_sprite(spr_icons, item_image[m, i], dx + 2, dy + iy - 6)
-				} else {
-				if (item_image[m, i] > -1) draw_sprite(spr_icons_f, item_image[m, i], dx + 2, dy + iy - 6)
-				}
 				var color;
 				if(obj_controller.theme = 2) {
 					if(issel)color = c_black;
@@ -86,11 +81,7 @@ function menu_draw() {
 					if(issel)color = c_white;
 					else color = c_black;
 				}	
-				if (theme != 3) {
 	            if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
-				} else {
-				if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_f, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
-				}
 	            draw_set_alpha(1)
 	            iy += 22
 	        }

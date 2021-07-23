@@ -88,7 +88,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	    inserttext = ""
 	    lh = string_height(" ")
 	    mouseover = (mouse_x >= xx && mouse_x < xx + w && mouse_y >= yy && mouse_y < yy + h)
-        
+    
 	    if (text_focus = i) {
 	        if (text_lastfocus != i || text_mline >= text_lines[i]) {
 	            text_marker = current_time

@@ -1,6 +1,6 @@
 function control_draw() {
 	// control_draw()
-	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev, colr;
+	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev;
 
 	var targetspeed = 1000000 / room_speed
 	var currspeed = targetspeed / delta_time
@@ -23,12 +23,8 @@ function control_draw() {
 	draw_set_alpha(1)
 	draw_theme_color()
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	editline += 1
 	if refreshrate = 1 game_set_speed(60,gamespeed_fps)
-	if refreshrate = 2 game_set_speed(120,gamespeed_fps)
-	if refreshrate = 3 game_set_speed(144,gamespeed_fps)
-	if refreshrate = 4 game_set_speed(114514,gamespeed_fps)
 	if (editline > 60) editline = 0
 	if (delay > 0) delay -= 1 / (room_speed / 20)
 	if (delay < 0) delay = 0
@@ -95,7 +91,6 @@ function control_draw() {
 	if (theme = 0) window_background = 15790320
 	if (theme = 1) window_background = 13160660
 	if (theme = 2) window_background = c_dark
-	if (theme = 3) window_background = c_white
 	draw_clear(window_background)
 
 	iconcolor = c_black
@@ -664,7 +659,6 @@ function control_draw() {
 	// Timeline and markers
 	draw_sprite_ext(spr_timeline, (0 + theme = 2) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
 	draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 	draw_set_halign(fa_left)
 	draw_theme_color()
 	if (blackout) draw_set_color(c_white)
@@ -837,25 +831,23 @@ function control_draw() {
 	    draw_set_alpha(1)
 	    a = floor(section_start * 32 - starta * 32)
 	    draw_sprite(spr_marker, 2 + (section_end < section_start) * 2, x1 + 2 + a, y1 + 2)
-	    draw_sprite_ext(spr_marker, 3 + (section_end < section_start) * 2, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	    draw_sprite_ext(spr_marker, 3 + (section_end < section_start) * 2, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 5, 0, -1, 1)
 	    a = floor(section_end * 32 - starta * 32)
 	    draw_sprite(spr_marker, 4 - (section_end < section_start) * 2, x1 + 2 + a, y1 + 2)
-	    draw_sprite_ext(spr_marker, 5 - (section_end < section_start) * 2, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	    draw_sprite_ext(spr_marker, 5 - (section_end < section_start) * 2, x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 5, 0, -1, 1)
 	}
 
 	marker_pos = median(0, marker_pos, enda + totalcols)
 	a = floor(marker_pos * 32 - starta * 32)
 	draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2)
-	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 6, 0, -1, 1)
 
 
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (!fullscreen) {
 		draw_set_color(15790320)
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
-		if (theme = 3) draw_set_color(c_white)
 		draw_rectangle(0, 0, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
 		draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
@@ -898,7 +890,6 @@ function control_draw() {
 	if (theme = 0) draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
-	if (theme = 3) draw_set_color(c_white)
 	draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
 		fullscreen = !fullscreen
@@ -921,16 +912,11 @@ function control_draw() {
 		if (!fullscreen && show_layers) {
 			// Name
 			m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
-		    draw_sprite(spr_layerbox, 0 + (theme = 2) + 2 * (theme = 3), x1, y1)
+		    draw_sprite(spr_layerbox, 0 + (theme = 2), x1, y1)
 		    popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
 			draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 			prev = layername[startb + b]
-			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
-			} else {
-			layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.")
-			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
 				if(theme = 2) draw_set_color(make_color_rgb(160, 160, 160))
@@ -946,20 +932,14 @@ function control_draw() {
 		        } else {
 		            a = layervol[startb + b]
 		        }
-				if(theme != 3) {
 		        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-				} else {
-				draw_sprite_ext(spr_volume_f, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-				}
 		        popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
 		        if (c) {
 		            draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 		            draw_set_halign(fa_center)
 		            draw_text(x1 + 98, y1 + 18, string(a) + "%")
 		            draw_set_halign(fa_left)
 		            draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		            curs = cr_size_ns
 		            if (mouse_check_button_pressed(mb_left)) {
 		                window = w_dragvol
@@ -976,11 +956,7 @@ function control_draw() {
 		        } else {
 		            a = layerstereo[startb + b]
 		        }
-				if (theme != 3) {
 		        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-				} else {
-				draw_sprite_ext(spr_stereo_f, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
-				}
 				var stereostr
 				if (a > 100) { stereostr = "R " + string(a-100) }
 				if (a = 100) { stereostr = "Center" }
@@ -988,14 +964,12 @@ function control_draw() {
 		        popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo pan: " + stereostr + "\n(Click and drag to change)")
 		        if (c) {
 		            draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 		            draw_set_halign(fa_center)
 					if a > 100 {draw_text(x1 + 116, y1 + 18, "R " + string(a-100))}
 					if a = 100 {draw_text(x1 + 116, y1 + 18, "MONO")}
 					if a < 100 {draw_text(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
 		            draw_set_halign(fa_left)
 		            draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		            curs = cr_size_ns
 		            if (mouse_check_button_pressed(mb_left)) {
 		                window = w_dragstereo
@@ -1122,7 +1096,6 @@ function control_draw() {
 	if (theme = 0) draw_sprite_ext(spr_tabbar, 0, 0, 0, rw, 1, 0, -1, 1)
 	tab_x = 1
 	draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 	draw_theme_color()
 	if (draw_tab("File")) {
 	    str = ""
@@ -1209,15 +1182,9 @@ function control_draw() {
 	}
 
 	// Icons
-	if (theme != 3) {
 	draw_sprite(spr_iconbar, 0, 0, 20)
 	draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
 	draw_sprite(spr_iconbar, 2, rw - 2, 20)
-	} else {
-	draw_sprite(spr_iconbar, 3, 0, 20)
-	draw_sprite_ext(spr_iconbar, 4, 2, 20, (rw - 4), 1, 0, -1, 1)
-	draw_sprite(spr_iconbar, 5, rw - 2, 20)
-	}
 	xx = 6
 	yy = 23
 	if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} xx += 25
@@ -1328,49 +1295,30 @@ function control_draw() {
 	// Compatible
 	draw_separator(rw - 34, 26)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	if (compatible = 1) {
-		if (theme != 3) {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
 		draw_sprite(spr_minecraft, 0, rw - 59, 25)
-		} else {
-		draw_sprite(spr_minecraft_f, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 0, rw - 59, 25)
-		}
 		draw_set_color(c_green)
 		if (theme == 2) draw_set_color(c_lime)
 		draw_text(rw - 166, 28, "Fully compatible")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
 	} else if (compatible = 2) {
-		if (theme != 3) {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
 		draw_sprite(spr_minecraft, 1, rw - 59, 25)
-		} else {
-		draw_sprite(spr_minecraft_f, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1, rw - 59, 25)
-		}
 		draw_set_color(c_orange)
 		draw_text(rw - 154, 28, "Data pack only")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
 	} else {
-		if (theme != 3) {
 		draw_sprite(spr_minecraft, 2, rw - 30, 25)
 		draw_sprite(spr_minecraft, 1, rw - 59, 25)
-		} else {
-		draw_sprite(spr_minecraft_f, 2, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1, rw - 59, 25)
-		}
 		draw_set_color(c_red)
 		draw_text(rw - 180, 28, "Resource pack only")
 		draw_theme_color()
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
 	}
 
@@ -1482,15 +1430,12 @@ function control_draw() {
 		draw_set_halign(fa_right)
 		draw_theme_color()
 		draw_set_font(fnt_info_med_bold)
-		if (theme = 3) draw_set_font(fnt_segoe_info_med_bald)
 		draw_text(93, 52, time_str(marker_pos / tempo))
 
 		// Song length
 		draw_set_font(fnt_small)
-		if (theme = 3) draw_set_font(fnt_segoe_small)
 		draw_text(93, 69, "/ " + time_str(enda / tempo))
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 
 		// Bars-beats-sixteenths
 		draw_sprite(spr_tempobox, 0, 184, 57)
@@ -1527,7 +1472,7 @@ function control_draw() {
 		if (window = w_dragtempo) {
 		    curs = cr_size_ns
 		    tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
-		    tempodrag = median(0.25, tempodrag, 120)
+		    tempodrag = median(0.25, tempodrag, 30)
 		    a = tempo
 		    tempo = floor(tempodrag * 4) / 4
 		    if (a != tempo) changed = 1

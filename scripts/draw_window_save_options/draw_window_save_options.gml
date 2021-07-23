@@ -7,10 +7,8 @@ function draw_window_save_options() {
 	y1 = floor(rh / 2 - 90)
 	draw_window(x1, y1, x1 + 140, y1 + 162)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Save options")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (theme = 0) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 132, 0)

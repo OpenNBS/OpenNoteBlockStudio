@@ -5,27 +5,16 @@ function draw_window_schematic_export() {
 	x1 = floor(rw / 2 - 275)
 	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 550, y1 + 400)
-	if (theme = 3){
-	draw_set_color(13421772)
-	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
-	draw_set_color(c_black)
-	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Schematic Export")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 
 	b = 8
 	str[0] = "Design"
 	str[1] = "Blocks"
 	nsel = -1
 	menun = -1
-	if (theme != 3) {
 	if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.") && wmenu = 0) sch_exp_remember=!sch_exp_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.") && wmenu = 0) sch_exp_remember=!sch_exp_remember
-	}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 	for (a = 0; a < 2; a += 1) {
@@ -42,27 +31,23 @@ function draw_window_schematic_export() {
 	    if (mouse_check_button_pressed(mb_left) && c && wmenu = 0) nsel = a
 	    b += string_width(str[a]) + 12
 	}
-	if (theme = 0 || theme = 3) {
+	if (theme = 0) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
-		if (theme != 3) {
 	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
-		} else {
-		draw_roundrect(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 25, 0)
-		}
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
+	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	} else if(theme = 1){
-	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 26)
-	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
-	    draw_sprite(spr_tabbuttons, 26, x1 + stabx + stabw - 1, y1 + 26)
+	    draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
+	    draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
+	    draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}else{
 		draw_set_color(c_dark)
@@ -94,27 +79,14 @@ function draw_window_schematic_export() {
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
 	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
-	    if (theme != 3) {
-		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked
+	    if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked
 	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.")) sch_exp_compress=!sch_exp_compress
-		} else {
-		if (draw_switch(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.")) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_switch(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.")) sch_exp_compress=!sch_exp_compress
-		}
-		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-			if (theme != 3) {
+	    if (sch_exp_layout = 0 || sch_exp_layout = 1) {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.")) sch_exp_minecart=!sch_exp_minecart
-			} else {
-			if (draw_switch(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.")) sch_exp_minecart=!sch_exp_minecart
-			}
 	        if (draw_checkbox(x1 + 170 + 16, y1 + 310, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
-			if (sch_exp_layout = 0) {
-				if (theme != 3) {
+	        if (sch_exp_layout = 0) {
 	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.")) sch_exp_loop=!sch_exp_loop
-				} else {
-				if (draw_switch(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.")) sch_exp_loop=!sch_exp_loop
-				}
-			}
+	        }
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
 	    }

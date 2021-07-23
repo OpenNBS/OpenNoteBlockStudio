@@ -6,10 +6,8 @@ function draw_window_clip_editor() {
 	y1 = floor(rh / 2 - 215)
 	draw_window(x1, y1, x1 + 440, y1 + 430)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Secret Clipboard Editor")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (theme = 0) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 434, y1 + 392, 0)

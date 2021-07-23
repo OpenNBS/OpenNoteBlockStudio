@@ -9,14 +9,12 @@ function draw_window_macro_stagger() {
 	draw_window(x1, y1, x1 + 150, y1 + 160)
 	draw_theme_color()
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Stagger")
 	draw_set_color(c_red)
 	draw_text(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
 	draw_theme_color()
 	pattern = ""
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (theme = 0) {
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 11, y1 + 26, x1 + 154, y1 + 102, 0)
@@ -27,7 +25,6 @@ function draw_window_macro_stagger() {
 
 	pattern = draw_textarea(58, x1 + 20, y1 + 60, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	draw_text(x1 + 25, y1 + 92,"This may replace \nlower note blocks!")
 	if (draw_button2(x1 + 15, y1 + 128, 60, "OK")) {
 		if string_count("|", pattern) = 0 {

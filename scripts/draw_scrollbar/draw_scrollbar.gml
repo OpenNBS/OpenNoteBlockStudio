@@ -58,11 +58,7 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	        if (sb_drag = i) ind = 2
 		
 			draw_sprite_ext(spr_scrollbar_h_bar_fill,(theme * 3) + ind, xx + 20 + bpos, yy, floor(bwh) - 4, 1, 0, -1, 1)
-			if (theme != 3) {
 			draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind, xx + 17 + bpos, yy)
-			} else {
-			draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind, xx + 17 + bpos - 1, yy)
-			}
 			draw_sprite(spr_scrollbar_h_bar_right, (theme * 3) + ind, xx + 17 + bpos + ceil(bwh - 2), yy)	
 			if (bwh > 20) draw_sprite(spr_scrollbar_h_bar_handle, (theme * 3) + ind, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
 		
@@ -187,11 +183,7 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	        if (sb_drag = i) ind = 2
 		
 			draw_sprite_ext(spr_scrollbar_v_bar_fill,(theme * 3) + ind, xx, yy + 20 + bpos, 1, floor(bwh) - 6, 0, -1, 1)
-			if (theme != 3) {
 			draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind, xx, yy + 17 + bpos)
-			} else {
-			draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind, xx, yy + 17 + bpos - 1)
-			}
 			draw_sprite(spr_scrollbar_v_bar_down, (theme * 3) + ind, xx, yy + 17 + bpos + ceil(bwh - 6))	
 			if (bwh > 20) draw_sprite(spr_scrollbar_v_bar_handle, (theme * 3) + ind, xx, yy + 17 + bpos + floor(bwh / 2) - 8)
 		

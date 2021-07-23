@@ -7,16 +7,9 @@ function draw_window_midi_import() {
 	x1 = floor(rw / 2 - 300)
 	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 600, y1 + 400)
-	if (theme = 3){
-	draw_set_color(13421772)
-	draw_rectangle(x1+1,y1+1,x1+598,y1+148,0)
-	draw_set_color(c_black)
-	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "MIDI Import")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "Remove silent parts at beginning", "Whether to remove any silent parts\nat the beginning of the song.") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "Name layers...", "If the layers should be given names\ndepending on the data in the MIDI file.") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "...after patches", "If the layers should be named\nafter the instruments in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
@@ -28,11 +21,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
 	if (draw_checkbox(x1 + 300, y1 + 112, w_midi_precision, "Double time precision", "Whether to use twice as much space between\neach note to increase the placement precision.") && wmenu = 0) w_midi_precision=!w_midi_precision
-	if (theme != 3) {
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.") && wmenu = 0) w_midi_remember=!w_midi_remember
-	}
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi()}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0) {midifile = "" w_midi_tab = 0 window = 0}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
@@ -77,27 +66,23 @@ function draw_window_midi_import() {
 	    if (mouse_check_button_pressed(mb_left) && c) nsel = a
 	    b += string_width(str[a]) + 12
 	}
-	if (theme = 0 || theme = 3) {
+	if (theme = 0) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 0)
+	    draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 1)
+	    draw_rectangle(x1 + 6, y1 + 146, x1 + 594, y1 + 362, 1)
 	    draw_set_color(c_white)
-		if (theme != 3) {
 	    draw_rectangle(x1 + stabx + 1, y1 + 127, x1 + stabx + stabw, y1 + 126 + 20, 0)
-		} else {
-		draw_roundrect(x1 + stabx + 1, y1 + 127, x1 + stabx + stabw, y1 + 126 + 25, 0)
-		}
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
+	    draw_rectangle(x1 + stabx, y1 + 126, x1 + stabx + stabw, y1 + 126 + 20, 1)
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + stabx + 1, y1 + 146, x1 + stabx + stabw - 1, y1 + 147, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])
 	} else if (theme = 1){
-	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 126)
-	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 126, stabw / 2 - 1, 1, 0, -1, 1)
-	    draw_sprite(spr_tabbuttons, 26, x1 + stabx + stabw - 1, y1 + 126)
+	    draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 126)
+	    draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 126, stabw / 2 - 1, 1, 0, -1, 1)
+	    draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 126)
 	    draw_text(x1 + stabx + 8, y1 + 128, str[w_midi_tab])
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + 9, y1 + 149, x1 + 589, y1 + 358, 0)
@@ -120,14 +105,12 @@ function draw_window_midi_import() {
 	draw_set_halign(fa_right)
 	draw_text(x1 + 590, y1 + 6, midifile)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	if (midi_songlength > 0) {
 	    draw_text(x1 + 590, y1 + 6 + string_height(midifile), time_str(midi_songlength))
 	} else {
 	    draw_text(x1 + 590, y1 + 6 + string_height(midifile), "Song tempo never defined")
 	}
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	draw_set_halign(fa_left)
 	if (w_midi_tab = 0) {
 	    tabs = 5

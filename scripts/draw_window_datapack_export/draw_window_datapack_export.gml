@@ -5,16 +5,9 @@ function draw_window_datapack_export() {
 	x1 = floor(rw / 2 - 275)
 	y1 = floor(rh / 2 - 215)
 	draw_window(x1, y1, x1 + 550, y1 + 430)
-	if (theme = 3){
-	draw_set_color(13421772)
-	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
-	draw_set_color(c_black)
-	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Data Pack Export")
 	draw_set_font(fnt_main) 
-		if (theme = 3) draw_set_font(fnt_segoe)
 
 	b = 8
 	str[0] = "Settings"
@@ -36,27 +29,23 @@ function draw_window_datapack_export() {
 	    b += string_width(str[a]) + 12
 	}
 	//Background panel
-	if (theme = 0 || theme = 3) {
+	if (theme = 0) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 392, 0) 
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 392, 1)
 	    draw_set_color(c_white)
-		if (theme != 3) {
 	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
-		} else {
-		draw_roundrect(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 25, 0)
-		}
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
+	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])
 	} else if(theme = 1){
-	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 26)
-	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
-	    draw_sprite(spr_tabbuttons, 26, x1 + stabx + stabw - 1, y1 + 26)
+	    draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
+	    draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
+	    draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_dat])
 	}else{
 		draw_set_color(c_dark)
@@ -104,11 +93,9 @@ function draw_window_datapack_export() {
 		//Preview
 		draw_text(x1 + 16, y1 + 348, "Command preview:")
 		draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 		if (string_path(dat_name) = "") draw_set_color(c_gray)
 		draw_text(x1 + 16, y1 + 365, dat_preview(dat_name, dat_namespace, dat_path))
 		draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 		draw_theme_color()
 
 		//Source
@@ -124,7 +111,6 @@ function draw_window_datapack_export() {
 		if (draw_radiobox(x1 + 264, y1 + 285, dat_source = "voice", "voice", "Controlled by Voice/Speech slider")) dat_source = "voice"
 		if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "weather", "Controlled by Weather slider")) dat_source = "weather"
 
-		if (theme != 3) {
 		//Export as ZIP
 		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
 
@@ -136,12 +122,6 @@ function draw_window_datapack_export() {
 
 		//Radius
 		if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
-		} else {
-		if (draw_switch(x1 + 192, y1 + 334, dat_usezip, "Export as ZIP", "Whether to export the data pack as a ZIP file."+br+"If unchecked, it will be saved as a folder instead.")) dat_usezip=!dat_usezip
-		if (draw_switch(x1 + 362, y1 + 213, dat_includelocked, "Include locked layers", "Whether to include locked layers in the data pack.")) dat_includelocked=!dat_includelocked
-		if (draw_switch(x1 + 362, y1 + 238, dat_includeoutofrange, "Include out-of-range notes", "Whether to include notes that don't fall into the 2 octave range supported by"+br+"Minecraft. This will require an additional resource pack you can get below.")) dat_includeoutofrange = !dat_includeoutofrange
-		if (draw_switch(x1 + 362, y1 + 263, dat_enableradius, "Nearby listening", "Whether to let all players in a given"+br+"radius hear the music as well.")) dat_enableradius = !dat_enableradius
-		}
 		if(dat_enableradius) { 
 			dat_radius = median(16, draw_dragvalue(6, x1 + 490, y1 + 283, dat_radius, 2),100000) 
 			dat_radiusvalue = 1 + (dat_radius - 16) * 0.06
@@ -152,11 +132,7 @@ function draw_window_datapack_export() {
 		draw_theme_color()
 
 		//Looping
-		if (theme != 3) {
 		if (draw_checkbox(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
-		} else {
-		if (draw_switch(x1 + 362, y1 + 313, dat_enablelooping, "Enable looping", "If enabled, the song will loop at the"+br+"end of playback instead of stopping.")) dat_enablelooping = !dat_enablelooping
-		}
 		if(dat_enablelooping) { 
 			loopstart = median(0, draw_dragvalue(7, x1 + 490, y1 + 333, loopstart, 0.5), obj_controller.enda)
 		}
@@ -171,11 +147,7 @@ function draw_window_datapack_export() {
 		}
 	
 	} else {
-		if (theme != 3) {
 		if (draw_checkbox(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
-		} else {
-		if (draw_switch(x1 + 33, y1 + 55, dat_visualizer, "Enable visualizer", "NOTE: Please use a VOID world as falling blocks will pile up!")) dat_visualizer=!dat_visualizer
-		}
 		//Type
 		draw_sprite(spr_datapack_exp, 1, x1 + 125, y1 + 55)
 		draw_text(x1 + 33, y1 + 75, "Visualizer type")
@@ -215,11 +187,7 @@ function draw_window_datapack_export() {
 	}
 
 	//Remember changes
-	if (theme != 3) {
 	if (draw_checkbox(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.") && wmenu = 0) dat_remember = !dat_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 404, dat_remember, "Remember changes", "Whether to use these settings the\nnext time you export a data pack.") && wmenu = 0) dat_remember = !dat_remember
-	}
 
 	//Use default
 	if (draw_button2(x1 + 310, y1 + 398, 72, "Use default") && wmenu = 0) {

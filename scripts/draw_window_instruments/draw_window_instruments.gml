@@ -7,10 +7,8 @@ function draw_window_instruments() {
 	y1 = floor(rh / 2 - 175)
 	draw_window(x1, y1, x1 + 550, y1 + 350)
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 10, y1 + 8, "Instrument Settings")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 	draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
 	draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
@@ -155,11 +153,11 @@ function draw_window_instruments() {
 	    // INS PRESS
 	    draw_theme_color()
 	    if (insselect = b) draw_set_color(c_white)
+	    draw_text(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "Yes", "No"))
 	    if (draw_abutton(x1 + 18 + 194 + 175 + 112, y1 + 88 + 20 * a) && wmenu = 0) {
 	        menu = show_menu_ext("instruments_press", x1 + 18 + 194 + 235, y1 + 106 + 20 * a, check(ins.press) + "Yes|" + check(!ins.press) + "No")
 	        menu.menub = b
 	    }
-	    draw_text(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "Yes", "No"))
 	    if (mouse_rectangle(x1 + 14, y1 + 88 + 20 * a, 460, 20) && wmenu = 0) {
 	        if (mouse_check_button_pressed(mb_left)) {
 	            insselect = b

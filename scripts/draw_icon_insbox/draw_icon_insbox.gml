@@ -21,11 +21,7 @@ function draw_icon_insbox() {
 	}
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
 	push = (a = 2 || pressed = 1)
-	if (theme != 3) {
 	draw_sprite(spr_icons, sprite, xx + push, yy + push)
-	} else {
-	draw_sprite(spr_icons_f, sprite, xx + push, yy + push)
-	}
 	if (!isaction && i >= first_custom_index) {
 		draw_icon_customins(xx + push, yy + push, i - first_custom_index, 1, false)
 	}

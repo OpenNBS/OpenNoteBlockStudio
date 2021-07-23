@@ -5,27 +5,16 @@ function draw_window_branch_export() {
 	x1 = floor(rw / 2 - 275)
 	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 550, y1 + 400)
-	if (theme = 3){
-	draw_set_color(13421772)
-	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
-	draw_set_color(c_black)
-	}
 	draw_set_font(fnt_mainbold)
-		if (theme = 3) draw_set_font(fnt_segoe_bold)
 	draw_text(x1 + 8, y1 + 8, "Branch Export")
 	draw_set_font(fnt_main)
-		if (theme = 3) draw_set_font(fnt_segoe)
 
 	b = 8
 	str[0] = "Design"
 	str[1] = "Blocks"
 	nsel = -1
 	menun = -1
-	if (theme != 3) {
 	if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
-	} else {
-	if (draw_switch(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.") && wmenu = 0) sch_br_remember=!sch_br_remember
-	}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 	for (a = 0; a < 2; a += 1) {
@@ -42,27 +31,23 @@ function draw_window_branch_export() {
 	    if (mouse_check_button_pressed(mb_left) && c && wmenu = 0) nsel = a
 	    b += string_width(str[a]) + 12
 	}
-	if (theme = 0 || theme = 3) {
+	if (theme = 0) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
-		if (theme != 3) {
 	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 0)
-		} else {
-		draw_roundrect(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 25, 0)
-		}
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
+	    draw_rectangle(x1 + stabx, y1 + 26, x1 + stabx + stabw, y1 + 26 + 20, 1)
 	    draw_set_color(c_white)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	} else if(theme = 1){
-	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 26)
-	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
-	    draw_sprite(spr_tabbuttons, 26, x1 + stabx + stabw - 1, y1 + 26)
+	    draw_sprite(spr_tabbuttons, 12, x1 + stabx - 1, y1 + 26)
+	    draw_sprite_ext(spr_tabbuttons, 13, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
+	    draw_sprite(spr_tabbuttons, 14, x1 + stabx + stabw - 1, y1 + 26)
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}else{
 		draw_set_color(c_dark)
@@ -109,19 +94,11 @@ function draw_window_branch_export() {
 		} else {
 			draw_text(x1 + 260, y1 + 280, "None")
 		}
-		if (theme != 3) {
 	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
-		} else {
-		if (draw_switch(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.")) sch_exp_velocity=!sch_exp_velocity
-		}
 		if sch_exp_velocity = 1 var schwidth = 35 else schwidth = 1
 		if sch_exp_polyphony > 1 && sch_exp_velocity = 0 var schwidth = 3
-		if (theme != 3) {
 	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-		} else {
-		if (draw_switch(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.")) sch_exp_circuitry=!sch_exp_circuitry
-		}
-		draw_text(x1 + 380, y1 + 240 + 16, "Size:")
+	    draw_text(x1 + 380, y1 + 240 + 16, "Size:")
 	    draw_set_halign(fa_right)
 	    draw_text(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
 		draw_set_halign(fa_left)
