@@ -728,10 +728,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/Custom","resourceVersion":"1.0","name":"entity.experience_orb.pickup.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/Custom","resourceVersion":"1.0","name":"block.portal.trigger.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/Custom","resourceVersion":"1.0","name":"entity.firework.blast_far.ogg","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":"test.py","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.2.556",
+    "IDEVersion": "2.3.3.570",
   },
   "resourceVersion": "1.4",
   "name": "Minecraft Note Block Studio",
