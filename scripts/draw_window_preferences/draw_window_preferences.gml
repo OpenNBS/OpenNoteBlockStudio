@@ -235,37 +235,39 @@ function draw_window_preferences() {
 		else draw_set_color(c_white)
 		
 		if (!isplayer) {
-		draw_text(x1 + 22, y1 + 290 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 360))
-	    popup_set_window(x1 + 22, y1 + 290 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 22, y1 + 306 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		draw_areaheader(x1 + 22, y1 + 309 + (theme = 3) * 22, 456, 145, "Songs")
+		if (draw_checkbox(x1 + 40, y1 + 325 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
+		draw_text(x1 + 40, y1 + 355 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 355 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 371 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(songfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            open_url(songfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 22 + 84, y1 + 306 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 371 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where saving/loading should be opened in.", "")
 	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 306 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 371 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
 	
-		draw_text(x1 + 22, y1 + 340 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 360))
-	    popup_set_window(x1 + 22, y1 + 340 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 22, y1 + 356 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		draw_text(x1 + 40, y1 + 405 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 405 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 421 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(patternfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            open_url(patternfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 22 + 84, y1 + 356 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 421 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where patterns can be imported/exported to.", "")
 	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 356 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 421 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
 		}
 	} else if (selected_tab = 1) {
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
