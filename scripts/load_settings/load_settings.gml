@@ -20,6 +20,7 @@ function load_settings() {
 	blackout =           ini_read_real(  "preferences", "blackout",           blackout)
 	window_scale =       ini_read_real(  "preferences", "window_scale",       window_scale)
 	refreshrate =        ini_read_real(  "preferences", "refresh_rate",       refreshrate)
+	show_oldwarning =    ini_read_string("preferences", "show_oldwarning",    show_oldwarning)
 	songfolder =         ini_read_string("preferences", "song_folder",        songfolder)
 	patternfolder =      ini_read_string("preferences", "pattern_folder",     patternfolder)
 	use_colors =         ini_read_real(  "preferences", "use_colors",         use_colors)
