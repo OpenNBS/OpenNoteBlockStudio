@@ -68,6 +68,7 @@
     {"id":{"name":"spr_frame5","path":"sprites/spr_frame5/spr_frame5.yy",},"order":3,},
     {"id":{"name":"spr_checkbox","path":"sprites/spr_checkbox/spr_checkbox.yy",},"order":4,},
     {"id":{"name":"fnt_wslui_info_med_bold","path":"fonts/fnt_wslui_info_med_bold/fnt_wslui_info_med_bold.yy",},"order":11,},
+    {"id":{"name":"get_default_window_scale","path":"scripts/get_default_window_scale/get_default_window_scale.yy",},"order":14,},
     {"id":{"name":"spr_radiobox","path":"sprites/spr_radiobox/spr_radiobox.yy",},"order":5,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":6,},
     {"id":{"name":"spr_button_arrow","path":"sprites/spr_button_arrow/spr_button_arrow.yy",},"order":7,},

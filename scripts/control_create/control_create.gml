@@ -28,7 +28,7 @@ function control_create() {
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
-	window_scale = 1
+	window_scale = get_default_window_scale()
 	prev_scale = -1
 	rw = 0
 	rh = 0

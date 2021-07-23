@@ -228,8 +228,8 @@ function draw_window_preferences() {
 		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 276, y1 + 256 + (theme = 3) * 22, "Scale:             %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
-		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == 1))) {
-			window_scale = 1
+		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
+			window_scale = get_default_window_scale()
 		}
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
