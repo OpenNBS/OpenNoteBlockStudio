@@ -105,8 +105,8 @@ function draw_window_preferences() {
 		draw_areaheader(x1 + 258, y1 + 240, 220, 44, "Window")
 		draw_text(x1 + 276, y1 + 256, "Scale:             %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
-		if (draw_button2(x1 + 394, y1 + 251, 72, "Reset", (window_scale == 1))) {
-			window_scale = 1
+		if (draw_button2(x1 + 394, y1 + 251, 72, "Reset", (window_scale == get_default_window_scale()))) {
+			window_scale = get_default_window_scale()
 		}
 		
 		draw_text(x1 + 22, y1 + 290, "Song folder: " + string_truncate(songfolder, 360))
