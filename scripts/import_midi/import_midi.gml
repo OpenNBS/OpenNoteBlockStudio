@@ -27,7 +27,7 @@ function import_midi() {
 	for (t = 0; t < midi_tracks; t += 1) {
 	    for (e = 0; e < midi_trackamount[t]; e += 1) {
 	        channel = midi_eventchannel[t, e]
-	        note = median(0, midi_eventnote[t, e] - 9, 87)
+	        note = median(0, midi_eventnote[t, e] - 21, 87)
 			if (w_midi_vel = 1) {
 				vel = midi_eventvel[t, e]
 			} else vel = 100
@@ -90,7 +90,7 @@ function import_midi() {
 	    for (e = 0; e < midi_trackamount[t]; e += 1) {
 	        channel = midi_eventchannel[t, e]
 	        pos = floor((midi_eventx[t, e] - midi_minpos * w_midi_removesilent) / deltapertick)
-	        note = midi_eventnote[t, e] - 9
+	        note = midi_eventnote[t, e] - 21
 			if (w_midi_vel = 1) {
 				vel = midi_eventvel[t, e]
 			} else vel = 100
