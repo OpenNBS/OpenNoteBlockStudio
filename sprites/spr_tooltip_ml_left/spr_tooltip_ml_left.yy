@@ -75,6 +75,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"cf873c7b-cf8d-4d25-8b8b-c0df67f13785","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "multi ine",
     "path": "folders/Sprites/Interface/tooltip/multi ine.yy",

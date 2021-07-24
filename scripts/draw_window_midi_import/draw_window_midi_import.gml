@@ -4,8 +4,8 @@ function draw_window_midi_import() {
 	curs = cr_default
 	menun = -1
 	nsel = -1
-	x1 = floor(window_width / 2 - 300)
-	y1 = floor(window_height / 2 - 200)
+	x1 = floor(rw / 2 - 300)
+	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 600, y1 + 400)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "MIDI Import")

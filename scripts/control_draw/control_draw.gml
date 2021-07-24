@@ -1,12 +1,19 @@
 function control_draw() {
 	// control_draw()
-	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, rw, rh, totalcols, totalrows, compx, prev
+	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev;
 
 	var targetspeed = 1000000 / room_speed
 	var currspeed = targetspeed / delta_time
-
-	rw = window_width
-	rh = window_height
+	
+	rw = floor(window_width * (1 / window_scale))
+	rh = floor(window_height * (1 / window_scale))
+	
+	// Update window scale
+	if (window_scale != prev_scale) {
+		camera_set_view_size(cam_window, rw, rh)
+	}
+	prev_scale = window_scale
+	
 	curs = cr_default
 	showmenu = 0
 	cursmarker = 0

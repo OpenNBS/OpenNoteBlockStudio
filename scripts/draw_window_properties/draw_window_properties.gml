@@ -3,8 +3,8 @@ function draw_window_properties() {
 	var x1, y1, a; 
 	curs = cr_default
 	text_exists[0] = 0
-	x1 = floor(window_width / 2 - 220)
-	y1 = floor(window_height / 2 - 200)
+	x1 = floor(rw / 2 - 220)
+	y1 = floor(rh / 2 - 200)
 	draw_window(x1, y1, x1 + 440, y1 + 400)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Song Properties")

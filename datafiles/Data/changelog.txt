@@ -1,3 +1,11 @@
+Changes in v3.8.3 (2021.07.23):
+* Added a window scale setting, which makes elements on screen larger or
+   smaller. Useful if you have a high-resolution display or want to see more
+   stuff at once!
+* The default scale value will match the current display scale of your system.
+* Added an option to disable the warning when opening an older NBS file.
+* Fixed actions in the Edit context menu being incorrect.
+
 Changes in v3.8.2 (2021.01.04):
 * Added a warning about version compatibility when exporting a schematic.
 * Fixed a crash when trying to export a schematic.

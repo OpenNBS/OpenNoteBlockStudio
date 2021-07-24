@@ -99,6 +99,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"2e8c5b3f-e21e-4c83-b7d7-31f32dca09e8","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "bar",
     "path": "folders/Sprites/Interface/scrollbar/horizontal/bar.yy",

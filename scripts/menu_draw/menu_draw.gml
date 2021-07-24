@@ -1,18 +1,19 @@
 function menu_draw() {
 	// menu_draw()
 	if (ani < 1) ani += 0.1
-	var m, menux, menuy, noclick;
+	var m, menux, menuy, noclick, o;
 	menux[0] = sx
 	menuy[0] = sy
 	sel = -1
 	noclick = 0
+	o = obj_controller;
 	for (m = 0; m < menus; m += 1) {
 	    if (!menu_show[m]) continue
 	    var dx, dy, i, iy, hei;
 	    dx = menux[m]
 	    dy = menuy[m]
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
-	    if (dy + hei > window_height) dy = window_height - hei
+	    if (dy + hei > o.rh) dy = o.rh - hei
 	    iy = 8
 	    draw_set_color(window_background)
 	    draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)

@@ -1,6 +1,6 @@
 function draw_dragvalue() {
 	// draw_dragvalue(id, x, y, val, sensitivity[, lock])
-	var i, xx, yy, v, m, ma, mi, s, lock;
+	var i, xx, yy, v, m, ma, mi, s, lock, str;
 	i = argument[0]
 	xx = argument[1]
 	yy = argument[2]
@@ -9,15 +9,16 @@ function draw_dragvalue() {
 	lock = 0
 	if (argument_count > 5)
 	    lock = argument[5]
-	m = mouse_rectangle(xx - 8, yy - 4, string_width(string(v)) + 16, string_height(string(v)) + 4)
+	str = string_format(v, 0, 0)
+	m = mouse_rectangle(xx - 8, yy - 4, string_width(str) + 16, string_height(str) + 4)
 	if (v < 20 || i > 1) {
 	    if (lock = 0) {
-	        draw_text(xx, yy, string(v))
+	        draw_text(xx, yy, str)
 	    } else {
 	        draw_set_color(c_white)
-	        draw_text(xx + 1, yy + 1, string(v))
+	        draw_text(xx + 1, yy + 1, str)
 	        draw_set_color(8421504)
-	        draw_text(xx, yy, string(v))
+	        draw_text(xx, yy, str)
 	    }
 	} else {
 	    draw_text(xx, yy, "No limit")

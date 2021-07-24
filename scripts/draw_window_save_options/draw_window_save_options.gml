@@ -3,8 +3,8 @@ function draw_window_save_options() {
 	var x1, y1, min_version;
 	curs = cr_default
 	text_exists[0] = 0
-	x1 = floor(window_width / 2 - 72)
-	y1 = floor(window_height / 2 - 90)
+	x1 = floor(rw / 2 - 72)
+	y1 = floor(rh / 2 - 90)
 	draw_window(x1, y1, x1 + 140, y1 + 162)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 8, y1 + 8, "Save options")

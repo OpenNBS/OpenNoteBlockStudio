@@ -2,12 +2,12 @@ function draw_notechart(argument0, argument1, argument2, argument3) {
 	// draw_notechart(x, y, key, sharp)
 	var x1, xx, yy, key, sharp, a;
 	x1 = argument0
-	xx = median(0, x1 - 32, window_width - 320)
+	xx = median(0, x1 - 32, rw - 320)
 	yy = argument1
 	key = argument2
 	sharp = argument3
 	draw_sprite(spr_notechart, 0 + 3 * theme, xx, yy - 320 + 1)
-	draw_sprite(spr_notechart, (1 + (x1 > window_width - 250)) + 3 * theme, x1 - 16 * (x1 > window_width - 250), yy)
+	draw_sprite(spr_notechart, (1 + (x1 > rw - 250)) + 3 * theme, x1 - 16 * (x1 > rw - 250), yy)
 
 	draw_set_color(0)
 	draw_set_alpha(0.25)

@@ -75,6 +75,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ae7d2a21-957d-4175-8e85-aaf69e1c5a44","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "single line",
     "path": "folders/Sprites/Interface/tooltip/single line.yy",

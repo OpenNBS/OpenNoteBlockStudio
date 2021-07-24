@@ -3,8 +3,8 @@ function draw_window_instruments() {
 	var x1, y1, a, b, c, str, menun, menua, menub, prev;
 	curs = cr_default
 	menun = -1
-	x1 = floor(window_width / 2 - 275)
-	y1 = floor(window_height / 2 - 175)
+	x1 = floor(rw / 2 - 275)
+	y1 = floor(rh / 2 - 175)
 	draw_window(x1, y1, x1 + 550, y1 + 350)
 	draw_set_font(fnt_mainbold)
 	draw_text(x1 + 10, y1 + 8, "Instrument Settings")

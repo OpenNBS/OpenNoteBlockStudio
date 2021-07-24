@@ -20,6 +20,10 @@ function control_create() {
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
+	window_scale = get_default_window_scale()
+	prev_scale = -1
+	rw = 0
+	rh = 0
 
 	// Audio
 	channels = 256
@@ -39,6 +43,7 @@ function control_create() {
 	dontplace = 0
 	vers = version
 	menu_shown = ""
+	show_oldwarning = 1
 	songfolder = songs_directory
 	patternfolder = pattern_directory
 	icons_init()
