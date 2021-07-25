@@ -1635,7 +1635,7 @@ function control_draw() {
 
 		if (!isplayer) {
 		// Bars-beats-sixteenths
-		draw_sprite(spr_tempobox, 0, 184, 57)
+		draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 184, 57)
 		draw_set_halign(fa_right)
 		draw_text(215, 60, ".")
 		draw_text(230, 60, ".")
@@ -1647,12 +1647,12 @@ function control_draw() {
 		// Tempo
 		draw_set_halign(fa_center)
 		if (use_bpm) {
-			draw_sprite(spr_tempobox, 1, 101, 57)
+			draw_sprite(spr_tempobox, 1 + 2 * (theme = 3) + 2 * (fdark && theme = 3), 101, 57)
 			bpm = tempo * 15
 			draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick to change. Right click to reset.")
 		} else {
-			draw_sprite(spr_tempobox, 0, 108, 57)
+			draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
 			draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick to change. Right click to reset.")
 		}
