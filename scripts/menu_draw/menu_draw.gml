@@ -13,7 +13,7 @@ function menu_draw() {
 	    if (!menu_show[m]) continue
 	    var dx, dy, i, iy, hei;
 		dx = menux[m]
-	    dx = menux[m] - (dx + menu_wid[m] > window_width) * menu_wid[m]
+	    dx = menux[m] - (dx + menu_wid[m] > o.rw) * menu_wid[m] - (dx + menu_wid[m] > o.rw) * menu_wid[0] * (m > 0)// - (dx + menu_wid[m - (m > 0)] > o.rw) * (menu_show[m - (m > 0)]) * (m > 0) * menu_wid[m - (m > 0)]
 	    dy = menuy[m]
 		cm = floor(m * 0.5)
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))

@@ -21,7 +21,7 @@ function control_draw() {
 	showmenu = 0
 	cursmarker = 0
 	compx = 180
-	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), "Unsaved song") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), "Unsaved song") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
