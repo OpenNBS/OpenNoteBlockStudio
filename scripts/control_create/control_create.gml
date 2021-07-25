@@ -24,7 +24,7 @@ function control_create() {
 	window_set_focus()
 	window_set_min_width(100)
 	window_set_min_height(100)
-	if (isplayer) window_set_size(800, 500)
+	if (isplayer) window_set_size(floor(800 * (1 / window_scale)), floor(500 * (1 / window_scale)))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
