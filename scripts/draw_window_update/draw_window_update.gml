@@ -2,6 +2,7 @@ function draw_window_update() {
 	// draw_window_update()
 	var x1, y1, a, n, fullstr, str, strb;
 	if (theme = 3) draw_set_alpha(windowalpha)
+	if (window = w_update && theme != 3) windowopen = 1
 	fullstr = load_text(data_directory + "changelog.txt")
 	if (fullstr = 0) {
 		show_message("Changelist not found!")
