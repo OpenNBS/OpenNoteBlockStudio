@@ -36,8 +36,8 @@ function control_create() {
 	windowopen = 0
 	windowclose = 0
 	windowsound = 0
-	msgalpha = 1
-	showmsg = 0
+	msgalpha = 1 // Init bottom message transparency
+	showmsg = 0 // Displays message when set to 1
 	msgcontent = ""
 	msgstart = 0
 
@@ -54,7 +54,7 @@ function control_create() {
 	show_welcome = 1
 	scroll_wheel = 0
 	theme = 3 // Using Fluent as the default theme
-	fdark = 0
+	fdark = 0 // Fluent dark mode
 	blackout = 0
 	editmode = 0
 	clickinarea = 0
@@ -74,8 +74,8 @@ function control_create() {
 	tonextsave = 0
 	backupmins = 1
 	tonextbackup = 0
-	presence = 1
-	presencewindow = 0
+	presence = 1 // Discord RPC toggle
+	// presencewindow = 0
 	aa = 0
 
 	// File
@@ -286,11 +286,11 @@ function control_create() {
 	loopstart = 0
 	looptobarend = 1
 	timestoloop = loopmax
-	taptempo = 0
-	tapping = 0
-	ltime = 0
-	taps = 0
-	tapdouble = 0
+	taptempo = 0 // Tempo in measuring
+	tapping = 0 // Is tapping?
+	ltime = 0 // Last time tapped
+	taps = 0 // Times tapped
+	tapdouble = 0 // Set to double tempo?
 
 	// Midi export / import
 	w_midi_remember = 1
@@ -338,6 +338,7 @@ function control_create() {
 	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
 	
+	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
 	soundinvoke.filename = "invoke.ogg"
