@@ -3,10 +3,10 @@ function draw_msg(){
 	var x1, x2, y1, y2, str;
 	str = msgcontent
 	draw_theme_font(font_info_med_bold)
-	x1 = (window_width - string_width(str)) / 2
-	x2 = (window_width + string_width(str)) / 2
-	y1 = window_height * 0.8
-	y2 = window_height * 0.8 - 20
+	x1 = (rw - string_width(str)) / 2
+	x2 = (rw + string_width(str)) / 2
+	y1 = rh * 0.8
+	y2 = rh * 0.8 - 20
 	draw_set_color(7368816)
 	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	draw_set_color(15790320)

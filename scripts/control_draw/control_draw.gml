@@ -287,6 +287,7 @@ function control_draw() {
 		if (!blackout) {
 			if ((starta + a) mod (timesignature * 4) == 0) {
 				draw_set_alpha(0.3)
+				if (window_scale < 1) draw_set_alpha(0.6) //Issue #254, make the lines more obvious when scaled down
 				if (!isplayer) draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
 			} else {
 				draw_set_alpha(0.1)
@@ -540,6 +541,36 @@ function control_draw() {
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
+	            if (keyboard_check_pressed(187)) {
+					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("Window Scale => 67%")}
+					else if (window_scale < 0.75) {window_scale = 0.75 set_msg("Window Scale => 75%")}
+					else if (window_scale < 0.8) {window_scale = 0.8 set_msg("Window Scale => 80%")}
+					else if (window_scale < 0.9) {window_scale = 0.9 set_msg("Window Scale => 90%")}
+					else if (window_scale < 1) {window_scale = 1 set_msg("Window Scale => 100%")}
+					else if (window_scale < 1.25) {window_scale = 1.25 set_msg("Window Scale => 125%")}
+					else if (window_scale < 1.5) {window_scale = 1.5 set_msg("Window Scale => 150%")}
+					else if (window_scale < 1.75) {window_scale = 1.75 set_msg("Window Scale => 175%")}
+					else if (window_scale < 2) {window_scale = 2 set_msg("Window Scale => 200%")}
+					else if (window_scale < 2.5) {window_scale = 2.5 set_msg("Window Scale => 250%")}
+					else if (window_scale < 3) {window_scale = 3 set_msg("Window Scale => 300%")}
+					else if (window_scale < 3.5) {window_scale = 3.5 set_msg("Window Scale => 350%")}
+					else if (window_scale < 4) {window_scale = 4 set_msg("Window Scale => 400%")}
+				}
+	            if (keyboard_check_pressed(189)) {
+					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5 set_msg("Window Scale => 350%")}
+					else if (window_scale > 3) {window_scale = 3 set_msg("Window Scale => 300%")}
+					else if (window_scale > 2.5) {window_scale = 2.5 set_msg("Window Scale => 250%")}
+					else if (window_scale > 2) {window_scale = 2 set_msg("Window Scale => 200%")}
+					else if (window_scale > 1.75) {window_scale = 1.75 set_msg("Window Scale => 175%")}
+					else if (window_scale > 1.5) {window_scale = 1.5 set_msg("Window Scale => 150%")}
+					else if (window_scale > 1.25) {window_scale = 1.25 set_msg("Window Scale => 125%")}
+					else if (window_scale > 1) {window_scale = 1 set_msg("Window Scale => 100%")}
+					else if (window_scale > 0.9) {window_scale = 0.9 set_msg("Window Scale => 90%")}
+					else if (window_scale > 0.8) {window_scale = 0.8 set_msg("Window Scale => 80%")}
+					else if (window_scale > 0.75) {window_scale = 0.75 set_msg("Window Scale => 75%")}
+					else if (window_scale > 0.67) {window_scale = 0.67 set_msg("Window Scale => 67%")}
+					else if (window_scale > 0.5) {window_scale = 0.5 set_msg("Window Scale => 50%")}
+				}
 	        }
 	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
 				selection_delete(0)

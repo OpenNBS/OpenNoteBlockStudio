@@ -235,7 +235,9 @@ function draw_window_preferences() {
 		else draw_set_color(c_white)
 		
 		if (!isplayer) {
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 22, y1 + 309 + (theme = 3) * 22, 456, 145, "Songs")
+		if (theme = 3) draw_set_font(fnt_wslui)
 		if (draw_checkbox(x1 + 40, y1 + 325 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
 		draw_text(x1 + 40, y1 + 355 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 355 + (theme = 3) * 22, 430, 18, songfolder)
