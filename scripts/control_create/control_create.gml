@@ -53,7 +53,7 @@ function control_create() {
 	check_update = 1
 	show_welcome = 1
 	scroll_wheel = 0
-	theme = 0
+	theme = 3 // Using Fluent as the default theme
 	fdark = 0
 	blackout = 0
 	editmode = 0
@@ -415,6 +415,8 @@ function control_create() {
 	downloaded_size = 0
 	total_size = -1
 	if (file_exists_lib(settings_file) && vers != version) {
+		if (theme = 2) fdark = 1
+		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
 	    update = 3
 	}
