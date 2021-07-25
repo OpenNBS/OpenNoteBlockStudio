@@ -409,6 +409,7 @@ function control_draw() {
 	            selection_place(0)
 	            dontplace = 1
 	        }
+			if (mouse_check_button_pressed(mb_left) && keyboard_check(vk_control)) {selection_add(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
 	        select_pressx = mouse_x
 	        select_pressy = mouse_y
 	        select_pressa = starta + sela
@@ -434,7 +435,7 @@ function control_draw() {
 	                }
 	            }
 	        } else {
-	            if (select = 0) selection_place(0)
+	            if (select = 0 && !keyboard_check(vk_control)) selection_place(0)
 	        }
 	        dontplace = 0
 	    }
@@ -446,7 +447,8 @@ function control_draw() {
 			}
 				
 		}
-	    if (mouse_check_button(mb_right)) {
+		if (mouse_check_button_pressed(mb_right) && keyboard_check(vk_control)) {selection_remove(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
+	    if (mouse_check_button(mb_right) && !keyboard_check(vk_control)) {
 	        if ((starta + sela != select_pressa || startb + selb != select_pressb) && select_pressx != -1) {
 	            select = 2
 	        } else if (exist = 1) {
@@ -455,7 +457,7 @@ function control_draw() {
 	        }
 	    }
 	    if (mouse_check_button_released(mb_right)) {
-	        if (starta + sela = select_pressa && startb + selb = select_pressb && select_pressx != -1) {
+	        if (starta + sela = select_pressa && startb + selb = select_pressb && select_pressx != -1 && !keyboard_check(vk_control)) {
 	            str = ""
 	            customstr = ""
 				insmenu = 1
@@ -475,7 +477,7 @@ function control_draw() {
 	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
 	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
 	                                      inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-	                                      inactive(selected = 0) + "Ctrl + Shift+A$Deselect all|"+
+	                                      inactive(selected = 0) + "Deselect all|"+
 	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
 	                                      inactive(totalblocks = 0 || selbx >= enda) + "Select all to the right ->|"+
 	                                      inactive(totalblocks = 0 || selbx <= 0) + "Select all to the left <-|-|"+
@@ -1256,7 +1258,7 @@ function control_draw() {
 	                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
 	                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
 	                              inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-	                              inactive(selected = 0) + "Ctrl+Shift + A$Deselect all|"+
+	                              inactive(selected = 0) + "Deselect all|"+
 	                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
 	                              inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
 	                              inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
