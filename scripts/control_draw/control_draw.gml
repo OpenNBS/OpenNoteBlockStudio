@@ -632,6 +632,7 @@ function control_draw() {
 		if (keyboard_check(vk_control)) {
 			if (keyboard_check_pressed(ord("P"))&& keyboard_check(vk_shift)) {
 				playing = 0 
+				text_exists[59] = 0
 				window = w_clip_editor
 				}
 			if (keyboard_check_pressed(ord("I"))&& keyboard_check(vk_shift)) {
