@@ -7,7 +7,7 @@ function draw_window_about() {
 	draw_window(x1, y1, x1 + 300, y1 + 400)
 	draw_theme_font(font_main)
 	draw_text(x1 + 8, y1 + 8, "About")
-	draw_sprite_ext(spr_logo, 0, x1 + 86, y1 + 50, 0.55, 0.55, 0, c_white, 1)
+	draw_sprite_ext(spr_logo, 0, x1 + 86, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
 	draw_set_halign(fa_center)
 	draw_theme_font(font_info_med_bold)
 	draw_text(x1 + 150, y1 + 200, "Open Note Block Studio")

@@ -21,11 +21,11 @@ function draw_button2() {
 	    draw_set_color(10526880)
 		} else {
 		if (fdark) {
-			draw_sprite_ext(spr_button, 46 + 24, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
+			draw_sprite_ext(spr_button, 46 + 24, xx + 3, yy, w / 3 - 2, 1, 0, -1, draw_get_alpha())
 			draw_sprite(spr_button, 45 + 24, xx, yy)
 			draw_sprite(spr_button, 47 + 24, xx + w - 3, yy)
 		} else {
-			draw_sprite_ext(spr_button, 46 + 12 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
+			draw_sprite_ext(spr_button, 46 + 12 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, draw_get_alpha())
 			draw_sprite(spr_button, 45 + 12 * a, xx, yy)
 			draw_sprite(spr_button, 47 + 12 * a, xx + w - 3, yy)
 		}
@@ -38,8 +38,8 @@ function draw_button2() {
 		if (theme != 3){
 	    draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme, xx, yy, w / 3, 1, 0, -1, 1)
 		} else {
-		if (!fdark) draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 12 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
-		else draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 24 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, 1)
+		if (!fdark) draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 12 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, draw_get_alpha())
+		else draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 24 * a, xx + 3, yy, w / 3 - 2, 1, 0, -1, draw_get_alpha())
 		}
 		if (fdark) {
 			draw_sprite(spr_button, m * 3 + 12 * theme + 24 * a * (theme = 3), xx, yy)
