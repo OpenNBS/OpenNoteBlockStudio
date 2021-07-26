@@ -606,8 +606,12 @@ function control_draw() {
 	    if (keyboard_check_pressed(vk_f1)) {
 	        open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 	    }
-		if (!isplayer) {
 		// Instrument shortcuts
+		if (keyboard_check_pressed(ord("M")) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
+			if (!isplayer) playing = 0 
+			window = w_setaccent
+		}
+		if (!isplayer) {
 	    if (keyboard_check(vk_control)) {
 		
 			//First 10 (only ctrl)
@@ -638,10 +642,6 @@ function control_draw() {
 			if (keyboard_check_pressed(ord("I"))&& keyboard_check(vk_shift)) {
 				playing = 0 
 				window = w_tempotapper
-				}
-			if (keyboard_check_pressed(ord("M"))&& keyboard_check(vk_shift) && theme = 3) {
-				playing = 0 
-				window = w_setaccent
 				}
 			// Macro Hotkeys
 			if selected != 0 {
