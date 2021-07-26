@@ -42,11 +42,11 @@ function draw_button2() {
 		else draw_sprite_ext(spr_button, 1 + m * 3 + 12 * theme + 24 * a, xx + 3, yy, w / 3 - 2, 1, 0, accent[3 - m] * !a - a, draw_get_alpha())
 		}
 		if (fdark) {
-			draw_sprite_ext(spr_button, m * 3 + 12 * theme + 24 * a * (theme = 3), xx, yy, 1, 1, 0, accent[3 - m] * !a - a, draw_get_alpha())
-			draw_sprite_ext(spr_button, 2 + m * 3 + 12 * theme + 24 * a * (theme = 3), xx + w - 3, yy, 1, 1, 0, accent[3 - m] * !a - a, draw_get_alpha())
+			draw_sprite_ext(spr_button, m * 3 + 12 * theme + 24 * a * (theme = 3), xx, yy, 1, 1, 0, accent[3 - m] * (!a && theme = 3) - (a || theme != 3), draw_get_alpha())
+			draw_sprite_ext(spr_button, 2 + m * 3 + 12 * theme + 24 * a * (theme = 3), xx + w - 3, yy, 1, 1, 0, accent[3 - m] * (!a && theme = 3) - (a || theme != 3), draw_get_alpha())
 		} else {
-			draw_sprite_ext(spr_button, m * 3 + 12 * theme + 12 * a * (theme = 3), xx, yy, 1, 1, 0, accent[3 - m] * !a - a, draw_get_alpha())
-			draw_sprite_ext(spr_button, 2 + m * 3 + 12 * theme + 12 * a * (theme = 3), xx + w - 3, yy, 1, 1, 0, accent[3 - m] * !a - a, draw_get_alpha())
+			draw_sprite_ext(spr_button, m * 3 + 12 * theme + 12 * a * (theme = 3), xx, yy, 1, 1, 0, accent[3 - m] * (!a && theme = 3) - (a || theme != 3), draw_get_alpha())
+			draw_sprite_ext(spr_button, 2 + m * 3 + 12 * theme + 12 * a * (theme = 3), xx + w - 3, yy, 1, 1, 0, accent[3 - m] * (!a && theme = 3) - (a || theme != 3), draw_get_alpha())
 		}
 	    draw_theme_color()
 	}

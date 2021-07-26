@@ -180,6 +180,7 @@ function draw_window_preferences() {
 		if (draw_abutton(x1 + 140 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
 	        menu = show_menu_ext("theme", x1 + 40, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
 	    }
+		if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, 100, 20, "Press Ctrl + Shift + M in the main screen to set accent color.")
 	    draw_text(x1 + 43, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		//if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}

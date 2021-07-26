@@ -21,9 +21,9 @@ function draw_window_set_accent() {
 	}
 	draw_areaheader(x1 + 10, y1 + 43, 220, 35, "RGB color")
 
-	r = draw_textarea(57, x1 + 15, y1 + 50, 71, 25, string(r), "Set red amount.") 
-	g = draw_textarea(58, x1 + 15 + 71, y1 + 50, 71, 25, string(g), "Set green amount.") 
-	b = draw_textarea(59, x1 + 15 + 71 + 71, y1 + 50, 71, 25, string(b), "Set blue amount.") 
+	r = draw_textarea(60, x1 + 15, y1 + 50, 71, 25, string(r), "Set red amount.")
+	g = draw_textarea(61, x1 + 15 + 71, y1 + 50, 71, 25, string(g), "Set green amount.")
+	b = draw_textarea(62, x1 + 15 + 71 + 71, y1 + 50, 71, 25, string(b), "Set blue amount.")
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK") && windowopen = 1) {
@@ -38,7 +38,7 @@ function draw_window_set_accent() {
 			message("Please enter a valid number!", "Set accent color")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel")) {windowclose = 1}
+	if (draw_button2(x1 + 72, y1 + 98, 60, "Cancel")) {windowclose = 1}
 	if (draw_button2(x1 + 158, y1 + 98, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) {
 			accent1 = 0
