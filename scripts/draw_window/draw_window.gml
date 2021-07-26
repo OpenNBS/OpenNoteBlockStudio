@@ -33,13 +33,13 @@ function draw_window() {
 	} else {
 		draw_rectangle(x1, y1, x2 - 1, y2 - 1, 0)
 		draw_sprite(spr_interface2, 0 + 8 * theme + 8 * (theme = 3) * fdark, x1, y1)
-		draw_sprite_ext(spr_interface2, 1 + 8 * theme + 8 * (theme = 3) * fdark, x1, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, 1)
+		draw_sprite_ext(spr_interface2, 1 + 8 * theme + 8 * (theme = 3) * fdark, x1, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, draw_get_alpha())
 		draw_sprite(spr_interface2, 2 + 8 * theme + 8 * (theme = 3) * fdark, x1, y2 - 2)
-		draw_sprite_ext(spr_interface2, 3 + 8 * theme + 8 * (theme = 3) * fdark, x1 + 2, y2 - 2, (x2 - x1 - 4) / 2, 1, 0, -1, 1)
+		draw_sprite_ext(spr_interface2, 3 + 8 * theme + 8 * (theme = 3) * fdark, x1 + 2, y2 - 2, (x2 - x1 - 4) / 2, 1, 0, -1, draw_get_alpha())
 		draw_sprite(spr_interface2, 4 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y2 - 2)
-		draw_sprite_ext(spr_interface2, 5 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, 1)
+		draw_sprite_ext(spr_interface2, 5 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, draw_get_alpha())
 		draw_sprite(spr_interface2, 6 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y1)
-		draw_sprite_ext(spr_interface2, 7 + 8 * theme + 8 * (theme = 3) * fdark, x1 + 2, y1, (x2 - x1 - 4) / 2, 1, 0, -1, 1)
+		draw_sprite_ext(spr_interface2, 7 + 8 * theme + 8 * (theme = 3) * fdark, x1 + 2, y1, (x2 - x1 - 4) / 2, 1, 0, -1, draw_get_alpha())
 	}
 	draw_theme_color()
 
