@@ -291,6 +291,7 @@ function control_create() {
 	ltime = 0 // Last time tapped
 	taps = 0 // Times tapped
 	tapdouble = 0 // Set to double tempo?
+	draw_set_circle_precision(10);
 
 	// Midi export / import
 	w_midi_remember = 1

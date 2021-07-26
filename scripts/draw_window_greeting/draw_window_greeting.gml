@@ -57,9 +57,11 @@ function draw_window_greeting() {
 	if (fdark && theme = 3) draw_set_color(0)
 	draw_line(x1 + 270, y1 + 24, x1 + 270, y1 + 396)
 	draw_set_alpha(0.25)
+	if (theme = 3) draw_set_alpha(0.25 * windowalpha)
 	draw_theme_color()
 	draw_line(x1 + 269, y1 + 24, x1 + 269, y1 + 396)
 	draw_set_alpha(1)
+	if (theme = 3) draw_set_alpha(windowalpha)
 	draw_theme_color()
 	draw_text(x1 + 290, y1 + 20, "What do you want to do?")
 
