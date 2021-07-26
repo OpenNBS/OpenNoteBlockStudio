@@ -77,6 +77,10 @@ function control_create() {
 	presence = 1 // Discord RPC toggle
 	// presencewindow = 0
 	aa = 0
+	accent1 = 0
+	accent2 = 120
+	accent3 = 215
+	
 
 	// File
 	filename = ""
@@ -407,6 +411,7 @@ function control_create() {
 	load_settings()
 	change_theme()
 	if (show_welcome) window = w_greeting
+	draw_accent_init()
 
 	// Updates
 	if (check_update)

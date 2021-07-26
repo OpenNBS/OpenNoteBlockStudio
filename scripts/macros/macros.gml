@@ -83,6 +83,7 @@ function macros() {
 #macro w_setpitch 39
 #macro w_settempo 43
 #macro w_tempotapper 44
+#macro w_setaccent 45
 
 #macro br "\r\n"
 

@@ -33,6 +33,7 @@ function draw_windows() {
 	    case w_branch_export: draw_window_branch_export() break
 	    case w_settempo: draw_window_set_tempo() break
 	    case w_tempotapper: draw_window_tempo_tapper() break
+	    case w_setaccent: draw_window_set_accent() break
 	}
 
 

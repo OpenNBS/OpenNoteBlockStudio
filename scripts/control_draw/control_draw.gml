@@ -639,6 +639,10 @@ function control_draw() {
 				playing = 0 
 				window = w_tempotapper
 				}
+			if (keyboard_check_pressed(ord("M"))&& keyboard_check(vk_shift)) {
+				playing = 0 
+				window = w_setaccent
+				}
 			// Macro Hotkeys
 			if selected != 0 {
 				if (keyboard_check_pressed(ord("A"))&& keyboard_check(vk_shift)) {
@@ -942,8 +946,8 @@ function control_draw() {
 	marker_pos = median(0, marker_pos, enda + totalcols)
 	if (!isplayer) {
 	a = floor(marker_pos * 32 - starta * 32)
-	draw_sprite(spr_marker, 0 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2)
-	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	draw_sprite_ext(spr_marker, 0 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, 1, 0, accent[3] * (fdark && theme = 3) - !(fdark && theme = 3), 1)
+	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (fdark && theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, accent[3] * (fdark && theme = 3) - !(fdark && theme = 3), 1)
 
 
 	draw_theme_font(font_main)

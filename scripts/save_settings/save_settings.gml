@@ -55,6 +55,9 @@ function save_settings() {
 	ini_write_real_clean("preferences", "windowsound",        windowsound)
 	ini_write_real_clean("preferences", "fdark",              fdark)
 	ini_write_real_clean("preferences", "tapdouble",          tapdouble)
+	ini_write_real_clean("preferences", "accent1",            accent1)
+	ini_write_real_clean("preferences", "accent2",            accent2)
+	ini_write_real_clean("preferences", "accent3",            accent3)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
