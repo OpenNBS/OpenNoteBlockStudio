@@ -1628,7 +1628,8 @@ function control_draw() {
 				draw_sprite(spr_icons, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
 			} else {
 				// draw_sprite_ext(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11, 1, 1, 0, accent[5], 1)
-				draw_set_color(make_color_rgb(69, 69, 69))
+				draw_set_color(c_white)
+				if (fdark) draw_set_color(make_color_rgb(69, 69, 69))
 				draw_set_alpha(0.5)
 				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 11, 0)
 				draw_set_alpha(1)
