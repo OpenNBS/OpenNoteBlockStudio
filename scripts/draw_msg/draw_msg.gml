@@ -1,7 +1,8 @@
 function draw_msg(){
 	draw_set_alpha(msgalpha)
-	var x1, x2, y1, y2, str;
+	var x1, x2, y1, y2, str, fnt;
 	str = msgcontent
+	fnt = draw_get_font()
 	draw_theme_font(font_info_med_bold)
 	x1 = (rw - string_width(str)) / 2
 	x2 = (rw + string_width(str)) / 2
@@ -36,5 +37,6 @@ function draw_msg(){
 			showmsg = 0
 		}
 	}
+	draw_set_font(fnt)
 	draw_set_alpha(1)
 }
