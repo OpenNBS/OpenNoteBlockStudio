@@ -1619,8 +1619,7 @@ function control_draw() {
 			if (theme != 3) {
 				draw_sprite(spr_icons, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
 			} else {
-				if (!fdark) draw_sprite(spr_icons_f, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
-				else draw_sprite(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
+				draw_sprite_ext(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11, 1, 1, 0, accent[5], 1)
 			}
 			a = (mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(rw / 2 - 200 - 3, rh / 2 + 25 + 1 - 3, 400 + 6, 6) && window = 0)
 			if (a || aa) {
