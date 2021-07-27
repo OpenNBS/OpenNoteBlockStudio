@@ -1615,13 +1615,31 @@ function control_draw() {
 		
 		if (isplayer) {
 			draw_theme_color()
-			draw_rectangle(rw / 2 - 200, rh / 2 + 25, rw / 2 + 200, rh / 2 + 25 + 2, 0)
+			if (theme = 3) {
+				draw_set_color(make_color_rgb(154, 154, 154))
+				if (fdark) draw_set_color(make_color_rgb(134, 134, 134))
+			}
+			draw_rectangle(rw / 2 - 200, rh / 2 + 25, rw / 2 + 200, rh / 2 + 25 + 2 + (theme = 3), 0)
+			draw_set_alpha(0.5)
+			if (theme = 3) draw_rectangle(rw / 2 - 200 - 1, rh / 2 + 25 + 1, rw / 2 + 200 + 1, rh / 2 + 25 + 2, 0)
+			draw_set_alpha(1)
+			a = (mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(rw / 2 - 200 - 3, rh / 2 + 25 + 1 - 3, 400 + 6, 6 + (theme = 3)) && window = 0)
 			if (theme != 3) {
 				draw_sprite(spr_icons, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11)
 			} else {
-				draw_sprite_ext(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11, 1, 1, 0, accent[5], 1)
+				// draw_sprite_ext(spr_icons_d, 9, rw / 2 - 200 + (marker_pos / enda) * 400 - 12, rh / 2 + 25 + 1 - 11, 1, 1, 0, accent[5], 1)
+				draw_set_color(make_color_rgb(69, 69, 69))
+				draw_set_alpha(0.5)
+				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 11, 0)
+				draw_set_alpha(1)
+				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 10, 0)
+				draw_set_color(accent[5 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left))])
+				draw_set_alpha(0.5)
+				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 6 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
+				draw_set_alpha(1)
+				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 5 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
 			}
-			a = (mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(rw / 2 - 200 - 3, rh / 2 + 25 + 1 - 3, 400 + 6, 6) && window = 0)
+			draw_theme_color()
 			if (a || aa) {
 				curs = cr_handpoint
 				if (mouse_check_button(mb_left)) {
