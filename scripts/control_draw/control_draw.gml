@@ -1740,7 +1740,7 @@ function control_draw() {
 	if (mouse_check_button_released(mb_left)) {
 	    w_isdragging = 0
 	}
-	if (window = w_releasemouse && !mouse_check_button(mb_left)) window = 0
+	if (window = w_releasemouse && !mouse_check_button(mb_left)) {window = 0 windowopen = 0}
 	draw_windows()
 	if (showmsg) draw_msg()
 

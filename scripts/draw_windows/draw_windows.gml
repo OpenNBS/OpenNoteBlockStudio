@@ -1,7 +1,7 @@
 function draw_windows() {
 	// draw_windows()
 
-	if (window = 0) return 0
+	if (window = 0) {windowopen = 0 return 0}
 	key_edit = -1
 	switch (window mod w_menu) {
 	    case w_greeting: draw_window_greeting() break
