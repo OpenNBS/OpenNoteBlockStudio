@@ -79,7 +79,10 @@ function control_create() {
 	aa = 0
 	accent1 = 0
 	accent2 = 120
-	accent3 = 215
+	accent3 = 212
+	hsdrag = 0
+	vdrag = 0
+	nocdrag = 0
 	
 
 	// File
