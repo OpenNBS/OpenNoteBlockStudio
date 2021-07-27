@@ -60,7 +60,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        col = c_white
 	        down[1] = 0
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c2 && playing = 0) col = 16753828
+	        if (selected_key = c2 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c2] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c2]) / 300) down[1] = ((current_time - key_played[c2]) / 300) * 2 if (down[1] > 1) down[1] = 2 - down[1] down[1] = floor(down[1] * 3) / 3}
 	        if (key_midipress[c2] || key_press[c2] || key_click[c2]) down[1] = 0.75
 			draw_piano_key(false, xx + 39 * a, yy + floor(7 * down[1]), col, alpha, c2, k2, showclicks2, down[1])
@@ -71,7 +71,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 			showclicks1 = !out && show_keynumbers
 	        col = c_white
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c1 && playing = 0) col = 16753828
+	        if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down[0] = ((current_time - key_played[c1]) / 300) * 2 if (down[0] > 1) down[0] = 2 - down[0] down[0] = floor(down[0] * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down[0] = 0.75
 			draw_piano_key(true, xx + 39 * a - 19, yy - 7, col, alpha, c1, k1, showclicks1, down[0])
@@ -103,7 +103,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        col = c_white
 	        down = 0
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c1 && playing = 0) col = 16753828
+	        if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down = ((current_time - key_played[c1]) / 300) * 2 if (down > 1) down = 2 - down down = floor(down * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down = 0.75
 			draw_piano_key(false, xx + 39 * a, yy + floor(7 * down), col, alpha, c1, k1, showclicks1, down)

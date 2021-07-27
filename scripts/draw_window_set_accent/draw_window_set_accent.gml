@@ -1,7 +1,7 @@
 function draw_window_set_accent() {
 	// draw_window_set_accent()
 	if (theme = 3) draw_set_alpha(windowalpha)
-	var x1, y1, e, dhsv
+	var x1, y1, e, dhsv, dr, dg, db, err
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 140)
@@ -19,6 +19,7 @@ function draw_window_set_accent() {
 		text_str[62] = string(b)
 	}
 	dhsv = scr_HSBtoRGB(hsv[0], hsv[1], hsv[2])
+	err = 0
 	draw_theme_font(font_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
@@ -85,9 +86,27 @@ function draw_window_set_accent() {
 	draw_theme_color()
 	draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
 
-	r = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(r), "Set red amount.")
-	g = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(g), "Set green amount.")
-	b = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(b), "Set blue amount.")
+	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(r), "Set red amount.")
+	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(g), "Set green amount.")
+	db = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(b), "Set blue amount.")
+	if (dr != "" && dg != "" && db != "") {
+		try {
+			dr = real(dr)
+			dg = real(dg)
+			db = real(db)
+		}
+		catch(e) {
+			err = 1
+		}
+		finally {
+			if (!err) {
+				r = dr
+				g = dg
+				b = db
+				if (text_focus) hsv = scr_RGBtoHSB(r, g, b)
+			}
+		}
+	}
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 408, 72, "OK") && windowopen = 1) {
