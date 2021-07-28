@@ -203,7 +203,7 @@ function draw_window_branch_export() {
 	        branch_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && windowopen = 1) {
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		selected_tab_sch = 0
 	}

@@ -31,7 +31,7 @@ function draw_window_mididevices() {
 	popup_set_window(x1 + 13 - 2, y1 + 67, 250 + 75, 20, "The name of the device.")
 	draw_text(x1 + 18, y1 + 70, "Name")
 
-	if (draw_button2(x1 + 408, y1 + 318, 80, "OK") && wmenu = 0 && windowopen = 1) windowclose = 1
+	if (draw_button2(x1 + 408, y1 + 318, 80, "OK") && wmenu = 0 && (windowopen = 1 || theme != 3)) windowclose = 1
 
 	// Instruments
 	for (a = 0; a < 11; a += 1) {

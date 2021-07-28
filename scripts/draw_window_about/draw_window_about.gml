@@ -18,7 +18,7 @@ function draw_window_about() {
 		draw_text(x1 + 150, y1 + 217, "Version " + version + " - Released " + version_date + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Norgren. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
 	}
 	draw_set_halign(fa_left)
-	if (draw_button2(x1 + 120, y1 + 370, 72, "OK", false) && windowopen = 1) windowclose = 1
+	if (draw_button2(x1 + 120, y1 + 370, 72, "OK", false) && (windowopen = 1 || theme != 3)) windowclose = 1
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {
 		if (windowalpha < 1) {

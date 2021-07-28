@@ -46,7 +46,7 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 		// Bar
 	    if (!locked) {
 	        ind = 0
-	        if (mouse_rectangle(xx + 16 + bpos, yy, bwh * (theme = 3), 16) && sb_drag = -1 && (window = 0 || win = 1)) {
+	        if (mouse_rectangle(xx + 16 + bpos, yy, bwh, 16) && sb_drag = -1 && (window = 0 || win = 1)) {
 	            ind += 1
 	            if (mouse_check_button_pressed(mb_left)) {
 	                sb_sel = i
@@ -63,7 +63,7 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 			} else {
 			draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind + fdark * 3, xx + 17 + bpos - 1, yy)
 			}
-			draw_sprite(spr_scrollbar_h_bar_right, (theme * 3) + ind + (fdark && theme = 3) * 3, xx + 17 + bpos + ceil(bwh - 2) - 4 * (theme = 3), yy)	
+			draw_sprite(spr_scrollbar_h_bar_right, (theme * 3) + ind + (fdark && theme = 3) * 3, xx + 17 + bpos + ceil(bwh - 2) - 4, yy)	
 			if (bwh > 20) draw_sprite(spr_scrollbar_h_bar_handle, (theme * 3) + ind, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
 		
 	    }

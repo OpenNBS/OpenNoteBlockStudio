@@ -85,7 +85,7 @@ function draw_window_macro_stagger() {
 		selection_code_update()
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	}
-	if (draw_button2(x1 + 75, y1 + 128, 60, "Cancel") && windowopen = 1) {windowclose = 1}
+	if (draw_button2(x1 + 75, y1 + 128, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {

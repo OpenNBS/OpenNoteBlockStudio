@@ -22,7 +22,7 @@ function draw_window_mp3_export() {
 	//Submit button
 	if (draw_button2(x1 + 165, y1 + 238, 72, "Export", false)) mp3_export()
 
-	if (draw_button2(x1 + 10, y1 + 238, 72, "Cancel", false) && windowopen = 1) {
+	if (draw_button2(x1 + 10, y1 + 238, 72, "Cancel", false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	window_set_cursor(cr_default)

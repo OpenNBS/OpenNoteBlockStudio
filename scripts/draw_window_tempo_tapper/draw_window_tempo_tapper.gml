@@ -41,7 +41,7 @@ function draw_window_tempo_tapper() {
 	if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "Double tempo", "Double the tempo to apply.", 0, 1)) tapdouble = !tapdouble
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, "OK") && windowopen = 1) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, "OK") && (windowopen = 1 || theme != 3)) {
 		try {
 			tempo = (ctempo * (1 + tapdouble)) / 15
 			taptempo = 0

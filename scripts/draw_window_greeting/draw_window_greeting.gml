@@ -78,7 +78,7 @@ function draw_window_greeting() {
 	else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
 	}
 	draw_text(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
-	if (a = 2 && mouse_check_button_released(mb_left) && windowopen = 1) {
+	if (a = 2 && mouse_check_button_released(mb_left) && (windowopen = 1 || theme != 3)) {
 		if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
 		windowclose = 1
 	}

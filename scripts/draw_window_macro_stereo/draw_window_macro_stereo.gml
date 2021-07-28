@@ -65,7 +65,7 @@ function draw_window_macro_stereo() {
 		selection_load(selection_x,selection_y,str,true)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel") && windowopen = 1) {windowclose = 1}
+	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {

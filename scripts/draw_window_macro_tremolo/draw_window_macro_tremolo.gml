@@ -59,7 +59,7 @@ function draw_window_macro_tremolo() {
 		windowopen = 0
 		window = 0
 	}
-	if (draw_button2(x1 + 80, y1 + 215, 60, "Cancel") && windowopen = 1) {windowclose = 1}
+	if (draw_button2(x1 + 80, y1 + 215, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {

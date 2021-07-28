@@ -30,7 +30,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 300, y1 + 112, w_midi_precision, "Double time precision", "Whether to use twice as much space between\neach note to increase the placement precision.") && wmenu = 0) w_midi_precision=!w_midi_precision
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && windowopen = 1) {midifile = "" w_midi_tab = 0 windowclose = 1}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) { 
 	        midi_instruments()

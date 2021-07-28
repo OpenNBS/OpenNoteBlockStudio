@@ -31,7 +31,7 @@ function draw_window_save_options() {
 	if (draw_radiobox(x1 + 15, y1 + 95, save_version = 1, "v1", "Includes custom instrument index", min_version > 1)) save_version = 1
 	if (draw_radiobox(x1 + 15, y1 + 110, save_version = 0, "Classic", "Doesn't have any of the above, but works on all versions.", min_version > 0)) save_version = 0
 
-	if (draw_button2(x1 + 40, y1 + 135, 60, "OK") && windowopen = 1) {
+	if (draw_button2(x1 + 40, y1 + 135, 60, "OK") && (windowopen = 1 || theme != 3)) {
 		if save_version != nbs_version question("Some of the song's data will be lost if you save in a previous version! Are you sure?", "Confirm")
 		changed = 1
 		windowclose = 1

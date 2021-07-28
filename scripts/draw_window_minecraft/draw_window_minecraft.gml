@@ -304,7 +304,7 @@ function draw_window_minecraft() {
 		draw_theme_color()
 	}
 	
-	if (draw_button2(x1 + 240 - 36, y1 + 413, 72, "OK") && windowopen = 1) windowclose = 1
+	if (draw_button2(x1 + 240 - 36, y1 + 413, 72, "OK") && (windowopen = 1 || theme != 3)) windowclose = 1
 	window_set_cursor(cr_default)
 	if (windowopen = 0 && theme = 3) {
 		if (windowalpha < 1) {
