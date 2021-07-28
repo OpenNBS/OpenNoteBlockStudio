@@ -293,6 +293,7 @@ function control_create() {
 	loopstart = 0
 	looptobarend = 1
 	timestoloop = loopmax
+	settempo = 0 // Tempo input box clicked
 	taptempo = 0 // Tempo in measuring
 	tapping = 0 // Is tapping?
 	ltime = 0 // Last time tapped
