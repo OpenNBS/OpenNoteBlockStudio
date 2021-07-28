@@ -1683,10 +1683,10 @@ function control_draw() {
 		if (use_bpm) {
 			bpm = tempo * 15
 			draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick to change. Right click to reset.")
+			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick and drag to change. Click to enter value. Right-click for more options.")
 		} else {
 			draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick to change. Right click to reset.")
+			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick and drag to change. Click to enter value. Right-click for more options.")
 		}
 		draw_set_halign(fa_left)
 		a = mouse_rectangle(108, 57, 64, 22)
@@ -1708,8 +1708,8 @@ function control_draw() {
 			}
 
 		    if (mouse_check_button_pressed(mb_right)) {
-				menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "t/s|" +
-																check(use_bpm) + "BPM|-|" +
+				menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "Ticks per second (t/s)|" +
+																check(use_bpm) + "Beats per minute (BPM)|-|" +
 																check(tempo = 10) + string(10 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 12) + string(12 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 14) + string(14 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
