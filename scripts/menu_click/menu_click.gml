@@ -103,7 +103,6 @@ function menu_click(argument0) {
 	        if (sel = 36 + insoffset) {
 	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
 	        }
-			if (sel = 37 + insoffset) window = w_tempotapper
 	        break
 	    }
 	    case "editext": {
@@ -157,7 +156,6 @@ function menu_click(argument0) {
 	        if (sel = 36 + insoffset) {
 	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
 	        }
-			if (sel = 37 + insoffset) window = w_tempotapper
 	        break
 	    }
 	    case "settings": {
