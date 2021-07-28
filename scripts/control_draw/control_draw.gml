@@ -1692,13 +1692,21 @@ function control_draw() {
 		a = mouse_rectangle(108, 57, 64, 22)
 		var bpm_multiplier = use_bpm ? 15 : 1
 		if (a && window = 0) {
-		    curs = cr_handpoint
-		    if (mouse_check_button_released(mb_left)) {
-		        //tempodrag = tempo
+			curs = cr_handpoint
+			
+			// Input
+			if (mouse_check_button_released(mb_left)) {
 		        window = w_settempo
 				text_exists[100] = 0
 				text_focus = 100
-		    }
+			}
+			// Drag
+		    if (mouse_check_button(mb_left) && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) { // this condition is met as soon as mouse down, window changes, and the block above never runs
+		        curs = cr_size_ns
+				tempodrag = tempo
+		        window = w_dragtempo
+			}
+
 		    if (mouse_check_button_pressed(mb_right)) {
 				menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "t/s|" +
 																check(use_bpm) + "BPM|-|" +
