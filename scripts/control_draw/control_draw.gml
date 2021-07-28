@@ -1724,7 +1724,7 @@ function control_draw() {
 		if (window = w_dragtempo) {
 		    curs = cr_size_ns
 		    tempodrag += 0.25 * (mouse_yprev - mouse_y) / 3
-		    tempodrag = median(0.25, tempodrag, 120)
+		    tempodrag = median(0.25, tempodrag, 60)
 		    a = tempo
 		    tempo = floor(tempodrag * 4) / 4
 		    if (a != tempo) changed = 1
