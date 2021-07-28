@@ -330,7 +330,7 @@ function menu_click(argument0) {
 			else if (sel = 7) tempo = 20
 			else if (sel = 8) tempo = 30
 			else if (sel = 9) tempo = 60
-			else if (sel = 10) window = w_settempo
+			else if (sel = 10) window = w_tempotapper
 
 		}
 	}

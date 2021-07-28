@@ -509,8 +509,7 @@ function control_draw() {
 											"Ctrl+Shift+Y$Set pitch...|"+
 											"Ctrl+Shift+U$Reset all properties|"+
 											"/|-|"+
-	                                        inactive(selected = 0) + "Transpose notes outside octave range|-|"+
-											"Ctrl+Shift+I$Tempo tapper")
+	                                        inactive(selected = 0) + "Transpose notes outside octave range|")
 	            menu.menuc = selbx
 	            menu.pastex = selbx
 	            menu.pastey = selby
@@ -1283,8 +1282,7 @@ function control_draw() {
 	                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
-	                                inactive(selected = 0) + "Transpose notes outside octave range|-|"+
-									"Ctrl+Shift+I$Tempo tapper")
+	                                inactive(selected = 0) + "Transpose notes outside octave range")
 	}
 	if (draw_tab("Settings")) {
 	    str = ""
@@ -1712,7 +1710,7 @@ function control_draw() {
 																check(tempo = 20) + string(20 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 30) + string(30 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
-																"Set tempo...")
+																"Tempo tapper...")
 			}
 		}
 		if (window = w_dragtempo) {
