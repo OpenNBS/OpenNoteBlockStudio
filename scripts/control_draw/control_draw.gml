@@ -1677,23 +1677,43 @@ function control_draw() {
 		draw_set_halign(fa_center)
 		if (use_bpm) {
 			draw_sprite(spr_tempobox, 1 + 2 * (theme = 3) + 2 * (fdark && theme = 3), 101, 57)
+		} else {
+			draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
+		}
+		
+		if (window != w_settempo) {
+		if (use_bpm) {
 			bpm = tempo * 15
 			draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick to change. Right click to reset.")
 		} else {
-			draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
 			draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick to change. Right click to reset.")
 		}
 		draw_set_halign(fa_left)
 		a = mouse_rectangle(108, 57, 64, 22)
+		var bpm_multiplier = use_bpm ? 15 : 1
 		if (a && window = 0) {
 		    curs = cr_handpoint
 		    if (mouse_check_button_released(mb_left)) {
 		        //tempodrag = tempo
 		        window = w_settempo
+				text_exists[100] = 0
+				text_focus = 100
 		    }
-		    if (mouse_check_button_pressed(mb_right)) tempo = 10
+		    if (mouse_check_button_pressed(mb_right)) {
+				menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "t/s|" +
+																check(use_bpm) + "BPM|-|" +
+																check(tempo = 10) + string(10 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 12) + string(12 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 14) + string(14 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 16) + string(16 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 18) + string(18 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 20) + string(20 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 30) + string(30 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
+																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
+																"Set tempo...")
+			}
 		}
 		if (window = w_dragtempo) {
 		    curs = cr_size_ns
@@ -1703,6 +1723,7 @@ function control_draw() {
 		    tempo = floor(tempodrag * 4) / 4
 		    if (a != tempo) changed = 1
 		    if (!mouse_check_button(mb_left)) window = w_releasemouse
+		}
 		}
 		}
 		draw_set_halign(fa_left)
