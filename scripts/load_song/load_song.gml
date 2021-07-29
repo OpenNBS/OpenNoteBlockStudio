@@ -49,7 +49,7 @@ function load_song() {
 				buffer_read_short()
 			}
 		} else {
-			message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
+			if (show_oldwarning) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 			song_nbs_version = 0
 			custom_index_diff = 0
 			song_first_custom_index = 0

@@ -24,7 +24,7 @@ function pattern_import() {
 		selection_l_temp = selection_l
 		selection_l = buffer_read_short()
 	//	show_debug_message("selection_l " + string(selection_l))
-		if song_pat_version < pat_version message("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
+		if (song_pat_version < pat_version && show_oldwarning) message("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 		if song_pat_version > pat_version message("Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening.","Warning")
 		temp_str = buffer_read_string()
 		if check_custom_instrument(temp_str) = 0 {
