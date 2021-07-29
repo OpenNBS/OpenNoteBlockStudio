@@ -23,6 +23,6 @@ function draw_accent_rainbow(){
 		if (refreshrate = 3) rainbow += 0.83
 		if (refreshrate = 4) rainbow += 0.5
 	} else {
-		rainbow = 0
+		rainbow = 1
 	}
 }
