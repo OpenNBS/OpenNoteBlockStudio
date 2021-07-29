@@ -83,6 +83,8 @@ function control_create() {
 	hsdrag = 0
 	vdrag = 0
 	nocdrag = 0
+	rainbow = 0
+	rainbowtoggle = 0
 	
 
 	// File

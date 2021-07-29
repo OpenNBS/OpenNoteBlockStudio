@@ -1,4 +1,3 @@
-// v2.3.0的脚本资产已更改，请参见\ n // https://help.yoyogames.com/hc/en-us/articles/360005277377
 function draw_accent_init(){
 	if (accent1 > accent2 && accent1 > accent3) hiacc = accent1
 	else if (accent2 > accent1 && accent2 > accent3) hiacc = accent2

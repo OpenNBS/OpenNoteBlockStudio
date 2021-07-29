@@ -450,6 +450,7 @@
     {"id":{"name":"dat_preview","path":"scripts/dat_preview/dat_preview.yy",},"order":6,},
     {"id":{"name":"dat_writefile","path":"scripts/dat_writefile/dat_writefile.yy",},"order":7,},
     {"id":{"name":"dat_makefolders","path":"scripts/dat_makefolders/dat_makefolders.yy",},"order":8,},
+    {"id":{"name":"draw_accent_rainbow","path":"scripts/draw_accent_rainbow/draw_accent_rainbow.yy",},"order":34,},
     {"id":{"name":"datapack_getextranotes","path":"scripts/datapack_getextranotes/datapack_getextranotes.yy",},"order":9,},
     {"id":{"name":"datapack_getinstextures","path":"scripts/datapack_getinstextures/datapack_getinstextures.yy",},"order":10,},
     {"id":{"name":"block_get_namespaced_id","path":"scripts/block_get_namespaced_id/block_get_namespaced_id.yy",},"order":11,},

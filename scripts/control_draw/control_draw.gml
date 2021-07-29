@@ -610,6 +610,15 @@ function control_draw() {
 			if (!isplayer) playing = 0 
 			window = w_setaccent
 		}
+		if (keyboard_check_pressed(vk_f5) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
+			rainbowtoggle = !rainbowtoggle
+			if (rainbowtoggle) {
+				set_msg("Rainbow => ON")
+			} else {
+				set_msg("Rainbow => OFF")
+				draw_accent_init()
+			}
+		}
 		if (!isplayer) {
 	    if (keyboard_check(vk_control)) {
 		
@@ -1770,6 +1779,7 @@ function control_draw() {
 	if (window = w_releasemouse && !mouse_check_button(mb_left)) {window = 0 windowopen = 0}
 	draw_windows()
 	if (showmsg) draw_msg()
+	if (rainbowtoggle) draw_accent_rainbow()
 
 	// Draw update progress bar
 	if (update == 4) {
