@@ -89,10 +89,14 @@ function control_draw() {
 	// Toggle blackout mode
 	if (keyboard_check_pressed(vk_f10)) {
 		blackout = !blackout
+		if (blackout) set_msg("Blackout mode => ON")
+		else set_msg("Blackout mode => OFF")
 	}
 	// Toggle fullscreen
 	if (keyboard_check_pressed(vk_f11)) {
 		fullscreen = !fullscreen
+		if (fullscreen) set_msg("Fullscreen => ON")
+		else set_msg("Fullscreen => OFF")
 	}
 	}
 
@@ -1012,6 +1016,8 @@ function control_draw() {
 	draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
 		fullscreen = !fullscreen
+		if (fullscreen) set_msg("Fullscreen => ON")
+		else set_msg("Fullscreen => OFF")
 		dontplace = 1
 	}
 	draw_theme_color()
