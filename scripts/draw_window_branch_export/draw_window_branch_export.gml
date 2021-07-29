@@ -9,7 +9,7 @@ function draw_window_branch_export() {
 	if (theme = 3){
 	draw_set_color(13421772)
 	if (fdark) draw_set_color(3355443)
-	draw_rectangle(x1+1,y1+1,x1+548,y1+48,0)
+	draw_roundrect(x1+1,y1+1,x1+548,y1+48,0)
 	draw_set_color(c_black)
 	draw_theme_color()
 	}
