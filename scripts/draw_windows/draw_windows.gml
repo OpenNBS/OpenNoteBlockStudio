@@ -6,6 +6,15 @@ function draw_windows() {
 		windowanim = 0
 		return 0
 	}
+	
+	if (windowanim = 1) {
+		if (theme = 3) {
+			draw_set_alpha(windowalpha * 0.5)
+			draw_rectangle(0, 0, rw, rh, false)
+		}
+		anim_window_open()
+	}
+	
 	draw_set_alpha(windowalpha)
 	key_edit = -1
 	switch (window mod w_menu) {
@@ -41,9 +50,4 @@ function draw_windows() {
 	    case w_setaccent: draw_window_set_accent() break
 	}
 	draw_set_alpha(1)
-	
-	// Update window alpha for next frame
-	if (windowanim = 1) {
-		anim_window_open()
-	}
 }
