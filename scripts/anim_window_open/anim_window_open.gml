@@ -11,8 +11,7 @@ function anim_window_open() {
 				windowprogress += delta
 				windowprogress = min(windowprogress, 1)
 				windowalpha = ease_out_sine(windowprogress)
-				show_debug_message(string(windowalpha) + " " + string(windowprogress))
-				windowoffset = ease_in_sine(1 - windowprogress) * 20
+				windowoffset = (1 - ease_out_sine(windowprogress)) * 12
 			} else {
 				windowprogress = 1
 				windowalpha = 1
@@ -24,7 +23,7 @@ function anim_window_open() {
 				windowprogress -= delta
 				windowprogress = max(windowprogress, 0)
 				windowalpha = ease_in_sine(windowprogress)
-				windowoffset = ease_out_sine(1 - windowprogress) * 20
+				windowoffset = (1 - ease_in_sine(windowprogress)) * 12
 			} else {
 				windowprogress = 0
 				windowalpha = 0
