@@ -141,6 +141,7 @@
     {"id":{"name":"buffer_write_string","path":"scripts/buffer_write_string/buffer_write_string.yy",},"order":25,},
     {"id":{"name":"buffer_read_string","path":"scripts/buffer_read_string/buffer_read_string.yy",},"order":26,},
     {"id":{"name":"add_to_recent","path":"scripts/add_to_recent/add_to_recent.yy",},"order":1,},
+    {"id":{"name":"easings","path":"scripts/easings/easings.yy",},"order":9,},
     {"id":{"name":"confirm","path":"scripts/confirm/confirm.yy",},"order":2,},
     {"id":{"name":"load_settings","path":"scripts/load_settings/load_settings.yy",},"order":3,},
     {"id":{"name":"load_song","path":"scripts/load_song/load_song.yy",},"order":4,},
