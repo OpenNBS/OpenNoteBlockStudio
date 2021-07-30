@@ -7,21 +7,26 @@ function anim_window_open() {
 	// Fluent (fade)
 	if (theme = 3) {
 		if (windowopen = 0) {
-			if (windowalpha < 1) {
-				windowalpha += delta
-				windowalpha = min(windowalpha, 1)
-				windowoffset = ease_in_sine(1 - windowalpha) * 20
+			if (windowprogress < 1) {
+				windowprogress += delta
+				windowprogress = min(windowprogress, 1)
+				windowalpha = ease_out_sine(windowprogress)
+				show_debug_message(string(windowalpha) + " " + string(windowprogress))
+				windowoffset = ease_in_sine(1 - windowprogress) * 20
 			} else {
+				windowprogress = 1
 				windowalpha = 1
 				windowopen = 1
 			}
 		}
 		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				windowalpha -= delta
-				windowalpha = max(windowalpha, 0)
-				windowoffset = ease_out_sine(1 - windowalpha) * 20
+			if (windowprogress > 0) {
+				windowprogress -= delta
+				windowprogress = max(windowprogress, 0)
+				windowalpha = ease_in_sine(windowprogress)
+				windowoffset = ease_out_sine(1 - windowprogress) * 20
 			} else {
+				windowprogress = 0
 				windowalpha = 0
 				windowclose = 0
 				windowopen = 0

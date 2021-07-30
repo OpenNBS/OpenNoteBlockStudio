@@ -32,6 +32,7 @@ function control_create() {
 	prev_scale = -1
 	rw = 0
 	rh = 0
+	windowprogress = 0
 	windowalpha = 0
 	windowoffset = 0
 	windowanim = 0
