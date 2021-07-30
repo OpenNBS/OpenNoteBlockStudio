@@ -5,7 +5,7 @@ function draw_window_schematic_export() {
 	var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2;
 	curs = cr_default
 	x1 = floor(rw / 2 - 275)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 550, y1 + 400)
 	if (theme = 3){
 	draw_set_color(13421772)

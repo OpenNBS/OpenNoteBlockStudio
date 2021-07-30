@@ -4,7 +4,7 @@ function draw_window_stats() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	var x1, y1, a, n;
 	x1 = floor(rw / 2 - 150)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 300, y1 + 400)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Song Stats")

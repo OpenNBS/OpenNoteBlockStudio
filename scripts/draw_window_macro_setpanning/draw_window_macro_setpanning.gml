@@ -7,7 +7,7 @@ function draw_window_macro_setpanning() {
 	text_exists[0] = 0
 	if (selected = 0) return 0
 	x1 = floor(rw / 2 - 80)
-	y1 = floor(rh / 2 - 80)
+	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Set note panning")

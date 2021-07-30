@@ -5,7 +5,7 @@ function draw_window_preferences_f() {
 	curs = cr_default
 	nsel = -1
 	x1 = floor(rw / 2 - 250)
-	y1 = floor(rh / 2 - 255)
+	y1 = floor(rh / 2 - 255) + windowoffset
 	draw_window(x1, y1, x1 + 500, y1 + 510)
 	draw_set_color(15132390)
 	draw_rectangle(x1+1,y1+30,x1+498,y1+69,0) //48

@@ -5,7 +5,7 @@ function draw_window_minecraft() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 245)
-	y1 = floor(rh / 2 - 225)
+	y1 = floor(rh / 2 - 225) + windowoffset
 	draw_window(x1, y1, x1 + 490, y1 + 450)
 	if (theme = 3){
 	draw_set_color(13421772)

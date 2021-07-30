@@ -7,7 +7,7 @@ function draw_window_macro_stagger() {
 	text_exists[0] = 0
 	if (selected = 0) return 0
 	x1 = floor(rw / 2 - 80)
-	y1 = floor(rh / 2 - 70)
+	y1 = floor(rh / 2 - 70) + windowoffset
 	draw_window(x1, y1, x1 + 150, y1 + 160)
 	draw_theme_color()
 	draw_theme_font(font_main_bold)

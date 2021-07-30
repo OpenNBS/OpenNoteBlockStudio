@@ -5,7 +5,7 @@ function draw_window_datapack_export() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 275)
-	y1 = floor(rh / 2 - 215)
+	y1 = floor(rh / 2 - 215) + windowoffset
 	draw_window(x1, y1, x1 + 550, y1 + 430)
 	if (theme = 3){
 	draw_set_color(13421772)

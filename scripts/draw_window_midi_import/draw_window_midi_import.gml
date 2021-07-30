@@ -7,7 +7,7 @@ function draw_window_midi_import() {
 	menun = -1
 	nsel = -1
 	x1 = floor(rw / 2 - 300)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 600, y1 + 400)
 	if (theme = 3){
 	draw_set_color(13421772)

@@ -5,7 +5,7 @@ function draw_window_greeting() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 350)
-	y1 = floor(rh / 2 - 210)
+	y1 = floor(rh / 2 - 210) + windowoffset
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
 	draw_theme_font(font_info_med_bold)

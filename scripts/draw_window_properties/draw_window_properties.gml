@@ -6,7 +6,7 @@ function draw_window_properties() {
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 220)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 440, y1 + 400)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Song Properties")

@@ -15,7 +15,7 @@ function draw_window_update() {
 		return 0
 	}
 	x1 = floor(rw / 2 - 250)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 500, y1 + 400)
 	draw_theme_font(font_main_bold)
 	

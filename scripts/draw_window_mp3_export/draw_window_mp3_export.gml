@@ -5,7 +5,7 @@ function draw_window_mp3_export() {
 	var x1, y1
 	curs = cr_default
 	x1 = floor(rw / 2 - 125)
-	y1 = floor(rh / 2 - 135)
+	y1 = floor(rh / 2 - 135) + windowoffset
 	draw_window(x1, y1, x1 + 250, y1 + 270)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "MP3 Export")

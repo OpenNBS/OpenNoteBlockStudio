@@ -5,7 +5,7 @@ function draw_window_clip_editor() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 220)
-	y1 = floor(rh / 2 - 215)
+	y1 = floor(rh / 2 - 215) + windowoffset
 	draw_window(x1, y1, x1 + 440, y1 + 430)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Secret Clipboard Editor")

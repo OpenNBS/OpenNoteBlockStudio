@@ -6,7 +6,7 @@ function draw_window_preferences() {
 	curs = cr_default
 	nsel = -1
 	x1 = floor(rw / 2 - 250)
-	y1 = floor(rh / 2 - 255 + isplayer * 50)
+	y1 = floor(rh / 2 - 255 + isplayer * 50) + windowoffset
 	draw_window(x1, y1, x1 + 500, y1 + 510 - isplayer * 100)
 	if (theme = 3){
 	draw_set_color(15132390)

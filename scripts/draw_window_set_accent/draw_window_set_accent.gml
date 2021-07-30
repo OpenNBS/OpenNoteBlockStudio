@@ -6,7 +6,7 @@ function draw_window_set_accent() {
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 140)
-	y1 = floor(rh / 2 - 220)
+	y1 = floor(rh / 2 - 220) + windowoffset
 	draw_window(x1, y1, x1 + 280, y1 + 440)
 	draw_theme_font(font_main_bold)
 	draw_text(x1 + 8, y1 + 8, "Set accent color")

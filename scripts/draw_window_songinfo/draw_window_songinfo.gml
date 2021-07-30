@@ -48,7 +48,7 @@ function draw_window_songinfo() {
 	if (window = w_songinfoedit)
 	    h += 32
 	x1 = floor(rw / 2 - w / 2)
-	y1 = floor(rh / 2 - h / 2)
+	y1 = floor(rh / 2 - h / 2) + windowoffset
 	draw_window(x1, y1, x1 + w, y1 + h)
 
 	draw_theme_font(font_info_big)

@@ -6,7 +6,7 @@ function draw_window_tempo_tapper() {
 	curs = cr_default
 	text_exists[0] = 0
 	x1 = floor(rw / 2 - 80)
-	y1 = floor(rh / 2 - 80)
+	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	ltempo = taptempo
 	ins = instrument_list[| 4]
