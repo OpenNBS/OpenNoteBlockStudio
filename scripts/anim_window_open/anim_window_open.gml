@@ -23,7 +23,7 @@ function anim_window_open() {
 				windowprogress -= delta
 				windowprogress = max(windowprogress, 0)
 				windowalpha = ease_in_sine(windowprogress)
-				windowoffset = (1 - ease_in_sine(windowprogress)) * 12
+				windowoffset = -(1 - ease_in_sine(windowprogress)) * 12
 			} else {
 				windowprogress = 0
 				windowalpha = 0
