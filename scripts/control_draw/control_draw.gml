@@ -1634,7 +1634,14 @@ function control_draw() {
 			}
 			draw_rectangle(rw / 2 - 200, rh / 2 + 25, rw / 2 + 200, rh / 2 + 25 + 2 + (theme = 3), 0)
 			draw_set_alpha(0.5)
-			if (theme = 3) draw_rectangle(rw / 2 - 200 - 1, rh / 2 + 25 + 1, rw / 2 + 200 + 1, rh / 2 + 25 + 2, 0)
+			if (theme = 3) {
+				draw_rectangle(rw / 2 - 200 - 1, rh / 2 + 25 + 1, rw / 2 + 200 + 1, rh / 2 + 25 + 2, 0)
+				draw_set_alpha(1)
+				draw_set_color(accent[5])
+				draw_rectangle(rw / 2 - 200, rh / 2 + 25, floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 2 + (theme = 3), 0)
+				draw_set_alpha(0.5)
+				draw_rectangle(rw / 2 - 200 - 1, rh / 2 + 25 + 1, floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 2, 0)
+			}
 			draw_set_alpha(1)
 			a = (mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || mouse_rectangle(rw / 2 - 200 - 3, rh / 2 + 25 + 1 - 3, 400 + 6, 6 + (theme = 3)) && window = 0)
 			if (theme != 3) {
@@ -1644,14 +1651,14 @@ function control_draw() {
 				draw_set_color(c_white)
 				if (fdark) draw_set_color(make_color_rgb(69, 69, 69))
 				draw_set_alpha(0.5)
-				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 11, 0)
+				draw_circle(floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 1, 11, 0)
 				draw_set_alpha(1)
-				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 10, 0)
+				draw_circle(floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 1, 10, 0)
 				draw_set_color(accent[5 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left))])
 				draw_set_alpha(0.5)
-				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 6 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
+				draw_circle(floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 1, 6 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
 				draw_set_alpha(1)
-				draw_circle(rw / 2 - 200 + (marker_pos / enda) * 400, rh / 2 + 25 + 1, 5 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
+				draw_circle(floor(rw / 2 - 200 + (marker_pos / enda) * 400 + 0.5), rh / 2 + 25 + 1, 5 + mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(rw / 2 - 200 + (marker_pos / enda) * 400 - 6, rh / 2 + 25 + 1 - 6, 13, 13) || aa) && mouse_check_button(mb_left)), 0)
 			}
 			draw_theme_color()
 			if (a || aa) {

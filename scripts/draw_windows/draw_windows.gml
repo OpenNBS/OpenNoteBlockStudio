@@ -9,6 +9,7 @@ function draw_windows() {
 	
 	if (windowanim = 1) {
 		if (theme = 3) {
+			draw_set_color(0)
 			draw_set_alpha(windowalpha * 0.5)
 			draw_rectangle(0, 0, rw, rh, false)
 		}
