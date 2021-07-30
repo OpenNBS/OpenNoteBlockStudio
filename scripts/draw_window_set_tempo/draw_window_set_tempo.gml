@@ -10,6 +10,7 @@ function draw_window_set_tempo() {
 		xx = 101
 		w = 74
 	}
+	draw_set_alpha(1)
 	input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")")
 	
 	// Prevent closing the box if user clicked on top of it
