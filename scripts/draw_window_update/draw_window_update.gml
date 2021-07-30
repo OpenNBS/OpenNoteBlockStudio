@@ -4,7 +4,7 @@ function draw_window_update() {
 	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	if (window = w_update && theme != 3) windowopen = 1
-	fullstr = load_text(data_directory + "changelog.txt")
+	fullstr = changelogstr
 	if (fullstr = 0) {
 		show_message("Changelist not found!")
 		if (window = w_update) {
