@@ -10,6 +10,7 @@ function anim_window_open() {
 			if (windowalpha < 1) {
 				windowalpha += delta
 				windowalpha = min(windowalpha, 1)
+				windowoffset = ease_in_sine(1 - windowalpha) * 20
 			} else {
 				windowalpha = 1
 				windowopen = 1
@@ -19,6 +20,7 @@ function anim_window_open() {
 			if (windowalpha > 0) {
 				windowalpha -= delta
 				windowalpha = max(windowalpha, 0)
+				windowoffset = ease_out_sine(1 - windowalpha) * 20
 			} else {
 				windowalpha = 0
 				windowclose = 0
