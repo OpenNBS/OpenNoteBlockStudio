@@ -33,6 +33,7 @@ function control_create() {
 	rw = 0
 	rh = 0
 	windowalpha = 0
+	windowoffset = 0
 	windowanim = 0
 	windowopen = 0
 	windowclose = 0

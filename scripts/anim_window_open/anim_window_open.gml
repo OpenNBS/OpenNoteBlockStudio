@@ -1,15 +1,15 @@
 function anim_window_open() {
 	// Opening and closing animation for windows.
 	
+	var duration = 0.25
+	var delta = 1 / (room_speed * duration)
+	
 	// Fluent (fade)
 	if (theme = 3) {
 		if (windowopen = 0) {
 			if (windowalpha < 1) {
-				if (refreshrate = 0) windowalpha += 1/3.75
-				else if (refreshrate = 1) windowalpha += 1/7.5
-				else if (refreshrate = 2) windowalpha += 1/15
-				else if (refreshrate = 3) windowalpha += 1/18
-				else windowalpha += 1/20
+				windowalpha += delta
+				windowalpha = min(windowalpha, 1)
 			} else {
 				windowalpha = 1
 				windowopen = 1
@@ -17,11 +17,8 @@ function anim_window_open() {
 		}
 		if (windowclose = 1) {
 			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
+				windowalpha -= delta
+				windowalpha = max(windowalpha, 0)
 			} else {
 				windowalpha = 0
 				windowclose = 0
