@@ -137,6 +137,7 @@
     {"id":{"name":"scr_RGBtoHSB","path":"scripts/scr_RGBtoHSB/scr_RGBtoHSB.yy",},"order":8,},
     {"id":{"name":"buffer_write_string_int","path":"scripts/buffer_write_string_int/buffer_write_string_int.yy",},"order":23,},
     {"id":{"name":"buffer_write_string_short_be","path":"scripts/buffer_write_string_short_be/buffer_write_string_short_be.yy",},"order":24,},
+    {"id":{"name":"anim_window_open","path":"scripts/anim_window_open/anim_window_open.yy",},"order":28,},
     {"id":{"name":"buffer_write_string","path":"scripts/buffer_write_string/buffer_write_string.yy",},"order":25,},
     {"id":{"name":"buffer_read_string","path":"scripts/buffer_read_string/buffer_read_string.yy",},"order":26,},
     {"id":{"name":"add_to_recent","path":"scripts/add_to_recent/add_to_recent.yy",},"order":1,},

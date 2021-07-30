@@ -1,7 +1,12 @@
 function draw_windows() {
 	// draw_windows()
 
-	if (window = 0) {windowopen = 0 return 0}
+	if (window = 0) {
+		windowopen = 0
+		windowanim = 0
+		return 0
+	}
+	draw_set_alpha(windowalpha)
 	key_edit = -1
 	switch (window mod w_menu) {
 	    case w_greeting: draw_window_greeting() break
@@ -35,7 +40,10 @@ function draw_windows() {
 	    case w_tempotapper: draw_window_tempo_tapper() break
 	    case w_setaccent: draw_window_set_accent() break
 	}
-
-
-
+	draw_set_alpha(1)
+	
+	// Update window alpha for next frame
+	if (windowanim = 1) {
+		anim_window_open()
+	}
 }

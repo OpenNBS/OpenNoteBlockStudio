@@ -1,6 +1,7 @@
 function draw_window_preferences() {
 	// draw_window_preferences()
 	var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	nsel = -1
@@ -360,36 +361,4 @@ function draw_window_preferences() {
 			if (windowopen = 1) windowclose = 1
 		}
 	}
-	//opening and closing animation
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if (windowclose = 1) {
-		if (windowalpha > 0) {
-			if (refreshrate = 0) windowalpha -= 1/3.75
-			else if (refreshrate = 1) windowalpha -= 1/7.5
-			else if (refreshrate = 2) windowalpha -= 1/15
-			else if (refreshrate = 3) windowalpha -= 1/18
-			else windowalpha -= 1/20
-		} else {
-			windowalpha = 0
-			windowclose = 0
-			windowopen = 0
-			window = 0
-			window_set_cursor(curs)
-			save_settings()
-			selected_tab = 0
-		}
-	}
-	draw_set_alpha(1)
-
 }

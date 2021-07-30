@@ -1,6 +1,7 @@
 function draw_window_datapack_export() {
 	// draw_window_datapack_export()
 	var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 275)
@@ -216,45 +217,4 @@ function draw_window_datapack_export() {
 	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	window_set_cursor(cr_default)
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if(theme = 3) {
-		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
-			} else {
-				windowalpha = 0
-				windowclose = 0
-				windowopen = 0
-				window = 0
-				window_set_cursor(curs)
-				save_settings()
-				selected_tab_dat = 0
-			}
-		}
-	} else {
-		if (windowclose = 1) {
-			windowclose = 0
-			window = 0
-			selected_tab_dat = 0
-		}
-	}
-	draw_set_alpha(1)
-
-
 }
