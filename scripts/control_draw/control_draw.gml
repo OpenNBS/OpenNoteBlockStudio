@@ -721,7 +721,7 @@ function control_draw() {
 		}
 		}
 	}
-	if (keyboard_check_pressed(vk_f7)) {
+	if (keyboard_check_pressed(vk_f7) && playing = 0) {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
@@ -814,7 +814,7 @@ function control_draw() {
 	    }
 		//metronome
 		if (metronome && !isplayer) {
-			if room_speed = 60 {
+			if room_speed >= 60 {
 			var pos = floor(marker_pos -0.1)
 			} else pos = floor(marker_pos -0.4)
 			if (tempo = 30) pos -= 1
