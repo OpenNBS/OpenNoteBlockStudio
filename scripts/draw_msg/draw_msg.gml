@@ -27,11 +27,7 @@ function draw_msg(){
 	draw_text(x1, y1 - 10 - string_height(str) / 2, str)
 	if (current_time - msgstart >= 1000){
 		if (msgalpha > 0) {
-			if (refreshrate = 0) msgalpha -= 1/7.5
-			else if (refreshrate = 1) msgalpha -= 1/15
-			else if (refreshrate = 2) msgalpha -= 1/30
-			else if (refreshrate = 3) msgalpha -= 1/36
-			else msgalpha -= 1/40
+			msgalpha -= 1/7.5 * (30 / room_speed) * (1 / currspeed)
 		} else {
 			msgalpha = 0
 			showmsg = 0

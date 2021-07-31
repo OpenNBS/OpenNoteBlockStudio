@@ -2,7 +2,7 @@ function anim_window_open() {
 	// Opening and closing animation for windows.
 	
 	var duration = 0.25
-	var delta = 1 / (room_speed * duration * (refreshrate != 4) + 240 * duration * (refreshrate = 4))
+	var delta = 1 / (room_speed * duration * currspeed)
 	
 	// Fluent (fade)
 	if (theme = 3) {
