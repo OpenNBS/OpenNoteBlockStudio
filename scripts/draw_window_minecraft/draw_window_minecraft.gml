@@ -113,7 +113,7 @@ function draw_window_minecraft() {
 
 		if (tempo = 10 || tempo = 5 || tempo = 2.5) {    
 			draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    draw_text(x1 + 45, yy + 16, "The tempo is " + string(tempo) + " ticks per second.")
 		} else {
 			draw_set_color(c_red)
@@ -161,7 +161,7 @@ function draw_window_minecraft() {
 		    }
 		} else {
 		    draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    draw_text(x1 + 45, yy + 16, "There are no blocks outside the 2 octave range.")
 		}
 		draw_theme_color()
@@ -185,7 +185,7 @@ function draw_window_minecraft() {
 		    }
 		} else {
 		    draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    draw_text(x1 + 45, yy + 16, "There are no blocks with custom instruments.")
 		}
 		draw_theme_color()
@@ -203,7 +203,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)	
 			}
 			draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 			draw_text(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
 		} else {
 			if (theme != 3) {
@@ -269,7 +269,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		    draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    draw_text(x1 + 45, yy + 32, "There are no blocks outside the 2 octave range.")
 		}
 		draw_theme_color()
@@ -299,7 +299,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
 			}
 		    draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
+			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    draw_text(x1 + 45, yy + 32, "There are no blocks with custom instruments.")
 		}
 		draw_theme_color()

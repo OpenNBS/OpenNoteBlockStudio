@@ -1462,8 +1462,8 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_green)
-		if (theme == 2) draw_set_color(c_lime)
 		draw_text(rw - 166, 28, "Fully compatible")
+		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
