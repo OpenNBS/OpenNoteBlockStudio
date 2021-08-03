@@ -1453,6 +1453,7 @@ function control_draw() {
 	if (!isplayer) {
 	draw_separator(rw - 34, 26)
 	draw_theme_font(font_main_bold)
+	draw_set_halign(fa_right)
 	if (compatible = 1) {
 		if (theme != 3) {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
@@ -1462,8 +1463,8 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_green)
-		draw_text(rw - 166, 28, "Fully compatible")
 		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
+		draw_text(rw - 65, 28, "Fully compatible")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
@@ -1476,7 +1477,7 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_orange)
-		draw_text(rw - 154, 28, "Data pack only")
+		draw_text(rw - 65, 28, "Data pack only")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
@@ -1489,11 +1490,12 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_red)
-		draw_text(rw - 180, 28, "Resource pack only")
+		draw_text(rw - 65, 28, "Resource pack only")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
 	}
+	draw_set_halign(fa_left)
 
 	a = mouse_rectangle(rw - compx, 24, compx, 25)
 	if (a && window = 0) {
