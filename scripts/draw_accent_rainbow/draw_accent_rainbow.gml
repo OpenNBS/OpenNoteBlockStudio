@@ -17,11 +17,7 @@ function draw_accent_rainbow(){
 	accent[7] = make_color_rgb(rr + (hiacc - rr) * 0.1 * 5, rg + (hiacc - rg) * 0.1 * 5, rb + (hiacc - rb) * 0.1 * 5)
 	accent[8] = make_color_rgb(rr * 0.5, rg * 0.5, rb * 0.5)
 	if (rainbow + 4 - refreshrate < 360) {
-		if (refreshrate = 0) rainbow += 4
-		if (refreshrate = 1) rainbow += 2
-		if (refreshrate = 2) rainbow += 1
-		if (refreshrate = 3) rainbow += 0.83
-		if (refreshrate = 4) rainbow += 0.5
+		rainbow += 4 * (30 / room_speed) * (1 / currspeed)
 	} else {
 		rainbow = 1
 	}

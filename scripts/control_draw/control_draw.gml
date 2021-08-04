@@ -3,7 +3,7 @@ function control_draw() {
 	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev, colr;
 
 	var targetspeed = 1000000 / room_speed
-	var currspeed = targetspeed / delta_time
+	currspeed = targetspeed / delta_time
 	
 	rw = floor(window_width * (1 / window_scale))
 	rh = floor(window_height * (1 / window_scale))
@@ -721,7 +721,7 @@ function control_draw() {
 		}
 		}
 	}
-	if (keyboard_check_pressed(vk_f7)) {
+	if (keyboard_check_pressed(vk_f7) && playing = 0) {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
@@ -814,7 +814,7 @@ function control_draw() {
 	    }
 		//metronome
 		if (metronome && !isplayer) {
-			if room_speed = 60 {
+			if room_speed >= 60 {
 			var pos = floor(marker_pos -0.1)
 			} else pos = floor(marker_pos -0.4)
 			if (tempo = 30) pos -= 1

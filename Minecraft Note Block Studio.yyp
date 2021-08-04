@@ -595,6 +595,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"invoke.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"hide.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"NBS Player Mode.bat","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"block.sand.break.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"Nyan Cat.nbs","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"Turkish March.nbs","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.3.570",

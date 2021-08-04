@@ -128,6 +128,7 @@ function control_create() {
 	section_end = 0
 	timeline_pressa = -1
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
+	currspeed = 0
 
 	// Note blocks
 	starta = 0
