@@ -89,9 +89,10 @@ function draw_window_schematic_export() {
 	    draw_text(x1 + 16, y1 + 220, "Layout:")
 	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
 	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
-	    draw_text(x1 + 16, y1 + 290, "For Minecraft version:")
-	    if (draw_radiobox(x1 + 32, y1 + 310, !sch_exp_minecraft_old, "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.\nNOTE: Support for versions 1.13+ is coming soon.")) sch_exp_minecraft_old = false
-	    if (draw_radiobox(x1 + 32, y1 + 330, sch_exp_minecraft_old, "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) sch_exp_minecraft_old = true
+	    draw_text(x1 + 16, y1 + 220 + 54, "For Minecraft version:")
+	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is used.")) structure = true
+	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
+	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
 	    draw_text(x1 + 170, y1 + 220, "Repeaters per row:")
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
