@@ -909,8 +909,8 @@ function schematic_export() {
 							TAG_Byte("Count", 1)
 							TAG_String("id", "minecraft:minecart")
 							TAG_Byte("Slot", a)
+							TAG_End()
 						}
-						TAG_End()
 					TAG_String("id", "minecraft:chest")
 					TAG_End()
 				TAG_List("pos", 3, 3)
@@ -964,7 +964,6 @@ function schematic_export() {
 						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 18)
 						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 20)
 						else TAG_Int("state", insnum * 26 + 2)
-						if (sch_block_read(a, b, c) = 93) show_debug_message(sch_data_read(a, b, c))
 						TAG_End()
 						}
 			        }
