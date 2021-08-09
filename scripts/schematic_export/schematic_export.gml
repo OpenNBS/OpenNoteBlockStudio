@@ -1,8 +1,9 @@
 function schematic_export() {
 	// schematic_export()
-	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1;
+	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, ins, insblock;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
-	fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(filename, ""), "", "Export Schematic"))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -20,6 +21,40 @@ function schematic_export() {
 	    chestx = -1
 	    chesty = -1
 	    chestz = -1
+		insnum = 0
+		ins[0] = "harp"
+		ins[1] = "bass"
+		ins[2] = "basedrum"
+		ins[3] = "snare"
+		ins[4] = "hat"
+		ins[5] = "guitar"
+		ins[6] = "flute"
+		ins[7] = "bell"
+		ins[8] = "chime"
+		ins[9] = "xylophone"
+		ins[10] = "iron_xylophone"
+		ins[11] = "cow_bell"
+		ins[12] = "didgeridoo"
+		ins[13] = "bit"
+		ins[14] = "banjo"
+		ins[15] = "pling"
+		insblock[0] = "dirt"
+		insblock[1] = "oak_planks"
+		insblock[2] = "cobblestone"
+		insblock[3] = "sand"
+		insblock[4] = "glass"
+		insblock[5] = "white_wool"
+		insblock[6] = "clay"
+		insblock[7] = "gold_block"
+		insblock[8] = "packed_ice"
+		insblock[9] = "bone_block"
+		insblock[10] = "iron_block"
+		insblock[11] = "soul_sand"
+		insblock[12] = "pumpkin"
+		insblock[13] = "emerald_block"
+		insblock[14] = "hay_block"
+		insblock[15] = "glowstone"
+		instrument_list = o.instrument_list
 	    layers = ceil(o.sch_exp_maxheight[o.sch_exp_compress] / 4)
 	    block_walkway_block = o.sch_exp_walkway_block
 	    block_walkway_data = o.sch_exp_walkway_data
@@ -540,7 +575,8 @@ function schematic_export() {
     
 	    // Write to file
 	    buffer = buffer_create(8, buffer_grow, 1)
-    
+		
+		if (!obj_controller.structure) {
 	    TAG_Compound("Schematic")
 	    TAG_Short("Height", hei)
 	    TAG_Short("Length", len)
@@ -670,6 +706,74 @@ function schematic_export() {
 	        }
 	        TAG_End()
 	    TAG_End()
+		} else {
+		TAG_Compound("")
+		TAG_Int("DataVersion", 1519)
+		TAG_List("size", 3, 3)
+			buffer_write_int_be(wid)
+			buffer_write_int_be(hei)
+			buffer_write_int_be(len)
+		for (a = 0; a < 15; a += 1) {
+			insnum += (instrument_list[| a].num_blocks != 0)
+		}
+		TAG_List("palette", 1 + insnum * 26, 10)
+			TAG_String("Name", "minecraft:stone")
+			TAG_End()
+			for (a = 0; a < 16; a += 1) {
+				if ((instrument_list[| a].num_blocks != 0)) {
+					TAG_String("Name", "minecraft:" + insblock[a])
+					if (a = 9) {
+						TAG_Compound("Properties")
+							TAG_String("axis", "y")
+							TAG_End()
+					}
+					TAG_End()
+				}
+			}
+			for (a = 0; a < 16; a += 1) {
+				for (b = 0; b < 25; b += 1) {
+					if ((instrument_list[| a].num_blocks != 0)) {
+						TAG_String("Name", "minecraft:note_block")
+						TAG_Compound("Properties")
+							TAG_String("instrument", ins[a])
+							TAG_String("note", string(b))
+							TAG_String("powered", "false")
+							TAG_End()
+					}
+					TAG_End()
+				}
+			}
+		TAG_List("entities", minecart, 10)
+		if (minecart) {
+	        TAG_List("pos", 3, 6)
+	            buffer_write_double_be(wid - 1 - (cyy - 1 - 0.5))
+	            buffer_write_double_be(hei - 1)
+	            buffer_write_double_be(3.5)
+	        TAG_List("blockPos", 3, 3)
+	            buffer_write_int_be(wid - 1 - (cyy - 1 - 0.5) - 0.5)
+	            buffer_write_int_be(hei - 1 - 0.5)
+	            buffer_write_int_be(3)
+			TAG_Compound("")
+				TAG_Byte("OnGround", 0)
+				TAG_Short("Air", 300)
+				TAG_Short("Fire", -1)
+				TAG_Float("FallDistance", 0)
+				TAG_List("Motion", 3, 6)
+				    buffer_write_double_be(0)
+				    buffer_write_double_be(0)
+				    buffer_write_double_be(0)
+				TAG_List("Rotation", 2, 5)
+				    buffer_write_float_be(0)
+				    buffer_write_float_be(0)
+				TAG_List("Pos", 3, 6)
+					buffer_write_double_be(wid - 1 - (cyy - 1 - 0.5))
+					buffer_write_double_be(hei - 1)
+					buffer_write_double_be(3.5)
+				TAG_End()
+	    }
+		TAG_End()
+		TAG_End()
+		}
 	    buffer_save(buffer, temp_file)
 	    buffer_delete(buffer)
 	    gzzip(temp_file, fn)
