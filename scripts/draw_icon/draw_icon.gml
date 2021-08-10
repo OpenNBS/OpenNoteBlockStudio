@@ -22,7 +22,7 @@ function draw_icon() {
 	if (theme != 3) {
 	draw_sprite(spr_icons, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
 	} else {
-	if (!fdark) draw_sprite(spr_icons_f, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
+	if (!fdark) draw_sprite(spr_icons_fr, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
 	else draw_sprite(spr_icons_d, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
 	}
 	// Repeat trigger when holding fast-forward and rewind
