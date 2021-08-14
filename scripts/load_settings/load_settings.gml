@@ -60,6 +60,7 @@ function load_settings() {
 	accent2 =            ini_read_real(  "preferences", "accent2",            accent2)
 	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
 	structure =          ini_read_real(  "preferences", "structure",          structure)
+	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)

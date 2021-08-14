@@ -22,6 +22,7 @@ function draw_window_macro_setvelocity() {
 	setvel = median(0, draw_dragvalue(10, x1 + 55, y1 + 65, setvel, 0.1), 100)
 
 	draw_theme_color()
+	if (draw_checkbox(x1 + 15, y1 + 80, percentvel, "Percent", "Apply the velocity as percent of the current velocity.", 0, 1)) percentvel = !percentvel
 	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
 		windowalpha = 0
 		windowclose = 0
@@ -34,11 +35,11 @@ function draw_window_macro_setvelocity() {
 		val = 0
 		while (val < total_vals) {
 			val += 4
-			arr_data[val] = setvel
+			arr_data[val] = real(arr_data[val]) * setvel / 100
 			val += 3
 			while arr_data[val] != -1 {
 				val += 3
-				arr_data[val] = setvel
+				arr_data[val] = real(arr_data[val]) * setvel / 100
 				val += 3
 			}
 			val ++
