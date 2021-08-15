@@ -11,6 +11,7 @@
     {"id":{"name":"spr_macroicons","path":"sprites/spr_macroicons/spr_macroicons.yy",},"order":8,},
     {"id":{"name":"spr_lock","path":"sprites/spr_lock/spr_lock.yy",},"order":9,},
     {"id":{"name":"spr_marker","path":"sprites/spr_marker/spr_marker.yy",},"order":10,},
+    {"id":{"name":"DialogModule","path":"extensions/DialogModule/DialogModule.yy",},"order":2,},
     {"id":{"name":"spr_note","path":"sprites/spr_note/spr_note.yy",},"order":11,},
     {"id":{"name":"spr_notechart","path":"sprites/spr_notechart/spr_notechart.yy",},"order":12,},
     {"id":{"name":"spr_piano","path":"sprites/spr_piano/spr_piano.yy",},"order":13,},
