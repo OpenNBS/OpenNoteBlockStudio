@@ -546,6 +546,7 @@
     {"folderPath":"folders/Rooms.yy","order":59,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Interface/inputbox/focused.yy","order":2,"resourceVersion":"1.0","name":"focused","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":61,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Shaders.yy","order":62,"resourceVersion":"1.0","name":"Shaders","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

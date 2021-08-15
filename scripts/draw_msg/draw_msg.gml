@@ -9,6 +9,7 @@ function draw_msg(){
 	y1 = rh * 0.8
 	y2 = rh * 0.8 - 20
 	draw_set_color(7368816)
+	if (theme = 3 && msgalpha >= 0.5) draw_surface_blur(application_surface, x1 - 10, y1 - 30, x2 - x1 + 20, 40, 0.5)
 	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
@@ -19,7 +20,9 @@ function draw_msg(){
 		draw_area(x1 - 10, y1 + 10, x2 + 10, y2 - 10)
 		draw_rectangle(x1 + 2 - 10, y1 + 10, x2 - 3 + 10, y2 - 1 - 10, 0)
 	} else {
+		draw_set_alpha(msgalpha * 0.6)
 		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 0)
+		draw_set_alpha(msgalpha)
 		draw_set_color(7368816)
 		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	}

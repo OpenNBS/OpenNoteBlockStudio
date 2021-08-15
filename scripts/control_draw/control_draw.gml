@@ -109,7 +109,7 @@ function control_draw() {
 	draw_clear(window_background)
 
 	iconcolor = c_black
-	if (theme = 2 || (fdark && theme = 3)) iconcolor = c_white
+	if (theme = 2 || (theme = 3)) iconcolor = c_white
 
 	// Calculate area
 	if (!fullscreen && show_layers) {
@@ -1064,7 +1064,7 @@ function control_draw() {
 				if(theme != 3) {
 		        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
-				draw_sprite_ext(spr_volume_f, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
+				draw_sprite_ext(spr_volume_f, a / 30 + 4 * (!fdark), x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
 				}
 		        popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
 		        if (c) {
@@ -1092,7 +1092,7 @@ function control_draw() {
 				if (theme != 3) {
 		        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
-				draw_sprite_ext(spr_stereo_f, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
+				draw_sprite_ext(spr_stereo_f, a / 50 + 5 * (!fdark), x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
 				}
 				var stereostr
 				if (a > 100) { stereostr = "R " + string(a-100) }
