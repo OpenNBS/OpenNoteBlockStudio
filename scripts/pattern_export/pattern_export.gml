@@ -8,6 +8,7 @@ function pattern_export() {
 		fsave = filename_change_ext(filename_name(filename), ".nbp")
 		if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
 		fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, patternfolder, "Save pattern"))
+		fn = fn + condstr(filename_ext(fn) != ".nbp", ".nbp")
 	    if (fn = "") return 0
 	}
 	buffer = buffer_create(8, buffer_grow, 1)

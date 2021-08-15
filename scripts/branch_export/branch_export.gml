@@ -1,7 +1,8 @@
 function branch_export() {
 	// branch_export()
 	var a, b, c, o
-	var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Branch Schematic"))
+	var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Branch Schematic"))
+	fn = fn + condstr(filename_ext(fn) != ".schematic", ".schematic")
 	if (fn = "") return 0
 	o = obj_controller
 	window = -1

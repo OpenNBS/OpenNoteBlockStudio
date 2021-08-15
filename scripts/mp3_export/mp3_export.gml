@@ -2,7 +2,8 @@ function mp3_export() {
 	// mp3_export()
 
 	var fn, err, a, b;
-	fn = string(get_save_filename_ext("MP3 files (*.mp3)|*.mp3", filename_new_ext(filename, ""), filename_path(filename), "Export MP3"))
+	fn = string(get_save_filename_ext("MP3 files (*.mp3)|*.mp3", filename_new_ext(filename, "") + ".mp3", filename_path(filename), "Export MP3"))
+	fn = fn + condstr(filename_ext(fn) != ".mp3", "", ".mp3")
 	if (fn = "") return 0
 
 	// Start

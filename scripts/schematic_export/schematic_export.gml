@@ -2,8 +2,10 @@ function schematic_export() {
 	// schematic_export()
 	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins, insblock;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
-	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
-	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), ""), "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
+	if (!structure) fn = fn + condstr(filename_ext(fn) != ".schematic", ".schematic")
+	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
+	fn = fn + condstr(filename_ext(fn) != ".nbt", ".nbt")
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
