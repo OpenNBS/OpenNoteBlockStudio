@@ -102,6 +102,10 @@ function control_create() {
 	    recent_song_time[a] = 0
 	}
 	timesignature = 4
+	file_dnd_set_hwnd(hwnd_main)
+	file_dnd_set_enabled(true)
+	dndfile = ""
+	lastfile = ""
 
 	// Playback
 	audio_listener_orientation(0,1,0, 0,0,1)
