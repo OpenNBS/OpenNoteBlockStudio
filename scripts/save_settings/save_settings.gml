@@ -21,6 +21,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "refresh_rate",       refreshrate)
 	ini_write_string(    "preferences", "song_folder",        songfolder)
 	ini_write_string(    "preferences", "pattern_folder",     patternfolder)
+	ini_write_string(    "preferences", "show_oldwarning",    show_oldwarning)
 	ini_write_real_clean("preferences", "use_colors",         use_colors)
 	ini_write_real_clean("preferences", "use_icons",          use_icons)
 	ini_write_real_clean("preferences", "use_shapes",         use_shapes)
@@ -54,6 +55,11 @@ function save_settings() {
 	ini_write_real_clean("preferences", "windowsound",        windowsound)
 	ini_write_real_clean("preferences", "fdark",              fdark)
 	ini_write_real_clean("preferences", "tapdouble",          tapdouble)
+	ini_write_real_clean("preferences", "accent1",            accent1)
+	ini_write_real_clean("preferences", "accent2",            accent2)
+	ini_write_real_clean("preferences", "accent3",            accent3)
+	ini_write_real_clean("preferences", "structure",          structure)
+	ini_write_real_clean("preferences", "percentvel",         percentvel)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

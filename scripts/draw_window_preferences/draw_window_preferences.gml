@@ -1,12 +1,13 @@
 function draw_window_preferences() {
 	// draw_window_preferences()
 	var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	nsel = -1
 	x1 = floor(rw / 2 - 250)
-	y1 = floor(rh / 2 - 255)
-	draw_window(x1, y1, x1 + 500, y1 + 510)
+	y1 = floor(rh / 2 - 255 + isplayer * 50) + windowoffset
+	draw_window(x1, y1, x1 + 500, y1 + 510 - isplayer * 100)
 	if (theme = 3){
 	draw_set_color(15132390)
 	if (fdark) draw_set_color(1513239)
@@ -21,9 +22,11 @@ function draw_window_preferences() {
 		if (theme = 3) draw_set_font(fnt_wslui)
 	b = 8 + (theme = 3) * 32
 	str[0] = "General"
+	if (!isplayer) {
 	str[1] = "Appearance"
 	str[2] = "Usability"
 	str[3] = "Playback"
+	}
 	if (theme = 3) {
 		c = (mouse_check_button(mb_left))
 		if (mouse_rectangle(x1, y1 + 30, 40, 40)) {
@@ -42,17 +45,17 @@ function draw_window_preferences() {
 		draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 14, y1 + 30 + 12)
 	}
 	if (theme = 1) {
-	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474)
+	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474 - isplayer * 100)
 	}
 	if (theme != 3) {
-	for (a = 0; a < 4; a += 1) {
+	for (a = 0; a < array_length(str); a += 1) {
 	    c = mouse_rectangle(x1 + b, y1 + 28, string_width(str[a]) + 12, 18)
 	    if (selected_tab = a) {
 	        stabx = b - 2
 	        stabw = string_width(str[a]) + 15
 	    } else {
 			draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 28)
-			draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+			draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
 			draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 28)	
 	        draw_text(x1 + b + 6, y1 + 30, str[a])
 	    }
@@ -62,9 +65,9 @@ function draw_window_preferences() {
 	if (theme = 0 || theme = 2 || theme = 3) {
 	    draw_set_color(c_white)
 		if(theme = 2) draw_set_color(c_dark)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 472, 0)
+	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 472 - isplayer * 100, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 472, 1)
+	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494, y1 + 472 - isplayer * 100, 1)
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    if (theme = 3) {
@@ -80,7 +83,7 @@ function draw_window_preferences() {
 	    draw_theme_color()
 	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab])
 	    draw_set_color(make_color_rgb(213, 223, 229))
-	    if(theme = 0) draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 468, 1)
+	    if(theme = 0) draw_roundrect(x1 + 10, y1 + 50, x1 + 490, y1 + 468 - isplayer * 100, 1)
 	}else{
 	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 26)
 	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
@@ -89,21 +92,21 @@ function draw_window_preferences() {
 	}
 	} else {
 	draw_set_font(fnt_wslui_med)
-	for (a = 0; a < 4; a += 1) {
+	for (a = 0; a < array_length(str); a += 1) {
 		draw_set_color(c_black)
 		if (fdark) draw_set_color(c_white)
 	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
 	    if (selected_tab = a) {
-			draw_set_color(15581318)
-			if (fdark) draw_set_color(5319936)
+			draw_set_color(accent[7])
+			if (fdark) draw_set_color(accent[8])
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 20 - 6)
-			draw_set_color(15049472)
-			if (fdark) draw_set_color(9786112)
+			draw_set_color(accent[6])
+			if (fdark) draw_set_color(accent[2])
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 19 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 20 - 6)
-			draw_set_color(14120960)
+			draw_set_color(accent[4])
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 18 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 19 - 6)
 	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 20 - 6)
@@ -146,6 +149,7 @@ function draw_window_preferences() {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.", false, true)) check_update=!check_update
 		}	
 		// Auto-saving
+		if (!isplayer) {
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 258, y1 + 74 + (theme = 3) * 22, 220, 65, "Auto-saving")
 		if (theme = 3) draw_set_font(fnt_wslui)
@@ -168,6 +172,7 @@ function draw_window_preferences() {
 			if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
 		}
 		popup_set_window(x1 + 306, y1 + 110 + (theme = 3) * 22, 180, 16, "The amount of minutes between each auto-save.")
+		}
 	
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 218, 120, "Theme")
@@ -176,12 +181,13 @@ function draw_window_preferences() {
 		if (draw_abutton(x1 + 140 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
 	        menu = show_menu_ext("theme", x1 + 40, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
 	    }
+		if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, 100, 20, "Press Ctrl + Shift + M in the main screen to set accent color.")
 	    draw_text(x1 + 43, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		//if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating in the Fluent theme.", (theme != 3), true)) windowsound = !windowsound
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", (theme != 3), true)) fdark = !fdark
 		//if (theme = 3) draw_text(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
@@ -224,43 +230,49 @@ function draw_window_preferences() {
 		if (theme = 3) draw_set_font(fnt_wslui)
 		draw_text(x1 + 276, y1 + 256 + (theme = 3) * 22, "Scale:             %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
-		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == 1))) {
-			window_scale = 1
+		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
+			window_scale = get_default_window_scale()
 		}
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
 		
-		draw_text(x1 + 22, y1 + 290 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 360))
-	    popup_set_window(x1 + 22, y1 + 290 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 22, y1 + 306 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		if (!isplayer) {
+		if (theme = 3) draw_set_font(fnt_wslui_info_med)
+		draw_areaheader(x1 + 22, y1 + 309 + (theme = 3) * 22, 456, 145, "Songs")
+		if (theme = 3) draw_set_font(fnt_wslui)
+		if (draw_checkbox(x1 + 40, y1 + 325 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
+		draw_text(x1 + 40, y1 + 355 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 355 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 371 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(songfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            open_url(songfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 22 + 84, y1 + 306 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 371 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where saving/loading should be opened in.", "")
 	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 306 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 371 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
 	
-		draw_text(x1 + 22, y1 + 340 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 360))
-	    popup_set_window(x1 + 22, y1 + 340 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 22, y1 + 356 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		draw_text(x1 + 40, y1 + 405 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 405 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 421 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(patternfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            open_url(patternfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 22 + 84, y1 + 356 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 421 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where patterns can be imported/exported to.", "")
 	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 356 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 421 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+		}
 	} else if (selected_tab = 1) {
 		if (theme = 3) draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 196, "Note blocks")
@@ -340,7 +352,7 @@ function draw_window_preferences() {
 		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 	}
-	if (draw_button2(x1 + 420, y1 + 478, 72, "OK")) {
+	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, "OK")) {
 		if (theme != 3) {
 			window = 0
 			window_set_cursor(curs)
@@ -349,36 +361,4 @@ function draw_window_preferences() {
 			if (windowopen = 1) windowclose = 1
 		}
 	}
-	//opening and closing animation
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if (windowclose = 1) {
-		if (windowalpha > 0) {
-			if (refreshrate = 0) windowalpha -= 1/3.75
-			else if (refreshrate = 1) windowalpha -= 1/7.5
-			else if (refreshrate = 2) windowalpha -= 1/15
-			else if (refreshrate = 3) windowalpha -= 1/18
-			else windowalpha -= 1/20
-		} else {
-			windowalpha = 0
-			windowclose = 0
-			windowopen = 0
-			window = 0
-			window_set_cursor(curs)
-			save_settings()
-			selected_tab = 0
-		}
-	}
-	draw_set_alpha(1)
-
 }

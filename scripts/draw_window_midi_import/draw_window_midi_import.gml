@@ -1,12 +1,13 @@
 function draw_window_midi_import() {
 	// draw_window_midi_import()
 	var x1, y1, xx, a, b, c, menun, menua, menub, stabx, stabw, nsel, tabs, tabw, tabstr, tabtip, str;
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	menun = -1
 	nsel = -1
 	x1 = floor(rw / 2 - 300)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 600, y1 + 400)
 	if (theme = 3){
 	draw_set_color(13421772)
@@ -30,7 +31,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 300, y1 + 112, w_midi_precision, "Double time precision", "Whether to use twice as much space between\neach note to increase the placement precision.") && wmenu = 0) w_midi_precision=!w_midi_precision
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && windowopen = 1) {midifile = "" w_midi_tab = 0 windowclose = 1}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) { 
 	        midi_instruments()
@@ -66,7 +67,7 @@ function draw_window_midi_import() {
 	        stabw = string_width(str[a]) + 15
 	    } else {
 	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 128)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 128, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 128, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
 	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 128)
 	        draw_text(x1 + b + 6, y1 + 130, str[a])
 	    }
@@ -323,44 +324,4 @@ function draw_window_midi_import() {
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if(theme = 3) {
-		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
-			} else {
-				windowalpha = 0
-				windowclose = 0
-				windowopen = 0
-				window = 0
-				window_set_cursor(curs)
-				save_settings()
-				w_midi_tab = 0
-			}
-		}
-	} else {
-		if (windowclose = 1) {
-			windowclose = 0
-			window = 0
-			w_midi_tab = 0
-		}
-	}
-	draw_set_alpha(1)
-
-
 }

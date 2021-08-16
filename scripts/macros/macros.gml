@@ -1,8 +1,8 @@
 function macros() {
-#macro gm_runtime_version "2.3.2.426"
-#macro version_date "2021.07.13"
+#macro gm_runtime_version "2.3.3.434"
+#macro version_date "2021.08.14"
 #macro version "3.9.0"
-#macro snapshot 1
+#macro snapshot 1 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
 
@@ -83,6 +83,7 @@ function macros() {
 #macro w_setpitch 39
 #macro w_settempo 43
 #macro w_tempotapper 44
+#macro w_setaccent 45
 
 #macro br "\r\n"
 

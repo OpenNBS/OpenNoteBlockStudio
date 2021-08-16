@@ -121,6 +121,7 @@ function save_song() {
 		changed = false
 		if (autosave) tonextsave = autosavemins
 		add_to_recent(fn)
+		set_msg("Song saved")
 	} else {
 		tonextbackup = backupmins
 	}

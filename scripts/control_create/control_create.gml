@@ -12,25 +12,35 @@ function control_create() {
 
 	// Window
 	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+	p_num = parameter_count()
+	isplayer = 0
+	for (var i = 0; i < p_num; i += 1) {
+		if (parameter_string(i) = "-player") isplayer = 1
+	}
+	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
 	window_height = 0
-	window_maximize()
+	if (!isplayer) window_maximize()
 	window_set_focus()
 	window_set_min_width(100)
 	window_set_min_height(100)
+	window_scale = get_default_window_scale()
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
-	window_scale = 1
 	prev_scale = -1
 	rw = 0
 	rh = 0
+	windowprogress = 0
 	windowalpha = 0
+	windowoffset = 0
+	windowanim = 0
 	windowopen = 0
 	windowclose = 0
 	windowsound = 0
-	msgalpha = 1
-	showmsg = 0
+	msgalpha = 1 // Init bottom message transparency
+	showmsg = 0 // Displays message when set to 1
 	msgcontent = ""
 	msgstart = 0
 
@@ -46,18 +56,19 @@ function control_create() {
 	check_update = 1
 	show_welcome = 1
 	scroll_wheel = 0
-	theme = 0
-	fdark = 0
+	theme = 3 // Using Fluent as the default theme
+	fdark = 0 // Fluent dark mode
 	blackout = 0
 	editmode = 0
 	clickinarea = 0
 	dontplace = 0
 	vers = version
 	menu_shown = ""
+	show_oldwarning = 1
 	songfolder = songs_directory
 	patternfolder = pattern_directory
 	icons_init()
-	refreshrate = 0 //0 = 30fps, 1 = 60fps
+	refreshrate = 0 //0 = 30fps, 1 = 60fps, 2 = 120fps, 3 = 144fps, 4 = Unlimited
 	fade = 0
 	rhval = 270
 	fullscreen = 0
@@ -66,14 +77,24 @@ function control_create() {
 	tonextsave = 0
 	backupmins = 1
 	tonextbackup = 0
-	presence = 1
-	presencewindow = 0
-	language = "Chinese"
+	presence = 1 // Discord RPC toggle
+	// presencewindow = 0
+	aa = 0
+	accent1 = 0
+	accent2 = 120
+	accent3 = 212
+	hsdrag = 0
+	vdrag = 0
+	nocdrag = 0
+	rainbow = 0
+	rainbowtoggle = 0
+	
 
 	// File
 	filename = ""
 	changed = 0
 	midifile = ""
+	midiname = ""
 	song_midi = ""
 	for (a = 0; a < 11; a += 1) {
 	    mididevice_instrument[a] = -1
@@ -107,6 +128,7 @@ function control_create() {
 	section_end = 0
 	timeline_pressa = -1
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
+	currspeed = 0
 
 	// Note blocks
 	starta = 0
@@ -277,11 +299,14 @@ function control_create() {
 	loopstart = 0
 	looptobarend = 1
 	timestoloop = loopmax
-	taptempo = 0
-	tapping = 0
-	ltime = 0
-	taps = 0
-	tapdouble = 0
+	settempo = 0 // Tempo input box clicked
+	taptempo = 0 // Tempo in measuring
+	tapping = 0 // Is tapping?
+	ltime = 0 // Last time tapped
+	taps = 0 // Times tapped
+	tapdouble = 0 // Set to double tempo?
+	percentvel = 0
+	draw_set_circle_precision(64);
 
 	// Midi export / import
 	w_midi_remember = 1
@@ -329,6 +354,7 @@ function control_create() {
 	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
 	
+	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
 	soundinvoke.filename = "invoke.ogg"
@@ -368,6 +394,7 @@ function control_create() {
 	// Schematic
 	reset_schematic_export(0)
 	block_color = 0
+	structure = 0
 
 	//Datapack
 	dat_reset(0)
@@ -396,6 +423,7 @@ function control_create() {
 	load_settings()
 	change_theme()
 	if (show_welcome) window = w_greeting
+	draw_accent_init()
 
 	// Updates
 	if (check_update)
@@ -405,7 +433,10 @@ function control_create() {
 	update_download = -1
 	downloaded_size = 0
 	total_size = -1
+	changelogstr = load_text(data_directory + "changelog.txt")
 	if (file_exists_lib(settings_file) && vers != version) {
+		if (theme = 2) fdark = 1
+		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
 	    update = 3
 	}
@@ -429,7 +460,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "") load_song(filename)
+		if (filename != "" && filename != "-player") load_song(filename)
 	}
 
 	log("Startup OK")

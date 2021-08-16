@@ -1,7 +1,22 @@
 function draw_windows() {
 	// draw_windows()
 
-	if (window = 0) return 0
+	if (window = 0) {
+		windowopen = 0
+		windowanim = 0
+		return 0
+	}
+	
+	if (windowanim = 1) {
+		if (theme = 3) {
+			draw_set_color(0)
+			draw_set_alpha(windowalpha * 0.5)
+			draw_rectangle(0, 0, rw, rh, false)
+		}
+		anim_window_open()
+	}
+	
+	draw_set_alpha(windowalpha)
 	key_edit = -1
 	switch (window mod w_menu) {
 	    case w_greeting: draw_window_greeting() break
@@ -33,8 +48,7 @@ function draw_windows() {
 	    case w_branch_export: draw_window_branch_export() break
 	    case w_settempo: draw_window_set_tempo() break
 	    case w_tempotapper: draw_window_tempo_tapper() break
+	    case w_setaccent: draw_window_set_accent() break
 	}
-
-
-
+	draw_set_alpha(1)
 }

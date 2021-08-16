@@ -103,7 +103,6 @@ function menu_click(argument0) {
 	        if (sel = 36 + insoffset) {
 	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
 	        }
-			if (sel = 37 + insoffset) window = w_tempotapper
 	        break
 	    }
 	    case "editext": {
@@ -157,7 +156,6 @@ function menu_click(argument0) {
 	        if (sel = 36 + insoffset) {
 	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
 	        }
-			if (sel = 37 + insoffset) window = w_tempotapper
 	        break
 	    }
 	    case "settings": {
@@ -277,6 +275,61 @@ function menu_click(argument0) {
 			else if (sel = 1) theme = 2
 			else if (sel = 3) theme = 3
 			break
+		}
+		case "filep": {
+	        if (sel = 0) load_song("")
+	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
+	        for (c = 0; c < b; c += 1) {
+	            if (sel = 2 + c && recent_song[c] != "") {
+	                if (!file_exists_lib(recent_song[c])) {
+	                    message("Could not find file:\n" + recent_song[c], "Error")
+	                    for (d = 0; d < 10; d += 1) {
+	                        if (recent_song[d] = recent_song[c]) {
+	                            for (e = d; e < 10; e += 1) {
+	                                recent_song[e] = recent_song[e + 1]
+	                                recent_song_time[e] = recent_song_time[e + 1]
+	                            }
+	                        }
+	                    }
+	                    recent_song[10] = ""
+	                    recent_song_time[10] = 0
+						save_settings()
+	                } else {
+	                    load_song(recent_song[c])
+	                }
+	            }
+	        }
+	        if (sel = b + 2) {
+	            for (c = 0; c < 11; c += 1) {
+	                recent_song[c] = ""
+	                recent_song_time[c] = 0
+	            }
+				save_settings()
+	        }
+	        if (sel = b + 3) open_midi("")
+	        if (sel = b + 4) open_schematic("")
+	        if (sel = b + 5) game_end()
+	        break
+	    }
+		case "settingsp": {
+	        if (sel = 0) window = w_songinfo
+	        if (sel = 1) window = w_stats
+	        if (sel = 2) window = w_preferences
+	        break
+	    }
+		case "tempo": {
+			if (sel = 0) use_bpm = false
+			else if (sel = 1) use_bpm = true
+			else if (sel = 2) tempo = 10
+			else if (sel = 3) tempo = 12
+			else if (sel = 4) tempo = 14
+			else if (sel = 5) tempo = 16
+			else if (sel = 6) tempo = 18
+			else if (sel = 7) tempo = 20
+			else if (sel = 8) tempo = 30
+			else if (sel = 9) tempo = 60
+			else if (sel = 10) window = w_tempotapper
+
 		}
 	}
 	mouse_clear(mb_left)
