@@ -351,6 +351,7 @@ function control_draw() {
 		        for (b = colfirst[xx]; b <= collast[xx]; b += 1) {
 		            if (song_exists[xx, b]) {
 		                a = 1
+						d = 0
 		                if (b < endb2) {
 							c = (layervol[b] /100) * song_vel[xx, b]
 							if layerstereo[b] = 100 {
