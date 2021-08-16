@@ -107,7 +107,6 @@
     {"id":{"name":"update_window","path":"scripts/update_window/update_window.yy",},"order":8,},
     {"id":{"name":"icons_init","path":"scripts/icons_init/icons_init.yy",},"order":9,},
     {"id":{"name":"log","path":"scripts/log/log.yy",},"order":10,},
-    {"id":{"name":"obj_example","path":"objects/obj_example/obj_example.yy",},"order":0,},
     {"id":{"name":"log_init","path":"scripts/log_init/log_init.yy",},"order":11,},
     {"id":{"name":"check_updates","path":"scripts/check_updates/check_updates.yy",},"order":12,},
     {"id":{"name":"get_update","path":"scripts/get_update/get_update.yy",},"order":13,},
@@ -550,7 +549,6 @@
     {"folderPath":"folders/Sprites/Interface/inputbox/focused.yy","order":2,"resourceVersion":"1.0","name":"focused","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":61,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Shaders.yy","order":62,"resourceVersion":"1.0","name":"Shaders","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/物体.yy","order":63,"resourceVersion":"1.0","name":"物体","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
