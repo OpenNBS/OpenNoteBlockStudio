@@ -788,7 +788,7 @@ function control_draw() {
 
 	while (xx < totalcols * 32 + 16) {
 	    if (a > 0) draw_set_halign(fa_center)
-	    draw_text(x1 + 2 + xx, y1 + 2, time_str(a))
+	    draw_text_dynamic(x1 + 2 + xx, y1 + 2, time_str(a))
 	    draw_set_alpha(0.6)
 	    draw_line(x1 + 2 + xx, y1 + 2 + 12, x1 + 2 + xx, y1 + 2 + 15)
 	    draw_set_alpha(1)
@@ -804,7 +804,7 @@ function control_draw() {
 	    draw_set_alpha(1)
 	    if (b) {
 	        if (a > 0) draw_set_halign(fa_center)
-	        draw_text(x1 + 2 + 32 * a, y1 + 17, string(starta + a))
+	        draw_text_dynamic(x1 + 2 + 32 * a, y1 + 17, string(starta + a))
 	        draw_set_halign(fa_left)
 	    }
 	}
@@ -1053,7 +1053,7 @@ function control_draw() {
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
 				if(theme = 2 || (fdark && theme = 3)) draw_set_color(make_color_rgb(160, 160, 160))
-		        draw_text(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
+		        draw_text_dynamic(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
 		    }
 			if (prev != layername[startb + b]) changed = 1
 		    draw_theme_color()
@@ -1074,7 +1074,7 @@ function control_draw() {
 		        if (c) {
 		        draw_theme_font(font_small)
 		            draw_set_halign(fa_center)
-		            draw_text(x1 + 98, y1 + 18, string(a) + "%")
+		            draw_text_dynamic(x1 + 98, y1 + 18, string(a) + "%")
 		            draw_set_halign(fa_left)
 		            draw_theme_font(font_main)
 		            curs = cr_size_ns
@@ -1106,9 +1106,9 @@ function control_draw() {
 		        if (c) {
 		            draw_theme_font(font_small)
 		            draw_set_halign(fa_center)
-					if a > 100 {draw_text(x1 + 116, y1 + 18, "R " + string(a-100))}
-					if a = 100 {draw_text(x1 + 116, y1 + 18, "MONO")}
-					if a < 100 {draw_text(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
+					if a > 100 {draw_text_dynamic(x1 + 116, y1 + 18, "R " + string(a-100))}
+					if a = 100 {draw_text_dynamic(x1 + 116, y1 + 18, "MONO")}
+					if a < 100 {draw_text_dynamic(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
 		            draw_set_halign(fa_left)
 		            draw_theme_font(font_small)
 		            curs = cr_size_ns
@@ -1468,7 +1468,7 @@ function control_draw() {
 		}
 		draw_set_color(c_green)
 		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
-		draw_text(rw - 65, 28, "Fully compatible")
+		draw_text_dynamic(rw - 65, 28, "Fully compatible")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
@@ -1481,7 +1481,7 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_orange)
-		draw_text(rw - 65, 28, "Data pack only")
+		draw_text_dynamic(rw - 65, 28, "Data pack only")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
@@ -1494,7 +1494,7 @@ function control_draw() {
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
 		}
 		draw_set_color(c_red)
-		draw_text(rw - 65, 28, "Resource pack only")
+		draw_text_dynamic(rw - 65, 28, "Resource pack only")
 		draw_theme_color()
 		draw_theme_font(font_main)
 		popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
@@ -1520,27 +1520,27 @@ function control_draw() {
 	draw_theme_color()
 	xx = 4
 
-	draw_text(xx, rh - 18, "Instrument: " + instrument.name) xx += 180
+	draw_text_dynamic(xx, rh - 18, "Instrument: " + instrument.name) xx += 180
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	draw_text(xx, rh - 18, "Key: " + get_keyname(selected_key, 1)) xx += 75
+	draw_text_dynamic(xx, rh - 18, "Key: " + get_keyname(selected_key, 1)) xx += 75
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	draw_text(xx, rh - 18, "Tick: " + test(selbx = -1, "None", string(selbx))) xx += 90
+	draw_text_dynamic(xx, rh - 18, "Tick: " + test(selbx = -1, "None", string(selbx))) xx += 90
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	draw_text(xx, rh - 18, "Layer: " + test(selby = -1, "None", string(selby + 1))) xx += 90
+	draw_text_dynamic(xx, rh - 18, "Layer: " + test(selby = -1, "None", string(selby + 1))) xx += 90
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	draw_text(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 160
+	draw_text_dynamic(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 160
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
@@ -1550,26 +1550,26 @@ function control_draw() {
 			if (song_exists[selbx, selby]) {
 				hovernote = 1
 				xx += 4
-				draw_text(xx, rh - 18, "Key: " + get_keyname(song_key[selbx, selby], 1))
+				draw_text_dynamic(xx, rh - 18, "Key: " + get_keyname(song_key[selbx, selby], 1))
 				xx += 90
 				draw_separator(xx, rh - 20)
 				draw_theme_color()
 				xx += 4
-				draw_text(xx, rh - 18, "Velocity: " + string_format(song_vel[selbx, selby], 1, 0))
+				draw_text_dynamic(xx, rh - 18, "Velocity: " + string_format(song_vel[selbx, selby], 1, 0))
 				xx += 110
 				draw_separator(xx, rh - 20)
 				draw_theme_color()
 				xx += 4
 				if (song_pan[selbx, selby] != 100) {
-					draw_text(xx, rh - 18, "Panning: " + condstr(song_pan[selbx, selby] < 100, "L ", "R ") + " " + string(abs(song_pan[selbx, selby] - 100)))
+					draw_text_dynamic(xx, rh - 18, "Panning: " + condstr(song_pan[selbx, selby] < 100, "L ", "R ") + " " + string(abs(song_pan[selbx, selby] - 100)))
 				} else {
-					draw_text(xx, rh - 18, "Panning: Center")
+					draw_text_dynamic(xx, rh - 18, "Panning: Center")
 				}
 				xx += 120
 				draw_separator(xx, rh - 20)
 				draw_theme_color()
 				xx += 4
-				draw_text(xx, rh - 18, "Pitch: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + " cents")
+				draw_text_dynamic(xx, rh - 18, "Pitch: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + " cents")
 				draw_theme_color()
 			}
 		}
@@ -1579,7 +1579,7 @@ function control_draw() {
 		if (autosave && filename_ext(filename) = ".nbs") {
 			draw_theme_color()
 			xx += 4
-			draw_text(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s"))
+			draw_text_dynamic(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s"))
 			xx += 210
 			draw_separator(xx, rh - 20)
 			draw_theme_color()
@@ -1590,7 +1590,7 @@ function control_draw() {
 			if (sounds > channels) {
 				draw_set_color(c_red)
 			}
-			draw_text(xx, rh - 18, "Sounds: " + string(sounds) + " / " + string(channels))
+			draw_text_dynamic(xx, rh - 18, "Sounds: " + string(sounds) + " / " + string(channels))
 			draw_theme_color()
 		}
 	}
@@ -1600,7 +1600,7 @@ function control_draw() {
 	for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
 	if (midi_devices = 0) str = "No connected MIDI devices"
 	else str = "MIDI devices: " + str
-	draw_text(rw - 6, rh - 18, str)
+	draw_text_dynamic(rw - 6, rh - 18, str)
 	draw_set_halign(fa_left)
 	}
 	
@@ -1612,23 +1612,23 @@ function control_draw() {
 		draw_theme_color()
 		if (!isplayer) {
 		draw_theme_font(font_info_med_bold)
-		if (theme != 3) draw_text(93, 52, time_str(marker_pos / tempo))
-		else draw_text(93 - 84, 52, time_str(marker_pos / tempo))
+		if (theme != 3) draw_text_dynamic(93, 52, time_str(marker_pos / tempo))
+		else draw_text_dynamic(93 - 84, 52, time_str(marker_pos / tempo))
 		} else {
 		draw_theme_font(font_info_big)
-		if (theme != 3) draw_text(rw / 2 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
-		else draw_text(rw / 2 - 134 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
+		if (theme != 3) draw_text_dynamic(rw / 2 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
+		else draw_text_dynamic(rw / 2 - 134 + 70, rh / 2 - 50, time_str(marker_pos / tempo))
 		}
 
 		// Song length
 		if (!isplayer) {
 		draw_theme_font(font_small)
-		if (theme != 3) draw_text(93, 69, "/ " + time_str(enda / tempo))
-		else draw_text(93 - 67, 69, "/ " + time_str(enda / tempo))
+		if (theme != 3) draw_text_dynamic(93, 69, "/ " + time_str(enda / tempo))
+		else draw_text_dynamic(93 - 67, 69, "/ " + time_str(enda / tempo))
 		} else {
 		draw_theme_font(font_info_med)
-		if (theme != 3) draw_text(rw / 2 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
-		else draw_text(rw / 2 - 91 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
+		if (theme != 3) draw_text_dynamic(rw / 2 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
+		else draw_text_dynamic(rw / 2 - 91 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
 		}
 		draw_theme_font(font_main)
 		
@@ -1684,7 +1684,7 @@ function control_draw() {
 			}
 			draw_set_halign(fa_left)
 			draw_theme_font(font_info_med)
-			draw_text(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
+			draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
 			draw_theme_font(font_main)
 		}
 
@@ -1692,11 +1692,11 @@ function control_draw() {
 		// Bars-beats-sixteenths
 		draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 184, 57)
 		draw_set_halign(fa_right)
-		draw_text(215, 60, ".")
-		draw_text(230, 60, ".")
-		draw_text(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
-		draw_text(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
-		draw_text(240, 60, floor(marker_pos mod 4) + 1)
+		draw_text_dynamic(215, 60, ".")
+		draw_text_dynamic(230, 60, ".")
+		draw_text_dynamic(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
+		draw_text_dynamic(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
+		draw_text_dynamic(240, 60, floor(marker_pos mod 4) + 1)
 		popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
 
 		// Tempo
@@ -1710,10 +1710,10 @@ function control_draw() {
 		if (window != w_settempo) {
 		if (use_bpm) {
 			bpm = tempo * 15
-			draw_text(136, 60, string_format(bpm, 4, 2) + " BPM")
+			draw_text_dynamic(136, 60, string_format(bpm, 4, 2) + " BPM")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick and drag to change. Click to enter value. Right-click for more options.")
 		} else {
-			draw_text(136, 60, string_format(tempo, 4, 2) + " t / s")
+			draw_text_dynamic(136, 60, string_format(tempo, 4, 2) + " t / s")
 			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick and drag to change. Click to enter value. Right-click for more options.")
 		}
 		draw_set_halign(fa_left)

@@ -29,9 +29,9 @@ draw_set_alpha(alpha)
 if (obj_controller.fdark && theme = 3) draw_set_color(c_white)
 else draw_set_color(make_color_rgb(75, 75, 75)*!obj_controller.theme)
 if(theme != 3) {
-draw_text(x + 7 - 2 * theme, y + 3, str)
+draw_text_dynamic(x + 7 - 2 * theme, y + 3, str)
 } else {
-draw_text(x + 7, y + 3, str)
+draw_text_dynamic(x + 7, y + 3, str)
 }
 draw_set_alpha(1)
 draw_set_color(c_black)

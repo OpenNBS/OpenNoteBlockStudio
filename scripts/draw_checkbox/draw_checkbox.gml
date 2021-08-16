@@ -29,10 +29,10 @@ function draw_checkbox() {
 		draw_set_color(make_color_rgb(204, 204, 204))			
 		if (theme) {
 		    draw_set_color(c_white)
-		    draw_text(xx + x_offset + 1, yy, str)
+		    draw_text_dynamic(xx + x_offset + 1, yy, str)
 		    draw_set_color(8421504)
 		}
-		draw_text(xx + x_offset, yy - 1, str)
+		draw_text_dynamic(xx + x_offset, yy - 1, str)
 		draw_theme_color()
 	} else {
 		
@@ -46,7 +46,7 @@ function draw_checkbox() {
 			draw_sprite(spr_checkbox, m + 6 * theme + 6 * (fdark) * (theme = 3), xx, yy)
 			if (expression) draw_sprite_ext(spr_checkbox, 3 + 6 * theme, xx, yy, 1, 1, 0, accent[5 + 2 * (m = 1) + 3 * (m = 2)] * (theme = 3) - !(theme = 3), draw_get_alpha())
 		}
-		draw_text(xx + x_offset, yy - 1, str)
+		draw_text_dynamic(xx + x_offset, yy - 1, str)
 		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		return (m && mouse_check_button_released(mb_left))
 	}

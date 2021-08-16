@@ -584,21 +584,21 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                str[2] = string_copy(string_delete(text_line[i, 0], 1, text_epos), 1, (text_start[i] + text_chars[i]) - text_epos)
 	                if (str[0] != "") {  // Text before or outside selection
 	                    draw_set_color(col_normal)
-	                    draw_text(xx, yy, str[0])
+	                    draw_text_dynamic(xx, yy, str[0])
 	                }
 	                if (str[1] != "") {  // Selected text
 	                    draw_set_color(col_selection)
 	                    draw_rectangle(min(xx + w, xx + string_width(str[0])), yy, min(xx + w, xx + string_width(str[0] + str[1])), yy + lh, 0)
 	                    draw_set_color(col_selected)
-	                    draw_text(xx + string_width(str[0]), yy, str[1])
+	                    draw_text_dynamic(xx + string_width(str[0]), yy, str[1])
 	                }
 	                if (str[2] != "") {  // Text after selection
 	                    draw_set_color(col_normal)
-	                    draw_text(xx + string_width(str[0] + str[1]), yy, str[2])
+	                    draw_text_dynamic(xx + string_width(str[0] + str[1]), yy, str[2])
 	                }
 	            } else { // Unselected
 	                draw_set_color(col_normal)
-	                draw_text(xx, yy, string_copy(text_line[i, 0], text_start[i] + 1, text_chars[i]))
+	                draw_text_dynamic(xx, yy, string_copy(text_line[i, 0], text_start[i] + 1, text_chars[i]))
 	            }
 	        } else {
 	            if (text_focus = i && (text_sline != text_eline || text_spos != text_epos)) {  // This line is selected
@@ -620,21 +620,21 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                }
 	                if (str[0] != "") {  // Text before or outside selection
 	                    draw_set_color(col_normal)
-	                    draw_text(xx, yy + ly * lh, str[0])
+	                    draw_text_dynamic(xx, yy + ly * lh, str[0])
 	                }
 	                if (str[1] != "") {  // Selected text
 	                    draw_set_color(col_selection)
 	                    draw_rectangle(min(xx + w, xx + string_width(str[0])), yy + ly * lh, min(xx + w, xx + string_width(str[0] + str[1])), yy + (ly + 1) * lh, 0)
 	                    draw_set_color(col_selected)
-	                    draw_text(xx + string_width(str[0]), yy + ly * lh, str[1])
+	                    draw_text_dynamic(xx + string_width(str[0]), yy + ly * lh, str[1])
 	                }
 	                if (str[2] != "") {  // Text after selection
 	                    draw_set_color(col_normal)
-	                    draw_text(xx + string_width(str[0] + str[1]), yy + ly * lh, str[2])
+	                    draw_text_dynamic(xx + string_width(str[0] + str[1]), yy + ly * lh, str[2])
 	                }
 	            } else { // Unselected line
 	                draw_set_color(col_normal)
-	                draw_text(xx, yy + ly * lh, text_line[i, l])
+	                draw_text_dynamic(xx, yy + ly * lh, text_line[i, l])
 	            }
 	        }
 	    }

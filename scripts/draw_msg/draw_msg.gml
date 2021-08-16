@@ -27,7 +27,7 @@ function draw_msg(){
 		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	}
 	draw_theme_color()
-	draw_text(x1, y1 - 10 - string_height(str) / 2, str)
+	draw_text_dynamic(x1, y1 - 10 - string_height(str) / 2, str)
 	if (current_time - msgstart >= 1000){
 		if (msgalpha > 0) {
 			msgalpha -= 1/7.5 * (30 / room_speed) * (1 / currspeed)

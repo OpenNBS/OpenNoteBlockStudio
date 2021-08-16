@@ -242,6 +242,7 @@
     {"id":{"name":"draw_dragvalue","path":"scripts/draw_dragvalue/draw_dragvalue.yy",},"order":10,},
     {"id":{"name":"draw_frame","path":"scripts/draw_frame/draw_frame.yy",},"order":11,},
     {"id":{"name":"draw_icon","path":"scripts/draw_icon/draw_icon.yy",},"order":12,},
+    {"id":{"name":"draw_text_dynamic","path":"scripts/draw_text_dynamic/draw_text_dynamic.yy",},"order":36,},
     {"id":{"name":"draw_icon_insbox","path":"scripts/draw_icon_insbox/draw_icon_insbox.yy",},"order":13,},
     {"id":{"name":"draw_inputbox","path":"scripts/draw_inputbox/draw_inputbox.yy",},"order":14,},
     {"id":{"name":"draw_layericon","path":"scripts/draw_layericon/draw_layericon.yy",},"order":15,},

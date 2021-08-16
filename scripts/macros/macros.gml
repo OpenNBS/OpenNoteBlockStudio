@@ -96,5 +96,5 @@ function macros() {
 #macro font_info_big 5
 #macro font_info_med 6
 #macro font_info_med_bold 7
-
+#macro font_med 8
 }

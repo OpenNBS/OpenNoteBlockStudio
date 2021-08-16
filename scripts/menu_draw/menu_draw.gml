@@ -103,10 +103,10 @@ function menu_draw() {
 					//}
 				//}
 	            draw_set_alpha(1 - 0.5 * item_inactive[m, i])
-	            draw_text(dx + 36, dy + iy, item_str[m, i])
+	            draw_text_dynamic(dx + 36, dy + iy, item_str[m, i])
 	            if (item_shortcut[m, i] != "") {
 	                draw_set_halign(fa_right)
-	                draw_text(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
+	                draw_text_dynamic(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
 	                draw_set_halign(fa_left)
 	            }
 				if (theme != 3) {
