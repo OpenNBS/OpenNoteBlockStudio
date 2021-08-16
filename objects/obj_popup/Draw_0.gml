@@ -2,7 +2,8 @@ var theme;
 theme = obj_controller.theme
 if (!mouse_rectangle(x1, y1, w, h)) {global.popup = 0 instance_destroy()}
 if (alarm[0] > -1) exit
-if (alpha < 1) alpha += 0.5
+if (alpha < 1) alpha += 0.25 * (30 / (room_speed * obj_controller.currspeed)) * (1 + (theme != 3))
+if (theme = 3) draw_surface_blur(application_surface, x, y, maxw + 16, 20 + 18 * (!singleline), 0.5)
 if (theme != 3) {
 if (singleline) {
     draw_sprite_ext(spr_tooltip_sl_left, theme, x, y, 1, 1, 0, -1, alpha)
@@ -15,13 +16,13 @@ if (singleline) {
 }
 } else {
 if (singleline) {
-    draw_sprite_ext(spr_tooltip_sl_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_sl_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_sl_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_sl_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
+    draw_sprite_ext(spr_tooltip_sl_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * 0.6)
+    draw_sprite_ext(spr_tooltip_sl_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * 0.6)
 } else {
-    draw_sprite_ext(spr_tooltip_ml_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_ml_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha)
-    draw_sprite_ext(spr_tooltip_ml_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha)
+    draw_sprite_ext(spr_tooltip_ml_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
+    draw_sprite_ext(spr_tooltip_ml_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * 0.6)
+    draw_sprite_ext(spr_tooltip_ml_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * 0.6)
 }
 }
 draw_set_alpha(alpha)

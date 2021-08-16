@@ -24,16 +24,19 @@ function draw_inputbox(argument0, argument1, argument2, argument3, argument4, ar
 	}
 	} else {
 	if(focus){
-		draw_sprite_ext(spr_inputbox_f_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, 1)
+		draw_sprite_ext(spr_inputbox_f_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, draw_get_alpha())
 		draw_sprite(spr_inputbox_f_left, theme, xx, yy)
 		draw_sprite(spr_inputbox_f_right, theme, xx + w - 2, yy)
+	    draw_sprite_ext(spr_textbox_f, 2 + 8 * on + 16 * focus + 32, xx, yy + 19, 1, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
+	    draw_sprite_ext(spr_textbox_f, 3 + 8 * on + 16 * focus + 32, xx + 2, yy + 19, (w - 4) / 2, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
+	    draw_sprite_ext(spr_textbox_f, 4 + 8 * on + 16 * focus + 32, xx + w - 2, yy + 19, 1, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
 	} else {
 		if(on){
-			draw_sprite_ext(spr_inputbox_s_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, 1)
+			draw_sprite_ext(spr_inputbox_s_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, draw_get_alpha())
 			draw_sprite(spr_inputbox_s_left, theme, xx, yy)
 			draw_sprite(spr_inputbox_s_right, theme, xx + w - 2, yy)
 		}else{
-			draw_sprite_ext(spr_inputbox_n_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, 1)
+			draw_sprite_ext(spr_inputbox_n_middle, theme, xx + 2, yy, w - 4, 1, 0, -1, draw_get_alpha())
 			draw_sprite(spr_inputbox_n_left, theme, xx, yy)
 			draw_sprite(spr_inputbox_n_right, theme, xx + w - 2, yy)
 		}

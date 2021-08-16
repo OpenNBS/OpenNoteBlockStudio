@@ -36,7 +36,7 @@ function load_song() {
 	
 		if (byte1 = 0 && byte2 = 0) {
 			song_nbs_version = buffer_read_byte()
-			if song_nbs_version < nbs_version message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
+			if (show_oldwarning && song_nbs_version < nbs_version) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 			if song_nbs_version > nbs_version {
 				message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
 				return -1
@@ -49,7 +49,7 @@ function load_song() {
 				buffer_read_short()
 			}
 		} else {
-			message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
+			if (show_oldwarning) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")
 			song_nbs_version = 0
 			custom_index_diff = 0
 			song_first_custom_index = 0

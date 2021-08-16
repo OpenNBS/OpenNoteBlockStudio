@@ -26,6 +26,7 @@ function open_midi(argument0) {
 
 	midi_tracks = buffer_read_short_be()
 	midifile = filename_name(fn)
+	midiname = filename_name(fn)
 	midi_trackamount[midi_tracks] = 0
 	reset_midi()
 	midi_tempo = buffer_read_short_be()

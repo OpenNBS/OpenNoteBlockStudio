@@ -1,9 +1,10 @@
 function draw_window_about() {
 	// draw_window_stats()
 	var x1, y1, a, n;
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	x1 = floor(rw / 2 - 150)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 300, y1 + 400)
 	draw_theme_font(font_main)
 	draw_text(x1 + 8, y1 + 8, "关于")
@@ -55,7 +56,5 @@ function draw_window_about() {
 			window = 0
 		}
 	}
-	draw_set_alpha(1)
-
-
+	window_set_cursor(cr_default)
 }

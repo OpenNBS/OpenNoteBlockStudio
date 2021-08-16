@@ -1,10 +1,11 @@
 function draw_window_schematic_export() {
 	// draw_window_schematic_export()
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2;
 	curs = cr_default
 	x1 = floor(rw / 2 - 275)
-	y1 = floor(rh / 2 - 200)
+	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 550, y1 + 400)
 	if (theme = 3){
 	draw_set_color(13421772)
@@ -32,7 +33,7 @@ function draw_window_schematic_export() {
 	        stabw = string_width(str[a]) + 15
 	    } else {
 	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 28)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
 	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 28)
 	        draw_text(x1 + b + 6, y1 + 30, str[a])
 	    }
@@ -88,9 +89,10 @@ function draw_window_schematic_export() {
 	    draw_text(x1 + 16, y1 + 220, "Layout:")
 	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
 	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
-	    draw_text(x1 + 16, y1 + 290, "For Minecraft version:")
-	    if (draw_radiobox(x1 + 32, y1 + 310, !sch_exp_minecraft_old, "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.\nNOTE: Support for versions 1.13+ is coming soon.")) sch_exp_minecraft_old = false
-	    if (draw_radiobox(x1 + 32, y1 + 330, sch_exp_minecraft_old, "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) sch_exp_minecraft_old = true
+	    draw_text(x1 + 16, y1 + 220 + 54, "For Minecraft version:")
+	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is used.")) structure = true
+	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
+	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
 	    draw_text(x1 + 170, y1 + 220, "Repeaters per row:")
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
@@ -216,7 +218,7 @@ function draw_window_schematic_export() {
 	        schematic_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && windowopen = 1) {
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
@@ -373,44 +375,4 @@ function draw_window_schematic_export() {
 	}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if(theme = 3) {
-		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
-			} else {
-				windowalpha = 0
-				windowclose = 0
-				windowopen = 0
-				window = 0
-				window_set_cursor(curs)
-				save_settings()
-				selected_tab_sch = 0
-			}
-		}
-	} else {
-		if (windowclose = 1) {
-			windowclose = 0
-			window = 0
-			selected_tab_sch = 0
-		}
-	}
-	draw_set_alpha(1)
-
-
 }

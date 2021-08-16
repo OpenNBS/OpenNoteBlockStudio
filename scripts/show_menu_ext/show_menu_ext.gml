@@ -17,7 +17,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	}
 
 	menu_shown = argument0
-	playing = 0
+	if (!isplayer) playing = 0
 	window += w_menu
 
 	var obj, str, submenu, n;
@@ -80,7 +80,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	    obj.menu_show[a] = 0
 	    obj.menu_sel[a] = -1
 	    for (b = 0; b < obj.items[a]; b += 1) {
-	        obj.menu_wid[a] = max(obj.menu_wid[a], string_width(obj.item_str[a, b] + " " + obj.item_shortcut[a, b]))
+	        obj.menu_wid[a] = max(obj.menu_wid[a], string_width(obj.item_str[a, b] + " " + obj.item_shortcut[a, b]) + 5 * (obj.name = "edit" && theme != 3))
 	        if (obj.item_str[a, b] = "-") obj.menu_hei[a] += 6
 	        else obj.menu_hei[a] += 22
 	    }

@@ -1,12 +1,13 @@
 function draw_window_greeting() {
 	// draw_window_greeting()
 	var x1, y1, a, b, c, d, e, m;
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 350)
-	y1 = floor(rh / 2 - 210)
+	y1 = floor(rh / 2 - 210) + windowoffset
 	draw_window(x1, y1, x1 + 700, y1 + 430)
-	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, 1)
+	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
 	draw_theme_font(font_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_theme_font(font_main_bold)
@@ -57,14 +58,17 @@ function draw_window_greeting() {
 	if (fdark && theme = 3) draw_set_color(0)
 	draw_line(x1 + 270, y1 + 24, x1 + 270, y1 + 396)
 	draw_set_alpha(0.25)
+	if (theme = 3) draw_set_alpha(0.25 * windowalpha)
 	draw_theme_color()
 	draw_line(x1 + 269, y1 + 24, x1 + 269, y1 + 396)
 	draw_set_alpha(1)
+	if (theme = 3) draw_set_alpha(windowalpha)
 	draw_theme_color()
 	draw_text(x1 + 290, y1 + 20, "要做什么？")
 
 	b = x1 + 300
 	c = y1 + 48
+	if (!isplayer) {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
@@ -81,6 +85,7 @@ function draw_window_greeting() {
 	}
 
 	c += 44
+	}
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
@@ -181,46 +186,4 @@ function draw_window_greeting() {
 
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if(theme = 3) {
-		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
-			} else {
-				windowalpha = 0
-				windowclose = 0
-				windowopen = 0
-				window = 0
-				window_set_cursor(curs)
-				save_settings()
-			}
-		}
-	} else {
-		if (windowclose = 1) {
-			windowclose = 0
-			window = 0
-		}
-	}
-	if (theme != 3) {
-		windowopen = 1
-		windowalpha = 1
-	}
-	draw_set_alpha(1)
-
-
 }

@@ -1,10 +1,11 @@
 function draw_window_datapack_export() {
 	// draw_window_datapack_export()
 	var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2
+	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	x1 = floor(rw / 2 - 275)
-	y1 = floor(rh / 2 - 215)
+	y1 = floor(rh / 2 - 215) + windowoffset
 	draw_window(x1, y1, x1 + 550, y1 + 430)
 	if (theme = 3){
 	draw_set_color(13421772)
@@ -30,7 +31,7 @@ function draw_window_datapack_export() {
 	        stabw = string_width(str[a]) + 15
 	    } else {
 	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 28)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
 	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 28)
 	        draw_text(x1 + b + 6, y1 + 30, str[a])
 	    }
@@ -89,7 +90,7 @@ function draw_window_datapack_export() {
 		//Name
 		draw_text(x1 + 16, y1 + 208, "Unique name:")
 		if (song_name != "") dat_name = song_name
-		else if (filename != "") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
+		else if (filename != "" && filename != "-player") dat_name = string_copy(filename_name(filename), 1, string_length(filename_name(filename))-4)
 		else dat_name = ""
 		dat_name = draw_inputbox(50,x1 + 16, y1 + 225,145,dat_name,"This name will be used in the command"+br+"for playing the song inside the game.")
 
@@ -213,48 +214,7 @@ function draw_window_datapack_export() {
 	}
 
 	//Cancel button
-	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false) && windowopen = 1) {
+	if (draw_button2(x1 + 390, y1 + 398, 72, "Cancel", false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	window_set_cursor(cr_default)
-	if (windowopen = 0 && theme = 3) {
-		if (windowalpha < 1) {
-			if (refreshrate = 0) windowalpha += 1/3.75
-			else if (refreshrate = 1) windowalpha += 1/7.5
-			else if (refreshrate = 2) windowalpha += 1/15
-			else if (refreshrate = 3) windowalpha += 1/18
-			else windowalpha += 1/20
-		} else {
-			windowalpha = 1
-			windowopen = 1
-		}
-	}
-	if(theme = 3) {
-		if (windowclose = 1) {
-			if (windowalpha > 0) {
-				if (refreshrate = 0) windowalpha -= 1/3.75
-				else if (refreshrate = 1) windowalpha -= 1/7.5
-				else if (refreshrate = 2) windowalpha -= 1/15
-				else if (refreshrate = 3) windowalpha -= 1/18
-				else windowalpha -= 1/20
-			} else {
-				windowalpha = 0
-				windowclose = 0
-				windowopen = 0
-				window = 0
-				window_set_cursor(curs)
-				save_settings()
-				selected_tab_dat = 0
-			}
-		}
-	} else {
-		if (windowclose = 1) {
-			windowclose = 0
-			window = 0
-			selected_tab_dat = 0
-		}
-	}
-	draw_set_alpha(1)
-
-
 }

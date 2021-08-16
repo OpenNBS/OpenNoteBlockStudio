@@ -1,8 +1,11 @@
 function schematic_export() {
 	// schematic_export()
-	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1;
+	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins, insblock;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
-	fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
+	if (!structure) fn = fn + condstr(filename_ext(fn) != ".schematic", ".schematic")
+	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
+	fn = fn + condstr(filename_ext(fn) != ".nbt", ".nbt")
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -20,6 +23,40 @@ function schematic_export() {
 	    chestx = -1
 	    chesty = -1
 	    chestz = -1
+		insnum = 0
+		ins[0] = "harp"
+		ins[1] = "bass"
+		ins[2] = "basedrum"
+		ins[3] = "snare"
+		ins[4] = "hat"
+		ins[5] = "guitar"
+		ins[6] = "flute"
+		ins[7] = "bell"
+		ins[8] = "chime"
+		ins[9] = "xylophone"
+		ins[10] = "iron_xylophone"
+		ins[11] = "cow_bell"
+		ins[12] = "didgeridoo"
+		ins[13] = "bit"
+		ins[14] = "banjo"
+		ins[15] = "pling"
+		insblock[0] = "dirt"
+		insblock[1] = "oak_planks"
+		insblock[2] = "cobblestone"
+		insblock[3] = "sand"
+		insblock[4] = "glass"
+		insblock[5] = "white_wool"
+		insblock[6] = "clay"
+		insblock[7] = "gold_block"
+		insblock[8] = "packed_ice"
+		insblock[9] = "bone_block"
+		insblock[10] = "iron_block"
+		insblock[11] = "soul_sand"
+		insblock[12] = "pumpkin"
+		insblock[13] = "emerald_block"
+		insblock[14] = "hay_block"
+		insblock[15] = "glowstone"
+		instrument_list = o.instrument_list
 	    layers = ceil(o.sch_exp_maxheight[o.sch_exp_compress] / 4)
 	    block_walkway_block = o.sch_exp_walkway_block
 	    block_walkway_data = o.sch_exp_walkway_data
@@ -540,7 +577,8 @@ function schematic_export() {
     
 	    // Write to file
 	    buffer = buffer_create(8, buffer_grow, 1)
-    
+		
+		if (!obj_controller.structure) {
 	    TAG_Compound("Schematic")
 	    TAG_Short("Height", hei)
 	    TAG_Short("Length", len)
@@ -670,6 +708,315 @@ function schematic_export() {
 	        }
 	        TAG_End()
 	    TAG_End()
+		} else {
+		TAG_Compound("")
+		TAG_Int("DataVersion", 1519)
+		TAG_List("size", 3, 3)
+			buffer_write_int_be(32)
+			buffer_write_int_be(hei)
+			if (len <= 32) buffer_write_int_be(len)
+			else buffer_write_int_be(32)
+		for (a = 0; a < 16; a += 1) {
+			insnum += (instrument_list[| a].num_blocks != 0)
+			insind[a] = (instrument_list[| a].num_blocks != 0)
+		}
+		TAG_List("palette", 27 + insnum * 26, 10)
+			TAG_String("Name", "minecraft:stone")
+			TAG_End()
+			for (a = 0; a < 16; a += 1) {
+				show_debug_message(instrument_list[| a])
+				if ((instrument_list[| a].num_blocks != 0)) {
+					TAG_String("Name", "minecraft:" + insblock[a])
+					if (a = 9) {
+						TAG_Compound("Properties")
+							TAG_String("axis", "y")
+							TAG_End()
+					}
+					TAG_End()
+				}
+			}
+			for (a = 0; a < 16; a += 1) {
+				for (b = 0; b < 25; b += 1) {
+					if ((instrument_list[| a].num_blocks != 0)) {
+						TAG_String("Name", "minecraft:note_block")
+						TAG_Compound("Properties")
+							TAG_String("instrument", ins[a])
+							TAG_String("note", string(b))
+							TAG_String("powered", "false")
+							TAG_End()
+						TAG_End()
+					}
+				}
+			}
+			TAG_String("Name", "minecraft:blue_wool")
+			TAG_End()
+			TAG_String("Name", "minecraft:air")
+			TAG_End()
+			TAG_String("Name", "minecraft:ladder")
+			TAG_Compound("Properties")
+				TAG_String("facing", "north")
+				TAG_String("waterlogged", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wire")
+			TAG_Compound("Properties")
+				TAG_String("east", "side")
+				TAG_String("north", "side")
+				TAG_String("power", "0")
+				TAG_String("south", "side")
+				TAG_String("west", "side")
+				TAG_End()
+			TAG_End()
+			for (a = 1; a < 5; a += 1) {
+				TAG_String("Name", "minecraft:repeater")
+				TAG_Compound("Properties")
+					TAG_String("delay", string(a))
+					TAG_String("facing", "east")
+					TAG_String("locked", "false")
+					TAG_String("powered", "false")
+					TAG_End()
+				TAG_End()
+			}
+			for (a = 1; a < 5; a += 1) {
+				TAG_String("Name", "minecraft:repeater")
+				TAG_Compound("Properties")
+					TAG_String("delay", string(a))
+					TAG_String("facing", "west")
+					TAG_String("locked", "false")
+					TAG_String("powered", "false")
+					TAG_End()
+				TAG_End()
+			}
+			TAG_String("Name", "minecraft:repeater")
+			TAG_Compound("Properties")
+				TAG_String("delay", "4")
+				TAG_String("facing", "south")
+				TAG_String("locked", "false")
+				TAG_String("powered", "true")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "true")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:stone_button")
+			TAG_Compound("Properties")
+				TAG_String("face", "wall")
+				TAG_String("facing", "south")
+				TAG_String("powered", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:oak_wall_sign")
+			TAG_Compound("Properties")
+				TAG_String("facing", "south")
+				TAG_String("waterlogged", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:powered_rail")
+			TAG_Compound("Properties")
+				TAG_String("powered", "false")
+				TAG_String("shape", "north_south")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:chest")
+			TAG_Compound("Properties")
+				TAG_String("facing", "west")
+				TAG_String("type", "single")
+				TAG_String("waterlogged", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:rail")
+			TAG_Compound("Properties")
+				TAG_String("shape", "north_south")
+				TAG_String("waterlogged", "false")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wall_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "false")
+				TAG_String("facing", "east")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wall_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "true")
+				TAG_String("facing", "east")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wall_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "false")
+				TAG_String("facing", "west")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wall_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "true")
+				TAG_String("facing", "west")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:lever")
+			TAG_Compound("Properties")
+				TAG_String("powered", "true")
+				TAG_String("facing", "south")
+				TAG_String("face", "wall")
+				TAG_End()
+			TAG_End()
+			TAG_String("Name", "minecraft:redstone_wall_torch")
+			TAG_Compound("Properties")
+				TAG_String("lit", "true")
+				TAG_String("facing", "north")
+				TAG_End()
+			TAG_End()
+		TAG_List("entities", minecart, 10)
+		if (minecart) {
+	        TAG_List("pos", 3, 6)
+	            buffer_write_double_be(wid - 1 - (cyy - 1 - 0.5))
+	            buffer_write_double_be(hei - 1)
+	            buffer_write_double_be(3.5)
+	        TAG_List("blockPos", 3, 3)
+	            buffer_write_int_be(wid - 1 - (cyy - 1 - 0.5) - 0.5)
+	            buffer_write_int_be(hei - 1)
+	            buffer_write_int_be(3)
+			TAG_Compound("")
+				TAG_Byte("OnGround", 0)
+				TAG_Short("Air", 300)
+				TAG_Short("Fire", -1)
+				TAG_Float("FallDistance", 0)
+				TAG_List("Motion", 3, 6)
+				    buffer_write_double_be(0)
+				    buffer_write_double_be(0)
+				    buffer_write_double_be(0)
+				TAG_List("Rotation", 2, 5)
+				    buffer_write_float_be(0)
+				    buffer_write_float_be(0)
+				TAG_List("Pos", 3, 6)
+					buffer_write_double_be(wid - 1 - (cyy - 1 - 0.5))
+					buffer_write_double_be(hei - 1)
+					buffer_write_double_be(3.5)
+				TAG_End()
+			TAG_End()
+	    }
+		TAG_List("blocks", hei * len * wid + 1 + sch_loop, 10)
+			TAG_Compound("nbt")
+				TAG_String("Color", "black")
+				TAG_String("id", "minecraft:sign")
+	            TAG_String("Text1", "{\"text\": \"Song generated\"}")
+	            TAG_String("Text2", "{\"text\": \"by the\"}")
+	            TAG_String("Text3", "{\"text\": \"Minecraft Note\"}")
+	            TAG_String("Text4", "{\"text\": \"Block Studio\"}")
+				TAG_End()
+			TAG_List("pos", 3, 3)
+				buffer_write_int_be(wid - 1 - signy)
+				buffer_write_int_be(signz)
+				buffer_write_int_be(signx)
+			TAG_Int("state", insnum * 26 + 17)
+	        TAG_End()
+			if (sch_loop) {
+				TAG_Compound("nbt")
+					TAG_String("Color", "black")
+					TAG_String("id", "minecraft:sign")
+				        TAG_String("Text1", "{\"text\": \"Looping ON\"}")
+				        TAG_String("Text2", "{\"text\": \"\"}")
+				        TAG_String("Text3", "{\"text\": \"\"}")
+				        TAG_String("Text4", "{\"text\": \"Looping OFF\"}")
+					TAG_End()
+				TAG_List("pos", 3, 3)
+					buffer_write_int_be(wid - 1 - signy)
+					buffer_write_int_be(signz - 1)
+					buffer_write_int_be(signx)
+				TAG_Int("state", insnum * 26 + 17)
+				TAG_End()
+			}
+			for (a = 0; a < noteblocks; a += 1) {
+				TAG_List("pos", 3, 3)
+					buffer_write_int_be(wid - 1 - noteblocky[a])
+					buffer_write_int_be(noteblockz[a])
+					buffer_write_int_be(noteblockx[a])
+	            TAG_Int("state", 1 + insnum + noteblocknote[a])
+	            TAG_End()
+	        }
+			if (chest) {
+				TAG_Compound("nbt")
+					TAG_List("Items", 27, 10)
+						for (a = 0; a < 27; a += 1) {
+							TAG_Byte("Count", 1)
+							TAG_String("id", "minecraft:minecart")
+							TAG_Byte("Slot", a)
+							TAG_End()
+						}
+					TAG_String("id", "minecraft:chest")
+					TAG_End()
+				TAG_List("pos", 3, 3)
+					buffer_write_int_be(wid - 1 - chesty)
+					buffer_write_int_be(chestz)
+					buffer_write_int_be(chestx)
+				TAG_Int("state", insnum * 26 + 19)
+				TAG_End()
+			}
+			for (c = 0; c < hei; c += 1) {
+			    for (a = 0; a < len; a += 1) {
+			        for (b = wid - 1; b >= 0; b -= 1) {
+						if (sch_block_read(a, b, c) != 25 && sch_block_read(a, b, c) != 54) {
+						TAG_List("pos", 3, 3)
+							buffer_write_int_be(wid - b - 1)
+							buffer_write_int_be(c)
+							buffer_write_int_be(a)
+						if (sch_block_read(a, b, c) = 0) TAG_Int("state", insnum * 26 + 2)
+						else if (sch_block_read(a, b, c) = 1) TAG_Int("state", 0)
+						else if (sch_block_read(a, b, c) = 3) TAG_Int("state", 1)
+						else if (sch_block_read(a, b, c) = 5) TAG_Int("state", 1 + insind[0])
+						else if (sch_block_read(a, b, c) = 4) TAG_Int("state", 1 + insind[0] + insind[1])
+						else if (sch_block_read(a, b, c) = 12) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2])
+						else if (sch_block_read(a, b, c) = 20) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3])
+						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 0) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4])
+						else if (sch_block_read(a, b, c) = 82) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5])
+						else if (sch_block_read(a, b, c) = 41) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6])
+						else if (sch_block_read(a, b, c) = 174) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7])
+						else if (sch_block_read(a, b, c) = 216) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8])
+						else if (sch_block_read(a, b, c) = 42) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9])
+						else if (sch_block_read(a, b, c) = 88) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10])
+						else if (sch_block_read(a, b, c) = 86) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11])
+						else if (sch_block_read(a, b, c) = 133) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12])
+						else if (sch_block_read(a, b, c) = 170) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12] + insind[13])
+						else if (sch_block_read(a, b, c) = 89) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[1] + insind[12] + insind[13] + insind[14])
+						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 11) TAG_Int("state", insnum * 26 + 1)
+						else if (sch_block_read(a, b, c) = 65) TAG_Int("state", insnum * 26 + 3)
+						else if (sch_block_read(a, b, c) = 55) TAG_Int("state", insnum * 26 + 4)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3) TAG_Int("state", insnum * 26 + 5)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4) TAG_Int("state", insnum * 26 + 6)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 2) TAG_Int("state", insnum * 26 + 7)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 3) TAG_Int("state", insnum * 26 + 8)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 9)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4) TAG_Int("state", insnum * 26 + 10)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 2) TAG_Int("state", insnum * 26 + 11)
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 3) TAG_Int("state", insnum * 26 + 12)
+						else if (sch_block_read(a, b, c) = 94) TAG_Int("state", insnum * 26 + 13)
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 14)
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 15)
+						else if (sch_block_read(a, b, c) = 77) TAG_Int("state", insnum * 26 + 16)
+						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 18)
+						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 20)
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 21)
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 22)
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 23)
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 24)
+						else if (sch_block_read(a, b, c) = 69) TAG_Int("state", insnum * 26 + 25)
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 4) TAG_Int("state", insnum * 26 + 26)
+						else TAG_Int("state", insnum * 26 + 2)
+						TAG_End()
+						}
+			        }
+			    }
+			}
+		TAG_End()
+		}
 	    buffer_save(buffer, temp_file)
 	    buffer_delete(buffer)
 	    gzzip(temp_file, fn)

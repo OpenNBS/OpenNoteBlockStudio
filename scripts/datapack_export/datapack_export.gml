@@ -4,6 +4,7 @@ function datapack_export() {
 	o = obj_controller
 
 	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
+	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
 	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
 	if (fn = "") return 0
 

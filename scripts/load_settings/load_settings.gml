@@ -20,6 +20,7 @@ function load_settings() {
 	blackout =           ini_read_real(  "preferences", "blackout",           blackout)
 	window_scale =       ini_read_real(  "preferences", "window_scale",       window_scale)
 	refreshrate =        ini_read_real(  "preferences", "refresh_rate",       refreshrate)
+	show_oldwarning =    ini_read_string("preferences", "show_oldwarning",    show_oldwarning)
 	songfolder =         ini_read_string("preferences", "song_folder",        songfolder)
 	patternfolder =      ini_read_string("preferences", "pattern_folder",     patternfolder)
 	use_colors =         ini_read_real(  "preferences", "use_colors",         use_colors)
@@ -55,6 +56,11 @@ function load_settings() {
 	windowsound =        ini_read_real(  "preferences", "windowsound",        windowsound)
 	fdark =              ini_read_real(  "preferences", "fdark",              fdark)
 	tapdouble =          ini_read_real(  "preferences", "tapdouble",          tapdouble)
+	accent1 =            ini_read_real(  "preferences", "accent1",            accent1)
+	accent2 =            ini_read_real(  "preferences", "accent2",            accent2)
+	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
+	structure =          ini_read_real(  "preferences", "structure",          structure)
+	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)

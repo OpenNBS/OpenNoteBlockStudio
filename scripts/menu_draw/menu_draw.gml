@@ -1,7 +1,7 @@
 function menu_draw() {
 	// menu_draw()
-	if (obj_controller.refreshrate >= 2) {if (ani < 1) ani += 0.05}
-	else {if (ani < 1) ani += 0.1}
+	if (ani < 1) ani += 0.1 * (30 / room_speed) * (1 / obj_controller.currspeed)
+	else ani = 1
 	var m, menux, menuy, noclick, o, theme, cm;
 	theme = obj_controller.theme;
 	menux[0] = sx
@@ -13,7 +13,7 @@ function menu_draw() {
 	    if (!menu_show[m]) continue
 	    var dx, dy, i, iy, hei;
 		dx = menux[m]
-	    dx = menux[m] - (dx + menu_wid[m] > window_width) * menu_wid[m]
+	    dx = menux[m] - (dx + menu_wid[m] > o.rw) * menu_wid[m] - (dx + menu_wid[m] > o.rw) * menu_wid[0] * (m > 0)// - (dx + menu_wid[m - (m > 0)] > o.rw) * (menu_show[m - (m > 0)]) * (m > 0) * menu_wid[m - (m > 0)]
 	    dy = menuy[m]
 		cm = floor(m * 0.5)
 	    hei = menu_hei[m] * (1 - power(1 - ani, 2))
@@ -28,12 +28,14 @@ function menu_draw() {
 	    else draw_set_color(16382457)
 		if (obj_controller.fdark && theme = 3) draw_set_color(2829099)
 		if (o.theme = 3) {
-			draw_sprite(spr_shadowext, 0 + 5 * (obj_controller.fdark && theme = 3), dx + 4, dy + hei + 2)
-			draw_sprite_ext(spr_shadowext, 1 + 5 * (obj_controller.fdark && theme = 3), dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
+			draw_sprite(spr_shadowext, 0 + 5 * (obj_controller.fdark && theme = 3), dx + 4, dy + hei + 1)
+			draw_sprite_ext(spr_shadowext, 1 + 5 * (obj_controller.fdark && theme = 3), dx + 9, dy + hei + 1, menu_wid[m] - 7, 1, 0, -1, 1)
 			draw_sprite(spr_shadowext, 2 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + hei + 1)
-			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
-			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 4)
+			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + 9, 1, hei - 7, 0, -1, 1)
+			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + 4)
 		}
+		if (theme = 3) draw_surface_blur(application_surface, dx, dy, menu_wid[m], hei, 0.5)
+		if (theme = 3) draw_set_alpha(0.6)
 	    if (theme != 3) draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 		else draw_roundrect(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
@@ -146,7 +148,7 @@ function menu_draw() {
 	    instance_destroy()
 	}
 	draw_theme_color()
-
+	
 
 
 }
