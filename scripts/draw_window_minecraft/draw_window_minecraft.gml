@@ -276,7 +276,7 @@ function draw_window_minecraft() {
 		    draw_set_color(c_orange)
 			if (language != 1) draw_text_dynamic(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
 			else draw_text_dynamic(x1 + 45, yy + 32, "目前节奏为每秒" + string(tempo) + "红石刻。")
-			if (draw_button2(x1 + 45, yy + 50, 180, condstr(language != 1, "Optimize tempo for data pack", "针对数据包调整节奏。"), 0, 1)) {
+			if (draw_button2(x1 + 45, yy + 50, 180, condstr(language != 1, "Optimize tempo for data pack", "针对数据包调整节奏"), 0, 1)) {
 			    var otempo
 				otempo = tempo
 				if (otempo >= 15) tempo = 20
@@ -392,7 +392,7 @@ function draw_window_minecraft() {
 			}
 		    draw_set_color(c_orange)
 		    draw_text_dynamic(x1 + 45, yy + 32, "有" + string(block_custom) + "个方块使用自定义音色。")
-			if (draw_button2(x1 + 45, yy + 50, 160, "选择所指方块", 0, 1)) {
+			if (draw_button2(x1 + 45, yy + 50, 160, "选择所指音符", 0, 1)) {
 		        select_custom()
 		        windowclose = 1
 		    }

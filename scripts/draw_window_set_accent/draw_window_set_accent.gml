@@ -69,27 +69,29 @@ function draw_window_set_accent() {
 		nocdrag = 0
 	}
 	draw_theme_font(font_main)
+	draw_set_halign(fa_center)
 	draw_set_color(make_color_rgb(r, g, b))
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(c_white)
-	if (language != 1) draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
-	else draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4, "预览")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	else draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_hsv((hsv[0] / 360) * 255, hsv[1] * 2.55, hsv[2] * 2.55 - hsv[2] * 2.55 * 0.5 * (hsv[1] >= 50) + hsv[2] * 2.55 * (hsv[1] < 50)))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	if (language != 1) draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
-	else draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4, "预览")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	else draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_rgb(9, 9, 9))
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20 + 21, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	if (language != 1) draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
-	else draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	else draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_set_color(make_color_rgb(221, 221, 221))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20 + 21, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	if (language != 1) draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
-	else draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	else draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_theme_color()
+	draw_set_halign(fa_left)
 	if (language != 1) draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
 	else draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB调色")
 
@@ -122,7 +124,7 @@ function draw_window_set_accent() {
 	}
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 408, 72, "OK") && windowopen = 1) {
+	if (draw_button2(x1 + 10, y1 + 408, 72, condstr(language != 1, "OK", "确定")) && windowopen = 1) {
 		try {
 			accent1 = real(r)
 			accent2 = real(g)
