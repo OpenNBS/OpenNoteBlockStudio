@@ -7,7 +7,7 @@ function pattern_export() {
 		playing = 0
 		fsave = filename_change_ext(filename_name(filename), ".nbp")
 		if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
-		fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, patternfolder, "Save pattern"))
+		fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, patternfolder, condstr(language !=1, "Save pattern", "保存分段")))
 		fn = fn + condstr(filename_ext(fn) != ".nbp", ".nbp")
 	    if (fn = "") return 0
 	}

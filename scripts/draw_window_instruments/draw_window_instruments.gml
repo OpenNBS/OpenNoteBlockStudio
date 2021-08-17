@@ -9,9 +9,11 @@ function draw_window_instruments() {
 	y1 = floor(rh / 2 - 175) + windowoffset
 	draw_window(x1, y1, x1 + 550, y1 + 350)
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 10, y1 + 8, "Instrument Settings")
+	if (language != 1) draw_text_dynamic(x1 + 10, y1 + 8, "Instrument Settings")
+	else draw_text_dynamic(x1 + 10, y1 + 8, "音色设置")
 	draw_theme_font(font_main)
-	draw_text(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
+	if (language != 1) draw_text_dynamic(x1 + 12, y1 + 31, "These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.")
+	else draw_text_dynamic(x1 + 12, y1 + 31, "这些设定只针对当前歌曲。如需从其他歌曲导入音色，点击“导入”。音色文件\n必须放在“Sounds”文件夹里。")
 	draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
 	if (fdark && theme = 3) draw_set_color(2829099)
@@ -23,21 +25,38 @@ function draw_window_instruments() {
 	    if (theme != 3) draw_area(x1 + 11, y1 + 65, x1 + 535, y1 + 312)
 	    else draw_area(x1 + 11, y1 + 67, x1 + 535, y1 + 312)
 	}
+	if (language != 1) {
 	if (draw_button2(x1 + 455, y1 + 9, 80, "Import", 0, 1)) load_instruments("")
 	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder", 0, 1)) open_url(sounds_directory)
 	// Tabs
 	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")
-	draw_text(x1 + 18 + 194 + 160 + 80 - 1, y1 + 70, "Press")
+	draw_text_dynamic(x1 + 18 + 194 + 160 + 80 - 1, y1 + 70, "Press")
 	draw_window(x1 + 13 + 194 + 160, y1 + 67, x1 + 14 + 194 + 160 + 80, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160, y1 + 67, 80, 20, "The default key pitch of the sound file.")
-	draw_text(x1 + 18 + 194 + 160, y1 + 70, "Pitch")
+	draw_text_dynamic(x1 + 18 + 194 + 160, y1 + 70, "Pitch")
 	draw_window(x1 + 13 + 194, y1 + 67, x1 + 14 + 194 + 160, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194, y1 + 67, 160, 20, "The sound file of this instrument.")
-	draw_text(x1 + 18 + 194, y1 + 70, "Sound")
+	draw_text_dynamic(x1 + 18 + 194, y1 + 70, "Sound")
 	draw_window(x1 + 13 - 2, y1 + 67, x1 + 14 + 194, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 - 2, y1 + 67, 194, 20, "The name of this instrument.")
-	draw_text(x1 + 18 - 2, y1 + 70, "Name")
+	draw_text_dynamic(x1 + 18 - 2, y1 + 70, "Name")
+	} else {
+	if (draw_button2(x1 + 455, y1 + 9, 80, "导入", 0, 1)) load_instruments("")
+	if (draw_button2(x1 + 455, y1 + 36, 80, "打开目录", 0, 1)) open_url(sounds_directory)
+	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "播放该音色时是否在琴键上显示。")
+	draw_text_dynamic(x1 + 18 + 194 + 160 + 80 - 1, y1 + 70, "显示")
+	draw_window(x1 + 13 + 194 + 160, y1 + 67, x1 + 14 + 194 + 160 + 80, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 + 194 + 160, y1 + 67, 80, 20, "声音的默认音调。")
+	draw_text_dynamic(x1 + 18 + 194 + 160, y1 + 70, "音调")
+	draw_window(x1 + 13 + 194, y1 + 67, x1 + 14 + 194 + 160, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 + 194, y1 + 67, 160, 20, "此音色的声音文件。")
+	draw_text_dynamic(x1 + 18 + 194, y1 + 70, "声音")
+	draw_window(x1 + 13 - 2, y1 + 67, x1 + 14 + 194, y1 + 67 + 20, 1)
+	popup_set_window(x1 + 13 - 2, y1 + 67, 194, 20, "此音色的名称。")
+	draw_text_dynamic(x1 + 18 - 2, y1 + 70, "名称")
+	}
 	
 	var sounds = 0;
 	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {
@@ -46,9 +65,10 @@ function draw_window_instruments() {
 			sounds++
 		}
 	}
-	if (draw_button2(x1 + 12, y1 + 318, 86, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()
+	if (language != 1) {if (draw_button2(x1 + 12, y1 + 318, 86, "Export sounds", (user_instruments == 0 || sounds == 0))) pack_instruments()}
+	else {if (draw_button2(x1 + 12, y1 + 318, 86, "导出音色", (user_instruments == 0 || sounds == 0))) pack_instruments()}
 	c = 0
-	if (draw_button2(x1 + 110, y1 + 318, 80, "Add", user_instruments >= 240) && wmenu = 0) {
+	if (draw_button2(x1 + 110, y1 + 318, 80, condstr(language != 1, "Add", "添加"), user_instruments >= 240) && wmenu = 0) {
 	    changed = true
 	    insselect = ds_list_size(instrument_list)
 	    ds_list_add(instrument_list, new_instrument("Custom instrument #" + string(user_instruments + 1), "", true))
@@ -57,6 +77,7 @@ function draw_window_instruments() {
 	var userselect = -1;
 	if (insselect > -1 && instrument_list[| insselect].user)
 	    userselect = instrument_list[| insselect]
+	if (language != 1) {
 	if (draw_button2(x1 + 194, y1 + 318, 80, "Remove", userselect < 0) && wmenu = 0) {
 		if ((userselect.num_blocks == 0) || (message_yesnocancel("This will remove " + string(userselect.num_blocks) + " block" + condstr(userselect.num_blocks > 1, "s") + " using this instrument and cannot be undone. Confirm?", "Warning"))) {
 			instrument_remove(userselect)
@@ -83,6 +104,35 @@ function draw_window_instruments() {
 			save_version = nbs_version
 		}
 		save_settings()
+	}
+	} else {
+	if (draw_button2(x1 + 194, y1 + 318, 80, "移除", userselect < 0) && wmenu = 0) {
+		if ((userselect.num_blocks == 0) || (message_yesnocancel("这将移除使用该音色的" + string(userselect.num_blocks) + "个方块并且不能撤销。确定吗？", "警告"))) {
+			instrument_remove(userselect)
+			insselect = min(ds_list_size(instrument_list) - 1, insselect)
+			if (instrument = userselect)
+				instrument = instrument_list[| 0]
+			c = 1
+		}
+	}
+	if (draw_button2(x1 + 278, y1 + 318, 80, "上移", (userselect < 0) || (user_instruments <= 1) || (insselect == first_custom_index)) && wmenu = 0) {
+		insselect -= 1
+		instrument_swap(userselect, instrument_list[| insselect])
+		c = 1
+	}
+	if (draw_button2(x1 + 362, y1 + 318, 80, "下移", (userselect < 0) || (user_instruments <= 1) || (insselect == ds_list_size(instrument_list) - 1) && wmenu = 0)) {
+		insselect += 1
+		instrument_swap(userselect, instrument_list[| insselect])
+		c = 1
+	}
+	if (draw_button2(x1 + 456, y1 + 318, 80, "确定") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
+		windowclose = 1
+		if (save_version < 5 && user_instruments > 18) {
+			show_message("此歌曲含有多于18个音色，无法保存为版本" + string(save_version) + "。将保存为版本" + string(nbs_version) + "。")
+			save_version = nbs_version
+		}
+		save_settings()
+	}
 	}
 	if (mouse_check_button_pressed(mb_left)) {
 	    insedit = -1
@@ -115,15 +165,22 @@ function draw_window_instruments() {
 	    if (ins.user) {draw_theme_color()}
 	    if (!ins.loaded) draw_set_color(c_red)
 	    if (insselect = b) draw_set_color(c_white)
-	    draw_text(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "None") + string_truncate(ins.filename, 144, true))
+		if (language != 1) {
+	    draw_text_dynamic(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "None") + string_truncate(ins.filename, 144, true))
 	    if (ins.filename = "") popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "No sound file has been selected\nfor this instrument.")
 	    else if (!ins.loaded) popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "This sound file could not be found.")
+		} else {
+		draw_text_dynamic(x1 + 18 + 194, y1 + 90 + 20 * a, condstr(ins.filename = "", "无") + string_truncate(ins.filename, 144, true))
+	    if (ins.filename = "") popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "该音色未指定声音文件。")
+	    else if (!ins.loaded) popup_set_window(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20, "找不到该声音文件。")
+		}
 	    if (mouse_rectangle(x1 + 14 + 194, y1 + 88 + 20 * a, 160, 20) && insselect = b && wmenu = 0) {
 	        if (mouse_check_button_pressed(mb_left)) {
 	            if (ins.user) {
 					instrument_change(ins)
 	            } else {
-	                message("The sound file for this instrument cannot be changed.", "Error")
+	                if (language != 1) message("The sound file for this instrument cannot be changed.", "Error")
+	                else message("无法更改该音色的声音文件。", "错误")
 	            }
 	        }
 	        if (ins.user) curs = cr_handpoint
@@ -138,14 +195,16 @@ function draw_window_instruments() {
 	            str = ""
 	            key = 0
 	            oct = 0
-	            str += "Octave 0|\\|"
+	            if (language != 1) str += "Octave 0|\\|"
+	            else str += "0 八度|\\|"
 	            while (1) {
 	                str += check(ins.key = key) + get_keyname(key, 1) + "|"
 	                key += 1
 	                if (key = 88) break
 	                if ((key - 3) mod 12 = 0) {
 	                    oct += 1
-	                    str += "/|Octave " + string(oct) + "|\\|"
+	                    if (language != 1) str += "/|Octave " + string(oct) + "|\\|"
+	                    else str += "/|" + string(oct) + " 八度|\\|"
 	                }
 	            }
 	            str += "/"
@@ -153,15 +212,17 @@ function draw_window_instruments() {
 	            menu.menub = b
 	        }
 	    }
-	    draw_text(x1 + 18 + 194 + 160, y1 + 90 + 20 * a, get_keyname(ins.key, 1))
+	    draw_text_dynamic(x1 + 18 + 194 + 160, y1 + 90 + 20 * a, get_keyname(ins.key, 1))
 	    // INS PRESS
 	    draw_theme_color()
 	    if (insselect = b) draw_set_color(c_white)
 	    if (draw_abutton(x1 + 18 + 194 + 175 + 112, y1 + 88 + 20 * a) && wmenu = 0) {
-	        menu = show_menu_ext("instruments_press", x1 + 18 + 194 + 235, y1 + 106 + 20 * a, check(ins.press) + "Yes|" + check(!ins.press) + "No")
+	        if (language != 1) menu = show_menu_ext("instruments_press", x1 + 18 + 194 + 235, y1 + 106 + 20 * a, check(ins.press) + "Yes|" + check(!ins.press) + "No")
+	        else menu = show_menu_ext("instruments_press", x1 + 18 + 194 + 235, y1 + 106 + 20 * a, check(ins.press) + "是|" + check(!ins.press) + "否")
 	        menu.menub = b
 	    }
-	    draw_text(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "Yes", "No"))
+	    if (language != 1) draw_text_dynamic(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "Yes", "No"))
+	    else draw_text_dynamic(x1 + 18 + 194 + 160 + 80, y1 + 90 + 20 * a, test(ins.press, "是", "否"))
 	    if (mouse_rectangle(x1 + 14, y1 + 88 + 20 * a, 460, 20) && wmenu = 0) {
 	        if (mouse_check_button_pressed(mb_left)) {
 	            insselect = b

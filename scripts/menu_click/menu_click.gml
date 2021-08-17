@@ -16,7 +16,8 @@ function menu_click(argument0) {
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 3 + c && recent_song[c] != "") {
 	                if (!file_exists_lib(recent_song[c])) {
-	                    message("Could not find file:\n" + recent_song[c], "Error")
+	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
 	                        if (recent_song[d] = recent_song[c]) {
 	                            for (e = d; e < 10; e += 1) {
@@ -101,7 +102,8 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
+	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -154,7 +156,8 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
+	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -172,11 +175,19 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "help": {
+			if (language != 1) {
 	        if (sel = 1) open_url("http://www.youtube.com/watch?v=2oD9Bw_Qau4")
 	        if (sel = 2) open_url("http://www.youtube.com/watch?v=NIxNTK6nfJI")
 	        if (sel = 3) open_url("http://www.youtube.com/watch?v=JMPkf7bS8lQ")
 	        if (sel = 4) open_url("http://www.youtube.com/watch?v=Cg6dAcEjTs0")
 	        if (sel = 5) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+			} else {
+			if (sel = 1) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=1")
+	        if (sel = 2) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
+	        if (sel = 3) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=3")
+	        if (sel = 4) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=4")
+	        if (sel = 5) open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+			}
 	        if (sel = 6) open_url(link_topic)
 	        if (sel = 7) open_url("http://minecraft.gamepedia.com/Programs_and_editors/Minecraft_Note_Block_Studio")
 	        if (sel = 8) window = w_changelist
@@ -282,7 +293,8 @@ function menu_click(argument0) {
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 2 + c && recent_song[c] != "") {
 	                if (!file_exists_lib(recent_song[c])) {
-	                    message("Could not find file:\n" + recent_song[c], "Error")
+	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
 	                        if (recent_song[d] = recent_song[c]) {
 	                            for (e = d; e < 10; e += 1) {
@@ -329,7 +341,11 @@ function menu_click(argument0) {
 			else if (sel = 8) tempo = 30
 			else if (sel = 9) tempo = 60
 			else if (sel = 10) window = w_tempotapper
-
+			break
+		}
+		case "language": {
+			language = sel
+			break
 		}
 	}
 	mouse_clear(mb_left)

@@ -9,7 +9,8 @@ function draw_window_set_accent() {
 	y1 = floor(rh / 2 - 220) + windowoffset
 	draw_window(x1, y1, x1 + 280, y1 + 440)
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Set accent color")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Set accent color")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "设置主题颜色")
 	if (windowopen = 0) {
 		r = accent1
 		g = accent2
@@ -71,25 +72,36 @@ function draw_window_set_accent() {
 	draw_set_color(make_color_rgb(r, g, b))
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(c_white)
-	draw_text(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	else draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_hsv((hsv[0] / 360) * 255, hsv[1] * 2.55, hsv[2] * 2.55 - hsv[2] * 2.55 * 0.5 * (hsv[1] >= 50) + hsv[2] * 2.55 * (hsv[1] < 50)))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	draw_text(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	else draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_rgb(9, 9, 9))
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20 + 21, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	draw_text(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	else draw_text_dynamic(x1 + 20 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_set_color(make_color_rgb(221, 221, 221))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20 + 21, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(make_color_rgb(r, g, b))
-	draw_text(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	else draw_text_dynamic(x1 + 142 + 40, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_theme_color()
-	draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
+	else draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB调色")
 
+	if (language != 1) {
 	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(r), "Set red amount.")
 	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(g), "Set green amount.")
 	db = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(b), "Set blue amount.")
+	} else {
+	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(r), "设置红色值。")
+	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(g), "设置绿色值。")
+	db = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(b), "设置蓝色值。")
+	}
 	if (dr != "" && dg != "" && db != "") {
 		try {
 			dr = real(dr)
@@ -119,9 +131,11 @@ function draw_window_set_accent() {
 			windowclose = 1
 		}
 		catch(e) {
-			message("Please enter a valid number!", "Set accent color")
+			if (language != 1) message("Please enter a valid number!", "Set accent color")
+			else message("请输入一个有效的数字！", "设置主题颜色")
 		}
 	}
+	if (language != 1) {
 	if (draw_button2(x1 + 104, y1 + 408, 72, "Cancel")) {windowclose = 1}
 	if (draw_button2(x1 + 198, y1 + 408, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) {
@@ -131,6 +145,18 @@ function draw_window_set_accent() {
 			draw_accent_init()
 			windowclose = 1
 		}
+	}
+	} else {
+	if (draw_button2(x1 + 104, y1 + 408, 72, "取消")) {windowclose = 1}
+	if (draw_button2(x1 + 198, y1 + 408, 72, "使用默认值") && wmenu = 0) {
+	    if (question("你确定吗？", "确定")) {
+			accent1 = 0
+			accent2 = 120
+			accent3 = 215
+			draw_accent_init()
+			windowclose = 1
+		}
+	}
 	}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)

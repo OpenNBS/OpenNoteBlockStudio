@@ -11,7 +11,7 @@ function draw_window_preferences_f() {
 	draw_rectangle(x1+1,y1+30,x1+498,y1+69,0) //48
 	draw_set_color(c_black)
 	draw_set_font(fnt_wslui)
-	draw_text(x1 + 10, y1 + 9, "Preferences")
+	draw_text_dynamic(x1 + 10, y1 + 9, "Preferences")
 	b = 40
 	str[0] = "General"
 	str[1] = "Appearance"
@@ -29,26 +29,26 @@ function draw_window_preferences_f() {
 	draw_set_font(fnt_wslui_med)
 	for (a = 0; a < 4; a += 1) {
 		draw_set_color(c_black)
-	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
+	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) + 12, 18 + 21)
 		
 		if (mouse_check_button(mb_left) && c) {
 			draw_sprite(spr_tabbuttons_f, 6, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 7, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 8, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			draw_sprite_ext(spr_tabbuttons_f, 7, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+			draw_sprite(spr_tabbuttons_f, 8, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
 		} else {
 			draw_sprite(spr_tabbuttons_f, 0 + 3 * c, x1 + b, y1 + 28 + 21 - 19)
-			draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			draw_sprite(spr_tabbuttons_f, 2 + 3 * c, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+			draw_sprite(spr_tabbuttons_f, 2 + 3 * c, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
 		}
 	    if (selected_tab = a) {
 			draw_set_color(14120960)
-	        draw_line(x1 + b + 5, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 18 - 6)
-	        draw_line(x1 + b + 5, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]), y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width_dynamic(str[a]), y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width_dynamic(str[a]), y1 + 30 + 21 + 19 - 6)
 			draw_set_color(c_black)
 	    }
-	    draw_text(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
+	    draw_text_dynamic(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a
-	    b += string_width(str[a]) + 12
+	    b += string_width_dynamic(str[a]) + 12
 	}
 	//draw_set_color(c_white)
 	//draw_set_color(make_color_rgb(137, 140, 149))
@@ -58,7 +58,7 @@ function draw_window_preferences_f() {
 	//draw_set_color(c_white)
 	//draw_rectangle(x1 + stabx + 1, y1 + 46 + 22, x1 + stabx + stabw - 1, y1 + 47 + 22, 0)
 	//draw_theme_color()
-	//draw_text(x1 + stabx + 8, y1 + 28 + 22, str[selected_tab])
+	//draw_text_dynamic(x1 + stabx + 8, y1 + 28 + 22, str[selected_tab])
 	draw_set_color(make_color_rgb(213, 223, 229))
 	if (nsel > -1) selected_tab = nsel
 	selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
@@ -89,11 +89,11 @@ function draw_window_preferences_f() {
 		}
 		if (autosave = 0) {
 		    draw_set_color(c_gray)
-		    draw_text(x1 + 306, y1 + 110 + 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
-			draw_text(x1 + 355, y1 + 110 + 22, autosavemins)
+		    draw_text_dynamic(x1 + 306, y1 + 110 + 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+			draw_text_dynamic(x1 + 355, y1 + 110 + 22, autosavemins)
 		    draw_theme_color()
 		} else {
-			draw_text(x1 + 306, y1 + 110 + 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+			draw_text_dynamic(x1 + 306, y1 + 110 + 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
 			as = autosavemins
 			autosavemins = median(1, draw_dragvalue(2, x1 + 355, y1 + 110 + 22, autosavemins, 1), 60)
 			if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
@@ -134,14 +134,14 @@ function draw_window_preferences_f() {
 		draw_set_font(fnt_wslui_info_med)
 		draw_areaheader(x1 + 258, y1 + 240 + 22, 220, 44, "Window")
 		draw_set_font(fnt_wslui)
-		draw_text(x1 + 276, y1 + 256 + 22, "Scale:             %")
+		draw_text_dynamic(x1 + 276, y1 + 256 + 22, "Scale:             %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + 22, window_scale * 100, (1/power(window_scale, 3)) ), 400) / 100
 		if (draw_button2(x1 + 394, y1 + 251 + 22, 72, "Reset", (window_scale == 1))) {
 			window_scale = 1
 		}
 		draw_set_color(c_black)
 		
-		draw_text(x1 + 22, y1 + 290 + 22, "Song folder: " + string_truncate(songfolder, 360))
+		draw_text_dynamic(x1 + 22, y1 + 290 + 22, "Song folder: " + string_truncate(songfolder, 360))
 	    popup_set_window(x1 + 22, y1 + 290 + 22, 430, 18, songfolder)
 	    if (draw_button2(x1 + 22, y1 + 306 + 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(songfolder)) {
@@ -157,7 +157,7 @@ function draw_window_preferences_f() {
 	    }
 	    if (draw_button2(x1 + 22 + 84 + 84, y1 + 306 + 22, 96, "Use default", 0, 1)) songfolder = songs_directory
 	
-		draw_text(x1 + 22, y1 + 340 + 22, "Pattern folder: " + string_truncate(patternfolder, 360))
+		draw_text_dynamic(x1 + 22, y1 + 340 + 22, "Pattern folder: " + string_truncate(patternfolder, 360))
 	    popup_set_window(x1 + 22, y1 + 340 + 22, 430, 18, patternfolder)
 	    if (draw_button2(x1 + 22, y1 + 356 + 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists_lib(patternfolder)) {
@@ -194,11 +194,11 @@ function draw_window_preferences_f() {
 	    if (draw_checkbox(x1 + 40, y1 + 415 + 22, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
 	    if (draw_checkbox(x1 + 40, y1 + 435 + 22, show_outofrange, "Highlight out-of-range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
 	    if (!show_piano) draw_set_color(c_gray)
-		draw_text(x1 + 70, y1 + 330 + 22, "Keys to show:")
+		draw_text_dynamic(x1 + 70, y1 + 330 + 22, "Keys to show:")
 		if (show_piano) {
 			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 330 + 22, keysmax, 2), 50)
 		} else {
-			draw_text(x1 + 150, y1 + 330 + 22, keysmax)
+			draw_text_dynamic(x1 + 150, y1 + 330 + 22, keysmax)
 		}
 		draw_theme_color()
 	    popup_set_window(x1 + 180, y1 + 275 + 22, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
@@ -210,12 +210,12 @@ function draw_window_preferences_f() {
 	    if (draw_radiobox(x1 + 40, y1 + 110 + 22, mousewheel = 1, "Use mouse wheel to change instrument", "Use the mouse wheel to toggle between\nthe available instruments.")) mousewheel = 1
 	    if (draw_radiobox(x1 + 40, y1 + 130 + 22, mousewheel = 2, "Use mouse wheel to change key", "Use the mouse wheel to toggle\nbetween the keys on the piano.")) mousewheel = 2
 	    if (draw_checkbox(x1 + 40, y1 + 158 + 22, changepitch, "Change note properties when scrolling over notes", "Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode.")) changepitch=!changepitch
-		//draw_text(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
+		//draw_text_dynamic(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
 		draw_set_font(fnt_wslui_info_med)
 	    draw_areaheader(x1 + 22, y1 + 220 + 22, 456, 105, "Piano")
 		draw_set_font(fnt_wslui)
 	    if (draw_checkbox(x1 + 40, y1 + 236 + 22, select_lastpressed, "Set selected key to pressed one", "If the selected key should be set\nto the one pressed using the keyboard.")) select_lastpressed=!select_lastpressed
-	    draw_text(x1 + 40, y1 + 270 + 22, "Right-click on keys to change their shortcuts.")
+	    draw_text_dynamic(x1 + 40, y1 + 270 + 22, "Right-click on keys to change their shortcuts.")
 	    if (draw_button2(x1 + 40, y1 + 290 + 22, 160, "Reset key shortcuts", 0, 1)) {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }

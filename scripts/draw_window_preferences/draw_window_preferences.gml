@@ -24,17 +24,19 @@ function draw_window_preferences() {
 	b = 8 + (theme = 3) * 32
 	if (language != 1) {
 	str[0] = "General"
+	str[1] = "Interface"
 	if (!isplayer) {
-	str[1] = "Appearance"
-	str[2] = "Usability"
-	str[3] = "Playback"
+	str[2] = "Appearance"
+	str[3] = "Usability"
+	str[4] = "Playback"
 	}
 	} else {
 	str[0] = "通用"
+	str[1] = "界面"
 	if (!isplayer) {
-	str[1] = "外观"
-	str[2] = "访问"
-	str[3] = "播放"
+	str[2] = "外观"
+	str[3] = "访问"
+	str[4] = "播放"
 	}
 	}
 	if (theme = 3) {
@@ -59,18 +61,18 @@ function draw_window_preferences() {
 	}
 	if (theme != 3) {
 	for (a = 0; a < array_length(str); a += 1) {
-	    c = mouse_rectangle(x1 + b, y1 + 28, string_width(str[a]) + 12, 18)
+	    c = mouse_rectangle(x1 + b, y1 + 28, string_width_dynamic(str[a]) + 12, 18)
 	    if (selected_tab = a) {
 	        stabx = b - 2
-	        stabw = string_width(str[a]) + 15
+	        stabw = string_width_dynamic(str[a]) + 15
 	    } else {
 			draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme, x1 + b, y1 + 28)
-			draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
-			draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width(str[a]) + 10, y1 + 28)	
+			draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme, x1 + b + 2, y1 + 28, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
+			draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28)	
 	        draw_text_dynamic(x1 + b + 6, y1 + 30, str[a])
 	    }
 	    if (mouse_check_button_pressed(mb_left) && c) nsel = a
-	    b += string_width(str[a]) + 12
+	    b += string_width_dynamic(str[a]) + 12
 	}
 	if (theme = 0 || theme = 2 || theme = 3) {
 	    draw_set_color(c_white)
@@ -105,48 +107,48 @@ function draw_window_preferences() {
 	for (a = 0; a < array_length(str); a += 1) {
 		draw_set_color(c_black)
 		if (fdark) draw_set_color(c_white)
-	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width(str[a]) + 12, 18 + 21)
+	    c = mouse_rectangle(x1 + b, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) + 12, 18 + 21)
 	    if (selected_tab = a) {
 			draw_set_color(accent[7])
 			if (fdark) draw_set_color(accent[8])
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 18 - 6)
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 20 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 8, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 8, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 8, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 8, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(accent[6])
 			if (fdark) draw_set_color(accent[2])
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 18 - 6)
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 8, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 8, y1 + 30 + 21 + 19 - 6)
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 20 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 7, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 7, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 8, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 8, y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 7, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 7, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(accent[4])
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 18 - 6)
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 7, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 7, y1 + 30 + 21 + 19 - 6)
-	        draw_line(x1 + b + 5 + string_width(str[a]) / 2 - 6, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width(str[a]) / 2 + 6, y1 + 30 + 21 + 20 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 6, y1 + 30 + 21 + 18 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 7, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 7, y1 + 30 + 21 + 19 - 6)
+	        draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 6, y1 + 30 + 21 + 20 - 6)
 			draw_set_color(c_black)
 			if (fdark) draw_set_color(c_white)
 	    }
 		if (mouse_check_button(mb_left) && c) {
 			// draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+			// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
 			draw_set_color(7631988)
 			if (fdark) draw_set_color(11579568)
 			if (selected_tab = a) draw_set_color(10000536)
 			if (selected_tab = a && fdark) draw_set_color(10724259)
 		} else if (c) {
 			// draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width(str[a]) / 2 + 4, 1, 0, -1, 1)
-			// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width(str[a]) + 10, y1 + 28 + 21 - 19)	
+			// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+			// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
 			if (selected_tab = a) draw_set_color(7631988)
 			if (selected_tab = a && fdark) draw_set_color(11579568)
 		}
 	    draw_text_dynamic(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a
-	    b += string_width(str[a]) + 12
+	    b += string_width_dynamic(str[a]) + 12
 	}
 	}
 	if (nsel > -1) selected_tab = nsel
 	selected_tab += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
-	if (selected_tab < 0) selected_tab = 3
-	if (selected_tab > 3) selected_tab = 0
+	if (selected_tab < 0) selected_tab = 4
+	if (selected_tab > 4) selected_tab = 0
 	draw_theme_color()
 	if (selected_tab = 0) {
 		if (theme = 3) draw_theme_font(font_info_med)
@@ -202,31 +204,124 @@ function draw_window_preferences() {
 		else popup_set_window(x1 + 306, y1 + 110 + (theme = 3) * 22, 180, 16, "自动保存中间的间隔。")
 		}
 	
+		
+		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 218, 120, "Theme")
-	    else draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 218, 120, "主题")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 456, 145, "Songs")
+		else draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 456, 145, "歌曲")
 		if (theme = 3) draw_theme_font(font_main)
-		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 5)
-		if (draw_abutton(x1 + 140 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        if (language != 1) menu = show_menu_ext("theme", x1 + 40, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
-	        else menu = show_menu_ext("theme", x1 + 40, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "经典|" + check(theme = 2) + "暗黑|" + check(theme = 1) + "复古|" + check(theme = 3) + "Fluent")
+		if (language != 1) {
+		if (draw_checkbox(x1 + 40, y1 + 180 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
+		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+	        if (!directory_exists_lib(songfolder)) {
+	            message("The indicated folder doesn't exist!", "Error")
+	        } else {
+	            open_url(songfolder)
+	        }
 	    }
-		if (language != 1) {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, 100, 20, "Press Ctrl + Shift + M in the main screen to set accent color.")}
-		else {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 5, 100, 20, "在主界面按 Ctrl + Shift + M 设定主题颜色。")}
-	    if (language != 1) draw_text_dynamic(x1 + 43, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
-	    else draw_text_dynamic(x1 + 43, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "经典") + condstr(theme = 2, "暗黑") + condstr(theme = 1, "复古") + condstr(theme = 3, "Fluent"))
+	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	        message("Select the directory where saving/loading should be opened in.", "")
+	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
+	        if (a != "") songfolder = filename_dir(a)
+	    }
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 226 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
+	
+		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+	        if (!directory_exists_lib(patternfolder)) {
+	            message("The indicated folder doesn't exist!", "Error")
+	        } else {
+	            open_url(patternfolder)
+	        }
+	    }
+	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	        message("Select the directory where patterns can be imported/exported to.", "")
+	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
+	        if (a != "") patternfolder = filename_dir(a)
+	    }
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 276 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+		} else {
+		if (draw_checkbox(x1 + 40, y1 + 180 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版Note Block Studio中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
+		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "打开", 0, 1)) {
+	        if (!directory_exists_lib(songfolder)) {
+	            message("该路径不存在！", "错误")
+	        } else {
+	            open_url(songfolder)
+	        }
+	    }
+	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "修改", 0, 1)) {
+	        message("选择保存和打开的文件夹", "")
+	        a = string(get_save_filename_ext("", "选择歌曲文件夹", songfolder, "歌曲文件夹"))
+	        if (a != "") songfolder = filename_dir(a)
+	    }
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 226 + (theme = 3) * 22, 96, "还原默认", 0, 1)) songfolder = songs_directory
+	
+		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "片段路径: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "打开", 0, 1)) {
+	        if (!directory_exists_lib(patternfolder)) {
+	            message("该路径不存在！", "错误")
+	        } else {
+	            open_url(patternfolder)
+	        }
+	    }
+	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "修改", 0, 1)) {
+	        message("选择导出和导入片段的文件夹", "")
+	        a = string(get_save_filename_ext("", "选择片段文件夹", patternfolder, "片段文件夹"))
+	        if (a != "") patternfolder = filename_dir(a)
+	    }
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 276 + (theme = 3) * 22, 96, "还原默认", 0, 1)) patternfolder = pattern_directory
+		}
+		}
+		if (theme = 3) draw_theme_font(font_info_med)
+		draw_areaheader(x1 + 22, y1 + 334 + (theme = 3) * 22, 456, 65, "Discord")
+		if (theme = 3) draw_theme_font(font_main)
+		if (language != 1) {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
+		    presence = !presence
+			if (presence = 1) {
+				np_setpresence_timestamps(date_current_datetime(), 0, false);
+			}
+		}
+		} else {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22, presence, "启用 Discord Rich Presence", "将当前歌曲信息显示为Discord个人状态。", 0, 1)) {
+		    presence = !presence
+			if (presence = 1) {
+				np_setpresence_timestamps(date_current_datetime(), 0, false);
+			}
+		}
+		}
+	} else if (selected_tab = 1) {
+		if (theme = 3) draw_theme_font(font_info_med)
+	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 120, "Theme")
+	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 120, "主题")
+		if (theme = 3) draw_theme_font(font_main)
+		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 5)
+		if (draw_abutton(x1 + 140 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        if (language != 1) menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
+	        else menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "经典|" + check(theme = 2) + "暗黑|" + check(theme = 1) + "复古|" + check(theme = 3) + "Fluent")
+	    }
+		if (language != 1) {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, 100, 20, "Press Ctrl + Shift + M in the main screen to set accent color.")}
+		else {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, 100, 20, "在主界面按 Ctrl + Shift + M 设定主题颜色。")}
+	    if (language != 1) draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
+	    else draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "经典") + condstr(theme = 2, "暗黑") + condstr(theme = 1, "复古") + condstr(theme = 3, "Fluent"))
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		//if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (language != 1) {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating in the Fluent theme.", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", (theme != 3), true)) fdark = !fdark
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating in the Fluent theme.", (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", (theme != 3), true)) fdark = !fdark
 		} else {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 25, windowsound, "界面音效", "在Fluent主题时的界面音效。", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 25, fdark, "暗色模式", "Fluent主题的暗色模式。", (theme != 3), true)) fdark = !fdark
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "在Fluent主题时的界面音效。", (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "Fluent主题的暗色模式。", (theme != 3), true)) fdark = !fdark
 		}
 		//if (theme = 3) draw_text_dynamic(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
 		//if (theme = 3) {
@@ -234,16 +329,16 @@ function draw_window_preferences() {
 		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
 		//}
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1+258,y1+164 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
-	    else draw_areaheader(x1+258,y1+164 + (theme = 3) * 22,220,60,"帧率限制（实验性功能）")
+	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
+	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"帧率限制（实验性功能）")
 		if (theme = 3) draw_theme_font(font_main)
-		draw_area(x1 + 274, y1 + 164 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 164 + 16 + 20 + (theme = 3) * 22 + 5)
-		if (draw_abutton(x1 + 374 - 17, y1 + 164 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        if (language != 1) menu = show_menu_ext("refreshrate", x1 + 274, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30FPS|" + check(refreshrate = 1) + "60FPS|" + check(refreshrate = 2) + "120FPS|" + check(refreshrate = 3) + "144FPS|" + check(refreshrate = 4) + "Unlimited")
-	        else menu = show_menu_ext("refreshrate", x1 + 274, y1 + 164 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30帧|" + check(refreshrate = 1) + "60帧|" + check(refreshrate = 2) + "120帧|" + check(refreshrate = 3) + "144帧|" + check(refreshrate = 4) + "无限")
+		draw_area(x1 + 274, y1 + 74 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 74 + 16 + 20 + (theme = 3) * 22 + 5)
+		if (draw_abutton(x1 + 374 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        if (language != 1) menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30FPS|" + check(refreshrate = 1) + "60FPS|" + check(refreshrate = 2) + "120FPS|" + check(refreshrate = 3) + "144FPS|" + check(refreshrate = 4) + "Unlimited")
+	        else menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30帧|" + check(refreshrate = 1) + "60帧|" + check(refreshrate = 2) + "120帧|" + check(refreshrate = 3) + "144帧|" + check(refreshrate = 4) + "无限")
 	    }
-	    if (language != 1) draw_text_dynamic(x1 + 277, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30FPS") + condstr(refreshrate = 1, "60FPS") + condstr(refreshrate = 2, "120FPS") + condstr(refreshrate = 3, "144FPS") + condstr(refreshrate = 4, "Unlimited"))
-	    else draw_text_dynamic(x1 + 277, y1 + 164 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30帧") + condstr(refreshrate = 1, "60帧") + condstr(refreshrate = 2, "120帧") + condstr(refreshrate = 3, "144帧") + condstr(refreshrate = 4, "无限"))
+	    if (language != 1) draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30FPS") + condstr(refreshrate = 1, "60FPS") + condstr(refreshrate = 2, "120FPS") + condstr(refreshrate = 3, "144FPS") + condstr(refreshrate = 4, "Unlimited"))
+	    else draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30帧") + condstr(refreshrate = 1, "60帧") + condstr(refreshrate = 2, "120帧") + condstr(refreshrate = 3, "144帧") + condstr(refreshrate = 4, "无限"))
 		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 	    //if (draw_radiobox(x1+274,y1+164+16 + (theme = 3) * 22,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
 	    //    game_set_speed(30,gamespeed_fps)
@@ -267,98 +362,34 @@ function draw_window_preferences() {
 		//}
 
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 240 + (theme = 3) * 22, 220, 44, "Window")
-		else draw_areaheader(x1 + 258, y1 + 240 + (theme = 3) * 22, 220, 44, "窗口")
+		if (language != 1) draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 44, "Window")
+		else draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 44, "窗口")
 		if (theme = 3) draw_theme_font(font_main)
-		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 256 + (theme = 3) * 22, "Scale:             %")
-		else draw_text_dynamic(x1 + 276, y1 + 256 + (theme = 3) * 22, "缩放:              %")
-		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 256 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
+		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "Scale:             %")
+		else draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "缩放:              %")
+		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 166 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
 		if (language != 1) {
-		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
 		} else {
-		if (draw_button2(x1 + 394, y1 + 251 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
 		}
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
-		
-		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 22, y1 + 309 + (theme = 3) * 22, 456, 145, "Songs")
-		else draw_areaheader(x1 + 22, y1 + 309 + (theme = 3) * 22, 456, 145, "歌曲")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 219 + (theme = 3) * 22, 456, 65, "Language")
+		else draw_areaheader(x1 + 22, y1 + 219 + (theme = 3) * 22, 456, 65, "语言")
 		if (theme = 3) draw_theme_font(font_main)
+		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 219 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 219 + 16 + 20 + 5)
+		if (draw_abutton(x1 + 140 - 17, y1 + 219 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        menu = show_menu_ext("language", x1 + 40, y1 + 219 + 16 + 21 + (theme = 3) * 22 + 5, check(language = 0) + "English|" + check(language = 1) + "简体中文")
+	    }
+	    draw_text_dynamic(x1 + 43, y1 + 219 + 19 + (theme = 3) * 22 + 5, condstr(language = 0, "English") + condstr(language = 1, "简体中文"))
+	} else if (selected_tab = 2) {
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 325 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
-		draw_text_dynamic(x1 + 40, y1 + 355 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 355 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 40, y1 + 371 + (theme = 3) * 22, 76, "Open", 0, 1)) {
-	        if (!directory_exists_lib(songfolder)) {
-	            message("The indicated folder doesn't exist!", "Error")
-	        } else {
-	            open_url(songfolder)
-	        }
-	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 371 + (theme = 3) * 22, 76, "Change", 0, 1)) {
-	        message("Select the directory where saving/loading should be opened in.", "")
-	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
-	        if (a != "") songfolder = filename_dir(a)
-	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 371 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
-	
-		draw_text_dynamic(x1 + 40, y1 + 405 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 405 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 40, y1 + 421 + (theme = 3) * 22, 76, "Open", 0, 1)) {
-	        if (!directory_exists_lib(patternfolder)) {
-	            message("The indicated folder doesn't exist!", "Error")
-	        } else {
-	            open_url(patternfolder)
-	        }
-	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 421 + (theme = 3) * 22, 76, "Change", 0, 1)) {
-	        message("Select the directory where patterns can be imported/exported to.", "")
-	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
-	        if (a != "") patternfolder = filename_dir(a)
-	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 421 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
-		} else {
-		if (draw_checkbox(x1 + 40, y1 + 325 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版Note Block Studio中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
-		draw_text_dynamic(x1 + 40, y1 + 355 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 355 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 40, y1 + 371 + (theme = 3) * 22, 76, "打开", 0, 1)) {
-	        if (!directory_exists_lib(songfolder)) {
-	            message("该路径不存在！", "错误")
-	        } else {
-	            open_url(songfolder)
-	        }
-	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 371 + (theme = 3) * 22, 76, "修改", 0, 1)) {
-	        message("选择保存和打开的文件夹", "")
-	        a = string(get_save_filename_ext("", "选择歌曲文件夹", songfolder, "歌曲文件夹"))
-	        if (a != "") songfolder = filename_dir(a)
-	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 371 + (theme = 3) * 22, 96, "还原默认", 0, 1)) songfolder = songs_directory
-	
-		draw_text_dynamic(x1 + 40, y1 + 405 + (theme = 3) * 22, "片段路径: " + string_truncate(patternfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 405 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 40, y1 + 421 + (theme = 3) * 22, 76, "打开", 0, 1)) {
-	        if (!directory_exists_lib(patternfolder)) {
-	            message("该路径不存在！", "错误")
-	        } else {
-	            open_url(patternfolder)
-	        }
-	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 421 + (theme = 3) * 22, 76, "修改", 0, 1)) {
-	        message("选择导出和导入片段的文件夹", "")
-	        a = string(get_save_filename_ext("", "选择片段文件夹", patternfolder, "片段文件夹"))
-	        if (a != "") patternfolder = filename_dir(a)
-	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 421 + (theme = 3) * 22, 96, "还原默认", 0, 1)) patternfolder = pattern_directory
-		}
-		}
-	} else if (selected_tab = 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 196, "Note blocks")
 		if (theme = 3) draw_theme_font(font_main)
@@ -388,7 +419,39 @@ function draw_window_preferences() {
 		}
 		draw_theme_color()
 	    popup_set_window(x1 + 180, y1 + 275 + (theme = 3) * 22, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
-	} else if (selected_tab = 2) {
+		} else {
+		if (theme = 3) draw_theme_font(font_info_med)
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 196, "音符盒")
+		if (theme = 3) draw_theme_font(font_main)
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, use_colors, "彩色音符盒", "用音符盒颜色区分音色。")) use_colors=!use_colors
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 110, use_icons, "显示音色图标", "用音色图标区分音色。")) use_icons=!use_icons
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, "音符盒形状", "用音符盒形状区分音色。")) use_shapes=!use_shapes
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 160, show_numbers, "显示音符序号", "在音符盒上显示需要按右键次数。")) show_numbers=!show_numbers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 180, show_octaves, "显示八度序号", "在音符盒上显示第几八度。")) show_octaves=!show_octaves
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "标记不兼容的音符盒", "在自定义音色或超出2八度范围的音符盒周围显示红框。")) show_incompatible=!show_incompatible
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 220, fade, "音符盒不透明", "关闭音符盒上的透明效果。")) fade = !fade
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "显示每层操作区", "显示在界面左侧操作每层设定的区域。")) show_layers = !show_layers
+		if (theme = 3) draw_theme_font(font_info_med)
+	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "琴键")
+		if (theme = 3) draw_theme_font(font_main)
+		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "显示琴键", "钢琴键是否可见。", false, true)) show_piano = !show_piano
+		if (draw_checkbox(x1 + 40, y1 + 355 + (theme = 3) * 22, show_keynames, "显示键名", "显示琴键所对应音的名称。")) show_keynames=!show_keynames
+	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "显示音符序号", "在2八度内的琴键上显示需要按右键次数。")) show_keynumbers=!show_keynumbers
+	    if (draw_checkbox(x1 + 40, y1 + 395 + (theme = 3) * 22, show_keyboard, "显示键盘键位", "在琴键上显示绑定的键盘键位。")) show_keyboard=!show_keyboard
+	    if (draw_checkbox(x1 + 40, y1 + 415 + (theme = 3) * 22, show_notechart, "在琴键上时显示五线谱对应音符", "在鼠标停留在琴键上时是否显示五线谱。")) show_notechart=!show_notechart
+	    if (draw_checkbox(x1 + 40, y1 + 435 + (theme = 3) * 22, show_outofrange, "标记超范围琴键", "是否为在2八度之外的琴键上标红。")) show_outofrange=!show_outofrange
+	    if (!show_piano) draw_set_color(c_gray)
+		draw_text_dynamic(x1 + 70, y1 + 330 + (theme = 3) * 22, "最多显示键数:")
+		if (show_piano) {
+			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax, 2), 50)
+		} else {
+			draw_text_dynamic(x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax)
+		}
+		draw_theme_color()
+	    popup_set_window(x1 + 180, y1 + 275 + (theme = 3) * 22, 150, 21, "同屏显示的琴键数。过多可能会在老电脑上造成卡顿。")
+		}
+	} else if (selected_tab = 3) {
+		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 120, "Mouse wheel")
 		if (theme = 3) draw_theme_font(font_main)
@@ -405,16 +468,26 @@ function draw_window_preferences() {
 	    if (draw_button2(x1 + 40, y1 + 290 + (theme = 3) * 22, 160, "Reset key shortcuts")) {
 	        if (question("Are you sure?", "Confirm")) init_keys()
 	    }
+		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 22, y1 + 290 + 62 + (theme = 3) * 22, 456, 65, "Discord")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 120, "鼠标滚轮")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_checkbox(x1 + 40, y1 + 290 + 62 + 16 + (theme = 3) * 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
-		    presence = !presence
-			if (presence = 1) {
-				np_setpresence_timestamps(date_current_datetime(), 0, false);
-			}
+	    if (draw_radiobox(x1 + 40, y1 + 90 + (theme = 3) * 22, mousewheel = 0, "使用鼠标滚轮移动位置", "使用鼠标滚轮横向或竖向移动编辑区域位置。")) mousewheel = 0
+	    if (draw_radiobox(x1 + 40, y1 + 110 + (theme = 3) * 22, mousewheel = 1, "使用鼠标滚轮改变音色", "使用鼠标滚轮切换可用音色。")) mousewheel = 1
+	    if (draw_radiobox(x1 + 40, y1 + 130 + (theme = 3) * 22, mousewheel = 2, "使用鼠标滚轮改变音调", "使用鼠标滚轮改变目前使用的音调。")) mousewheel = 2
+	    if (draw_checkbox(x1 + 40, y1 + 158 + (theme = 3) * 22, changepitch, "当在音符上使用鼠标滚轮改变音符属性", "在音符上使用鼠标滚轮时是否根据目前模式改变其音调、音量、声道或音高。")) changepitch=!changepitch
+		//draw_text_dynamic(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
+		if (theme = 3) draw_theme_font(font_info_med)
+	    draw_areaheader(x1 + 22, y1 + 220 + (theme = 3) * 22, 456, 105, "琴键")
+		if (theme = 3) draw_theme_font(font_main)
+	    if (draw_checkbox(x1 + 40, y1 + 236 + (theme = 3) * 22, select_lastpressed, "选择按下的键", "是否选择按下的键所对应的音。")) select_lastpressed=!select_lastpressed
+	    draw_text_dynamic(x1 + 40, y1 + 270 + (theme = 3) * 22, "对琴键右键可更改键位。")
+	    if (draw_button2(x1 + 40, y1 + 290 + (theme = 3) * 22, 160, "重置键位")) {
+	        if (question("你确定吗？", "确认")) init_keys()
+	    }
 		}
-	} else if (selected_tab = 3) {
+	} else if (selected_tab = 4) {
+		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 125, "Marker")
 		if (theme = 3) draw_theme_font(font_main)
@@ -436,8 +509,31 @@ function draw_window_preferences() {
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
+		} else {
+		if (theme = 3) draw_theme_font(font_info_med)
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 125, "进度条")
+		if (theme = 3) draw_theme_font(font_main)
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, "播放时跟随进度条", "播放歌曲时和进度条一起滚动。")) marker_follow=!marker_follow
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage, "按页", "跟随进度条翻页。", !marker_follow)) marker_pagebypage = 1
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, !marker_pagebypage, "按刻", "跟随进度条滚动。", !marker_follow)) marker_pagebypage = 0
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, marker_start, "在区间时开始播放", "有区间存在时是否在区间起始处开始播放。")) marker_start=!marker_start
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_end, "在区间后停止播放", "有区间存在时是否在区间结束处停止播放。")) marker_end=!marker_end
+		if (theme = 3) draw_theme_font(font_info_med)
+	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 120, "播放")
+		if (theme = 3) draw_theme_font(font_main)
+	    if (draw_checkbox(x1 + 32, y1 + 224 + 16 + (theme = 3) * 22, realvolume, "显示每层音量", "是否显示每层的音量。")) realvolume=!realvolume
+		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "关闭立体声", "关闭立体声音效。")) realstereo = !realstereo
+		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, looptobarend, "循环至小节尾", "到小节尾再循环。")) looptobarend = !looptobarend
+		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, show_soundcount, "显示正在播放的声音数", "在状态栏里显示正在播放的声音数。")) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "提升声音限制", "提升可同时播放的声音数。")) channelstoggle = !channelstoggle
+		if (theme = 3) draw_theme_font(font_info_med)
+		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "节奏单位")
+		if (theme = 3) draw_theme_font(font_main)
+		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻/秒 (t/s)", "使用每秒几刻显示节奏。")) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数/分钟 (BPM)", "使用每分钟多少拍显示节奏。")) use_bpm = 1
+		}
 	}
-	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, "OK")) {
+	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定"))) {
 		if (theme != 3) {
 			window = 0
 			window_set_cursor(curs)

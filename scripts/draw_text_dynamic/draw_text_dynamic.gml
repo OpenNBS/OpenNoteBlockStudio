@@ -21,9 +21,9 @@ function draw_text_dynamic(x, y, string){
 	}
 	for(var i = 1; i <= string_length(string); i += 1) {
 		draw_theme_font(obj_controller.currentfont, (string_ord_at(string, i) > 127))
-		if (halign = fa_left) draw_text(x + width, y - 2 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
-		else if (halign = fa_center) draw_text(x - floor(linewidth[lines] / 2) + width, y - 2 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
-		else if (halign = fa_right) draw_text(x - linewidth[lines] + width, y - 2 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
+		if (halign = fa_left) draw_text (x + width, y - 1 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
+		else if (halign = fa_center) draw_text (x - floor(linewidth[lines] / 2) + width, y - 1 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
+		else if (halign = fa_right) draw_text (x - linewidth[lines] + width, y - 1 * (string_ord_at(string, i) > 127) + lines * 16, string_char_at(string, i))
 		width += string_width(string_char_at(string, i))
 		if (string_char_at(string, i) = "\n") {lines += 1 width = 0}
 	}

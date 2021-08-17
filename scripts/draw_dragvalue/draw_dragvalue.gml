@@ -10,18 +10,19 @@ function draw_dragvalue() {
 	if (argument_count > 5)
 	    lock = argument[5]
 	str = string_format(v, 0, 0)
-	m = mouse_rectangle(xx - 8, yy - 4, string_width(str) + 16, string_height(str) + 4)
+	m = mouse_rectangle(xx - 8, yy - 4, string_width_dynamic(str) + 16, string_height(str) + 4)
 	if (v < 20 || i > 1) {
 	    if (lock = 0) {
-	        draw_text(xx, yy, str)
+	        draw_text_dynamic(xx, yy, str)
 	    } else {
 	        draw_set_color(c_white)
-	        draw_text(xx + 1, yy + 1, str)
+	        draw_text_dynamic(xx + 1, yy + 1, str)
 	        draw_set_color(8421504)
-	        draw_text(xx, yy, str)
+	        draw_text_dynamic(xx, yy, str)
 	    }
 	} else {
-	    draw_text(xx, yy, "No limit")
+	    if (language != 1) draw_text_dynamic(xx, yy, "No limit")
+	    else draw_text_dynamic(xx, yy, "无限")
 	}
 	if (lock) return v
 	if (w_isdragging = 0) {

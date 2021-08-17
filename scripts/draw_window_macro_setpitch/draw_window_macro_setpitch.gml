@@ -10,7 +10,8 @@ function draw_window_macro_setpitch() {
 	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Set note pitch")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Set note pitch")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "设置音高")
 	draw_theme_font(font_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
@@ -18,11 +19,12 @@ function draw_window_macro_setpitch() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
-	draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Pitch")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Pitch")
+	else draw_areaheader(x1 + 10, y1 + 53, 120, 35, "音高")
 	setpit = median(-1000, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1000)
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确定"))) {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
@@ -47,7 +49,7 @@ function draw_window_macro_setpitch() {
 		selection_load(selection_x,selection_y,str,true)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
+	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 }

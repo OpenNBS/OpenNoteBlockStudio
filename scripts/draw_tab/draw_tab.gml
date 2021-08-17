@@ -4,7 +4,7 @@ function draw_tab(argument0) {
 	str = argument0
 	xx = tab_x
 	yy = 1
-	w = string_width(str) + 12
+	w = string_width_dynamic(str) + 12
 	tab_x += w
 	a = ((mouse_rectangle(xx, yy, w, 18)) && window = 0 && sb_drag = -1)
 	a += (a && (mouse_check_button(mb_left)))

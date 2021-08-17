@@ -17,7 +17,7 @@ function draw_checkbox() {
 		is_switch = false;
 		x_offset = 18;
 	}
-	if (tip != "") popup_set_window(xx, yy, 13 + string_width(str) + 8, 13, tip)
+	if (tip != "") popup_set_window(xx, yy, 13 + string_width_dynamic(str) + 8, 13, tip)
 	if (lock = 1) {
 		if (is_switch) {
 			if (!expression) draw_sprite(spr_switch, 6 + 8 * (fdark), xx, yy)
@@ -36,7 +36,7 @@ function draw_checkbox() {
 		draw_theme_color()
 	} else {
 		
-		m = mouse_rectangle(xx, yy, 26 + string_width(str) + 8, 13)
+		m = mouse_rectangle(xx, yy, 26 + string_width_dynamic(str) + 8, 13)
 		if (w_isdragging > 0) m = 0
 		if (m) m += mouse_check_button(mb_left)
 		if (is_switch) {

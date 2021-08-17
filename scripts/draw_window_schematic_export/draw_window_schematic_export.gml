@@ -15,30 +15,37 @@ function draw_window_schematic_export() {
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Schematic Export")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Schematic Export")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "导出Schematic")
 	draw_theme_font(font_main)
 
 	b = 8
+	if (language != 1) {
 	str[0] = "Design"
 	str[1] = "Blocks"
+	} else {
+	str[0] = "设计"
+	str[1] = "方块"
+	}
 	nsel = -1
 	menun = -1
-	if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember
+	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
+	else {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "记住我的更改", "下次导出Schematic时是否使用同样的设定。", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
 	for (a = 0; a < 2; a += 1) {
-	    c = mouse_rectangle(x1 + b, y1 + 28, string_width(str[a]) + 12, 18)
+	    c = mouse_rectangle(x1 + b, y1 + 28, string_width_dynamic(str[a]) + 12, 18)
 	    if (selected_tab_sch = a) {
 	        stabx = b - 2
-	        stabw = string_width(str[a]) + 15
+	        stabw = string_width_dynamic(str[a]) + 15
 	    } else {
 	        draw_sprite(spr_tabbuttons, 0 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b, y1 + 28)
-	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
-	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width(str[a]) + 10, y1 + 28)
-	        draw_text(x1 + b + 6, y1 + 30, str[a])
+	        draw_sprite_ext(spr_tabbuttons, 1 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + 2, y1 + 28, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, draw_get_alpha())
+	        draw_sprite(spr_tabbuttons, 2 + 3 * c + 6 * theme + 9 * (fdark && theme = 3), x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28)
+	        draw_text_dynamic(x1 + b + 6, y1 + 30, str[a])
 	    }
 	    if (mouse_check_button_pressed(mb_left) && c && wmenu = 0) nsel = a
-	    b += string_width(str[a]) + 12
+	    b += string_width_dynamic(str[a]) + 12
 	}
 	if (theme = 0 || theme = 3) {
 	    draw_set_color(c_white)
@@ -60,12 +67,12 @@ function draw_window_schematic_export() {
 		if (theme = 3 && fdark) draw_set_color(2105376)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
-	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+	    draw_text_dynamic(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	} else if(theme = 1){
 	    draw_sprite(spr_tabbuttons, 24, x1 + stabx - 1, y1 + 26)
 	    draw_sprite_ext(spr_tabbuttons, 25, x1 + stabx + 1, y1 + 26, stabw / 2 - 1, 1, 0, -1, 1)
 	    draw_sprite(spr_tabbuttons, 26, x1 + stabx + stabw - 1, y1 + 26)
-	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+	    draw_text_dynamic(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}else{
 		draw_set_color(c_dark)
 	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
@@ -78,22 +85,23 @@ function draw_window_schematic_export() {
 	    draw_set_color(c_dark)
 	    draw_rectangle(x1 + stabx + 1, y1 + 46, x1 + stabx + stabw - 1, y1 + 47, 0)
 	    draw_theme_color()
-	    draw_text(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
+	    draw_text_dynamic(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}
 	if (nsel > -1) selected_tab_sch = nsel
 	selected_tab_sch += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)
 	if (selected_tab_sch < 0) selected_tab_sch = 1
 	if (selected_tab_sch > 1) selected_tab_sch = 0
 	if (selected_tab_sch = 0) {
+		if (language != 1) {
 	    draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
-	    draw_text(x1 + 16, y1 + 220, "Layout:")
+	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
 	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
 	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
-	    draw_text(x1 + 16, y1 + 220 + 54, "For Minecraft version:")
+	    draw_text_dynamic(x1 + 16, y1 + 220 + 54, "For Minecraft version:")
 	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is used.")) structure = true
 	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
 	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
-	    draw_text(x1 + 170, y1 + 220, "Repeaters per row:")
+	    draw_text_dynamic(x1 + 170, y1 + 220, "Repeaters per row:")
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
 	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
@@ -108,18 +116,55 @@ function draw_window_schematic_export() {
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
 	    }
-	    draw_text(x1 + 380, y1 + 220, "Note blocks:")
-	    draw_text(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
-	    draw_text(x1 + 380, y1 + 220 + 16 * 2, "Size:")
+	    draw_text_dynamic(x1 + 380, y1 + 220, "Note blocks:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "Size:")
 	    draw_set_halign(fa_right)
-	    draw_text(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
-	    draw_text(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
-	    draw_text(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
+	    draw_text_dynamic(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
 	    draw_set_halign(fa_left)
-	    draw_text(x1 + 380, y1 + 220 + 16 * 3, "Tempo:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "Tempo:")
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 ticks / second", "Generate song at 10 ticks / second")) sch_exp_tempo = 0
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 ticks / second", "Generate song at 5 ticks / second")) sch_exp_tempo = 1
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) sch_exp_tempo = 2
+		} else {
+		draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
+	    draw_text_dynamic(x1 + 16, y1 + 220, "分布:")
+	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "普通过道", "生成过道延伸到歌曲末尾。")) sch_exp_layout = 1
+	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "环形过道", "生成让玩家来回走的过道。")) sch_exp_layout = 0
+	    draw_text_dynamic(x1 + 16, y1 + 220 + 54, "导出为Minecraft版本:")
+	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "创建一个兼容1.13+的结构方块文件。只使用默认方块。")) structure = true
+	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "创建一个兼容1.11和1.12的Schematic文件。")) {sch_exp_minecraft_old = false structure = false}
+	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "创建一个只兼容1.11之前旧版本的Schematic文件。")) {sch_exp_minecraft_old = true structure = false}
+	    draw_text_dynamic(x1 + 170, y1 + 220, "每行中继器个数:")
+	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
+	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
+	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "Schematic里每行中继器的个数。拖拽来更改。")
+		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "包括已静音的层", "是否在Schematic内包括已静音的层。", false, true)) sch_exp_includelocked=!sch_exp_includelocked
+	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "压缩每层", "压缩每层以节省竖向空间。", false, true)) sch_exp_compress=!sch_exp_compress
+		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
+	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "包括矿车轨道", "包括一个跟随歌曲进度的矿车轨道。", false, true)) sch_exp_minecart=!sch_exp_minecart
+	        if (draw_checkbox(x1 + 170 + 16, y1 + 310, sch_exp_chest, "添加矿车箱", "是否在歌曲开始处添加一个装满矿车的箱子。", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
+			if (sch_exp_layout = 0) {
+	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "包括循环选项", "是否添加开关循环功能的拉杆。", false, true)) sch_exp_loop=!sch_exp_loop
+			}
+	    } else {
+	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
+	    }
+	    draw_text_dynamic(x1 + 380, y1 + 220, "音符盒:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "中继器:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "大小:")
+	    draw_set_halign(fa_right)
+	    draw_text_dynamic(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
+	    draw_set_halign(fa_left)
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "节奏:")
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 红石刻 / 秒", "生成一个 10 红石刻 / 秒 的歌曲")) sch_exp_tempo = 0
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 红石刻 / 秒", "生成一个 5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 1
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 红石刻 / 秒", "生成一个 2.5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 2
+		}
 	} else {
 	    if (theme = 1) {
 	        draw_set_color(c_white)
@@ -131,6 +176,7 @@ function draw_window_schematic_export() {
 	        draw_set_color(make_color_rgb(137, 140, 149))
 	        draw_rectangle(x1 + 11, y1 + 52, x1 + 538, y1 + 256, 1)
 	    }
+		if (language != 1) {
 	    tabs = 3
 	    tabstr[0] = "Instrument"
 	    tabtip[0] = "The name of the instrument."
@@ -141,19 +187,31 @@ function draw_window_schematic_export() {
 	    tabstr[2] = "Block name"
 	    tabtip[2] = "The name of the block that should be\nplaced below note blocks of the instrument."
 	    tabw[2] = 220
+		} else {
+		tabs = 3
+	    tabstr[0] = "音色"
+	    tabtip[0] = "音色的名称。"
+	    tabw[0] = 252
+	    tabstr[1] = "方块"
+	    tabtip[1] = "放在对应音色的音符盒下的方块ID。"
+	    tabw[1] = 60
+	    tabstr[2] = "方块名称"
+	    tabtip[2] = "放在对应音色的音符盒下的方块名称。"
+	    tabw[2] = 220
+		}
 	    for (a = 0; a < 9; a += 1) {
 	        b = floor(sb_val[sch_exp_scrollbar] + a)
 	        if (b >= ds_list_size(instrument_list)) break
 	        var ins = instrument_list[| b];
 	        draw_theme_color()
-	        draw_text(x1 + 12 + 4, y1 + 74 + 20 * a, ins.name)
-	        draw_text(x1 + 12 + 4 + tabw[0], y1 + 74 + 20 * a, string(sch_exp_ins_block[b]) + ", " + string(sch_exp_ins_data[b]))
+	        draw_text_dynamic(x1 + 12 + 4, y1 + 74 + 20 * a, ins.name)
+	        draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 74 + 20 * a, string(sch_exp_ins_block[b]) + ", " + string(sch_exp_ins_data[b]))
 	        if (draw_abutton(x1 + 12 + 4 + tabw[0] + tabw[1] - 25, y1 + 72 + 20 * a) && wmenu = 0) {
 	            menun = 0
 	            menua = a
 	            menub = b
 	        }
-	        draw_text(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 74 + 20 * a, block_get_name(sch_exp_ins_block[b], sch_exp_ins_data[b]))
+	        draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 74 + 20 * a, block_get_name(sch_exp_ins_block[b], sch_exp_ins_data[b]))
 	        draw_set_color(12632256)
 	        draw_line(x1 + 12, y1 + 90 + 20 * a, x1 + 528, y1 + 90 + 20 * a)
 	    }
@@ -165,13 +223,19 @@ function draw_window_schematic_export() {
 	    for (a = tabs - 1; a >= 0; a -= 1) {
 	        draw_window(xx - tabw[a], y1 + 51, xx, y1 + 51 + 20, 1)
 	        popup_set_window(xx - tabw[a], y1 + 51, tabw[a], 20, tabtip[a])
-	        draw_text(xx - tabw[a] + 4, y1 + 54, tabstr[a])
+	        draw_text_dynamic(xx - tabw[a] + 4, y1 + 54, tabstr[a])
 	        xx -= tabw[a] - 1
 	    }
 	    draw_theme_color()
-	    draw_text(x1 + 16, y1 + 270, "Block for walkway:")
-	    draw_text(x1 + 16, y1 + 300, "Block for circuitry:")
-	    draw_text(x1 + 16, y1 + 330, "Block for ground:")
+		if (language != 1) {
+	    draw_text_dynamic(x1 + 16, y1 + 270, "Block for walkway:")
+	    draw_text_dynamic(x1 + 16, y1 + 300, "Block for circuitry:")
+	    draw_text_dynamic(x1 + 16, y1 + 330, "Block for ground:")
+		} else {
+		draw_text_dynamic(x1 + 16, y1 + 270, "过道所用方块:")
+	    draw_text_dynamic(x1 + 16, y1 + 300, "电路所用方块:")
+	    draw_text_dynamic(x1 + 16, y1 + 330, "地面所用方块:")
+		}
     
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
@@ -181,9 +245,10 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 0
 	    }
-	    popup_set_window(x1 + 200, y1 + 265, 140, 21, "The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265, 140, 21, "The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.")
+	    else popup_set_window(x1 + 200, y1 + 265, 140, 21, "用于过道和除电路和地面的方块。")
 	    draw_theme_color()
-	    draw_text(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
+	    draw_text_dynamic(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
     
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
@@ -193,9 +258,10 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 1
 	    }
-	    popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
+	    else popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "为电路用的方块。")
 	    draw_theme_color()
-	    draw_text(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
+	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
     
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
@@ -205,10 +271,12 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 2
 	    }
-	    popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.")
+	    else popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "为地面用的方块。选草方块会刷一堆生物。")
 	    draw_theme_color()
-	    draw_text(x1 + 204, y1 + 264 + 4 + 60, block_get_name(sch_exp_ground_block, sch_exp_ground_data))
+	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 60, block_get_name(sch_exp_ground_block, sch_exp_ground_data))
 	}
+	if (language != 1) {
 	if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
 	    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
 	        message("There are no blocks to export!", "Schematic export")
@@ -223,6 +291,23 @@ function draw_window_schematic_export() {
 	}
 	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
 	    if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
+	}
+	} else {
+	if (draw_button2(x1 + 470, y1 + 368, 72, "导出") && wmenu = 0) {
+	    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
+	        message("没有方块可以导出！", "导出Schematic")
+	    } else if (schematic_length() >= 2000 || schematic_width() >= 2000 || schematic_height() >= 256) {
+	        message("这个Schematic太大了。大小限制为2000x2000x256。\n可以更改“每行中继器个数”来减小大小。", "错误")
+	    } else {
+	        schematic_export()
+	    }
+	}
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
+		windowclose = 1
+	}
+	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "使用默认值") && wmenu = 0) {
+	    if (question("你确定吗？", "确定")) reset_schematic_export(1)
+	}
 	}
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 
@@ -308,7 +393,7 @@ function draw_window_schematic_export() {
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Stained hardened clay|\\|"
+	                str += "Colored Terracotta|\\|"
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 159 && sch_exp_ins_data[menub] = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -317,7 +402,8 @@ function draw_window_schematic_export() {
 	            }
 	            d++
 	            if (d % 25 = 0 && a < b - 1) {
-	                str += "-|More...|\\|"
+	                if (language != 1) str += "-|More...|\\|"
+	                else str += "-|更多......|\\|"
 	                sm++
 	            }
 	        }
@@ -355,7 +441,7 @@ function draw_window_schematic_export() {
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Stained Hardened Clay|\\|"
+	                str += "Colored Terracotta|\\|"
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 159 && c2 = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -364,7 +450,8 @@ function draw_window_schematic_export() {
 	            }
 	            d++
 	            if (d%25 = 0  && a < b - 1) {
-	                str += "-|More...|\\|"
+	                if (language != 1) str += "-|More...|\\|"
+	                else str += "-|更多......|\\|"
 	                sm++
 	            }
 	        }

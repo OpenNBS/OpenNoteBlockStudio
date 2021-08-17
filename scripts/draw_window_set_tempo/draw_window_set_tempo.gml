@@ -11,7 +11,8 @@ function draw_window_set_tempo() {
 		w = 74
 	}
 	draw_set_alpha(1)
-	input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")")
+	if (language != 1) input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")")
+	else input = draw_inputbox(100, xx, 57, w, input, "输入新节奏（" + condstr(use_bpm, "拍数/分钟", "红石刻/秒") + "）")
 	
 	// Prevent closing the box if user clicked on top of it
 	if (mouse_check_button_pressed(mb_left)) {

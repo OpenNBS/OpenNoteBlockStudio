@@ -4,8 +4,8 @@ function draw_msg(){
 	str = msgcontent
 	fnt = draw_get_font()
 	draw_theme_font(font_info_med_bold)
-	x1 = (rw - string_width(str)) / 2
-	x2 = (rw + string_width(str)) / 2
+	x1 = (rw - string_width_dynamic(str)) / 2
+	x2 = (rw + string_width_dynamic(str)) / 2
 	y1 = rh * 0.8
 	y2 = rh * 0.8 - 20
 	draw_set_color(7368816)

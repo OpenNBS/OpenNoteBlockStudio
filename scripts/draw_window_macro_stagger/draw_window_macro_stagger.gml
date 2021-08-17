@@ -11,9 +11,10 @@ function draw_window_macro_stagger() {
 	draw_window(x1, y1, x1 + 150, y1 + 160)
 	draw_theme_color()
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Stagger")
+	draw_text_dynamic(x1 + 8, y1 + 8, "Stagger")
 	draw_set_color(c_red)
-	draw_text(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
+	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）")
 	draw_theme_color()
 	pattern = ""
 	draw_theme_font(font_main)
@@ -23,18 +24,22 @@ function draw_window_macro_stagger() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 11, y1 + 26, x1 + 154, y1 + 102, 1)
 	}
-	draw_areaheader(x1 + 15, y1 + 53, 120, 35, "Pattern")
+	if (language != 1) draw_areaheader(x1 + 15, y1 + 53, 120, 35, "Pattern")
+	else draw_areaheader(x1 + 15, y1 + 53, 120, 35, "规律")
 
-	pattern = draw_textarea(58, x1 + 20, y1 + 60, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
+	pattern = draw_textarea(58, x1 + 20, y1 + 60, 113, 25, string(pattern), condstr(language != 1, "Must separate relative keys with pipes.", "必须用“|”分割值。")) 
 	draw_theme_font(font_main)
-	draw_text(x1 + 25, y1 + 92,"This may replace \nlower note blocks!")
-	if (draw_button2(x1 + 15, y1 + 128, 60, "OK")) {
+	if (language != 1) draw_text_dynamic(x1 + 25, y1 + 92,"This may replace \nlower note blocks!")
+	else draw_text_dynamic(x1 + 25, y1 + 92,"这可能会替换低的音符！")
+	if (draw_button2(x1 + 15, y1 + 128, 60, condstr(language != 1, "OK", "确定"))) {
 		if string_count("|", pattern) = 0 {
-			message("Please add pipes ( | ) to separate values!", "Error")
+			if (language != 1) message("Please add pipes ( | ) to separate values!", "Error")
+			else message("请使用“|”分隔值！", "错误")
 			return -1
 		}
 		if string_count("-", pattern) != 0 {
-			message("Stagger can only extend downwards!", "Error")
+			if (language != 1) message("Stagger can only extend downwards!", "Error")
+			else message("Stagger只能向下延伸！", "错误")
 			return -1
 		}
 		windowalpha = 0
@@ -86,7 +91,7 @@ function draw_window_macro_stagger() {
 		selection_code_update()
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	}
-	if (draw_button2(x1 + 75, y1 + 128, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
+	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 }

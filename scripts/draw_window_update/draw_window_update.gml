@@ -6,7 +6,8 @@ function draw_window_update() {
 	if (window = w_update && theme != 3) windowopen = 1
 	fullstr = changelogstr
 	if (fullstr = 0) {
-		show_message("Changelist not found!")
+		if (language != 1) show_message("Changelist not found!")
+		else show_message("找不到更新历史！")
 		if (window = w_update) {
 	        window = w_greeting
 	    } else {
@@ -19,15 +20,25 @@ function draw_window_update() {
 	draw_window(x1, y1, x1 + 500, y1 + 400)
 	draw_theme_font(font_main_bold)
 	
+	if (language != 1) {
 	if (RUN_FROM_IDE != 1) {
-		draw_text(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
+		draw_text_dynamic(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
 	} else {
-		if (window = w_update) draw_text(x1 + 8, y1 + 8, "Update")
-		else draw_text(x1 + 8, y1 + 8, "Changelist")
+		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "Update")
+		else draw_text_dynamic(x1 + 8, y1 + 8, "Changelist")
+	}
+	} else {
+	if (RUN_FROM_IDE != 1) {
+		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在IDE中运行！）")
+	} else {
+		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "更新")
+		else draw_text_dynamic(x1 + 8, y1 + 8, "更新历史")
+	}
 	}
 	
 	draw_theme_font(font_main)
-	if (window = w_update) draw_text(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
+	if (language != 1) {if (window = w_update) draw_text_dynamic(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")}
+	else {if (window = w_update) draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到" + version + "版本！")}
 	draw_area(x1 + 16, y1 + 58, x1 + 487, y1 + 310)
 	n = string_count("\n", fullstr) 
 	for (a = 0; a < n; a += 1) {
@@ -40,11 +51,11 @@ function draw_window_update() {
 	    if (a >= n) break
 	    if (strb[a]) draw_theme_font(font_main_bold)
 	    else draw_theme_font(font_main)
-	    draw_text(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
+	    draw_text_dynamic(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
 	}
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 18, n, 0, 1)
-	if (draw_button2(x1 + 220, y1 + 340, 72, "OK") && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 220, y1 + 340, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {
 	        window = w_greeting
 			save_settings() // Save new version number

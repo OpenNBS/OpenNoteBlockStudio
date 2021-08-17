@@ -8,7 +8,7 @@ function draw_text_url(argument0, argument1, argument2, argument3) {
 	yy = argument1
 	text = argument2
 	url = argument3
-	width = string_width(text)
+	width = string_width_dynamic(text)
 
 	if (mouse_rectangle(xx - width/2, yy, width, 12)) {
 	    curs = cr_handpoint

@@ -9,7 +9,8 @@ function draw_window_save_options() {
 	y1 = floor(rh / 2 - 90) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 162)
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Save options")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Save options")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "保存选项")
 	draw_theme_font(font_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
@@ -25,6 +26,7 @@ function draw_window_save_options() {
 	}
 	save_version = max(save_version, min_version)
 
+	if (language != 1) {
 	if (draw_radiobox(x1 + 15, y1 + 35, save_version = 5, "v5", "Increases custom instrument limit\nAllows custom sounds in subfolders", min_version > 5)) save_version = nbs_version
 	if (draw_radiobox(x1 + 15, y1 + 50, save_version = 4, "v4", "Includes note velocity/pan/pitch and looping", min_version > 4)) save_version = 4
 	if (draw_radiobox(x1 + 15, y1 + 65, save_version = 3, "v3", "Includes song length", min_version > 3)) save_version = 3
@@ -37,6 +39,20 @@ function draw_window_save_options() {
 		changed = 1
 		windowclose = 1
 		}
+	} else {
+	if (draw_radiobox(x1 + 15, y1 + 35, save_version = 5, "v5", "增加自定义音色限制、允许自定义文件在子目录", min_version > 5)) save_version = nbs_version
+	if (draw_radiobox(x1 + 15, y1 + 50, save_version = 4, "v4", "包含音符音量、声道、音高和循环", min_version > 4)) save_version = 4
+	if (draw_radiobox(x1 + 15, y1 + 65, save_version = 3, "v3", "包含歌曲长度", min_version > 3)) save_version = 3
+	if (draw_radiobox(x1 + 15, y1 + 80, save_version = 2, "v2", "包含层声道数据", min_version > 2)) save_version = 2
+	if (draw_radiobox(x1 + 15, y1 + 95, save_version = 1, "v1", "包含自定义乐器序号", min_version > 1)) save_version = 1
+	if (draw_radiobox(x1 + 15, y1 + 110, save_version = 0, "经典", "上面的都没有，但所有版本都兼容。", min_version > 0)) save_version = 0
+
+	if (draw_button2(x1 + 40, y1 + 135, 60, "确定") && (windowopen = 1 || theme != 3)) {
+		if save_version != nbs_version question("如果你保存在旧版本的话一些歌曲信息将会丢失！你确定吗？", "确定")
+		changed = 1
+		windowclose = 1
+		}
+	}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 }

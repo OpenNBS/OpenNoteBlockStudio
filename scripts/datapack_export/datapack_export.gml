@@ -3,9 +3,15 @@ function datapack_export() {
 	var fn, o
 	o = obj_controller
 
+	if (language != 1) {
 	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
 	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
 	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
+	} else {
+	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
+	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
+	else fn = string(get_save_filename_ext("数据包目录", dat_name, "", "导出数据包"))
+	}
 	if (fn = "") return 0
 
 	window = -1
@@ -183,7 +189,8 @@ function datapack_export() {
 		instance_destroy()
 	}
 
-	message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "If you wish to uninstall it from" + br + "your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the " + br + "'datapacks' folder.","Data Pack Export")
+	if (language != 1) message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "If you wish to uninstall it from" + br + "your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the " + br + "'datapacks' folder.","Data Pack Export")
+	else message("数据包已保存！" + br + br + "如想在游戏内播放，使用命令：" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "如果你想从你的世界中卸载它，" + br + "使用命令：" + br + br + "/function " + functionpath + "uninstall" + br + br + "然后从“datapacks”文件夹" + br + "取出就行了。","导出数据包")
 	window = w_datapack_export
 
 

@@ -138,11 +138,11 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                }
 	            }
 	            if (key_press[vk_up] || key_press[vk_down]) {  // Move marker up / down
-	                a = string_width(string_copy(text_line[i, text_mline], 1, text_mpos))
+	                a = string_width_dynamic(string_copy(text_line[i, text_mline], 1, text_mpos))
 	                ww = 0
 	                text_mline += key_press[vk_down] - key_press[vk_up]
 	                for (text_mpos = 0; text_mpos <= string_length(text_line[i, text_mline]); text_mpos += 1) {
-	                    ww += string_width(string_char_at(text_line[i, text_mline], text_mpos))
+	                    ww += string_width_dynamic(string_char_at(text_line[i, text_mline], text_mpos))
 	                    if (ww > a) break
 	                }
 	            }
@@ -373,7 +373,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	        // Find minimum position
 	        ww = 0
 	        for (a = string_length(text_line[i, 0]); a >= 0; a--) {
-	            ww += string_width(string_char_at(text_line[i, 0], a))
+	            ww += string_width_dynamic(string_char_at(text_line[i, 0], a))
 	            b = a
 	            if (ww > w) break
 	        }
@@ -382,18 +382,18 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	        ww = 0
 	        text_chars[i] = 0
 	        for (a = text_start[i] + 1; a <= string_length(text_line[i, 0]); a++) {
-	            ww += string_width(string_char_at(text_line[i, 0], a))
+	            ww += string_width_dynamic(string_char_at(text_line[i, 0], a))
 	            if (ww > w) break
 	            text_chars[i]++
 	        }
 	    } else {  // Wordwrapping
 	        if (text_lastwidth[i] != w || inserttext != "" || deletetext != 0) {  // Detect box width or line length changes.
 	            for (l = 1; l < text_lines[i]; l += 1) {  // Move words up?
-	                ww = string_width(text_line[i, l - 1])
+	                ww = string_width_dynamic(text_line[i, l - 1])
 	                if (!text_line_wrap[i, l] || ww > w) continue
 	                if (text_line_single[i, l - 1]) {  // Single - worded line
 	                    for (p = 1; p <= string_length(text_line[i, l]); p += 1) {  // Try to add remaining letters
-	                        if (ww + string_width(string_copy(text_line[i, l], 1, p)) > w) break
+	                        if (ww + string_width_dynamic(string_copy(text_line[i, l], 1, p)) > w) break
 	                        a = string_char_at(text_line[i, l], p + 1)
 	                        if (a = " " || a = " - ") {
 	                            p += 1
@@ -419,7 +419,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                    p = string_pos(" ", text_line[i, l])
 	                    if (p = 0) p = string_pos(" - ", text_line[i, l])
 	                    if (p = 0) p = string_length(text_line[i, l])
-	                    if (ww + string_width(string_copy(text_line[i, l], 1, p - 1)) > w) break
+	                    if (ww + string_width_dynamic(string_copy(text_line[i, l], 1, p - 1)) > w) break
 	                    a = string_length(text_line[i, l - 1])  // Move markers if affected
 	                    if (text_mline = l && text_mpos <= p) {text_mline -= 1 text_mpos += a}
 	                    if (text_cline = l && text_cpos <= p) {text_cline -= 1 text_cpos += a}
@@ -448,18 +448,18 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                }
 	            }
 	            for (l = 0; l < text_lines[i]; l += 1) {  // Move words down?
-	                if (string_width(text_line[i, l]) > w) {
+	                if (string_width_dynamic(text_line[i, l]) > w) {
 	                    text_line_single[i, l] = false
 	                    for (p = string_length(text_line[i, l]); p > 1; p -= 1) {  // Look for words
 	                        a = string_char_at(text_line[i, l], p)
 	                        if (a = " " || a = " - ") {
-	                            if (string_width(string_copy(text_line[i, l], 1, p - 1)) < w) break
+	                            if (string_width_dynamic(string_copy(text_line[i, l], 1, p - 1)) < w) break
 	                        }
 	                    }
 	                    if (p = 1) {  // Single - word line found
 	                        text_line_single[i, l] = true
 	                        for (p = string_length(text_line[i, l]) - 1; p > 1; p -= 1) {
-	                            if (string_width(string_copy(text_line[i, l], 1, p)) < w) break
+	                            if (string_width_dynamic(string_copy(text_line[i, l], 1, p)) < w) break
 	                        }
 	                    }
 	                    if (p = 0) continue  // Cannot be wrapped            
@@ -518,7 +518,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                    text_select = i
 	                    ww = 0
 	                    for (a = text_start[i] * singleline; a < string_length(text_line[i, l]); a += 1) {  // Find character over mouse
-	                        b = string_width(string_char_at(text_line[i, l], a + 1))
+	                        b = string_width_dynamic(string_char_at(text_line[i, l], a + 1))
 	                        ww += b
 	                        if (mouse_x < xx + ww - b / 2) break
 	                    }
@@ -588,13 +588,13 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                }
 	                if (str[1] != "") {  // Selected text
 	                    draw_set_color(col_selection)
-	                    draw_rectangle(min(xx + w, xx + string_width(str[0])), yy, min(xx + w, xx + string_width(str[0] + str[1])), yy + lh, 0)
+	                    draw_rectangle(min(xx + w, xx + string_width_dynamic(str[0])), yy, min(xx + w, xx + string_width_dynamic(str[0] + str[1])), yy + lh, 0)
 	                    draw_set_color(col_selected)
-	                    draw_text_dynamic(xx + string_width(str[0]), yy, str[1])
+	                    draw_text_dynamic(xx + string_width_dynamic(str[0]), yy, str[1])
 	                }
 	                if (str[2] != "") {  // Text after selection
 	                    draw_set_color(col_normal)
-	                    draw_text_dynamic(xx + string_width(str[0] + str[1]), yy, str[2])
+	                    draw_text_dynamic(xx + string_width_dynamic(str[0] + str[1]), yy, str[2])
 	                }
 	            } else { // Unselected
 	                draw_set_color(col_normal)
@@ -624,13 +624,13 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	                }
 	                if (str[1] != "") {  // Selected text
 	                    draw_set_color(col_selection)
-	                    draw_rectangle(min(xx + w, xx + string_width(str[0])), yy + ly * lh, min(xx + w, xx + string_width(str[0] + str[1])), yy + (ly + 1) * lh, 0)
+	                    draw_rectangle(min(xx + w, xx + string_width_dynamic(str[0])), yy + ly * lh, min(xx + w, xx + string_width_dynamic(str[0] + str[1])), yy + (ly + 1) * lh, 0)
 	                    draw_set_color(col_selected)
-	                    draw_text_dynamic(xx + string_width(str[0]), yy + ly * lh, str[1])
+	                    draw_text_dynamic(xx + string_width_dynamic(str[0]), yy + ly * lh, str[1])
 	                }
 	                if (str[2] != "") {  // Text after selection
 	                    draw_set_color(col_normal)
-	                    draw_text_dynamic(xx + string_width(str[0] + str[1]), yy + ly * lh, str[2])
+	                    draw_text_dynamic(xx + string_width_dynamic(str[0] + str[1]), yy + ly * lh, str[2])
 	                }
 	            } else { // Unselected line
 	                draw_set_color(col_normal)
@@ -641,10 +641,10 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
     
 	    // Marker
 	    if (text_focus = i && !readonly) {
-	        a = string_width(string_copy(text_line[i, text_mline], 1, text_mpos))
+	        a = string_width_dynamic(string_copy(text_line[i, text_mline], 1, text_mpos))
 	        b = (text_mline - text_start[i]) * lh
 	        if (singleline) {
-	            //a -= string_width(string_copy(text_line[i, text_mline], 1, text_start[i]))
+	            //a -= string_width_dynamic(string_copy(text_line[i, text_mline], 1, text_start[i]))
 	            //b = 0
 	        }
 	        if (a >= 0 && a <= w && b >= 0 && b + lh <= h && (current_time - text_marker) mod 1000 < 500) {

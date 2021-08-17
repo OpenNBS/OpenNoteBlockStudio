@@ -10,7 +10,7 @@ function draw_window_macro_arpeggio() {
 	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	draw_theme_font(font_main_bold)
-	draw_text(x1 + 8, y1 + 8, "Arpeggio")
+	draw_text_dynamic(x1 + 8, y1 + 8, "Arpeggio")
 	pattern = ""
 	draw_theme_font(font_main)
 	if (theme = 0) {
@@ -19,14 +19,17 @@ function draw_window_macro_arpeggio() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
-	draw_areaheader(x1 + 10, y1 + 43, 120, 35, "Pattern")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "Pattern")
+	else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "规律")
 
-	pattern = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
+	if (language != 1) pattern = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(pattern), "Must separate relative keys with pipes.") 
+	else pattern = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(pattern), "必须用“|”分隔相联系的音。") 
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, "OK")) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language !=1, "OK", "确定"))) {
 	if string_count("|", pattern) = 0 {
-		message("Please add pipes ( | ) to separate values!", "Error")
+		if (language != 1) message("Please add pipes ( | ) to separate values!", "Error")
+		else message("请使用“|”分隔值！", "错误")
 		return 1
 	}
 	windowalpha = 0
@@ -64,7 +67,7 @@ function draw_window_macro_arpeggio() {
 		selection_load(selection_x,selection_y,str,true)
 		selection_code_update()
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "Cancel") && (windowopen = 1 || theme != 3)) {windowclose = 1}
+	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	window_set_cursor(curs)
 	window_set_cursor(cr_default)
 

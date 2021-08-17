@@ -1022,7 +1022,8 @@ function schematic_export() {
 	    gzzip(temp_file, fn)
 	    instance_destroy()
 	}
-	message("Schematic saved!", "Schematic Export")
+	if (o.language != 1) message("Schematic saved!", "Schematic Export")
+	else message("Schematic已保存！", "导出Schematic")
 	window = w_schematic_export
 
 
