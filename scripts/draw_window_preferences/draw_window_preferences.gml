@@ -279,17 +279,17 @@ function draw_window_preferences() {
 		}
 		}
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 22, y1 + 334 + (theme = 3) * 22, 456, 65, "Discord")
+		draw_areaheader(x1 + 22, y1 + 334 + (theme = 3) * 22 - 170 * isplayer, 456, 65, "Discord")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
 			}
 		}
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22, presence, "启用 Discord Rich Presence", "将当前歌曲信息显示为Discord个人状态。", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "将当前歌曲信息显示为Discord个人状态。", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
