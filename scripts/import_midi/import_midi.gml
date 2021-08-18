@@ -142,7 +142,7 @@ function import_midi() {
 	// Set tempo
 	if (w_midi_tempo && enda > 0 && midi_songlength > 0) {
 	    tempo = median(0.25, 10 / ((midi_songlength) / (enda / 10)), 30)
-	    tempo = floor(tempo * 4) / 4
+	    //tempo = floor(tempo * 4) / 4
 	}
 	// Name
 	if (w_midi_name = 1) {
