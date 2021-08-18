@@ -4,7 +4,7 @@ function datapack_getinstextures() {
 
 	var fn, src
 	if (language != 1) fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "Note Block Textures", "", "Replaces instrument blocks with note block textures."))
-	else fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "音符盒材质", "", "用自定义材质替换音色方块"))
+	else fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "音符盒纹理", "", "用自定义纹理替换音色方块"))
 	if (fn = "") return 0
 
 	src = data_directory + "instrumenttextures.zip"
