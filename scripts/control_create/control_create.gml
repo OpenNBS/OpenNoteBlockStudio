@@ -440,7 +440,7 @@ function control_create() {
 	downloaded_size = 0
 	total_size = -1
 	changelogstr = load_text(data_directory + "changelog.txt")
-	if (file_exists_lib(settings_file) && vers != version) {
+	if (file_exists_lib(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
 		if (theme = 2) fdark = 1
 		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
