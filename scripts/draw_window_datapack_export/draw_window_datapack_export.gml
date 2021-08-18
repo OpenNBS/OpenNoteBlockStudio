@@ -18,7 +18,6 @@ function draw_window_datapack_export() {
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Data Pack Export")
 	else draw_text_dynamic(x1 + 8, y1 + 8, "导出数据包")
 	draw_theme_font(font_main) 
-		if (theme = 3) draw_set_font(fnt_wslui)
 
 	b = 8
 	if (language != 1) {

@@ -17,12 +17,6 @@
   "installdir": "",
   "files": [
     {"filename":"ClassLibrary1.dll","origname":"","init":"","final":"","kind":1,"uncompress":false,"functions":[
-        {"externalName":"window_error","kind":1,"help":"window_error(window_handle)","hidden":false,"returnType":2,"argCount":0,"args":[
-            1,
-          ],"resourceVersion":"1.0","name":"window_error","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"window_indeterminate","kind":1,"help":"window_indeterminate(window_handle)","hidden":false,"returnType":2,"argCount":0,"args":[
-            1,
-          ],"resourceVersion":"1.0","name":"window_indeterminate","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"window_normal","kind":1,"help":"window_normal(window_handle)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"window_normal","tags":[],"resourceType":"GMExtensionFunction",},
@@ -38,8 +32,6 @@
             2,
           ],"resourceVersion":"1.0","name":"window_value","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[],"ProxyFiles":[],"copyToTargets":-1,"order":[
-        {"name":"window_error","path":"extensions/Taskbar/Taskbar.yy",},
-        {"name":"window_indeterminate","path":"extensions/Taskbar/Taskbar.yy",},
         {"name":"window_normal","path":"extensions/Taskbar/Taskbar.yy",},
         {"name":"window_noprogress","path":"extensions/Taskbar/Taskbar.yy",},
         {"name":"window_paused","path":"extensions/Taskbar/Taskbar.yy",},

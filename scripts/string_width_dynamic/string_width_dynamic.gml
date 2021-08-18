@@ -12,5 +12,6 @@ function string_width_dynamic(str){
 		if (linewidth[i] >= linewidth[longline]) longline = i
 	}
 	totalwidth = linewidth[longline]
+	draw_theme_font(obj_controller.currentfont)
 	return totalwidth
 }

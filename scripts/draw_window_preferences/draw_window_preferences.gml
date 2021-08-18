@@ -15,11 +15,11 @@ function draw_window_preferences() {
 	draw_set_color(c_black)
 	if (fdark) draw_set_color(c_white)
 	}
-	draw_set_font(fnt_mainbold)
+	draw_theme_font(font_main_bold)
 		if (theme = 3) draw_theme_font(font_main)
 	if (language != 1) draw_text_dynamic(x1 + 8 + (theme = 3) * 2, y1 + 8 + (theme = 3), "Preferences")
 	else draw_text_dynamic(x1 + 8 + (theme = 3) * 2, y1 + 8 + (theme = 3), "首选项")
-	draw_set_font(fnt_main)
+	draw_theme_font(font_main)
 		if (theme = 3) draw_theme_font(font_main)
 	b = 8 + (theme = 3) * 32
 	if (language != 1) {
