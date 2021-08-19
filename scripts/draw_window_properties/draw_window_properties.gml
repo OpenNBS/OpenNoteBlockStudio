@@ -74,7 +74,7 @@ function draw_window_properties() {
 	if (a != loop) changed = 1
 	if (!loop) draw_set_color(c_gray)
 	if (language != 1) draw_text_dynamic(x1 + 232, y1 + 305, "Loop start tick:")
-	else draw_text_dynamic(x1 + 232, y1 + 305, "循环开始位置（刻）:")
+	else draw_text_dynamic(x1 + 232, y1 + 305, "循环开始刻:")
 	a = loopstart
 	if (loop) {
 		loopstart = median(0, draw_dragvalue(7, x1 + 320, y1 + 305, loopstart, 0.5), obj_controller.enda)
