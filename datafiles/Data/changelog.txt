@@ -1,3 +1,72 @@
+Changes in v3.9.0 (TBD):
+* Added a new theme named "Fluent", based on the Fluent UI design:
+   * Changed the font to WeblySleek UI.
+   * Replaced all icons to Fluent UI styled icons.
+   * Made it to have light and dark modes.
+   * Remade the piano keys to match this theme.
+   * The theme will automatically change to this theme and switch to the dark
+mode if the user were on the "Dark" theme before.
+   * Changed the preferences window to a top pane Navigation View page.
+   * Changed checkboxes, radioboxes, and buttons to the Fluent UI style, and
+replaced some checkboxes with toggle switches.
+   * Added a color picker for you to choose the theme color. The color applies
+to the marker, checkboxes, radioboxes, toggle switches, buttons, selected keys, 
+and input boxes.
+   * Added navigation sounds.
+   * Added acrylic material on extend menus, tooltips, and popup messages,
+that means they are partly transparent and the elements below them are
+blurred.
+   * Added window animations and fading, and made the background dimmer
+when opening and closing them.
+   * Extended input boxes' states to normal, hover and focus.
+   * Made all UI corners rounded corners.
+   * Changed the scrollers to the Windows 11 style ones.
+* Added 3 more framerate options, they are 120FPS, 144FPS and Unlimited.
+* Added more shortcuts:
+   * Press Ctrl + P to open preferences.
+   * Press F7 to select between the refreshrate options.
+   * Press Ctrl + Shift + F5 to activate the RAINBOW MODE in the Fluent theme.
+* Added floating messages, they appear when you use some shortcuts.
+* Added Discord Rich Presence support to display your file name and note
+amount in your profile.
+* Added an option to increase the sound limit.
+* Added an option to export to the structure block format (*.nbt) to support
+1.13+ versions of Minecraft.
+* Added an option to enter the tempo manually, or to tap along the song
+you want to make an cover for to measure the tempo.
+* Added support for Simplified Chinese:
+   * Added Source Han Sans as the Chinese font.
+   * Translated all text to Chinese.
+   * Changed the URL of tutorial videos to the one on Bilibili.
+* Added an option to select individual notes if you hold the control key.
+* Added an option in the set velocity window to choose if you want to apply
+the velocity as percent.
+* Changed the block name of "Hardened Clay" to "Terracotta" in schematic
+exports.
+* Added an secret function to change the tempo mid-song, if you name an
+instrument to "Tempo Changer", it will set the current BPM to its pitch value
+when playing it.
+* Added a new music player mode:
+   * To enter it, add " -player" in a shortcut of the program or run the .bat file
+in the installation folder.
+   * This mode removed all editing functions, only keeping the music playback
+function. This is useful if you want to record your song in a high framerate
+precision or if you have a old PC.
+* Changed the preferences window layout to 5 tabs, because there were too
+little space in it.
+* Added song progress display on the taskbar for Windows 8 and above.
+* Added file dropping function, the program will open the song file you drag
+into it.
+* Replaced old dialog functions to new ones.
+* Fixed right click menus going off the screen if you open it too close to the
+right window border.
+* Fixed original author doesn't show up if there is no song author.
+* Fixed some texts going out of the borders.
+* Fixed sections not moving the same as the song when using tick to tick.
+* Fixed editor lines too thin when on low window scaling settings.
+* Fixed the show old warning setting doesn't work on classic NBS files.
+* Fixed the secret clipboard editor not working properly.
+
 Changes in v3.8.3 (2021.07.23):
 * Added a window scale setting, which makes elements on screen larger or
    smaller. Useful if you have a high-resolution display or want to see more
