@@ -298,8 +298,8 @@ function draw_window_preferences() {
 		}
 	} else if (selected_tab = 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 120, "Theme")
-	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 120, "主题")
+	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 140, "Theme")
+	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 140, "主题")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 5)
 		if (draw_abutton(x1 + 140 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
@@ -315,13 +315,15 @@ function draw_window_preferences() {
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (language != 1) {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating in the Fluent theme.", (theme != 3), true)) windowsound = !windowsound
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", (theme != 3), true)) fdark = !fdark
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Acrylic effect", "Render acrylic effect for extend menus, tooltips and floating messages in the Fluent theme.", (theme != 3), true)) acrylic = !acrylic
 		} else {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "在Fluent主题时的界面音效。", (theme != 3), true)) windowsound = !windowsound
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "Fluent主题的暗色模式。", (theme != 3), true)) fdark = !fdark
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "在Fluent主题的菜单和提示上显示透明效果。", (theme != 3), true)) acrylic = !acrylic
 		}
 		//if (theme = 3) draw_text_dynamic(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
 		//if (theme = 3) {
@@ -329,16 +331,16 @@ function draw_window_preferences() {
 		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
 		//}
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
-	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"帧率限制（实验性功能）")
+	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,80,"Max frame rate (experimental)")
+	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,80,"帧率限制（实验性功能）")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 274, y1 + 74 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 74 + 16 + 20 + (theme = 3) * 22 + 5)
 		if (draw_abutton(x1 + 374 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        if (language != 1) menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30FPS|" + check(refreshrate = 1) + "60FPS|" + check(refreshrate = 2) + "120FPS|" + check(refreshrate = 3) + "144FPS|" + check(refreshrate = 4) + "Unlimited")
-	        else menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30帧|" + check(refreshrate = 1) + "60帧|" + check(refreshrate = 2) + "120帧|" + check(refreshrate = 3) + "144帧|" + check(refreshrate = 4) + "无限")
+	        if (language != 1) menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30FPS|" + check(refreshrate = 1) + "60FPS|" + check(refreshrate = 2) + "120FPS|" + check(refreshrate = 3) + "144FPS|" + check(refreshrate = 4) + "240FPS")
+	        else menu = show_menu_ext("refreshrate", x1 + 274, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(refreshrate = 0) + "30帧|" + check(refreshrate = 1) + "60帧|" + check(refreshrate = 2) + "120帧|" + check(refreshrate = 3) + "144帧|" + check(refreshrate = 4) + "240帧")
 	    }
-	    if (language != 1) draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30FPS") + condstr(refreshrate = 1, "60FPS") + condstr(refreshrate = 2, "120FPS") + condstr(refreshrate = 3, "144FPS") + condstr(refreshrate = 4, "Unlimited"))
-	    else draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30帧") + condstr(refreshrate = 1, "60帧") + condstr(refreshrate = 2, "120帧") + condstr(refreshrate = 3, "144帧") + condstr(refreshrate = 4, "无限"))
+	    if (language != 1) draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30FPS") + condstr(refreshrate = 1, "60FPS") + condstr(refreshrate = 2, "120FPS") + condstr(refreshrate = 3, "144FPS") + condstr(refreshrate = 4, "240FPS"))
+	    else draw_text_dynamic(x1 + 277, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(refreshrate = 0, "30帧") + condstr(refreshrate = 1, "60帧") + condstr(refreshrate = 2, "120帧") + condstr(refreshrate = 3, "144帧") + condstr(refreshrate = 4, "240帧"))
 		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 	    //if (draw_radiobox(x1+274,y1+164+16 + (theme = 3) * 22,refreshrate == 0,"30FPS","Run the program at 30FPS.")) {
 	    //    game_set_speed(30,gamespeed_fps)
@@ -362,32 +364,32 @@ function draw_window_preferences() {
 		//}
 
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 44, "Window")
-		else draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 44, "窗口")
+		if (language != 1) draw_areaheader(x1 + 258, y1 + 170 + (theme = 3) * 22, 220, 44, "Window")
+		else draw_areaheader(x1 + 258, y1 + 170 + (theme = 3) * 22, 220, 44, "窗口")
 		if (theme = 3) draw_theme_font(font_main)
-		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "Scale:             %")
-		else draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "缩放:              %")
-		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 166 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
+		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 186 + (theme = 3) * 22, "Scale:             %")
+		else draw_text_dynamic(x1 + 276, y1 + 186 + (theme = 3) * 22, "缩放:              %")
+		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 186 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
 		if (language != 1) {
-		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 181 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
 		} else {
-		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 181 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
 		}
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 22, y1 + 219 + (theme = 3) * 22, 456, 65, "Language")
-		else draw_areaheader(x1 + 22, y1 + 219 + (theme = 3) * 22, 456, 65, "语言")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 239 + (theme = 3) * 22, 456, 65, "Language")
+		else draw_areaheader(x1 + 22, y1 + 239 + (theme = 3) * 22, 456, 65, "语言")
 		if (theme = 3) draw_theme_font(font_main)
-		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 219 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 219 + 16 + 20 + 5)
-		if (draw_abutton(x1 + 140 - 17, y1 + 219 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        menu = show_menu_ext("language", x1 + 40, y1 + 219 + 16 + 21 + (theme = 3) * 22 + 5, check(language = 0) + "English|" + check(language = 1) + "简体中文")
+		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 239 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 239 + 16 + 20 + 5)
+		if (draw_abutton(x1 + 140 - 17, y1 + 239 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
+	        menu = show_menu_ext("language", x1 + 40, y1 + 239 + 16 + 21 + (theme = 3) * 22 + 5, check(language = 0) + "English|" + check(language = 1) + "简体中文")
 	    }
-	    draw_text_dynamic(x1 + 43, y1 + 219 + 19 + (theme = 3) * 22 + 5, condstr(language = 0, "English") + condstr(language = 1, "简体中文"))
+	    draw_text_dynamic(x1 + 43, y1 + 239 + 19 + (theme = 3) * 22 + 5, condstr(language = 0, "English") + condstr(language = 1, "简体中文"))
 	} else if (selected_tab = 2) {
 		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
@@ -533,7 +535,7 @@ function draw_window_preferences() {
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数/分钟 (BPM)", "使用每分钟多少拍显示节奏。")) use_bpm = 1
 		}
 	}
-	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定"))) {
+	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定")) || keyboard_check_released(vk_escape)) {
 		if (theme != 3) {
 			window = 0
 			window_set_cursor(curs)

@@ -21,7 +21,7 @@ when opening and closing them.
    * Extended input boxes' states to normal, hover and focus.
    * Made all UI corners rounded corners.
    * Changed the scrollers to the Windows 11 style ones.
-* Added 3 more framerate options, they are 120FPS, 144FPS and Unlimited.
+* Added 3 more framerate options, they are 120FPS, 144FPS and 240FPS.
 * Added more shortcuts:
    * Press Ctrl + P to open preferences.
    * Press F7 to select between the refreshrate options.

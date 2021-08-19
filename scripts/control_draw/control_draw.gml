@@ -17,7 +17,7 @@ function control_draw() {
 	if (channelstoggle) channels = 32768
 	else channels = 256
 	
-	curs = cr_default
+	if (!mouseover) curs = cr_default
 	showmenu = 0
 	cursmarker = 0
 	compx = 180
@@ -30,7 +30,7 @@ function control_draw() {
 	if refreshrate = 1 game_set_speed(60,gamespeed_fps)
 	if refreshrate = 2 game_set_speed(120,gamespeed_fps)
 	if refreshrate = 3 game_set_speed(144,gamespeed_fps)
-	if refreshrate = 4 game_set_speed(114514,gamespeed_fps)
+	if refreshrate = 4 game_set_speed(240,gamespeed_fps)
 	if (editline > 60) editline = 0
 	if (delay > 0) delay -= 1 / (room_speed / 20)
 	if (delay < 0) delay = 0
@@ -839,8 +839,8 @@ function control_draw() {
 		} else if (refreshrate = 3) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate = 4
-			if (language != 1) set_msg("FPS => Unlimited")
-			else set_msg("FPS => 无限")
+			if (language != 1) set_msg("FPS => 240")
+			else set_msg("FPS => 240")
 		} else if (refreshrate = 4) {
 			game_set_speed(30,gamespeed_fps)
 			refreshrate = 0
@@ -1157,8 +1157,8 @@ function control_draw() {
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.")
-			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。")
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3)
+			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3)
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)

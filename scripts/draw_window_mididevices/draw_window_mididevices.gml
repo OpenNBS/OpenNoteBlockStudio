@@ -85,5 +85,5 @@ function draw_window_mididevices() {
 	draw_line(x1 + 18 + 250 + 70, y1 + 87, x1 + 18 + 250 + 70, y1 + 86 + 20 * a)
 	draw_line(x1 + 18 + 250 + 70 + 64 + 85, y1 + 87, x1 + 18 + 250 + 70 + 64 + 85, y1 + 86 + 20 * a)
 	window_set_cursor(curs)
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

@@ -409,5 +409,5 @@ function draw_window_midi_import() {
 	draw_theme_color()
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 	window_set_cursor(curs)
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

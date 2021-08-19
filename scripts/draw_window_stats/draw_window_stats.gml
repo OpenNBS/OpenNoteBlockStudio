@@ -69,5 +69,5 @@ function draw_window_stats() {
 	}
 	if (draw_button2(x1 + 220, y1 + 368, 72, "确定") && (windowopen = 1 || theme != 3)) windowclose = 1
 	}
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

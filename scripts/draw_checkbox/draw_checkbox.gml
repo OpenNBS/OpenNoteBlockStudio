@@ -38,7 +38,7 @@ function draw_checkbox() {
 		
 		m = mouse_rectangle(xx, yy, 26 + string_width_dynamic(str) + 8, 13)
 		if (w_isdragging > 0) m = 0
-		if (m) m += mouse_check_button(mb_left)
+		if (m) m += mouse_check_button(mb_left) * (!instance_exists(obj_menu))
 		if (is_switch) {
 			if (!expression) draw_sprite(spr_switch, m + 8 * (fdark), xx, yy)
 			if (expression) draw_sprite_ext(spr_switch, m + 3, xx, yy, 1, 1, 0, accent[5 + 2 * (m = 1) + 3 * (m = 2)], draw_get_alpha())
@@ -47,7 +47,7 @@ function draw_checkbox() {
 			if (expression) draw_sprite_ext(spr_checkbox, 3 + 6 * theme, xx, yy, 1, 1, 0, accent[5 + 2 * (m = 1) + 3 * (m = 2)] * (theme = 3) - !(theme = 3), draw_get_alpha())
 		}
 		draw_text_dynamic(xx + x_offset, yy - 1, str)
-		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-		return (m && mouse_check_button_released(mb_left))
+		if (m && mouse_check_button_released(mb_left) && windowsound && theme = 3 && !instance_exists(obj_menu)) play_sound(soundinvoke, 45, 100, 50, 0)
+		return (m && mouse_check_button_released(mb_left)) * (!instance_exists(obj_menu))
 	}
 }

@@ -16,14 +16,14 @@ function draw_window() {
 	if (theme = 3 && fdark) draw_set_color(2105376)
 	if (theme = 3 && sml = 0) {
 		if (sml = 0) {
-			draw_sprite(spr_shadow, 0 + 8 * fdark, x1 - 16, y1 - 16)
-			draw_sprite_ext(spr_shadow, 1 + 8 * fdark, x1 - 16, y1, 1, y2 - y1, 0, -1, draw_get_alpha())
-			draw_sprite(spr_shadow, 2 + 8 * fdark, x1 - 16, y2)
-			draw_sprite_ext(spr_shadow, 3 + 8 * fdark, x1, y2, x2 - x1, 1, 0, -1, draw_get_alpha())
-			draw_sprite(spr_shadow, 4 + 8 * fdark, x2, y2)
-			draw_sprite_ext(spr_shadow, 5 + 8 * fdark, x2, y1, 1, y2 - y1, 0, -1, draw_get_alpha())
-			draw_sprite(spr_shadow, 6 + 8 * fdark, x2, y1 - 16)
-			draw_sprite_ext(spr_shadow, 7 + 8 * fdark, x1, y1 - 16, x2 - x1, 1, 0, -1, draw_get_alpha())
+			draw_sprite(spr_shadow, 0 + 8, x1 - 16, y1 - 16)
+			draw_sprite_ext(spr_shadow, 1 + 8, x1 - 16, y1, 1, y2 - y1, 0, -1, draw_get_alpha())
+			draw_sprite(spr_shadow, 2 + 8, x1 - 16, y2)
+			draw_sprite_ext(spr_shadow, 3 + 8, x1, y2, x2 - x1, 1, 0, -1, draw_get_alpha())
+			draw_sprite(spr_shadow, 4 + 8, x2, y2)
+			draw_sprite_ext(spr_shadow, 5 + 8, x2, y1, 1, y2 - y1, 0, -1, draw_get_alpha())
+			draw_sprite(spr_shadow, 6 + 8, x2, y1 - 16)
+			draw_sprite_ext(spr_shadow, 7 + 8, x1, y1 - 16, x2 - x1, 1, 0, -1, draw_get_alpha())
 		}
 		draw_set_color(15987699)
 		if (fdark) draw_set_color(2105376)

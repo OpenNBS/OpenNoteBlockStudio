@@ -34,7 +34,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	{
 	    var i, w, h, xx, yy, def, singleline, readonly, maxchars, filterchars, replacechar;
 	    var col_normal, col_selected, col_selection, col_marker;
-	    var a, b, c, l, p, t, lh, ly, ww, hh, str, init, keys, menu, limit, key_press, mouseover, realmpos, realspos, realepos, deletetext, inserttext;
+	    var a, b, c, l, p, t, lh, ly, ww, hh, str, init, keys, menu, limit, key_press, realmpos, realspos, realepos, deletetext, inserttext;
     
 	    i = argument0
 	    def = string(argument1)
@@ -44,6 +44,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	    h = argument5
 	    singleline = argument6
 	    readonly = argument7
+		var had = 0
     
 	    // Colors
 	    col_normal = draw_get_color()
@@ -654,11 +655,14 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	    }
     
 	    // Set cursor
+		for (var f = 0; f < array_length(text_mouseover); f += 1) {
+			if (text_mouseover[f] = i) had = 1
+		}
 	    if (mouseover) {
-	        text_mouseover = i
+	        if (!had) array_push(text_mouseover, i)
 	        if !(window div w_menu) curs = cr_beam
-	    } else if (text_mouseover = i) {
-	        text_mouseover = -1
+	    } else if (had && array_length(text_mouseover) < 1) {
+	        text_mouseover = []
 	        if !(window div w_menu) curs = cr_default
 	    }
     

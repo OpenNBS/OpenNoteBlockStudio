@@ -411,5 +411,5 @@ function draw_window_minecraft() {
 	}
 	
 	if (draw_button2(x1 + 240 - 36, y1 + 413, 72, condstr(language != 1, "OK", "确定")) && (windowopen = 1 || theme != 3)) windowclose = 1
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

@@ -44,6 +44,8 @@ function control_create() {
 	msgcontent = ""
 	msgstart = 0
 	currentfont = 0
+	acrylic = 1
+	mouseover = 0
 
 	// Audio
 	channels = 256
@@ -90,7 +92,7 @@ function control_create() {
 	nocdrag = 0
 	rainbow = 0
 	rainbowtoggle = 0
-	
+	pingtime = current_time
 
 	// File
 	filename = ""
@@ -268,7 +270,7 @@ function control_create() {
 	text_marker = 0
 	text_key_delay[7] = 0
 	text_lastfocus = -1
-	text_mouseover = -1
+	text_mouseover = []
 	text_focus = -1
 
 	globalvar sb_count, sb_drag, sb_mprev, sb, sb_press, sb_sel;

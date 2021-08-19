@@ -276,7 +276,7 @@ function menu_click(argument0) {
 			else if (sel = 1) game_set_speed(60,gamespeed_fps)
 			else if (sel = 2) game_set_speed(120,gamespeed_fps)
 			else if (sel = 3) game_set_speed(144,gamespeed_fps)
-			else if (sel = 4) game_set_speed(114514,gamespeed_fps)
+			else if (sel = 4) game_set_speed(240,gamespeed_fps)
 			refreshrate = sel
 			break
 		}

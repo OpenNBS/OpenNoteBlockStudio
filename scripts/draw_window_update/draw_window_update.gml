@@ -63,5 +63,5 @@ function draw_window_update() {
 	        windowclose = 1
 	    }
 	}
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

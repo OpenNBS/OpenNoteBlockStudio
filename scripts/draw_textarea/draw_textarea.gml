@@ -1,13 +1,15 @@
-function draw_textarea(argument0, argument1, argument2, argument3, argument4, argument5, argument6) {
+function draw_textarea() {
 	// draw_textarea(id, x, y, w, h, val, str)
-	var i, xx, yy, w, h, val, str, on, focus;
-	i = argument0
-	xx = argument1
-	yy = argument2
-	w = argument3
-	h = argument4
-	val = argument5
-	str = argument6
+	var i, xx, yy, w, h, val, str, on, focus, hoffset;
+	i = argument[0]
+	xx = argument[1]
+	yy = argument[2]
+	w = argument[3]
+	h = argument[4]
+	val = argument[5]
+	str = argument[6]
+	hoffset = 0
+	if (argument_count > 7) hoffset = argument[7] 
 	draw_set_color(c_white)
 
 	on = mouse_rectangle(xx, yy, w, h)
@@ -43,7 +45,7 @@ function draw_textarea(argument0, argument1, argument2, argument3, argument4, ar
 	    draw_area(xx, yy, xx + w, yy + h)
 	}
 	draw_theme_color()
-	return draw_text_edit(i, val, xx + 3, yy + 3, w - 6, h - 6, 0, 0)
+	return draw_text_edit(i, val, xx + 3, yy + 3 + hoffset, w - 6, h - 6, 0, 0)
 
 
 

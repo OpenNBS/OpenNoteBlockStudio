@@ -461,5 +461,5 @@ function draw_window_schematic_export() {
 	    }
 	}
 	window_set_cursor(curs)
-	window_set_cursor(cr_default)
+	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 }

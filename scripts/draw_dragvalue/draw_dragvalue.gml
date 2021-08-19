@@ -10,7 +10,7 @@ function draw_dragvalue() {
 	if (argument_count > 5)
 	    lock = argument[5]
 	str = string_format(v, 0, 0)
-	m = mouse_rectangle(xx - 8, yy - 4, string_width_dynamic(str) + 16, string_height(str) + 4)
+	m = mouse_rectangle(xx - 8, yy - 4, string_width_dynamic(str) + 16, string_height(str) + 4) * (!instance_exists(obj_menu))
 	if (v < 20 || i > 1) {
 	    if (lock = 0) {
 	        draw_text_dynamic(xx, yy, str)
