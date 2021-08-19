@@ -67,12 +67,6 @@
             1,
             1,
           ],"resourceVersion":"1.0","name":"get_save_filename","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"get_save_filename_ext","kind":12,"help":"get_save_filename_ext(filter,fname,dir,title)","hidden":false,"returnType":1,"argCount":4,"args":[
-            1,
-            1,
-            1,
-            1,
-          ],"resourceVersion":"1.0","name":"get_save_filename_ext","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"get_directory","kind":12,"help":"get_directory(dname)","hidden":false,"returnType":1,"argCount":1,"args":[
             1,
           ],"resourceVersion":"1.0","name":"get_directory","tags":[],"resourceType":"GMExtensionFunction",},
@@ -235,7 +229,6 @@
         {"name":"get_open_filenames","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_open_filenames_ext","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_save_filename","path":"extensions/DialogModule/DialogModule.yy",},
-        {"name":"get_save_filename_ext","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_directory","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_directory_alt","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_color","path":"extensions/DialogModule/DialogModule.yy",},

@@ -5,7 +5,6 @@ function datapack_export() {
 
 	if (language != 1) {
 	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
-	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
 	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
 	} else {
 	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
