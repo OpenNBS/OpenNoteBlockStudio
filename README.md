@@ -1,4 +1,4 @@
-![alt text](https://i.imgur.com/1RYhYFU.png)
+![alt text](https://i.imgur.com/QqGsrid.png)
 <p align="center">
 An open source continuation of Minecraft Note Block Studio with exciting new features!
 </p>
