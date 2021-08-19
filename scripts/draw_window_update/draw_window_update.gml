@@ -51,7 +51,7 @@ function draw_window_update() {
 	    if (a >= n) break
 	    if (strb[a]) draw_theme_font(font_main_bold)
 	    else draw_theme_font(font_main)
-	    draw_text_dynamic(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
+	    draw_text(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
 	}
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 18, n, 0, 1)
