@@ -66,6 +66,7 @@ right window border.
 * Fixed editor lines too thin when on low window scaling settings.
 * Fixed the show old warning setting doesn't work on classic NBS files.
 * Fixed the secret clipboard editor not working properly.
+* Fixed excessive disk reads in the changelist window.
 
 Changes in v3.8.3 (2021.07.23):
 * Added a window scale setting, which makes elements on screen larger or
