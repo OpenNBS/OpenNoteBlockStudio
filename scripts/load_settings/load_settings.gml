@@ -62,6 +62,7 @@ function load_settings() {
 	structure =          ini_read_real(  "preferences", "structure",          structure)
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
 	language =           ini_read_real(  "preferences", "language",           language)
+	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
