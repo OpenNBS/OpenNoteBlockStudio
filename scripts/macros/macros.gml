@@ -3,7 +3,7 @@ function macros() {
 #macro version_date "2021.08.19"
 #macro version "3.9.0"
 #macro snapshot 1 // remember to change to 0 in the release!
-#macro nbs_version 5
+#macro nbs_version 6
 #macro pat_version 1
 
 #macro link_download "https://hielkeminecraft.github.io/OpenNoteBlockStudio/"

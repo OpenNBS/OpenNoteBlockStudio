@@ -69,7 +69,15 @@ function load_song() {
 	    // SONG DESCRIPTION
 	    song_desc = buffer_read_string_int()
 	    // TEMPO
-	    tempo = buffer_read_short() / 100
+		if (song_nbs_version >= 6) {
+			if (!buffer_read_byte()) {
+				tempo = buffer_read_short() / 100
+			} else {
+				tempo = buffer_read(buffer, buffer_u16) / 100 / 15
+			}
+		} else {
+			tempo = buffer_read_short() / 100
+		}
 	    // AUTOSAVE (deprecated)
 	    buffer_read_byte()
 	    // AUTOSAVE MINUTES (deprecated)

@@ -9,7 +9,7 @@ function buffer_write_string_int(argument0) {
 	buffer_write_int(len)
 	for (var p = 0; p < len; p++) {
 		char = ord(string_char_at(str, p + 1))
-		if (char < 128) {
+		if (char < 128 || save_version < 6) {
 			buffer_write_byte(char)
 		} else if (char < 2048) {
 			buffer_write_byte(floor(char / 64) + 192)

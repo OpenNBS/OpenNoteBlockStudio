@@ -45,7 +45,8 @@ function save_song() {
 	buffer_write_string_int(song_orauthor)
 	buffer_write_string_int(song_desc)
 
-	buffer_write_short(tempo * 100)
+	if (nbsver >= 6) buffer_write_byte(use_bpm)
+	buffer_write_short(tempo * 100 * (15 - 14 * (!use_bpm || nbsver < 6)))
 	// Per-song auto-save is deprecated. It is only written to
 	// the file to preserve auto-save behavior on older versions
 	buffer_write_byte(autosave)

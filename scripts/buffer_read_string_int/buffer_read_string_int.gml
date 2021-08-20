@@ -7,7 +7,7 @@ function buffer_read_string_int() {
 	var char = ""
 	repeat (len) {
 		char = buffer_read_byte()
-		if (char < 128) {
+		if (char < 128 || song_nbs_version < 6) {
 			str += chr(char)
 		} else if (char < 224) {
 			str += chr((char - 192) * 64 + (buffer_read_byte() - 128))
