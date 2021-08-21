@@ -394,6 +394,7 @@ function control_draw() {
 		                if (a) {
 		                    if (song_ins[xx, b].loaded) play_sound(song_ins[xx, b], song_key[xx, b], c , d, e)
 							if (instrument_list[| ds_list_find_index(instrument_list, song_ins[xx, b])].name = "Tempo Changer") tempo = floor(abs(e)) / 15
+							if (instrument_list[| ds_list_find_index(instrument_list, song_ins[xx, b])].name = "Toggle Rainbow") rainbowtoggle = !rainbowtoggle
 		                    if (song_ins[xx, b].press) key_played[song_key[xx, b]] = current_time
 		                    song_played[xx, b] = current_time
 		                }
