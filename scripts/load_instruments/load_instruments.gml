@@ -31,6 +31,7 @@ function load_instruments(argument0) {
 	buffer_read_string_int()	// Soung author
 	buffer_read_string_int()	// Song original author
 	buffer_read_string_int()	// Song description
+	if (nbsver >= 6) buffer_read_short()	// TPS / BPM
 	buffer_read_short()			// Tempo
 	buffer_read_byte()			// Autosave
 	buffer_read_byte()			// Autosave minutes
