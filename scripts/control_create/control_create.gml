@@ -429,6 +429,9 @@ function control_create() {
 
 	// Settings
 	load_settings()
+	if (channelstoggle) channels = 32768
+	else channels = 256
+	audio_channel_num(channels)
 	change_theme()
 	if (show_welcome) window = w_greeting
 	draw_accent_init()

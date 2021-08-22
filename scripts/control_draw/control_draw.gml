@@ -16,6 +16,7 @@ function control_draw() {
 	
 	if (channelstoggle) channels = 32768
 	else channels = 256
+	audio_channel_num(channels)
 	
 	if (!mouseover) curs = cr_default
 	showmenu = 0
