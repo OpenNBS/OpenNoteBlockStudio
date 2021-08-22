@@ -489,10 +489,13 @@ function control_draw() {
 				insmenu = 1
 	            for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	                var ins = instrument_list[| a];
-	                if (ins.user)
-	                    customstr += "...to " + clean(ins.name) + "|"
-	                else
-	                    str += "...to " + clean(ins.name) + "|"
+	                if (ins.user) {
+	                    if (language != 1) customstr += "...to " + clean(ins.name) + "|"
+	                    else customstr += "...为 " + clean(ins.name) + "|"
+					} else {
+	                    if (language != 1) str += "...to " + clean(ins.name) + "|"
+	                    else str += "...为 " + clean(ins.name) + "|"
+					}
 					if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
 						if (language != 1) customstr += "-|More...|\\|"
 						else customstr += "-|更多......|\\|"
@@ -1488,9 +1491,9 @@ function control_draw() {
 	    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	        var ins = instrument_list[| a];
 	        if (ins.user)
-	            customstr += "...to " + clean(ins.name) + "|"
+	            customstr += "...为 " + clean(ins.name) + "|"
 	        else
-	            str += "...to " + clean(ins.name) + "|"
+	            str += "...为 " + clean(ins.name) + "|"
 			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
 				customstr += "-|更多......|\\|"
 				insmenu++
