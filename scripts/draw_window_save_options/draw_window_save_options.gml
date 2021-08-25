@@ -27,7 +27,7 @@ function draw_window_save_options() {
 	save_version = max(save_version, min_version)
 
 	if (language != 1) {
-	if (draw_radiobox(x1 + 15, y1 + 20 + 7, save_version = 6, "v6", "Added UTF-8 support, includes the TPS / BPM setting", min_version > 6)) save_version = 6
+	if (draw_radiobox(x1 + 15, y1 + 20 + 7, save_version = 6, "v6", "Added UTF-8 support, includes the TPS / BPM setting (In development)", min_version > 6 || true)) save_version = 6
 	if (draw_radiobox(x1 + 15, y1 + 35 + 7, save_version = 5, "v5", "Increases custom instrument limit\nAllows custom sounds in subfolders", min_version > 5)) save_version = 5
 	if (draw_radiobox(x1 + 15, y1 + 50 + 7, save_version = 4, "v4", "Includes note velocity/pan/pitch and looping", min_version > 4)) save_version = 4
 	if (draw_radiobox(x1 + 15, y1 + 65 + 7, save_version = 3, "v3", "Includes song length", min_version > 3)) save_version = 3
@@ -41,7 +41,7 @@ function draw_window_save_options() {
 		windowclose = 1
 		}
 	} else {
-	if (draw_radiobox(x1 + 15, y1 + 20 + 7, save_version = 6, "v6", "增加UTF-8支持、包含TPS / BPM设置", min_version > 6)) save_version = 6
+	if (draw_radiobox(x1 + 15, y1 + 20 + 7, save_version = 6, "v6", "增加UTF-8支持、包含TPS / BPM设置（正在开发中）", min_version > 6 || true)) save_version = 6
 	if (draw_radiobox(x1 + 15, y1 + 35 + 7, save_version = 5, "v5", "增加自定义音色限制、允许自定义文件在子目录", min_version > 5)) save_version = 5
 	if (draw_radiobox(x1 + 15, y1 + 50 + 7, save_version = 4, "v4", "包含音符音量、声道、音高和循环", min_version > 4)) save_version = 4
 	if (draw_radiobox(x1 + 15, y1 + 65 + 7, save_version = 3, "v3", "包含歌曲长度", min_version > 3)) save_version = 3
