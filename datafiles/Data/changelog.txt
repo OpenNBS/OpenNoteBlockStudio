@@ -38,14 +38,16 @@ you want to make an cover for to measure the tempo.
    * Added Source Han Sans as the Chinese font.
    * Translated all text to Chinese.
    * Changed the URL of tutorial videos to the one on Bilibili.
+   * Made the language setting to change automatically to the system.
 * Added an option to select individual notes if you hold the control key.
 * Added an option in the set velocity window to choose if you want to apply
 the velocity as percent.
 * Changed the block name of "Hardened Clay" to "Terracotta" in schematic
 exports.
-* Added an secret function to change the tempo mid-song, if you name an
+* Added secret functions to change settings mid-song. If you name an
 instrument to "Tempo Changer", it will set the current BPM to its pitch value
-when playing it.
+when playing it; if you name an instrument to "Toggle Rainbow", it will toggle
+the Fluent rainbow mode when playing it.
 * Added a new music player mode:
    * To enter it, add " -player" in a shortcut of the program or run the .bat file
 in the installation folder.
@@ -57,7 +59,10 @@ little space in it.
 * Added song progress display on the taskbar for Windows 8 and above.
 * Added file dropping function, the program will open the song file you drag
 into it.
+* Added new images for the installer and README.md, replacing the old ones.
 * Replaced old dialog functions to new ones.
+* Added an option to quadruple or octuple MIDI import tempo by pressing
+Ctrl + L and Ctrl + F3 + L.
 * Fixed right click menus going off the screen if you open it too close to the
 right window border.
 * Fixed original author doesn't show up if there is no song author.
