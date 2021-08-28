@@ -46,6 +46,9 @@ function control_create() {
 	currentfont = 0
 	acrylic = 1
 	mouseover = 0
+	display_width = display_get_width()
+	display_height = display_get_height()
+	message(string(ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true)), "y")
 
 	// Audio
 	channels = 256
