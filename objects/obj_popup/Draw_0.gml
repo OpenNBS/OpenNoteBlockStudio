@@ -26,6 +26,7 @@ if (singleline) {
 }
 }
 draw_set_alpha(alpha)
+if (theme = 3 && obj_controller.acrylic) draw_acrylic_texture(x, y, maxw + 16, 20 + 18 * (!singleline))
 if (obj_controller.fdark && theme = 3) draw_set_color(c_white)
 else draw_set_color(make_color_rgb(75, 75, 75)*!obj_controller.theme)
 if(theme != 3) {

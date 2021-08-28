@@ -26,6 +26,7 @@ function draw_msg(){
 		draw_set_color(7368816)
 		draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	}
+	if (theme = 3 && acrylic) draw_acrylic_texture(x1 - 10, y1 - 30, x2 - x1 + 20, 40)
 	draw_theme_color()
 	draw_text_dynamic(x1, y1 - 10 - string_height(str) / 2, str)
 	if (current_time - msgstart >= 1000){
