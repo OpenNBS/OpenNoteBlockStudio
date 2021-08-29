@@ -61,7 +61,7 @@ function draw_window_greeting() {
 	if (language != 1) draw_text_center(x1 + 132, y1 + 280, "Open source Minecraft Note Block Studio")
 	else draw_text_center(x1 + 132, y1 + 280, "开源 Minecraft Note Block Studio")
 	draw_set_color(make_color_rgb(62, 144, 255))
-	draw_text_url(x1 + 132, y1 + 296, "opennbs.org", "https://git.io/fjQH3")
+	draw_text_url(x1 + 132, y1 + 296, "opennbs.org", link_website)
 	draw_theme_color()
 	if (language != 1) draw_text_center(x1 + 132, y1 + 340, "Original created by David Norgren")
 	else draw_text_center(x1 + 132, y1 + 340, "原作者 David Norgren")

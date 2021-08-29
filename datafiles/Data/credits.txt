@@ -1,0 +1,81 @@
+*CREDITS
+*---
+
+*Originally created by
+David Norgren
+
+*Published by
+HielkeMinecraft
+
+*Developers
+HielkeMinecraft
+ShinkoNet
+Bentroen
+chenxi050402
+
+*Additional designs
+LeakyJAZZ
+
+---
+
+*Open-source technologies
+
+Boost.Filesystem|http://www.boost.org/libs/filesystem
+by the Boost contributors
+
+FFmpeg|https://www.ffmpeg.org/
+by the FFmpeg contributors
+
+LAME|https://lame.sourceforge.io/index.php/
+by the LAME contributors
+
+audio-DLL|https://github.com/stuffbydavid/audio-DLL/
+by David Norgren
+
+midi-input-DLL|https://github.com/stuffbydavid/midi-input-DLL/
+by David Norgren
+
+window-DLL|https://github.com/stuffbydavid/window-DLL/
+by David Norgren
+
+file-DLL|https://github.com/stuffbydavid/file-DLL
+by David Norgren
+
+7-Zip|https://www.7-zip.org/
+by Igor Pavlov
+
+zlib| http://zlib.net/
+by Jean-loup Gailly and Mark Adler
+
+Fluent Icons|https://github.com/microsoft/fluentui-system-icons
+by Microsoft
+
+NekoPresence|https://github.com/nkrapivin/NekoPresence/
+by Nikita Krapivin
+
+Dialog Module|https://marketplace.yoyogames.com/assets/6621/dialog-module
+by Samuel Venable
+
+ExecuteShell|https://marketplace.yoyogames.com/assets/575/execute-shell
+by Samuel Venable
+
+File Dropper|https://marketplace.yoyogames.com/assets/8207/file-dropper
+by Samuel Venable
+
+
+
+
+---
+
+
+
+*Special thanks
+to the entire note block community
+for making OpenNBS what it is!
+
+
+
+---
+
+
+

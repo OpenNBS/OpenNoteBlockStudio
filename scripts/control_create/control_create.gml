@@ -299,6 +299,7 @@ function control_create() {
 	midi_sb4 = create_scrollbar(1)
 	sch_exp_scrollbar = create_scrollbar(1)
 	update_scrollbar = create_scrollbar(1)
+	credits_scrollbar = create_scrollbar(1)
 	sbh_anim = 0
 	sbv_anim = 0
 	showinsbox = 0
@@ -456,6 +457,7 @@ function control_create() {
 	downloaded_size = 0
 	total_size = -1
 	changelogstr = load_text(data_directory + "changelog.txt")
+	creditsstr = load_text(data_directory + "credits.txt")
 	if (file_exists_lib(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
 		if (theme = 2) fdark = 1
 		theme = 3 // Sets to the Fluent theme when updated
