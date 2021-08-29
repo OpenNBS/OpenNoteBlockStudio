@@ -4,8 +4,8 @@ function draw_window_about() {
 	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	x1 = floor(rw / 2 - 290)
-	y1 = floor(rh / 2 - 200) + windowoffset
-	draw_window(x1, y1, x1 + 580, y1 + 400)
+	y1 = floor(rh / 2 - 205) + windowoffset
+	draw_window(x1, y1, x1 + 580, y1 + 410)
 	draw_theme_font(font_main)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "About")
 	else draw_text_dynamic(x1 + 8, y1 + 8, "关于")
@@ -76,7 +76,17 @@ function draw_window_about() {
 	draw_set_halign(fa_left)
 	// End credits box
 
-	if (draw_button2(x1 + 332, y1 + 370, 72, "OK", false) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 36, y1 + 380, 72, "Website...", false)) {
+		open_url(link_github)
+	}
+	if (draw_button2(x1 + 112, y1 + 380, 72, "GitHub...", false)) {
+		open_url(link_website)
+	}
+	if (draw_button2(x1 + 188, y1 + 380, 72, "Discord...", false)) {
+		open_url(link_discord)
+	}
+
+	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, "OK", false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
