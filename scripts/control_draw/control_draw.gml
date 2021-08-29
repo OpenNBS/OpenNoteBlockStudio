@@ -893,7 +893,7 @@ function control_draw() {
 	}
 
 	// Timeline and markers
-	draw_sprite_ext(spr_timeline, (0 + theme = 2 + (fdark && theme = 3)) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 20, 1, 0, -1, 1)
+	draw_sprite_ext(spr_timeline, (0 + theme = 2 + (fdark && theme = 3)) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 18, 1, 0, -1, 1)
 	draw_theme_font(font_small)
 	draw_set_halign(fa_left)
 	draw_theme_color()
@@ -1183,8 +1183,8 @@ function control_draw() {
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, 0.3 + 0.3 * !fdark)
-			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, 0.3 + 0.3 * !fdark)
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
+			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
