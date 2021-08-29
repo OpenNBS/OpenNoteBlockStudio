@@ -32,7 +32,7 @@ function draw_window_about() {
 	// Credits box
 	var xx, yy, w, n, fullstr, str, strb, strurl;
 	fullstr = creditsstr;
-	xx = x1 + 290
+	xx = x1 + 295
 	yy = y1 + 35
 	w = 260
 	draw_area(xx, yy, xx + w, yy + 322)
