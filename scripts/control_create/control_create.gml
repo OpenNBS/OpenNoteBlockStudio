@@ -50,7 +50,7 @@ function control_create() {
 	display_height = display_get_height()
 	wpaper = 0
 	wpaperside = 0
-	ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true)
+	ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true, true)
 	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
