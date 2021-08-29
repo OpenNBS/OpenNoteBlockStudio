@@ -32,10 +32,10 @@ function draw_window_about() {
 	// Credits box
 	var xx, yy, w, n, fullstr, str, strb, strurl;
 	fullstr = creditsstr;
-	xx = x1 + 300
-	yy = y1 + 40
+	xx = x1 + 290
+	yy = y1 + 35
 	w = 260
-	draw_area(xx, yy, xx + w, yy + 305)
+	draw_area(xx, yy, xx + w, yy + 322)
 	n = string_count("\n", fullstr)
 	for (a = 0; a < n; a += 1) {
 	    str[a] = string_copy(fullstr, 1, string_pos("\n", fullstr) - 1)
@@ -52,7 +52,7 @@ function draw_window_about() {
 		}
 	    fullstr = string_delete(fullstr, 1, string_pos("\n", fullstr))
 	}
-	for (a = sb_val[credits_scrollbar]; a < sb_val[credits_scrollbar] + 18; a += 1) {
+	for (a = sb_val[credits_scrollbar]; a < sb_val[credits_scrollbar] + 19; a += 1) {
 	    if (a >= n) break
 		
 		var xx2 = xx + (w/2)
@@ -72,7 +72,7 @@ function draw_window_about() {
 		}
 	}
 	draw_theme_font(font_main) 
-	draw_scrollbar(credits_scrollbar, xx + w - 17, yy + 1, 15, 18, n, 0, 1)
+	draw_scrollbar(credits_scrollbar, xx + w - 17, yy + 1, 16, 18, n, 0, 1)
 	draw_set_halign(fa_left)
 	// End credits box
 
