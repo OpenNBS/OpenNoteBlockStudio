@@ -1482,7 +1482,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Preferences...")
 	}
 	if (draw_tab("Help")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...|GitHub...")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Minecraft Forums topic...|Minecraft Wiki page...|-|Changelist...|About...")
 	}
 	} else {
 	if (draw_tab("文件")) {
@@ -1568,7 +1568,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "首选项......")
 	}
 	if (draw_tab("帮助")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "Minecraft Forums 帖子......|Minecraft Wiki 页面......|-|更新历史......|关于......|GitHub......")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "Website......|GitHub......|Minecraft Forums 帖子......|Minecraft Wiki 页面......|-|更新历史......|关于......")
 	}
 	}
 

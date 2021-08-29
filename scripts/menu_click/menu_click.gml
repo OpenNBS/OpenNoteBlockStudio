@@ -188,11 +188,12 @@ function menu_click(argument0) {
 	        if (sel = 4) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=4")
 	        if (sel = 5) open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 			}
-	        if (sel = 6) open_url(link_topic)
-	        if (sel = 7) open_url("http://minecraft.gamepedia.com/Programs_and_editors/Minecraft_Note_Block_Studio")
-	        if (sel = 8) window = w_changelist
-	        if (sel = 9) window = w_about
-	        if (sel = 10) open_url(link_github)
+			if (sel = 6) open_url(link_website)
+			if (sel = 7) open_url(link_github)
+	        if (sel = 8) open_url(link_topic)
+	        if (sel = 9) open_url(link_wiki)
+	        if (sel = 10) window = w_changelist
+	        if (sel = 11) window = w_about
 	        break
 	    }
 	    case "section": {
