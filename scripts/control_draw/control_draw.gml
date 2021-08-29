@@ -121,6 +121,23 @@ function control_draw() {
 	if (theme = 3) window_background = 15987699
 	if (theme = 3 && fdark) window_background = 2105376
 	draw_clear(window_background)
+	if (theme = 3 && acrylic) draw_sprite_tiled_ext(wpaperblur, 0,
+	0 - window_get_x() * (1 / window_scale) - (sprite_get_width(wpaper) * (display_height / sprite_get_height(wpaper)) - display_width) * (1 / window_scale) * (wpaperside) / 2,
+	0 - window_get_y() * (1 / window_scale) - (sprite_get_height(wpaper) * (display_width / sprite_get_width(wpaper)) - display_height) * (1 / window_scale) * (!wpaperside) / 2,
+	(1 / window_scale) * (display_width / sprite_get_width(wpaper)) * (!wpaperside) + (1 / window_scale) * (display_height / sprite_get_height(wpaper)) * (wpaperside),
+	(1 / window_scale) * (display_width / sprite_get_width(wpaper)) * (!wpaperside) + (1 / window_scale) * (display_height / sprite_get_height(wpaper)) * (wpaperside), -1, 1)
+	if (isplayer) {
+		draw_set_color(15790320)
+		if (theme = 1) draw_set_color(13160660)
+		if (theme = 2) draw_set_color(c_dark)
+		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && acrylic) draw_set_color(15198183)
+		if (theme = 3 && fdark) draw_set_color(2105376)
+		if (theme = 3 && fdark && acrylic) draw_set_color(1315860)
+		if (theme = 3 && acrylic) draw_set_alpha(0.875)
+		draw_rectangle(0, 0, rw, rh, 0)
+		draw_set_alpha(1)
+	}
 
 	iconcolor = c_black
 	if (theme = 2 || (theme = 3)) iconcolor = c_white
@@ -1067,7 +1084,7 @@ function control_draw() {
 	if (!isplayer) {
 	a = floor(marker_pos * 32 - starta * 32)
 	draw_sprite_ext(spr_marker, 0 + 6 * (theme = 2 || blackout) + 8 * (theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, 1, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
-	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, totalrows * 2 + 10, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
+	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || blackout) + 8 * (theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, (totalrows + 1) * 32 / 15, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
 
 
 	draw_theme_font(font_main)
@@ -1076,13 +1093,17 @@ function control_draw() {
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
 		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && acrylic) draw_set_color(c_white)
 		if (theme = 3 && fdark) draw_set_color(2105376)
-		draw_rectangle(0, 0, x1, rh, 0)
+		if (theme = 3 && fdark && acrylic) draw_set_color(1315860)
+		if (theme = 3 && acrylic) draw_set_alpha(0.875)
+		draw_rectangle(0, y1 + 1, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
-		draw_rectangle(0, y1 + totalrows * 32 + 52, rw, rh, 0)
-		draw_rectangle(x1 + totalcols * 32 + 20, 0, rw, rh, 0)
+		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 52, rw, rh, 0)
+		draw_rectangle(x1 + totalcols * 32 + 20, y1 + 1, rw, y1 + totalrows * 32 + 51, 0)
 		draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
 		draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
+		draw_set_alpha(1)
 	}
 	draw_theme_color()
 
@@ -1162,8 +1183,8 @@ function control_draw() {
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3)
-			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3)
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, 0.3 + 0.3 * !fdark)
+			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, 0.3 + 0.3 * !fdark)
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
@@ -1557,9 +1578,9 @@ function control_draw() {
 	draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
 	draw_sprite(spr_iconbar, 2, rw - 2, 20)
 	} else {
-	draw_sprite(spr_iconbar, 3 + fdark * 3, 0, 20)
-	draw_sprite_ext(spr_iconbar, 4 + fdark * 3, 2, 20, (rw - 4), 1, 0, -1, 1)
-	draw_sprite(spr_iconbar, 5 + fdark * 3, rw - 2, 20)
+	//draw_sprite(spr_iconbar, 3 + fdark * 3, 0, 20)
+	//draw_sprite_ext(spr_iconbar, 4 + fdark * 3, 2, 20, (rw - 4), 1, 0, -1, 1)
+	//draw_sprite(spr_iconbar, 5 + fdark * 3, rw - 2, 20)
 	}
 	xx = 6
 	yy = 23

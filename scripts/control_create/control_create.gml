@@ -48,7 +48,15 @@ function control_create() {
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
-	message(string(ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true)), "y")
+	wpaper = 0
+	wpaperside = 0
+	ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true)
+	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
+	if (wpaperexist) {
+		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
+		if (display_width / display_height < sprite_get_width(wpaper) / sprite_get_height(wpaper)) wpaperside = 1
+		wpaperblur = sprite_create_blur(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 150, 8, 16)
+	}
 
 	// Audio
 	channels = 256
