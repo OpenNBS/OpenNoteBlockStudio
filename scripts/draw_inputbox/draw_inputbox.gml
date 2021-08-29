@@ -33,9 +33,9 @@ function draw_inputbox(argument0, argument1, argument2, argument3, argument4, ar
 	draw_sprite_ext(spr_inputbox_n_left, 3 + fdark, xx, yy, 1, 1, 0, -1, draw_get_alpha())
 	draw_sprite_ext(spr_inputbox_n_right, 3 + fdark, xx + w - 2, yy, 1, 1, 0, -1, draw_get_alpha())
 	if(focus){
-	    draw_sprite_ext(spr_textbox_f, 2 + 16 * focus + !fdark * 32, xx, yy + 19, 1, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 3 + 16 * focus + !fdark * 32, xx + 2, yy + 19, (w - 4) / 2, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 4 + 16 * focus + !fdark * 32, xx + w - 2, yy + 19, 1, 1, 0, accent[3] * focus - !focus, draw_get_alpha())
+	    draw_sprite_ext(spr_textbox_f, 2 + 16 * focus + !fdark * 32, xx, yy + 19, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
+	    draw_sprite_ext(spr_textbox_f, 3 + 16 * focus + !fdark * 32, xx + 2, yy + 19, (w - 4) / 2, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
+	    draw_sprite_ext(spr_textbox_f, 4 + 16 * focus + !fdark * 32, xx + w - 2, yy + 19, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
 	}
 	}
 
