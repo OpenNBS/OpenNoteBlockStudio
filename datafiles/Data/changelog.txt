@@ -16,6 +16,8 @@ and input boxes.
    * Added acrylic material on extend menus, tooltips, and popup messages,
 that means they are partly transparent and the elements below them are
 blurred.
+   * Added mica material for the background, that means you can see your
+desktop wallpaper on the background.
    * Added window animations and fading, and made the background dimmer
 when opening and closing them.
    * Extended input boxes' states to normal, hover and focus.
