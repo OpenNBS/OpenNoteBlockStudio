@@ -76,13 +76,13 @@ function draw_window_about() {
 	draw_set_halign(fa_left)
 	// End credits box
 
-	if (draw_button2(x1 + 36, y1 + 380, 72, condstr(language != 1, "Website...", "官方网站"), false)) {
+	if (draw_button2(x1 + 36, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false)) {
 		open_url(link_github)
 	}
-	if (draw_button2(x1 + 112, y1 + 380, 72, condstr(language != 1, "GitHub...", "Github"), false)) {
+	if (draw_button2(x1 + 112, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false)) {
 		open_url(link_website)
 	}
-	if (draw_button2(x1 + 188, y1 + 380, 72, condstr(language != 1, "Discord...", "Discord"), false)) {
+	if (draw_button2(x1 + 188, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false)) {
 		open_url(link_discord)
 	}
 
