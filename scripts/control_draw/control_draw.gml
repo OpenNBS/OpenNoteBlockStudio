@@ -861,8 +861,7 @@ function control_draw() {
 		} else if (refreshrate = 3) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate = 4
-			if (language != 1) set_msg("FPS => 240")
-			else set_msg("FPS => 240")
+			set_msg("FPS => 240")
 		} else if (refreshrate = 4) {
 			game_set_speed(30,gamespeed_fps)
 			refreshrate = 0
@@ -1568,7 +1567,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "首选项......")
 	}
 	if (draw_tab("帮助")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord server......|Report a bug...|-|更新历史......|关于......")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord服务器......|反馈bug......|-|更新历史......|关于......")
 	}
 	}
 
@@ -1747,7 +1746,7 @@ function control_draw() {
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
 	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 190) break
+	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 190) break
 	break
 	}
 	}
@@ -2026,7 +2025,7 @@ function control_draw() {
 		draw_text_dynamic(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
 		draw_text_dynamic(240, 60, floor(marker_pos mod 4) + 1)
 		if (language != 1) popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
-		else popup_set(184, 57, 64, 22, "歌曲的进度（全音，四分，十六分）")
+		else popup_set(184, 57, 64, 22, "歌曲的进度（全音、四分、十六分）")
 
 		// Tempo
 		draw_set_halign(fa_center)

@@ -49,7 +49,8 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	    // Colors
 	    col_normal = draw_get_color()
 	    col_selected = c_white
-	    col_selection = make_color_rgb(51, 153, 255)
+	    if (theme != 3) col_selection = make_color_rgb(51, 153, 255)
+	    else col_selection = accent[3]
 	    col_marker = c_black
 	    if (theme = 2 || (theme = 3 && fdark)) col_marker = c_white
     

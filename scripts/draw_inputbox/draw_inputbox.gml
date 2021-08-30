@@ -1,12 +1,15 @@
-function draw_inputbox(argument0, argument1, argument2, argument3, argument4, argument5) {
+function draw_inputbox() {
 	// draw_inputbox(id, x, y, w, val, str)
-	var i, xx, yy, w, val, str, on, focus;
-	i = argument0
-	xx = argument1
-	yy = argument2
-	w = argument3
-	val = argument4
-	str = argument5
+	var i, xx, yy, w, val, str, on, focus, alpha, prevalpha;
+	i = argument[0]
+	xx = argument[1]
+	yy = argument[2]
+	w = argument[3]
+	val = argument[4]
+	str = argument[5]
+	alpha = 1
+	prevalpha = draw_get_alpha()
+	if (argument_count > 6) alpha = argument[6]
 	popup_set_window(xx, yy, w, 21, str)
 
 	on = (mouse_rectangle(xx, yy, w, 21))
@@ -16,7 +19,9 @@ function draw_inputbox(argument0, argument1, argument2, argument3, argument4, ar
 	if (theme = 3 && focus) draw_set_color(c_white)
 	if (theme = 3 && fdark) draw_set_color(2960685)
 	if (theme = 3 && fdark && on && !focus) draw_set_color(3289650)
+	draw_set_alpha(alpha * draw_get_alpha() * !focus + focus)
 	if (theme != 3 || !focus || !fdark) draw_rectangle(xx + 1, yy + 1, xx + w - 1, yy + 21 - 1, 0)
+	draw_set_alpha(prevalpha)
 	draw_theme_color()
 	if (theme != 3) {
 	if(on){
