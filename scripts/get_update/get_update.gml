@@ -22,11 +22,11 @@ function get_update() {
 			} else {
 				if (language != 1) {
 				if (question("Failed to download update. Do you want to open the Note Block Studio website and update manually?", "Failed")) {
-					open_url(link_download)
+					open_url(link_website)
 				}
 				} else {
 				if (question("下载更新失败。你想要到Note Block Studio官网手动更新吗？", "失败")) {
-					open_url(link_download)
+					open_url(link_website)
 				}
 				}
 			window = w_greeting

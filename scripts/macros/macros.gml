@@ -6,10 +6,8 @@ function macros() {
 #macro nbs_version 5
 #macro pat_version 1
 
-#macro link_download "https://hielkeminecraft.github.io/OpenNoteBlockStudio/"
-#macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
-#macro link_wiki "http://minecraft.gamepedia.com/Programs_and_editors/Minecraft_Note_Block_Studio"
 #macro link_github "https://github.com/HielkeMinecraft/OpenNoteBlockStudio"
+#macro link_report "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/new/choose"
 #macro link_website "https://hielkeminecraft.github.io/OpenNoteBlockStudio"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 

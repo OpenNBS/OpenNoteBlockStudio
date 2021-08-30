@@ -1482,7 +1482,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Preferences...")
 	}
 	if (draw_tab("Help")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord...|Minecraft Forums topic...|Minecraft Wiki page...|-|Report a bug...|Changelist...|About...")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
 	}
 	} else {
 	if (draw_tab("文件")) {
@@ -1568,7 +1568,7 @@ function control_draw() {
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "首选项......")
 	}
 	if (draw_tab("帮助")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord......|Minecraft Forums 帖子......|Minecraft Wiki 页面......|-|Report a bug...|更新历史......|关于......")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord server......|Report a bug...|-|更新历史......|关于......")
 	}
 	}
 
@@ -1747,7 +1747,7 @@ function control_draw() {
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
 	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.INTERNET, xx, yy, "打开 Minecraft Forums 帖子")) {open_url(link_topic)} xx += 25 if (xx > rw - 190) break
+	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 190) break
 	break
 	}
 	}
