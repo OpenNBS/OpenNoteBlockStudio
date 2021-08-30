@@ -41,6 +41,9 @@ by David Norgren
 file-DLL|https://github.com/stuffbydavid/file-DLL
 by David Norgren
 
+Realtime Blur|https://foxyofjungle.itch.io/realtime-blur
+by Foxy Of Jungle
+
 7-Zip|https://www.7-zip.org/
 by Igor Pavlov
 
