@@ -1,8 +1,8 @@
 ---
-name: Enhancement
+name: Feature suggestion
 about: Suggest a new feature or improvement for the program.
 title: ''
-labels: enhancement
+labels: 'Type: Enhancement'
 assignees: ''
 
 ---
