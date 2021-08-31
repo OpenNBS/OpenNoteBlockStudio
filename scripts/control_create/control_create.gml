@@ -274,6 +274,7 @@ function control_create() {
 
 	// Interface
 	window = 0
+	prevwindow = 0
 	selected_tab = 0
 	global.popup = 0
 	globalvar text_focus;

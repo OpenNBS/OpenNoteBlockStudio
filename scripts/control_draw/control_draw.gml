@@ -2157,7 +2157,11 @@ function control_draw() {
 	window_set_cursor(curs)
 	mouse_xprev = mouse_x
 	mouse_yprev = mouse_y
-
 	
+	// Detect when windows have changed
+	/*if window != prevwindow {
+		show_debug_message(string(window) + " " + string(prevwindow))
+	}*/
+	prevwindow = window
 
 }
