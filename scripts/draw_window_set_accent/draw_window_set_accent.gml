@@ -126,7 +126,17 @@ function draw_window_set_accent() {
 	}
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 408, 72, condstr(language != 1, "OK", "确定")) && windowopen = 1) {
+	if (draw_button2(x1 + 10, y1 + 408, 72, condstr(language != 1, "Use default", "使用默认值")) && wmenu = 0) {
+	    if ((language == 0 && question("Are you sure?", "Confirm")) || (language == 1 && question("你确定吗？", "确定"))) {
+			accent1 = 0
+			accent2 = 120
+			accent3 = 215
+			draw_accent_init()
+			resetcolor = true
+		}
+	}
+	if (draw_button2(x1 + 104, y1 + 408, 72, condstr(language != 1, "Cancel", "取消"))) {window = w_preferences}
+	if (draw_button2(x1 + 198, y1 + 408, 72, condstr(language != 1, "OK", "确定")) && windowopen = 1) {
 		try {
 			accent1 = real(rr)
 			accent2 = real(gg)
@@ -138,29 +148,6 @@ function draw_window_set_accent() {
 			if (language != 1) message("Please enter a valid number!", "Set accent color")
 			else message("请输入一个有效的数字！", "设置主题颜色")
 		}
-	}
-	if (language != 1) {
-	if (draw_button2(x1 + 104, y1 + 408, 72, "Cancel")) {window = w_preferences}
-	if (draw_button2(x1 + 198, y1 + 408, 72, "Use default") && wmenu = 0) {
-	    if (question("Are you sure?", "Confirm")) {
-			accent1 = 0
-			accent2 = 120
-			accent3 = 215
-			draw_accent_init()
-			resetcolor = true
-		}
-	}
-	} else {
-	if (draw_button2(x1 + 104, y1 + 408, 72, "取消")) {windowclose = 1}
-	if (draw_button2(x1 + 198, y1 + 408, 72, "使用默认值") && wmenu = 0) {
-	    if (question("你确定吗？", "确定")) {
-			accent1 = 0
-			accent2 = 120
-			accent3 = 215
-			draw_accent_init()
-			reset_color = true
-		}
-	}
 	}
 	window_set_cursor(curs)
 	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
