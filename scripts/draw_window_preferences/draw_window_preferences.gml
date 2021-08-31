@@ -1,10 +1,11 @@
 function draw_window_preferences() {
 	// draw_window_preferences()
-	var x1, y1, a, b, c, as, stabx, stabw, nsel, str;
+	var x1, y1, a, b, c, as, stabx, stabw, nsel, str, accentclick;
 	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	nsel = -1
+	accentclick = 0
 	x1 = floor(rw / 2 - 250)
 	y1 = floor(rh / 2 - 255 + isplayer * 50) + windowoffset
 	draw_window(x1, y1, x1 + 500, y1 + 510 - isplayer * 100)
@@ -332,16 +333,20 @@ function draw_window_preferences() {
 			if (theme = 2) draw_set_color(c_dark)
 			if (theme = 3) draw_set_color(15987699)
 			if (theme = 3 && fdark) draw_set_color(2105376)
-			draw_rectangle(xx - 2, yy - 2, xx + 15, yy + 15, false)
+			accentclick = mouse_rectangle(xx - 2, yy - 2, 17, 17)
+			if (accentclick = 1) accentclick += mouse_check_button(mb_left)
+			draw_roundrect_ext(xx - 2, yy - 2, xx + 15, yy + 15, 4, 4, false)
 			draw_theme_color()
-			draw_rectangle(xx - 2, yy - 2, xx + 15, yy + 15, true)
-			draw_set_color(accent[3])
-			draw_rectangle(xx, yy, xx + 13, yy + 13, false)
-			popup_set_window(xx - 2, yy - 2, 17, 17, "Click to change the theme's accent color.")
-			if (mouse_check_button_released(mb_left) && mouse_rectangle(xx - 2, yy - 2, xx + 15, yy + 15)) {
+			draw_roundrect_ext(xx - 2, yy - 2, xx + 15, yy + 15, 4, 4, true)
+			draw_set_color(accent[3 + (accentclick = 1) * 3 - (accentclick = 2) * 3])
+			draw_roundrect_ext(xx, yy, xx + 13, yy + 13, 4, 4, false)
+			if (language != 1) popup_set_window(xx - 2, yy - 2, 17, 17, "Click to change the theme's accent color.")
+			else popup_set_window(xx - 2, yy - 2, 17, 17, "点击更改此主题的主题色。")
+			if (mouse_check_button_released(mb_left) && accentclick) {
 				window = w_setaccent
 				resetcolor = true
 				//draw_window_set_accent() // We need to draw it once here; otherwise, it will only be drawn on the next frame and not be initialized properly (prevwindow = window).
+				play_sound(soundinvoke, 45, 100, 50, 0)
 			}
 		}
 		
