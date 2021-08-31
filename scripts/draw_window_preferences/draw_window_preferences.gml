@@ -306,8 +306,6 @@ function draw_window_preferences() {
 	        if (language != 1) menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
 	        else menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "经典|" + check(theme = 2) + "暗黑|" + check(theme = 1) + "复古|" + check(theme = 3) + "Fluent")
 	    }
-		if (language != 1) {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, 100, 20, "Press Ctrl + Shift + M in the main screen to set accent color.")}
-		else {if (theme = 3) popup_set_window(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, 100, 20, "在主界面按 Ctrl + Shift + M 设定主题颜色。")}
 	    if (language != 1) draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
 	    else draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "经典") + condstr(theme = 2, "暗黑") + condstr(theme = 1, "复古") + condstr(theme = 3, "Fluent"))
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
@@ -325,6 +323,28 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "Fluent主题的暗色模式。", (theme != 3), true)) fdark = !fdark
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "在Fluent主题的菜单和提示上显示亚克力和云母效果。", (theme != 3), true)) acrylic = !acrylic
 		}
+		
+		// Accent color picker
+		if (theme == 3) {
+			var xx = x1 + 160
+			var yy = y1 + 98 + (theme = 3) * 22
+			if (theme = 1) draw_set_color(13160660)
+			if (theme = 2) draw_set_color(c_dark)
+			if (theme = 3) draw_set_color(15987699)
+			if (theme = 3 && fdark) draw_set_color(2105376)
+			draw_rectangle(xx - 2, yy - 2, xx + 15, yy + 15, false)
+			draw_theme_color()
+			draw_rectangle(xx - 2, yy - 2, xx + 15, yy + 15, true)
+			draw_set_color(accent[3])
+			draw_rectangle(xx, yy, xx + 13, yy + 13, false)
+			popup_set_window(xx - 2, yy - 2, 17, 17, "Click to change the theme's accent color.")
+			if (mouse_check_button_released(mb_left) && mouse_rectangle(xx - 2, yy - 2, xx + 15, yy + 15)) {
+				window = w_setaccent
+				resetcolor = true
+				//draw_window_set_accent() // We need to draw it once here; otherwise, it will only be drawn on the next frame and not be initialized properly (prevwindow = window).
+			}
+		}
+		
 		//if (theme = 3) draw_text_dynamic(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 15, "Color")
 		//if (theme = 3) {
 		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20, !fdark, "Light", "Use the light mode.")) fdark = 0

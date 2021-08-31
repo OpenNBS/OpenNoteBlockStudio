@@ -98,9 +98,14 @@ function control_create() {
 	accent1 = 0
 	accent2 = 120
 	accent3 = 212
+	hsv[2] = 0
+	rr = 0
+	gg = 0
+	bb = 0
 	hsdrag = 0
 	vdrag = 0
 	nocdrag = 0
+	resetcolor = 0
 	rainbow = 0
 	rainbowtoggle = 0
 	pingtime = current_time

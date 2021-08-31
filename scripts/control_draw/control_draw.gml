@@ -725,10 +725,6 @@ function control_draw() {
 			else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	    }
 		// Instrument shortcuts
-		if (keyboard_check_pressed(ord("M")) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
-			if (!isplayer) playing = 0 
-			window = w_setaccent
-		}
 		if (keyboard_check_pressed(vk_f5) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
 			rainbowtoggle = !rainbowtoggle
 			if (language != 1) {
