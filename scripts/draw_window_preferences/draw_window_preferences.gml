@@ -346,7 +346,7 @@ function draw_window_preferences() {
 				window = w_setaccent
 				resetcolor = true
 				//draw_window_set_accent() // We need to draw it once here; otherwise, it will only be drawn on the next frame and not be initialized properly (prevwindow = window).
-				play_sound(soundinvoke, 45, 100, 50, 0)
+				if (windowsound) play_sound(soundinvoke, 45, 100, 50, 0)
 			}
 		}
 		
