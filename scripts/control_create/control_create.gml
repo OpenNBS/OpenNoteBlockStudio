@@ -383,19 +383,19 @@ function control_create() {
 	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
-	soundinvoke.filename = "invoke.ogg"
+	soundinvoke.filename = "UI/invoke.ogg"
 	soundinvoke.user = 0
 	soundshow =   create(obj_instrument)
 	soundshow.key =   45
-	soundshow.filename =     "show.ogg"
+	soundshow.filename =     "UI/show.ogg"
 	soundshow.user =   0
 	soundhide =   create(obj_instrument)
 	soundhide.key =   45
-	soundhide.filename =     "hide.ogg"
+	soundhide.filename =     "UI/hide.ogg"
 	soundhide.user =   0
 	soundgoback = create(obj_instrument)
 	soundgoback.key = 45
-	soundgoback.filename = "goback.ogg"
+	soundgoback.filename = "UI/goback.ogg"
 	soundgoback.user = 0
 
 	instrument = instrument_list[| 0]
