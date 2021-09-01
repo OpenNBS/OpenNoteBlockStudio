@@ -19,7 +19,7 @@ LeakyJAZZ
 
 ---
 
-*Open-source technologies
+*Third-party technologies
 
 Boost.Filesystem|http://www.boost.org/libs/filesystem
 by the Boost contributors
