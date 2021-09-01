@@ -55,12 +55,12 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "保持八度范围", "是否自动将音符转换到2八度限制内。") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "导入音符音量", "是否将MIDI文件中音符音量应用到音符上。") && wmenu = 0) w_midi_vel=!w_midi_vel
 	
-	draw_text(x1 + 470, y1 + 32 + 20, "Time precision")
-	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
-	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
-	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
-	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4x", "Add four times as much space between each note.") && wmenu = 0) w_midi_precision = 3
-	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8x", "Add eight times as much space between each note.\n(This will create a very long song!)") && wmenu = 0) w_midi_precision = 7
+	draw_text(x1 + 470, y1 + 32 + 20, "精准度")
+	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "调整音符间的距离，以在中间放下更多音符。")
+	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1倍", "与MIDI文件中音符间距一致。") && wmenu = 0) w_midi_precision = 0
+	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2倍", "在音符间使用两倍间距。") && wmenu = 0) w_midi_precision = 1
+	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4倍", "在音符间使用四倍间距。") && wmenu = 0) w_midi_precision = 3
+	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8倍", "在音符间使用八倍间距。\n（歌曲将会很长！）") && wmenu = 0) w_midi_precision = 7
 	
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "记住我的更改", "下次导入MIDI文件时是否使用同样的设定。", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "导入") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}

@@ -290,7 +290,7 @@ function draw_window_preferences() {
 			}
 		}
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "将当前歌曲信息显示为Discord个人状态。", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "是否在Discord个人状态中显示当前歌曲信息。", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
@@ -319,10 +319,10 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "Whether to use darker colors on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) fdark = !fdark
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Transparency effects", "Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) acrylic = !acrylic
 		} else {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "在Fluent主题时的界面音效。", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "Fluent主题的暗色模式。", (theme != 3), true)) fdark = !fdark
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "在Fluent主题的菜单和提示上显示亚克力和云母效果。", (theme != 3), true)) acrylic = !acrylic
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，可以用于剪辑时扣掉。", false, true)) blackout = !blackout
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "是否在浏览时播放音效。\n（仅限Fluent主题）", (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "是否在界面上使用暗色调。\n（仅限Fluent主题）", (theme != 3), true)) fdark = !fdark
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "是否在界面上显示透明效果。\n（仅限Fluent主题）", (theme != 3), true)) acrylic = !acrylic
 		}
 		
 		// Accent color picker
