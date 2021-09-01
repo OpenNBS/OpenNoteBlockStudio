@@ -23,13 +23,20 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "Name layers...", "If the layers should be given names\ndepending on the data in the MIDI file.") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "...after patches", "If the layers should be named\nafter the instruments in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
 	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "...channel numbers", "If the layers should be named\nafter the channels in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
-	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "Same tempo as in file", "Set the song's tempo to match\nthe one of the MIDI file.") && wmenu = 0) w_midi_tempo=!w_midi_tempo
-	draw_text_dynamic(x1 + 300, y1 + 52, "Max. channel height:")
-	popup_set_window(x1 + 300, y1 + 52, 140, 16, "The maximum allowed layers per channel.\nClick and drag to adjust.")
-	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
-	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
-	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
-	if (draw_checkbox(x1 + 300, y1 + 112, w_midi_precision, condstr(w_midi_precision != 7, condstr(w_midi_precision != 3, "Double time precision", "Quadruple time precision"), "Octuple time precision"), condstr(w_midi_precision != 7, "Whether to use " + condstr(w_midi_precision = 3, "four times", "twice") + " as much space between\neach note to increase the placement precision.", "OMG PLZ NO")) && wmenu = 0) w_midi_precision=!w_midi_precision
+	if (draw_checkbox(x1 + 260, y1 + 32, w_midi_tempo, "Same tempo as in file", "Set the song's tempo to match\nthe one of the MIDI file.") && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	draw_text_dynamic(x1 + 260, y1 + 52, "Max. channel height:")
+	popup_set_window(x1 + 260, y1 + 52, 140, 16, "The maximum allowed layers per channel.\nClick and drag to adjust.")
+	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 380, y1 + 52, w_midi_maxheight, 1), 20)
+	if (draw_checkbox(x1 + 260, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
+	if (draw_checkbox(x1 + 260, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
+	
+	draw_text(x1 + 470, y1 + 32 + 20, "Time precision")
+	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
+	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
+	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
+	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4x", "Add four times as much space between each note.") && wmenu = 0) w_midi_precision = 3
+	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8x", "Add eight times as much space between each note.\n(This will create a very long song!)") && wmenu = 0) w_midi_precision = 7
+	
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
@@ -47,17 +54,17 @@ function draw_window_midi_import() {
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
 	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "保持八度范围", "是否自动将音符转换到2八度限制内。") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "导入音符音量", "是否将MIDI文件中音符音量应用到音符上。") && wmenu = 0) w_midi_vel=!w_midi_vel
-	if (draw_checkbox(x1 + 300, y1 + 112, w_midi_precision, condstr(w_midi_precision != 7, condstr(w_midi_precision != 3, "双倍节奏", "四倍节奏"), "八倍节奏"), condstr(w_midi_precision != 7, "是否将节奏" + condstr(w_midi_precision >= 3, "超级") + "加倍以变的更精准。", "差不多得了")) && wmenu = 0) w_midi_precision=!w_midi_precision
+	
+	draw_text(x1 + 470, y1 + 32 + 20, "Time precision")
+	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
+	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
+	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
+	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4x", "Add four times as much space between each note.") && wmenu = 0) w_midi_precision = 3
+	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8x", "Add eight times as much space between each note.\n(This will create a very long song!)") && wmenu = 0) w_midi_precision = 7
+	
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "记住我的更改", "下次导入MIDI文件时是否使用同样的设定。", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "导入") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
-	}
-	if (keyboard_check_pressed(ord("L")) && keyboard_check(vk_control) && wmenu = 0) {
-		if (keyboard_check(vk_f3)) {
-			w_midi_precision = 7
-		} else {
-			w_midi_precision = 3
-		}
 	}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, condstr(language != 1, "Use default", "使用默认值")) && wmenu = 0) {
 	    if (question(condstr(language != 1, "Are you sure?", "你确定吗？"), condstr(language != 1, "Confirm", "确定"))) { 
