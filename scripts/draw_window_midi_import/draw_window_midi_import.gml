@@ -55,7 +55,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "保持八度范围", "是否自动将音符转换到2八度限制内。") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "导入音符音量", "是否将MIDI文件中音符音量应用到音符上。") && wmenu = 0) w_midi_vel=!w_midi_vel
 	
-	draw_text(x1 + 470, y1 + 32 + 20, "精准度")
+	draw_text_dynamic(x1 + 470, y1 + 32 + 20, "精准度")
 	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "调整音符间的距离，以在中间放下更多音符。")
 	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1倍", "与MIDI文件中音符间距一致。") && wmenu = 0) w_midi_precision = 0
 	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2倍", "在音符间使用两倍间距。") && wmenu = 0) w_midi_precision = 1
