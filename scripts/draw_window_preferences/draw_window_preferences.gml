@@ -283,7 +283,7 @@ function draw_window_preferences() {
 		draw_areaheader(x1 + 22, y1 + 334 + (theme = 3) * 22 - 170 * isplayer, 456, 65, "Discord")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Displays info about your current\nsong in your Discord profile.", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Whether to display info about your current\nsong in your Discord status activity.", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
@@ -314,10 +314,10 @@ function draw_window_preferences() {
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (language != 1) {
-		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nkey it out in your video editor when recording the screen.", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Activate sound when navigating in the Fluent theme.", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "The dark color mode for the Fluent theme.", (theme != 3), true)) fdark = !fdark
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Transparent effect", "Render acrylic and mica effect for extend menus, tooltips and floating messages in the Fluent theme.", (theme != 3), true)) acrylic = !acrylic
+		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nremove in your video editor when recording the screen.", false, true)) blackout = !blackout
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Whether to play sound effects\nwhen navigating the interface. (Only applies to the Fluent theme.)", (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "Whether to use darker colors on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) fdark = !fdark
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Transparency effects", "Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) acrylic = !acrylic
 		} else {
 		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，用于剪辑时扣掉。", false, true)) blackout = !blackout
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "在Fluent主题时的界面音效。", (theme != 3), true)) windowsound = !windowsound
@@ -345,7 +345,6 @@ function draw_window_preferences() {
 			if (mouse_check_button_released(mb_left) && accentclick) {
 				window = w_setaccent
 				resetcolor = true
-				//draw_window_set_accent() // We need to draw it once here; otherwise, it will only be drawn on the next frame and not be initialized properly (prevwindow = window).
 				if (windowsound) play_sound(soundinvoke, 45, 100, 50, 0)
 			}
 		}
@@ -530,7 +529,7 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
 		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
 		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
-		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "More audio channels", "Increase the amount of sounds that can\nplay at once.")) channelstoggle = !channelstoggle
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "Use more audio channels", "Whether to increase the number\nof sounds that can play at once.")) channelstoggle = !channelstoggle
 		if (theme = 3) draw_theme_font(font_info_med)
 		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "Tempo unit")
 		if (theme = 3) draw_theme_font(font_main)
