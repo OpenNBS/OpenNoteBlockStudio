@@ -4,10 +4,10 @@ function draw_msg(){
 	str = msgcontent
 	fnt = currentfont
 	draw_theme_font(font_info_med_bold)
-	x1 = (rw - string_width_dynamic(str)) / 2
-	x2 = (rw + string_width_dynamic(str)) / 2
-	y1 = rh * 0.8
-	y2 = rh * 0.8 - 20
+	x1 = (msgx - string_width_dynamic(str)) / 2
+	x2 = (msgx + string_width_dynamic(str)) / 2
+	y1 = msgy
+	y2 = msgy - 20
 	draw_set_color(7368816)
 	if (theme = 3 && msgalpha >= 0.5 && acrylic) draw_surface_blur(application_surface, x1 - 10, y1 - 30, x2 - x1 + 20, 40, 0.5)
 	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
@@ -29,7 +29,7 @@ function draw_msg(){
 	if (theme = 3 && acrylic) draw_acrylic_texture(x1 - 10, y1 - 30, x2 - x1 + 20, 40)
 	draw_theme_color()
 	draw_text_dynamic(x1, y1 - 10 - string_height(str) / 2, str)
-	if (current_time - msgstart >= 1000){
+	if (current_time - msgstart >= (msgtime * 1000)){
 		if (msgalpha > 0) {
 			msgalpha -= 1/7.5 * (30 / room_speed) * (1 / currspeed)
 		} else {

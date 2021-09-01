@@ -37,5 +37,13 @@ function draw_window_set_tempo() {
 		settempo = 0
 		window = 0
 	}
+	
+	if (window == 0) {
+		// Immediately after closing window
+		if (tutorial_tempobox == 1) {
+			set_msg("Good! Right-clicking the box\nwill show some handy options.", 7.0, 228, 118)
+			tutorial_tempobox = 2
+		}
+	}
 }
 

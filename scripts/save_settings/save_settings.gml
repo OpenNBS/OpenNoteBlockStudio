@@ -148,6 +148,7 @@ function save_settings() {
 	ini_write_real_clean("warnings", "octaves",    warning_octaves)
 	ini_write_real_clean("warnings", "instrument", warning_instrument)
 	ini_write_real_clean("warnings", "schematics", warning_schematic)
+	ini_write_real_clean("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

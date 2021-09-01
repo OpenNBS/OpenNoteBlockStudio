@@ -157,6 +157,7 @@ function load_settings() {
 	warning_octaves =    ini_read_real("warnings", "octaves",    warning_octaves)
 	warning_instrument = ini_read_real("warnings", "instrument", warning_instrument)
 	warning_schematic =  ini_read_real("warnings", "schematics", warning_schematic)
+	tutorial_tempobox =  ini_read_real("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

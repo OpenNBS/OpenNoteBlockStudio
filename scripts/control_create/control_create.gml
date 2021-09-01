@@ -271,6 +271,7 @@ function control_create() {
 	warning_octaves = 0
 	warning_instrument = 0
 	warning_schematic = 0
+	tutorial_tempobox = 0
 
 	// Interface
 	window = 0

@@ -2065,10 +2065,14 @@ function control_draw() {
 				text_focus = 100
 			}
 			// Drag
-		    if (mouse_check_button(mb_left) && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) { // this condition is met as soon as mouse down, window changes, and the block above never runs
+		    if (mouse_check_button(mb_left) && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) {
 		        curs = cr_size_ns
 				tempodrag = tempo
 		        window = w_dragtempo
+				if (tutorial_tempobox == 0) {
+					set_msg("Tip: click the tempo box\nto enter a value!", 7.0, 208, 118)
+					tutorial_tempobox = 1
+				}
 			}
 
 		    if (mouse_check_button_pressed(mb_right)) {
@@ -2094,6 +2098,10 @@ function control_draw() {
 																check(tempo = 30) + string(30 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
 																"节奏测量器......")
+				if (tutorial_tempobox == 2) {
+					set_msg("Way to go!", 5.0, 158, 118)
+					tutorial_tempobox = 3
+				}
 			}
 		}
 		if (window = w_dragtempo) {
