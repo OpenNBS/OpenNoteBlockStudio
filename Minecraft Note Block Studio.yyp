@@ -615,6 +615,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"Turkish March.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":"wallpaper.bat","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":"credits.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"metronome_click.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"metronome.ogg","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.3.570",

@@ -940,12 +940,13 @@ function control_draw() {
 			if (tempo = 30) pos -= 1
 			// show_debug_message(marker_pos)
 			if ((pos mod 4 == 0) && (metronome_played < pos)) {
-				ins = instrument_list[| 4]
 				if (pos mod (4 * timesignature) == 0) {
+					ins = soundmetronomeclick
 					if (!loop || pos < enda + 1) { // avoid double ticks when looping
-						if (ins.loaded) play_sound(ins, 57, 100, 100, 0)
+						if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
 					}
 				} else {
+					ins = soundmetronome
 					if (ins.loaded) play_sound(ins, 45, 100, 100, 0)
 				}
 				metronome_played = pos + 1

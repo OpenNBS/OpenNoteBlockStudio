@@ -397,6 +397,14 @@ function control_create() {
 	soundgoback.key = 45
 	soundgoback.filename = "UI/goback.ogg"
 	soundgoback.user = 0
+	soundmetronome = create(obj_instrument)
+	soundmetronome.key = 45
+	soundmetronome.filename = "UI/metronome.ogg"
+	soundmetronome.user = 0
+	soundmetronomeclick = create(obj_instrument)
+	soundmetronomeclick.key = 45
+	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	soundmetronomeclick.user = 0
 
 	instrument = instrument_list[| 0]
 	insbox_start = 0
