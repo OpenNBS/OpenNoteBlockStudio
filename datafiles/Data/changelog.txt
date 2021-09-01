@@ -35,7 +35,8 @@ amount in your profile.
 * Added an option to export to the structure block format (*.nbt) to support
 1.13+ versions of Minecraft.
 * Added an option to enter the tempo manually, or to tap along the song
-you want to make an cover for to measure the tempo.
+you want to make an cover for to measure the tempo. Hints will appear on the
+tempo box if you try to drag the tempo.
 * Added support for Simplified Chinese:
    * Added Source Han Sans as the Chinese font.
    * Translated all text to Chinese.
@@ -63,12 +64,17 @@ little space in it.
 into it.
 * Added new images for the installer and README.md, replacing the old ones.
 * Replaced old dialog functions to new ones.
-* Added an option to quadruple or octuple MIDI import tempo by pressing
-Ctrl + L and Ctrl + F3 + L.
+* Added options to quadruple or octuple the time precision in the MIDI
+import menu.
+* Added Discord link to the greeting window, replacing David's website.
+* Added a credits section in the about window to thank everyone that made
+OpenNBS what it is!
+* Replaced the metronome sound to the one made by ShinkoNet.
 * Fixed right click menus going off the screen if you open it too close to the
 right window border.
 * Fixed original author doesn't show up if there is no song author.
 * Fixed some texts going out of the borders.
+* Fixed menu width being too small with shortcuts.
 * Fixed sections not moving the same as the song when using tick to tick.
 * Fixed editor lines too thin when on low window scaling settings.
 * Fixed the show old warning setting doesn't work on classic NBS files.
