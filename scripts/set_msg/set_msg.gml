@@ -1,9 +1,9 @@
-function set_msg(str, time, xx, yy){
+function set_msg(str, time = 1.0, xx = rw, yy = rh * 0.8){
 	msgcontent = string(str)
 	msgstart = current_time
-	msgtime = !is_undefined(time) ? time : 1.0 // Duration (in seconds)
-	msgx = !is_undefined(xx) ? xx : rw
-	msgy = !is_undefined(yy) ? yy : rh * 0.8
+	msgtime = time // Duration (in seconds)
+	msgx = xx
+	msgy = yy
 	msgalpha = 1
 	showmsg = 1
 }
