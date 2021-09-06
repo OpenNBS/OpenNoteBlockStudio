@@ -62,6 +62,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "percentvel",         percentvel)
 	ini_write_real_clean("preferences", "language",           language)
 	ini_write_real_clean("preferences", "acrylic",            acrylic)
+	ini_write_real_clean("preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

@@ -63,6 +63,7 @@ function load_settings() {
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
 	language =           ini_read_real(  "preferences", "language",           language)
 	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
+	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
