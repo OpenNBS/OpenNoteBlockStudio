@@ -9,7 +9,7 @@ function draw_msg(){
 	y1 = msgy
 	y2 = msgy - 20
 	draw_set_color(7368816)
-	if (theme = 3 && msgalpha >= 0.5 && acrylic) draw_surface_blur(application_surface, x1 - 10, y1 - 30, x2 - x1 + 20, 40, 0.5)
+	if (theme = 3 && msgalpha >= 0.5 && acrylic) draw_surface_blur_alt(application_surface, x1 - 10, y1 - 30, x2 - x1 + 20, 40, 0.5)
 	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)

@@ -187,6 +187,7 @@
     {"id":{"name":"menu_draw","path":"scripts/menu_draw/menu_draw.yy",},"order":4,},
     {"id":{"name":"menu_print","path":"scripts/menu_print/menu_print.yy",},"order":5,},
     {"id":{"name":"draw_window_tempo_tapper","path":"scripts/draw_window_tempo_tapper/draw_window_tempo_tapper.yy",},"order":28,},
+    {"id":{"name":"blur_scripts_alt","path":"scripts/blur_scripts_alt/blur_scripts_alt.yy",},"order":39,},
     {"id":{"name":"message","path":"scripts/message/message.yy",},"order":6,},
     {"id":{"name":"popup_set","path":"scripts/popup_set/popup_set.yy",},"order":7,},
     {"id":{"name":"popup_set_window","path":"scripts/popup_set_window/popup_set_window.yy",},"order":8,},
