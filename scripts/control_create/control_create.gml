@@ -153,6 +153,7 @@ function control_create() {
 	timeline_pressa = -1
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 	currspeed = 0
+	taskbar = 1
 
 	// Note blocks
 	starta = 0

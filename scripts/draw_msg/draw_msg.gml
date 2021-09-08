@@ -4,10 +4,10 @@ function draw_msg(){
 	str = msgcontent
 	fnt = currentfont
 	draw_theme_font(font_info_med_bold)
-	x1 = (msgx - string_width_dynamic(str)) / 2
-	x2 = (msgx + string_width_dynamic(str)) / 2
-	y1 = msgy
-	y2 = msgy - 20
+	x1 = (msgx + (rw + 1) * (msgx = -1) - string_width_dynamic(str)) / 2
+	x2 = (msgx + (rw + 1) * (msgx = -1) + string_width_dynamic(str)) / 2
+	y1 = msgy + (rh * 0.8 + 1) * (msgy = -1)
+	y2 = msgy + (rh * 0.8 + 1) * (msgy = -1) - 20
 	draw_set_color(7368816)
 	if (theme = 3 && msgalpha >= 0.5 && acrylic) draw_surface_blur_alt(application_surface, x1 - 10, y1 - 30, x2 - x1 + 20, 40, 0.5)
 	if (theme = 3) draw_roundrect(x1 - 10, y1 + 10, x2 + 10, y2 - 10, 1)

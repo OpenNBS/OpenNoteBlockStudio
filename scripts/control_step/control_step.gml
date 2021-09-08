@@ -1,7 +1,7 @@
 function control_step() {
 	update_window()
 	if (os_version > 393217){
-	if (enda = 0) {
+	if (enda = 0 || !taskbar) {
 		window_noprogress(window_handle())
 	} else {
 		if (playing) window_normal(window_handle())
