@@ -2070,7 +2070,8 @@ function control_draw() {
 				tempodrag = tempo
 		        window = w_dragtempo
 				if (tutorial_tempobox == 0) {
-					set_msg("Tip: click the tempo box\nto enter a value!", 7.0, 208, 118)
+					if (language != 1) set_msg("Tip: click the tempo box\nto enter a value!", 7.0, 208, 118)
+					else set_msg("小贴士：单击节奏框可以手动输入！", 7.0, 208, 118)
 					tutorial_tempobox = 1
 				}
 			}
@@ -2099,7 +2100,8 @@ function control_draw() {
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
 																"节奏测量器......")
 				if (tutorial_tempobox == 2) {
-					set_msg("Way to go!", 5.0, 158, 118)
+					if (language != 1) set_msg("Way to go!", 5.0, 158, 118)
+					else set_msg("干得好！", 5.0, 158, 118)
 					tutorial_tempobox = 3
 				}
 			}

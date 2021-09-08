@@ -41,7 +41,8 @@ function draw_window_set_tempo() {
 	if (window == 0) {
 		// Immediately after closing window
 		if (tutorial_tempobox == 1) {
-			set_msg("Good! Right-clicking the box\nwill show some handy options.", 7.0, 228, 118)
+			if (language != 1) set_msg("Good! Right-clicking the box\nwill show some handy options.", 7.0, 228, 118)
+			else set_msg("很好！右键点击此框可以显示更多选项。", 7.0, 228, 118)
 			tutorial_tempobox = 2
 		}
 	}
