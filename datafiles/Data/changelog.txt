@@ -1,6 +1,7 @@
 Changes in v3.9.0 (2021.09.06):
 * Added Discord Rich Presence. Show the world what you are working on!
-   Your current song and note count will appear on your Discord status activity for everyone to see.
+   Your current song and note count will appear on your Discord status activity
+for everyone to see.
    * You can disable it in Preferences in case you prefer to hide that info.
 * Added a new theme, inspired by Microsoft's Fluent Design:
    * Features new fonts, icons, layouts and much more!
@@ -39,7 +40,8 @@ Changes in v3.9.0 (2021.09.06):
 * Added Simplified Chinese translations!
    * The language can be changed with a new setting in Preferences.
    * The language will change automatically based on your system settings.
-   * On the Simplified Chinese language, opening the tutorial videos will redirect you to Bilibili instead of YouTube.
+   * On the Simplified Chinese language, opening the tutorial videos will redirect
+you to Bilibili instead of YouTube.
 * The metronome now has its own unique sounds!
 * Added more FPS options: you can now use 120, 144 or 240 FPS!
 * Added two new demo songs!
