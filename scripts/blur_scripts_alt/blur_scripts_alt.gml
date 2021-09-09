@@ -17,13 +17,7 @@ function sprite_create_blur_alt(sprite, downamount, width, height, blurradius, q
 	try {
 		return sprite_create_blur(sprite, downamount, width, height, blurradius, quality, directions);
 	} catch (exc) {
-		var surf = surface_create(width, height);
-		surface_set_target(surf);
-		draw_sprite_stretched(sprite, 0, 0, 0, width, height);
-		surface_reset_target();
-		var spr = sprite_create_from_surface(surf, 0, 0, width, height, 0, 0, 0, 0);
-		surface_free(surf);
-		return spr;
+		return sprite;
 	}
 }
 
@@ -31,13 +25,9 @@ function draw_surface_blur_alt(surface, x, y, w, h, downamount) {
 	try {
 		draw_surface_blur(surface, x, y, w, h, downamount);
 	} catch (exc) {
-		var surf = surface_create(w, h);
-		surface_set_target(surf);
-		draw_surface_part(surf, x, y, w, h, 0, 0);
-		surface_reset_target();
-		surface_free(surf);
+		return;
 	}
 }
 
-// NB: wave, sprite_blur_clear and sprite_draw_blur were suppressed
+// NB: sprite_blur_clear and sprite_draw_blur were suppressed
 // from this script as they aren't currently used.
