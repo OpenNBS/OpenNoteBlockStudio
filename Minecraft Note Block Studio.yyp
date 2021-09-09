@@ -278,7 +278,6 @@
     {"id":{"name":"directory_create_lib","path":"scripts/directory_create_lib/directory_create_lib.yy",},"order":0,},
     {"id":{"name":"directory_delete_lib","path":"scripts/directory_delete_lib/directory_delete_lib.yy",},"order":1,},
     {"id":{"name":"directory_exists_lib","path":"scripts/directory_exists_lib/directory_exists_lib.yy",},"order":2,},
-    {"id":{"name":"draw_window_preferences_f","path":"scripts/draw_window_preferences_f/draw_window_preferences_f.yy",},"order":27,},
     {"id":{"name":"execute","path":"scripts/execute/execute.yy",},"order":3,},
     {"id":{"name":"spr_acrylic_texture","path":"sprites/spr_acrylic_texture/spr_acrylic_texture.yy",},"order":42,},
     {"id":{"name":"NekoPresence","path":"extensions/NekoPresence/NekoPresence.yy",},"order":0,},
