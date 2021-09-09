@@ -1,37 +1,41 @@
 Changes in v3.9.0 (2021.09.06):
 * Added Discord Rich Presence. Show the world what you are working on!
    Your current song and note count will appear on your Discord status activity
-   for everyone to see.
-   * You can disable it in Preferences in case you prefer to hide that info.
+   for everyone to see. If you prefer to hide your status, you can disable this
+   option in Preferences.
 * Added a new theme, inspired by Microsoft's Fluent Design:
    * Features new fonts, icons, layouts and much more!
-   * Is enabled by default; the previous themes are still available from
+   * Enabled by default; the previous themes are still available from the
       Preferences.
    * Comes with a light and dark version! The dark theme will be enabled
       automatically if you were using the Dark theme before.
    * Allows you to pick an accent color to be applied to various details across
-      the interface!
-   * Features sounds when navigating the interface. You can disable them in
+      the interface! Click the color widget by the Theme dropdown menu to pick
+      your favorite color.
+   * Features sounds when navigating the interface! You can toggle them in
       Preferences.
    * Added a new piano design matching the theme. It will also respond to
       dark mode!
+   * Some checkboxes across the interface were replaced with toggle switches.
    * Features window animations, fading effects and dimmed backgrounds.
+     switches.
    * Features the Acrylic material, with transparency effects on menus and 
-      tooltips.
+      tooltips!
    * Features the Mica material, allowing you to see your desktop wallpaper
       through the window!
-   * Transparency effects can be disabled in Preferences.
+   * Transparency effects can be toggled in Preferences.
 * The tempo changing controls were revamped:
   * Along with dragging, you can now click the tempo box to type a precise
-     tempo value.
+     value!
   * You can now right-click the tempo box to choose the tempo unit or change
      the tempo to a preset value.
   * Added a tempo tapper! Right-click the tempo box, click 'Tempo tapper',
-     and tap the T key to set a new tempo.
+     and tap the T key to set a new tempo. Useful to match the tempo of the
+	 original song if you're making a cover!
   * The maximum allowed tempo was increased to 60 ticks per second (three
      times faster than Minecraft's tick speed).
   * The song tempo is no longer restricted to steps of 0.25 ticks per second.
-  * Added popup hints to guide you through the new features.
+  * Added popup hints to guide you through the new tempo controls.
 * Added new keyboard shortcuts:
    * F7 to change the max framerate
    * Ctrl + P to open/close Preferences
@@ -60,8 +64,8 @@ Changes in v3.9.0 (2021.09.06):
 * You can now play on a MIDI device while the song is playing, allowing you
    to play live accompaniments with the song.
 * The 'Set velocity' macro now allows you to apply the velocity as a percentage
-   of the current note's velocity.
-* It's now possible to open NBS files by dragging them into the program.
+   of each note's current velocity.
+* It's now possible to open .nbs files by dragging them into the program.
 * If you are using Windows 8 or above, the taskbar icon will now show the
    progress of the song playback.
 * Added popup messages when performing certain actions, like toggling 
@@ -74,32 +78,29 @@ Changes in v3.9.0 (2021.09.06):
    the Help menu and the About window. Join the server to connect with other
    note block musicians!
 * Added a link for you to report bugs to the Help menu.
-* Added a secret  R A I N B O W   M O D E!! Just press Ctrl + Shift + F5 while
-  using the Fluent theme. Okay, it's not so secret anymore, is it? ;)
+* Added a secret RAINBOW MODE!! Just press Ctrl + Shift + F5 while using the
+  Fluent theme. Okay, it's not so secret anymore, is it? ;)
 * Bugfixes and improvements:
   * A new tab was added to Preferences.
   * The song will now be marked as unsaved when you cut, paste, change or
      delete a selection.
   * Various radio boxes across the interface were changed to dropdown menus.
-  * Various checkboxes across the interface were replaced with toggle
-     switches.
   * Fixed right-click menu going off-screen when opening it too close to the
      right edge of the window.
-  * Fixed menu width being too small with keyboard shortcuts, causing text
-     to overlap or flow out of the menu box.
+  * Fixed menu width being too small in some cases, causing text to overlap or
+     flow out of the menu.
   * Fixed 'Original author' not appearing in song stats if the 'Song author' 
-     was empty.
-  * Fixed bar lines being too thin or disappearing when using a smaller
-     window scale.
+     is empty.
+  * Fixed lines in the note block area being too thin or disappearing when using
+     a smaller window scale.
   * Fixed sections moving more smoothly than the song when using the tick by
      tick scroll option.
   * Fixed the 'Show old warning' option not working for Classic songs.
   * Fixed the secret clipboard editor not working properly.
   * Fixed excessive disk reads on the Changelist window.
   * Fixed a crash when playing a song under some specific circumstances.
-  * Text boxes will now react when you hover the mouse over them.
   * "Hardened Clay" and "Stained Clay" were renamed to "Terracotta" in 
-     schematic exports, in accordance to Minecraft: Java Edition 1.12.
+     schematic exports, conforming to their current names in Minecraft.
   
 Changes in v3.8.3 (2021.07.23):
 * Added a window scale setting, which makes elements on screen larger or
