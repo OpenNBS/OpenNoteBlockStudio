@@ -25,7 +25,7 @@ function draw_window_macro_setvelocity() {
 
 	draw_theme_color()
 	if (language != 1) {if (draw_checkbox(x1 + 15, y1 + 80, percentvel, "Percent", "Apply the velocity as a percentage\nof each note's current velocity.", 0, 1)) percentvel = !percentvel}
-	else {if (draw_checkbox(x1 + 15, y1 + 80, percentvel, "百分比", "按百分比应用至音符。", 0, 1)) percentvel = !percentvel}
+	else {if (draw_checkbox(x1 + 15, y1 + 80, percentvel, "百分比", "按百分比应用至每个音符。", 0, 1)) percentvel = !percentvel}
 	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确定"))) {
 		windowalpha = 0
 		windowclose = 0
