@@ -38,11 +38,13 @@ function draw_window_macro_setvelocity() {
 		val = 0
 		while (val < total_vals) {
 			val += 4
-			arr_data[val] = real(arr_data[val]) * setvel / 100
+			if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
+			else arr_data[val] = setvel
 			val += 3
 			while arr_data[val] != -1 {
 				val += 3
-				arr_data[val] = real(arr_data[val]) * setvel / 100
+				if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
+				else arr_data[val] = setvel
 				val += 3
 			}
 			val ++
