@@ -330,7 +330,7 @@ function control_draw() {
 		if (!blackout) {
 			if ((starta + a) mod (timesignature * 4) == 0) {
 				draw_set_alpha(0.3)
-				if (window_scale < 1) draw_set_alpha(0.6) //Issue #254, make the lines more obvious when scaled down
+				if (window_scale < 1) draw_set_alpha(0.5) //Issue #254, make the lines more obvious when scaled down
 				if (!isplayer) draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
 			} else {
 				draw_set_alpha(0.1)
