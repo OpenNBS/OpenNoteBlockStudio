@@ -1,13 +1,15 @@
 function macros() {
-#macro gm_runtime_version "2.3.3.434"
-#macro version_date "2021.08.14"
+#macro gm_runtime_version "2.3.3.437"
+#macro version_date "2021.09.12"
 #macro version "3.9.0"
 #macro snapshot 1 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
 
-#macro link_download "https://hielkeminecraft.github.io/OpenNoteBlockStudio/"
-#macro link_topic "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/2945101-open-minecraft-note-block-studio"
+#macro link_github "https://github.com/HielkeMinecraft/OpenNoteBlockStudio"
+#macro link_report "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/new/choose"
+#macro link_website "https://hielkeminecraft.github.io/OpenNoteBlockStudio"
+#macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"
@@ -96,5 +98,5 @@ function macros() {
 #macro font_info_big 5
 #macro font_info_med 6
 #macro font_info_med_bold 7
-
+#macro font_med 8
 }

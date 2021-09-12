@@ -60,6 +60,9 @@ function save_settings() {
 	ini_write_real_clean("preferences", "accent3",            accent3)
 	ini_write_real_clean("preferences", "structure",          structure)
 	ini_write_real_clean("preferences", "percentvel",         percentvel)
+	ini_write_real_clean("preferences", "language",           language)
+	ini_write_real_clean("preferences", "acrylic",            acrylic)
+	ini_write_real_clean("preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
@@ -146,6 +149,7 @@ function save_settings() {
 	ini_write_real_clean("warnings", "octaves",    warning_octaves)
 	ini_write_real_clean("warnings", "instrument", warning_instrument)
 	ini_write_real_clean("warnings", "schematics", warning_schematic)
+	ini_write_real_clean("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

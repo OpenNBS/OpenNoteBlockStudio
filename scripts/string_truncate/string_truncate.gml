@@ -10,7 +10,7 @@ function string_truncate(argument0, argument1) {
 		truncate_start = argument[2]
 	}
 	
-	if (string_width(str) > maxwidth) {
+	if (string_width_dynamic(str) > maxwidth) {
 		if (truncate_start) {
 			return "..." + string_maxwidth(str, maxwidth, true)
 		} else {

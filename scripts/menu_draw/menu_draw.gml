@@ -26,14 +26,18 @@ function menu_draw() {
 	    draw_set_alpha(1)
 	    if (o.theme != 3) draw_set_color(window_background)
 	    else draw_set_color(16382457)
-		if (obj_controller.fdark && theme = 3) draw_set_color(2829099)
+		//if (obj_controller.fdark && theme = 3) draw_set_color(2829099)
+		if (obj_controller.fdark && theme = 3) draw_set_color(2697513)
 		if (o.theme = 3) {
-			draw_sprite(spr_shadowext, 0 + 5 * (obj_controller.fdark && theme = 3), dx + 4, dy + hei + 2)
-			draw_sprite_ext(spr_shadowext, 1 + 5 * (obj_controller.fdark && theme = 3), dx + 9, dy + hei + 2, menu_wid[m] - 7, 1, 0, -1, 1)
+			draw_sprite(spr_shadowext, 0 + 5 * (obj_controller.fdark && theme = 3), dx + 4, dy + hei + 1)
+			draw_sprite_ext(spr_shadowext, 1 + 5 * (obj_controller.fdark && theme = 3), dx + 9, dy + hei + 1, menu_wid[m] - 7, 1, 0, -1, 1)
 			draw_sprite(spr_shadowext, 2 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + hei + 1)
-			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 9, 1, hei - 7, 0, -1, 1)
-			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 2, dy + 4)
+			draw_sprite_ext(spr_shadowext, 3 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + 9, 1, hei - 7, 0, -1, 1)
+			draw_sprite(spr_shadowext, 4 + 5 * (obj_controller.fdark && theme = 3), dx + menu_wid[m] + 1, dy + 4)
 		}
+		if (theme = 3 && o.acrylic) draw_surface_blur_alt(application_surface, dx, dy, menu_wid[m] + 1, hei + 1, 0.5)
+		if (theme = 3 && o.acrylic) draw_set_alpha(0.6)
+		if (theme = 3 && o.acrylic) draw_acrylic_texture(dx, dy, menu_wid[m] + 1, hei + 1)
 	    if (theme != 3) draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 		else draw_roundrect(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)
@@ -101,10 +105,10 @@ function menu_draw() {
 					//}
 				//}
 	            draw_set_alpha(1 - 0.5 * item_inactive[m, i])
-	            draw_text(dx + 36, dy + iy, item_str[m, i])
+	            draw_text_dynamic(dx + 36, dy + iy, item_str[m, i])
 	            if (item_shortcut[m, i] != "") {
 	                draw_set_halign(fa_right)
-	                draw_text(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
+	                draw_text_dynamic(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
 	                draw_set_halign(fa_left)
 	            }
 				if (theme != 3) {
@@ -146,7 +150,7 @@ function menu_draw() {
 	    instance_destroy()
 	}
 	draw_theme_color()
-
+	
 
 
 }

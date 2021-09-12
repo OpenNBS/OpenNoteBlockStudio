@@ -1,7 +1,8 @@
 function calculate_size() {
 	var a, b, c;
+	if (language != 1) {
 	if (warning_schematic == 0) {
-		message("The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, first create a world in 1.12, import the schematic, then open the world in 1.13 or above. Newer versions may be supported in the future.\n\nThis warning will never be shown again.", "Warning")
+		message("The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, please use the export to structure block function.\n\nThis warning will never be shown again.", "Warning")
 		warning_schematic = 1
 		save_settings()
 	}
@@ -21,6 +22,30 @@ function calculate_size() {
 	if (totalblocks - block_outside <= 0) {
 	    message("There are no blocks to export!", "Error")
 	    return 0
+	}
+	} else {
+	if (warning_schematic == 0) {
+		message("导出的schematic目前之和Minecraft: Java Edition 1.12及以下兼容。如想在1.13和以上使用，请使用结构方块格式导出。\n\n此警告将不再提示。", "警告")
+		warning_schematic = 1
+		save_settings()
+	}
+	if (block_outside > 0) {
+	    if (!question("一些方块在Minecraft的2八度范围外。你想无视这些方块导出Schematic吗？", "Minecraft兼容性")) return 0
+	}
+	if (block_custom > 0) {
+	    if (!question("一些方块带有自定义音色。继续导出吗？", "Minecraft兼容性")) return 0
+	}
+	if (block_pitched > 0) {
+	    if (!question("一些方块带有音符盒不支持的微分音。继续导出吗？", "Minecraft兼容性")) return 0
+	}
+	if (tempo != 10 && tempo != 5 && tempo != 2.5) {
+	    message("歌曲的节奏与Minecraft不兼容。所以，在游戏内的播放会和软件内的有差别。", "节奏")
+	}
+	selection_place(0)
+	if (totalblocks - block_outside <= 0) {
+	    message("没有方块可以导出！", "错误")
+	    return 0
+	}
 	}
 	// x = include locked
 	// y = tempo

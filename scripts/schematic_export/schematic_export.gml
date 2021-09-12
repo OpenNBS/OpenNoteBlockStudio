@@ -2,8 +2,8 @@ function schematic_export() {
 	// schematic_export()
 	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins, insblock;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
-	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
-	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), ""), "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
+	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -1020,7 +1020,8 @@ function schematic_export() {
 	    gzzip(temp_file, fn)
 	    instance_destroy()
 	}
-	message("Schematic saved!", "Schematic Export")
+	if (o.language != 1) message("Schematic saved!", "Schematic Export")
+	else message("Schematic已保存！", "导出Schematic")
 	window = w_schematic_export
 
 

@@ -40,7 +40,7 @@ function draw_piano_key(isblack, xx, yy, color, alpha, key, showkeybind, showcli
 			draw_text(xx + 19, yy + 34 + floor(7 * ispressed) - 8 * showkeybind, string(key - 33))
 		}
 		
-		draw_set_font(fnt_main)
+		draw_theme_font(font_main)
 	    if (showkeybind) {
 	        if ((editline mod 15) < 7 || key_edit != key) draw_text(xx + 19, yy + 39 + floor(7 * ispressed), chr(piano_key[key]))
 	    }

@@ -61,6 +61,9 @@ function load_settings() {
 	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
 	structure =          ini_read_real(  "preferences", "structure",          structure)
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
+	language =           ini_read_real(  "preferences", "language",           language)
+	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
+	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
@@ -155,6 +158,7 @@ function load_settings() {
 	warning_octaves =    ini_read_real("warnings", "octaves",    warning_octaves)
 	warning_instrument = ini_read_real("warnings", "instrument", warning_instrument)
 	warning_schematic =  ini_read_real("warnings", "schematics", warning_schematic)
+	tutorial_tempobox =  ini_read_real("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

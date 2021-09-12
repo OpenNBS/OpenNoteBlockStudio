@@ -11,7 +11,8 @@ function draw_window_set_tempo() {
 		w = 74
 	}
 	draw_set_alpha(1)
-	input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")")
+	if (language != 1) input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
+	else input = draw_inputbox(100, xx, 57, w, input, "输入新节奏（" + condstr(use_bpm, "拍数/分钟", "红石刻/秒") + "）", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
 	
 	// Prevent closing the box if user clicked on top of it
 	if (mouse_check_button_pressed(mb_left)) {
@@ -35,6 +36,15 @@ function draw_window_set_tempo() {
 	if (keyboard_check_pressed(vk_escape)) {
 		settempo = 0
 		window = 0
+	}
+	
+	if (window == 0) {
+		// Immediately after closing window
+		if (tutorial_tempobox == 1) {
+			if (language != 1) set_msg("Good! Right-clicking the box\nwill show some handy options.", 7.0, 228, 118)
+			else set_msg("很好！右键点击此框可以显示更多选项。", 7.0, 228, 118)
+			tutorial_tempobox = 2
+		}
 	}
 }
 
