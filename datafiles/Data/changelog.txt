@@ -24,7 +24,7 @@ Changes in v3.9.0 (2021.09.06):
    * Features the Mica material, allowing you to see your desktop wallpaper
       through the window!
    * Transparency effects can be toggled in Preferences.
-* The tempo changing controls were revamped:
+* The tempo changing controls were reworked:
   * Along with dragging, you can now click the tempo box to type a precise
      value!
   * You can now right-click the tempo box to choose the tempo unit or change
@@ -36,11 +36,12 @@ Changes in v3.9.0 (2021.09.06):
      times faster than Minecraft's tick speed).
   * The song tempo is no longer restricted to steps of 0.25 ticks per second.
   * Added popup hints to guide you through the new tempo controls.
-* Added new keyboard shortcuts:
+* Added new shortcuts:
    * F7 to change the max framerate
    * Ctrl + P to open/close Preferences
    * Ctrl + '+' to increase window scale
    * Ctrl + '-' to decrease window scale
+   * Ctrl + Scroll wheel to increase or decrease the window scale
 * Added Simplified Chinese translations!
    * The language can be changed with a new setting in Preferences.
    * The language will change automatically based on your system settings.
@@ -101,6 +102,7 @@ Changes in v3.9.0 (2021.09.06):
   * Fixed a crash when playing a song under some specific circumstances.
   * "Hardened Clay" and "Stained Clay" were renamed to "Terracotta" in 
      schematic exports, conforming to their current names in Minecraft.
+  * Updated the version number shown on the Windows program properties.
   
 Changes in v3.8.3 (2021.07.23):
 * Added a window scale setting, which makes elements on screen larger or
