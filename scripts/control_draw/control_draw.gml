@@ -631,34 +631,34 @@ function control_draw() {
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
 				if (language != 1) {
 	            if (keyboard_check_pressed(187) || (mouse_wheel_up() && mouse_check_button(mb_middle))) {
-					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("Window Scale => 67%")}
-					else if (window_scale < 0.75) {window_scale = 0.75 set_msg("Window Scale => 75%")}
-					else if (window_scale < 0.8) {window_scale = 0.8 set_msg("Window Scale => 80%")}
-					else if (window_scale < 0.9) {window_scale = 0.9 set_msg("Window Scale => 90%")}
-					else if (window_scale < 1) {window_scale = 1 set_msg("Window Scale => 100%")}
-					else if (window_scale < 1.25) {window_scale = 1.25 set_msg("Window Scale => 125%")}
-					else if (window_scale < 1.5) {window_scale = 1.5 set_msg("Window Scale => 150%")}
-					else if (window_scale < 1.75) {window_scale = 1.75 set_msg("Window Scale => 175%")}
-					else if (window_scale < 2) {window_scale = 2 set_msg("Window Scale => 200%")}
-					else if (window_scale < 2.5) {window_scale = 2.5 set_msg("Window Scale => 250%")}
-					else if (window_scale < 3) {window_scale = 3 set_msg("Window Scale => 300%")}
-					else if (window_scale < 3.5) {window_scale = 3.5 set_msg("Window Scale => 350%")}
-					else if (window_scale < 4) {window_scale = 4 set_msg("Window Scale => 400%")}
+					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("Window scale => 67%")}
+					else if (window_scale < 0.75) {window_scale = 0.75 set_msg("Window scale => 75%")}
+					else if (window_scale < 0.8) {window_scale = 0.8 set_msg("Window scale => 80%")}
+					else if (window_scale < 0.9) {window_scale = 0.9 set_msg("Window scale => 90%")}
+					else if (window_scale < 1) {window_scale = 1 set_msg("Window scale => 100%")}
+					else if (window_scale < 1.25) {window_scale = 1.25 set_msg("Window scale => 125%")}
+					else if (window_scale < 1.5) {window_scale = 1.5 set_msg("Windows scale => 150%")}
+					else if (window_scale < 1.75) {window_scale = 1.75 set_msg("Window scale => 175%")}
+					else if (window_scale < 2) {window_scale = 2 set_msg("Window scale => 200%")}
+					else if (window_scale < 2.5) {window_scale = 2.5 set_msg("Window scale => 250%")}
+					else if (window_scale < 3) {window_scale = 3 set_msg("Window scale => 300%")}
+					else if (window_scale < 3.5) {window_scale = 3.5 set_msg("Window scale => 350%")}
+					else if (window_scale < 4) {window_scale = 4 set_msg("Window scale => 400%")}
 				}
 	            if (keyboard_check_pressed(189) || (mouse_wheel_down() && mouse_check_button(mb_middle))) {
-					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5 set_msg("Window Scale => 350%")}
-					else if (window_scale > 3) {window_scale = 3 set_msg("Window Scale => 300%")}
-					else if (window_scale > 2.5) {window_scale = 2.5 set_msg("Window Scale => 250%")}
-					else if (window_scale > 2) {window_scale = 2 set_msg("Window Scale => 200%")}
-					else if (window_scale > 1.75) {window_scale = 1.75 set_msg("Window Scale => 175%")}
-					else if (window_scale > 1.5) {window_scale = 1.5 set_msg("Window Scale => 150%")}
-					else if (window_scale > 1.25) {window_scale = 1.25 set_msg("Window Scale => 125%")}
-					else if (window_scale > 1) {window_scale = 1 set_msg("Window Scale => 100%")}
-					else if (window_scale > 0.9) {window_scale = 0.9 set_msg("Window Scale => 90%")}
-					else if (window_scale > 0.8) {window_scale = 0.8 set_msg("Window Scale => 80%")}
-					else if (window_scale > 0.75) {window_scale = 0.75 set_msg("Window Scale => 75%")}
-					else if (window_scale > 0.67) {window_scale = 0.67 set_msg("Window Scale => 67%")}
-					else if (window_scale > 0.5) {window_scale = 0.5 set_msg("Window Scale => 50%")}
+					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5 set_msg("Window scale => 350%")}
+					else if (window_scale > 3) {window_scale = 3 set_msg("Window scale => 300%")}
+					else if (window_scale > 2.5) {window_scale = 2.5 set_msg("Window scale => 250%")}
+					else if (window_scale > 2) {window_scale = 2 set_msg("Window scale => 200%")}
+					else if (window_scale > 1.75) {window_scale = 1.75 set_msg("Window scale => 175%")}
+					else if (window_scale > 1.5) {window_scale = 1.5 set_msg("Window scale => 150%")}
+					else if (window_scale > 1.25) {window_scale = 1.25 set_msg("Window scale => 125%")}
+					else if (window_scale > 1) {window_scale = 1 set_msg("Window scale => 100%")}
+					else if (window_scale > 0.9) {window_scale = 0.9 set_msg("Window scale => 90%")}
+					else if (window_scale > 0.8) {window_scale = 0.8 set_msg("Window scale => 80%")}
+					else if (window_scale > 0.75) {window_scale = 0.75 set_msg("Window scale => 75%")}
+					else if (window_scale > 0.67) {window_scale = 0.67 set_msg("Window scale => 67%")}
+					else if (window_scale > 0.5) {window_scale = 0.5 set_msg("Window scale => 50%")}
 				}
 				} else {
 				if (keyboard_check_pressed(187) || (mouse_wheel_up() && mouse_check_button(mb_middle))) {
@@ -847,23 +847,23 @@ function control_draw() {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
-			set_msg("FPS => 60")
+			set_msg("Max framerate => 60 FPS")
 		} else if (refreshrate = 1) {
 			game_set_speed(120,gamespeed_fps)
 			refreshrate = 2
-			set_msg("FPS => 120")
+			set_msg("Max framerate => 120 FPS")
 		} else if (refreshrate = 2) {
 			game_set_speed(144,gamespeed_fps)
 			refreshrate = 3
-			set_msg("FPS => 144")
+			set_msg("Max framerate => 144 FPS")
 		} else if (refreshrate = 3) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate = 4
-			set_msg("FPS => 240")
+			set_msg("Max framerate => 240 FPS")
 		} else if (refreshrate = 4) {
 			game_set_speed(30,gamespeed_fps)
 			refreshrate = 0
-			set_msg("FPS => 30")
+			set_msg("Max framerate => 30 FPS")
 		}
 	}
 	if (!isplayer) {
