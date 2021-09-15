@@ -633,68 +633,37 @@ function control_draw() {
 					window_scale = get_default_window_scale()
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
-				if (language != 1) {
 	            if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
-					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("Window scale => 67%")}
-					else if (window_scale < 0.75) {window_scale = 0.75 set_msg("Window scale => 75%")}
-					else if (window_scale < 0.8) {window_scale = 0.8 set_msg("Window scale => 80%")}
-					else if (window_scale < 0.9) {window_scale = 0.9 set_msg("Window scale => 90%")}
-					else if (window_scale < 1) {window_scale = 1 set_msg("Window scale => 100%")}
-					else if (window_scale < 1.25) {window_scale = 1.25 set_msg("Window scale => 125%")}
-					else if (window_scale < 1.5) {window_scale = 1.5 set_msg("Windows scale => 150%")}
-					else if (window_scale < 1.75) {window_scale = 1.75 set_msg("Window scale => 175%")}
-					else if (window_scale < 2) {window_scale = 2 set_msg("Window scale => 200%")}
-					else if (window_scale < 2.5) {window_scale = 2.5 set_msg("Window scale => 250%")}
-					else if (window_scale < 3) {window_scale = 3 set_msg("Window scale => 300%")}
-					else if (window_scale < 3.5) {window_scale = 3.5 set_msg("Window scale => 350%")}
-					else if (window_scale < 4) {window_scale = 4 set_msg("Window scale => 400%")}
+					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67}
+					else if (window_scale < 0.75) {window_scale = 0.75}
+					else if (window_scale < 0.8) {window_scale = 0.8}
+					else if (window_scale < 0.9) {window_scale = 0.9}
+					else if (window_scale < 1) {window_scale = 1}
+					else if (window_scale < 1.25) {window_scale = 1.25}
+					else if (window_scale < 1.5) {window_scale = 1.5}
+					else if (window_scale < 1.75) {window_scale = 1.75}
+					else if (window_scale < 2) {window_scale = 2}
+					else if (window_scale < 2.5) {window_scale = 2.5}
+					else if (window_scale < 3) {window_scale = 3}
+					else if (window_scale < 3.5) {window_scale = 3.5}
+					else if (window_scale < 4) {window_scale = 4}
+					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
 	            if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
-					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5 set_msg("Window scale => 350%")}
-					else if (window_scale > 3) {window_scale = 3 set_msg("Window scale => 300%")}
-					else if (window_scale > 2.5) {window_scale = 2.5 set_msg("Window scale => 250%")}
-					else if (window_scale > 2) {window_scale = 2 set_msg("Window scale => 200%")}
-					else if (window_scale > 1.75) {window_scale = 1.75 set_msg("Window scale => 175%")}
-					else if (window_scale > 1.5) {window_scale = 1.5 set_msg("Window scale => 150%")}
-					else if (window_scale > 1.25) {window_scale = 1.25 set_msg("Window scale => 125%")}
-					else if (window_scale > 1) {window_scale = 1 set_msg("Window scale => 100%")}
-					else if (window_scale > 0.9) {window_scale = 0.9 set_msg("Window scale => 90%")}
-					else if (window_scale > 0.8) {window_scale = 0.8 set_msg("Window scale => 80%")}
-					else if (window_scale > 0.75) {window_scale = 0.75 set_msg("Window scale => 75%")}
-					else if (window_scale > 0.67) {window_scale = 0.67 set_msg("Window scale => 67%")}
-					else if (window_scale > 0.5) {window_scale = 0.5 set_msg("Window scale => 50%")}
-				}
-				} else {
-				if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
-					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("窗口缩放 => 67%")}
-					else if (window_scale < 0.75) {window_scale = 0.75 set_msg("窗口缩放 => 75%")}
-					else if (window_scale < 0.8) {window_scale = 0.8 set_msg("窗口缩放 => 80%")}
-					else if (window_scale < 0.9) {window_scale = 0.9 set_msg("窗口缩放 => 90%")}
-					else if (window_scale < 1) {window_scale = 1 set_msg("窗口缩放 => 100%")}
-					else if (window_scale < 1.25) {window_scale = 1.25 set_msg("窗口缩放 => 125%")}
-					else if (window_scale < 1.5) {window_scale = 1.5 set_msg("窗口缩放 => 150%")}
-					else if (window_scale < 1.75) {window_scale = 1.75 set_msg("窗口缩放 => 175%")}
-					else if (window_scale < 2) {window_scale = 2 set_msg("窗口缩放 => 200%")}
-					else if (window_scale < 2.5) {window_scale = 2.5 set_msg("窗口缩放 => 250%")}
-					else if (window_scale < 3) {window_scale = 3 set_msg("窗口缩放 => 300%")}
-					else if (window_scale < 3.5) {window_scale = 3.5 set_msg("窗口缩放 => 350%")}
-					else if (window_scale < 4) {window_scale = 4 set_msg("窗口缩放 => 400%")}
-				}
-	            if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
-					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5 set_msg("窗口缩放 => 350%")}
-					else if (window_scale > 3) {window_scale = 3 set_msg("窗口缩放 => 300%")}
-					else if (window_scale > 2.5) {window_scale = 2.5 set_msg("窗口缩放 => 250%")}
-					else if (window_scale > 2) {window_scale = 2 set_msg("窗口缩放 => 200%")}
-					else if (window_scale > 1.75) {window_scale = 1.75 set_msg("窗口缩放 => 175%")}
-					else if (window_scale > 1.5) {window_scale = 1.5 set_msg("窗口缩放 => 150%")}
-					else if (window_scale > 1.25) {window_scale = 1.25 set_msg("窗口缩放 => 125%")}
-					else if (window_scale > 1) {window_scale = 1 set_msg("窗口缩放 => 100%")}
-					else if (window_scale > 0.9) {window_scale = 0.9 set_msg("窗口缩放 => 90%")}
-					else if (window_scale > 0.8) {window_scale = 0.8 set_msg("窗口缩放 => 80%")}
-					else if (window_scale > 0.75) {window_scale = 0.75 set_msg("窗口缩放 => 75%")}
-					else if (window_scale > 0.67) {window_scale = 0.67 set_msg("窗口缩放 => 67%")}
-					else if (window_scale > 0.5) {window_scale = 0.5 set_msg("窗口缩放 => 50%")}
-				}
+					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5}
+					else if (window_scale > 3) {window_scale = 3}
+					else if (window_scale > 2.5) {window_scale = 2.5}
+					else if (window_scale > 2) {window_scale = 2}
+					else if (window_scale > 1.75) {window_scale = 1.75}
+					else if (window_scale > 1.5) {window_scale = 1.5}
+					else if (window_scale > 1.25) {window_scale = 1.25}
+					else if (window_scale > 1) {window_scale = 1}
+					else if (window_scale > 0.9) {window_scale = 0.9}
+					else if (window_scale > 0.8) {window_scale = 0.8}
+					else if (window_scale > 0.75) {window_scale = 0.75}
+					else if (window_scale > 0.67) {window_scale = 0.67}
+					else if (window_scale > 0.5) {window_scale = 0.5}
+					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
 	        }
 	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
