@@ -629,6 +629,10 @@ function control_draw() {
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
+				if keyboard_check_pressed(ord("0")) {
+					window_scale = get_default_window_scale()
+					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+				}
 				if (language != 1) {
 	            if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
 					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67 set_msg("Window scale => 67%")}
@@ -748,19 +752,19 @@ function control_draw() {
 		if (!isplayer) {
 	    if (keyboard_check(vk_control)) {
 		
-			//First 10 (only ctrl)
+			//First 9 (only ctrl)
 			if(!keyboard_check(vk_shift)){
-			   for (a = 1; a <= 10; a++) {
+			   for (a = 1; a <= 9; a++) {
 	             if (keyboard_check_pressed(ord(string(a % 10)))) {
 	                instrument = instrument_list[| a - 1]
 	                play_sound(instrument, selected_key, 100 ,100, 0)
 	             }
 	           }
 			}else{
-			  //Last 6 (ctrl+shift)
-			  for (a = 1; a <= 6; a++) {
+			  //Last 7 (ctrl+shift)
+			  for (a = 1; a <= 7; a++) {
 				if (keyboard_check_pressed(ord(string(a % 10)))) {
-					instrument = instrument_list[| a + 9]
+					instrument = instrument_list[| a + 8]
 					play_sound(instrument, selected_key, 100 ,100, 0)
 				}
 			  }
@@ -1464,10 +1468,10 @@ function control_draw() {
 	        if (ins.user)
 	            customstr += check(instrument = ins) + clean(ins.name) + "|"
 	        else{
-				if(a < 10){
+				if(a < 9){
 					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 				}else{
-				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
 				}
 			}
 			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
