@@ -731,9 +731,9 @@ function control_draw() {
 			rainbowtoggle = !rainbowtoggle
 			if (language != 1) {
 			if (rainbowtoggle) {
-				set_msg("Rainbow => ON")
+				set_msg("Rainbow mode => ON")
 			} else {
-				set_msg("Rainbow => OFF")
+				set_msg("Rainbow mode => OFF")
 				draw_accent_init()
 			}
 			} else {
