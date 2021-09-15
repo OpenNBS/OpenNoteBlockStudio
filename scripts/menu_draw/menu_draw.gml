@@ -124,6 +124,14 @@ function menu_draw() {
 				if(obj_controller.theme = 2) {
 					if(issel)color = c_black;
 					else color = c_white;
+				} else if (theme = 3) {
+					if (obj_controller.fdark) {
+						if (issel) color = c_white
+						else color = c_ltgray
+					} else {
+						if (issel) color = c_dkgray
+						else color = c_gray
+					}
 				}else{
 					if(issel)color = c_white;
 					else color = c_black;
