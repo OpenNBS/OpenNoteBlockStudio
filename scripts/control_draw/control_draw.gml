@@ -1081,8 +1081,8 @@ function control_draw() {
 	marker_pos = median(0, marker_pos, enda + totalcols)
 	if (!isplayer) {
 	a = floor(marker_pos * 32 - starta * 32)
-	draw_sprite_ext(spr_marker, 0 + 6 * (theme = 2 || (blackout && theme != 3)) + 8 * (theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1, 1, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
-	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || (blackout && theme != 3)) + 8 * (theme = 3 && !blackout), x1 + 2 + a, y1 + 2, 1 + (window_scale <= 0.5), (totalrows + 1) * 32 / 15, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
+	draw_sprite_ext(spr_marker, 0 + 6 * (theme = 2 || (blackout && theme != 3)) + 8 * (theme = 3), x1 + 2 + a, y1 + 2, 1, 1, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
+	draw_sprite_ext(spr_marker, 1 + 6 * (theme = 2 || (blackout && theme != 3)) + 8 * (theme = 3), x1 + 2 + a, y1 + 2, 1 + (window_scale <= 0.5), (totalrows + 1) * 32 / 15, 0, accent[3] * (theme = 3) - !(theme = 3), 1)
 
 
 	draw_theme_font(font_main)
