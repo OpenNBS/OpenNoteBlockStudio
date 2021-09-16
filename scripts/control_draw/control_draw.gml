@@ -820,23 +820,28 @@ function control_draw() {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
-			set_msg("Max framerate => 60 FPS")
+			if (language != 1) set_msg("Max framerate => 60 FPS")
+			else set_msg("帧数上限 => 60 FPS")
 		} else if (refreshrate = 1) {
 			game_set_speed(120,gamespeed_fps)
 			refreshrate = 2
-			set_msg("Max framerate => 120 FPS")
+			if (language != 1) set_msg("Max framerate => 120 FPS")
+			else set_msg("帧数上限 => 120 FPS")
 		} else if (refreshrate = 2) {
 			game_set_speed(144,gamespeed_fps)
 			refreshrate = 3
-			set_msg("Max framerate => 144 FPS")
+			if (language != 1) set_msg("Max framerate => 144 FPS")
+			else set_msg("帧数上限 => 144 FPS")
 		} else if (refreshrate = 3) {
 			game_set_speed(114514,gamespeed_fps)
 			refreshrate = 4
-			set_msg("Max framerate => 240 FPS")
+			if (language != 1) set_msg("Max framerate => 240 FPS")
+			else set_msg("帧数上限 => 240 FPS")
 		} else if (refreshrate = 4) {
 			game_set_speed(30,gamespeed_fps)
 			refreshrate = 0
-			set_msg("Max framerate => 30 FPS")
+			if (language != 1) set_msg("Max framerate => 30 FPS")
+			else set_msg("帧数上限 => 30 FPS")
 		}
 	}
 	if (!isplayer) {
