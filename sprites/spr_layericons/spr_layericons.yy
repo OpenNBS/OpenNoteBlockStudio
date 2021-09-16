@@ -92,7 +92,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_layericons","path":"sprites/spr_layericons/spr_layericons.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_layericons",
     "tags": [],
     "resourceType": "GMSequence",
   },

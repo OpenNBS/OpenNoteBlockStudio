@@ -84,7 +84,7 @@
             {"id":"b7cab5fd-7a92-40ff-b247-843a4a18d9e6","Key":10.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1b7acc45-9d1e-4ef9-af44-2984c74affe8","path":"sprites/spr_marker/spr_marker.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "lockOrigin": false,
     "showBackdrop": true,
     "showBackdropImage": false,
