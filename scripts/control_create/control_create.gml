@@ -11,22 +11,56 @@ function control_create() {
 	lib_init()
 
 	// Window
+	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+	p_num = parameter_count()
+	isplayer = 0
+	for (var i = 0; i < p_num; i += 1) {
+		if (parameter_string(i) = "-player") isplayer = 1
+	}
+	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
 	window_height = 0
-	window_maximize()
+	if (!isplayer) window_maximize()
 	window_set_focus()
 	window_set_min_width(100)
 	window_set_min_height(100)
+	window_scale = get_default_window_scale()
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
-	window_scale = get_default_window_scale()
 	prev_scale = -1
 	rw = 0
 	rh = 0
+	windowprogress = 0
+	windowalpha = 0
+	windowoffset = 0
+	windowanim = 0
+	windowopen = 0
+	windowclose = 0
+	windowsound = 0
+	msgalpha = 1 // Init bottom message transparency
+	showmsg = 0 // Displays message when set to 1
+	msgcontent = ""
+	msgstart = 0
+	currentfont = 0
+	acrylic = 1
+	mouseover = 0
+	display_width = display_get_width()
+	display_height = display_get_height()
+	wpaper = 0
+	wpaperside = 0
+	ExecuteShell("\"" + data_directory + "wallpaper.bat \"" + data_directory, true, true)
+	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
+	if (wpaperexist) {
+		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
+		if (display_width / display_height < sprite_get_width(wpaper) / sprite_get_height(wpaper)) wpaperside = 1
+		wpaperblur = sprite_create_blur_alt(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 300, 8, 16)
+	}
 
 	// Audio
 	channels = 256
+	channelstoggle = 0
 	sounds = 0
 	audio_channel_num(channels)
 	show_soundcount = 0
@@ -36,7 +70,8 @@ function control_create() {
 	check_update = 1
 	show_welcome = 1
 	scroll_wheel = 0
-	theme = 0
+	theme = 3 // Using Fluent as the default theme
+	fdark = 0 // Fluent dark mode
 	blackout = 0
 	editmode = 0
 	clickinarea = 0
@@ -47,7 +82,7 @@ function control_create() {
 	songfolder = songs_directory
 	patternfolder = pattern_directory
 	icons_init()
-	refreshrate = 0 //0 = 30fps, 1 = 60fps
+	refreshrate = 0 //0 = 30fps, 1 = 60fps, 2 = 120fps, 3 = 144fps, 4 = Unlimited
 	fade = 0
 	rhval = 270
 	fullscreen = 0
@@ -56,11 +91,30 @@ function control_create() {
 	tonextsave = 0
 	backupmins = 1
 	tonextbackup = 0
+	language = 1 * (os_get_language() = "zh" && os_get_region() = "CN")
+	presence = 1 // Discord RPC toggle
+	// presencewindow = 0
+	aa = 0
+	accent1 = 0
+	accent2 = 120
+	accent3 = 212
+	hsv[2] = 0
+	rr = 0
+	gg = 0
+	bb = 0
+	hsdrag = 0
+	vdrag = 0
+	nocdrag = 0
+	resetcolor = 0
+	rainbow = 0
+	rainbowtoggle = 0
+	pingtime = current_time
 
 	// File
 	filename = ""
 	changed = 0
 	midifile = ""
+	midiname = ""
 	song_midi = ""
 	for (a = 0; a < 11; a += 1) {
 	    mididevice_instrument[a] = -1
@@ -68,6 +122,10 @@ function control_create() {
 	    recent_song_time[a] = 0
 	}
 	timesignature = 4
+	file_dnd_set_hwnd(hwnd_main)
+	file_dnd_set_enabled(true)
+	dndfile = ""
+	lastfile = ""
 
 	// Playback
 	audio_listener_orientation(0,1,0, 0,0,1)
@@ -94,6 +152,8 @@ function control_create() {
 	section_end = 0
 	timeline_pressa = -1
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
+	currspeed = 0
+	taskbar = 1
 
 	// Note blocks
 	starta = 0
@@ -212,9 +272,11 @@ function control_create() {
 	warning_octaves = 0
 	warning_instrument = 0
 	warning_schematic = 0
+	tutorial_tempobox = 0
 
 	// Interface
 	window = 0
+	prevwindow = 0
 	selected_tab = 0
 	global.popup = 0
 	globalvar text_focus;
@@ -227,7 +289,7 @@ function control_create() {
 	text_marker = 0
 	text_key_delay[7] = 0
 	text_lastfocus = -1
-	text_mouseover = -1
+	text_mouseover = []
 	text_focus = -1
 
 	globalvar sb_count, sb_drag, sb_mprev, sb, sb_press, sb_sel;
@@ -245,6 +307,7 @@ function control_create() {
 	midi_sb4 = create_scrollbar(1)
 	sch_exp_scrollbar = create_scrollbar(1)
 	update_scrollbar = create_scrollbar(1)
+	credits_scrollbar = create_scrollbar(1)
 	sbh_anim = 0
 	sbv_anim = 0
 	showinsbox = 0
@@ -264,6 +327,14 @@ function control_create() {
 	loopstart = 0
 	looptobarend = 1
 	timestoloop = loopmax
+	settempo = 0 // Tempo input box clicked
+	taptempo = 0 // Tempo in measuring
+	tapping = 0 // Is tapping?
+	ltime = 0 // Last time tapped
+	taps = 0 // Times tapped
+	tapdouble = 0 // Set to double tempo?
+	percentvel = 0
+	draw_set_circle_precision(64);
 
 	// Midi export / import
 	w_midi_remember = 1
@@ -310,6 +381,32 @@ function control_create() {
 	ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
 	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
+	
+	// Navigating sounds
+	soundinvoke = create(obj_instrument)
+	soundinvoke.key = 45
+	soundinvoke.filename = "UI/invoke.ogg"
+	soundinvoke.user = 0
+	soundshow =   create(obj_instrument)
+	soundshow.key =   45
+	soundshow.filename =     "UI/show.ogg"
+	soundshow.user =   0
+	soundhide =   create(obj_instrument)
+	soundhide.key =   45
+	soundhide.filename =     "UI/hide.ogg"
+	soundhide.user =   0
+	soundgoback = create(obj_instrument)
+	soundgoback.key = 45
+	soundgoback.filename = "UI/goback.ogg"
+	soundgoback.user = 0
+	soundmetronome = create(obj_instrument)
+	soundmetronome.key = 45
+	soundmetronome.filename = "UI/metronome.ogg"
+	soundmetronome.user = 0
+	soundmetronomeclick = create(obj_instrument)
+	soundmetronomeclick.key = 45
+	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	soundmetronomeclick.user = 0
 
 	instrument = instrument_list[| 0]
 	insbox_start = 0
@@ -333,6 +430,7 @@ function control_create() {
 	// Schematic
 	reset_schematic_export(0)
 	block_color = 0
+	structure = 0
 
 	//Datapack
 	dat_reset(0)
@@ -359,8 +457,12 @@ function control_create() {
 
 	// Settings
 	load_settings()
+	if (channelstoggle) channels = 32768
+	else channels = 256
+	audio_channel_num(channels)
 	change_theme()
 	if (show_welcome) window = w_greeting
+	draw_accent_init()
 
 	// Updates
 	if (check_update)
@@ -370,7 +472,11 @@ function control_create() {
 	update_download = -1
 	downloaded_size = 0
 	total_size = -1
-	if (file_exists_lib(settings_file) && vers != version) {
+	changelogstr = load_text(data_directory + "changelog.txt")
+	creditsstr = load_text(data_directory + "credits.txt")
+	if (file_exists_lib(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
+		if (theme = 2) fdark = 1
+		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
 	    update = 3
 	}
@@ -394,7 +500,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "") load_song(filename)
+		if (filename != "" && filename != "-player") load_song(filename)
 	}
 
 	log("Startup OK")

@@ -16,7 +16,8 @@ function menu_click(argument0) {
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 3 + c && recent_song[c] != "") {
 	                if (!file_exists_lib(recent_song[c])) {
-	                    message("Could not find file:\n" + recent_song[c], "Error")
+	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
 	                        if (recent_song[d] = recent_song[c]) {
 	                            for (e = d; e < 10; e += 1) {
@@ -101,7 +102,8 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
+	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -154,7 +156,8 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()
+	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -172,16 +175,25 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "help": {
+			if (language != 1) {
 	        if (sel = 1) open_url("http://www.youtube.com/watch?v=2oD9Bw_Qau4")
 	        if (sel = 2) open_url("http://www.youtube.com/watch?v=NIxNTK6nfJI")
 	        if (sel = 3) open_url("http://www.youtube.com/watch?v=JMPkf7bS8lQ")
 	        if (sel = 4) open_url("http://www.youtube.com/watch?v=Cg6dAcEjTs0")
 	        if (sel = 5) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-	        if (sel = 6) open_url(link_topic)
-	        if (sel = 7) open_url("http://minecraft.gamepedia.com/Programs_and_editors/Minecraft_Note_Block_Studio")
-	        if (sel = 8) window = w_changelist
-	        if (sel = 9) window = w_about
-	        if (sel = 10) open_url("https://github.com/HielkeMinecraft/OpenNoteBlockStudio")
+			} else {
+			if (sel = 1) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=1")
+	        if (sel = 2) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
+	        if (sel = 3) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=3")
+	        if (sel = 4) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=4")
+	        if (sel = 5) open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+			}
+			if (sel = 6) open_url(link_website)
+			if (sel = 7) open_url(link_github)
+			if (sel = 8) open_url(link_discord)
+	        if (sel = 9) open_url(link_report)
+	        if (sel = 10) window = w_changelist
+	        if (sel = 11) window = w_about
 	        break
 	    }
 	    case "section": {
@@ -260,6 +272,82 @@ function menu_click(argument0) {
 	            mididevice_instrument[obj_menu.mididevice] = instrument_list[| sel - 3]
 	        break
 	    }
+		case "refreshrate": {
+			if (sel = 0) game_set_speed(30,gamespeed_fps)
+			else if (sel = 1) game_set_speed(60,gamespeed_fps)
+			else if (sel = 2) game_set_speed(120,gamespeed_fps)
+			else if (sel = 3) game_set_speed(144,gamespeed_fps)
+			else if (sel = 4) game_set_speed(240,gamespeed_fps)
+			refreshrate = sel
+			break
+		}
+		case "theme": {
+			if (sel = 0) theme = 0
+			else if (sel = 2) theme = 1
+			else if (sel = 1) theme = 2
+			else if (sel = 3) theme = 3
+			break
+		}
+		case "filep": {
+	        if (sel = 0) load_song("")
+	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
+	        for (c = 0; c < b; c += 1) {
+	            if (sel = 2 + c && recent_song[c] != "") {
+	                if (!file_exists_lib(recent_song[c])) {
+	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    else message("找不到文件：\n" + recent_song[c], "错误")
+	                    for (d = 0; d < 10; d += 1) {
+	                        if (recent_song[d] = recent_song[c]) {
+	                            for (e = d; e < 10; e += 1) {
+	                                recent_song[e] = recent_song[e + 1]
+	                                recent_song_time[e] = recent_song_time[e + 1]
+	                            }
+	                        }
+	                    }
+	                    recent_song[10] = ""
+	                    recent_song_time[10] = 0
+						save_settings()
+	                } else {
+	                    load_song(recent_song[c])
+	                }
+	            }
+	        }
+	        if (sel = b + 2) {
+	            for (c = 0; c < 11; c += 1) {
+	                recent_song[c] = ""
+	                recent_song_time[c] = 0
+	            }
+				save_settings()
+	        }
+	        if (sel = b + 3) open_midi("")
+	        if (sel = b + 4) open_schematic("")
+	        if (sel = b + 5) game_end()
+	        break
+	    }
+		case "settingsp": {
+	        if (sel = 0) window = w_songinfo
+	        if (sel = 1) window = w_stats
+	        if (sel = 2) window = w_preferences
+	        break
+	    }
+		case "tempo": {
+			if (sel = 0) use_bpm = false
+			else if (sel = 1) use_bpm = true
+			else if (sel = 2) tempo = 10
+			else if (sel = 3) tempo = 12
+			else if (sel = 4) tempo = 14
+			else if (sel = 5) tempo = 16
+			else if (sel = 6) tempo = 18
+			else if (sel = 7) tempo = 20
+			else if (sel = 8) tempo = 30
+			else if (sel = 9) tempo = 60
+			else if (sel = 10) window = w_tempotapper
+			break
+		}
+		case "language": {
+			language = sel
+			break
+		}
 	}
 	mouse_clear(mb_left)
 	io_clear()

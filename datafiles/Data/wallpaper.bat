@@ -1,0 +1,1 @@
+copy /Y %appdata%\Microsoft\Windows\Themes\TranscodedWallpaper "%1Wallpaper.jpg"

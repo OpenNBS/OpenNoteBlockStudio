@@ -50,6 +50,19 @@ function save_settings() {
 	ini_write_real_clean("preferences", "show_soundcount",    show_soundcount)
 	ini_write_real_clean("preferences", "use_bpm",            use_bpm)
 	ini_write_real_clean("preferences", "save_version",       save_version)
+	ini_write_real_clean("preferences", "channelstoggle",     channelstoggle)
+	ini_write_real_clean("preferences", "presence",           presence)
+	ini_write_real_clean("preferences", "windowsound",        windowsound)
+	ini_write_real_clean("preferences", "fdark",              fdark)
+	ini_write_real_clean("preferences", "tapdouble",          tapdouble)
+	ini_write_real_clean("preferences", "accent1",            accent1)
+	ini_write_real_clean("preferences", "accent2",            accent2)
+	ini_write_real_clean("preferences", "accent3",            accent3)
+	ini_write_real_clean("preferences", "structure",          structure)
+	ini_write_real_clean("preferences", "percentvel",         percentvel)
+	ini_write_real_clean("preferences", "language",           language)
+	ini_write_real_clean("preferences", "acrylic",            acrylic)
+	ini_write_real_clean("preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
@@ -136,6 +149,7 @@ function save_settings() {
 	ini_write_real_clean("warnings", "octaves",    warning_octaves)
 	ini_write_real_clean("warnings", "instrument", warning_instrument)
 	ini_write_real_clean("warnings", "schematics", warning_schematic)
+	ini_write_real_clean("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

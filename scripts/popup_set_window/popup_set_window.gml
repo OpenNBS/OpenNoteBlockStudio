@@ -2,7 +2,7 @@ function popup_set_window(argument0, argument1, argument2, argument3, argument4)
 	// popup_set_window(x, y, w, h, str)
 	var sel, i;
 	sel = mouse_rectangle(argument0, argument1, argument2, argument3)
-	if (sel) {
+	if (sel && !instance_exists(obj_menu)) {
 	    if (global.popup = 0) {
 	        global.popup = 1
 	        i = create(obj_popup)

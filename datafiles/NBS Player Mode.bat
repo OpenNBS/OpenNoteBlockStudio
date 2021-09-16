@@ -1,0 +1,1 @@
+start "" "Minecraft Note Block Studio.exe" -player
