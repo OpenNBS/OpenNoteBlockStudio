@@ -352,6 +352,7 @@
     {"id":{"name":"fnt_src_bold","path":"fonts/fnt_src_bold/fnt_src_bold.yy",},"order":16,},
     {"id":{"name":"selection_place","path":"scripts/selection_place/selection_place.yy",},"order":24,},
     {"id":{"name":"selection_remove","path":"scripts/selection_remove/selection_remove.yy",},"order":25,},
+    {"id":{"name":"spr_tabsel","path":"sprites/spr_tabsel/spr_tabsel.yy",},"order":43,},
     {"id":{"name":"selection_transpose","path":"scripts/selection_transpose/selection_transpose.yy",},"order":26,},
     {"id":{"name":"selection_trim","path":"scripts/selection_trim/selection_trim.yy",},"order":27,},
     {"id":{"name":"selection_to_array","path":"scripts/selection_to_array/selection_to_array.yy",},"order":28,},
