@@ -431,11 +431,11 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 220, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "Show layer boxes", "Whether the layer boxes should be\nshown to the right of the workspace.")) show_layers = !show_layers
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "Show layer boxes", "Whether the layer boxes should be shown\non the left side of the workspace.")) show_layers = !show_layers
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "Piano")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "Enable piano", "Whether the piano should be visible.", false, true)) show_piano = !show_piano
+		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "Show piano", "Whether the piano should be visible.", false, true)) show_piano = !show_piano
 		if (draw_checkbox(x1 + 40, y1 + 355 + (theme = 3) * 22, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
 	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
 	    if (draw_checkbox(x1 + 40, y1 + 395 + (theme = 3) * 22, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
