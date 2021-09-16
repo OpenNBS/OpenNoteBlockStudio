@@ -1,8 +1,8 @@
-Changes in v3.9.0 (2021.09.06):
+Changes in v3.9.0 (2021.09.16):
 * Added Discord Rich Presence. Show the world what you are working on!
    Your current song and note count will appear on your Discord status activity
-   for everyone to see. If you prefer to hide your status, you can disable this
-   option in Preferences.
+   for everyone to see.
+   * If you prefer to hide your status, you can disable this option in Preferences.
 * Added a new theme, inspired by Microsoft's Fluent Design:
    * Features new fonts, icons, layouts and much more!
    * Enabled by default; the previous themes are still available from the
@@ -24,14 +24,15 @@ Changes in v3.9.0 (2021.09.06):
    * Features the Mica material, allowing you to see your desktop wallpaper
       through the window!
    * Transparency effects can be toggled in Preferences.
+   * Some checkboxes across the interface were replaced with toggle switches.
 * The tempo changing controls were reworked:
-  * Along with dragging, you can now click the tempo box to type a precise
+  * Along with dragging, you can now click the tempo box to enter a precise
      value!
   * You can now right-click the tempo box to choose the tempo unit or change
      the tempo to a preset value.
   * Added a tempo tapper! Right-click the tempo box, click 'Tempo tapper',
      and tap the T key to set a new tempo. Useful to match the tempo of the
-	 original song if you're making a cover!
+     original song if you're making a cover!
   * The maximum allowed tempo was increased to 60 ticks per second (three
      times faster than Minecraft's tick speed).
   * The song tempo is no longer restricted to steps of 0.25 ticks per second.
@@ -39,31 +40,33 @@ Changes in v3.9.0 (2021.09.06):
 * Added new shortcuts:
    * F7 to change the max framerate
    * Ctrl + P to open/close Preferences
-   * Ctrl + '+' to increase window scale
-   * Ctrl + '-' to decrease window scale
+   * Ctrl + '+' to increase the window scale
+   * Ctrl + '-' to decrease the window scale
+   * Ctrl + 0 to reset the window scale
+   * Alt + Enter to toggle fullscreen (for the window, not the workspace!)
    * Ctrl + Scroll wheel to increase or decrease the window scale
+* It's now possible to select individual note blocks by clicking a note while
+    holding Ctrl. Right-clicking a selected note will also deselect it.
 * Added Simplified Chinese translations!
    * The language can be changed with a new setting in Preferences.
    * The language will change automatically based on your system settings.
-   * When using the Simplified Chinese language, opening the tutorial videos will
-   redirect you to Bilibili instead of YouTube.
+   * When using the Simplified Chinese language, opening the tutorial videos
+      will redirect you to Bilibili instead of YouTube.
 * The metronome now has its own unique sounds!
-* Added more FPS options: you can now use 120, 144 or 240 FPS!
+* Added more framerate options: you can now use 120, 144 or 240 FPS!
 * Added two new demo songs!
-* When holding Ctrl, clicking a note block will now select it.
 * Added an option to increase the maximum sound channel count to 32,768,
    allowing more sounds to be playing at once.
 * Added an experimental player mode!
    * In this mode, you will be able to listen to the song, but not edit it.
    * Accessible by running the 'NBS Player Mode' file in the program's folder.
    * Improves performance on older PCs.
-* You can now select individual notes by clicking them while holding Ctrl.
 * Schematics can now be saved to the structure block format (.nbt),
    compatible with 1.13 and above.
 * It's now possible to import MIDI files with 2, 4 or 8 times as much spacing
    between each note.
 * You can now play on a MIDI device while the song is playing, allowing you
-   to play live accompaniments with the song.
+   to play live accompaniments to the song.
 * The 'Set velocity' macro now allows you to apply the velocity as a percentage
    of each note's current velocity.
 * It's now possible to open .nbs files by dragging them into the program.
@@ -72,7 +75,7 @@ Changes in v3.9.0 (2021.09.06):
 * Added popup messages when performing certain actions, like toggling 
    fullscreen, blackout mode, or changing various options.
 * Added credits to the About window, acknowledging all the great people who
-   worked to make Note Block Studio come this far!
+   allowed Note Block Studio to come this far!
 * Replaced links to the Minecraft Forums and Minecraft Wiki pages with the
    Note Block Studio website.
 * Added a link to Note Block Studio's Discord server to the greeting window,
@@ -80,7 +83,7 @@ Changes in v3.9.0 (2021.09.06):
    note block musicians!
 * Added a link for you to report bugs to the Help menu.
 * Added a secret RAINBOW MODE!! Just press Ctrl + Shift + F5 while using the
-  Fluent theme. Okay, it's not so secret anymore, is it? ;)
+   Fluent theme. Okay, it's not so secret anymore, is it? ;)
 * Bugfixes and improvements:
   * A new tab was added to Preferences.
   * The song will now be marked as unsaved when you cut, paste, change or
