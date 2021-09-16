@@ -126,20 +126,25 @@ function draw_window_preferences() {
 			draw_set_color(c_black)
 			if (fdark) draw_set_color(c_white)
 	    }
-		if (mouse_check_button(mb_left) && c) {
-			// draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
-			// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
-			draw_set_color(7631988)
-			if (fdark) draw_set_color(11579568)
-			if (selected_tab = a) draw_set_color(10000536)
-			if (selected_tab = a && fdark) draw_set_color(10724259)
-		} else if (c) {
-			// draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
-			// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
-			// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
-			if (selected_tab = a) draw_set_color(7631988)
-			if (selected_tab = a && fdark) draw_set_color(11579568)
+		if (c) {
+			if (mouse_check_button(mb_left)) {
+				// draw_sprite(spr_tabbuttons_f, 6 + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+				// draw_sprite_ext(spr_tabbuttons_f, 7 + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+				// draw_sprite(spr_tabbuttons_f, 8 + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
+				if (fdark) {
+					if (selected_tab = a) draw_set_color(10724259)
+					else draw_set_color(11579568)
+				} else {
+					if (selected_tab = a) draw_set_color(10000536)
+					else draw_set_color(7631988)
+				}
+			} else {
+				// draw_sprite(spr_tabbuttons_f, 0 + 3 * c + 9 * fdark, x1 + b, y1 + 28 + 21 - 19)
+				// draw_sprite_ext(spr_tabbuttons_f, 1 + 3 * c + 9 * fdark, x1 + b + 2, y1 + 28 + 21 - 19, string_width_dynamic(str[a]) / 2 + 4, 1, 0, -1, 1)
+				// draw_sprite(spr_tabbuttons_f, 2 + 3 * c + 9 * fdark, x1 + b + string_width_dynamic(str[a]) + 10, y1 + 28 + 21 - 19)	
+				if (fdark) draw_set_color(11579568)
+				else draw_set_color(10000536)
+			}
 		}
 	    draw_text_dynamic(x1 + b + 6, y1 + 30 + 21 - 8, str[a])
 	    if (mouse_check_button_released(mb_left) && c) nsel = a
