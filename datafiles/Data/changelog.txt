@@ -7,18 +7,16 @@ Changes in v3.9.0 (2021.09.16):
    * Features new fonts, icons, layouts and much more!
    * Enabled by default; the previous themes are still available from the
       Preferences.
-   * Comes with a light and dark version! The dark theme will be enabled
+   * Comes with light and dark versions! The dark mode will be enabled
       automatically if you were using the Dark theme before.
    * Allows you to pick an accent color to be applied to various details across
       the interface! Click the color widget by the Theme dropdown menu to pick
       your favorite color.
    * Features sounds when navigating the interface! You can toggle them in
       Preferences.
-   * Added a new piano design matching the theme. It will also respond to
+   * Added a new piano design matching the theme. It will also respond to the
       dark mode!
-   * Some checkboxes across the interface were replaced with toggle switches.
    * Features window animations, fading effects and dimmed backgrounds.
-     switches.
    * Features the Acrylic material, with transparency effects on menus and 
       tooltips!
    * Features the Mica material, allowing you to see your desktop wallpaper
@@ -56,7 +54,7 @@ Changes in v3.9.0 (2021.09.16):
 * Added more framerate options: you can now use 120, 144 or 240 FPS!
 * Added two new demo songs!
 * Added an option to increase the maximum sound channel count to 32,768,
-   allowing more sounds to be playing at once.
+   allowing more sounds to be played at once.
 * Added an experimental player mode!
    * In this mode, you will be able to listen to the song, but not edit it.
    * Accessible by running the 'NBS Player Mode' file in the program's folder.
@@ -81,7 +79,7 @@ Changes in v3.9.0 (2021.09.16):
 * Added a link to Note Block Studio's Discord server to the greeting window,
    the Help menu and the About window. Join the server to connect with other
    note block musicians!
-* Added a link for you to report bugs to the Help menu.
+* Added a link for reporting bugs to the Help menu.
 * Added a secret RAINBOW MODE!! Just press Ctrl + Shift + F5 while using the
    Fluent theme. Okay, it's not so secret anymore, is it? ;)
 * Bugfixes and improvements:
