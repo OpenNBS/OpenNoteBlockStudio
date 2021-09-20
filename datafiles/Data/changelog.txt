@@ -4,7 +4,7 @@ Changes in v3.9.0 (2021.09.16):
    for everyone to see.
    * If you prefer to hide your status, you can disable this option in Preferences.
 * Added a new theme, inspired by Microsoft's Fluent Design:
-   * Features new fonts, icons, layouts and much more!
+   * Features new fonts, icons, layouts, and much more!
    * Enabled by default; the previous themes are still available from the
       Preferences.
    * Comes with light and dark versions! The dark mode will be enabled
@@ -16,7 +16,7 @@ Changes in v3.9.0 (2021.09.16):
       Preferences.
    * Added a new piano design matching the theme. It will also respond to the
       dark mode!
-   * Features window animations, fading effects and dimmed backgrounds.
+   * Features window animations, fading effects, and dimmed backgrounds.
    * Features the Acrylic material, with transparency effects on menus and 
       tooltips!
    * Features the Mica material, allowing you to see your desktop wallpaper
@@ -51,7 +51,7 @@ Changes in v3.9.0 (2021.09.16):
    * When using the Simplified Chinese language, opening the tutorial videos
       will redirect you to Bilibili instead of YouTube.
 * The metronome now has its own unique sounds!
-* Added more framerate options: you can now use 120, 144 or 240 FPS!
+* Added more framerate options: you can now use 120, 144, or 240 FPS!
 * Added two new demo songs!
 * Added an option to increase the maximum sound channel count to 32,768,
    allowing more sounds to be played at once.
@@ -61,7 +61,7 @@ Changes in v3.9.0 (2021.09.16):
    * Improves performance on older PCs.
 * Schematics can now be saved to the structure block format (.nbt),
    compatible with 1.13 and above.
-* It's now possible to import MIDI files with 2, 4 or 8 times as much spacing
+* It's now possible to import MIDI files with 2, 4, or 8 times as much spacing
    between each note.
 * You can now play on a MIDI device while the song is playing, allowing you
    to play live accompaniments to the song.
@@ -77,14 +77,14 @@ Changes in v3.9.0 (2021.09.16):
 * Replaced links to the Minecraft Forums and Minecraft Wiki pages with the
    Note Block Studio website.
 * Added a link to Note Block Studio's Discord server to the greeting window,
-   the Help menu and the About window. Join the server to connect with other
+   the Help menu, and the About window. Join the server to connect with other
    note block musicians!
 * Added a link for reporting bugs to the Help menu.
 * Added a secret RAINBOW MODE!! Just press Ctrl + Shift + F5 while using the
    Fluent theme. Okay, it's not so secret anymore, is it? ;)
 * Bugfixes and improvements:
   * A new tab was added to Preferences.
-  * The song will now be marked as unsaved when you cut, paste, change or
+  * The song will now be marked as unsaved when you cut, paste, change, or
      delete a selection.
   * Various radio boxes across the interface were changed to dropdown menus.
   * Fixed right-click menu going off-screen when opening it too close to the
