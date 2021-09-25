@@ -97,6 +97,7 @@ Changes in v3.9.0 (2021.09.16):
      a smaller window scale.
   * Fixed sections moving more smoothly than the song when using the tick by
      tick scroll option.
+  * Fixed the 'Loop to bar end' option re-enabling itself automatically.
   * Fixed the 'Show old warning' option not working for Classic songs.
   * Fixed the secret clipboard editor not working properly.
   * Fixed excessive disk reads on the Changelist window.
