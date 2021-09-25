@@ -20,8 +20,13 @@ function draw_window_tempo_tapper() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
-	if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打节奏)")
-	else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (按T打节奏)")
+	if (language != 1) {
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (Press T to tap)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (Press T to tap)")
+	} else {
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打节奏)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (按T打节奏)")
+	}
 
 	//tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
 	if (keyboard_check_pressed(ord("T"))) {
@@ -57,7 +62,7 @@ function draw_window_tempo_tapper() {
 			else message("发生了一个错误。", "节奏测量器")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, "取消")) {
+	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消"))) {
 		taptempo = 0
 		tapping = 0
 		ltime = 0
