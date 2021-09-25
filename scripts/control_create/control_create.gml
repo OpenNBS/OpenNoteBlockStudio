@@ -62,6 +62,7 @@ function control_create() {
 		surface_reset_target()
 		sprite_delete(wpaper)
 		wpaper = sprite_create_from_surface(tempsurf, 0, 0, wpaperwidth, 720, 0, 1, 0, 0)
+		surface_free(tempsurf)
 		wpaperblur = sprite_create_blur_alt(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 300, 8, 16)
 	}
 
