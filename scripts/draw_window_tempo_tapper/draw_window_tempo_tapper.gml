@@ -9,7 +9,7 @@ function draw_window_tempo_tapper() {
 	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	ltempo = taptempo
-	ins = instrument_list[| 4]
+	ins = soundmetronome
 	draw_theme_font(font_main_bold)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Tempo tapper")
 	else draw_text_dynamic(x1 + 8, y1 + 8, "节奏测量器")
