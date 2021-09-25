@@ -11,14 +11,14 @@ function string_maxwidth(argument0, argument1) {
 	nstr = ""
 	if (truncate_start) {
 		for (c = string_length(str); c >= 1; c -= 1) {
-			w += string_width(string_char_at(str, c))
+			w += string_width_dynamic(string_char_at(str, c))
 			if (string_char_at(str, c) = "\n") w = 0
 			if (w > maxw) break
 			nstr = string_char_at(str, c) + nstr
 		}
 	} else {
 		for (c = 1; c <= string_length(str); c += 1) {
-		    w += string_width(string_char_at(str, c))
+		    w += string_width_dynamic(string_char_at(str, c))
 		    if (string_char_at(str, c) = "\n") w = 0
 		    if (w > maxw) break
 		    nstr += string_char_at(str, c)

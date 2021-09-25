@@ -6,7 +6,10 @@ function open_midi(argument0) {
 	var trackend, delta, event, eventtype, channel, lasteventtype, lastchannel;
 	fn = argument0
 	if (confirm() < 0) return 0
-	if (fn = "") fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
+	if (fn = "") {
+		if (language != 1) fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
+		else fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "从MIDI导入"))
+	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	reset()
 	buffer = buffer_import(fn)
@@ -26,6 +29,7 @@ function open_midi(argument0) {
 
 	midi_tracks = buffer_read_short_be()
 	midifile = filename_name(fn)
+	midiname = filename_name(fn)
 	midi_trackamount[midi_tracks] = 0
 	reset_midi()
 	midi_tempo = buffer_read_short_be()

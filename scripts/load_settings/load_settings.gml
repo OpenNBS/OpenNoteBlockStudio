@@ -51,6 +51,19 @@ function load_settings() {
 	show_soundcount =    ini_read_real(  "preferences", "show_soundcount",    show_soundcount)
 	use_bpm =            ini_read_real(  "preferences", "use_bpm",            use_bpm)
 	save_version =       ini_read_real(  "preferences", "save_version",       save_version)
+	channelstoggle =     ini_read_real(  "preferences", "channelstoggle",     channelstoggle)
+	presence =           ini_read_real(  "preferences", "presence",           presence)
+	windowsound =        ini_read_real(  "preferences", "windowsound",        windowsound)
+	fdark =              ini_read_real(  "preferences", "fdark",              fdark)
+	tapdouble =          ini_read_real(  "preferences", "tapdouble",          tapdouble)
+	accent1 =            ini_read_real(  "preferences", "accent1",            accent1)
+	accent2 =            ini_read_real(  "preferences", "accent2",            accent2)
+	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
+	structure =          ini_read_real(  "preferences", "structure",          structure)
+	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
+	language =           ini_read_real(  "preferences", "language",           language)
+	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
+	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
@@ -145,6 +158,7 @@ function load_settings() {
 	warning_octaves =    ini_read_real("warnings", "octaves",    warning_octaves)
 	warning_instrument = ini_read_real("warnings", "instrument", warning_instrument)
 	warning_schematic =  ini_read_real("warnings", "schematics", warning_schematic)
+	tutorial_tempobox =  ini_read_real("warnings", "tempobox", tutorial_tempobox)
 
 	ini_close()
 	return 1

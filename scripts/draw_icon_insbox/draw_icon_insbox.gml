@@ -15,13 +15,18 @@ function draw_icon_insbox() {
 	a = (mouse_rectangle(xx, yy, 25, 25) && (clickable) && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
-	    draw_sprite(spr_frame1, 2 + 3 * theme, xx, yy)
+	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
 	} else {
-	    draw_sprite(spr_frame1, a + 3 * theme, xx, yy)
+	    draw_sprite(spr_frame1, a + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
 	}
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
 	push = (a = 2 || pressed = 1)
+	if (theme != 3) {
 	draw_sprite(spr_icons, sprite, xx + push, yy + push)
+	} else {
+	if (!fdark) draw_sprite(spr_icons_f, sprite, xx + push, yy + push)
+	else draw_sprite(spr_icons_d, sprite, xx + push, yy + push)
+	}
 	if (!isaction && i >= first_custom_index) {
 		draw_icon_customins(xx + push, yy + push, i - first_custom_index, 1, false)
 	}

@@ -20,8 +20,8 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	    if (a > 0 && c != 2 && c != 5) { // Sharp key to the left
 	        c1 = startkey + sharpkeys + b
 	        c2 = startkey + sharpkeys + b + 1
-	        k1 = piano_key[c1] > 0
-	        k2 = piano_key[c2] > 0
+	        k1 = show_keyboard && piano_key[c1] > 0
+	        k2 = show_keyboard && piano_key[c2] > 0
 	        if (window = 0 && mouse_rectangle(xx + 39 * a, yy, 39, 128)) {
 	            if (!mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71) && (!mouse_rectangle(xx + 39 * a + 27, yy - 7, 25, 71) || (a = k - 1 || c = 1 || c = 4))) {
 	                if (show_notechart && c2 > 6 && c2 < 69 && playing = 0) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0)
@@ -53,63 +53,29 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        } else {
 	            key_click[c1] = 0
 	        }
+			
 	        // White
 	        out = (c2 < 33 || c2 > 57)
 			showclicks2 = !out && show_keynumbers
 	        col = c_white
 	        down[1] = 0
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c2 && playing = 0) col = 16753828
+	        if (selected_key = c2 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c2] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c2]) / 300) down[1] = ((current_time - key_played[c2]) / 300) * 2 if (down[1] > 1) down[1] = 2 - down[1] down[1] = floor(down[1] * 3) / 3}
 	        if (key_midipress[c2] || key_press[c2] || key_click[c2]) down[1] = 0.75
-	        draw_sprite_ext(spr_piano, 0, xx + 39 * a, yy + floor(7 * down[1]), 1, 1, 0, col, 1)
-	        if (alpha < 3) draw_sprite_ext(spr_piano, 3, xx + 39 * a, yy + floor(7 * down[1]), 1, 1, 0, window_background, 0.8 - alpha / 3)
+			draw_piano_key(false, xx + 39 * a, yy + floor(7 * down[1]), col, alpha, c2, k2, showclicks2, down[1])
+			
 	        // Black
 	        down[0] = 0
 	        out = (c1 < 33 || c1 > 57)
 			showclicks1 = !out && show_keynumbers
 	        col = c_white
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c1 && playing = 0) col = 16753828
+	        if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down[0] = ((current_time - key_played[c1]) / 300) * 2 if (down[0] > 1) down[0] = 2 - down[0] down[0] = floor(down[0] * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down[0] = 0.75
-	        draw_sprite_ext(spr_piano, 2, xx + 39 * a - 19, yy - 7, 1, 1, 0, col, 1)
-	        if (alpha < 3) draw_sprite_ext(spr_piano, 5, xx + 39 * a - 19, yy - 7, 1, 1, 0, window_background, 0.8 - alpha / 3)
-	        draw_sprite_ext(spr_piano, 1, xx + 39 * a - 19, yy - 7 + floor(7 * down[0]), 1, 1, 0, col, 1)
-	        if (alpha < 3) draw_sprite_ext(spr_piano, 4, xx + 39 * a - 19, yy - 7 + floor(7 * down[0]), 1, 1, 0, window_background, 0.8 - alpha / 3)
-	        // Text
-	        draw_set_alpha(alpha / 3)
-	        draw_set_halign(fa_center)
-	        if (show_keynames) {
-	            draw_set_font(fnt_mainbold)
-	            draw_set_color(0)
-	            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down[1]) - 4 * (k2 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks2) - 6 * (showclicks2), get_keyname(c2, 1))
-	            draw_set_color(c_white)
-	            draw_text(xx + 39 * a, yy + 24 + floor(7 * down[0]) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * (showclicks1), get_keyname(c1, 1))
-	        }
-			draw_set_font(fnt_mainbold)
-			if (showclicks2) {
-				draw_set_color(0)
-				draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down[1]) - 8 * (k2 && show_keyboard), string(c2 - 33))
-			}
-			if (showclicks1) {
-				draw_set_color(c_white)
-				draw_text(xx + 39 * a, yy + 24 + 5 + floor(7 * down[0]) - 8 * (k1 && show_keyboard), string(c1 - 33))
-			}
-			draw_set_font(fnt_main)
-	        if (k2) {
-	            if (show_keyboard) {
-	                draw_set_color(0)
-	                if ((editline mod 15) < 7 || key_edit != c2) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down[1]), chr(piano_key[c2]))
-	            }
-	        }
-	        if (k1) {
-	            if (show_keyboard) {
-	                draw_set_color(c_white)
-	                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a, yy + 34 + floor(7 * down[0]), chr(piano_key[c1]))
-	            }
-	        }
-	        draw_set_halign(fa_left)
+			draw_piano_key(true, xx + 39 * a - 19, yy - 7, col, alpha, c1, k1, showclicks1, down[0])
+			
 	        b += 2
 	    } else { // No sharp keys
 	        c1 = startkey + sharpkeys + b
@@ -137,33 +103,10 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        col = c_white
 	        down = 0
 	        if (show_outofrange && out) col = 8224255
-	        if (selected_key = c1 && playing = 0) col = 16753828
+	        if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down = ((current_time - key_played[c1]) / 300) * 2 if (down > 1) down = 2 - down down = floor(down * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down = 0.75
-	        draw_sprite_ext(spr_piano, 0, xx + 39 * a, yy + floor(7 * down), 1, 1, 0, col, 1)
-	        if (alpha < 3) draw_sprite_ext(spr_piano, 3, xx + 39 * a, yy + floor(7 * down), 1, 1, 0, window_background, 0.8 - alpha / 3)
-	        // Text
-	        draw_set_alpha(alpha / 3)
-	        draw_set_halign(fa_center)
-	        if (show_keynames) {
-	            draw_set_color(0)
-	            draw_set_font(fnt_mainbold)
-	            draw_text(xx + 39 * a + 20, yy + 85 + floor(7 * down) - 4 * (k1 && show_keyboard) - 4 * (k1 && show_keyboard && showclicks1) - 6 * showclicks1, get_keyname(c1, 1))
-	        }
-			if (showclicks1) {
-				draw_set_font(fnt_mainbold)
-				draw_set_color(0)
-				draw_text(xx + 39 * a + 20, yy + 85 + 5 + floor(7 * down) - 8 * (k1 && show_keyboard), string(c1 - 33))
-			}
-			draw_set_font(fnt_main)
-	        if (k1) {
-	            if (show_keyboard) {
-	                draw_set_color(0)
-	                if ((editline mod 15) < 7 || key_edit != c1) draw_text(xx + 39 * a + 20, yy + 95 + floor(7 * down), chr(piano_key[c1]))
-	            }
-	        }
-	        draw_set_halign(fa_left)
-	        draw_set_alpha(1)
+			draw_piano_key(false, xx + 39 * a, yy + floor(7 * down), col, alpha, c1, k1, showclicks1, down)
 	        b += 1
 	    }
 	    if (a < 3 && alpha < 3) alpha += 1

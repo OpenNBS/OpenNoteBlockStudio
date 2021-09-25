@@ -17,7 +17,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	}
 
 	menu_shown = argument0
-	playing = 0
+	if (!isplayer) playing = 0
 	window += w_menu
 
 	var obj, str, submenu, n;
@@ -32,6 +32,7 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	submenu = 0
 	n = 0
 	wmenu = 2
+	if (windowsound && theme = 3) play_sound(soundshow, 45, 100, 100, 0)
 
 	str = string_replace_all(argument3 + "|", "||", "|")
 	while (str != "") {
@@ -73,13 +74,14 @@ function show_menu_ext(argument0, argument1, argument2, argument3) {
 	// menu_print(obj, 0, 0)
 
 	var a, b;
+	draw_theme_font(font_main)
 	for (a = 0; a < obj.menus; a += 1) {
 	    obj.menu_wid[a] = 0
 	    obj.menu_hei[a] = 0
 	    obj.menu_show[a] = 0
 	    obj.menu_sel[a] = -1
 	    for (b = 0; b < obj.items[a]; b += 1) {
-	        obj.menu_wid[a] = max(obj.menu_wid[a], string_width(obj.item_str[a, b] + " " + obj.item_shortcut[a, b]))
+	        obj.menu_wid[a] = max(obj.menu_wid[a], string_width_dynamic(obj.item_str[a, b] + condstr(obj.item_shortcut[a, b] != "", obj.item_shortcut[a, b] + "       ")))
 	        if (obj.item_str[a, b] = "-") obj.menu_hei[a] += 6
 	        else obj.menu_hei[a] += 22
 	    }

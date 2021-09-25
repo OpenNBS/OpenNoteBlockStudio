@@ -12,7 +12,8 @@ function instrument_load() {
 	log("audio_file_decode")
 	var ret = audio_file_decode(fn, temp_file);
 	if (ret < 0) {
-	    message("Couldn't load the file " + fn + "! Error: " + string(ret), "Error")
+	    if (language != 1) message("Couldn't load the file " + fn + "! Error: " + string(ret), "Error")
+	    else message("找不到文件" + fn + "！错误代码：" + string(ret), "错误")
 	    return 0
 	}
 

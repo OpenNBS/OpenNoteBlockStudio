@@ -2,6 +2,7 @@ function selection_delete(argument0) {
 	// selection_delete(undo)
 	// Deletes the selection and the blocks in it.
 	var a, b;
+	changed = 1
 	if (selected = 0) return 0
 	for (a = 0; a < selection_l; a += 1) {
 	    if (selection_colfirst[a] > -1) {
