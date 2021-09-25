@@ -1,9 +1,11 @@
 Changes in v3.9.1 (2021.09.25):
 * Fixed a crash on startup when the current wallpaper is too large.
-* The wallpaper will no longer be copied when transparency effects are disabled.
+* The wallpaper will no longer be accessed when transparency effects are
+   disabled.
 * Fixed the tempo tapper window displaying the wrong language.
-* Changed the tempo tapper sound to the same as the metronome.
-* Removed older versions from the Changelist window to improve performance.
+* Changed the tempo tapper sound to match the metronome.
+* Increased the size of the Changelist text area.
+* Removed older versions from the Changelist to improve performance.
 
 Changes in v3.9.0 (2021.09.25):
 * Added Discord Rich Presence. Show the world what you are working on!
