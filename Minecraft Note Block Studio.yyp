@@ -146,6 +146,7 @@
     {"id":{"name":"scr_RGBtoHSB","path":"scripts/scr_RGBtoHSB/scr_RGBtoHSB.yy",},"order":8,},
     {"id":{"name":"buffer_write_string_utf8_int","path":"scripts/buffer_write_string_utf8_int/buffer_write_string_utf8_int.yy",},"order":23,},
     {"id":{"name":"buffer_write_string_short_be","path":"scripts/buffer_write_string_short_be/buffer_write_string_short_be.yy",},"order":24,},
+    {"id":{"name":"wallpaper_init","path":"scripts/wallpaper_init/wallpaper_init.yy",},"order":40,},
     {"id":{"name":"anim_window_open","path":"scripts/anim_window_open/anim_window_open.yy",},"order":28,},
     {"id":{"name":"buffer_write_string","path":"scripts/buffer_write_string/buffer_write_string.yy",},"order":25,},
     {"id":{"name":"buffer_read_string","path":"scripts/buffer_read_string/buffer_read_string.yy",},"order":26,},

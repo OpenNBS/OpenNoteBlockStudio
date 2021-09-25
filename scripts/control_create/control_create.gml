@@ -48,23 +48,13 @@ function control_create() {
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
+	
+	// Wallpaper
 	wpaper = 0
+	wpaperexist = 0
 	wpaperside = 0
-	ExecuteShell("\"" + data_directory + "wallpaper.bat", true, true)
-	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
-	if (wpaperexist) {
-		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
-		if (display_width / display_height < sprite_get_width(wpaper) / sprite_get_height(wpaper)) wpaperside = 1
-		wpaperwidth = (sprite_get_width(wpaper) / sprite_get_height(wpaper)) * 720
-		tempsurf = surface_create(wpaperwidth, 720)
-		surface_set_target(tempsurf)
-		draw_sprite_ext(wpaper, 0, 0, 0, 720 / sprite_get_height(wpaper), 720 / sprite_get_height(wpaper), 0, -1, 1)
-		surface_reset_target()
-		sprite_delete(wpaper)
-		wpaper = sprite_create_from_surface(tempsurf, 0, 0, wpaperwidth, 720, 0, 1, 0, 0)
-		surface_free(tempsurf)
-		wpaperblur = sprite_create_blur_alt(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 300, 8, 16)
-	}
+	wpaperwidth = 0
+	wpaperblur = 0
 
 	// Audio
 	channels = 256
@@ -493,6 +483,9 @@ function control_create() {
 	if (file_exists_lib(update_file)) {
 		files_delete_lib(update_file)
 	}
+	
+	// Init wallpaper
+	change_theme()
 
 	// Auto-recovery
 	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196

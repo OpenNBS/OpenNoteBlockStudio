@@ -282,10 +282,10 @@ function menu_click(argument0) {
 			break
 		}
 		case "theme": {
-			if (sel = 0) theme = 0
-			else if (sel = 2) theme = 1
-			else if (sel = 1) theme = 2
-			else if (sel = 3) theme = 3
+			if (sel = 0) {theme = 0 change_theme()}
+			else if (sel = 2) {theme = 1 change_theme()}
+			else if (sel = 1) {theme = 2 change_theme()}
+			else if (sel = 3) {theme = 3 change_theme()}
 			break
 		}
 		case "filep": {
