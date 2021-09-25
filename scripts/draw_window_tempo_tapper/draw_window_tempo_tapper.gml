@@ -22,10 +22,10 @@ function draw_window_tempo_tapper() {
 	}
 	if (language != 1) {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (T to tap)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (T to tap)")
 	} else {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打节奏)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (按T打节奏)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按T打节奏)")
 	}
 
 	//tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
