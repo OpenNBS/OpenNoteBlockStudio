@@ -1,4 +1,4 @@
-Changes in v3.9.0 (2021.09.16):
+Changes in v3.9.0 (2021.09.25):
 * Added Discord Rich Presence. Show the world what you are working on!
    Your current song and note count will appear on your Discord status activity
    for everyone to see.
