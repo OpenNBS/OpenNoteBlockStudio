@@ -21,8 +21,8 @@ function draw_window_tempo_tapper() {
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
 	if (language != 1) {
-		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (Press T to tap)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (Press T to tap)")
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (T to tap)")
 	} else {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打节奏)")
 		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "TPS (按T打节奏)")
