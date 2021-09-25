@@ -151,7 +151,6 @@ function reset() {
 	loop_session = 0
 	loopstart = 0
 	loopmax = 0
-	looptobarend = 1
 
 
 }
