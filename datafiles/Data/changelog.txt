@@ -1,3 +1,7 @@
+Changes in v3.9.1 (2021.09.25):
+* Fixed a crash on startup when the current wallpaper is too large.
+* Fixed the Tempo Tapper window displaying in the wrong language.
+
 Changes in v3.9.0 (2021.09.25):
 * Added Discord Rich Presence. Show the world what you are working on!
    Your current song and note count will appear on your Discord status activity
