@@ -556,10 +556,10 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "提升声音限制", "提升可同时播放的声音数。")) channelstoggle = !channelstoggle
 		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, taskbar, "启用任务栏进度", "是否在任务栏显示当前歌曲的进度。")) taskbar = !taskbar
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "节奏单位")
+		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "速度单位")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻/秒 (t/s)", "使用每秒几刻显示节奏。")) use_bpm = 0
-		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数/分钟 (BPM)", "使用每分钟多少拍显示节奏。")) use_bpm = 1
+		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻/秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数/分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
 		}
 	}
 	

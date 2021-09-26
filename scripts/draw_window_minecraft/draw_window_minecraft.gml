@@ -121,19 +121,19 @@ function draw_window_minecraft() {
 
 		draw_theme_font(font_main_bold)
 		if (language != 1) draw_text_dynamic(x1 + 45, yy, "The tempo must be either 2.5, 5 or 10 ticks per second.")
-		else draw_text_dynamic(x1 + 45, yy, "节奏必须为每秒2.5、5或10红石刻。")
+		else draw_text_dynamic(x1 + 45, yy, "速度必须为每秒2.5、5或10红石刻。")
 		draw_theme_font(font_main)
 
 		if (tempo = 10 || tempo = 5 || tempo = 2.5) {    
 			draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 		    if (language != 1) draw_text_dynamic(x1 + 45, yy + 16, "The tempo is " + string(tempo) + " ticks per second.")
-		    else draw_text_dynamic(x1 + 45, yy + 16, "目前节奏为每秒" + string(tempo) + "红石刻。")
+		    else draw_text_dynamic(x1 + 45, yy + 16, "目前速度为每秒" + string(tempo) + "红石刻。")
 		} else {
 			draw_set_color(c_red)
 		    if (language != 1) draw_text_dynamic(x1 + 45, yy + 16, "The tempo is " + string(tempo) + " ticks per second.")
-		    else draw_text_dynamic(x1 + 45, yy + 16, "目前节奏为每秒" + string(tempo) + "红石刻。")
-		    if (draw_button2(x1 + 45, yy + 34, 140, condstr(language != 1, "Fix tempo for schematic", "针对Schematic调整节奏"), 0, 1)) {
+		    else draw_text_dynamic(x1 + 45, yy + 16, "目前速度为每秒" + string(tempo) + "红石刻。")
+		    if (draw_button2(x1 + 45, yy + 34, 140, condstr(language != 1, "Fix tempo for schematic", "针对Schematic调整速度"), 0, 1)) {
 		        var otempo = tempo
 		        if (otempo > 10) tempo = 10
 		        if (otempo < 10) tempo = 10
@@ -216,7 +216,7 @@ function draw_window_minecraft() {
 		}
 		draw_theme_font(font_main_bold)
 		draw_theme_color()
-		if (language != 1) draw_text_dynamic(x1 + 45, yy, "No custom instruments must be used.")
+		if (language != 1) draw_text_dynamic(x1 + 45, yy, "No custom instruments may be used.")
 		else draw_text_dynamic(x1 + 45, yy, "不可使用任何自定义音色。")
 		draw_theme_font(font_main)
 		if (language != 1) {
@@ -252,10 +252,10 @@ function draw_window_minecraft() {
 	} else { // Datapack
 		draw_theme_font(font_main_bold)
 		if (language != 1) draw_text_dynamic(x1 + 45, yy, "Any tempo works when exporting as a data pack.")
-		else draw_text_dynamic(x1 + 45, yy, "导出数据包时可使用任意节奏。")
+		else draw_text_dynamic(x1 + 45, yy, "导出数据包时可使用任意速度。")
 		draw_theme_font(font_main)
 		if (language != 1) draw_text_dynamic(x1 + 45, yy + 16, "However, the tempos 0.25, 0.5, 1, 1.25, 2, 2.5, 4, 5, 10 and 20 t/s work better.")
-		else draw_text_dynamic(x1 + 45, yy + 16, "但是，使用每秒0.25、0.5、1、1.25、2、2.5、4、5、10和20红石刻的节奏更佳。")
+		else draw_text_dynamic(x1 + 45, yy + 16, "但是，使用每秒0.25、0.5、1、1.25、2、2.5、4、5、10和20红石刻的速度更佳。")
 
 		if (tempo = 20 || tempo = 10 || tempo = 5 || tempo = 4 || tempo = 2.5 || tempo = 2 || tempo = 1.25 || tempo = 1 || tempo = 0.5 || tempo = 0.25) {    
 			if (theme != 3) {
@@ -266,7 +266,7 @@ function draw_window_minecraft() {
 			draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
 			if (language != 1) draw_text_dynamic(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
-			else draw_text_dynamic(x1 + 45, yy + 32, "目前节奏为每秒" + string(tempo) + "红石刻。")
+			else draw_text_dynamic(x1 + 45, yy + 32, "目前速度为每秒" + string(tempo) + "红石刻。")
 		} else {
 			if (theme != 3) {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)	
@@ -275,8 +275,8 @@ function draw_window_minecraft() {
 			}
 		    draw_set_color(c_orange)
 			if (language != 1) draw_text_dynamic(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
-			else draw_text_dynamic(x1 + 45, yy + 32, "目前节奏为每秒" + string(tempo) + "红石刻。")
-			if (draw_button2(x1 + 45, yy + 50, 180, condstr(language != 1, "Optimize tempo for data pack", "针对数据包调整节奏"), 0, 1)) {
+			else draw_text_dynamic(x1 + 45, yy + 32, "目前速度为每秒" + string(tempo) + "红石刻。")
+			if (draw_button2(x1 + 45, yy + 50, 180, condstr(language != 1, "Optimize tempo for data pack", "针对数据包调整速度"), 0, 1)) {
 			    var otempo
 				otempo = tempo
 				if (otempo >= 15) tempo = 20

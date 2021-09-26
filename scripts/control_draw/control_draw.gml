@@ -2026,10 +2026,10 @@ function control_draw() {
 		if (use_bpm) {
 			bpm = tempo * 15
 			draw_text_dynamic(136, 60, string_format(bpm, 4, 2) + " BPM")
-			popup_set(108, 57, 64, 22, "歌曲的节奏（拍数/分钟）\n拖拽来大致更改，点击来手动输入，右键查看更多选项。")
+			popup_set(108, 57, 64, 22, "歌曲的速度（拍数/分钟）\n拖拽来大致更改，点击来手动输入，右键查看更多选项。")
 		} else {
 			draw_text_dynamic(136, 60, string_format(tempo, 4, 2) + " t / s")
-			popup_set(108, 57, 64, 22, "歌曲的节奏（红石刻/秒）\n拖拽来大致更改，点击来手动输入，右键查看更多选项。")
+			popup_set(108, 57, 64, 22, "歌曲的速度（红石刻/秒）\n拖拽来大致更改，点击来手动输入，右键查看更多选项。")
 		}
 		}
 		draw_set_halign(fa_left)
@@ -2051,7 +2051,7 @@ function control_draw() {
 		        window = w_dragtempo
 				if (tutorial_tempobox == 0) {
 					if (language != 1) set_msg("Tip: click the tempo box\nto enter a value!", 7.0, 208, 118)
-					else set_msg("小贴士：单击节奏框可以手动输入！", 7.0, 208, 118)
+					else set_msg("小贴士：单击速度框可以手动输入！", 7.0, 208, 118)
 					tutorial_tempobox = 1
 				}
 			}
@@ -2078,7 +2078,7 @@ function control_draw() {
 																check(tempo = 20) + string(20 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 30) + string(30 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
-																"节奏测量器......")
+																"速度测量器......")
 				if (tutorial_tempobox == 2) {
 					if (language != 1) set_msg("Way to go!", 5.0, 158, 118)
 					else set_msg("干得好！", 5.0, 158, 118)

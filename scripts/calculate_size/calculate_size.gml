@@ -39,7 +39,7 @@ function calculate_size() {
 	    if (!question("一些方块带有音符盒不支持的微分音。继续导出吗？", "Minecraft兼容性")) return 0
 	}
 	if (tempo != 10 && tempo != 5 && tempo != 2.5) {
-	    message("歌曲的节奏与Minecraft不兼容。所以，在游戏内的播放会和软件内的有差别。", "节奏")
+	    message("歌曲的速度与Minecraft不兼容。所以，在游戏内的播放会和软件内的有差别。", "速度")
 	}
 	selection_place(0)
 	if (totalblocks - block_outside <= 0) {

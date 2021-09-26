@@ -160,7 +160,7 @@ function draw_window_schematic_export() {
 	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
 	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
 	    draw_set_halign(fa_left)
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "节奏:")
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "速度:")
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 红石刻 / 秒", "生成一个 10 红石刻 / 秒 的歌曲")) sch_exp_tempo = 0
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 红石刻 / 秒", "生成一个 5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 1
 	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 红石刻 / 秒", "生成一个 2.5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 2

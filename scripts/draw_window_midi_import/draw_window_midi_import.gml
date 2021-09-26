@@ -48,7 +48,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "给每层命名......", "是否根据MIDI内数据为每层命名。") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "......根据乐器", "是否根据MIDI中的乐器为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
 	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "......根据层号", "是否根据MIDI中的层序号为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
-	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "导入节奏", "是否将节奏设定为与MIDI文件中一样。") && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "导入速度", "是否将速度设定为与MIDI文件中一样。") && wmenu = 0) w_midi_tempo=!w_midi_tempo
 	draw_text_dynamic(x1 + 300, y1 + 52, "通道最高层数:")
 	popup_set_window(x1 + 300, y1 + 52, 140, 16, "每个通道所允许使用的最多层数。拖拽来更改。")
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
@@ -165,7 +165,7 @@ function draw_window_midi_import() {
 	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), time_str(midi_songlength))
 	} else {
 	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "Song tempo never defined")
-	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "节奏未定义")
+	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "速度未定义")
 	}
 	draw_theme_font(font_main)
 	draw_set_halign(fa_left)
