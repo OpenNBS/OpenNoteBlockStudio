@@ -7,10 +7,10 @@ function get_mode_actions(argument0) {
 	if (language != 1) switch editmode {
 		case m_key: {
 			switch num {
-				case 1: return "Increase octave" break
-				case 2: return "Decrease octave" break
-				case 3: return "Increase key" break
-				case 4: return "Decrease key" break
+				case 1: return "Transpose one octave up" break
+				case 2: return "Transpose one octave down" break
+				case 3: return "Transpose up" break
+				case 4: return "Transpose down" break
 				default: return ""
 			}
 			break
@@ -57,8 +57,8 @@ function get_mode_actions(argument0) {
 			switch num {
 				case 1: return "升八度" break
 				case 2: return "降八度" break
-				case 3: return "升一音" break
-				case 4: return "降一音" break
+				case 3: return "升半音" break
+				case 4: return "降半音" break
 				default: return ""
 			}
 			break
