@@ -813,7 +813,7 @@ function control_draw() {
 		}
 		}
 	}
-	if (keyboard_check_pressed(vk_f7)) {
+	if (playing = 0 && keyboard_check_pressed(vk_f7)) {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
