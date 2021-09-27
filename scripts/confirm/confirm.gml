@@ -17,7 +17,7 @@ function confirm() {
 	        else
 	            a = question("Do you want to save the song before quitting?", "Confirm")
 	        if (a = 1)
-	            if (!save_song(""))
+	            if (!save_song("", false, true))
 	                return -1
 	    } else {
 	        if (!gameend)
@@ -25,7 +25,7 @@ function confirm() {
 	        else
 	            a = question("Do you want to save the changes made in " + filename_name(filename) + " before quitting?", "Confirm")
 	        if (a = 1)
-	            if (!save_song(filename))
+	            if (!save_song(filename, false, true))
 	                return -1
 	    }
 	}
@@ -37,7 +37,7 @@ function confirm() {
 	        else
 	            a = question("你想在退出前保存未保存的歌曲吗？", "确定")
 	        if (a = 1)
-	            if (!save_song(""))
+	            if (!save_song("", false, true))
 	                return -1
 	    } else {
 	        if (!gameend)
@@ -45,7 +45,7 @@ function confirm() {
 	        else
 	            a = question("你想在退出前保存未保存的歌曲" + filename_name(filename) + "吗？", "确定")
 	        if (a = 1)
-	            if (!save_song(filename))
+	            if (!save_song(filename, false, true))
 	                return -1
 	    }
 	}

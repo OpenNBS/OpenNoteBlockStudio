@@ -41,8 +41,8 @@ function menu_click(argument0) {
 	            }
 				save_settings()
 	        }
-	        if (sel = b + 4) save_song(filename)
-	        if (sel = b + 5) save_song("")
+	        if (sel = b + 4) save_song(filename, false, true)
+	        if (sel = b + 5) save_song("", false, true)
 			if (sel = b + 6) window = w_saveoptions
 	        if (sel = b + 7) pattern_import("")
 	        if (sel = b + 8) pattern_export("")

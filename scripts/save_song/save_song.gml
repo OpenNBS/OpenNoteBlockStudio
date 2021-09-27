@@ -1,10 +1,14 @@
 function save_song() {
 	// save_song(fn[, backup])
-	var fn, backup, nbsver, f, a, ca, cb, fsave;
+	var fn, backup, manual, nbsver, f, a, ca, cb, fsave;
 	fn = argument[0]
 	backup = false
+	manual = false
 	if (argument_count > 1) {
 		backup = argument[1]
+	}
+	if (argument_count > 2) {
+		manual = argument[2]
 	}
 	if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
 	    fsave = filename_name(filename)
@@ -13,6 +17,7 @@ function save_song() {
 		show_debug_message(string_char_at(fn, string_length(fn) - 3))
 	    if (fn = "") return 0
 	}
+	if ((!backup) && (manual) && (selected > 0)) selection_place(0)
 
 	if (backup) {
 		nbsver = nbs_version

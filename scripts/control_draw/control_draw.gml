@@ -614,7 +614,7 @@ function control_draw() {
 		        if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
 		        if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 			}
-			if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename)
+			if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename, false, true)
 		    if (keyboard_check_pressed(ord("A")) && !isplayer) select_all(-1, 0)
 			if (keyboard_check_pressed(ord("C")) && !isplayer) action_copy()
 		    if (keyboard_check_pressed(ord("X")) && !isplayer) action_cut()
@@ -1555,7 +1555,7 @@ function control_draw() {
 	if (language != 1) {
 	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} if (!isplayer) xx += 25
 	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
-	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
+	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename, false, true)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
 	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 	if (isplayer) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
@@ -1588,7 +1588,7 @@ function control_draw() {
 	} else {
 	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "新文件", 0, 0)) {new_song()} if (!isplayer) xx += 25
 	if (draw_icon(icons.OPEN, xx, yy, "打开歌曲", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
-	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "保存歌曲", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
+	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "保存歌曲", 0, 0)) {save_song(filename, false, true)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
 	if (draw_icon(icons.PLAY + playing, xx, yy, "播放 / 暂停", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
 	if (isplayer) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "播放 / 暂停", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
