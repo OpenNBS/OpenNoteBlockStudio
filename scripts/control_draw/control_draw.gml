@@ -493,6 +493,7 @@ function control_draw() {
 		if (mouse_check_button_pressed(mb_right) && keyboard_check(vk_control)) {selection_remove(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
 	    if (mouse_check_button(mb_right) && !keyboard_check(vk_control)) {
 	        if ((starta + sela != select_pressa || startb + selb != select_pressb) && select_pressx != -1) {
+				playing = 0
 	            select = 2
 	        } else if (exist = 1) {
 	            remove_block_manual(selbx, selby)
