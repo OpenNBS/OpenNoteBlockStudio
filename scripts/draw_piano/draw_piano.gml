@@ -42,7 +42,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	            key_click[c2] = 0
 	        }
 	        if (window = 0 && mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71)) {
-	            if (show_keynumbers && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
+	            if (show_notechart && c1 > 6 && c1 < 70 && playing = 0) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
 	            if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
 	            t = key_click[c1]
 	            key_click[c1] = mouse_check_button(mb_left)
