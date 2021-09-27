@@ -177,7 +177,7 @@ function control_draw() {
 	} else {
 		y1 = 52
 	}
-	if ((window = 0 || select > 0) && playing = 0 && !isplayer) {
+	if ((window = 0 || select > 0) && !isplayer) {
 	    if (mouse_rectangle(x1 + 2, y1 + 34, totalcols * 32, totalrows * 32) || select > 0) {
 	        sela = floor((mouse_x - (x1 + 2)) / 32)
 	        selb = floor((mouse_y - (y1 + 34)) / 32)
@@ -208,7 +208,7 @@ function control_draw() {
 	        }
 	    }
 	    if (mouse_rectangle(x1 + 2, y1 + 2, totalcols * 32, 32) && window = 0) {
-	        if (select = 0 && playing = 0 && mouse_check_button_pressed(mb_right)) {
+	        if (select = 0 && mouse_check_button_pressed(mb_right)) {
 	            if (language != 1) show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + "Remove section|"+
 	                                                inactive(!section_exists || section_start > enda) + "Jump to beginning of section|"+
 	                                                inactive(!section_exists || section_end > enda) + "Jump to ending of section|-|"+
@@ -348,12 +348,10 @@ function control_draw() {
 	                            if (fade=0) c = 0.5 * (song_vel[starta + a, startb + b] / 100) + 0.25
 								else c = 1
 	                            if (lockedlayer[startb + b] = 0) c += 0.5 * (1 - (min(1000, current_time - song_played[starta + a, startb + b]) / 1000))
-	                            if (playing = 0) {
-	                                if (select = 1 && lockedlayer[startb + b] = 0) {
-	                                    s = (starta + a >= min(select_pressa, selbx) && starta + a <= max(select_pressa, selbx) && startb + b >= min(select_pressb, selby) && startb + b <= max(select_pressb, selby))
-	                                }
-	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
+	                            if (select = 1 && lockedlayer[startb + b] = 0) {
+	                                s = (starta + a >= min(select_pressa, selbx) && starta + a <= max(select_pressa, selbx) && startb + b >= min(select_pressb, selby) && startb + b <= max(select_pressb, selby))
 	                            }
+	                            if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            if (!isplayer) draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
@@ -606,87 +604,92 @@ function control_draw() {
 	}
 	// Keyboard shortcuts
 	if (window = 0 && text_focus = -1) {
-	    if (playing = 0) {
-	        if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
-	            if (keyboard_check_pressed(ord("N")) && !isplayer) new_song()
-	            if (keyboard_check_pressed(ord("O"))) load_song("")
-	            if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename)
-	            if (keyboard_check_pressed(ord("A")) && !isplayer) select_all(-1, 0)
-	            if (keyboard_check_pressed(ord("A")) && keyboard_check(vk_shift) && !isplayer) selection_place(0)
-	            if (keyboard_check_pressed(ord("I")) && !isplayer) selection_invert()
-	            if (keyboard_check_pressed(ord("C")) && !isplayer) action_copy()
-	            if (keyboard_check_pressed(ord("X")) && !isplayer) action_cut()
-	            if (keyboard_check_pressed(ord("V")) && !isplayer) {
-	                if (selbx > -1 && selby > -1) action_paste(selbx, selby)
-	                else action_paste(starta, startb)
-	            }
-	            if (keyboard_check_pressed(ord("Z")) && !isplayer) action_undo()
-	            if (keyboard_check_pressed(ord("Y")) && !isplayer) action_redo()
-	            if (keyboard_check_pressed(ord("E")) && !isplayer) mode_action(1)
-	            if (keyboard_check_pressed(ord("D")) && !isplayer) mode_action(2)
-	            if (keyboard_check_pressed(ord("R")) && !isplayer) mode_action(3)
-	            if (keyboard_check_pressed(ord("F")) && !isplayer) mode_action(4)
-	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
-	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
-	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
-				if keyboard_check_pressed(ord("0")) {
-					window_scale = get_default_window_scale()
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
-				}
-	            if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
-					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67}
-					else if (window_scale < 0.75) {window_scale = 0.75}
-					else if (window_scale < 0.8) {window_scale = 0.8}
-					else if (window_scale < 0.9) {window_scale = 0.9}
-					else if (window_scale < 1) {window_scale = 1}
-					else if (window_scale < 1.25) {window_scale = 1.25}
-					else if (window_scale < 1.5) {window_scale = 1.5}
-					else if (window_scale < 1.75) {window_scale = 1.75}
-					else if (window_scale < 2) {window_scale = 2}
-					else if (window_scale < 2.5) {window_scale = 2.5}
-					else if (window_scale < 3) {window_scale = 3}
-					else if (window_scale < 3.5) {window_scale = 3.5}
-					else if (window_scale < 4) {window_scale = 4}
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
-				}
-	            if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
-					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5}
-					else if (window_scale > 3) {window_scale = 3}
-					else if (window_scale > 2.5) {window_scale = 2.5}
-					else if (window_scale > 2) {window_scale = 2}
-					else if (window_scale > 1.75) {window_scale = 1.75}
-					else if (window_scale > 1.5) {window_scale = 1.5}
-					else if (window_scale > 1.25) {window_scale = 1.25}
-					else if (window_scale > 1) {window_scale = 1}
-					else if (window_scale > 0.9) {window_scale = 0.9}
-					else if (window_scale > 0.8) {window_scale = 0.8}
-					else if (window_scale > 0.75) {window_scale = 0.75}
-					else if (window_scale > 0.67) {window_scale = 0.67}
-					else if (window_scale > 0.5) {window_scale = 0.5}
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
-				}
-	        }
-	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
-				selection_delete(0)
-				changed = 1
+	    if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
+			if (playing = 0) {
+		        if (keyboard_check_pressed(ord("N")) && !isplayer) new_song()
+		        if (keyboard_check_pressed(ord("O"))) load_song("")
+		        if (keyboard_check_pressed(ord("A")) && keyboard_check(vk_shift) && !isplayer) selection_place(0)
+		        if (keyboard_check_pressed(ord("I")) && !isplayer) selection_invert()
+		        if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
+		        if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 			}
-	        if (sb_sel = 0 && !isplayer) {
-	            if (keyboard_check_pressed(vk_home)) starta = 0
-	            if (keyboard_check_pressed(vk_end)) starta = enda
-	            if (keyboard_check_pressed(vk_pageup)) starta += totalcols
-	            if (keyboard_check_pressed(vk_pagedown)) starta -= totalcols
-	            starta = median(0, starta, enda)
-	            sb_val[0] = starta
-	        }
-	        if (sb_sel = 1 && !isplayer) {
-	            if (keyboard_check_pressed(vk_home)) startb = 0
-	            if (keyboard_check_pressed(vk_end)) startb = endb
-	            if (keyboard_check_pressed(vk_pageup)) startb += totalrows
-	            if (keyboard_check_pressed(vk_pagedown)) startb -= totalrows
-	            startb = median(0, startb, endb)
-	            sb_val[1] = startb
-	        }
+			if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename)
+		    if (keyboard_check_pressed(ord("A")) && !isplayer) select_all(-1, 0)
+			if (keyboard_check_pressed(ord("C")) && !isplayer) action_copy()
+		    if (keyboard_check_pressed(ord("X")) && !isplayer) action_cut()
+		    if (keyboard_check_pressed(ord("V")) && !isplayer) {
+		        if (selbx > -1 && selby > -1) action_paste(selbx, selby)
+		        else action_paste(starta, startb)
+		    }
+		    if (keyboard_check_pressed(ord("Z")) && !isplayer) action_undo()
+		    if (keyboard_check_pressed(ord("Y")) && !isplayer) action_redo()
+			if (keyboard_check_pressed(ord("E")) && !isplayer) mode_action(1)
+		    if (keyboard_check_pressed(ord("D")) && !isplayer) mode_action(2)
+		    if (keyboard_check_pressed(ord("R")) && !isplayer) mode_action(3)
+		    if (keyboard_check_pressed(ord("F")) && !isplayer) mode_action(4)
+			if (keyboard_check_pressed(ord("P"))) {
+				playing = 0
+				window = w_preferences
+			}
+			if keyboard_check_pressed(ord("0")) {
+				window_scale = get_default_window_scale()
+				set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+			}
+		    if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
+				if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67}
+				else if (window_scale < 0.75) {window_scale = 0.75}
+				else if (window_scale < 0.8) {window_scale = 0.8}
+				else if (window_scale < 0.9) {window_scale = 0.9}
+				else if (window_scale < 1) {window_scale = 1}
+				else if (window_scale < 1.25) {window_scale = 1.25}
+				else if (window_scale < 1.5) {window_scale = 1.5}
+				else if (window_scale < 1.75) {window_scale = 1.75}
+				else if (window_scale < 2) {window_scale = 2}
+				else if (window_scale < 2.5) {window_scale = 2.5}
+				else if (window_scale < 3) {window_scale = 3}
+				else if (window_scale < 3.5) {window_scale = 3.5}
+				else if (window_scale < 4) {window_scale = 4}
+				set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+			}
+		    if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
+				if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5}
+				else if (window_scale > 3) {window_scale = 3}
+				else if (window_scale > 2.5) {window_scale = 2.5}
+				else if (window_scale > 2) {window_scale = 2}
+				else if (window_scale > 1.75) {window_scale = 1.75}
+				else if (window_scale > 1.5) {window_scale = 1.5}
+				else if (window_scale > 1.25) {window_scale = 1.25}
+				else if (window_scale > 1) {window_scale = 1}
+				else if (window_scale > 0.9) {window_scale = 0.9}
+				else if (window_scale > 0.8) {window_scale = 0.8}
+				else if (window_scale > 0.75) {window_scale = 0.75}
+				else if (window_scale > 0.67) {window_scale = 0.67}
+				else if (window_scale > 0.5) {window_scale = 0.5}
+				set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+			}
 	    }
+	    if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
+			selection_delete(0)
+			changed = 1
+		}
+		if (playing = 0) {
+			if (sb_sel = 0 && !isplayer) {
+			    if (keyboard_check_pressed(vk_home)) starta = 0
+			    if (keyboard_check_pressed(vk_end)) starta = enda
+			    if (keyboard_check_pressed(vk_pageup)) starta += totalcols
+			    if (keyboard_check_pressed(vk_pagedown)) starta -= totalcols
+			    starta = median(0, starta, enda)
+			    sb_val[0] = starta
+			}
+			if (sb_sel = 1 && !isplayer) {
+			    if (keyboard_check_pressed(vk_home)) startb = 0
+			    if (keyboard_check_pressed(vk_end)) startb = endb
+			    if (keyboard_check_pressed(vk_pageup)) startb += totalrows
+			    if (keyboard_check_pressed(vk_pagedown)) startb -= totalrows
+			    startb = median(0, startb, endb)
+			    sb_val[1] = startb
+			}
+		}
 	    if (keyboard_check(vk_right)) forward = 1
 	    if (keyboard_check(vk_left)) forward = -1
 	    if (keyboard_check_pressed(vk_enter)) {
@@ -769,7 +772,6 @@ function control_draw() {
 					window = w_portamento
 					}
 				if (keyboard_check_pressed(ord("G"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_vibrato()
 					}
 				if (keyboard_check_pressed(ord("H"))&& keyboard_check(vk_shift)) {
@@ -777,23 +779,18 @@ function control_draw() {
 					window = w_stagger
 					}
 				if (keyboard_check_pressed(ord("J"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_chorus()
 					}
 				if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_velocitylfo()
 					}
 				if (keyboard_check_pressed(ord("Q"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_fadein()
 					}
 				if (keyboard_check_pressed(ord("W"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_fadeout()
 					}
 				if (keyboard_check_pressed(ord("E"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_replacekey()
 					}
 				if (keyboard_check_pressed(ord("R"))&& keyboard_check(vk_shift)) {
@@ -809,14 +806,13 @@ function control_draw() {
 					window = w_setpitch
 					}
 				if (keyboard_check_pressed(ord("U"))&& keyboard_check(vk_shift)) {
-					playing = 0 
 					macro_reset()
 					}
 			}
 		}
 		}
 	}
-	if (keyboard_check_pressed(vk_f7) && playing = 0) {
+	if (keyboard_check_pressed(vk_f7)) {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
@@ -1256,7 +1252,6 @@ function control_draw() {
 		    }
 			// Select all
 		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Select all note blocks in this layer\n(Hold Ctrl to select multiple layers)", "选择本层所有方块\n（按住Ctrl选择多层）"), 0, 0)) {
-		        playing = 0
 				if (!keyboard_check(vk_control)) {
 					selection_place(0)
 				}
@@ -1264,22 +1259,18 @@ function control_draw() {
 		    }
 			// Add layer
 		    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Add empty layer here", "新建层"), 0, 0)) {
-		        playing = 0
 				add_layer(startb + b, false)
 		    }
 			// Remove layer
 			if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Remove this layer", "删除层"), 0, 0)) {
-		        playing = 0
 				remove_layer(startb + b, false)
 			}
 			// Shift layer up
 			if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Shift layer up", "上移本层"), 0, 0)) {
-			    playing = 0
 				shift_layers(startb + b, startb + b - 1, false)
 			}
 			// Shift layer down
 			if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, condstr(language != 1, "Shift layer down", "下移本层"), 0, 0)) {
-			    playing = 0
 				shift_layers(startb + b, startb + b + 1, false)
 			}
 		}
@@ -1336,34 +1327,34 @@ function control_draw() {
 	if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
 	if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
 	if (draw_macroicon(3, xx, yy, "Portamento...", 0, 0)) {playing = 0 window = w_portamento} xx += 25
-	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {macro_vibrato()} xx += 25
 	if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagger} xx += 25
-	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
+	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {macro_chorus()} xx += 25
+	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {macro_velocitylfo()} xx += 25
 	if (language != 1) {
-	if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-	if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+	if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {macro_fadein()} xx += 25
+	if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {macro_fadeout()} xx += 25
 	if (show_layers) {
 		xx = x1 + 6
 		yy += 16
 	}
-	if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+	if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {macro_replacekey()} xx += 25
 	if (draw_macroicon(11, xx, yy, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
 	if (draw_macroicon(12, xx, yy, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
 	if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-	if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
+	if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {macro_reset()} xx += 25
 	} else {
-	if (draw_macroicon(8, xx, yy, "淡入", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-	if (draw_macroicon(9, xx, yy, "淡出", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+	if (draw_macroicon(8, xx, yy, "淡入", 0, 0)) {macro_fadein()} xx += 25
+	if (draw_macroicon(9, xx, yy, "淡出", 0, 0)) {macro_fadeout()} xx += 25
 	if (show_layers) {
 		xx = x1 + 6
 		yy += 16
 	}
-	if (draw_macroicon(10, xx, yy, "替换音", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+	if (draw_macroicon(10, xx, yy, "替换音", 0, 0)) {macro_replacekey()} xx += 25
 	if (draw_macroicon(11, xx, yy, "设定音量......", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
 	if (draw_macroicon(12, xx, yy, "设定声道......", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
 	if (draw_macroicon(13, xx, yy, "设定音高......", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-	if (draw_macroicon(14, xx, yy, "重置所有属性", 0, 0)) {playing = 0 macro_reset()} xx += 25
+	if (draw_macroicon(14, xx, yy, "重置所有属性", 0, 0)) {macro_reset()} xx += 25
 	}
 	}
 	}
@@ -1688,12 +1679,12 @@ function control_draw() {
 	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4}
 	if (language != 1) {
 	while (1) {
-	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {action_undo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {action_redo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {action_copy()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {action_cut()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {action_delete()} xx += 25 if (xx > rw - 190) break}
 	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break}
 	if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 190) break
 	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break}
@@ -1708,12 +1699,12 @@ function control_draw() {
 	}
 	} else {
 	while (1) {
-	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "撤销", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "重做", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "复制", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "剪切", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "粘贴", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break}
-	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "删除", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "撤销", historypos = historylen, 0)) {action_undo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "重做", historypos = 0, 0)) {action_redo()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "复制", selected = 0, 0)) {action_copy()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "剪切", selected = 0, 0)) {action_cut()} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "粘贴", selection_copied = "", 0)) {action_paste(starta, startb)} xx += 25 if (xx > rw - 190) break}
+	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "删除", selected = 0, 0)) {action_delete()} xx += 25 if (xx > rw - 190) break}
 	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 190) break}
 	if (draw_icon(icons.INFORMATION, xx, yy, "歌曲信息")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 190) break
 	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "歌曲属性")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 190) break}
