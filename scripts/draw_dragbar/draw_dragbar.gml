@@ -1,4 +1,4 @@
-function draw_dragbar(value, max, x, y, length, id, window, time){
+function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 	var a;
 	var last_color = draw_get_color()
 	draw_theme_color()
@@ -38,7 +38,7 @@ function draw_dragbar(value, max, x, y, length, id, window, time){
 		curs = cr_handpoint
 		if (mouse_check_button(mb_left)) {
 			curs = cr_drag
-			aa = 1
+			aa = id
 			if (mouse_x >= x && mouse_x <= x + length) {
 				value = ((mouse_x - x) / length) * max
 			} else if (mouse_x <= x) {
@@ -51,8 +51,12 @@ function draw_dragbar(value, max, x, y, length, id, window, time){
 	}
 	draw_set_color(last_color)
 	if (window = obj_controller.window) {
-		if (!window) popup_set(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), condstr(time, time_str((clamp(((mouse_x - x) / length) * max, 0, max)) / tempo), clamp(((mouse_x - x) / length) * max, 0, max)))
-		else popup_set_window(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), condstr(time, time_str((clamp(((mouse_x - x) / length) * max, 0, max)) / tempo), clamp(((mouse_x - x) / length) * max, 0, max)))
+		if (!window) popup_set(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), str)
+		else popup_set_window(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), str)
+		if (!mouse_rectangle(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3))) {
+			if (!window) popup_set(x + (value / max) * length - 6, y + 1 - 6, 13, 13, kstr)
+			else popup_set_window(x + (value / max) * length - 6, y + 1 - 6, 13, 13, kstr)
+		}
 	}
 	return value;
 }

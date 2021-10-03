@@ -225,7 +225,7 @@ function control_draw() {
 	        if (mouse_check_button_pressed(mb_left)) {
 	            timeline_pressa = starta + floor((mouse_x - (x1 + 2)) / 32)
 	        }
-	        if (mouse_check_button_released(mb_left)) {
+	        if (mouse_check_button_released(mb_left) && aa = 0) {
 	            marker_pos = starta + (mouse_x - (x1 + 2)) / 32
 	        }
 	        if (mouse_check_button(mb_left)) {
@@ -1703,7 +1703,7 @@ function control_draw() {
 	if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
 	    open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 	} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 190) break
+	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 40 if (xx > rw - 190) break
 	break
 	}
 	} else {
@@ -1723,10 +1723,15 @@ function control_draw() {
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
 	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	} xx += 25 if (xx > rw - 190) break
-	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 190) break
+	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {open_url(link_website)} xx += 40 if (xx > rw - 190) break
 	break
 	}
 	}
+	if (aa = 2 && mouse_check_button_released(mb_left)) {
+		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 100, 100, 0)
+		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 50, 100, 0)
+	}
+	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(mastervol * 100), 0) * 100 + 0.5) / 100
 
 	// Compatible
 	if (!isplayer) {
@@ -1937,7 +1942,7 @@ function control_draw() {
 		draw_theme_font(font_main)
 		
 		if (isplayer) {
-			marker_pos = draw_dragbar(marker_pos, enda, rw / 2 - 200, rh / 2 + 25, 400, 1, 0, true)
+			marker_pos = draw_dragbar(marker_pos, enda, rw / 2 - 200, rh / 2 + 25, 400, 1, time_str((clamp(((mouse_x - rw / 2 - 200) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
 			draw_set_halign(fa_left)
 			draw_theme_font(font_info_med)
 			draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))

@@ -401,6 +401,14 @@ function control_create() {
 	soundmetronome.key = 45
 	soundmetronome.filename = "UI/metronome.ogg"
 	soundmetronome.user = 0
+	soundding = create(obj_instrument)
+	soundding.key = 45
+	soundding.filename = "UI/ding.ogg"
+	soundding.user = 0
+	sounddingf = create(obj_instrument)
+	sounddingf.key = 45
+	sounddingf.filename = "UI/dingf.ogg"
+	sounddingf.user = 0
 	soundmetronomeclick = create(obj_instrument)
 	soundmetronomeclick.key = 45
 	soundmetronomeclick.filename = "UI/metronome_click.ogg"

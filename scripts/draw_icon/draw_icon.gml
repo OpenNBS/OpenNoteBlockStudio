@@ -27,7 +27,7 @@ function draw_icon() {
 	}
 	// Repeat trigger when holding fast-forward and rewind
 	if (i = 7 || i = 8) return (a = 2)
-	return (a && mouse_check_button_released(mb_left))
+	return (a && mouse_check_button_released(mb_left) && aa = 0)
 
 
 
