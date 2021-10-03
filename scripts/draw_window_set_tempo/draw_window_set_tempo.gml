@@ -21,7 +21,8 @@ function draw_window_set_tempo() {
 	
 	// Set tempo and close
 	if ((mouse_check_button_released(mb_left) && !settempo && !mouse_rectangle(xx, 57, w, 22)) || keyboard_check_pressed(vk_enter)) {
-		tempo = real(string_digits_symbol(string_replace(input, ",", "."), ".") / bpm_multiplier)
+		try tempo = real(string_digits_symbol(string_replace(input, ",", "."), ".") / bpm_multiplier)
+		catch (e) tempo = tempo
 		if (tempo >= 1000) {
 			tempo /= 100
 		} else if (tempo >= 100) {
