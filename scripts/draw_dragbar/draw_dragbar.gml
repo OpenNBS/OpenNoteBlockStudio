@@ -36,7 +36,7 @@ function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 	draw_theme_color()
 	if (a || aa = id) {
 		curs = cr_handpoint
-		if (mouse_check_button(mb_left)) {
+		if (mouse_check_button(mb_left) && (aa = id || aa = 0)) {
 			curs = cr_drag
 			aa = id
 			if (mouse_x >= x && mouse_x <= x + length) {

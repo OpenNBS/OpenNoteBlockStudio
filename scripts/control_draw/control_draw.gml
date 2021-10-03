@@ -1727,7 +1727,7 @@ function control_draw() {
 	break
 	}
 	}
-	if (aa = 2 && mouse_check_button_released(mb_left)) {
+	if (aa = 2 && mouse_check_button_released(mb_left) && windowsound) {
 		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 100, 100, 0)
 		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 50, 100, 0)
 	}
