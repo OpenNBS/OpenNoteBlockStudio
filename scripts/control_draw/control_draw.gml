@@ -39,7 +39,7 @@ function control_draw() {
 	if (delay < 0) delay = 0
 	work_mins += 1 / (room_speed * 60)
 	
-	file_dnd_set_files("*.nbs", 1, 0, 0)
+	file_dnd_set_files("*.nbs;*.mid;*.midi", 1, 0, 0)
 	dndfile = file_dnd_get_files()
 
 	remove_emitters()
