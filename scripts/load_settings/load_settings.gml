@@ -61,6 +61,7 @@ function load_settings() {
 	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
 	structure =          ini_read_real(  "preferences", "structure",          structure)
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
+	addpitch =           ini_read_real(  "preferences", "addpitch",           addpitch)
 	language =           ini_read_real(  "preferences", "language",           language)
 	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
 	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)

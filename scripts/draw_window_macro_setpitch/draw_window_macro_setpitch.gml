@@ -24,6 +24,8 @@ function draw_window_macro_setpitch() {
 	setpit = median(-1000, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1000)
 
 	draw_theme_color()
+	if (language != 1) {if (draw_checkbox(x1 + 15, y1 + 80, addpitch, "Add mode", "Add the pitch amount to each note,\ninstead of setting it.", 0, 1)) addpitch = !addpitch}
+	else {if (draw_checkbox(x1 + 15, y1 + 80, addpitch, "加法模式", "将数值叠加至音符上，而不是直接设置。", 0, 1)) addpitch = !addpitch}
 	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确定"))) {
 		windowalpha = 0
 		windowclose = 0
@@ -36,11 +38,13 @@ function draw_window_macro_setpitch() {
 		val = 0
 		while (val < total_vals) {
 			val += 6
-			arr_data[val] = setpit
+			if (!addpitch) arr_data[val] = setpit
+			else arr_data[val] = real(arr_data[val]) + real(setpit)
 			val += 1
 			while arr_data[val] != -1 {
 				val += 5
-				arr_data[val] = setpit
+				if (!addpitch) arr_data[val] = setpit
+				else arr_data[val] = real(arr_data[val]) + real(setpit)
 				val += 1
 			}
 			val ++
