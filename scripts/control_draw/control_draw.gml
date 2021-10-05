@@ -1943,7 +1943,7 @@ function control_draw() {
 		draw_theme_font(font_main)
 		
 		if (isplayer) {
-			marker_pos = draw_dragbar(marker_pos, enda, rw / 2 - 200, rh / 2 + 25, 400, 1, time_str((clamp(((mouse_x - rw / 2 - 200) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
+			marker_pos = draw_dragbar(marker_pos, enda, rw / 2 - 200, rh / 2 + 25, 400, 1, time_str((clamp(((mouse_x - (rw / 2 - 200)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
 			draw_set_halign(fa_left)
 			draw_theme_font(font_info_med)
 			draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname))
