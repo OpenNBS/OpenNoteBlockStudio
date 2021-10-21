@@ -17,7 +17,7 @@ function control_create() {
 	for (var i = 0; i < p_num; i += 1) {
 		if (parameter_string(i) = "-player") isplayer = 1
 	}
-	if (RUN_FROM_IDE != 1) isplayer = 1
+	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
 	window_height = 0
 	if (!isplayer) window_maximize()
@@ -464,6 +464,10 @@ function control_create() {
 
 	// Settings
 	load_settings()
+	switch(language) {
+		default:
+			lang_en_us()
+	}
 	if (channelstoggle) channels = 32768
 	else channels = 256
 	audio_channel_num(channels)

@@ -414,6 +414,7 @@
     {"id":{"name":"reset_schematic_export","path":"scripts/reset_schematic_export/reset_schematic_export.yy",},"order":7,},
     {"id":{"name":"schematic_export","path":"scripts/schematic_export/schematic_export.yy",},"order":8,},
     {"id":{"name":"branch_export_old","path":"scripts/branch_export_old/branch_export_old.yy",},"order":9,},
+    {"id":{"name":"lang_en_us","path":"scripts/lang_en_us/lang_en_us.yy",},"order":0,},
     {"id":{"name":"schematic_height","path":"scripts/schematic_height/schematic_height.yy",},"order":10,},
     {"id":{"name":"schematic_length","path":"scripts/schematic_length/schematic_length.yy",},"order":11,},
     {"id":{"name":"schematic_width","path":"scripts/schematic_width/schematic_width.yy",},"order":12,},
@@ -569,6 +570,7 @@
     {"folderPath":"folders/Sprites/Interface/inputbox/focused.yy","order":2,"resourceVersion":"1.0","name":"focused","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":61,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Shaders.yy","order":62,"resourceVersion":"1.0","name":"Shaders","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts/Languages.yy","order":13,"resourceVersion":"1.0","name":"Languages","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
