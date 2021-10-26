@@ -612,7 +612,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"Megalovania - Super Smash Bros. Ultimate.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"The Ground's Colour Is Yellow.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ExecuteShell.dll","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"7za.exe","resourceType":"GMIncludedFile",},
+    {"CopyToMask":3035461371874509036,"filePath":"datafiles","resourceVersion":"1.0","name":"7za.exe","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"show.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"goback.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"invoke.ogg","resourceType":"GMIncludedFile",},

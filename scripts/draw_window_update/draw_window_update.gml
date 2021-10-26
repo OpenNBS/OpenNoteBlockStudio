@@ -63,7 +63,7 @@ function draw_window_update() {
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 22, n, 0, 1)
 	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, "Older versions...", "查看更旧版本…"))) {
-		open_url("https://hielkeminecraft.github.io/OpenNoteBlockStudio/changelog")
+		url_open("https://hielkeminecraft.github.io/OpenNoteBlockStudio/changelog")
 	}
 	if (draw_button2(x1 + 487 - 72, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {

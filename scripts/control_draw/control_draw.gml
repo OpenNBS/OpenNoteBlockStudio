@@ -696,8 +696,8 @@ function control_draw() {
 	    }
 		if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols) timestoloop = real(loopmax)
 	    if (keyboard_check_pressed(vk_f1)) {
-	        if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-			else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+	        if (language != 1) url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+			else url_open("https://www.bilibili.com/video/BV1Mx411a76p")
 	    }
 		// Instrument shortcuts
 		if (keyboard_check_pressed(vk_f5) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
@@ -1701,9 +1701,9 @@ function control_draw() {
 	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
 	if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
-	    open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+	    url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 	} xx += 25 if (xx > rw - 312) break
-	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
+	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {url_open(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
 	} else {
@@ -1721,9 +1721,9 @@ function control_draw() {
 	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI设备管理器")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
-	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+	    url_open("https://www.bilibili.com/video/BV1Mx411a76p")
 	} xx += 25 if (xx > rw - 312) break
-	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
+	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {url_open(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
 	}
@@ -2094,7 +2094,7 @@ function control_draw() {
 	draw_windows()
 	if (showmsg) draw_msg()
 	if (rainbowtoggle) draw_accent_rainbow()
-	if (lastfile != dndfile && dndfile != "") {load_song(dndfile) lastfile = dndfile}
+	//if (lastfile != dndfile && dndfile != "") {load_song(dndfile) lastfile = dndfile}
 
 	// Draw update progress bar
 	if (update == 4) {

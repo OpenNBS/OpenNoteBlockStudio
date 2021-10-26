@@ -2,7 +2,7 @@ function load_text(argument0) {
 	// load_text(filename)
 	// Loads a text file into a string.
 
-	if (file_exists_lib(argument0)) {
+	if (file_exists(argument0)) {
 
 	    var file, str
 

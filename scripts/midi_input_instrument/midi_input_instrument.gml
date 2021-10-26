@@ -8,7 +8,7 @@ function midi_input_instrument(argument0) {
 
 	//  By David "Davve" Norgren for MIDI input - www.stuffbydavid.com
 
-	return external_call(lib_midi_input_instrument, argument0);
+	if (os_type = os_windows) return external_call(lib_midi_input_instrument, argument0);
 
 
 

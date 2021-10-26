@@ -5,10 +5,10 @@ function pattern_import() {
 	fn = ""
 	if (selected != 0) return 0
 	if (fn = "") {
-	    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
+	    if (!directory_exists(patternfolder)) patternfolder = pattern_directory
 	    fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, condstr(language != 1, "Load pattern", "打开分段")))
 	}
-	if (fn = "" || !file_exists_lib(fn)) return 0
+	if (fn = "" || !file_exists(fn)) return 0
 
 	file_ext = filename_ext(fn)
 	if (file_ext != ".nbp") {message(condstr(language != 1, "Error: This file is not a pattern.", "错误：该文件不是分段文件。"), condstr(language != 1, "Error", "错误")) return 0}

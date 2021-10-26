@@ -9,7 +9,7 @@ function midi_input_key_press_time(argument0, argument1) {
 
 	//  By David "Davve" Norgren for MIDI input - www.stuffbydavid.com
 
-	return external_call(lib_midi_input_key_press_time, argument0, argument1);
+	if (os_type = os_windows) return external_call(lib_midi_input_key_press_time, argument0, argument1);
 
 
 

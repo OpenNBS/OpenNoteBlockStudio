@@ -217,10 +217,10 @@ function draw_window_preferences() {
 		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
 	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "Open", 0, 1)) {
-	        if (!directory_exists_lib(songfolder)) {
+	        if (!directory_exists(songfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
-	            open_url(songfolder)
+	            url_open(songfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "Change", 0, 1)) {
@@ -233,10 +233,10 @@ function draw_window_preferences() {
 		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
 	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "Open", 0, 1)) {
-	        if (!directory_exists_lib(patternfolder)) {
+	        if (!directory_exists(patternfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
-	            open_url(patternfolder)
+	            url_open(patternfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "Change", 0, 1)) {
@@ -250,10 +250,10 @@ function draw_window_preferences() {
 		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
 	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "打开", 0, 1)) {
-	        if (!directory_exists_lib(songfolder)) {
+	        if (!directory_exists(songfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
-	            open_url(songfolder)
+	            url_open(songfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "修改", 0, 1)) {
@@ -266,10 +266,10 @@ function draw_window_preferences() {
 		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "片段路径: " + string_truncate(patternfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
 	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "打开", 0, 1)) {
-	        if (!directory_exists_lib(patternfolder)) {
+	        if (!directory_exists(patternfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
-	            open_url(patternfolder)
+	            url_open(patternfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "修改", 0, 1)) {

@@ -8,7 +8,7 @@ function control_create() {
 	log_init()
 
 	// Initialize DLLs
-	lib_init()
+	if (os_type = os_windows) lib_init()
 
 	// Window
 	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
@@ -20,12 +20,13 @@ function control_create() {
 	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
 	window_height = 0
-	if (!isplayer) window_maximize()
-	window_set_focus()
+	if (os_type = os_windows) if (!isplayer) window_maximize()
+	if (os_type = os_windows) window_set_focus()
 	window_set_min_width(100)
 	window_set_min_height(100)
 	window_scale = get_default_window_scale()
 	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	else window_set_size(floor(1024 * window_scale), floor(768 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -485,7 +486,7 @@ function control_create() {
 	total_size = -1
 	changelogstr = load_text(data_directory + "changelog.txt")
 	creditsstr = load_text(data_directory + "credits.txt")
-	if (file_exists_lib(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
+	if (file_exists(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
 		if (theme = 2) fdark = 1
 		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
@@ -493,8 +494,8 @@ function control_create() {
 	}
 
 	// Delete old installer
-	if (file_exists_lib(update_file)) {
-		files_delete_lib(update_file)
+	if (file_exists(update_file)) {
+		file_delete(update_file)
 	}
 	
 	// Init wallpaper
@@ -504,7 +505,7 @@ function control_create() {
 	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196
 	// Implement in a better way that takes multiple instances into account.
 	/*
-	if (file_exists_lib(backup_file)) {
+	if (file_exists(backup_file)) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
 			load_song(backup_file, true)
 		}

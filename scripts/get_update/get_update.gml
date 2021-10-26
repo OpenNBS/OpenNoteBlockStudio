@@ -17,16 +17,16 @@ function get_update() {
 				if (language != 1) show_message("Download complete! Click OK to begin installing the update.")
 				else show_message("下载完成！点击“OK”来安装更新。")
 				// At this point, the game is paused until the user dismisses the message
-				ExecuteShell("\"" + update_file + "\"", false, true)
+				if (os_type = os_windows) ExecuteShell("\"" + update_file + "\"", false, true)
 				game_end()
 			} else {
 				if (language != 1) {
 				if (question("Failed to download update. Do you want to open the Note Block Studio website and update manually?", "Failed")) {
-					open_url(link_website)
+					url_open(link_website)
 				}
 				} else {
 				if (question("下载更新失败。你想要到Note Block Studio官网手动更新吗？", "失败")) {
-					open_url(link_website)
+					url_open(link_website)
 				}
 				}
 			window = w_greeting

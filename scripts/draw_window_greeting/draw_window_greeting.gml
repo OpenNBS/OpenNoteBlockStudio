@@ -139,7 +139,7 @@ function draw_window_greeting() {
 	    m += m && mouse_check_button(mb_left)
 	    if (m > 0 && mouse_check_button_released(mb_left)) {
 			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-	        if (!file_exists_lib(recent_song[a])) {
+	        if (!file_exists(recent_song[a])) {
 	            if (language != 1) message("Could not find file:\n" + recent_song[a], "Error")
 	            else message("找不到文件：\n" + recent_song[a], "错误")
 	            for (d = 0; d < 10; d += 1) {
@@ -204,8 +204,8 @@ function draw_window_greeting() {
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-		if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-		else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+		if (language != 1) url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+		else url_open("https://www.bilibili.com/video/BV1Mx411a76p")
 	}
 
 	window_set_cursor(curs)

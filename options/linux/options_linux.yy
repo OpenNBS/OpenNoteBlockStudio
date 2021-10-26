@@ -1,6 +1,6 @@
 {
-  "option_linux_display_name": "mcnbs",
-  "option_linux_version": "1.0.0.0",
+  "option_linux_display_name": "Minecraft Note Block Studio",
+  "option_linux_version": "3.9.2",
   "option_linux_maintainer_email": "",
   "option_linux_homepage": "http://www.mcnbs.com",
   "option_linux_short_desc": "mcnbs",
@@ -17,7 +17,7 @@
   "option_linux_scale": 0,
   "option_linux_texture_page": "2048x2048",
   "option_linux_enable_steam": false,
-  "option_linux_disable_sandbox": false,
+  "option_linux_disable_sandbox": true,
   "resourceVersion": "1.0",
   "name": "Linux",
   "tags": [],

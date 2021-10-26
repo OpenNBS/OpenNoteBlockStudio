@@ -50,7 +50,7 @@ function draw_window_mididevices() {
 
 	// Instruments
 	for (a = 0; a < 11; a += 1) {
-	    if (a >= midi_input_devices()) break
+	    if (a >= midi_input_devices() || os_type = os_windows) break
 	    draw_set_color(12632256)
 	    draw_line(x1 + 14, y1 + 106 + 20 * a, x1 + 14 + 250 + 75 + 64 + 85, y1 + 106 + 20 * a)
 	    draw_theme_color()

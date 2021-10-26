@@ -2,13 +2,14 @@ function instrument_load() {
 	// instrument_load()
 
 	var fn = sounds_directory + filename;
-	fn = string_replace_all(fn, "/", "\\");
+	if (os_type = os_windows) fn = string_replace_all(fn, "/", "\\");
 
 	log("Load instrument", fn)
 
-	if (filename = "" || !file_exists_lib(fn))
+	if (filename = "" || !file_exists(fn))
 	    return false
-
+		
+	if (os_type = os_windows) {
 	log("audio_file_decode")
 	var ret = audio_file_decode(fn, temp_file);
 	if (ret < 0) {
@@ -20,6 +21,9 @@ function instrument_load() {
 	log("buffer_load")
 	sound_buffer = buffer_load(temp_file)
 	sound = audio_create_buffer_sound(sound_buffer, buffer_s16, 44100, 0, buffer_get_size(sound_buffer), audio_stereo)
+	} else {
+	sound = audio_create_stream(fn)
+	}
 
 	loaded = true
 

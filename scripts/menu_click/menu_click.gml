@@ -15,7 +15,7 @@ function menu_click(argument0) {
 	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 3 + c && recent_song[c] != "") {
-	                if (!file_exists_lib(recent_song[c])) {
+	                if (!file_exists(recent_song[c])) {
 	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
@@ -176,22 +176,22 @@ function menu_click(argument0) {
 	    }
 	    case "help": {
 			if (language != 1) {
-	        if (sel = 1) open_url("http://www.youtube.com/watch?v=2oD9Bw_Qau4")
-	        if (sel = 2) open_url("http://www.youtube.com/watch?v=NIxNTK6nfJI")
-	        if (sel = 3) open_url("http://www.youtube.com/watch?v=JMPkf7bS8lQ")
-	        if (sel = 4) open_url("http://www.youtube.com/watch?v=Cg6dAcEjTs0")
-	        if (sel = 5) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+	        if (sel = 1) url_open("http://www.youtube.com/watch?v=2oD9Bw_Qau4")
+	        if (sel = 2) url_open("http://www.youtube.com/watch?v=NIxNTK6nfJI")
+	        if (sel = 3) url_open("http://www.youtube.com/watch?v=JMPkf7bS8lQ")
+	        if (sel = 4) url_open("http://www.youtube.com/watch?v=Cg6dAcEjTs0")
+	        if (sel = 5) url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 			} else {
-			if (sel = 1) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=1")
-	        if (sel = 2) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
-	        if (sel = 3) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=3")
-	        if (sel = 4) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=4")
-	        if (sel = 5) open_url("https://www.bilibili.com/video/BV1Mx411a76p")
+			if (sel = 1) url_open("https://www.bilibili.com/video/BV1Mx411a76p?p=1")
+	        if (sel = 2) url_open("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
+	        if (sel = 3) url_open("https://www.bilibili.com/video/BV1Mx411a76p?p=3")
+	        if (sel = 4) url_open("https://www.bilibili.com/video/BV1Mx411a76p?p=4")
+	        if (sel = 5) url_open("https://www.bilibili.com/video/BV1Mx411a76p")
 			}
-			if (sel = 6) open_url(link_website)
-			if (sel = 7) open_url(link_github)
-			if (sel = 8) open_url(link_discord)
-	        if (sel = 9) open_url(link_report)
+			if (sel = 6) url_open(link_website)
+			if (sel = 7) url_open(link_github)
+			if (sel = 8) url_open(link_discord)
+	        if (sel = 9) url_open(link_report)
 	        if (sel = 10) window = w_changelist
 	        if (sel = 11) window = w_about
 	        break
@@ -293,7 +293,7 @@ function menu_click(argument0) {
 	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 2 + c && recent_song[c] != "") {
-	                if (!file_exists_lib(recent_song[c])) {
+	                if (!file_exists(recent_song[c])) {
 	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {

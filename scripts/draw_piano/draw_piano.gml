@@ -10,7 +10,8 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	d = -1
 	selectedkey = -1
 	alpha = max(0, 3 - startkey)
-	midi_devices = midi_input_devices()
+	if (os_type = os_windows) midi_devices = midi_input_devices()
+	else midi_devices = -1
 	for (a = 0; a < midi_devices; a += 1) {
 	    midi_keys[a] = midi_input_key_presses(a)
 	    midi_releases[a] = midi_input_key_releases(a)

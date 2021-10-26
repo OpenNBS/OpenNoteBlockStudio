@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "Minecraft Note Block Studio",
   "option_windows_executable_name": "Minecraft Note Block Studio",
-  "option_windows_version": "3.9.1.0",
+  "option_windows_version": "3.9.2.0",
   "option_windows_company_info": "https://github.com/HielkeMinecraft/OpenNoteBlockStudio",
   "option_windows_product_info": "Minecraft Note Block Studio",
   "option_windows_copyright_info": "",
@@ -26,7 +26,7 @@
   "option_windows_license": "${options_dir}/windows/installer/license.txt",
   "option_windows_nsis_file": "${options_dir}/windows/installer/runnerinstaller.nsi",
   "option_windows_enable_steam": false,
-  "option_windows_disable_sandbox": false,
+  "option_windows_disable_sandbox": true,
   "option_windows_steam_use_alternative_launcher": false,
   "option_windows_use_x64": false,
   "resourceVersion": "1.1",

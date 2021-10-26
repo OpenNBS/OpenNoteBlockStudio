@@ -6,7 +6,7 @@ function midi_input_pitch_wheel(argument0) {
 
 	//  By David "Davve" Norgren for MIDI input - www.stuffbydavid.com
 
-	return (external_call(lib_midi_input_pitch_wheel, argument0) - 64) / 64; // Turn 0->127 to -1->1
+	if (os_type = os_windows) return (external_call(lib_midi_input_pitch_wheel, argument0) - 64) / 64; // Turn 0->127 to -1->1
 
 
 
