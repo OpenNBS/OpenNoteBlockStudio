@@ -26,7 +26,7 @@ function control_create() {
 	window_set_min_height(100)
 	window_scale = get_default_window_scale()
 	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
-	else window_set_size(floor(1024 * window_scale), floor(768 * window_scale))
+	else if (os_type != os_windows) window_set_size(floor(1024 * window_scale), floor(768 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -515,7 +515,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "" && filename != "-player") load_song(filename)
+		if (filename != "" && filename != "-player" && filename != "-game" && filename != "/Users/chenxi050402/GameMaker-Studio/mcnbs/GMS2MAC/Minecraft_Note_Block_Studio/GameAssetsMac.zip") load_song(filename)
 	}
 
 	log("Startup OK")

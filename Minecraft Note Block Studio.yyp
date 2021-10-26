@@ -325,6 +325,7 @@
     {"id":{"name":"midi_instruments","path":"scripts/midi_instruments/midi_instruments.yy",},"order":3,},
     {"id":{"name":"open_midi","path":"scripts/open_midi/open_midi.yy",},"order":4,},
     {"id":{"name":"fnt_src","path":"fonts/fnt_src/fnt_src.yy",},"order":15,},
+    {"id":{"name":"libfilesystem","path":"extensions/libfilesystem/libfilesystem.yy",},"order":4,},
     {"id":{"name":"reset_midi","path":"scripts/reset_midi/reset_midi.yy",},"order":5,},
     {"id":{"name":"region_code_get","path":"scripts/region_code_get/region_code_get.yy",},"order":0,},
     {"id":{"name":"region_code_load","path":"scripts/region_code_load/region_code_load.yy",},"order":1,},
