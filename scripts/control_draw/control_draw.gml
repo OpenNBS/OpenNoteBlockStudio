@@ -24,7 +24,7 @@ function control_draw() {
 	showmenu = 0
 	cursmarker = 0
 	compx = 180
-	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), translate("windowTitle.unsavedSong") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - " + translate("windowTitle.programName") + condstr(isplayer, " - " + translate("windowTitle.playerMode")))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -95,24 +95,14 @@ function control_draw() {
 	// Toggle blackout mode
 	if (keyboard_check_pressed(vk_f10)) {
 		blackout = !blackout
-		if (language != 1) {
-		if (blackout) set_msg("Blackout mode => ON")
-		else set_msg("Blackout mode => OFF")
-		} else {
-		if (blackout) set_msg("全黑模式 => 开启")
-		else set_msg("全黑模式 => 关闭")
-		}
+		if (blackout) set_msg(translate("popup.blackoutOn"))
+		else set_msg(translate("popup.blackoutOff"))
 	}
 	// Toggle fullscreen
 	if (keyboard_check_pressed(vk_f11)) {
 		fullscreen = !fullscreen
-		if (language != 1) {
 		if (fullscreen) set_msg("Fullscreen => ON")
 		else set_msg("Fullscreen => OFF")
-		} else {
-		if (fullscreen) set_msg("全屏模式 => 开启")
-		else set_msg("全屏模式 => 关闭")
-		}
 	}
 	}
 
@@ -209,18 +199,12 @@ function control_draw() {
 	    }
 	    if (mouse_rectangle(x1 + 2, y1 + 2, totalcols * 32, 32) && window = 0) {
 	        if (select = 0 && playing = 0 && mouse_check_button_pressed(mb_right)) {
-	            if (language != 1) show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + "Remove section|"+
-	                                                inactive(!section_exists || section_start > enda) + "Jump to beginning of section|"+
-	                                                inactive(!section_exists || section_end > enda) + "Jump to ending of section|-|"+
-	                                                inactive(!section_exists) + "Select all blocks in section|-|"+
-	                                                check(marker_start) + "Start playing in section|"+
-	                                                check(marker_end) + "Stop playing after section")
-	            else show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + "移除区间|"+
-	                                                inactive(!section_exists || section_start > enda) + "跳到区间开始|"+
-	                                                inactive(!section_exists || section_end > enda) + "跳到区间结束|-|"+
-	                                                inactive(!section_exists) + "选中区间内方块|-|"+
-	                                                check(marker_start) + "从区间开始播放|"+
-	                                                check(marker_end) + "区间后结束播放")
+	            show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + translate("menu.section.removeSection") + "|" +
+	                                                inactive(!section_exists || section_start > enda) + translate("menu.section.jumpToBeginning") + "|" +
+	                                                inactive(!section_exists || section_end > enda) + translate("menu.section.jumpToEnd") + "|-|" +
+	                                                inactive(!section_exists) + translate("menu.section.selectAllBlocks") + "|-|" +
+	                                                check(marker_start) + translate("menu.section.startInSection") + "|" +
+	                                                check(marker_end) + translate("menu.section.stopAfterSection"))
 	        }
 	        if (mouse_check_button_pressed(mb_left)) {
 	            timeline_pressa = starta + floor((mouse_x - (x1 + 2)) / 32)
@@ -508,95 +492,53 @@ function control_draw() {
 				insmenu = 1
 	            for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	                var ins = instrument_list[| a];
-	                if (ins.user) {
-	                    if (language != 1) customstr += "...to " + clean(ins.name) + "|"
-	                    else customstr += "...为 " + clean(ins.name) + "|"
-					} else {
-	                    if (language != 1) str += "...to " + clean(ins.name) + "|"
-	                    else str += "...为 " + clean(ins.name) + "|"
-					}
+	                if (ins.user)
+	                    customstr += translate("menu.edit.changeInstrument.entry", clean(ins.name)) + "|"
+	                else
+	                    str += translate("menu.edit.changeInstrument.entry", clean(ins.name)) + clean(ins.name) + "|"
 					if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-						if (language != 1) customstr += "-|More...|\\|"
-						else customstr += "-|更多......|\\|"
+						customstr += "-|" + translate("menu.edit.changeInstrument.more") + "|\\|"
 						insmenu++
 					}
 				}
-	            if (language != 1) menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-	                                      inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-	                                      inactive(selected = 0) + "Deselect all|"+
-	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
-	                                      inactive(totalblocks = 0 || selbx >= enda) + "Select all to the right ->|"+
-	                                      inactive(totalblocks = 0 || selbx <= 0) + "Select all to the left <-|-|"+
-	                                      inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
-	                                      inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
+	            menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$" + translate("menu.edit.copy") + "|"+
+	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$" + translate("menu.edit.cut") + "|"+
+	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$" + translate("menu.edit.paste") + "|"+
+	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$" + translate("menu.edit.delete") + "|-|"+
+	                                      inactive(totalblocks = 0) + "Ctrl+A$" + translate("menu.edit.selectAll") + "|"+
+	                                      inactive(selected = 0) + translate("menu.edit.deselectAll") + "|"+
+	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$" + translate("menu.edit.invertSelection") + "|-|"+
+	                                      inactive(totalblocks = 0 || selbx >= enda) + translate("menu.edit.selectAllRight") + "|"+
+	                                      inactive(totalblocks = 0 || selbx <= 0) + translate("menu.edit.selectAllLeft") + "|-|"+
+	                                      inactive(instrument.num_blocks = 0) + translate("menu.edit.selectAllInstrument", clean(instrument.name)) + "|"+
+	                                      inactive(instrument.num_blocks = totalblocks) + translate("menu.edit.selectAllButInstrument", clean(instrument.name)) + "|-|"+
 	                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                        inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
-	                                        inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
-											"Ctrl+Shift+Q$Fade in|"+
-											"Ctrl+Shift+W$Fade out|"+
-											"Ctrl+Shift+E$Replace key|"+
-											"Ctrl+Shift+R$Set velocity...|"+
-											"Ctrl+Shift+T$Set panning...|"+
-											"Ctrl+Shift+Y$Set pitch...|"+
-											"Ctrl+Shift+U$Reset all properties|"+
+	                                        inactive(selected = 0) + translate("menu.edit.changeInstrument") + "|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
+	                                        inactive(selected = 0 || selection_l = 0) + translate("menu.edit.expandSelection") + "|"+
+	                                        inactive(selected = 0 || selection_l = 0) + translate("menu.edit.compressSelection") + "|"+
+	                                        inactive(selected = 0 || selection_l = 0) + translate("menu.edit.macros") + "|\\||"+
+											"Ctrl+Shift+A$" + translate("menu.edit.macros.tremolo") + "|"+
+											"Ctrl+Shift+S$" + translate("menu.edit.macros.stereo") + "|"+
+											"Ctrl+Shift+D$" + translate("menu.edit.macros.arpeggio") + "|"+
+											"Ctrl+Shift+F$" + translate("menu.edit.macros.portamento") + "|"+
+											"Ctrl+Shift+G$" + translate("menu.edit.macros.vibrato") + "|"+
+											"Ctrl+Shift+H$" + translate("menu.edit.macros.stagger") + "|"+
+											"Ctrl+Shift+J$" + translate("menu.edit.macros.chorus") + "|"+
+											"Ctrl+Shift+K$" + translate("menu.edit.macros.volumeLfo") + "|"+
+											"Ctrl+Shift+Q$" + translate("menu.edit.macros.fadeIn") + "|"+
+											"Ctrl+Shift+W$" + translate("menu.edit.macros.fadeOut") + "|"+
+											"Ctrl+Shift+E$" + translate("menu.edit.macros.replaceKey") + "|"+
+											"Ctrl+Shift+R$" + translate("menu.edit.macros.setVelocity") + "|"+
+											"Ctrl+Shift+T$" + translate("menu.edit.macros.setPanning") + "|"+
+											"Ctrl+Shift+Y$" + translate("menu.edit.macros.setPitch") + "|"+
+											"Ctrl+Shift+U$" + translate("menu.edit.macros.reset") + "|"+
 											"/|-|"+
-	                                        inactive(selected = 0) + "Transpose notes outside octave range|")
-	            else menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
-	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
-	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
-	                                      inactive(totalblocks = 0) + "Ctrl+A$全选|"+
-	                                      inactive(selected = 0) + "全不选|"+
-	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
-	                                      inactive(totalblocks = 0 || selbx >= enda) + "选择右侧所有 ->|"+
-	                                      inactive(totalblocks = 0 || selbx <= 0) + "选择左侧所有 <-|-|"+
-	                                      inactive(instrument.num_blocks = 0) + "选择所有 " + clean(instrument.name) + "|"+
-	                                      inactive(instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(instrument.name) + "|-|"+
-	                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                        inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
-	                                        inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
-											"Ctrl+Shift+Q$淡入|"+
-											"Ctrl+Shift+W$淡出|"+
-											"Ctrl+Shift+E$替换音|"+
-											"Ctrl+Shift+R$设定音量......|"+
-											"Ctrl+Shift+T$设定声道......|"+
-											"Ctrl+Shift+Y$设定音高......|"+
-											"Ctrl+Shift+U$重置所有属性|"+
-											"/|-|"+
-	                                        inactive(selected = 0) + "转换所有超出八度范围的音符|")
+	                                        inactive(selected = 0) + translate("menu.edit.transpose") + "|")
 	            menu.menuc = selbx
 	            menu.pastex = selbx
 	            menu.pastey = selby

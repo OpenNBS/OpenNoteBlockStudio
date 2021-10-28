@@ -427,7 +427,7 @@ function control_create() {
 	with (obj_instrument)
 	    if (!instrument_load())
 	        str += filename + "\n"
-	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
+	if (str != "") message(translate("message.soundFileNotFound.line1") + "\n\n" + str + "\n\n" + translate("message.soundFileNotFound.line2"), translate("message.soundFileNotFound.title"))
 
 	log("Instruments loaded")
 

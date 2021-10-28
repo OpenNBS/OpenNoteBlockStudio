@@ -1,0 +1,216 @@
+message.soundFileNotFound.title=Error
+message.soundFileNotFound.line1=The following file(s) could not be found:
+message.soundFileNotFound.line2=Some sounds might not play.
+
+windowTitle.unsavedSong=新文件
+windowTitle.programName=Minecraft Note Block Studio
+windowTitle.playerMode=Player mode
+
+popup.blackoutOn=全黑模式 => 开启
+popup.blackoutOff=全黑模式 => 关闭
+popup.fullscreenOn=全屏模式 => 开启
+popup.fullscreenOff=全屏模式 => 关闭
+popup.windowScale=窗口缩放 => %1$s%%
+popup.rainbowModeOn=炫彩模式 => ON
+popup.rainbowModeOff=炫彩模式 => OFF
+popup.maxFramerate=FPS => %s
+popup.maxFramerate.unlimited=FPS => 无限
+
+tooltip.workspace.expand=展开编辑区域
+tooltip.workspace.collapse=返回
+tooltip.layerBox.layerName=本层名称
+tooltip.layerBox.layerName.selected=本层的名称。
+tooltip.layerBox.volume.line1=本层的音量: %s%%
+tooltip.layerBox.volume.line2=（拖拽来修改）
+tooltip.layerBox.panning.line1=Stereo pan: %s
+tooltip.layerBox.panning.line2=（拖拽来修改）
+tooltip.layerBox.panning.right=R %s
+tooltip.layerBox.panning.center=中央
+tooltip.layerBox.panning.left=L %s
+tooltip.layerBox.lock=静音本层
+tooltip.layerBox.solo=独奏本层
+tooltip.layerBox.selectAll.line1=选择本层所有方块
+tooltip.layerBox.selectAll.line2=（按住Ctrl选择多层）
+tooltip.layerBox.insert=新建层
+tooltip.layerBox.remove=删除层
+tooltip.layerBox.shiftUp=上移本层
+tooltip.layerBox.shiftDown=下移本层
+
+tempo.tooltip.markerPos=Position of the marker in bars, beats and sixteenths.
+tempoBox.tps=%s t / s
+tempoBox.tps.tooltip.line1.line1=Tempo of the song (measured in ticks per second).
+tempoBox.tps.tooltip.line2=Click and drag to change. Click to enter value. Right-click for more options.
+tempoBox.bpm=%s BPM
+tempoBox.bpm.tooltip.line1=Tempo of the song (measured in beats per minute).
+tempoBox.bpm.tooltip.line2=Click and drag to change. Click to enter value. Right-click for more options.
+
+layer.name.default=Layer %s
+layer.volume=%s%%
+layer.panning.right=R %s
+layer.panning.center=单声道
+layer.panning.left=L %s
+
+menu.section.removeSection=移除区间
+menu.section.jumpToBeginning=跳到区间开始
+menu.section.jumpToEnd=跳到区间结束
+menu.section.selectAllBlocks=选中区间内方块
+menu.section.startInSection=从区间开始播放
+menu.section.stopAfterSection=区间后结束播放
+
+menu.file=文件
+menu.file.new=新文件
+menu.file.open=打开歌曲......
+menu.file.recent=最近歌曲......
+menu.file.recent.none=清除最近歌曲
+menu.file.recent.clear=无最近歌曲
+menu.file.save=保存歌曲
+menu.file.saveAs=另存为
+menu.file.saveOptions=保存选项......
+menu.file.importPattern=导入片段......
+menu.file.exportPattern=导出片段......
+menu.file.importMidi=从MIDI文件导入......
+menu.file.importSchematic=从Schematic文件导入......
+menu.file.exportMp3=导出为MP3......
+menu.file.exportSchematic=导出为schematic......
+menu.file.exportBranchSchematic=导出为分支schematic......
+menu.file.exportDatapack=导出为数据包......
+menu.file.exit=退出
+
+menu.edit.undo=Undo
+menu.edit.redo=Redo
+menu.edit.copy=复制
+menu.edit.cut=剪切
+menu.edit.paste=粘贴
+menu.edit.delete=删除
+menu.edit.selectAll=全选
+menu.edit.deselectAll=全不选
+menu.edit.invertSelection=$选择反转
+menu.edit.selectAllRight=选择右侧所有 ->
+menu.edit.selectAllLeft=选择左侧所有 <-
+menu.edit.selectAllInstrument=选择所有 %s
+menu.edit.selectAllButInstrument=选择所有除了 %s
+menu.edit.increaseOctave=Increase octave
+menu.edit.decreaseOctave=Decrease octave
+menu.edit.increaseKey=Increase key
+menu.edit.decreaseKey=Decrease key
+menu.edit.increaseVelocityBy10=Increase velocity by 10
+menu.edit.decreaseVelocityBy10=Decrease velocity by 10
+menu.edit.increaseVelocity=Increase velocity
+menu.edit.decreaseVelocity=Decrease velocity
+menu.edit.setVelocity=Set velocity...
+menu.edit.resetVelocity=Reset velocity
+menu.edit.increasePanningBy10=Pan right by 10
+menu.edit.decreasePanningBy10=Pan left by 10
+menu.edit.increasePanning=Pan right
+menu.edit.decreasePanning=Pan left
+menu.edit.setPanning=Set panning...
+menu.edit.resetPanning=Reset panning
+menu.edit.changeInstrument=更改音色......
+menu.edit.changeInstrument.entry=...to %s
+menu.edit.changeInstrument.more=More...
+menu.edit.expandSelection=扩展选区
+menu.edit.compressSelection=压缩选区
+menu.edit.macros=快捷键......
+menu.edit.transpose=转换所有超出八度范围的音符
+
+menu.edit.macros.tremolo.name=Tremolo...
+menu.edit.macros.stereo.name=Stereo...
+menu.edit.macros.portamento.name=Portamento...
+menu.edit.macros.vibrato.name=Vibrato...
+menu.edit.macros.stagger.name=Stagger...
+menu.edit.macros.chorus.name=Chorus...
+menu.edit.macros.volumeLfo.name=Volume LFO
+menu.edit.macros.fadeIn.name=淡入
+menu.edit.macros.fadeout.name=淡出
+menu.edit.macros.replaceKey.name=替换音
+menu.edit.macros.setVelocity.name=设定音量......
+menu.edit.macros.setPanning.name=设定声道......
+menu.edit.macros.setPitch.name=设定音高......
+menu.edit.macros.reset.name=重置所有属性
+
+menu.settings=设置
+menu.settings.instrument=音色
+menu.settings.instrument.more=更多......
+menu.settings.instrumentSettings=音色设置......
+menu.settings.songInfo=歌曲信息......
+menu.settings.songProperties=歌曲属性......
+menu.settings.songStats=歌曲数据......
+menu.settings.midiDeviceManager=MIDI设备管理器......
+menu.settings.preferences=首选项......
+
+menu.help=帮助
+menu.help.tutorialVideos=教程视频
+menu.help.tutorialVideos.nonEnglish=Tutorial videos (in English)
+menu.help.tutorialVideos.video1=Part 1: Composing note block music
+menu.help.tutorialVideos.video2=Part 2: Opening MIDI files
+menu.help.tutorialVideos.video3=Part 3: Importing songs into Minecraft
+menu.help.tutorialVideos.video4=Part 4: Editing songs made in Minecraft
+menu.help.tutorialVideos.viewAll=观看所有
+menu.help.website=Open Note Block Studio website...
+menu.help.github=GitHub......
+menu.help.minecraftForums=Minecraft Forums 帖子......
+menu.help.minecraftWiki=Minecraft Wiki 页面......
+menu.help.changelist=更新历史......
+menu.help.about=关于......
+
+toolbar.newSong=新文件
+toolbar.openSong=打开歌曲
+toolbar.saveSong=保存歌曲
+toolbar.play=播放 / 暂停
+toolbar.stop=停止歌曲
+toolbar.rewind=快退
+toolbar.fastForward=快进
+toolbar.record=录制按键
+toolbar.loop=开关循环
+toolbar.metronome=开关节拍器
+toolbar.editMode.key=音调模式
+toolbar.editMode.velocity=音量模式
+toolbar.editMode.panning=声道模式
+toolbar.editMode.pitch=音高模式
+toolbar.changeInstrument=更改音色为%s
+toolbar.instrumentBox.expand=更改音色为
+toolbar.instrumentBox.collapse=收回音色
+toolbar.undo=撤销
+toolbar.redo=重做
+toolbar.copy=复制
+toolbar.cut=剪切
+toolbar.paste=粘贴
+toolbar.delete=删除
+toolbar.songInfo=歌曲信息
+toolbar.songProperties=E歌曲属性
+toolbar.instrumentSettings=音色设置
+toolbar.midiDeviceManager=MIDI设备管理器
+toolbar.tutorials=教程视频
+toolbar.minecraftForums=打开 Minecraft Forums 帖子
+
+toolbar.compatibility.compatible=完全兼容
+toolbar.compatibility.compatible.tooltip.line1=此歌曲兼容schematic和数据包。
+toolbar.compatibility.compatible.tooltip.line2=（点击查看更多）
+toolbar.compatibility.dataPackOnly=仅限数据包
+toolbar.compatibility.dataPackOnly.tooltip=此歌曲仅兼容数据包。
+toolbar.compatibility.dataPackOnly.tooltip.line2=（点击查看更多）
+toolbar.compatibility.resourcePackOnly=仅限资源包
+toolbar.compatibility.resoucePackOnly.tooltip=此歌曲仅兼容带资源包的数据包。
+toolbar.compatibility.resourcePackOnly.tooltip.line2=（点击查看更多）
+
+statusBar.instrument=音色: %s
+statusBar.key=音: %s
+statusBar.tick=位置: %s
+statusBar.tick.none=None
+statusBar.layer=层: %s
+statusBar.layer.none=None
+statusBar.selected=已选择: %s / %s
+statusBar.noteKey=音: %s
+statusBar.noteVelocity=音量: %s
+statusBar.notePanning=声道: %s
+statusBar.notePanning.right=R %s
+statusBar.notePanning.center=中央
+statusBar.notePanning.left=L %s
+statusBar.notePitch=音高: %s微分
+statusBar.nextAutoSave.singular=下次自动保存: %s分钟
+statusBar.nextAutoSave.plural=下次自动保存: %s分钟
+statusBar.soundCount=声音数: %s / %s
+statusBar.midiDevices=MIDI设备: %s
+statusBar.midiDevices.none=无MIDI设备
+
+url.tutorialPlaylist=https://www.bilibili.com/video/BV1Mx411a76p

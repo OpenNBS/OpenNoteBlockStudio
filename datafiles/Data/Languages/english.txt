@@ -1,0 +1,216 @@
+message.soundFileNotFound.title=Error
+message.soundFileNotFound.line1=The following file(s) could not be found:
+message.soundFileNotFound.line2=Some sounds might not play.
+
+windowTitle.unsavedSong=Unsaved song
+windowTitle.programName=Minecraft Note Block Studio
+windowTitle.playerMode=Player mode
+
+popup.blackoutOn=Blackout mode => ON
+popup.blackoutOff=Blackout mode => OFF
+popup.fullscreenOn=Fullscreen => ON
+popup.fullscreenOff=Fullscreen => OFF
+popup.windowScale=Window scale => %s%
+popup.rainbowModeOn=Rainbow mode => ON
+popup.rainbowModeOff=Rainbow mode => OFF
+popup.maxFramerate=FPS => %s
+popup.maxFramerate.unlimited=FPS => Unlimited
+
+tooltip.workspace.expand=Expand workspace
+tooltip.workspace.collapse=Return
+tooltip.layerBox.layerName=The name for this layer
+tooltip.layerBox.layerName.selected=Enter the name of this layer.
+tooltip.layerBox.volume.line1=Volume of this layer: %s%%
+tooltip.layerBox.volume.line2=(Click and drag to change)
+tooltip.layerBox.panning.line1=Stereo pan: %s
+tooltip.layerBox.panning.line2=(Click and drag to change)
+tooltip.layerBox.panning.right=R %s
+tooltip.layerBox.panning.center=Center
+tooltip.layerBox.panning.left=L %s
+tooltip.layerBox.lock=Lock this layer
+tooltip.layerBox.solo=Solo this layer
+tooltip.layerBox.selectAll.line1=Select all note blocks in this layer
+tooltip.layerBox.selectAll.line2=(Hold Ctrl to select multiple layers)
+tooltip.layerBox.insert=Insert empty layer here
+tooltip.layerBox.remove=Remove this layer
+tooltip.layerBox.shiftUp=Shift layer up
+tooltip.layerBox.shiftDown=Shift layer down
+
+tempo.tooltip.markerPos=Position of the marker in bars, beats and sixteenths.
+tempoBox.tps=%s t / s
+tempoBox.tps.tooltip.line1.line1=Tempo of the song (measured in ticks per second).
+tempoBox.tps.tooltip.line2=Click and drag to change. Click to enter value. Right-click for more options.
+tempoBox.bpm=%s BPM
+tempoBox.bpm.tooltip.line1=Tempo of the song (measured in beats per minute).
+tempoBox.bpm.tooltip.line2=Click and drag to change. Click to enter value. Right-click for more options.
+
+layer.name.default=Layer %s
+layer.volume=%s%%
+layer.panning.right=R %s
+layer.panning.center=MONO
+layer.panning.left=L %s
+
+menu.section.removeSection=Remove section
+menu.section.jumpToBeginning=Jump to beginning of section
+menu.section.jumpToEnd=Jump to end of section
+menu.section.selectAllBlocks=Select all blocks in section
+menu.section.startInSection=Start playing in section
+menu.section.stopAfterSection=Stop playing after section
+
+menu.file=File
+menu.file.new=New song
+menu.file.open=Open song...
+menu.file.recent=recentSongs
+menu.file.recent.none=No recent songs
+menu.file.recent.clear=Clear recent songs
+menu.file.save=Save song
+menu.file.saveAs=Save song as a new file...
+menu.file.saveOptions=Save options...
+menu.file.importPattern=Import pattern...
+menu.file.exportPattern=Export pattern...
+menu.file.importMidi=Import from MIDI...
+menu.file.importSchematic=Import from schematic...
+menu.file.exportMp3=Export as MP3...
+menu.file.exportSchematic=Export as schematic...
+menu.file.exportBranchSchematic=Export as branch schematic...
+menu.file.exportDatapack=Export as data pack...
+menu.file.exit=Exit
+
+menu.edit.undo=Undo
+menu.edit.redo=Redo
+menu.edit.copy=Copy
+menu.edit.cut=Cut
+menu.edit.paste=Paste
+menu.edit.delete=Delete
+menu.edit.selectAll=Select all
+menu.edit.deselectAll=Deselect all
+menu.edit.invertSelection=Invert selection
+menu.edit.selectAllRight=Select all to the right ->
+menu.edit.selectAllLeft=Select all to the left <-
+menu.edit.selectAllInstrument=Select all %s
+menu.edit.selectAllButInstrument=Select all but %s
+menu.edit.increaseOctave=Increase octave
+menu.edit.decreaseOctave=Decrease octave
+menu.edit.increaseKey=Increase key
+menu.edit.decreaseKey=Decrease key
+menu.edit.increaseVelocityBy10=Increase velocity by 10
+menu.edit.decreaseVelocityBy10=Decrease velocity by 10
+menu.edit.increaseVelocity=Increase velocity
+menu.edit.decreaseVelocity=Decrease velocity
+menu.edit.setVelocity=Set velocity...
+menu.edit.resetVelocity=Reset velocity
+menu.edit.increasePanningBy10=Pan right by 10
+menu.edit.decreasePanningBy10=Pan left by 10
+menu.edit.increasePanning=Pan right
+menu.edit.decreasePanning=Pan left
+menu.edit.setPanning=Set panning...
+menu.edit.resetPanning=Reset panning
+menu.edit.changeInstrument=Change instrument...
+menu.edit.changeInstrument.entry=...to %s
+menu.edit.changeInstrument.more=More...
+menu.edit.expandSelection=Expand selection
+menu.edit.compressSelection=Compress selection
+menu.edit.macros=Macros...
+menu.edit.transpose=Transpose notes outside octave range
+
+menu.edit.macros.tremolo.name=Tremolo...
+menu.edit.macros.stereo.name=Stereo...
+menu.edit.macros.portamento.name=Portamento...
+menu.edit.macros.vibrato.name=Vibrato...
+menu.edit.macros.stagger.name=Stagger...
+menu.edit.macros.chorus.name=Chorus...
+menu.edit.macros.volumeLfo.name=Volume LFO
+menu.edit.macros.fadeIn.name=Fade in
+menu.edit.macros.fadeout.name=Fade out
+menu.edit.macros.replaceKey.name=Replace key
+menu.edit.macros.setVelocity.name=Set velocity...
+menu.edit.macros.setPanning.name=Set panning...
+menu.edit.macros.setPitch.name=Set pitch...
+menu.edit.macros.reset.name=Reset all properties
+
+menu.settings=Settings
+menu.settings.instrument=Instrument
+menu.settings.instrument.more=More...
+menu.settings.instrumentSettings=Instrument settings...
+menu.settings.songInfo=Song info...
+menu.settings.songProperties=Song properties...
+menu.settings.songStats=Song stats...
+menu.settings.songStats=MIDI device manager...
+menu.settings.preferences=Preferences...
+
+menu.help=Help
+menu.help.tutorials=Tutorial videos
+menu.help.tutorials.nonEnglish=Tutorial videos (in English)
+menu.help.tutorials.part1=Part 1: Composing note block music
+menu.help.tutorials.part2=Part 2: Opening MIDI files
+menu.help.tutorials.part3=Part 3: Importing songs into Minecraft
+menu.help.tutorials.part4=Part 4: Editing songs made in Minecraft
+menu.help.tutorials.viewAll=View all
+menu.help.website=Open Note Block Studio website...
+menu.help.github=GitHub repository...
+menu.help.minecraftForums=Minecraft Forums topic...
+menu.help.minecraftWiki=Minecraft Wiki page...
+menu.help.changelist=Changelist...
+menu.help.about=About...
+
+toolbar.newSong=New song
+toolbar.openSong=Open song...
+toolbar.saveSong=Save song
+toolbar.play=Play/Pause song
+toolbar.stop=Stop song
+toolbar.rewind=Rewind song
+toolbar.fastForward=Fast-forward song
+toolbar.record=Record key presses
+toolbar.loop=Toggle looping
+toolbar.metronome=Toggle metronome
+toolbar.editMode.key=Edit note key
+toolbar.editMode.velocity=Edit note velocity
+toolbar.editMode.panning=Edit note panning
+toolbar.editMode.pitch=Edit note pitch
+toolbar.changeInstrument=Change instrument to %s
+toolbar.instrumentBox.expand=More instruments
+toolbar.instrumentBox.collapse=Less instruments
+toolbar.undo=Undo the last change
+toolbar.redo=Redo the last undo
+toolbar.copy=Copy the selected note blocks
+toolbar.cut=Cut the selected note blocks
+toolbar.paste=Paste the selected note blocks
+toolbar.delete=Delete the selected note blocks
+toolbar.songInfo=View song info
+toolbar.songProperties=Edit song properties
+toolbar.instrumentSettings=Edit instruments
+toolbar.midiDeviceManager=MIDI device manager
+toolbar.tutorials=Watch tutorial videos
+toolbar.minecraftForums=Visit the Minecraft Forums topic
+
+toolbar.compatibility.compatible=Fully compatible
+toolbar.compatibility.compatible.tooltip.line1=This song is compatible with both schematics and data packs.
+toolbar.compatibility.compatible.tooltip.line2=(Click for more info.)
+toolbar.compatibility.dataPackOnly=Data pack only
+toolbar.compatibility.dataPackOnly.tooltip=This song is only compatible with data packs.
+toolbar.compatibility.dataPackOnly.tooltip.line2=(Click for more info.)
+toolbar.compatibility.resourcePackOnly=Resource pack only
+toolbar.compatibility.resoucePackOnly.tooltip=This song is compatible with data packs using a resource pack.
+toolbar.compatibility.resourcePackOnly.tooltip.line2=(Click for more info.)
+
+statusBar.instrument=Instrument: %s
+statusBar.key=Key: %s
+statusBar.tick=Tick: %s
+statusBar.tick.none=None
+statusBar.layer=Layer: %s
+statusBar.layer.none=None
+statusBar.selected=Selected: %s / %s
+statusBar.noteKey=Key: %s
+statusBar.noteVelocity=Velocity: %s
+statusBar.notePanning=Panning: %s
+statusBar.notePanning.right=R %s
+statusBar.notePanning.center=Center
+statusBar.notePanning.left=L %s
+statusBar.notePitch=Pitch: %s cents
+statusBar.nextAutoSave.singular=Next auto-save: %s minute
+statusBar.nextAutoSave.plural=Next auto-save: %s minutes
+statusBar.soundCount=Sounds: %s / %s
+statusBar.midiDevices=MIDI devices: %s
+statusBar.midiDevices.none=No connected MIDI devices
+
+url.tutorialPlaylist=http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86
