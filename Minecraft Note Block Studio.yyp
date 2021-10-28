@@ -106,6 +106,7 @@
     {"id":{"name":"control_end","path":"scripts/control_end/control_end.yy",},"order":2,},
     {"id":{"name":"control_http","path":"scripts/control_http/control_http.yy",},"order":3,},
     {"id":{"name":"control_step","path":"scripts/control_step/control_step.yy",},"order":4,},
+    {"id":{"name":"translate","path":"scripts/translate/translate.yy",},"order":10,},
     {"id":{"name":"history_set","path":"scripts/history_set/history_set.yy",},"order":5,},
     {"id":{"name":"mp3_export","path":"scripts/mp3_export/mp3_export.yy",},"order":6,},
     {"id":{"name":"reset","path":"scripts/reset/reset.yy",},"order":7,},
