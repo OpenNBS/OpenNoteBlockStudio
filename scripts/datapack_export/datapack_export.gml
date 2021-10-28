@@ -23,6 +23,7 @@ function datapack_export() {
 		var path = dat_getpath(o.dat_path)
 		var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
 		var tag = objective
+		var pack_format = 7
 		var playspeed = min(round(o.tempo * 4), 120)
 		var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 		var tempdir
@@ -51,7 +52,7 @@ function datapack_export() {
 		functiondir = dat_makefolders(path, namespace)
 	
 		//pack.mcmeta
-		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
+		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": " + string(pack_format) + ",\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
 		dat_writefile(inputString, tempdir + "pack.mcmeta")
 	
 		//Minecraft folder:
