@@ -502,6 +502,7 @@
     {"name":"Windows","path":"options/windows/options_windows.yy",},
     {"name":"macOS","path":"options/mac/options_mac.yy",},
     {"name":"Main","path":"options/main/options_main.yy",},
+    {"name":"operagx","path":"options/operagx/options_operagx.yy",},
   ],
   "isDnDProject": false,
   "isEcma": false,
@@ -629,7 +630,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"dingf.ogg","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.4.583",
+    "IDEVersion": "2.3.5.589",
   },
   "resourceVersion": "1.4",
   "name": "Minecraft Note Block Studio",
