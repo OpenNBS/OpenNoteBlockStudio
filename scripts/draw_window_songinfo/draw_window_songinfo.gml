@@ -5,7 +5,6 @@ function draw_window_songinfo() {
 	var x1, y1, a, b, n, str, w, h, yy, w1, w2, w3, w4, w5, w6, col, r, g, b, str2, cut;
 	with (obj_popup) instance_destroy()
 	global.popup = 0
-	if (song_name = "" && window = w_songinfo) {window = 0 windowopen = 0 return 0}
 	col[0] = 16728176
 	col[1] = 16737419
 	col[2] = 16737419
