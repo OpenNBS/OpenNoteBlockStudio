@@ -21,14 +21,18 @@ function draw_window_set_tempo() {
 	
 	// Set tempo and close
 	if ((mouse_check_button_released(mb_left) && !settempo && !mouse_rectangle(xx, 57, w, 22)) || keyboard_check_pressed(vk_enter)) {
-		try tempo = real(string_digits_symbol(string_replace(input, ",", "."), ".") / bpm_multiplier)
-		catch (e) tempo = tempo
-		if (tempo >= 1000) {
-			tempo /= 100
-		} else if (tempo >= 100) {
-			tempo /= 10
+		try {
+			tempo = real(string_digits_symbol(string_replace(input, ",", "."), ".") / bpm_multiplier)
+		} catch (e) {
+			// Input is imvalid, don't change the tempo!
+		} finally {
+			if (tempo >= 1000) {
+				tempo /= 100
+			} else if (tempo >= 100) {
+				tempo /= 10
+			}
+			tempo = median(0.25, tempo, 60)
 		}
-		tempo = median(0.25, tempo, 60)
 		settempo = 0
 		text_focus = -1
 		window = 0
