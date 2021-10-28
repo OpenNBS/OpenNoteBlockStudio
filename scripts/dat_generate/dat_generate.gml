@@ -142,21 +142,21 @@ function dat_generate(argument0, argument1, argument2) {
 		
 			if (min1 <= length) {
 				if (step == steps-1) { // Last step, play the tick
-					if (o.colamount[min1] > 0) str += "execute as @s[scores={" + objective + "=" + string(min1*80) + ".." + string((max1+1)*80+40) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + functionpath + "notes/" + string(min1) + br
+					if (o.colamount[min1] > 0) str += "execute as @s[scores={" + objective + "=" + string(min1*80) + ".." + string((max1+1)*80+160) + "," + objective + "_t=.." + string(min1-1) + "}] run function " + functionpath + "notes/" + string(min1) + br
 					if min2 <= length {
-						if (o.colamount[min2] > 0) str += "execute as @s[scores={" + objective + "=" + string(min2*80) + ".." + string((max2+1)*80+40) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + functionpath + "notes/" + string(min2) + br
+						if (o.colamount[min2] > 0) str += "execute as @s[scores={" + objective + "=" + string(min2*80) + ".." + string((max2+1)*80+160) + "," + objective + "_t=.." + string(min2-1) + "}] run function " + functionpath + "notes/" + string(min2) + br
 					}
 				}
 				else { // Don't play yet, refine the search
 					for (i = min1; i <= min(max1, length); i++) {
 						if (o.colamount[i] > 0) {
-							str += "execute as @s[scores={" + objective + "=" + string(min1*80) + ".." + string((max1+1)*80+40) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
+							str += "execute as @s[scores={" + objective + "=" + string(min1*80) + ".." + string((max1+1)*80+160) + "}] run function " + functionpath + "tree/" + string(min1) + "_" + string(max1) + br
 							break
 						}
 					}
 					for (i = min2; i <= min(max2, length); i++) {
 						if (o.colamount[i] > 0) {
-							str += "execute as @s[scores={" + objective + "=" + string(min2*80) + ".." + string((max2+2)*80+40) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
+							str += "execute as @s[scores={" + objective + "=" + string(min2*80) + ".." + string((max2+2)*80+160) + "}] run function " + functionpath + "tree/" + string(min2) + "_" + string(max2) + br
 							break
 						}
 					}
