@@ -37,7 +37,9 @@ function control_draw() {
 	if (editline > 60) editline = 0
 	if (delay > 0) delay -= 1 / (room_speed / 20)
 	if (delay < 0) delay = 0
-	work_mins += 1 / (room_speed * 60)
+	if (!isplayer) {
+		work_mins += 1 / (room_speed * 60)
+	}
 	
 	file_dnd_set_files("*.nbs;*.mid;*.midi", 1, 0, 0)
 	dndfile = file_dnd_get_files()
@@ -57,10 +59,12 @@ function control_draw() {
 	selby = -1
 	if (window = 0) {
 	    if (mouse_check_button_pressed(mb_left)) {
-	        work_left += 1
+	        if (!isplayer) work_left += 1
 	        key_edit = -1
 	    }
-	    if (mouse_check_button_pressed(mb_right)) work_right += 1
+	    if (mouse_check_button_pressed(mb_right)) {
+			if (!isplayer) work_right += 1
+		}
 	}
 
 	if (key_edit > -1) {

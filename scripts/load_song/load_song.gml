@@ -189,7 +189,7 @@ function load_song() {
 	}
 	if (!backup) {
 		add_to_recent(fn)
-		if (window != w_instruments) window = w_songinfo
+		if (window != w_instruments && song_name != "") window = w_songinfo
 		filename = fn
 		changed = 0
 	}

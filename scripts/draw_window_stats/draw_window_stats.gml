@@ -39,7 +39,7 @@ function draw_window_stats() {
 	draw_set_halign(fa_right)
 	draw_text_dynamic(x1 + 260, y1 + 226, string(floor(work_mins)) + "\n" + string(work_left) + "\n" + string(work_right) + "\n" + string(work_add) + "\n" + string(work_remove))
 	draw_set_halign(fa_left)
-	if (draw_button2(x1 + 200, y1 + 320, 72, "Reset")) {
+	if (!isplayer && draw_button2(x1 + 200, y1 + 320, 72, "Reset")) {
 	    if (question("Are you sure? This cannot be undone.", "Confirm")) {
 	        work_mins = 0
 	        work_left = 0
