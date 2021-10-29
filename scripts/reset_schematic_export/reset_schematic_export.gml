@@ -5,7 +5,7 @@ function reset_schematic_export(argument0) {
 	    sch_exp_remember = 1
 		sch_br_remember = 1
 	}
-	for (a = 0; a < ds_list_size(instrument_list) + 19; a += 1) {
+	for (a = 0; a < ds_list_size(instrument_list) + 240; a += 1) {
 	    sch_exp_ins_data[a] = 0
 	}
 	sch_exp_ins_block[0] = 3
@@ -24,25 +24,9 @@ function reset_schematic_export(argument0) {
 	sch_exp_ins_block[13] = 133
 	sch_exp_ins_block[14] = 170
 	sch_exp_ins_block[15] = 89
-	sch_exp_ins_block[16] = 1
-	sch_exp_ins_block[17] = 1
-	sch_exp_ins_block[18] = 1
-	sch_exp_ins_block[19] = 1
-	sch_exp_ins_block[20] = 1
-	sch_exp_ins_block[21] = 1
-	sch_exp_ins_block[22] = 1
-	sch_exp_ins_block[23] = 1
-	sch_exp_ins_block[24] = 1
-	sch_exp_ins_block[25] = 1
-	sch_exp_ins_block[26] = 1
-	sch_exp_ins_block[27] = 1
-	sch_exp_ins_block[28] = 1
-	sch_exp_ins_block[29] = 1
-	sch_exp_ins_block[30] = 1
-	sch_exp_ins_block[31] = 1
-	sch_exp_ins_block[32] = 1
-	sch_exp_ins_block[33] = 1
-
+	for (var a = 0; a < 240; a++) {
+		sch_exp_ins_block[16 + a] = 1
+	}
 
 	sch_exp_walkway_block = 1
 	sch_exp_walkway_data = 0

@@ -102,9 +102,14 @@ function save_settings() {
 	ini_write_real_clean("schematic_export", "glass",          sch_exp_glass)
 	ini_write_real_clean("schematic_export", "minecart",       sch_exp_minecart)
 	ini_write_real_clean("schematic_export", "chest",          sch_exp_chest)
-	for (a = 0; a < 34; a += 1) {
-	    ini_write_real_clean("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
-	    ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
+	for (a = 0; a < 256; a += 1) {
+		// The default value for ID and data are 1 and 0, respectively, so we may avoid writing these entries
+		if (sch_exp_ins_block[a] != 1) {
+		    ini_write_real_clean("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
+		}
+		if (sch_exp_ins_data[a] != 0) {
+			ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
+		}
 	}
 
 	// Branch export settings
