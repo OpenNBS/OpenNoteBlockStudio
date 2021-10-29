@@ -1,6 +1,6 @@
 function dat_generate(argument0, argument1, argument2) {
 	//dat_generate(functionpath, functiondir, objective)
-	var o, s, a, b, i, functionpath, functiondir, objective, str, instrument, soundname, pitch, source, blockvolume, blockposition
+	var o, s, a, b, i, functionpath, functiondir, objective, str, key, instrument, soundname, pitch, source, blockvolume, blockposition
 	o = obj_controller
 
 	source = o.dat_source
@@ -13,9 +13,10 @@ function dat_generate(argument0, argument1, argument2) {
 			str = ""
 		    for (b = 0; b <= o.collast[a]; b += 1) {
 		        if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.dat_includelocked)) {
-		            if (o.song_key[a, b] > 32 && o.song_key[a, b] < 58 || (o.dat_includeoutofrange && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
+					key = o.song_key[a, b] + o.song_pit[a, b] / 100
+		            if (key > 32 && key < 58 || (o.dat_includeoutofrange && key >= 9 && key <= 81)) {
 		                instrument = dat_instrument(ds_list_find_index(other.instrument_list, o.song_ins[a, b]))
-		                pitch = dat_pitch(o.song_key[a, b] + (o.song_pit[a, b]/100))
+		                pitch = dat_pitch(key)
 						blockvolume = o.layervol[b]/100 / 100 * o.song_vel[a, b] // Calculate volume of note
 						s = (o.layerstereo[b] + o.song_pan[a, b]) / 2 // Stereo values to X coordinates, calc'd from the average of both note and layer pan.
 						if s > 100 blockposition=(s-100)/-100
@@ -24,8 +25,8 @@ function dat_generate(argument0, argument1, argument2) {
 					
 						// Append -1 or 1 to sound event if note is out of range
 						soundname = instrument
-						if (o.song_key[a, b] + o.song_pit[a, b]/100 <= 32) soundname += "_-1"
-						else if (o.song_key[a, b] + o.song_pit[a, b]/100 >= 58) soundname += "_1"
+						if (key <= 32) soundname += "_-1"
+						else if (key >= 58) soundname += "_1"
 					
 						// Add command to result
 						if(o.dat_enableradius) str += "execute at @s run playsound "+ soundname +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
@@ -34,7 +35,7 @@ function dat_generate(argument0, argument1, argument2) {
 						if o.dat_visualizer = 1 {
 							// Visualizer Types
 							if o.dat_vis_type = "Arc" { // Arc
-							str += "summon minecraft:falling_block " + string(real((o.song_key[a, b]-45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
@@ -45,7 +46,7 @@ function dat_generate(argument0, argument1, argument2) {
 							}
 					
 							if o.dat_vis_type = "Fall" { // Fall
-							str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
@@ -56,7 +57,7 @@ function dat_generate(argument0, argument1, argument2) {
 							} 
 					
 							if o.dat_vis_type = "Piano Roll" { // Piano Roll
-							str += "summon minecraft:falling_block " + string(real((o.song_key[a, b]-45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
@@ -67,7 +68,7 @@ function dat_generate(argument0, argument1, argument2) {
 							} 
 					
 							if o.dat_vis_type = "Rise" { // Rise
-							str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
@@ -78,7 +79,7 @@ function dat_generate(argument0, argument1, argument2) {
 							} 
 					
 							if o.dat_vis_type = "Bounce" { // Bounce
-							str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
@@ -88,11 +89,11 @@ function dat_generate(argument0, argument1, argument2) {
 								}
 							} 
 							if o.dat_vis_type = "Fountain" { // Fountain
-								str += "summon minecraft:falling_block " + string(o.song_key[a, b]-45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+								str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
 								}
-								if o.song_key[a, b] > 45 {
+								if key > 45 {
 									str += "Time:-80,DropItem:0,Motion:[0.5d,1.5d,0.0d]}" + br
 								} else str += "Time:-80,DropItem:0,Motion:[-0.5d,1.5d,0.0d]}" + br
 								if o.dat_glow = 1 {
