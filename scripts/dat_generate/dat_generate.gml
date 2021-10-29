@@ -14,7 +14,7 @@ function dat_generate(argument0, argument1, argument2) {
 		    for (b = 0; b <= o.collast[a]; b += 1) {
 		        if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.dat_includelocked)) {
 					key = o.song_key[a, b] + o.song_pit[a, b] / 100
-		            if (key > 32 && key < 58 || (o.dat_includeoutofrange && key >= 9 && key <= 81)) {
+		            if (key >= 33 && key <= 57 || (o.dat_includeoutofrange && key >= 9 && key <= 81)) {
 		                instrument = dat_instrument(ds_list_find_index(other.instrument_list, o.song_ins[a, b]))
 		                pitch = dat_pitch(key)
 						blockvolume = o.layervol[b]/100 / 100 * o.song_vel[a, b] // Calculate volume of note
@@ -25,8 +25,8 @@ function dat_generate(argument0, argument1, argument2) {
 					
 						// Append -1 or 1 to sound event if note is out of range
 						soundname = instrument
-						if (key <= 32) soundname += "_-1"
-						else if (key >= 58) soundname += "_1"
+						if (key < 33) soundname += "_-1"
+						else if (key > 57) soundname += "_1"
 					
 						// Add command to result
 						if(o.dat_enableradius) str += "execute at @s run playsound "+ soundname +" "+source+" @a ~ ~ ~ " + string(o.dat_radiusvalue) + " " + string(pitch) + br 
