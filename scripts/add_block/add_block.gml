@@ -1,6 +1,6 @@
 function add_block() {
 	// add_block(x, y, ins, key, vel, pan, pit)
-	var a, b, c, xx, yy, ins, key, vel, pan, pit;
+	var a, b, c, xx, yy, ins, key, vel, pan, pit, insnum;
 	xx = argument[0]
 	yy = argument[1]
 	ins = argument[2]
@@ -8,6 +8,11 @@ function add_block() {
 	vel = argument[4]
 	pan = argument[5]
 	pit = argument[6]
+	if (argument_count > 7) {
+		insnum = argument[7]
+	}
+	else
+		insnum = false
 
 	// Initialize cells
 	if (xx >= arraylength) {
@@ -42,8 +47,10 @@ function add_block() {
 	song_added[xx, yy] = 0
 	colamount[xx] += 1
 	rowamount[yy] += 1
-	ins.num_blocks++
-	if (ins.user) block_custom += 1
+	if (!insnum) {
+	    ins.num_blocks++
+	    if (ins.user) block_custom += 1
+	}
 	if (key < 33 || key > 57) block_outside += 1
 	if (pit != 0) block_pitched += 1
 	totalblocks += 1
