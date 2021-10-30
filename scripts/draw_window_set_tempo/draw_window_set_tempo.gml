@@ -11,8 +11,8 @@ function draw_window_set_tempo() {
 		w = 74
 	}
 	draw_set_alpha(1)
-	if (language != 1) input = draw_inputbox(100, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
-	else input = draw_inputbox(100, xx, 57, w, input, "输入新速度（" + condstr(use_bpm, "拍数/分钟", "红石刻/秒") + "）", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
+	if (language != 1) input = draw_inputbox(64, xx, 57, w, input, "Enter the new tempo (in " + condstr(use_bpm, "beats per minute", "ticks per second") + ")", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
+	else input = draw_inputbox(64, xx, 57, w, input, "输入新速度（" + condstr(use_bpm, "拍数/分钟", "红石刻/秒") + "）", (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
 	
 	// Prevent closing the box if last mouse press was on top of it
 	if (mouse_check_button_pressed(mb_left)) {
