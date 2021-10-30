@@ -12,7 +12,7 @@ function macros() {
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
-#macro data_directory		working_directory + "Data" + condstr(os_type = os_windows, "\\", "/")
+#macro data_directory		get_working_directory() + "Data" + condstr(os_type = os_windows, "\\", "/")
 #macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
 #macro songs_directory		working_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
 #macro pattern_directory	working_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
