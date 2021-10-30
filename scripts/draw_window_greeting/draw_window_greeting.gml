@@ -11,41 +11,41 @@ function draw_window_greeting() {
 	draw_theme_font(font_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_theme_font(font_main_bold)
-	var dev_label_offset = is_prerelease ? 15 : 0
+	var dev_label_offset = (is_prerelease) ? 15 : 0
 	if (RUN_FROM_IDE != 1) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248, "在IDE中运行")	
+		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在IDE中运行")	
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Could not check for updates")
-	        else draw_text_center(x1 + 132, y1 + 248, "检查更新失败")
+	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "检查更新失败")
 	    }
 	    if (update = 0) {
 	        //draw_set_color(c_gray)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Checking for updates...")
-	        else draw_text_center(x1 + 132, y1 + 248, "正在检查更新……")
+	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "正在检查更新……")
 	    }
 	    if (update = 1) {
 	        draw_set_color(33023)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "There is an update available!")
-	        else draw_text_center(x1 + 132, y1 + 248, "有新版本！")
+	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "有新版本！")
 	    }
 	    if (update = 2) {
 	        draw_set_color(c_green)
 			if (theme == 2) draw_set_color(c_lime)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "You are using the latest version!")
-	        else draw_text_center(x1 + 132, y1 + 248, "已为最新版本！")
+	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "已为最新版本！")
 	    }
 	    if (update = 3) {
 	        draw_set_color(c_lime)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Successfully updated!")
-	        else draw_text_center(x1 + 132, y1 + 248, "更新成功！")
+	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "更新成功！")
 	    }
 	} else {
 	    draw_set_color(c_red)
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Update checking disabled by user")
-	    else draw_text_center(x1 + 132, y1 + 248, "检查更新未开启")
+	    else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "检查更新未开启")
 	}
 	draw_theme_font(font_main)
 	draw_theme_color()
@@ -58,7 +58,7 @@ function draw_window_greeting() {
 	}
 	if (is_prerelease) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "(Development version)")
-		else draw_text_center(x1 + 132, y1 + 248, "快照版本")
+		else draw_text_center(x1 + 132, y1 + 248, "（开发版本）")
 	}
 	if (language != 1) draw_text_center(x1 + 132, y1 + 280 + dev_label_offset, "An open-source Minecraft music maker")
 	else draw_text_center(x1 + 132, y1 + 280 + dev_label_offset, "一个开源的 Minecraft 音乐制作软件")
