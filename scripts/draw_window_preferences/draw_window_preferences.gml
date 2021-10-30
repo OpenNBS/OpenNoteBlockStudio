@@ -163,11 +163,13 @@ function draw_window_preferences() {
 			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "显示欢迎界面", "打开软件时是否显示欢迎界面。", false, true)) show_welcome=!show_welcome
 		}
 		if (language != 1) {
-	    if (RUN_FROM_IDE != 1) {
-			draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", true, true)
-		} else {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.", false, true)) check_update=!check_update
-		}	
+			if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check if development\nversions are available as well.", !check_update, false)) {
+				check_prerelease = !check_prerelease
+				if (check_prerelease) {
+					show_message("Warning: development versions are experimental and may be unstable. Songs saved in these versions may not be compatible with stable versions of Note Block Studio. Please make frequent backups of your songs!")
+				}
+			}
 		} else {
 		if (RUN_FROM_IDE != 1) {
 			draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "由于在IDE内运行，此选项已禁用。", true, true)

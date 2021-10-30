@@ -66,6 +66,7 @@ function control_create() {
 	// Application
 	update = 0
 	check_update = 1
+	check_prerelease = 0
 	show_welcome = 1
 	scroll_wheel = 0
 	theme = 3 // Using Fluent as the default theme

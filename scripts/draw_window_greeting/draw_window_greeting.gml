@@ -13,10 +13,7 @@ function draw_window_greeting() {
 	draw_theme_font(font_main_bold)
 	if (RUN_FROM_IDE != 1) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248, "在IDE中运行")
-	} else if (snapshot) {
-		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "Snapshot version.")
-		else draw_text_center(x1 + 132, y1 + 248, "快照版本")
+		else draw_text_center(x1 + 132, y1 + 248, "在IDE中运行")	
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)

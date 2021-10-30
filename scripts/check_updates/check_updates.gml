@@ -3,37 +3,45 @@ function check_updates() {
 	// Handles the update checking
 	// update values:
 	// -1: unable to check for update
+	// 0: checking
 	// 1: update found
 	// 2: up to date
+	// 4: downloading update
 
-	if (async_load[? "id"] = update_http) {
-	    update_http = -1
-	    if (async_load[? "http_status"] = 200) {
-	        var res = async_load[? "result"];
-	        if (is_string(res)) {
-				res = json_decode(res)
-				if(res[?"tag_name"] != undefined){ 
-					var newVersion = string_replace(res[?"tag_name"],"v","")
-					if (string_count(".", newVersion) = 2) {
-						if (newVersion = version) {
-						  update = 2
-						} else {
-							if (question("Version " + newVersion + " is available! Do you want to download it?", "Update available!")) {
-								update_download = http_get_file("https://github.com/HielkeMinecraft/OpenNoteBlockStudio/releases/latest/download/Minecraft.Note.Block.Studio.exe", update_file)
-								update = 4
-							} else {
-								update = 1
-							}
-						}
+	
+	var release = -1
+	try {
+		if (async_load[? "id"] = update_http) {
+		    update_http = -1
+		    if (async_load[? "http_status"] = 200) {
+		        var res = async_load[? "result"];
+				res = json_parse(res)
+				// Iterate array of releases and get the first (latest) release OR pre-release
+				for (var i = 0; i < array_length(res); i++) {
+					if (check_prerelease || !res[i].prerelease) {
+						release = res[i];
+						show_debug_message(release)
+						break
 					}
-				}else
-				   update = -1
-	        }else
-			   update = -1
-	    } else
-	        update = -1
+				}
+			}
+		}
+		if (release != -1) {
+			var new_version = string_replace(release.tag_name, "v", "")
+			if (new_version == version) {
+				update = 2
+			} else {
+				if (question("Version " + new_version + " is available! Do you want to download it?", "Update available!")) {
+					var download_url = release.assets[0].browser_download_url
+					update_download = http_get_file(download_url, update_file)
+					update = 4
+				} else {
+					update = 1
+				}
+			}
+		}
+	} catch (e) {
+		log("Update check failed: " + e.message + e.longMessage)
+		update = -1
 	}
-
-
-
 }
