@@ -348,6 +348,14 @@ function menu_click(argument0) {
 			language = sel
 			break
 		}
+		case "channel": {
+			check_prerelease = sel
+			if (sel) {
+				if (language != 1) show_message("Warning: development versions are experimental and may be unstable. Songs saved in these versions may not be compatible with stable versions of Note Block Studio. Please make frequent backups of your songs!")
+				else show_message("警告：开发版本在测试中并且可能不稳定。在这些版本中保存的歌曲可能会不与稳定版相兼容。请经常备份您的乐曲！")
+			}
+			break
+		}
 	}
 	mouse_clear(mb_left)
 	io_clear()

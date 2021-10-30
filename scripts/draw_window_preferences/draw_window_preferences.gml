@@ -155,8 +155,9 @@ function draw_window_preferences() {
 	if (selected_tab = 0) {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, "Startup")
-	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 65, "启动")
+	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, "启动")
 		if (theme = 3) draw_theme_font(font_main)
+		draw_area(x1 + 60, y1 + 130 + (theme = 3) * 22, x1 + 160, y1 + 130 + (theme = 3) * 22 + 20)
 		if (language != 1) {
 			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.", false, true)) show_welcome=!show_welcome
 		} else { 
@@ -164,24 +165,29 @@ function draw_window_preferences() {
 		}
 		if (language != 1) {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.", false, true)) check_update=!check_update
-			if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check if development\nversions are available as well.", !check_update, false)) {
-				check_prerelease = !check_prerelease
-				if (check_prerelease) {
-					show_message("Warning: development versions are experimental and may be unstable. Songs saved in these versions may not be compatible with stable versions of Note Block Studio. Please make frequent backups of your songs!")
-				}
+			//if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check if development\nversions are available as well.", !check_update, false)) {
+			//	check_prerelease = !check_prerelease
+			//	if (check_prerelease) {
+			//		show_message("Warning: development versions are experimental and may be unstable. Songs saved in these versions may not be compatible with stable versions of Note Block Studio. Please make frequent backups of your songs!")
+			//	}
+			//}
+			if (draw_abutton(x1 + 160 - 17, y1 + 130 + (theme = 3) * 22 + 1) && wmenu = 0) {
+				menu = show_menu_ext("channel", x1 + 60, y1 + 130 + (theme = 3) * 22 + 21, check(!check_prerelease) + "Release|" + check(check_prerelease) + "Development|")
 			}
-		} else {
-		if (RUN_FROM_IDE != 1) {
-			draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "由于在IDE内运行，此选项已禁用。", true, true)
+			draw_text_dynamic(x1 + 60 + 3, y1 + 130 + (theme = 3) * 22 + 3, condstr(!check_prerelease, "Release") + condstr(check_prerelease, "Development"))
 		} else {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "打开软件时是否检查更新。", false, true)) check_update=!check_update
-		}	
+			if (draw_abutton(x1 + 160 - 17, y1 + 130 + (theme = 3) * 22 + 1) && wmenu = 0) {
+				menu = show_menu_ext("channel", x1 + 60, y1 + 130 + (theme = 3) * 22 + 21, check(!check_prerelease) + "正式版|" + check(check_prerelease) + "开发版|")
+			}
+			draw_text_dynamic(x1 + 60 + 3, y1 + 130 + (theme = 3) * 22 + 3, condstr(!check_prerelease, "正式版") + condstr(check_prerelease, "开发版"))
 		}
+		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 		// Auto-saving
 		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
 		if (language != 1) draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, "Auto-saving")
-		else draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 65, "自动保存")
+		else draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, "自动保存")
 		if (theme = 3) draw_theme_font(font_main)
 		as = autosave
 		if (language != 1) {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.", false, true)) autosave=!autosave}
