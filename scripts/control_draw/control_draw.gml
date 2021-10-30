@@ -272,7 +272,7 @@ function control_draw() {
 					} else if (editmode = m_pan) {
 						pan = median(0, pan + diff, 200)
 					} else if (editmode = m_pit) {
-						pit += diff
+						pit = median(-1200, pit + diff, 1200)
 					}
 					change_block_manual(selbx, selby, song_ins[selbx, selby], key, vel, pan, pit)
 	            }
