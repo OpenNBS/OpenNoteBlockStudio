@@ -125,7 +125,7 @@ function load_song() {
 					pan = 100
 					pit = 0
 				}
-	            add_block(ca, cb, ins, median(0, key, 87), vel, pan, pit)
+	            add_block(ca, cb, ins, median(0, key, 87), vel, pan, pit, true)
 	        }
 	    }
 	    if (buffer_is_eof()) { // End?
