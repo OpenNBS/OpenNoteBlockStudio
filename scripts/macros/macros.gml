@@ -14,8 +14,8 @@ function macros() {
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"
 #macro sounds_directory		data_directory + "Sounds\\"
-#macro songs_directory		data_directory + "Songs\\"
-#macro pattern_directory	data_directory + "Patterns\\"
+#macro songs_directory		working_directory + "Songs\\"
+#macro pattern_directory	working_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
