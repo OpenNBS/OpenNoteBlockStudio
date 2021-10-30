@@ -175,12 +175,14 @@ function draw_window_preferences() {
 				menu = show_menu_ext("channel", x1 + 60, y1 + 130 + (theme = 3) * 22 + 21, check(!check_prerelease) + "Release|" + check(check_prerelease) + "Development|")
 			}
 			draw_text_dynamic(x1 + 60 + 3, y1 + 130 + (theme = 3) * 22 + 3, condstr(!check_prerelease, "Release") + condstr(check_prerelease, "Development"))
+			popup_set_window(x1 + 60, y1 + 130 + (theme = 3) * 22, 100, 20, "The release channel to check for.")
 		} else {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "打开软件时是否检查更新。", false, true)) check_update=!check_update
 			if (draw_abutton(x1 + 160 - 17, y1 + 130 + (theme = 3) * 22 + 1) && wmenu = 0) {
 				menu = show_menu_ext("channel", x1 + 60, y1 + 130 + (theme = 3) * 22 + 21, check(!check_prerelease) + "正式版|" + check(check_prerelease) + "开发版|")
 			}
 			draw_text_dynamic(x1 + 60 + 3, y1 + 130 + (theme = 3) * 22 + 3, condstr(!check_prerelease, "正式版") + condstr(check_prerelease, "开发版"))
+			popup_set_window(x1 + 60, y1 + 130 + (theme = 3) * 22, 100, 20, "所检查的更新通道。")
 		}
 		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 		// Auto-saving
