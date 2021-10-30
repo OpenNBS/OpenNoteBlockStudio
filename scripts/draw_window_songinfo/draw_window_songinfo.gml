@@ -64,6 +64,7 @@ function draw_window_songinfo() {
 	draw_theme_color()
 	draw_text_dynamic(x1 + floor(w / 2) + 1, y1 + 16 + 1, str[0])
 	draw_set_color(col[0])
+	if (theme = 3) draw_set_color(accent[3])
 	draw_text_dynamic(x1 + floor(w / 2), y1 + 16, str[0])
 	draw_theme_font(font_info_med)
 	draw_theme_color()
