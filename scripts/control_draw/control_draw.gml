@@ -23,7 +23,7 @@ function control_draw() {
 	if (!mouseover) curs = cr_default
 	showmenu = 0
 	cursmarker = 0
-	compx = 180
+	compx = 170
 	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
@@ -1735,8 +1735,8 @@ function control_draw() {
 		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 100, 100, 0)
 		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 50, 100, 0)
 	}
-	xx += 15
-	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(mastervol * 100), 0) * 100 + 0.5) / 100
+	xx += 8
+	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 90, 2,  clamp(floor((mouse_x - xx) * (100 / 90)), 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(mastervol * 100), 0) * 100 + 0.5) / 100
 
 	// Compatible
 	if (!isplayer) {
