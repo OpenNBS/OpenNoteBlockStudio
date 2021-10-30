@@ -1,6 +1,5 @@
 function draw_popup(x, y, str, singleline) {
 	var theme = obj_controller.theme
-	var alpha = 1;
 	var maxw = string_width_dynamic(str);
 
 	if (alpha < 1) alpha += 0.25 * (30 / (room_speed * obj_controller.currspeed)) * (1 + (theme != 3))
