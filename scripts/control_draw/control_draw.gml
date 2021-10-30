@@ -272,7 +272,8 @@ function control_draw() {
 					} else if (editmode = m_pan) {
 						pan = median(0, pan + diff, 200)
 					} else if (editmode = m_pit) {
-						pit = median(-1200, pit + diff, 1200)
+						if (instrument_list[| ds_list_find_index(instrument_list, song_ins[selbx, selby])].name != "Tempo Changer") pit = median(-1200, pit + diff, 1200)
+						else pit += diff
 					}
 					change_block_manual(selbx, selby, song_ins[selbx, selby], key, vel, pan, pit)
 	            }

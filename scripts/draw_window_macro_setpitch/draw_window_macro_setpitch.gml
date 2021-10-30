@@ -21,7 +21,7 @@ function draw_window_macro_setpitch() {
 	}
 	if (language != 1) draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Pitch")
 	else draw_areaheader(x1 + 10, y1 + 53, 120, 35, "音高")
-	setpit = median(-1000, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1000)
+	setpit = median(-1200, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1200)
 
 	draw_theme_color()
 	if (language != 1) {if (draw_checkbox(x1 + 15, y1 + 80, addpitch, "Add mode", "Add the pitch amount to each note,\ninstead of setting it.", 0, 1)) addpitch = !addpitch}
