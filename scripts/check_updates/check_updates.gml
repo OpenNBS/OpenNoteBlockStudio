@@ -20,7 +20,6 @@ function check_updates() {
 				for (var i = 0; i < array_length(res); i++) {
 					if (check_prerelease || !res[i].prerelease) {
 						release = res[i];
-						show_debug_message(release)
 						break
 					}
 				}
