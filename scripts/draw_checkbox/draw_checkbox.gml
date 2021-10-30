@@ -1,5 +1,5 @@
 function draw_checkbox() {
-	// draw_checkbox(x, y, expression, str, tip[, locked])
+	// draw_checkbox(x, y, expression, str, tip[, locked[, is_switch]])
 	var xx, yy, expression, str, tip, m, lock, is_switch, x_offset;
 	xx = argument[0]
 	yy = argument[1]
@@ -11,12 +11,12 @@ function draw_checkbox() {
 	    lock = argument[5]
 	}
 	if (theme == 3 && argument_count > 6) {
-		is_switch = true;
-		x_offset = 31;
+		is_switch = argument[6];
 	} else {
 		is_switch = false;
-		x_offset = 18;
 	}
+	x_offset = is_switch ? 31 : 18;
+	
 	if (tip != "") popup_set_window(xx, yy, 13 + string_width_dynamic(str) + 8, 13, tip)
 	if (lock = 1) {
 		if (is_switch) {

@@ -154,8 +154,8 @@ function draw_window_preferences() {
 	draw_theme_color()
 	if (selected_tab = 0) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 65, "Startup")
-	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 65, "启动")
+	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, "Startup")
+	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 65, "启动")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
 			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.", false, true)) show_welcome=!show_welcome
@@ -163,11 +163,13 @@ function draw_window_preferences() {
 			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "显示欢迎界面", "打开软件时是否显示欢迎界面。", false, true)) show_welcome=!show_welcome
 		}
 		if (language != 1) {
-	    if (RUN_FROM_IDE != 1) {
-			draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "This option is disabled because\nyou're running from the IDE.", true, true)
-		} else {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.", false, true)) check_update=!check_update
-		}	
+			if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check if development\nversions are available as well.", !check_update, false)) {
+				check_prerelease = !check_prerelease
+				if (check_prerelease) {
+					show_message("Warning: development versions are experimental and may be unstable. Songs saved in these versions may not be compatible with stable versions of Note Block Studio. Please make frequent backups of your songs!")
+				}
+			}
 		} else {
 		if (RUN_FROM_IDE != 1) {
 			draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "由于在IDE内运行，此选项已禁用。", true, true)
@@ -178,12 +180,12 @@ function draw_window_preferences() {
 		// Auto-saving
 		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 74 + (theme = 3) * 22, 220, 65, "Auto-saving")
-		else draw_areaheader(x1 + 258, y1 + 74 + (theme = 3) * 22, 220, 65, "自动保存")
+		if (language != 1) draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, "Auto-saving")
+		else draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 65, "自动保存")
 		if (theme = 3) draw_theme_font(font_main)
 		as = autosave
-		if (language != 1) {if (draw_checkbox(x1 + 276, y1 + 90 + (theme = 3) * 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.", false, true)) autosave=!autosave}
-		else {if (draw_checkbox(x1 + 276, y1 + 90 + (theme = 3) * 22, autosave, "启用自动保存", "歌曲是否每过一段时间自动保存一次。", false, true)) autosave=!autosave}
+		if (language != 1) {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.", false, true)) autosave=!autosave}
+		else {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "启用自动保存", "歌曲是否每过一段时间自动保存一次。", false, true)) autosave=!autosave}
 		if (as != autosave) {
 		    changed = 1
 		    if (autosave = 0) tonextsave = 0
@@ -191,107 +193,107 @@ function draw_window_preferences() {
 		}
 		if (autosave = 0) {
 		    draw_set_color(c_gray)
-		    if (language != 1) draw_text_dynamic(x1 + 306, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
-		    else draw_text_dynamic(x1 + 306, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
-			draw_text_dynamic(x1 + 355, y1 + 110 + (theme = 3) * 22, autosavemins)
+		    if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+		    else draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
+			draw_text_dynamic(x1 + 375, y1 + 110 + (theme = 3) * 22, autosavemins)
 		    draw_theme_color()
 		} else {
-			if (language != 1) draw_text_dynamic(x1 + 306, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
-		    else draw_text_dynamic(x1 + 306, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
+			if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+		    else draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
 			as = autosavemins
-			autosavemins = median(1, draw_dragvalue(2, x1 + 355, y1 + 110 + (theme = 3) * 22, autosavemins, 1), 60)
+			autosavemins = median(1, draw_dragvalue(2, x1 + 375, y1 + 110 + (theme = 3) * 22, autosavemins, 1), 60)
 			if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
 		}
-		if (language != 1) popup_set_window(x1 + 306, y1 + 110 + (theme = 3) * 22, 180, 16, "The amount of minutes between each auto-save.")
-		else popup_set_window(x1 + 306, y1 + 110 + (theme = 3) * 22, 180, 16, "自动保存中间的间隔。")
+		if (language != 1) popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "The amount of minutes between each auto-save.")
+		else popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "自动保存中间的间隔。")
 		}
 	
 		
 		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 456, 145, "Songs")
-		else draw_areaheader(x1 + 22, y1 + 164 + (theme = 3) * 22, 456, 145, "歌曲")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 184 + (theme = 3) * 22, 456, 145, "Songs")
+		else draw_areaheader(x1 + 22, y1 + 184 + (theme = 3) * 22, 456, 145, "歌曲")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 180 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
-		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
+		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, "Song folder: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 230 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 246 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists(songfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            url_open(songfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where saving/loading should be opened in.", "")
 	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 226 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
 	
-		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+		draw_text_dynamic(x1 + 40, y1 + 280 + (theme = 3) * 22, "Pattern folder: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 280 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 296 + (theme = 3) * 22, 76, "Open", 0, 1)) {
 	        if (!directory_exists(patternfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
 	            url_open(patternfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "Change", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where patterns can be imported/exported to.", "")
 	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 276 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 180 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版Note Block Studio中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
-		draw_text_dynamic(x1 + 40, y1 + 210 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 210 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 40, y1 + 226 + (theme = 3) * 22, 76, "打开", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版Note Block Studio中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
+		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 230 + (theme = 3) * 22, 430, 18, songfolder)
+	    if (draw_button2(x1 + 40, y1 + 246 + (theme = 3) * 22, 76, "打开", 0, 1)) {
 	        if (!directory_exists(songfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
 	            url_open(songfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 226 + (theme = 3) * 22, 76, "修改", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "修改", 0, 1)) {
 	        message("选择保存和打开的文件夹", "")
 	        a = string(get_save_filename_ext("", "选择歌曲文件夹", songfolder, "歌曲文件夹"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 226 + (theme = 3) * 22, 96, "还原默认", 0, 1)) songfolder = songs_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, "还原默认", 0, 1)) songfolder = songs_directory
 	
-		draw_text_dynamic(x1 + 40, y1 + 260 + (theme = 3) * 22, "片段路径: " + string_truncate(patternfolder, 340))
-	    popup_set_window(x1 + 40, y1 + 260 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 40, y1 + 276 + (theme = 3) * 22, 76, "打开", 0, 1)) {
+		draw_text_dynamic(x1 + 40, y1 + 280 + (theme = 3) * 22, "片段路径: " + string_truncate(patternfolder, 340))
+	    popup_set_window(x1 + 40, y1 + 280 + (theme = 3) * 22, 430, 18, patternfolder)
+	    if (draw_button2(x1 + 40, y1 + 296 + (theme = 3) * 22, 76, "打开", 0, 1)) {
 	        if (!directory_exists(patternfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
 	            url_open(patternfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 276 + (theme = 3) * 22, 76, "修改", 0, 1)) {
+	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "修改", 0, 1)) {
 	        message("选择导出和导入片段的文件夹", "")
 	        a = string(get_save_filename_ext("", "选择片段文件夹", patternfolder, "片段文件夹"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 276 + (theme = 3) * 22, 96, "还原默认", 0, 1)) patternfolder = pattern_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "还原默认", 0, 1)) patternfolder = pattern_directory
 		}
 		}
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 22, y1 + 334 + (theme = 3) * 22 - 170 * isplayer, 456, 65, "Discord")
+		draw_areaheader(x1 + 22, y1 + 354 + (theme = 3) * 22 - 170 * isplayer, 456, 45, "Discord")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Whether to display info about your current\nsong in your Discord status activity.", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Whether to display info about your current\nsong in your Discord status activity.", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
 			}
 		}
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 334 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "是否在Discord个人状态中显示当前歌曲信息。", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "是否在Discord个人状态中显示当前歌曲信息。", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
@@ -524,7 +526,7 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 120, "Playing")
+	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 140, "Playing")
 		if (theme = 3) draw_theme_font(font_main)
 	    if (draw_checkbox(x1 + 32, y1 + 224 + 16 + (theme = 3) * 22, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo

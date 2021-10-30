@@ -2,7 +2,7 @@ function macros() {
 #macro gm_runtime_version "2.3.3.443"
 #macro version_date "2021.10.26"
 #macro version "3.9.2"
-#macro snapshot 1 // remember to change to 0 in the release!
+#macro is_prerelease 1 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
 
@@ -14,8 +14,8 @@ function macros() {
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data" + condstr(os_type = os_windows, "\\", "/")
 #macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory		data_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory	data_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory		working_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory	working_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"

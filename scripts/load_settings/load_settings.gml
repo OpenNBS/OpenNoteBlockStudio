@@ -13,6 +13,7 @@ function load_settings() {
 	// Preferences
 	vers =               ini_read_string("preferences", "last_version",       version)
 	check_update =       ini_read_real(  "preferences", "check_update",       check_update)
+	check_prerelease =   ini_read_real(  "preferences", "check_prerelease",   check_prerelease)
 	show_welcome =       ini_read_real(  "preferences", "show_welcome",       show_welcome)
 	autosave =           ini_read_real(  "preferences", "autosave",           autosave)
 	autosavemins =       ini_read_real(  "preferences", "autosavemins",       autosavemins)
@@ -111,7 +112,7 @@ function load_settings() {
 	sch_exp_glass =            ini_read_real("schematic_export", "glass",          sch_exp_glass)
 	sch_exp_minecart =         ini_read_real("schematic_export", "minecart",       sch_exp_minecart)
 	sch_exp_chest =            ini_read_real("schematic_export", "chest",          sch_exp_chest)
-	for (a = 0; a < 34; a += 1) {
+	for (a = 0; a < 256; a += 1) {
 	   sch_exp_ins_block[a] = ini_read_real("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
 	   sch_exp_ins_data[a] =  ini_read_real("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 	}

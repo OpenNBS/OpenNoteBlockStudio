@@ -50,13 +50,14 @@ function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 		if (mouse_check_button_released(mb_left)) aa = 0
 	}
 	draw_set_color(last_color)
-	if (window = obj_controller.window) {
-		if (!window) popup_set(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), str)
-		else popup_set_window(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3), str)
-		if (!mouse_rectangle(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3))) {
-			if (!window) popup_set(x + (value / max) * length - 6, y + 1 - 6, 13, 13, kstr)
-			else popup_set_window(x + (value / max) * length - 6, y + 1 - 6, 13, 13, kstr)
+	
+	if (window = 0) {
+		if (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13)) {
+			draw_popup(mouse_x, y + 20, kstr, true)
+		} else if (a || aa = id) {
+			draw_popup(mouse_x, y + 20, str, true)
 		}
 	}
+	
 	return value;
 }

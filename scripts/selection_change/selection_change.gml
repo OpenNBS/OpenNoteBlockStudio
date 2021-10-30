@@ -30,7 +30,7 @@ function selection_change(argument0, argument1, argument2) {
 							} else {
 								val = amount
 							}
-							if (val >= 0 && val <= 200) selection_vel[a, b] = val
+							if (val >= 0 && val <= 100) selection_vel[a, b] = val
 							break
 						}
 						case m_pan: {
@@ -50,7 +50,7 @@ function selection_change(argument0, argument1, argument2) {
 							} else {
 								val = amount
 							}
-							selection_pit[a, b] = val
+							if (val >= -1200 && val <= 1200) selection_pit[a, b] = val
 							break
 						}
 					}
