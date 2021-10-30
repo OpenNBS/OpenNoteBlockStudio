@@ -239,6 +239,7 @@
     {"id":{"name":"draw_piano","path":"scripts/draw_piano/draw_piano.yy",},"order":2,},
     {"id":{"name":"draw_notechart","path":"scripts/draw_notechart/draw_notechart.yy",},"order":3,},
     {"id":{"name":"draw_scrollbar","path":"scripts/draw_scrollbar/draw_scrollbar.yy",},"order":0,},
+    {"id":{"name":"draw_popup","path":"scripts/draw_popup/draw_popup.yy",},"order":41,},
     {"id":{"name":"create_scrollbar","path":"scripts/create_scrollbar/create_scrollbar.yy",},"order":1,},
     {"id":{"name":"spr_minecraft_f","path":"sprites/spr_minecraft_f/spr_minecraft_f.yy",},"order":9,},
     {"id":{"name":"change_theme","path":"scripts/change_theme/change_theme.yy",},"order":4,},
