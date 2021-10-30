@@ -17,7 +17,7 @@ function instrument_remove(ins) {
 	
 	// Reset text boxes to update the instrument name
 	for (var i = ds_list_find_index(instrument_list, ins); i <= ds_list_size(instrument_list); i++) {
-		text_exists[60 + i] = -1
+		text_exists[70 + i] = -1
 	}
 	
 	user_instruments--

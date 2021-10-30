@@ -7,10 +7,10 @@ function instrument_swap(ins1, ins2) {
 	ds_list_replace(instrument_list, index1, ins2)
 	ds_list_replace(instrument_list, index2, ins1)
 	
-	text_str[60 + index1] = ins2.name
-	text_str[60 + index2] = ins1.name
-	text_exists[60 + index1] = 0
-	text_exists[60 + index2] = 0
+	text_str[70 + index1] = ins2.name
+	text_str[70 + index2] = ins1.name
+	text_exists[70 + index1] = 0
+	text_exists[70 + index2] = 0
 	
 	for (a = 0; a <= enda; a += 1) {
 		if (colamount[a] > 0) {
