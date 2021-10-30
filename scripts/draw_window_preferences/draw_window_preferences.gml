@@ -526,7 +526,7 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 120, "Playing")
+	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 140, "Playing")
 		if (theme = 3) draw_theme_font(font_main)
 	    if (draw_checkbox(x1 + 32, y1 + 224 + 16 + (theme = 3) * 22, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
 		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
