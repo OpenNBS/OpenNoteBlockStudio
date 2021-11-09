@@ -51,11 +51,11 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	if (pit < 0) {
 		draw_set_color(c_red)
 		draw_set_alpha(min(0.5, (-pit / 100) * alpha * 0.25))
-		draw_rectangle(xx, yy, xx + 32, yy + 32, false)
+		draw_rectangle(xx, yy, xx + 31, yy + 31, false)
 	} else if (pit > 0) {
 		draw_set_color(c_blue)
 		draw_set_alpha(min(0.5, (pit / 100) * alpha * 0.25))
-		draw_rectangle(xx, yy, xx + 32, yy + 32, false)
+		draw_rectangle(xx, yy, xx + 31, yy + 31, false)
 	}
 
 	if (show_incompatible && (ins.user || key < 33 || key > 57)) {
