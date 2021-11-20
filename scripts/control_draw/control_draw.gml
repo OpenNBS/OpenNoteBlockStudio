@@ -838,7 +838,7 @@ function control_draw() {
 			if (language != 1) set_msg("Max framerate => 144 FPS")
 			else set_msg("帧数上限 => 144 FPS")
 		} else if (refreshrate = 3) {
-			game_set_speed(114514,gamespeed_fps)
+			game_set_speed(240,gamespeed_fps)
 			refreshrate = 4
 			if (language != 1) set_msg("Max framerate => 240 FPS")
 			else set_msg("帧数上限 => 240 FPS")

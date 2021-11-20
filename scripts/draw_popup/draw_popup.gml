@@ -1,13 +1,7 @@
-function draw_popup(x, y, str, singleline) {
+function draw_popup(x, y, str, singleline, alpha = 1) {
 	var theme = obj_controller.theme
 	var maxw = string_width_dynamic(str);
 
-	try {
-		if (alpha < 1) alpha += 0.25 * (30 / (room_speed * obj_controller.currspeed)) * (1 + (theme != 3))
-	}
-	catch (e) {
-		alpha = 1;
-	}
 	if (theme = 3 && obj_controller.acrylic) draw_surface_blur_alt(application_surface, x, y, maxw + 16, 20 + 18 * (!singleline), 0.5)
 	if (theme != 3) {
 	if (singleline) {

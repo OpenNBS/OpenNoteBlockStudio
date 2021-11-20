@@ -80,7 +80,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        b += 2
 	    } else { // No sharp keys
 	        c1 = startkey + sharpkeys + b
-	        k1 = piano_key[c1] > 0
+	        k1 = (show_keyboard && piano_key[c1] > 0)
 	        if (window = 0 && mouse_rectangle(xx + 39 * a, yy, 39, 128)) {
 	            if (!mouse_rectangle(xx + 39 * a + 27, yy - 7, 25, 71) || (a = k - 1 || c = 1 || c = 4)) {
 	                if (show_notechart && c1 > 6 && c1 < 69 && playing = 0) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0)
