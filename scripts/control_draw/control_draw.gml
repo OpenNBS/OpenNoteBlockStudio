@@ -1391,7 +1391,8 @@ function control_draw() {
 	                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
 	                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
 	                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
-	                             "Import pattern...|"+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
+	                             inactive(selected != 0)+"Import pattern...|"+
+								 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
 	                             inactive(totalblocks = 0) + "Export as MP3...|"+
 	                             inactive(totalblocks = 0) + "Export as schematic...|"+
 	                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
