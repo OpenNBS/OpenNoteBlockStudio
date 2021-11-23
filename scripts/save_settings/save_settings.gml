@@ -2,7 +2,11 @@ function save_settings() {
 	// save_settings()
 	var a;
 
-	ini_open(settings_file)
+	if (is_prerelease) {
+		ini_open(settings_dev_file)
+	} else {
+		ini_open(settings_file)
+	}
 
 	// Recent songs
 	for (a = 0; a < 11; a += 1) {
