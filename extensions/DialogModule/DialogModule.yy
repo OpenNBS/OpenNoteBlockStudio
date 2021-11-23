@@ -198,6 +198,12 @@
             2,
             1,
           ],"resourceVersion":"1.0","name":"widget_set_button_name","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"get_save_filename_ext","kind":1,"help":"get_save_filename_ext(filter,fname,dir,title)","hidden":false,"returnType":1,"argCount":0,"args":[
+            1,
+            1,
+            1,
+            1,
+          ],"resourceVersion":"1.0","name":"get_save_filename_ext","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[
         {"value":"\"Win32\"","hidden":false,"resourceVersion":"1.0","name":"ws_win32","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"\"Cocoa\"","hidden":false,"resourceVersion":"1.0","name":"ws_cocoa","tags":[],"resourceType":"GMExtensionConstant",},
@@ -229,6 +235,7 @@
         {"name":"get_open_filenames","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_open_filenames_ext","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_save_filename","path":"extensions/DialogModule/DialogModule.yy",},
+        {"name":"get_save_filename_ext","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_directory","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_directory_alt","path":"extensions/DialogModule/DialogModule.yy",},
         {"name":"get_color","path":"extensions/DialogModule/DialogModule.yy",},
