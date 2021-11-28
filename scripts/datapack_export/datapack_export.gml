@@ -180,9 +180,9 @@ function datapack_export() {
 	
 		// Execute shell command to create ZIP, or to move temp folder to location
 		if (o.dat_usezip) {
-			if (os_type = os_windows) ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true, true)
+			if (os_type = os_windows) execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true)
 		} else {
-			if (os_type = os_windows) ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
+			if (os_type = os_windows) execute_program("cmd", "\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true)
 		}
 	
 		directory_destroy(tempdir)

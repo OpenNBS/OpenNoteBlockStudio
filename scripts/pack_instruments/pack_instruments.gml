@@ -32,7 +32,7 @@ function pack_instruments() {
 		}
 	}
 	
-	if (os_type = os_windows) ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true, true)
+	if (os_type = os_windows) execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true)
 	directory_destroy(tempdir);
 	if (language != 1) message(string(count) + " instrument" + condstr(count > 1, "s were", " was") + " saved!", "Pack instruments");
 	else message(string(count) + "个音色已保存！", "导出音色");

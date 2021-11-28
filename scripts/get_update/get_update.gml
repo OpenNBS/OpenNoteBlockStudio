@@ -17,7 +17,7 @@ function get_update() {
 				if (language != 1) show_message("Download complete! Click OK to begin installing the update.")
 				else show_message("下载完成！点击“OK”来安装更新。")
 				// At this point, the game is paused until the user dismisses the message
-				if (os_type = os_windows) ExecuteShell("\"" + update_file + "\"", false, true)
+				if (os_type = os_windows) execute_program(update_file, "", false)
 				game_end()
 			} else {
 				if (language != 1) {
