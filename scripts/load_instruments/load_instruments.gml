@@ -5,10 +5,10 @@ function load_instruments(argument0) {
 	var fn, a, b, nbsver, height;
 	fn = argument0
 	if (fn = "") {
-	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
+	    if (!directory_exists(songfolder)) songfolder = songs_directory
 	    fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs", "", songfolder, "Load instruments from song"))
 	}
-	if (fn = "" || !file_exists_lib(fn)) return 0
+	if (fn = "" || !file_exists(fn)) return 0
 	buffer = buffer_import(fn)
 	
 	if (buffer_read_short() == 0) {

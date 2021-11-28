@@ -472,7 +472,7 @@ function control_create() {
 	total_size = -1
 	changelogstr = load_text(data_directory + "changelog.txt")
 	creditsstr = load_text(data_directory + "credits.txt")
-	if (file_exists_lib(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
+	if (file_exists(settings_file) && string_char_at(vers, 3) < string_char_at(version, 3)) {
 		if (theme = 2) fdark = 1
 		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
@@ -480,8 +480,8 @@ function control_create() {
 	}
 
 	// Delete old installer
-	if (file_exists_lib(update_file)) {
-		files_delete_lib(update_file)
+	if (file_exists(update_file)) {
+		files_delete(update_file)
 	}
 	
 	// Init wallpaper
@@ -491,7 +491,7 @@ function control_create() {
 	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196
 	// Implement in a better way that takes multiple instances into account.
 	/*
-	if (file_exists_lib(backup_file)) {
+	if (file_exists(backup_file)) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
 			load_song(backup_file, true)
 		}

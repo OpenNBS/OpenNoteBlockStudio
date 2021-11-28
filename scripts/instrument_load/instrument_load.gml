@@ -6,7 +6,7 @@ function instrument_load() {
 
 	log("Load instrument", fn)
 
-	if (filename = "" || !file_exists_lib(fn))
+	if (filename = "" || !file_exists(fn))
 	    return false
 
 	log("audio_file_decode")

@@ -23,18 +23,8 @@ function lib_init() {
 
 	log("File", path_file)
 
-	lib_open_url = external_define(path_file, "open_url", dll_cdecl, ty_real, 1, ty_string)
-	lib_execute = external_define(path_file, "execute", dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real)
 	lib_gzunzip = external_define(path_file, "gzunzip", dll_cdecl, ty_real, 2, ty_string, ty_string)
 	lib_gzzip = external_define(path_file, "gzzip", dll_cdecl, ty_real, 2, ty_string, ty_string)
-	lib_program_path = external_define(path_file, "program_path", dll_cdecl, ty_string, 0)
-	lib_file_rename = external_define(path_file, "file_rename", dll_cdecl, ty_real, 2, ty_string, ty_string)
-	lib_file_copy = external_define(path_file, "file_copy", dll_cdecl, ty_real, 2, ty_string, ty_string)
-	lib_file_delete = external_define(path_file, "file_delete", dll_cdecl, ty_real, 1, ty_string)
-	lib_file_exists = external_define(path_file, "file_exists", dll_cdecl, ty_real, 1, ty_string)
-	lib_directory_create = external_define(path_file, "directory_create", dll_cdecl, ty_real, 1, ty_string)
-	lib_directory_delete = external_define(path_file, "directory_delete", dll_cdecl, ty_real, 1, ty_string)
-	lib_directory_exists = external_define(path_file, "directory_exists", dll_cdecl, ty_real, 1, ty_string)
 
 	log("Audio", path_file)
 

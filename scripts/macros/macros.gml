@@ -12,7 +12,7 @@ function macros() {
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
-#macro data_directory		working_directory + "Data\\"
+#macro data_directory		get_working_directory() + "Data\\"
 #macro sounds_directory		data_directory + "Sounds\\"
 #macro songs_directory		data_directory + "Songs\\"
 #macro pattern_directory	data_directory + "Patterns\\"

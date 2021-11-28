@@ -139,7 +139,7 @@ function draw_window_greeting() {
 	    m += m && mouse_check_button(mb_left)
 	    if (m > 0 && mouse_check_button_released(mb_left)) {
 			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-	        if (!file_exists_lib(recent_song[a])) {
+	        if (!file_exists(recent_song[a])) {
 	            if (language != 1) message("Could not find file:\n" + recent_song[a], "Error")
 	            else message("找不到文件：\n" + recent_song[a], "错误")
 	            for (d = 0; d < 10; d += 1) {

@@ -15,7 +15,7 @@ function menu_click(argument0) {
 	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 3 + c && recent_song[c] != "") {
-	                if (!file_exists_lib(recent_song[c])) {
+	                if (!file_exists(recent_song[c])) {
 	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
@@ -293,7 +293,7 @@ function menu_click(argument0) {
 	        for (b = 0; b < 11; b += 1) if (recent_song[b] = "") break
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 2 + c && recent_song[c] != "") {
-	                if (!file_exists_lib(recent_song[c])) {
+	                if (!file_exists(recent_song[c])) {
 	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
