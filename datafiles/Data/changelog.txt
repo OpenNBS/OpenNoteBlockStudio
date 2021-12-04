@@ -3,9 +3,9 @@ Changes in v3.9.2 (2021.XX.XX):
 * MIDI files can now be opened by dragging and dropping them into the
    window.
 * Data packs can now be exported with tempos up to 60 t/s.
-* Updated data packs to pack format 7 (matching Java Edition 1.17).
-* Updated the extra notes resource pack to pack format 7 (matching Java
-   Edition 1.17).
+* Updated data packs to pack format 8 (matching Java Edition 1.18).
+* Updated the extra notes resource pack to pack format 8 (matching Java
+   Edition 1.18).
 * On the "Set pitch" macro, it's now possible to add the value to the current
    pitch instead of setting it to the chosen value.
 * Added an option to check for development versions on startup. Enabling this
