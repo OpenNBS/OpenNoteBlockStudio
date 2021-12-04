@@ -46,6 +46,7 @@ Changes in v3.9.2 (2021.XX.XX):
    * Fixed the default song and pattern folders incorrectly pointing to paths
       inside the "Data" folder.
    * Fixed the overlay on detuned note blocks being one pixel too large.
+   * Fixed lines under URLs being skewed when the window scale is not 100%.
    * Fixed the program using the wrong FPS value when setting it to 240 FPS
       with F7.
    * Fixed the 'Playing' bounding box being too small on the Playback tab of
