@@ -1734,8 +1734,7 @@ function control_draw() {
 	}
 	}
 	if (aa = 2 && mouse_check_button_released(mb_left) && windowsound) {
-		play_sound(instrument_list[| 15], 46, 100, 100, 0)
-		play_sound(instrument_list[| 15], 46, 50, 100, 0)
+		play_sound(soundding, 45, 100, 100, 0)
 	}
 	xx += 8
 	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
