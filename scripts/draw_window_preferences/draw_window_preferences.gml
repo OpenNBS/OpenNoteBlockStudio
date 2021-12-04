@@ -178,14 +178,14 @@ function draw_window_preferences() {
 			}
 		} else {
 			if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "检查更新", "打开软件时是否检查更新。", false, true)) check_update=!check_update
-			if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check for development versions in addition to stable releases.\nDevelopment versions contain the latest improvements, but may be potentially unstable.", !check_update, false)) {
+			if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "检查开发版本", "是否在稳定版之外额外检测开发版。\n开发版本包含最新的内容，但可能不稳定。", !check_update, false)) {
 				check_prerelease = !check_prerelease
 				if (!is_prerelease && check_prerelease) {
-					if (!message_yesnocancel("Development versions are experimental and may be unstable. To avoid data corruption, it's highly recommended that you install Note Block Studio to a separate directory before enabling this option.\n\nProceed?", "Warning")) {
+					if (!message_yesnocancel("开发版本仍在测试中，可能会不稳定。为了防止数据损坏，强烈建议您在开启该选项前将 Note Block Studio 安装到一个单独的目录。\n\n继续吗？", "警告")) {
 						check_prerelease = !check_prerelease // undo button check
 					}
 				} else if (is_prerelease && !check_prerelease) {
-					if (!message_yesnocancel("You're currently running a development version of Note Block Studio. By disabling this option, you will be prompted to downgrade to the latest stable version the next time you open the program.\n\nProceed?", "Warning")) {
+					if (!message_yesnocancel("您正在运行一个 Note Block Studio 的开发版本。关闭这个选项后，在下次开启此程序时您将会被提示降级至最新的稳定版。\n\n继续吗？", "警告")) {
 						check_prerelease = !check_prerelease // undo button uncheck
 					}
 				}
