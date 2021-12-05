@@ -1,5 +1,21 @@
 function draw_text_dynamic(x, y, string){
 	// draw_text_dynamic()
+
+	// Skip drawing dynamic text when using English
+	if (!force && obj_controller.language != 1) {
+		draw_text(x, y, string);
+		return;
+	}
+	
+	/*
+	// Disable dynamic text on Chinese (use Source Han Sans for everything)
+	if (obj_controller.language == 1) {
+		draw_theme_font(obj_controller.currentfont, true)
+	}
+	draw_text(x, y - 2 * (obj_controller.language == 1), string);
+	return;
+	*/
+	
 	var width = 0;
 	var lines = 0;
 	var linewidth = [0];
