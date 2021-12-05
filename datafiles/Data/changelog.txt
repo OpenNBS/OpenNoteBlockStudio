@@ -3,9 +3,9 @@ Changes in v3.9.2 (2021.XX.XX):
 * MIDI files can now be opened by dragging and dropping them into the
    window.
 * Data packs can now be exported with tempos up to 60 t/s.
-* Updated data packs to pack format 7 (matching Java Edition 1.17).
-* Updated the extra notes resource pack to pack format 7 (matching Java
-   Edition 1.17).
+* Updated data packs to pack format 8 (matching Java Edition 1.18).
+* Updated the extra notes resource pack to pack format 8 (matching Java
+   Edition 1.18).
 * On the "Set pitch" macro, it's now possible to add the value to the current
    pitch instead of setting it to the chosen value.
 * Added an option to check for development versions on startup. Enabling this
@@ -24,6 +24,8 @@ Changes in v3.9.2 (2021.XX.XX):
       mode.
    * Fixed the song work stats being updated while using the player mode.
    * Fixed the song info window not opening in the player mode.
+   * The 'Import pattern' and 'Export pattern' menu entries will now be locked
+      according to whether there are selected note blocks.
    * Fixed the Compatibility popups appearing in the wrong position when the
       window scale is not 100%.
    * Fixed the note velocity going higher than 100 when using keyboard
@@ -44,6 +46,7 @@ Changes in v3.9.2 (2021.XX.XX):
    * Fixed the default song and pattern folders incorrectly pointing to paths
       inside the "Data" folder.
    * Fixed the overlay on detuned note blocks being one pixel too large.
+   * Fixed lines under URLs being skewed when the window scale is not 100%.
    * Fixed the program using the wrong FPS value when setting it to 240 FPS
       with F7.
    * Fixed the 'Playing' bounding box being too small on the Playback tab of

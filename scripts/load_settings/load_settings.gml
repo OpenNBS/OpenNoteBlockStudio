@@ -2,8 +2,13 @@ function load_settings() {
 	// load_settings()
 	var a;
 	log("Load settings")
-	if (!file_exists(settings_file)) return 0
-	ini_open(settings_file)
+	if (is_prerelease && file_exists(settings_dev_file)) {
+		ini_open(settings_dev_file);
+	} else if (file_exists(settings_file)) {
+		ini_open(settings_file);
+	} else {
+		return;
+	}
 
 	// Recent songs
 	for (a = 0; a < 11; a += 1) {
