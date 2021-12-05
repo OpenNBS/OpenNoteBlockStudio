@@ -203,6 +203,8 @@ function control_create() {
 
 	mousewheel = 0
 	changepitch = 1
+	
+	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 
 	// History
 	historypos = 0
