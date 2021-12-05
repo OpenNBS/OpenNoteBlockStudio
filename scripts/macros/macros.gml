@@ -20,6 +20,7 @@ function macros() {
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
 #macro settings_file		file_directory + "settings.ini"
+#macro settings_dev_file	file_directory + "settings_dev.ini"
 #macro backup_file			file_directory + "backup.nbs"
 
 #macro h_stereoize 12

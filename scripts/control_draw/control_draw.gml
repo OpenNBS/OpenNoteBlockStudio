@@ -1391,7 +1391,8 @@ function control_draw() {
 	                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
 	                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
 	                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
-	                             "Import pattern...|"+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
+	                             inactive(selected != 0)+"Import pattern...|"+
+								 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
 	                             inactive(totalblocks = 0) + "Export as MP3...|"+
 	                             inactive(totalblocks = 0) + "Export as schematic...|"+
 	                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
@@ -1733,8 +1734,7 @@ function control_draw() {
 	}
 	}
 	if (aa = 2 && mouse_check_button_released(mb_left) && windowsound) {
-		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 100, 100, 0)
-		play_sound(soundding * (theme != 3) + sounddingf * (theme = 3), 45, 50, 100, 0)
+		play_sound(soundding, 45, 100, 100, 0)
 	}
 	xx += 8
 	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
