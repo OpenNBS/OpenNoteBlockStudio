@@ -1,4 +1,4 @@
-function draw_text_dynamic(x, y, string){
+function draw_text_dynamic(x, y, string, force = false){
 	// draw_text_dynamic()
 
 	// Skip drawing dynamic text when using English
