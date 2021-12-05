@@ -92,12 +92,12 @@ function macros() {
 
 #macro c_dark 1644825
 
-#macro font_main 1
-#macro font_main_bold 2
-#macro font_small 3
-#macro font_small_bold 4
-#macro font_info_big 5
-#macro font_info_med 6
-#macro font_info_med_bold 7
-#macro font_med 8
+#macro font_main 0
+#macro font_main_bold 1
+#macro font_small 2
+#macro font_small_bold 3
+#macro font_info_big 4
+#macro font_info_med 5
+#macro font_info_med_bold 6
+#macro font_med 7
 }
