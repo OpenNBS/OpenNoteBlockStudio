@@ -131,7 +131,7 @@ function draw_window_greeting() {
 	    if (recent_song[a] = "") break
 	    if (a = 0) {
 	        c += 36
-	        if (language != 1) draw_text_dynamic(b - 20, c, "Recent songs：")
+	        if (language != 1) draw_text_dynamic(b - 20, c, "Recent songs:")
 	        else draw_text_dynamic(b - 20, c, "最近歌曲：")
 	        c += 16
 	    }
