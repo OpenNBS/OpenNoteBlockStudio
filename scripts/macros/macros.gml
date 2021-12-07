@@ -6,9 +6,11 @@ function macros() {
 #macro nbs_version 5
 #macro pat_version 1
 
-#macro link_github "https://github.com/HielkeMinecraft/OpenNoteBlockStudio"
-#macro link_report "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/new/choose"
-#macro link_website "https://hielkeminecraft.github.io/OpenNoteBlockStudio"
+#macro link_github "https://github.com/OpenNBS/OpenNoteBlockStudio"
+#macro link_report "https://github.com/OpenNBS/OpenNoteBlockStudio/issues/new/choose"
+#macro link_latest "https://api.github.com/repos/OpenNBS/OpenNoteBlockStudio/releases/latest"
+#macro link_changelog "https://opennbs.org/changelog"
+#macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id

@@ -488,7 +488,7 @@ function control_create() {
 
 	// Updates
 	if (check_update)
-	    update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
+	    update_http = http_get(link_latest)
 	else
 	    update_http = -1
 	update_download = -1
@@ -512,7 +512,7 @@ function control_create() {
 	change_theme()
 
 	// Auto-recovery
-	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196
+	// DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
 	// Implement in a better way that takes multiple instances into account.
 	/*
 	if (file_exists_lib(backup_file)) {
