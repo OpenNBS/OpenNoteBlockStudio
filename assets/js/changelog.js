@@ -1,7 +1,7 @@
 (function($) {
 
 	$(function() {
-		$.getJSON("https://api.github.com/repos/hielkeminecraft/opennoteblockstudio/releases", function(result){
+		$.getJSON("https://api.github.com/repos/opennbs/opennoteblockstudio/releases", function(result){
 			var converter = new showdown.Converter();
 
 			$.each(result, function(i, release){
