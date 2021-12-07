@@ -4,7 +4,7 @@ An open source continuation of Minecraft Note Block Studio with exciting new fea
 </p>
 
 ### Download
-You can download Open Note Block Studio [here](https://opennbs.org/).
+You can download Open Note Block Studio [here](https://github.com/OpenNBS/OpenNoteBlockStudio/releases/latest).
 You can either download it as an `.exe` installer (recommended), or as a ZIP file.
 
 ### Issues
