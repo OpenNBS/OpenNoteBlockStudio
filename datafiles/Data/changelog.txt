@@ -1,4 +1,4 @@
-Changes in v3.9.2 (2021.XX.XX):
+Changes in v3.9.2 (2021.12.06):
 * Added a master volume slider, which controls the output level of all sounds.
 * MIDI files can now be opened by dragging and dropping them into the
    window.
