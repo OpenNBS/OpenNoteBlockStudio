@@ -1,6 +1,6 @@
 function macros() {
 #macro gm_runtime_version "2.3.5.458"
-#macro version_date "2021.10.31"
+#macro version_date "2021.12.07"
 #macro version "3.9.3"
 #macro is_prerelease 0 // remember to change to 0 in the release!
 #macro nbs_version 5
