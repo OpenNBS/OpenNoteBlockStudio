@@ -2,7 +2,7 @@ function menu_draw() {
 	// menu_draw()
 	if (ani < 1) ani += 0.1 * (30 / room_speed) * (1 / obj_controller.currspeed)
 	else ani = 1
-	var m, menux, menuy, noclick, o, theme, cm;
+	var m, menux, menuy, noclick, o, theme, cm, menu, force_dynamic;
 	theme = obj_controller.theme;
 	menux[0] = sx
 	menuy[0] = sy
@@ -105,7 +105,9 @@ function menu_draw() {
 					//}
 				//}
 	            draw_set_alpha(1 - 0.5 * item_inactive[m, i])
-	            draw_text_dynamic(dx + 36, dy + iy, item_str[m, i], obj_controller.menu_shown == "language")
+				menu = obj_controller.menu_shown
+				force_dynamic = (menu == "language" || menu == "file")
+	            draw_text_dynamic(dx + 36, dy + iy, item_str[m, i], force_dynamic)
 	            if (item_shortcut[m, i] != "") {
 	                draw_set_halign(fa_right)
 	                draw_text_dynamic(dx + menu_wid[m] - 20, dy + iy, item_shortcut[m, i])
