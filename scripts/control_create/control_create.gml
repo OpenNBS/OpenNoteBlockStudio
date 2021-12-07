@@ -488,7 +488,7 @@ function control_create() {
 
 	// Updates
 	if (check_update)
-	    update_http = http_get(link_latest)
+	    update_http = http_get(link_releases)
 	else
 	    update_http = -1
 	update_download = -1
