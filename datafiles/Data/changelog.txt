@@ -1,6 +1,8 @@
-Changes in v3.9.3 (2021.12.07):
+Changes in v3.9.3 (2021.12.08):
 * Fixed the auto-updater checking for updates indefinitely.
-* Updated the website link due to an internal change.
+* Fixed the data pack visualizer spawning blocks very far away.
+* Fixed the "Successfully updated!" text not appearing after updating.
+* Updated the Note Block Studio website link due to an internal change.
 
 Changes in v3.9.2 (2021.12.06):
 * Added a master volume slider, which controls the output level of all sounds.
