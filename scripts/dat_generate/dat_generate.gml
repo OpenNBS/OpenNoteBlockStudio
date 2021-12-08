@@ -34,10 +34,10 @@ function dat_generate(argument0, argument1, argument2) {
 					
 						if o.dat_visualizer = 1 {
 							
-							var ins = ds_list_find_index(o.instrument_list, o.song_ins[a, b]);
-							var team_number = string(ins + 1);
-							var ins_index = o.sch_exp_ins_block[ins];
-							var block_id = block_get_namespaced_id(ins_index);
+							var ins_index = ds_list_find_index(o.instrument_list, o.song_ins[a, b]);
+							var team_number = string(ins_index + 1);
+							var numeric_id = o.sch_exp_ins_block[ins_index];
+							var block_id = block_get_namespaced_id(numeric_id);
 							
 							// Visualizer Types
 							if o.dat_vis_type = "Arc" { // Arc
