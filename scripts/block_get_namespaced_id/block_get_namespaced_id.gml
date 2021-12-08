@@ -1,4 +1,4 @@
-function block_get_namespaced_id(argument0, argument1) {
+function block_get_namespaced_id(argument0, argument1=0) {
 	// block_get_namespaced_id(val, data)
 	// Returns the namespaced ID of the block with the given value and data.
 
