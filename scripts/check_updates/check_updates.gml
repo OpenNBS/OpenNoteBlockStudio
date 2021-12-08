@@ -35,13 +35,17 @@ function check_updates() {
 			    var res = async_load[? "result"];
 				res = json_parse(res);
 
-				// Iterate array of releases and get the first (latest) release OR pre-release
-				var release = -1;
-				for (var i = 0; i < array_length(res); i++) {
-					if (check_prerelease || !res[i].prerelease) {
-						release = res[i];
-						break;
+				if (check_prerelease) {
+					// Iterate array of releases and get the first (latest) release OR pre-release
+					var release = -1;
+					for (var i = 0; i < array_length(res); i++) {
+						if (check_prerelease || !res[i].prerelease) {
+							release = res[i];
+							break;
+						}
 					}
+				} else {
+					release = res;
 				}
 			
 				if (release != -1) {
