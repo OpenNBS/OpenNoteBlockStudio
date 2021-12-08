@@ -79,6 +79,7 @@ function control_create() {
 	update = 0
 	check_update = 1
 	check_prerelease = 0
+	update_success = 0
 	show_welcome = 1
 	scroll_wheel = 0
 	theme = 3 // Using Fluent as the default theme
@@ -504,7 +505,7 @@ function control_create() {
 		if (theme = 2) fdark = 1
 		theme = 3 // Sets to the Fluent theme when updated
 	    window = w_update
-	    update = 3
+	    update_success = 1
 	}
 
 	// Delete old installer

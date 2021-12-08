@@ -16,32 +16,33 @@ function draw_window_greeting() {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
 		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在IDE中运行")	
 	} else if (check_update) {
-	    if (update = -1) {
-	        draw_set_color(c_red)
-			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Could not check for updates")
-	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "检查更新失败")
-	    }
-	    if (update = 0) {
-	        //draw_set_color(c_gray)
-			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Checking for updates...")
-	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "正在检查更新……")
-	    }
-	    if (update = 1) {
-	        draw_set_color(33023)
-			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "There is an update available!")
-	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "有新版本！")
-	    }
-	    if (update = 2) {
-	        draw_set_color(c_green)
-			if (theme == 2) draw_set_color(c_lime)
-			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "You are using the latest version!")
-	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "已为最新版本！")
-	    }
-	    if (update = 3) {
+		if (update_success) {
 	        draw_set_color(c_lime)
 			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Successfully updated!")
 	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "更新成功！")
-	    }
+	    } else {
+		    if (update = -1) {
+		        draw_set_color(c_red)
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Could not check for updates")
+		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "检查更新失败")
+		    }
+		    else if (update = 0) {
+		        //draw_set_color(c_gray)
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Checking for updates...")
+		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "正在检查更新……")
+		    }
+		    else if (update = 1) {
+		        draw_set_color(33023)
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "There is an update available!")
+		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "有新版本！")
+		    }
+		    else if (update = 2) {
+		        draw_set_color(c_green)
+				if (theme == 2) draw_set_color(c_lime)
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "You are using the latest version!")
+		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "已为最新版本！")
+		    }
+		}
 	} else {
 	    draw_set_color(c_red)
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Update checking disabled by user")
