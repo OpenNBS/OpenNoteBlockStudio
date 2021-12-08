@@ -51,7 +51,7 @@ function dat_generate(argument0, argument1, argument2) {
 								}
 							}
 					
-							if o.dat_vis_type = "Fall" { // Fall
+							else if o.dat_vis_type = "Fall" { // Fall
 							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
@@ -62,7 +62,7 @@ function dat_generate(argument0, argument1, argument2) {
 								}
 							} 
 					
-							if o.dat_vis_type = "Piano Roll" { // Piano Roll
+							else if o.dat_vis_type = "Piano Roll" { // Piano Roll
 							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
@@ -73,7 +73,7 @@ function dat_generate(argument0, argument1, argument2) {
 								}
 							} 
 					
-							if o.dat_vis_type = "Rise" { // Rise
+							else if o.dat_vis_type = "Rise" { // Rise
 							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
@@ -84,7 +84,7 @@ function dat_generate(argument0, argument1, argument2) {
 								}
 							} 
 					
-							if o.dat_vis_type = "Bounce" { // Bounce
+							else if o.dat_vis_type = "Bounce" { // Bounce
 							str += "summon minecraft:falling_block " + team_number + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
@@ -94,7 +94,8 @@ function dat_generate(argument0, argument1, argument2) {
 									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index + 1) + "]" + br
 								}
 							} 
-							if o.dat_vis_type = "Fountain" { // Fountain
+							
+							else if o.dat_vis_type = "Fountain" { // Fountain
 								str += "summon minecraft:falling_block " + team_number + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
 									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
@@ -106,7 +107,8 @@ function dat_generate(argument0, argument1, argument2) {
 									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index) + "]" + br
 								}
 							} 
-							if o.dat_vis_type = "Rittai Onkyou" { // Rittai Onkyou
+							
+							else if o.dat_vis_type = "Rittai Onkyou" { // Rittai Onkyou
 							str += "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(90) + " " + string(blockvolume * 48) + " " +"{\"Tags\":[\"nbs\"],BlockState:{Name:\"minecraft:"+ block_id + "\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 							+ "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(90) + " " + string((blockvolume * 48) - 1) + " " +"{\"Tags\":[\"nbs\"],BlockState:{Name:\"minecraft:note_block\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 							+ "particle minecraft:note " + string(blockposition * 48) + " " + string(90) + " " + string((blockvolume * 48) - 2) + " 0 0 0 1 1 force @p" + br
