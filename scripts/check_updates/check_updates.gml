@@ -37,13 +37,8 @@ function check_updates() {
 
 				var release = -1;
 				if (check_prerelease) {
-					// Iterate array of releases and get the first (latest) release OR pre-release
-					for (var i = 0; i < array_length(res); i++) {
-						if (check_prerelease || !res[i].prerelease) {
-							release = res[i];
-							break;
-						}
-					}
+					// Get first (latest) release on list, whether it's a release OR pre-release
+					release = res[0];
 				} else {
 					release = res;
 				}
