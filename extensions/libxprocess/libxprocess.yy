@@ -119,8 +119,7 @@
         {"externalName":"FreeExecutedProcessStandardOutput","kind":1,"help":"FreeExecutedProcessStandardOutput(procIndex)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
           ],"resourceVersion":"1.0","name":"FreeExecutedProcessStandardOutput","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcId(procId,specifics)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
+        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcId(procId)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
           ],"resourceVersion":"1.0","name":"ProcInfoFromProcId","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"ExeFromProcId","kind":1,"help":"ExeFromProcId(procId)","hidden":false,"returnType":1,"argCount":0,"args":[
@@ -133,17 +132,7 @@
             1,
           ],"resourceVersion":"1.0","name":"WindowIdFromNativeWindow","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"DirectoryGetTemporaryPath","kind":1,"help":"DirectoryGetTemporaryPath()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"DirectoryGetTemporaryPath","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[
-        {"value":"0","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_RESERVE","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"1","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_ALLINFO","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"2","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_EXEFILE","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"3","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_CWDPATH","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"4","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_PPROCID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"5","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_CPROCID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"6","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_CMDLINE","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"7","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_ENVIRON","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"8","hidden":false,"resourceVersion":"1.0","name":"PROCINFO_WINDOWS","tags":[],"resourceType":"GMExtensionConstant",},
-      ],"ProxyFiles":[
+      ],"constants":[],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":6,"resourceVersion":"1.0","name":"libxprocess_x64.dll","tags":[],"resourceType":"GMProxyFile",},
