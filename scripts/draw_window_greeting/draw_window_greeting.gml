@@ -14,7 +14,7 @@ function draw_window_greeting() {
 	var dev_label_offset = (is_prerelease) ? 15 : 0
 	if (RUN_FROM_IDE != 1) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在IDE中运行")	
+		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在 IDE 中运行")	
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
@@ -54,7 +54,7 @@ function draw_window_greeting() {
 		else draw_text_center(x1 + 132, y1 + 233, "本地版本")
 	} else {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
-		else draw_text_center(x1 + 132, y1 + 233, "版本" + version + " - 发布于" + version_date)
+		else draw_text_center(x1 + 132, y1 + 233, "版本 " + version + " - 发布于 " + version_date)
 	}
 	if (is_prerelease) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "(Development version)")
@@ -182,7 +182,7 @@ function draw_window_greeting() {
 	else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
-	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从MIDI文件生成")
+	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从 MIDI 文件生成")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0

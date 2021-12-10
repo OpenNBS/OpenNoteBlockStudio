@@ -144,8 +144,8 @@ function draw_window_branch_export() {
 	    draw_text_dynamic(x1 + 170, y1 + 240, "主层数：")
 	    sch_exp_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_exp_layer1, 1), sch_exp_maxheight[0] + 1)
 		sch_exp_layer_index[0] = sch_exp_layer1
-		draw_text_dynamic(x1 + 170, y1 + 260, "和弦层1：")
-		draw_text_dynamic(x1 + 170, y1 + 280, "和弦层2：")
+		draw_text_dynamic(x1 + 170, y1 + 260, "和弦层 1：")
+		draw_text_dynamic(x1 + 170, y1 + 280, "和弦层 2：")
 		if (sch_exp_polyphony > 1 ) {
 			sch_exp_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_exp_layer2, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[1] = sch_exp_layer2

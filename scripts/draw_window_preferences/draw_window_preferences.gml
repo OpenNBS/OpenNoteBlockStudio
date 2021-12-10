@@ -263,7 +263,7 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版Note Block Studio中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
+		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版 Note Block Studio 中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
 		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, "歌曲路径: " + string_truncate(songfolder, 340))
 	    popup_set_window(x1 + 40, y1 + 230 + (theme = 3) * 22, 430, 18, songfolder)
 	    if (draw_button2(x1 + 40, y1 + 246 + (theme = 3) * 22, 76, "打开", 0, 1)) {
@@ -308,7 +308,7 @@ function draw_window_preferences() {
 			}
 		}
 		} else {
-		if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "是否在Discord个人状态中显示当前歌曲信息。", 0, 1)) {
+		if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "启用 Discord Rich Presence", "是否在 Discord 个人状态中显示当前歌曲信息。", 0, 1)) {
 		    presence = !presence
 			if (presence = 1) {
 				np_setpresence_timestamps(date_current_datetime(), 0, false);
@@ -338,9 +338,9 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Transparency effects", "Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) {acrylic = !acrylic change_theme()}
 		} else {
 		if (!isplayer) if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，可以用于剪辑时扣掉。", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "是否在浏览时播放音效。\n（仅限Fluent主题）", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "是否在界面上使用暗色调。\n（仅限Fluent主题）", (theme != 3), true)) fdark = !fdark
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "是否在界面上显示透明效果。\n（仅限Fluent主题）", (theme != 3), true)) {acrylic = !acrylic change_theme()}
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "是否在浏览时播放音效。\n（仅限 Fluent 主题）", (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "暗色模式", "是否在界面上使用暗色调。\n（仅限 Fluent 主题）", (theme != 3), true)) fdark = !fdark
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "透明效果", "是否在界面上显示透明效果。\n（仅限 Fluent 主题）", (theme != 3), true)) {acrylic = !acrylic change_theme()}
 		}
 		
 		// Accent color picker
@@ -472,7 +472,7 @@ function draw_window_preferences() {
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, "音符盒形状", "用音符盒形状区分音色。")) use_shapes=!use_shapes
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 160, show_numbers, "显示音符序号", "在音符盒上显示需要按右键次数。")) show_numbers=!show_numbers
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 180, show_octaves, "显示八度序号", "在音符盒上显示第几八度。")) show_octaves=!show_octaves
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "标记不兼容的音符盒", "在自定义音色或超出2八度范围的音符盒周围显示红框。")) show_incompatible=!show_incompatible
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "标记不兼容的音符盒", "在自定义音色或超出 2 八度范围的音符盒周围显示红框。")) show_incompatible=!show_incompatible
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 220, fade, "音符盒不透明", "关闭音符盒上的透明效果。")) fade = !fade
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "显示每层操作区", "显示在界面左侧操作每层设定的区域。")) show_layers = !show_layers
 		if (theme = 3) draw_theme_font(font_info_med)
@@ -480,10 +480,10 @@ function draw_window_preferences() {
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "显示琴键", "钢琴键是否可见。", false, true)) show_piano = !show_piano
 		if (draw_checkbox(x1 + 40, y1 + 355 + (theme = 3) * 22, show_keynames, "显示键名", "显示琴键所对应音的名称。")) show_keynames=!show_keynames
-	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "显示音符序号", "在2八度内的琴键上显示需要按右键次数。")) show_keynumbers=!show_keynumbers
+	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "显示音符序号", "在 2 八度内的琴键上显示需要按右键次数。")) show_keynumbers=!show_keynumbers
 	    if (draw_checkbox(x1 + 40, y1 + 395 + (theme = 3) * 22, show_keyboard, "显示键盘键位", "在琴键上显示绑定的键盘键位。")) show_keyboard=!show_keyboard
 	    if (draw_checkbox(x1 + 40, y1 + 415 + (theme = 3) * 22, show_notechart, "在琴键上时显示五线谱对应音符", "在鼠标停留在琴键上时是否显示五线谱。")) show_notechart=!show_notechart
-	    if (draw_checkbox(x1 + 40, y1 + 435 + (theme = 3) * 22, show_outofrange, "标记超范围琴键", "是否为在2八度之外的琴键上标红。")) show_outofrange=!show_outofrange
+	    if (draw_checkbox(x1 + 40, y1 + 435 + (theme = 3) * 22, show_outofrange, "标记超范围琴键", "是否为在 2 八度之外的琴键上标红。")) show_outofrange=!show_outofrange
 	    if (!show_piano) draw_set_color(c_gray)
 		draw_text_dynamic(x1 + 70, y1 + 330 + (theme = 3) * 22, "最多显示键数:")
 		if (show_piano) {
@@ -575,8 +575,8 @@ function draw_window_preferences() {
 		if (theme = 3) draw_theme_font(font_info_med)
 		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "速度单位")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻/秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
-		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数/分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
+		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻 / 秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数 / 分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
 		}
 	}
 	

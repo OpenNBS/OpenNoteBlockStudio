@@ -39,7 +39,7 @@ function draw_window_macro_stagger() {
 		}
 		if string_count("-", pattern) != 0 {
 			if (language != 1) message("Stagger can only extend downwards!", "Error")
-			else message("Stagger只能向下延伸！", "错误")
+			else message("Stagger 只能向下延伸！", "错误")
 			return -1
 		}
 		windowalpha = 0

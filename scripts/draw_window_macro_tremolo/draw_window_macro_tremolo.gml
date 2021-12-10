@@ -64,7 +64,7 @@ function draw_window_macro_tremolo() {
 	if (draw_button2(x1 + 10, y1 + 215, 60, condstr(language != 1, "OK", "确定"))) {
 		if (leg_dec > 100 || leg_dec < 0|| leg_sus > 100|| leg_sus < 0) {
 			if (language != 1) message("Values must be between 1 and 100.", "Error")
-			else message("所有值必须在1到100之间。", "错误")
+			else message("所有值必须在 1 到 100 之间。", "错误")
 			return 1
 		}
 		if tremolotype = 0 macro_tremolo()

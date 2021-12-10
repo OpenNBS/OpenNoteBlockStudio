@@ -29,7 +29,7 @@ function draw_window_update() {
 	}
 	} else {
 	if (RUN_FROM_IDE != 1) {
-		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在IDE中运行！）")
+		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在 IDE 中运行！）")
 	} else {
 		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "更新")
 		else draw_text_dynamic(x1 + 8, y1 + 8, "更新历史")
@@ -43,7 +43,7 @@ function draw_window_update() {
 		}
 	} else {
 		if (window = w_update) {
-			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到" + version + "版本！")
+			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到 " + version + " 版本！")
 		}
 	}
 	draw_area(x1 + 16, y1 + 58, x1 + 487, y1 + 357)

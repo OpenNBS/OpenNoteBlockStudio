@@ -24,8 +24,8 @@ function draw_window_tempo_tapper() {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
 		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (T to tap)")
 	} else {
-		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打速度)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按T打速度)")
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按 T 打速度)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按 T 打速度)")
 	}
 
 	//tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
@@ -46,7 +46,7 @@ function draw_window_tempo_tapper() {
 		else draw_text_dynamic(x1 + 60, y1 + 55, ctempo / 15)
 	}
 	if (language != 1) {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "Double tempo", "Double the tempo to apply.", 0, 1)) tapdouble = !tapdouble}
-	else {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "双倍速度", "应用时使速度x2。", 0, 1)) tapdouble = !tapdouble}
+	else {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "双倍速度", "应用时使速度 x2。", 0, 1)) tapdouble = !tapdouble}
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {

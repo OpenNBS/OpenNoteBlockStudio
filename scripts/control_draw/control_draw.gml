@@ -1478,13 +1478,13 @@ function control_draw() {
 	                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
 	                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
 	                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
-	                             "导入片段......|"+"导出片段......|"+"从MIDI文件导入......|从Schematic文件导入......|-|"+
-	                             inactive(totalblocks = 0) + "导出为MP3......|"+
-	                             inactive(totalblocks = 0) + "导出为schematic......|"+
-	                             inactive(totalblocks = 0) + "导出为分支schematic......|"+
+	                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
+	                             inactive(totalblocks = 0) + "导出为 MP3......|"+
+	                             inactive(totalblocks = 0) + "导出为 schematic......|"+
+	                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
 								 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
 	                             "Alt + F4$退出")
-		else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从MIDI文件导入......|从Schematic文件导入......|-|" + "Alt + F4$退出")
+		else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
 							
 	}
 	if (!isplayer) if (draw_tab("编辑")) {
@@ -1546,11 +1546,11 @@ function control_draw() {
 			}
 	    }
 	    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-	                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI设备管理器|Ctrl+P$首选项......")
+	                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
 		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
 	}
 	if (draw_tab("帮助")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord服务器......|反馈bug......|-|更新历史......|关于......")
+	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|-|更新历史......|关于......")
 	}
 	}
 
@@ -1724,12 +1724,12 @@ function control_draw() {
 	if (draw_icon(icons.INFORMATION, xx, yy, "歌曲信息")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 312) break
 	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "歌曲属性")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 312) break}
 	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, "音色设置")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI设备管理器")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI 设备管理器")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
 	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	} xx += 25 if (xx > rw - 312) break
-	if (draw_icon(icons.INTERNET, xx, yy, "访问Open Note Block Studio官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
+	if (draw_icon(icons.INTERNET, xx, yy, "访问 Open Note Block Studio 官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
 	}
@@ -1759,7 +1759,7 @@ function control_draw() {
 		draw_theme_color()
 		draw_theme_font(font_main)
 		if (language != 1) popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
-		else popup_set(rw - compx, 24, compx, 25, "此歌曲兼容schematic和数据包。\n（点击查看更多）")
+		else popup_set(rw - compx, 24, compx, 25, "此歌曲兼容 schematic 和数据包。\n（点击查看更多）")
 	} else if (compatible = 2) {
 		if (theme != 3) {
 		draw_sprite(spr_minecraft, 0, rw - 30, 25)
@@ -1888,7 +1888,7 @@ function control_draw() {
 			draw_theme_color()
 			xx += 4
 			if (language != 1) draw_text_dynamic(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s"))
-			else draw_text_dynamic(xx, rh - 18, "下次自动保存: " + string(ceil(tonextsave)) + "分钟")
+			else draw_text_dynamic(xx, rh - 18, "下次自动保存: " + string(ceil(tonextsave)) + " 分钟")
 			xx += 210
 			draw_separator(xx, rh - 20)
 			draw_theme_color()
@@ -1912,8 +1912,8 @@ function control_draw() {
 	if (midi_devices = 0) str = "No connected MIDI devices"
 	else str = "MIDI devices: " + str
 	} else {
-	if (midi_devices = 0) str = "无MIDI设备"
-	else str = "MIDI设备: " + str
+	if (midi_devices = 0) str = "无 MIDI 设备"
+	else str = "MIDI 设备: " + str
 	}
 	draw_text_dynamic(rw - 6, rh - 18, str)
 	draw_set_halign(fa_left)

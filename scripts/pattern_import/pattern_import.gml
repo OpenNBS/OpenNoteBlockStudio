@@ -25,9 +25,9 @@ function pattern_import() {
 		selection_l = buffer_read_short()
 	//	show_debug_message("selection_l " + string(selection_l))
 		if (language != 1) {if (song_pat_version < pat_version && show_oldwarning) message("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
-		else {if (song_pat_version < pat_version && show_oldwarning) message("警告：你正在打开旧版的NBP文件。保存此文件会使其与旧版Note Block Studio不兼容。","警告")}
+		else {if (song_pat_version < pat_version && show_oldwarning) message("警告：你正在打开旧版的 NBP 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 		if (language != 1) {if song_pat_version > pat_version message("Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening.","Warning")}
-		else {if song_pat_version > pat_version message("警告：你正在打开在新版Note Block Studio里保存的文件。打开时可能会崩溃。","警告")}
+		else {if song_pat_version > pat_version message("警告：你正在打开在新版 Note Block Studio 里保存的文件。打开时可能会崩溃。","警告")}
 		temp_str = buffer_read_string()
 		if check_custom_instrument(temp_str) = 0 {
 		//	show_debug_message("selection_code " + string(selection_copied))
