@@ -195,6 +195,9 @@
         {"externalName":"environment_unset_variable","kind":1,"help":"environment_unset_variable(name)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"environment_unset_variable","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"get_filedescriptor_pathname","kind":1,"help":"get_filedescriptor_pathname(fd)","hidden":false,"returnType":1,"argCount":0,"args":[
+            2,
+          ],"resourceVersion":"1.0","name":"get_filedescriptor_pathname","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[
         {"value":"get_working_directory()","hidden":false,"resourceVersion":"1.0","name":"working_directory","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"get_program_directory()","hidden":false,"resourceVersion":"1.0","name":"program_directory","tags":[],"resourceType":"GMExtensionConstant",},
@@ -235,6 +238,7 @@
         {"name":"get_program_directory","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"get_program_filename","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"get_program_pathname","path":"extensions/libfilesystem/libfilesystem.yy",},
+        {"name":"get_filedescriptor_pathname","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"directory_contents_first","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"directory_contents_next","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"directory_contents_close","path":"extensions/libfilesystem/libfilesystem.yy",},
