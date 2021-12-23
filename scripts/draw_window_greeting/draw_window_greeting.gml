@@ -14,7 +14,7 @@ function draw_window_greeting() {
 	var dev_label_offset = (is_prerelease) ? 15 : 0
 	if (RUN_FROM_IDE != 1) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在IDE中运行")	
+		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在 IDE 中运行")	
 	} else if (check_update) {
 	    if (update = -1) {
 	        draw_set_color(c_red)
@@ -54,7 +54,7 @@ function draw_window_greeting() {
 		else draw_text_center(x1 + 132, y1 + 233, "本地版本")
 	} else {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
-		else draw_text_center(x1 + 132, y1 + 233, "版本" + version + " - 发布于" + version_date)
+		else draw_text_center(x1 + 132, y1 + 233, "版本 " + version + " - 发布于 " + version_date)
 	}
 	if (is_prerelease) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "(Development version)")
@@ -131,7 +131,7 @@ function draw_window_greeting() {
 	    if (recent_song[a] = "") break
 	    if (a = 0) {
 	        c += 36
-	        if (language != 1) draw_text_dynamic(b - 20, c, "Recent songs：")
+	        if (language != 1) draw_text_dynamic(b - 20, c, "Recent songs:")
 	        else draw_text_dynamic(b - 20, c, "最近歌曲：")
 	        c += 16
 	    }
@@ -162,7 +162,7 @@ function draw_window_greeting() {
 	        }
 	    }
 	    draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
-	    draw_text_dynamic(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220))
+	    draw_text_dynamic(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220), true)
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(b + 316 + (m = 2), c + 1 + (m = 2), seconds_to_str(floor(date_second_span(recent_song_time[a], date_current_datetime()))))
 	    draw_set_halign(fa_left)
@@ -182,7 +182,7 @@ function draw_window_greeting() {
 	else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
-	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从MIDI文件生成")
+	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从 MIDI 文件生成")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0

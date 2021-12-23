@@ -95,7 +95,7 @@ function draw_window_set_accent() {
 	draw_theme_color()
 	draw_set_halign(fa_left)
 	if (language != 1) draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
-	else draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB调色")
+	else draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB 调色")
 
 	if (language != 1) {
 	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(rr), "Set red amount.")

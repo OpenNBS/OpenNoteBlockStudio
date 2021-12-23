@@ -1,14 +1,16 @@
 function macros() {
 #macro gm_runtime_version "2.3.5.458"
-#macro version_date "2021.10.31"
-#macro version "3.9.2"
+#macro version_date "2021.12.11"
+#macro version "3.9.4"
 #macro is_prerelease 1 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
 
-#macro link_github "https://github.com/HielkeMinecraft/OpenNoteBlockStudio"
-#macro link_report "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/new/choose"
-#macro link_website "https://hielkeminecraft.github.io/OpenNoteBlockStudio"
+#macro link_github "https://github.com/OpenNBS/OpenNoteBlockStudio"
+#macro link_report "https://github.com/OpenNBS/OpenNoteBlockStudio/issues/new/choose"
+#macro link_releases "https://api.github.com/repos/OpenNBS/OpenNoteBlockStudio/releases"
+#macro link_changelog "https://opennbs.org/changelog"
+#macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
@@ -92,12 +94,12 @@ function macros() {
 
 #macro c_dark 1644825
 
-#macro font_main 1
-#macro font_main_bold 2
-#macro font_small 3
-#macro font_small_bold 4
-#macro font_info_big 5
-#macro font_info_med 6
-#macro font_info_med_bold 7
-#macro font_med 8
+#macro font_main 0
+#macro font_main_bold 1
+#macro font_small 2
+#macro font_small_bold 3
+#macro font_info_big 4
+#macro font_info_med 5
+#macro font_info_med_bold 6
+#macro font_med 7
 }

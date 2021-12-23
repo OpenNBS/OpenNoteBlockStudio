@@ -50,6 +50,18 @@ function control_create() {
 	display_width = display_get_width()
 	display_height = display_get_height()
 	
+	font_table =
+	[
+		[ fnt_main,          fnt_wslui,               fnt_src               ], // font_main
+		[ fnt_mainbold,      fnt_wslui_bold,          fnt_src_bold          ], // font_main_bold
+		[ fnt_small,         fnt_wslui_small,         fnt_src_small         ], // font_small
+		[ fnt_smallbold,     fnt_wslui_small_bold,    fnt_src_small_bold    ], // font_small_bold
+		[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
+		[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
+		[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
+		[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+	]
+	
 	// Wallpaper
 	wpaper = 0
 	wpaperexist = 0
@@ -192,6 +204,8 @@ function control_create() {
 
 	mousewheel = 0
 	changepitch = 1
+	
+	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 
 	// History
 	historypos = 0
@@ -475,7 +489,7 @@ function control_create() {
 
 	// Updates
 	if (check_update)
-	    update_http = http_get("https://api.github.com/repos/HielkeMinecraft/OpenNoteBlockStudio/releases/latest")
+	    update_http = http_get(link_releases)
 	else
 	    update_http = -1
 	update_download = -1
@@ -499,7 +513,7 @@ function control_create() {
 	change_theme()
 
 	// Auto-recovery
-	// DISABLED DUE TO https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/196
+	// DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
 	// Implement in a better way that takes multiple instances into account.
 	/*
 	if (file_exists(backup_file)) {

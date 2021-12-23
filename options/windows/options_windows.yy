@@ -1,10 +1,10 @@
 {
   "option_windows_display_name": "Minecraft Note Block Studio",
   "option_windows_executable_name": "Minecraft Note Block Studio",
-  "option_windows_version": "3.9.2.0",
+  "option_windows_version": "3.9.3.0",
   "option_windows_company_info": "https://github.com/HielkeMinecraft/OpenNoteBlockStudio",
   "option_windows_product_info": "Minecraft Note Block Studio",
-  "option_windows_copyright_info": "",
+  "option_windows_copyright_info": "Copyright (c) 2021 OpenNBS",
   "option_windows_description_info": "Minecraft Note Block Studio",
   "option_windows_display_cursor": true,
   "option_windows_icon": "${options_dir}/windows/icons/icon.ico",

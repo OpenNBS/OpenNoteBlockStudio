@@ -107,7 +107,7 @@ function draw_window_instruments() {
 	}
 	} else {
 	if (draw_button2(x1 + 194, y1 + 318, 80, "移除", userselect < 0) && wmenu = 0) {
-		if ((userselect.num_blocks == 0) || (message_yesnocancel("这将移除使用该音色的" + string(userselect.num_blocks) + "个方块并且不能撤销。确定吗？", "警告"))) {
+		if ((userselect.num_blocks == 0) || (message_yesnocancel("这将移除使用该音色的 " + string(userselect.num_blocks) + " 个方块并且不能撤销。确定吗？", "警告"))) {
 			instrument_remove(userselect)
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
 			if (instrument = userselect)
@@ -128,7 +128,7 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 456, y1 + 318, 80, "确定") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
-			show_message("此歌曲含有多于18个音色，无法保存为版本" + string(save_version) + "。将保存为版本" + string(nbs_version) + "。")
+			show_message("此歌曲含有多于18个音色，无法保存为版本 " + string(save_version) + "。将保存为版本 " + string(nbs_version) + "。")
 			save_version = nbs_version
 		}
 		save_settings()

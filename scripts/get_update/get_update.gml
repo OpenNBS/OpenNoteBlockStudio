@@ -25,7 +25,7 @@ function get_update() {
 					url_open(link_website)
 				}
 				} else {
-				if (question("下载更新失败。你想要到Note Block Studio官网手动更新吗？", "失败")) {
+				if (question("下载更新失败。你想要到 Note Block Studio 官网手动更新吗？", "失败")) {
 					url_open(link_website)
 				}
 				}

@@ -10,10 +10,10 @@ function draw_window_mididevices() {
 	draw_window(x1, y1, x1 + 500, y1 + 350)
 	draw_theme_font(font_main_bold)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "MIDI device manager")
-	else draw_text_dynamic(x1 + 8, y1 + 8, "MIDI设备管理器")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "MIDI 设备管理器")
 	draw_theme_font(font_main)
 	if (language != 1) draw_text_dynamic(x1 + 12, y1 + 32, "Here you can see the MIDI devices connected via USB.\nMore than one device can be connected at the same time.")
-	else draw_text_dynamic(x1 + 12, y1 + 32, "你可以查看通过USB连接的MIDI设备。可以同时连接多个设备。")
+	else draw_text_dynamic(x1 + 12, y1 + 32, "你可以查看通过 USB 连接的 MIDI 设备。可以同时连接多个设备。")
 	draw_set_color(c_white)
 	if(theme = 2) draw_set_color(c_dark)
 	if (fdark && theme = 3) draw_set_color(2829099)
@@ -38,7 +38,7 @@ function draw_window_mididevices() {
 	if (draw_button2(x1 + 408, y1 + 318, 80, "OK") && wmenu = 0 && (windowopen = 1 || theme != 3)) windowclose = 1
 	} else {
 	draw_window(x1 + 13 + 250 + 75, y1 + 67, x1 + 14 + 250 + 75 + 64 + 85 + 1, y1 + 67 + 20, 1) 
-	popup_set_window(x1 + 13 + 250 + 75, y1 + 67, 64 + 85, 20, "为该MIDI设备指定的音色。")
+	popup_set_window(x1 + 13 + 250 + 75, y1 + 67, 64 + 85, 20, "为该 MIDI 设备指定的音色。")
 	draw_text_dynamic(x1 + 18 + 250 + 75, y1 + 70, "音色")
 
 	draw_window(x1 + 13 - 2, y1 + 67, x1 + 14 + 250 + 75, y1 + 67 + 20, 1)

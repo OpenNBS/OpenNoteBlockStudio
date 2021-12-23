@@ -9,7 +9,7 @@ function draw_window_mp3_export() {
 	draw_window(x1, y1, x1 + 250, y1 + 270)
 	draw_theme_font(font_main_bold)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "MP3 Export")
-	else draw_text_dynamic(x1 + 8, y1 + 8, "导出MP3")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "导出 MP3")
 	draw_theme_font(font_main)
 
 	if (theme != 3){
@@ -29,7 +29,7 @@ function draw_window_mp3_export() {
 		windowclose = 1
 	}
 	} else {
-	if (draw_checkbox(x1 + 16, y1 + 190, mp3_includelocked, "包括已静音的层", "是否在MP3内包括已静音的层。", false, true)) mp3_includelocked= !mp3_includelocked
+	if (draw_checkbox(x1 + 16, y1 + 190, mp3_includelocked, "包括已静音的层", "是否在 MP3 内包括已静音的层。", false, true)) mp3_includelocked= !mp3_includelocked
  
 	if (draw_button2(x1 + 165, y1 + 238, 72, "导出", false)) mp3_export()
 
