@@ -271,13 +271,13 @@ function draw_window_datapack_export() {
 		if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "天气", "由天气音量控制")) dat_source = "weather"
 
 		//Export as ZIP
-		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "导出为ZIP", "是否导出为ZIP格式的文件。"+br+"如关闭，将导出为文件夹。", false, true)) dat_usezip=!dat_usezip
+		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "导出为 ZIP", "是否导出为 ZIP 格式的文件。"+br+"如关闭，将导出为文件夹。", false, true)) dat_usezip=!dat_usezip
 
 		//Locked layers
 		if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "包括已静音的层", "是否在数据包内包括已静音的层。", false, true)) dat_includelocked=!dat_includelocked
 
 		//Out-of-range notes
-		if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "包括超范围音符", "是否包括超过Minecraft的2八度限制的音符。"+br+"此选项需要安装额外的数据包。", false, true)) dat_includeoutofrange = !dat_includeoutofrange
+		if (draw_checkbox(x1 + 362, y1 + 238, dat_includeoutofrange, "包括超范围音符", "是否包括超过 Minecraft 的 2 八度限制的音符。"+br+"此选项需要安装额外的数据包。", false, true)) dat_includeoutofrange = !dat_includeoutofrange
 
 		//Radius
 		if (draw_checkbox(x1 + 362, y1 + 263, dat_enableradius, "共享音乐", "是否共享音乐给一定范围内的玩家。", false, true)) dat_enableradius = !dat_enableradius

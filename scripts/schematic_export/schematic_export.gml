@@ -1021,7 +1021,7 @@ function schematic_export() {
 	    instance_destroy()
 	}
 	if (o.language != 1) message("Schematic saved!", "Schematic Export")
-	else message("Schematic已保存！", "导出Schematic")
+	else message("Schematic 已保存！", "导出 Schematic")
 	window = w_schematic_export
 
 

@@ -25,25 +25,25 @@ function seconds_to_str(argument0) {
 		}
 	} else {
 		if (c < 60) {
-			str = string(c) + "秒前"
+			str = string(c) + " 秒前"
 		} else if (c < 60 * 60) {
 			c = floor(c / 60)
-			str = string(c) + "分钟前"
+			str = string(c) + " 分钟前"
 		} else if (c < 60 * 60 * 24) {
 			c = floor(c / (60 * 60))
-			str = string(c) + "小时前"
+			str = string(c) + " 小时前"
 		} else if (c < 60 * 60 * 24 * 7) {
 			c = floor(c / (60 * 60 * 24))
-			str = string(c) + "天前"
+			str = string(c) + " 天前"
 		} else if (c < 60 * 60 * 24 * 31) {
 			c = floor(c / (60 * 60 * 24 * 7))
-			str = string(c) + "星期前"
+			str = string(c) + " 星期前"
 		} else if (c < 60 * 60 * 24 * 31 * 12) {
 			c = floor(c / (60 * 60 * 24 * 31))
-			str = string(c) + "月前"
+			str = string(c) + " 月前"
 		} else {
 			c = floor(c / (60 * 60 * 24 * 31 * 12))
-			str = string(c) + "年前"
+			str = string(c) + " 年前"
 		}
 	}
 

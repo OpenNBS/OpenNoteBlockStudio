@@ -29,7 +29,7 @@ function draw_window_update() {
 	}
 	} else {
 	if (RUN_FROM_IDE != 1) {
-		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在IDE中运行！）")
+		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在 IDE 中运行！）")
 	} else {
 		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "更新")
 		else draw_text_dynamic(x1 + 8, y1 + 8, "更新历史")
@@ -43,7 +43,7 @@ function draw_window_update() {
 		}
 	} else {
 		if (window = w_update) {
-			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到" + version + "版本！")
+			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到 " + version + " 版本！")
 		}
 	}
 	draw_area(x1 + 16, y1 + 58, x1 + 487, y1 + 357)
@@ -63,7 +63,7 @@ function draw_window_update() {
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 22, n, 0, 1)
 	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, "Older versions...", "查看更旧版本…"))) {
-		url_open("https://hielkeminecraft.github.io/OpenNoteBlockStudio/changelog")
+		url_open(link_changelog)
 	}
 	if (draw_button2(x1 + 487 - 72, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {

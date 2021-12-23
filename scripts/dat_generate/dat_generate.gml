@@ -33,75 +33,81 @@ function dat_generate(argument0, argument1, argument2) {
 						else str += "playsound "+ soundname +" "+source+" @s ^" + string(blockposition*2) + " ^ ^ "+string(blockvolume)+ " " + string(pitch) + " 1" + br 
 					
 						if o.dat_visualizer = 1 {
+							
+							var ins = ds_list_find_index(o.instrument_list, o.song_ins[a, b]);
+							var team_number = string(ins + 1);
+							var ins_index = o.sch_exp_ins_block[ins];
+							var block_id = block_get_namespaced_id(ins_index);
+							
 							// Visualizer Types
 							if o.dat_vis_type = "Arc" { // Arc
-							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 							str += "Time:-120,DropItem:0,Motion:[0.0d,1.0d,1.0d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + team_number + "]" + br
 								}
 							}
 					
 							if o.dat_vis_type = "Fall" { // Fall
-							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 							str += "Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index + 1) + "]" + br
 								}
 							} 
 					
 							if o.dat_vis_type = "Piano Roll" { // Piano Roll
-							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(real((key - 45) * -1) + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 							str += "Time:-50,DropItem:0,NoGravity:1,Motion:[0.0d,0.0d,2.5d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index + 1) + "]" + br
 								}
 							} 
 					
 							if o.dat_vis_type = "Rise" { // Rise
-							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 							str += "Time:-50,DropItem:0,Glowing:1,NoGravity:1,Motion:[0.0d,1.0d,0.0d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index + 1) + "]" + br
 								}
 							} 
 					
 							if o.dat_vis_type = "Bounce" { // Bounce
-							str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+							str += "summon minecraft:falling_block " + team_number + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 							str += "Time:-80,DropItem:0,Motion:[0.0d,1.3d,0.0d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index + 1) + "]" + br
 								}
 							} 
 							if o.dat_vis_type = "Fountain" { // Fountain
-								str += "summon minecraft:falling_block " + string(key - 45 + real(o.dat_xval)) + " " + string(o.dat_yval) + " " + string(((o.song_ins[a, b]-100002) * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},"
+								str += "summon minecraft:falling_block " + team_number + " " + string(o.dat_yval) + " " + string((ins_index * 2) + real(o.dat_zval)) + " " + "{BlockState:{Name:\"minecraft:"+ block_id + "\"},"
 								if o.dat_glow = 1 {
-									str += "Tags:[\"nbs\",\"nbs_" + string(o.song_ins[a, b]-100001) + "\"],Glowing:1,"
+									str += "Tags:[\"nbs\",\"nbs_" + team_number + "\"],Glowing:1,"
 								}
 								if key > 45 {
 									str += "Time:-80,DropItem:0,Motion:[0.5d,1.5d,0.0d]}" + br
 								} else str += "Time:-80,DropItem:0,Motion:[-0.5d,1.5d,0.0d]}" + br
 								if o.dat_glow = 1 {
-									str += "team join nbs_" + string(o.song_ins[a, b]-100001) + " @e[tag=nbs_" + string(o.song_ins[a, b]-100001) + "]" + br
+									str += "team join nbs_" + team_number + " @e[tag=nbs_" + string(ins_index) + "]" + br
 								}
 							} 
 							if o.dat_vis_type = "Rittai Onkyou" { // Rittai Onkyou
-							str += "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(90) + " " + string(blockvolume * 48) + " " +"{\"Tags\":[\"nbs\"],BlockState:{Name:\"minecraft:"+ string(block_get_namespaced_id(o.sch_exp_ins_block[o.song_ins[a, b]-100002], 0)) + "\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
+							str += "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(90) + " " + string(blockvolume * 48) + " " +"{\"Tags\":[\"nbs\"],BlockState:{Name:\"minecraft:"+ block_id + "\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 							+ "summon minecraft:falling_block " + string(blockposition * 48) + " " + string(90) + " " + string((blockvolume * 48) - 1) + " " +"{\"Tags\":[\"nbs\"],BlockState:{Name:\"minecraft:note_block\"},Time:-80,DropItem:0,Motion:[0.0d,-1.3d,0.0d]}" + br
 							+ "particle minecraft:note " + string(blockposition * 48) + " " + string(90) + " " + string((blockvolume * 48) - 2) + " 0 0 0 1 1 force @p" + br
 							} 

@@ -25,21 +25,21 @@ function calculate_size() {
 	}
 	} else {
 	if (warning_schematic == 0) {
-		message("导出的schematic目前之和Minecraft: Java Edition 1.12及以下兼容。如想在1.13和以上使用，请使用结构方块格式导出。\n\n此警告将不再提示。", "警告")
+		message("导出的 schematic 目前之和 Minecraft: Java Edition 1.12 及以下兼容。如想在 1.13 和以上使用，请使用结构方块格式导出。\n\n此警告将不再提示。", "警告")
 		warning_schematic = 1
 		save_settings()
 	}
 	if (block_outside > 0) {
-	    if (!question("一些方块在Minecraft的2八度范围外。你想无视这些方块导出Schematic吗？", "Minecraft兼容性")) return 0
+	    if (!question("一些方块在 Minecraft 的2八度范围外。你想无视这些方块导出 Schematic 吗？", "Minecraft 兼容性")) return 0
 	}
 	if (block_custom > 0) {
-	    if (!question("一些方块带有自定义音色。继续导出吗？", "Minecraft兼容性")) return 0
+	    if (!question("一些方块带有自定义音色。继续导出吗？", "Minecraft 兼容性")) return 0
 	}
 	if (block_pitched > 0) {
-	    if (!question("一些方块带有音符盒不支持的微分音。继续导出吗？", "Minecraft兼容性")) return 0
+	    if (!question("一些方块带有音符盒不支持的微分音。继续导出吗？", "Minecraft 兼容性")) return 0
 	}
 	if (tempo != 10 && tempo != 5 && tempo != 2.5) {
-	    message("歌曲的速度与Minecraft不兼容。所以，在游戏内的播放会和软件内的有差别。", "速度")
+	    message("歌曲的速度与 Minecraft 不兼容。所以，在游戏内的播放会和软件内的有差别。", "速度")
 	}
 	selection_place(0)
 	if (totalblocks - block_outside <= 0) {
