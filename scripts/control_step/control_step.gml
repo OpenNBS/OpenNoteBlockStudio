@@ -16,7 +16,6 @@ function control_step() {
 	} else {
 		np_clearpresence()
 	}
-	current_framerate = string(floor(1000000 / delta_time + 0.5))
 	pingtime = current_time
 	}
 }

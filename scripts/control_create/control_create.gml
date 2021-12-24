@@ -122,7 +122,6 @@ function control_create() {
 	pingtime = current_time
 	debug_overlay = 0
 	debug_option = 0
-	current_framerate = "0"
 
 	// File
 	filename = ""

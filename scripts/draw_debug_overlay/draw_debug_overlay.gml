@@ -2,7 +2,7 @@ function draw_debug_overlay(){
 	var str, cwindow;
 	var prevalpha = draw_get_alpha()
 	var xx = 4
-	var yy = rh - !isplayer * 29
+	var yy = rh - 4 - !isplayer * 25
 	switch (window) {
 	    case w_menu: cwindow = "w_menu" break
 		case w_releasemouse: cwindow = "w_releasemouse" break
@@ -52,7 +52,7 @@ function draw_debug_overlay(){
 		default: cwindow = string(window) break
 	}
 	yy = draw_debug_overlay_stack(xx, yy, "Open Note Block Studio v" + version)
-	yy = draw_debug_overlay_stack(xx, yy, current_framerate + " FPS")
+	yy = draw_debug_overlay_stack(xx, yy, string(fps) + " FPS")
 	yy = draw_debug_overlay_stack(xx, yy, "Window: " + string(cwindow))
 	draw_set_alpha(prevalpha)
 }
