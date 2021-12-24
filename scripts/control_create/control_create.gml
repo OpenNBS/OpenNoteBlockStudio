@@ -123,7 +123,6 @@ function control_create() {
 	debug_overlay = 0
 	debug_option = 0
 	os_info = os_get_info()
-	show_debug_message(os_get_info())
 
 	// File
 	filename = ""
