@@ -17,7 +17,7 @@
   "option_linux_scale": 0,
   "option_linux_texture_page": "2048x2048",
   "option_linux_enable_steam": false,
-  "option_linux_disable_sandbox": false,
+  "option_linux_disable_sandbox": true,
   "resourceVersion": "1.0",
   "name": "Linux",
   "tags": [],
