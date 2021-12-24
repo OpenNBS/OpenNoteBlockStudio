@@ -849,6 +849,13 @@ function control_draw() {
 			else set_msg("帧数上限 => 30 FPS")
 		}
 	}
+	if (keyboard_check_released(vk_f3) && !debug_option) debug_overlay = !debug_overlay
+	if (keyboard_check(vk_f3) && keyboard_check_released(ord("C"))) {
+		window = 0
+		debug_option = 1
+		set_msg("[Debug] Window => 0")
+	}
+	if (keyboard_check_released(vk_f3)) debug_option = 0
 	if (!isplayer) {
 	// Selecting note blocks
 	if (select > 0) {
@@ -2108,6 +2115,9 @@ function control_draw() {
 		if (language != 1) draw_downloadprogress("Update", "Downloading update...", downloaded_size, total_size)
 		else draw_downloadprogress("更新", "正在下载更新......", downloaded_size, total_size)
 	}
+	
+	// Draw debug overlay
+	if (debug_overlay) draw_debug_overlay()
 	
 	window_set_cursor(curs)
 	mouse_xprev = mouse_x

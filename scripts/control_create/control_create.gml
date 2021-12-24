@@ -120,6 +120,9 @@ function control_create() {
 	rainbow = 0
 	rainbowtoggle = 0
 	pingtime = current_time
+	debug_overlay = 0
+	debug_option = 0
+	current_framerate = "0"
 
 	// File
 	filename = ""
