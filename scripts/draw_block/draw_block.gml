@@ -48,20 +48,22 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	}
 
 	//Draw a red or blue tint in the block when the pitch is off
-	if (pit < 0) {
-		draw_set_color(c_red)
-		draw_set_alpha(min(0.5, (-pit / 100) * alpha * 0.25))
-		draw_rectangle(xx, yy, xx + 31, yy + 31, false)
-	} else if (pit > 0) {
-		draw_set_color(c_blue)
-		draw_set_alpha(min(0.5, (pit / 100) * alpha * 0.25))
-		draw_rectangle(xx, yy, xx + 31, yy + 31, false)
-	}
+	if (!isplayer) {
+		if (pit < 0) {
+			draw_set_color(c_red)
+			draw_set_alpha(min(0.5, (-pit / 100) * alpha * 0.25))
+			draw_rectangle(xx, yy, xx + 31, yy + 31, false)
+		} else if (pit > 0) {
+			draw_set_color(c_blue)
+			draw_set_alpha(min(0.5, (pit / 100) * alpha * 0.25))
+			draw_rectangle(xx, yy, xx + 31, yy + 31, false)
+		}
 
-	if (show_incompatible && (ins.user || key < 33 || key > 57)) {
-	    draw_set_color(c_red)
-	    draw_set_alpha(1)
-	    draw_rectangle(xx + 1, yy + 1, xx + 31, yy + 31, 1)
+		if (show_incompatible && (ins.user || key < 33 || key > 57)) {
+		    draw_set_color(c_red)
+		    draw_set_alpha(1)
+		    draw_rectangle(xx + 1, yy + 1, xx + 31, yy + 31, 1)
+		}
 	}
 	draw_set_color(c_white)
 	if (salpha > 0) {

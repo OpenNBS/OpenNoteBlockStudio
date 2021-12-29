@@ -631,7 +631,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/UI","resourceVersion":"1.0","name":"ding.ogg","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.5.589",
+    "IDEVersion": "2.3.7.606",
   },
   "resourceVersion": "1.4",
   "name": "Minecraft Note Block Studio",

@@ -351,6 +351,7 @@ function control_create() {
 	tapdouble = 0 // Set to double tempo?
 	percentvel = 0
 	addpitch = 0
+	dropmode = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
