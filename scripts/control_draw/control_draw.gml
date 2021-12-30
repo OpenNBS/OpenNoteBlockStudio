@@ -381,7 +381,7 @@ function control_draw() {
 	} else if (dropmode) {
 	for (a = 0; a < totalcols; a += 1) {
 	    for (b = 0; b <= endb; b += 1) {
-	        if (starta + a <= enda) {
+	        if (floor(starta) + a <= enda) {
 	            if (startb + b <= endb) {
 	                if (colamount[starta + a] > 0) {
 	                    if (startb + b >= colfirst[starta + a] && startb + b <= collast[starta + a]) {
