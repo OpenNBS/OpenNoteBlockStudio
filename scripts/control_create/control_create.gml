@@ -121,6 +121,9 @@ function control_create() {
 	rainbow = 0
 	rainbowtoggle = 0
 	pingtime = current_time
+	debug_overlay = 0
+	debug_option = 0
+	os_info = os_get_info()
 
 	// File
 	filename = ""
@@ -349,6 +352,7 @@ function control_create() {
 	tapdouble = 0 // Set to double tempo?
 	percentvel = 0
 	addpitch = 0
+	dropmode = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
