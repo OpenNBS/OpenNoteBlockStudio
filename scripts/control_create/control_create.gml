@@ -405,30 +405,37 @@ function control_create() {
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
 	soundinvoke.filename = "UI/invoke.ogg"
+	if (os_type = os_linux) soundinvoke.filename = string_lower(soundinvoke.filename)
 	soundinvoke.user = 0
 	soundshow =   create(obj_instrument)
 	soundshow.key =   45
 	soundshow.filename =     "UI/show.ogg"
+	if (os_type = os_linux) soundshow.filename = string_lower(soundshow.filename)
 	soundshow.user =   0
 	soundhide =   create(obj_instrument)
 	soundhide.key =   45
 	soundhide.filename =     "UI/hide.ogg"
+	if (os_type = os_linux) soundhide.filename = string_lower(soundhide.filename)
 	soundhide.user =   0
 	soundgoback = create(obj_instrument)
 	soundgoback.key = 45
 	soundgoback.filename = "UI/goback.ogg"
+	if (os_type = os_linux) soundgoback.filename = string_lower(soundgoback.filename)
 	soundgoback.user = 0
 	soundmetronome = create(obj_instrument)
 	soundmetronome.key = 45
 	soundmetronome.filename = "UI/metronome.ogg"
+	if (os_type = os_linux) soundmetronome.filename = string_lower(soundmetronome.filename)
 	soundmetronome.user = 0
 	soundding = create(obj_instrument)
 	soundding.key = 45
 	soundding.filename = "UI/ding.ogg"
+	if (os_type = os_linux) soundding.filename = string_lower(soundding.filename)
 	soundding.user = 0
 	soundmetronomeclick = create(obj_instrument)
 	soundmetronomeclick.key = 45
 	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	if (os_type = os_linux) soundmetronomeclick.filename = string_lower(soundmetronomeclick.filename)
 	soundmetronomeclick.user = 0
 
 	instrument = instrument_list[| 0]
@@ -490,6 +497,7 @@ function control_create() {
 	change_theme()
 	if (show_welcome) window = w_greeting
 	draw_accent_init()
+	if (os_type = os_linux) acrylic = 0
 
 	// Updates
 	if (check_update)
@@ -530,7 +538,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "" && filename != "-player" && filename != "-game" && filename != "/Users/chenxi050402/GameMaker-Studio/mcnbs/GMS2MAC/Minecraft_Note_Block_Studio/GameAssetsMac.zip") load_song(filename)
+		if (filename != "" && filename_ext(filename) = ".nbs") load_song(filename)
 	}
 
 	log("Startup OK")
