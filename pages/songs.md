@@ -13,6 +13,9 @@ permalink: /songs/
 <!-- One -->
 <section id="one" class="wrapper style2">
 	<div class="container">
+		<div class="alert alert-danger" role="alert">
+			The songs page will be overhauled soon and all songs will be cleared. Please download your songs by signing in.
+		</div>
 		<div id="songList">
 			<div id="searchOptions">
 			<input class="search" placeholder="Search"/>
@@ -23,6 +26,9 @@ permalink: /songs/
 			<ul class="list">
 			</ul>
 			<ul class="pagination"></ul>
+		</div>
+		<div class="alert alert-danger" role="alert">
+			Loading songs is disabled for now. Sorry!
 		</div>
 		<!-- List item template -->
 		<div style="display:none;">
