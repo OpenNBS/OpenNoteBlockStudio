@@ -22,7 +22,7 @@
   "option_mac_build_app_store": true,
   "option_mac_allow_incoming_network": true,
   "option_mac_allow_outgoing_network": true,
-  "option_mac_app_category": "Games",
+  "option_mac_app_category": "Music",
   "option_mac_enable_steam": false,
   "option_mac_disable_sandbox": true,
   "option_mac_apple_sign_in": false,

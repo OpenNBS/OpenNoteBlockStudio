@@ -212,4 +212,8 @@ function draw_window_greeting() {
 
 	window_set_cursor(curs)
 	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (keyboard_check(vk_f12)) {
+		isplayer = 1 //Go into player mode if F12 is pressed in the greeting screen
+		window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	}
 }

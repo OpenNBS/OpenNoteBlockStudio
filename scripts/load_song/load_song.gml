@@ -175,7 +175,7 @@ function load_song() {
 	        var insfn = buffer_read_string_int();
 	        var key = buffer_read_byte();
 	        var press = buffer_read_byte();
-	        var ins = new_instrument(name, insfn, true, press, key);
+	        var ins = new_instrument(name, condstr(os_type = os_linux && !file_exists(insfn), string_lower(insfn), insfn), true, press, key);
 	        with (ins)
 	            if (!instrument_load() && insfn != "")
 	                str += insfn + "\n"

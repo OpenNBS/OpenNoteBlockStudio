@@ -1,6 +1,6 @@
 function macros() {
-#macro gm_runtime_version "2.3.5.458"
-#macro version_date "2021.12.11"
+#macro gm_runtime_version "2.3.7.606"
+#macro version_date "2021.12.31"
 #macro version "3.9.4"
 #macro is_prerelease 1 // remember to change to 0 in the release!
 #macro nbs_version 5
@@ -14,10 +14,10 @@ function macros() {
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
-#macro data_directory		get_working_directory() + "Data" + condstr(os_type = os_windows, "\\", "/")
-#macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory		get_working_directory() + "Songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory	get_working_directory() + "Patterns" + condstr(os_type = os_windows, "\\", "/")
+#macro data_directory		get_working_directory() + condstr(os_type = os_linux, "data", "Data") + condstr(os_type = os_windows, "\\", "/")
+#macro sounds_directory		data_directory + condstr(os_type = os_linux, "sounds", "Sounds") + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory		get_working_directory() + condstr(os_type = os_linux, "songs", "Songs") + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory	get_working_directory() + condstr(os_type = os_linux, "patterns", "Patterns") + condstr(os_type = os_windows, "\\", "/")
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
