@@ -1,6 +1,9 @@
 function wallpaper_init() {
 	var tempsurf, wpaperwidth;
-	if (os_type = os_windows) file_copy("${APPDATA}\\Microsoft\\Windows\\Themes\\TranscodedWallpaper", data_directory + "Wallpaper.jpg")
+	if (os_type = os_windows) {
+		if (file_exists(data_directory + "Wallpaper.jpg")) file_delete(data_directory + "Wallpaper.jpg") // delete if exists
+		file_copy("${APPDATA}\\Microsoft\\Windows\\Themes\\TranscodedWallpaper", data_directory + "Wallpaper.jpg") // now copy
+	}
 	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
