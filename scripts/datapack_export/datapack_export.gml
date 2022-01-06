@@ -182,7 +182,7 @@ function datapack_export() {
 		if (o.dat_usezip) {
 			if (os_type = os_windows) execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true)
 		} else {
-			if (os_type = os_windows) execute_program("cmd", "\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true)
+			if (os_type = os_windows) execute_program("cmd", "cd \"" + data_directory + "\" && \"" + data_directory + "move.bat\" \"" + fn + "\\\"", true)
 		}
 	
 		directory_destroy(tempdir)
