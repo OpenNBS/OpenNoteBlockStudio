@@ -1,10 +1,11 @@
 function wallpaper_init() {
 	var tempsurf, wpaperwidth;
+	wpaperexist = false;
 	if (os_type = os_windows) {
-		if (file_exists(data_directory + "Wallpaper.jpg")) file_delete(data_directory + "Wallpaper.jpg") // delete if exists
-		file_copy("${APPDATA}\\Microsoft\\Windows\\Themes\\TranscodedWallpaper", data_directory + "Wallpaper.jpg") // now copy
-	}
-	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
+		wpaperexist = file_exists(data_directory + "Wallpaper.jpg");
+		if (wpaperexist) wpaperexist = file_delete(data_directory + "Wallpaper.jpg") // file_delete returns true on success
+		wpaperexist = file_copy("${APPDATA}\\Microsoft\\Windows\\Themes\\TranscodedWallpaper", data_directory + "Wallpaper.jpg") // also returns true on success
+	} // FIXME: add macOS/Linux equivalents here
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
 		if (display_width / display_height < sprite_get_width(wpaper) / sprite_get_height(wpaper)) wpaperside = 1
