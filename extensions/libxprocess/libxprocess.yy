@@ -128,10 +128,10 @@
         {"externalName":"CwdFromProcId","kind":1,"help":"CwdFromProcId(procId)","hidden":false,"returnType":1,"argCount":0,"args":[
             2,
           ],"resourceVersion":"1.0","name":"CwdFromProcId","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"DirectoryGetTemporaryPath","kind":1,"help":"DirectoryGetTemporaryPath()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"DirectoryGetTemporaryPath","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"WindowIdFromNativeWindow","kind":1,"help":"WindowIdFromNativeWindow(window)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"WindowIdFromNativeWindow","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"DirectoryGetTemporaryPath","kind":1,"help":"DirectoryGetTemporaryPath()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"DirectoryGetTemporaryPath","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},

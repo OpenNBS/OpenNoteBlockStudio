@@ -198,6 +198,10 @@
         {"externalName":"get_filedescriptor_pathname","kind":1,"help":"get_filedescriptor_pathname(fd)","hidden":false,"returnType":1,"argCount":0,"args":[
             2,
           ],"resourceVersion":"1.0","name":"get_filedescriptor_pathname","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"directory_contents_get_order","kind":1,"help":"directory_contents_get_order()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"directory_contents_get_order","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"directory_contents_set_order","kind":1,"help":"directory_contents_set_order(order)","hidden":false,"returnType":2,"argCount":0,"args":[
+            2,
+          ],"resourceVersion":"1.0","name":"directory_contents_set_order","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[
         {"value":"get_working_directory()","hidden":false,"resourceVersion":"1.0","name":"working_directory","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"get_program_directory()","hidden":false,"resourceVersion":"1.0","name":"program_directory","tags":[],"resourceType":"GMExtensionConstant",},
@@ -209,6 +213,11 @@
         {"value":"2","hidden":false,"resourceVersion":"1.0","name":"O_RDWR","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"3","hidden":false,"resourceVersion":"1.0","name":"O_APPEND","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"4","hidden":false,"resourceVersion":"1.0","name":"O_RDAP","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0","hidden":false,"resourceVersion":"1.0","name":"DC_ATOZ","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"1","hidden":false,"resourceVersion":"1.0","name":"DC_ZTOA","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"2","hidden":false,"resourceVersion":"1.0","name":"DC_OTON","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"3","hidden":false,"resourceVersion":"1.0","name":"DC_NTOO","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"4","hidden":false,"resourceVersion":"1.0","name":"DC_RAND","tags":[],"resourceType":"GMExtensionConstant",},
       ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libfilesystem.dylib","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libfilesystem.so","tags":[],"resourceType":"GMProxyFile",},
@@ -276,6 +285,8 @@
         {"name":"file_text_read_all","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_text_open_from_string","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_text_close","path":"extensions/libfilesystem/libfilesystem.yy",},
+        {"name":"directory_contents_get_order","path":"extensions/libfilesystem/libfilesystem.yy",},
+        {"name":"directory_contents_set_order","path":"extensions/libfilesystem/libfilesystem.yy",},
       ],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
     {"filename":"libfilesystem.zip","origname":"extensions\\libfilesystem.zip","init":"","final":"","kind":4,"uncompress":false,"functions":[],"constants":[],"ProxyFiles":[],"copyToTargets":0,"order":[],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
     {"filename":"libfilesystem.gml","origname":"","init":"generate_working_directory","final":"","kind":2,"uncompress":false,"functions":[
