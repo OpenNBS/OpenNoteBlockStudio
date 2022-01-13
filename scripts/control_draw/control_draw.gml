@@ -397,7 +397,7 @@ function control_draw() {
 	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            }
 								realkey = song_key[starta + a, startb + b] + song_pit[starta + a, startb + b] / 100
-	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + floor(((marker_pos - floor(marker_pos)) * 32) + 0.5), song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b] * (layervol[b] /100), song_pit[starta + a, startb + b], c, s * 0.8)
+	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + floor(((marker_pos - floor(marker_pos)) * 32) + 0.5), song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b] * (layervol[b] / 100), song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
 	                } else {
@@ -1374,58 +1374,65 @@ function control_draw() {
 	}
 	// Macro Bar
 	if (selected != 0 && show_piano) {
-	if (theme != 3) {
-		if (show_layers) {
-			draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
-			draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
-			draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+		if (theme != 3) {
+			if (show_layers) {
+				draw_sprite_ext(spr_iconbar, 0, x1, y1+32,1, 1.3, 0, -1, 1)
+				draw_sprite_ext(spr_iconbar, 1, x1, y1+32, 258, 1.3, 0, -1, 1)
+				draw_sprite_ext(spr_iconbar, 2, 258, y1+32, 1, 1.3, 0, -1, 1)
+			} else {
+				draw_sprite_ext(spr_iconbar, 0, x1, y1+52 ,1, 0.75, 0, -1, 1)
+				draw_sprite_ext(spr_iconbar, 1, x1, y1+52, 383, 0.75, 0, -1, 1)
+				draw_sprite_ext(spr_iconbar, 2, 383, y1+52, 1, 0.75, 0, -1, 1)
+			}
 		} else {
-			draw_sprite_ext(spr_iconbar, 0, x1, y1+52 ,1, 0.75, 0, -1, 1)
-			draw_sprite_ext(spr_iconbar, 1, x1, y1+52, 383, 0.75, 0, -1, 1)
-			draw_sprite_ext(spr_iconbar, 2, 383, y1+52, 1, 0.75, 0, -1, 1)
+			draw_set_color(make_color_rgb(70, 70, 70))
+			if (show_layers) draw_roundrect(x1, y1 + 32, x1 + 255, y1 + 32 + 38, 1)
+			else draw_roundrect(x1, y1 + 52, x1 + 380, y1 + 52 + 21, 1)
 		}
-	} else {
-		draw_set_color(make_color_rgb(70, 70, 70))
-		if (show_layers) draw_roundrect(x1, y1 + 32, x1 + 255, y1 + 32 + 38, 1)
-		else draw_roundrect(x1, y1 + 52, x1 + 380, y1 + 52 + 21, 1)
-	}
-	xx = x1 + 6
-	var yy = y1+37
-	if (!show_layers) yy += 18
-	if (draw_macroicon(0, xx, yy, "Tremolo...", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
-	if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
-	if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
-	if (draw_macroicon(3, xx, yy, "Portamento...", 0, 0)) {playing = 0 window = w_portamento} xx += 25
-	if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
-	if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagger} xx += 25
-	if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-	if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
-	if (language != 1) {
-	if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-	if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
-	if (show_layers) {
 		xx = x1 + 6
-		yy += 16
+		var yy = y1+37
+		if (!show_layers) yy += 18
+		if (draw_macroicon(0, xx, yy, "Tremolo...", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+		if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
+		if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+		if (draw_macroicon(3, xx, yy, "Portamento...", 0, 0)) {playing = 0 window = w_portamento} xx += 25
+		if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+		if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagger} xx += 25
+		if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
+		if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
+		if (language != 1) {
+			if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+			if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+			if (show_layers) {
+				xx = x1 + 6
+				yy += 16
+			}
+			if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+			if (draw_macroicon(11, xx, yy, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+			if (draw_macroicon(12, xx, yy, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+			if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+			if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
+		} else {
+			if (draw_macroicon(8, xx, yy, "淡入", 0, 0)) {playing = 0 macro_fadein()} xx += 25
+			if (draw_macroicon(9, xx, yy, "淡出", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+			if (show_layers) {
+				xx = x1 + 6
+				yy += 16
+			}
+			if (draw_macroicon(10, xx, yy, "替换音", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+			if (draw_macroicon(11, xx, yy, "设定音量......", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+			if (draw_macroicon(12, xx, yy, "设定声道......", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+			if (draw_macroicon(13, xx, yy, "设定音高......", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+			if (draw_macroicon(14, xx, yy, "重置所有属性", 0, 0)) {playing = 0 macro_reset()} xx += 25
+		}
 	}
-	if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-	if (draw_macroicon(11, xx, yy, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-	if (draw_macroicon(12, xx, yy, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-	if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-	if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
-	} else {
-	if (draw_macroicon(8, xx, yy, "淡入", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-	if (draw_macroicon(9, xx, yy, "淡出", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
-	if (show_layers) {
-		xx = x1 + 6
-		yy += 16
-	}
-	if (draw_macroicon(10, xx, yy, "替换音", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-	if (draw_macroicon(11, xx, yy, "设定音量......", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-	if (draw_macroicon(12, xx, yy, "设定声道......", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-	if (draw_macroicon(13, xx, yy, "设定音高......", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-	if (draw_macroicon(14, xx, yy, "重置所有属性", 0, 0)) {playing = 0 macro_reset()} xx += 25
-	}
-	}
+	} //from the if (!isplayer) up there
+	
+	if (dropmode && theme = 3) {
+		draw_set_color(0)
+		draw_set_alpha(0.2)
+		draw_roundrect_ext(0, 0, 530, 90, 20, 20, 0)
+		draw_set_alpha(1)
 	}
 
 	// Tabs
@@ -1435,189 +1442,191 @@ function control_draw() {
 	draw_theme_font(font_small)
 	draw_theme_color()
 	if (language != 1) {
-	if (draw_tab("File")) {
-	    str = ""
-	    for (b = 0; b < 11; b += 1) {
-	        if (recent_song[b] = "") break
-	        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
-	        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
-	    }
-	    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
-	                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
-	                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
-	                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
-	                             inactive(selected != 0)+"Import pattern...|"+
-								 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
-	                             inactive(totalblocks = 0) + "Export as MP3...|"+
-	                             inactive(totalblocks = 0) + "Export as schematic...|"+
-	                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
-								 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
-	                             "Alt + F4$Exit")
-		else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
+		if (draw_tab("File")) {
+		    str = ""
+		    for (b = 0; b < 11; b += 1) {
+		        if (recent_song[b] = "") break
+		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
+		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
+		    }
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
+		                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
+		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
+		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
+		                             inactive(selected != 0)+"Import pattern...|"+
+									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
+		                             inactive(totalblocks = 0) + "Export as MP3...|"+
+		                             inactive(totalblocks = 0) + "Export as schematic...|"+
+		                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
+									 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
+		                             "Alt + F4$Exit")
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
 							
-	}
-	if (!isplayer) if (draw_tab("Edit")) {
-	    str = ""
-	    customstr = ""
-		insmenu = 1
-	    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
-	        var ins = instrument_list[| a];
-	        if (ins.user)
-	            customstr += "...to " + clean(ins.name) + "|"
-	        else
-	            str += "...to " + clean(ins.name) + "|"
-			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-				customstr += "-|More...|\\|"
-				insmenu++
-			}
-	    }
-	    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$Undo|"+
-	                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$Redo|-|"+
-	                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-	                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-	                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-	                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-	                              inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-	                              inactive(selected = 0) + "Deselect all|"+
-	                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
-	                              inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
-	                              inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
-	                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-	                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-	                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-	                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
-	                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
-	                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-	                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
-	                                inactive(selected = 0) + "Transpose notes outside octave range")
-	}
-	if (draw_tab("Settings")) {
-	    str = ""
-	    customstr = ""
-		insmenu = 1
-	    for (a = 0; a < ds_list_size(instrument_list); a++) {
-	        var ins = instrument_list[| a];
-	        if (ins.user)
-	            customstr += check(instrument = ins) + clean(ins.name) + "|"
-	        else{
-				if(a < 9){
-					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
-				}else{
-				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
+		}
+		if (!isplayer) if (draw_tab("Edit")) {
+		    str = ""
+		    customstr = ""
+			insmenu = 1
+		    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
+		        var ins = instrument_list[| a];
+		        if (ins.user)
+		            customstr += "...to " + clean(ins.name) + "|"
+		        else
+		            str += "...to " + clean(ins.name) + "|"
+				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+					customstr += "-|More...|\\|"
+					insmenu++
 				}
-			}
-			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-				customstr += "-|More...|\\|"
-				insmenu++
-			}
-	    }
-	    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-	                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Ctrl+P$Preferences...")
-		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Ctrl+P$Preferences...")
-	}
-	if (draw_tab("Help")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
-	}
+		    }
+		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$Undo|"+
+		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$Redo|-|"+
+		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
+		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
+		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
+		                              inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
+		                              inactive(selected = 0) + "Deselect all|"+
+		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
+		                              inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
+		                              inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
+		                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
+		                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
+		                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
+		                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
+												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
+												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+		                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
+		                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
+		                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
+		                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
+		                                inactive(selected = 0) + "Transpose notes outside octave range")
+		}
+		if (draw_tab("Settings")) {
+		    str = ""
+		    customstr = ""
+			insmenu = 1
+		    for (a = 0; a < ds_list_size(instrument_list); a++) {
+		        var ins = instrument_list[| a];
+		        if (ins.user)
+		            customstr += check(instrument = ins) + clean(ins.name) + "|"
+		        else{
+					if(a < 9){
+						 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+					}else{
+					  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
+					}
+				}
+				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+					customstr += "-|More...|\\|"
+					insmenu++
+				}
+		    }
+		    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
+		                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Ctrl+P$Preferences...")
+			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Ctrl+P$Preferences...")
+		}
+		if (draw_tab("Help")) {
+		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
+		}
 	} else {
-	if (draw_tab("文件")) {
-	    str = ""
-	    for (b = 0; b < 11; b += 1) {
-	        if (recent_song[b] = "") break
-	        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
-	        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
-	    }
-	    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$新文件|"+
-	                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
-	                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
-	                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
-	                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
-	                             inactive(totalblocks = 0) + "导出为 MP3......|"+
-	                             inactive(totalblocks = 0) + "导出为 schematic......|"+
-	                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
-								 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
-	                             "Alt + F4$退出")
-		else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
+		if (draw_tab("文件")) {
+		    str = ""
+		    for (b = 0; b < 11; b += 1) {
+		        if (recent_song[b] = "") break
+		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
+		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
+		    }
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$新文件|"+
+		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
+		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
+		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
+		                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
+		                             inactive(totalblocks = 0) + "导出为 MP3......|"+
+		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
+		                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
+									 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
+		                             "Alt + F4$退出")
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
 							
-	}
-	if (!isplayer) if (draw_tab("编辑")) {
-	    str = ""
-	    customstr = ""
-		insmenu = 1
-	    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
-	        var ins = instrument_list[| a];
-	        if (ins.user)
-	            customstr += "...为 " + clean(ins.name) + "|"
-	        else
-	            str += "...为 " + clean(ins.name) + "|"
-			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-				customstr += "-|更多......|\\|"
-				insmenu++
-			}
-	    }
-	    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$撤销|"+
-	                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$重做|-|"+
-	                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
-	                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
-	                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-	                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
-	                              inactive(totalblocks = 0) + "Ctrl+A$全选|"+
-	                              inactive(selected = 0) + "全不选|"+
-	                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
-	                              inactive(instrument.num_blocks = 0) + "选择所有 " + clean(instrument.name) + "|"+
-	                              inactive(instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(instrument.name) + "|-|"+
-	                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-	                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-	                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-	                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
-	                                inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
-	                                inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
-	                                inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "淡入|"+ "淡出|"+ "替换音|"+ "设定音量......|"+ "设定声道......|"+ "设定音高......|"+ "重置所有属性|"+ "/|-|"+
-	                                inactive(selected = 0) + "转换所有超出八度范围的音符")
-	}
-	if (draw_tab("设置")) {
-	    str = ""
-	    customstr = ""
-		insmenu = 1
-	    for (a = 0; a < ds_list_size(instrument_list); a++) {
-	        var ins = instrument_list[| a];
-	        if (ins.user)
-	            customstr += check(instrument = ins) + clean(ins.name) + "|"
-	        else{
-				if(a < 10){
-					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
-				}else{
-				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+		}
+		if (!isplayer) if (draw_tab("编辑")) {
+		    str = ""
+		    customstr = ""
+			insmenu = 1
+		    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
+		        var ins = instrument_list[| a];
+		        if (ins.user)
+		            customstr += "...为 " + clean(ins.name) + "|"
+		        else
+		            str += "...为 " + clean(ins.name) + "|"
+				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+					customstr += "-|更多......|\\|"
+					insmenu++
 				}
-			}
-			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-				customstr += "-|更多......|\\|"
-				insmenu++
-			}
-	    }
-	    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-	                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
-		else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
-	}
-	if (draw_tab("帮助")) {
-	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|-|更新历史......|关于......")
-	}
+		    }
+		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$撤销|"+
+		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$重做|-|"+
+		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
+		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
+		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
+		                              inactive(totalblocks = 0) + "Ctrl+A$全选|"+
+		                              inactive(selected = 0) + "全不选|"+
+		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
+		                              inactive(instrument.num_blocks = 0) + "选择所有 " + clean(instrument.name) + "|"+
+		                              inactive(instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(instrument.name) + "|-|"+
+		                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
+		                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
+		                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
+		                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
+												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
+												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+		                                inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
+		                                inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
+		                                inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
+		                                inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "淡入|"+ "淡出|"+ "替换音|"+ "设定音量......|"+ "设定声道......|"+ "设定音高......|"+ "重置所有属性|"+ "/|-|"+
+		                                inactive(selected = 0) + "转换所有超出八度范围的音符")
+		}
+		if (draw_tab("设置")) {
+		    str = ""
+		    customstr = ""
+			insmenu = 1
+		    for (a = 0; a < ds_list_size(instrument_list); a++) {
+		        var ins = instrument_list[| a];
+		        if (ins.user)
+		            customstr += check(instrument = ins) + clean(ins.name) + "|"
+		        else{
+					if(a < 10){
+						 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+					}else{
+					  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+					}
+				}
+				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+					customstr += "-|更多......|\\|"
+					insmenu++
+				}
+		    }
+		    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
+		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
+			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
+		}
+		if (draw_tab("帮助")) {
+		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|-|更新历史......|关于......")
+		}
 	}
 
 	// Icons
 	if (theme != 3) {
-	draw_sprite(spr_iconbar, 0, 0, 20)
-	draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
-	draw_sprite(spr_iconbar, 2, rw - 2, 20)
-	} else {
-	//draw_sprite(spr_iconbar, 3 + fdark * 3, 0, 20)
-	//draw_sprite_ext(spr_iconbar, 4 + fdark * 3, 2, 20, (rw - 4), 1, 0, -1, 1)
-	//draw_sprite(spr_iconbar, 5 + fdark * 3, rw - 2, 20)
+		if (dropmode) {
+			draw_set_color(15790320)
+			if (theme = 1) draw_set_color(13160660)
+			if (theme = 2) draw_set_color(c_dark)
+			draw_rectangle(0, 20, rw, 49, 0)
+		}
+		draw_sprite(spr_iconbar, 0, 0, 20)
+		draw_sprite_ext(spr_iconbar, 1, 2, 20, (rw - 4), 1, 0, -1, 1)
+		draw_sprite(spr_iconbar, 2, rw - 2, 20)
 	}
 	xx = 6
 	yy = 23
@@ -2001,6 +2010,7 @@ function control_draw() {
 		else draw_text_dynamic(rw / 2 - 91 + 70, rh / 2 - 20, "/ " + time_str(enda / tempo))
 		}
 		draw_theme_font(font_main)
+		draw_set_halign(fa_left)
 		
 		if (isplayer) {
 			if (!dropmode) {
