@@ -397,7 +397,7 @@ function control_draw() {
 	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            }
 								realkey = song_key[starta + a, startb + b] + song_pit[starta + a, startb + b] / 100
-	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + floor(((marker_pos - floor(marker_pos)) * 32) + 0.5), song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
+	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + floor(((marker_pos - floor(marker_pos)) * 32) + 0.5), song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b] * (layervol[b] /100), song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
 	                } else {
