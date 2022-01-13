@@ -123,6 +123,9 @@ function control_create() {
 	debug_overlay = 0
 	debug_option = 0
 	os_info = os_get_info()
+	is_yyc = code_is_compiled()
+	if (is_yyc) output_format = "Native"
+	else output_format = "VM"
 
 	// File
 	filename = ""
