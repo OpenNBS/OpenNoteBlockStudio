@@ -1,0 +1,2 @@
+extensions/pygml/*.dll filter=lfs diff=lfs merge=lfs -text
+extensions/pygml/*.zip filter=lfs diff=lfs merge=lfs -text
