@@ -1,31 +1,3 @@
-#define get_temp_directory
-if (os_type == os_windows) {
-  if (directory_exists(environment_get_variable("TMP"))) {
-    return filename_absolute(environment_get_variable("TMP"));
-  }
-  if (directory_exists(environment_get_variable("TEMP"))) {
-    return filename_absolute(environment_get_variable("TEMP"));
-  }
-  if (directory_exists(environment_get_variable("USERPROFILE"))) {
-    return filename_absolute(environment_get_variable("USERPROFILE"));
-  }
-  return filename_absolute(environment_get_variable("WINDIR"));
-} else {
-  if (directory_exists(environment_get_variable("TMPDIR"))) {
-    return filename_absolute(environment_get_variable("TMPDIR"));
-  }
-  if (directory_exists(environment_get_variable("TMP"))) {
-    return filename_absolute(environment_get_variable("TMP"));
-  }
-  if (directory_exists(environment_get_variable("TEMP"))) {
-    return filename_absolute(environment_get_variable("TEMP"));
-  }
-  if (directory_exists(environment_get_variable("TEMPDIR"))) {
-    return filename_absolute(environment_get_variable("TEMPDIR"));
-  }
-  return "/tmp/";
-}
-
 #define generate_working_directory
 // generate_working_directory() - Call this Function at Game Start
 // Sets get_working_directory() to Ubuntu (Linux) Assets SubFolder
