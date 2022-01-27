@@ -13,6 +13,13 @@ buffer_seek(_buf, buffer_seek_start, 0);
 return _buf;
 
 
+#define python_set_buffer_size
+/// (size:int)
+var _size = argument0;
+_python_prepare_buffer(_size);
+return;
+
+
 #define python_call_function
 /// @function python_call_function(module, function[, args[, kwargs]])
 /// @description Runs a Python function from a module. A single positional
@@ -26,9 +33,11 @@ return _buf;
 
 var module = argument[0];
 var obj = argument[1];
-var args = argument_count > 2 ? argument[2] : [];
-var kwargs = argument_count > 3 ? argument[3] : undefined;
-kwargs = is_undefined(kwargs) ? {} : kwargs
+var args = argument[2];
+var kwargs = argument[3];
+
+args = !is_undefined(args) ? args : []
+kwargs = !is_undefined(kwargs) ? kwargs : {} 
 
 // Serialize arguments to JSON string
 var args_str = json_stringify(args);
