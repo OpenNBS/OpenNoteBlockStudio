@@ -22,8 +22,8 @@ function control_create() {
 	window_height = 0
 	if (!isplayer) window_maximize()
 	window_set_focus()
-	window_set_min_width(100)
-	window_set_min_height(100)
+	window_set_min_width(800)
+	window_set_min_height(500)
 	window_scale = get_default_window_scale()
 	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
