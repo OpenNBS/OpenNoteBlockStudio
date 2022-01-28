@@ -5,6 +5,22 @@ function mp3_export() {
 	fn = string(get_save_filename_ext("MP3 files (*.mp3)|*.mp3", filename_new_ext(filename, "") + ".mp3", filename_path(filename), condstr(language != 1, "Export MP3", "导出 MP3")))
 	if (fn = "") return 0
 
+	save_song(temp_file, true);
+	
+	var args = [temp_file, fn]
+	var kwargs = {
+		default_sound_path: sounds_directory,
+		custom_sound_path: sounds_directory
+	}
+	
+	try {
+		var result = python_call_function("audio_export", "main", args, kwargs);
+	} catch (e) {
+		show_message("An error occurred while exporting the song:\n\n" + e)
+		return -1;
+	}
+
+	/*
 	// Start
 	err = audio_start(fn)
 	if (err < 0) {
@@ -59,6 +75,7 @@ function mp3_export() {
 	    else message("导出 MP3 时发生错误。\n错误代码: d" + string(err), "错误")
 	    return 0
 	}
+	*/
 
 	if (language != 1) {if (question("MP3 saved! Do you want to open it?", "MP3 Export")) open_url(fn)}
 	else {if (question("MP3 已保存！现在打开吗？", "导出 MP3")) open_url(fn)}
