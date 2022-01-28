@@ -1430,9 +1430,9 @@ function control_draw() {
 	
 	if (dropmode && theme = 3) {
 		draw_set_color(0)
-		draw_set_alpha(0.2)
+		draw_set_alpha(0.2 * dropalpha)
 		draw_roundrect_ext(0, 0, 530, 90, 20, 20, 0)
-		draw_set_alpha(1)
+		draw_set_alpha(dropalpha)
 	}
 
 	// Tabs
@@ -1802,6 +1802,7 @@ function control_draw() {
 	}
 	xx += 8
 	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
+	draw_set_alpha(1)
 
 	// Compatible
 	if (!isplayer) {
@@ -1986,6 +1987,7 @@ function control_draw() {
 	}
 
 	if (!fullscreen && show_layers) {
+		if (dropmode) draw_set_alpha(dropalpha)
 		// Marker position
 		if (theme != 3) draw_set_halign(fa_right)
 		draw_theme_color()
@@ -2011,6 +2013,7 @@ function control_draw() {
 		}
 		draw_theme_font(font_main)
 		draw_set_halign(fa_left)
+		draw_set_alpha(1)
 		
 		if (isplayer) {
 			if (!dropmode) {
@@ -2020,8 +2023,18 @@ function control_draw() {
 				draw_theme_font(font_info_med)
 				draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname), true)
 				draw_theme_font(font_main)
+				dropalpha = 1
 			} else {
+				draw_set_alpha(dropalpha)
 				marker_pos = draw_dragbar(marker_pos, enda, 93 - 84 + 100, 52 + 15, 400, 1, time_str((clamp(((mouse_x - (93 - 84 + 100)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
+				draw_set_alpha(1)
+				if (mouse_x != mouse_xprev || mouse_y != mouse_yprev || mouse_rectangle(0, 0, 530, 90) || window != 0) {
+					dropalpha = 1
+					dropalphawait = current_time
+				} else if (current_time - dropalphawait >= 1500 && dropalpha > 0) {
+					if (dropalpha - (1 / (room_speed * currspeed)) * 2 > 0) dropalpha -= (1 / (room_speed * currspeed)) * 2
+					else dropalpha = 0
+				}
 				starta = marker_pos
 				draw_set_halign(fa_left)
 			}

@@ -355,6 +355,8 @@ function control_create() {
 	percentvel = 0
 	addpitch = 0
 	dropmode = 0
+	dropalpha = 1
+	dropalphawait = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
