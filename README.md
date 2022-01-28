@@ -1,5 +1,12 @@
 ![alt text](https://i.imgur.com/AMd0NBh.png)
 <p align="center">
+  <img src="https://img.shields.io/github/v/release/OpenNBS/OpenNoteBlockStudio?label=latest">
+  <img src="https://img.shields.io/github/downloads/OpenNBS/OpenNoteBlockStudio/total">
+  <img src="https://img.shields.io/github/stars/OpenNBS/OpenNoteBlockStudio?style=social">
+  <img src="https://img.shields.io/discord/608692895179997252?label=discord&logo=discord&logoColor=white">
+  <img src="https://img.shields.io/github/license/OpenNBS/OpenNoteBlockStudio">
+</p>
+<p align="center">
 An open source continuation of Minecraft Note Block Studio with exciting new features!
 </p>
 
