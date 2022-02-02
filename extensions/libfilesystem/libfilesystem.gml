@@ -1,13 +1,13 @@
 #define generate_working_directory
 // generate_working_directory() - Call this Function at Game Start
-// Sets get_working_directory() to Ubuntu (Linux) Assets SubFolder
-// Sets get_working_directory() to Mac App Bundle Resources Folder
+// Sets directory_get_current_working() to Ubuntu (Linux) Assets SubFolder
+// Sets directory_get_current_working() to Mac App Bundle Resources Folder
 
-if (os_type == os_linux)  { return set_working_directory(working_directory + "/assets/"); }
+if (os_type == os_linux)  { return directory_set_current_working(directory_get_current_working() + "/assets/"); }
 if (os_type != os_macosx) { return true; }
 
 success = false; 
-exe_pname = get_program_directory();             // = "/Path/To/YourAppBundle.app/Contents/MacOS/";
+exe_pname = executable_get_directory();          // = "/Path/To/YourAppBundle.app/Contents/MacOS/";
 macos_dname = filename_dir(exe_pname);           // = "/Path/To/YourAppBundle.app/Contents/MacOS";
 macos_bname = filename_name(macos_dname);        // = "MacOS";
 contents_dname = filename_dir(macos_dname);      // = "/Path/To/YourAppBundle.app/Contents";
@@ -19,11 +19,11 @@ resources_pname = contents_pname + "Resources/"; // = "/Path/To/YourAppBundle.ap
 
 // if running from the IDE change working directory to:
 if (directory_exists(game_save_id + "/game/assets/")) {
-  success = set_working_directory(game_save_id + "/game/assets/");
+  success = directory_set_current_working(game_save_id + "/game/assets/");
 } // if "/Path/To/YourAppBundle.app/Contents/MacOS/YourExe" and "/Path/To/YourAppBundle.app/Contents/Resources/" exists
 else if (macos_bname == "MacOS" && contents_bname == "Contents" && app_ename == ".app" && directory_exists(resources_pname)) {
   // set working directory to "/Path/To/YourAppBundle.app/Contents/Resources/" and allow loading normal included files
-  success = set_working_directory(resources_pname);
+  success = directory_set_current_working(resources_pname);
 }
 
 return success;
