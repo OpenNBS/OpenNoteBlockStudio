@@ -440,8 +440,8 @@
   "iosCocoaPodDependencies": "",
   "tvosCocoaPodDependencies": "",
   "parent": {
-    "name": "07-Extensions",
-    "path": "folders/ArtCompanion/MonasteryFramework/07-Extensions.yy",
+    "name": "Extensions",
+    "path": "folders/Extensions.yy",
   },
   "resourceVersion": "1.2",
   "name": "libfilesystem",
