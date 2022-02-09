@@ -159,8 +159,9 @@
         {"externalName":"environment_unset_variable","kind":1,"help":"environment_unset_variable(name)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"environment_unset_variable","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_bin_pathname","kind":1,"help":"file_bin_pathname(fd)","hidden":false,"returnType":1,"argCount":0,"args":[
+        {"externalName":"file_bin_pathname","kind":1,"help":"file_bin_pathname(fd,dnames)","hidden":false,"returnType":1,"argCount":0,"args":[
             2,
+            1,
           ],"resourceVersion":"1.0","name":"file_bin_pathname","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"directory_contents_get_order","kind":1,"help":"directory_contents_get_order()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"directory_contents_get_order","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"directory_contents_set_order","kind":1,"help":"directory_contents_set_order(order)","hidden":false,"returnType":2,"argCount":0,"args":[
@@ -439,8 +440,8 @@
   "iosCocoaPodDependencies": "",
   "tvosCocoaPodDependencies": "",
   "parent": {
-    "name": "Extensions",
-    "path": "folders/Extensions.yy",
+    "name": "07-Extensions",
+    "path": "folders/ArtCompanion/MonasteryFramework/07-Extensions.yy",
   },
   "resourceVersion": "1.2",
   "name": "libfilesystem",
