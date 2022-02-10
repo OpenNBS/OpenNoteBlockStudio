@@ -159,10 +159,11 @@
         {"externalName":"environment_unset_variable","kind":1,"help":"environment_unset_variable(name)","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"environment_unset_variable","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_bin_pathname","kind":1,"help":"file_bin_pathname(fd,dnames)","hidden":false,"returnType":1,"argCount":0,"args":[
+        {"externalName":"file_bin_pathnames","kind":1,"help":"file_bin_pathnames(fd,dnames,recursive)","hidden":false,"returnType":1,"argCount":0,"args":[
             2,
             1,
-          ],"resourceVersion":"1.0","name":"file_bin_pathname","tags":[],"resourceType":"GMExtensionFunction",},
+            2,
+          ],"resourceVersion":"1.0","name":"file_bin_pathnames","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"directory_contents_get_order","kind":1,"help":"directory_contents_get_order()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"directory_contents_get_order","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"directory_contents_set_order","kind":1,"help":"directory_contents_set_order(order)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
@@ -340,7 +341,7 @@
         {"name":"directory_contents_get_maxfiles","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"directory_contents_set_maxfiles","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_bin_open","path":"extensions/libfilesystem/libfilesystem.yy",},
-        {"name":"file_bin_pathname","path":"extensions/libfilesystem/libfilesystem.yy",},
+        {"name":"file_bin_pathnames","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_bin_rewrite","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_bin_close","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_bin_size","path":"extensions/libfilesystem/libfilesystem.yy",},
