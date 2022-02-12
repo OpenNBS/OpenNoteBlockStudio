@@ -307,6 +307,9 @@
             1,
             1,
           ],"resourceVersion":"1.0","name":"filename_equivalent","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"environment_get_variable_exists","kind":1,"help":"environment_get_variable_exists(name)","hidden":false,"returnType":2,"argCount":0,"args":[
+            1,
+          ],"resourceVersion":"1.0","name":"environment_get_variable_exists","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[
         {"value":"directory_get_current_working()","hidden":false,"resourceVersion":"1.0","name":"working_directory","tags":[],"resourceType":"GMExtensionConstant",},
         {"value":"executable_get_directory()","hidden":false,"resourceVersion":"1.0","name":"program_directory","tags":[],"resourceType":"GMExtensionConstant",},
@@ -354,6 +357,7 @@
         {"name":"filename_canonical","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"filename_equivalent","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"environment_get_variable","path":"extensions/libfilesystem/libfilesystem.yy",},
+        {"name":"environment_get_variable_exists","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"environment_set_variable","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"environment_unset_variable","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"environment_expand_variables","path":"extensions/libfilesystem/libfilesystem.yy",},
