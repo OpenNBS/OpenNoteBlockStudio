@@ -25,7 +25,6 @@ function control_create() {
 	window_set_min_width(800)
 	window_set_min_height(500)
 	window_scale = get_default_window_scale()
-	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -494,6 +493,9 @@ function control_create() {
 	change_theme()
 	if (show_welcome) window = w_greeting
 	draw_accent_init()
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	window_set_min_width(800 * window_scale)
+	window_set_min_height(500 * window_scale)
 
 	// Updates
 	if (check_update)
