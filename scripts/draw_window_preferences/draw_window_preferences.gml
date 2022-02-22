@@ -237,7 +237,7 @@ function draw_window_preferences() {
 	        if (!directory_exists(songfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
-	            url_open(songfolder)
+	            open_url(songfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "Change", 0, 1)) {
@@ -253,7 +253,7 @@ function draw_window_preferences() {
 	        if (!directory_exists(patternfolder)) {
 	            message("The indicated folder doesn't exist!", "Error")
 	        } else {
-	            url_open(patternfolder)
+	            open_url(patternfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "Change", 0, 1)) {
@@ -270,7 +270,7 @@ function draw_window_preferences() {
 	        if (!directory_exists(songfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
-	            url_open(songfolder)
+	            open_url(songfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "修改", 0, 1)) {
@@ -286,7 +286,7 @@ function draw_window_preferences() {
 	        if (!directory_exists(patternfolder)) {
 	            message("该路径不存在！", "错误")
 	        } else {
-	            url_open(patternfolder)
+	            open_url(patternfolder)
 	        }
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "修改", 0, 1)) {

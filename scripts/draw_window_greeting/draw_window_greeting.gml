@@ -206,8 +206,8 @@ function draw_window_greeting() {
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-		if (language != 1) url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-		else url_open("https://www.bilibili.com/video/BV1Mx411a76p")
+		if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+		else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	}
 
 	window_set_cursor(curs)
