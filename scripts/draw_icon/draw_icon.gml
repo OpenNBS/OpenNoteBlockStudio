@@ -11,8 +11,9 @@ function draw_icon() {
 	    locked = argument[4]
 	if (argument_count > 5)
 	    pressed = argument[5]
-	popup_set(xx, yy, 25, 25, str)
-	a = (mouse_rectangle(xx, yy, 25, 25) && (window = 0) && locked = 0 && sb_drag = -1)
+	if (window = 0) popup_set(xx, yy, 25, 25, str)
+	else popup_set_window(xx, yy, 25, 25, str)
+	a = (mouse_rectangle(xx, yy, 25, 25) && (window = 0 || window = w_greeting) && locked = 0 && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
 	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3, xx, yy)

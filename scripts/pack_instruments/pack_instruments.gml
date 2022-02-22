@@ -11,7 +11,7 @@ function pack_instruments() {
 	if (directory_exists(tempdir)) {
 		directory_destroy(tempdir);
 	}
-	directory_create(tempdir);
+	directory_create_lib(tempdir);
 	
 	count = 0;
 	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {
@@ -25,7 +25,7 @@ function pack_instruments() {
 			}
 			show_debug_message(filename_dir(dst))
 			if (!directory_exists(filename_dir(dst))) {
-				directory_create(filename_dir(dst))
+				directory_create_lib(filename_dir(dst))
 			}
 			file_copy(src, dst);
 			count++;

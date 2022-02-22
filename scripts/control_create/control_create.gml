@@ -22,8 +22,8 @@ function control_create() {
 	window_height = 0
 	if (os_type = os_windows) if (!isplayer) window_maximize()
 	if (os_type = os_windows) window_set_focus()
-	window_set_min_width(100)
-	window_set_min_height(100)
+	window_set_min_width(800)
+	window_set_min_height(500)
 	window_scale = get_default_window_scale()
 	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	else if (os_type != os_windows) window_set_size(floor(1024 * window_scale), floor(768 * window_scale))
@@ -124,6 +124,9 @@ function control_create() {
 	debug_overlay = 0
 	debug_option = 0
 	os_info = os_get_info()
+	is_yyc = code_is_compiled()
+	if (is_yyc) output_format = "Native"
+	else output_format = "VM"
 
 	// File
 	filename = ""
@@ -353,6 +356,8 @@ function control_create() {
 	percentvel = 0
 	addpitch = 0
 	dropmode = 0
+	dropalpha = 1
+	dropalphawait = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
@@ -498,6 +503,10 @@ function control_create() {
 	if (show_welcome) window = w_greeting
 	draw_accent_init()
 	if (os_type = os_linux) acrylic = 0
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	else if (os_type != os_windows) window_set_size(floor(1024 * window_scale), floor(768 * window_scale))
+	window_set_min_width(800 * window_scale)
+	window_set_min_height(500 * window_scale)
 
 	// Updates
 	if (check_update)

@@ -206,14 +206,14 @@ function draw_window_greeting() {
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
-		if (language != 1) url_open("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
-		else url_open("https://www.bilibili.com/video/BV1Mx411a76p")
+		if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
+		else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	}
 
 	window_set_cursor(curs)
 	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
-	if (keyboard_check(vk_f12)) {
-		isplayer = 1 //Go into player mode if F12 is pressed in the greeting screen
+	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"))) {
+		isplayer = 1 //Go into player mode if button is pressed in the greeting screen
 		window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	}
 }

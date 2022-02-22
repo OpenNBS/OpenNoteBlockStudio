@@ -77,13 +77,13 @@ function draw_window_about() {
 	// End credits box
 
 	if (draw_button2(x1 + 36, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false)) {
-		url_open(link_website)
+		open_url(link_website)
 	}
 	if (draw_button2(x1 + 112, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false)) {
-		url_open(link_github)
+		open_url(link_github)
 	}
 	if (draw_button2(x1 + 188, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false)) {
-		url_open(link_discord)
+		open_url(link_discord)
 	}
 
 	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false) && (windowopen = 1 || theme != 3)) {

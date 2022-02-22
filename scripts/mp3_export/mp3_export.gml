@@ -60,8 +60,8 @@ function mp3_export() {
 	    return 0
 	}
 
-	if (language != 1) {if (question("MP3 saved! Do you want to open it?", "MP3 Export")) url_open(fn)}
-	else {if (question("MP3 已保存！现在打开吗？", "导出 MP3")) url_open(fn)}
+	if (language != 1) {if (question("MP3 saved! Do you want to open it?", "MP3 Export")) open_url(fn)}
+	else {if (question("MP3 已保存！现在打开吗？", "导出 MP3")) open_url(fn)}
 
 
 

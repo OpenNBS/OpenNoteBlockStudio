@@ -2,7 +2,8 @@ function menu_draw() {
 	// menu_draw()
 	if (ani < 1) ani += 0.1 * (30 / room_speed) * (1 / obj_controller.currspeed)
 	else ani = 1
-	var m, menux, menuy, noclick, o, theme, cm, menu, force_dynamic;
+	var m, menux, menuy, noclick, o, theme, cm, menu, force_dynamic, realpha;
+	realpha = draw_get_alpha()
 	theme = obj_controller.theme;
 	menux[0] = sx
 	menuy[0] = sy
@@ -160,7 +161,7 @@ function menu_draw() {
 	    instance_destroy()
 	}
 	draw_theme_color()
-	
+	draw_set_alpha(realpha)
 
 
 }
