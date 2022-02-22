@@ -4,7 +4,8 @@ function wallpaper_init() {
 	if (os_type = os_windows) {
 		wpaperexist = file_exists(data_directory + "Wallpaper.jpg");
 		if (wpaperexist) wpaperexist = file_delete(data_directory + "Wallpaper.jpg") // file_delete returns true on success
-		if (wpaperexist) wpaperexist = file_copy("${APPDATA}\\Microsoft\\Windows\\Themes\\TranscodedWallpaper", data_directory + "Wallpaper.jpg") // also returns true on success
+		execute_program("cmd", "\"" + data_directory + "wallpaper.bat\"", true);
+		wpaperexist = file_exists(data_directory + "Wallpaper.jpg");
 	} // FIXME: add macOS/Linux equivalents here
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
