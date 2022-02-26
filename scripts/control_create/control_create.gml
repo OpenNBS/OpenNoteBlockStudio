@@ -126,6 +126,7 @@ function control_create() {
 	if (is_yyc) output_format = "Native"
 	else output_format = "VM"
 	volume_scroll = 0
+	remove_effect = 1
 
 	// File
 	filename = ""

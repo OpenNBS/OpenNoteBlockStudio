@@ -440,11 +440,12 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 110, use_icons, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) use_icons=!use_icons
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) use_shapes=!use_shapes
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 160, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 180, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 220, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "Show layer boxes", "Whether the layer boxes should be shown\non the left side of the workspace.")) show_layers = !show_layers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 210, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 230, show_layers, "Show layer boxes", "Whether the layer boxes should be shown\non the left side of the workspace.")) show_layers = !show_layers
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, "Show remove effect", "Whether to show an fading borders effect\nwhen removing a note block.")) remove_effect = !remove_effect
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "Piano")
 		if (theme = 3) draw_theme_font(font_main)
@@ -470,11 +471,12 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, use_colors, "彩色音符盒", "用音符盒颜色区分音色。")) use_colors=!use_colors
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 110, use_icons, "显示音色图标", "用音色图标区分音色。")) use_icons=!use_icons
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, "音符盒形状", "用音符盒形状区分音色。")) use_shapes=!use_shapes
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 160, show_numbers, "显示音符序号", "在音符盒上显示需要按右键次数。")) show_numbers=!show_numbers
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 180, show_octaves, "显示八度序号", "在音符盒上显示第几八度。")) show_octaves=!show_octaves
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 200, show_incompatible, "标记不兼容的音符盒", "在自定义音色或超出 2 八度范围的音符盒周围显示红框。")) show_incompatible=!show_incompatible
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 220, fade, "音符盒不透明", "关闭音符盒上的透明效果。")) fade = !fade
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 240, show_layers, "显示每层操作区", "显示在界面左侧操作每层设定的区域。")) show_layers = !show_layers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, show_numbers, "显示音符序号", "在音符盒上显示需要按右键次数。")) show_numbers=!show_numbers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, show_octaves, "显示八度序号", "在音符盒上显示第几八度。")) show_octaves=!show_octaves
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, show_incompatible, "标记不兼容的音符盒", "在自定义音色或超出 2 八度范围的音符盒周围显示红框。")) show_incompatible=!show_incompatible
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 210, fade, "音符盒不透明", "关闭音符盒上的透明效果。")) fade = !fade
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 230, show_layers, "显示每层操作区", "显示在界面左侧操作每层设定的区域。")) show_layers = !show_layers
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, "显示删除效果", "删除音符时显示淡出边框效果")) remove_effect = !remove_effect
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "琴键")
 		if (theme = 3) draw_theme_font(font_main)

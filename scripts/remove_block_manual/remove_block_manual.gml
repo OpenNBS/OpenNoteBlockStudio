@@ -1,6 +1,6 @@
 function remove_block_manual(argument0, argument1) {
 	// remove_block_manual(x, y)
-	var xx, yy, ins, key, a, b, vel, pan, pit;
+	var xx, yy, ins, key, a, b, vel, pan, pit, ani;
 	xx = argument0
 	yy = argument1
 
@@ -61,6 +61,11 @@ function remove_block_manual(argument0, argument1) {
 	    }
 	}
 	history_set(h_removeblock, xx, yy, ins, key, vel, pan, pit)
+	if (theme = 3 && remove_effect) {
+		ani = create(obj_removeeff)
+		ani.xn = xx
+		ani.yn = yy
+	}
 	changed = 1
 
 
