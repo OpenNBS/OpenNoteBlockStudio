@@ -16,15 +16,16 @@ function draw_icon() {
 	a = (mouse_rectangle(xx, yy, 25, 25) && (window = 0 || window = w_greeting) && locked = 0 && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
-	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
+	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3 - (a = 1) * (theme = 3), xx, yy)
+		if (theme = 3) draw_sprite_ext(spr_tabsel, 1, xx + 4, yy + 23, 1, 1, 0, accent[4], 1)
 	} else {
 	    draw_sprite(spr_frame1, a + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
 	}
 	if (theme != 3) {
 	draw_sprite(spr_icons, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
 	} else {
-	if (!fdark) draw_sprite(spr_icons_f, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
-	else draw_sprite(spr_icons_d, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1))
+	if (!fdark) draw_sprite_ext(spr_icons_f, i - locked, xx + 25 * 0.1 * (a = 2), yy + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
+	else draw_sprite_ext(spr_icons_d, i - locked, xx + 25 * 0.1 * (a = 2), yy + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
 	}
 	// Repeat trigger when holding fast-forward and rewind
 	if (i = 7 || i = 8) return (a = 2)

@@ -15,17 +15,18 @@ function draw_icon_insbox() {
 	a = (mouse_rectangle(xx, yy, 25, 25) && (clickable) && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
-	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
+	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3 - (a = 1) * (theme = 3), xx, yy)
+		if (theme = 3) draw_sprite_ext(spr_tabsel, 1, xx + 4, yy + 23, 1, 1, 0, accent[4], 1)
 	} else {
 	    draw_sprite(spr_frame1, a + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
 	}
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
-	push = (a = 2 || pressed = 1)
+	push = (a = 2 || pressed = 1) * (theme != 3)
 	if (theme != 3) {
 	draw_sprite(spr_icons, sprite, xx + push, yy + push)
 	} else {
-	if (!fdark) draw_sprite(spr_icons_f, sprite, xx + push, yy + push)
-	else draw_sprite(spr_icons_d, sprite, xx + push, yy + push)
+	if (!fdark) draw_sprite_ext(spr_icons_f, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
+	else draw_sprite_ext(spr_icons_d, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
 	}
 	if (!isaction && i >= first_custom_index) {
 		draw_icon_customins(xx + push, yy + push, i - first_custom_index, 1, false)
