@@ -63,8 +63,8 @@ function remove_block_manual(argument0, argument1) {
 	history_set(h_removeblock, xx, yy, ins, key, vel, pan, pit)
 	if (theme = 3 && remove_effect) {
 		ani = create(obj_removeeff)
-		ani.xn = xx
-		ani.yn = yy
+		ani.xn = xx - starta
+		ani.yn = yy - startb
 	}
 	changed = 1
 
