@@ -125,6 +125,7 @@ function control_create() {
 	is_yyc = code_is_compiled()
 	if (is_yyc) output_format = "Native"
 	else output_format = "VM"
+	volume_scroll = 0
 
 	// File
 	filename = ""

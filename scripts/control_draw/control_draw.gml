@@ -283,7 +283,7 @@ function control_draw() {
 	        }
 	    }
 	}
-	if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer) {
+	if (mousewheel = 1 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer && !volume_scroll) {
 	    var insindex = ds_list_find_index(instrument_list, instrument)
 	    if (mouse_wheel_down() && insindex > 0) {
 	        insindex--
@@ -296,7 +296,7 @@ function control_draw() {
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	}
-	if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer) {
+	if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer && !volume_scroll) {
 	    if (mouse_wheel_down() && selected_key > 0) {
 	        selected_key -= 1
 	        play_sound(instrument, selected_key, 100 ,100, 0)
@@ -1802,9 +1802,12 @@ function control_draw() {
 	}
 	xx += 8
 	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
-	if (mouse_rectangle(xx - 11, yy, 122, 22)) {
+	if (mouse_rectangle(xx - 11, yy, 122, 22) && window = 0) {
+		volume_scroll = 1
 		if (mouse_wheel_up() && mastervol + 0.02 <= 1) mastervol += 0.02
 		if (mouse_wheel_down() && mastervol - 0.02 >= 0) mastervol -= 0.02
+	} else {
+		volume_scroll = 0
 	}
 	draw_set_alpha(1)
 
