@@ -339,6 +339,7 @@
     {"id":{"name":"selection_changekey","path":"scripts/selection_changekey/selection_changekey.yy",},"order":7,},
     {"id":{"name":"selection_changevel","path":"scripts/selection_changevel/selection_changevel.yy",},"order":8,},
     {"id":{"name":"selection_changepan","path":"scripts/selection_changepan/selection_changepan.yy",},"order":9,},
+    {"id":{"name":"obj_removeeff","path":"objects/obj_removeeff/obj_removeeff.yy",},"order":8,},
     {"id":{"name":"selection_changepit","path":"scripts/selection_changepit/selection_changepit.yy",},"order":10,},
     {"id":{"name":"selection_setkey","path":"scripts/selection_setkey/selection_setkey.yy",},"order":11,},
     {"id":{"name":"selection_setvel","path":"scripts/selection_setvel/selection_setvel.yy",},"order":12,},

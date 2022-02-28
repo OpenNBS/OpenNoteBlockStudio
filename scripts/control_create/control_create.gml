@@ -22,10 +22,9 @@ function control_create() {
 	window_height = 0
 	if (!isplayer) window_maximize()
 	window_set_focus()
-	window_set_min_width(100)
-	window_set_min_height(100)
+	window_set_min_width(800)
+	window_set_min_height(500)
 	window_scale = get_default_window_scale()
-	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -126,6 +125,8 @@ function control_create() {
 	is_yyc = code_is_compiled()
 	if (is_yyc) output_format = "Native"
 	else output_format = "VM"
+	volume_scroll = 0
+	remove_effect = 1
 
 	// File
 	filename = ""
@@ -355,6 +356,8 @@ function control_create() {
 	percentvel = 0
 	addpitch = 0
 	dropmode = 0
+	dropalpha = 1
+	dropalphawait = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
@@ -492,6 +495,9 @@ function control_create() {
 	change_theme()
 	if (show_welcome) window = w_greeting
 	draw_accent_init()
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	window_set_min_width(800 * window_scale)
+	window_set_min_height(500 * window_scale)
 
 	// Updates
 	if (check_update)
