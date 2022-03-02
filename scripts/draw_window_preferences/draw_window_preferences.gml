@@ -540,7 +540,7 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, "Follow marker when playing", "Automatically scroll along with the\nmarker when playing the song.")) marker_follow=!marker_follow
 	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage = 1, "Page by page", "Scroll with the marker every page.", !marker_follow)) marker_pagebypage = 1
 	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, marker_pagebypage = 0, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, "Frame by Frame", "Scroll with the marker every frame.", !marker_follow)) marker_pagebypage = 2
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, "Frame by frame", "Scroll with the marker every frame.", !marker_follow)) marker_pagebypage = 2
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
