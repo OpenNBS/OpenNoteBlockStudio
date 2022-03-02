@@ -535,50 +535,52 @@ function draw_window_preferences() {
 	} else if (selected_tab = 4) {
 		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 125, "Marker")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, "Marker")
 		if (theme = 3) draw_theme_font(font_main)
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, "Follow marker when playing", "Automatically scroll along with the\nmarker when playing the song.")) marker_follow=!marker_follow
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage, "Page by page", "Scroll with the marker every page.", !marker_follow)) marker_pagebypage = 1
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, !marker_pagebypage, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage = 1, "Page by page", "Scroll with the marker every page.", !marker_follow)) marker_pagebypage = 1
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, marker_pagebypage = 0, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, "Frame by Frame", "Scroll with the marker every frame.", !marker_follow)) marker_pagebypage = 2
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 140, "Playing")
+	    draw_areaheader(x1 + 22, y1 + 244 + (theme = 3) * 22, 218, 140, "Playing")
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 32, y1 + 224 + 16 + (theme = 3) * 22, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
-		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
-		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
-		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
-		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "Use more audio channels", "Whether to increase the number\nof sounds that can play at once.")) channelstoggle = !channelstoggle
-		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, taskbar, "Enable taskbar indicator", "Whether to display the song\nprogress on the taskbar.")) taskbar = !taskbar
+	    if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
+		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
+		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, channelstoggle, "Use more audio channels", "Whether to increase the number\nof sounds that can play at once.")) channelstoggle = !channelstoggle
+		if (draw_checkbox(x1 + 32, y1 + 344 + 16 + (theme = 3) * 22, taskbar, "Enable taskbar indicator", "Whether to display the song\nprogress on the taskbar.")) taskbar = !taskbar
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "Tempo unit")
+		draw_areaheader(x1 + 233 + 22, y1 + 244 + (theme = 3) * 22, 223, 60, "Tempo unit")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
-		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 125, "进度条")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, "进度条")
 		if (theme = 3) draw_theme_font(font_main)
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, "播放时跟随进度条", "播放歌曲时和进度条一起滚动。")) marker_follow=!marker_follow
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage, "按页", "跟随进度条翻页。", !marker_follow)) marker_pagebypage = 1
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, !marker_pagebypage, "按刻", "跟随进度条滚动。", !marker_follow)) marker_pagebypage = 0
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, marker_start, "在区间时开始播放", "有区间存在时是否在区间起始处开始播放。")) marker_start=!marker_start
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_end, "在区间后停止播放", "有区间存在时是否在区间结束处停止播放。")) marker_end=!marker_end
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage = 1, "按页", "跟随进度条翻页。", !marker_follow)) marker_pagebypage = 1
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, marker_pagebypage = 0, "按刻", "跟随进度条滚动。", !marker_follow)) marker_pagebypage = 0
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, "按帧", "跟随进度条逐帧滚动。", !marker_follow)) marker_pagebypage = 2
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_start, "在区间时开始播放", "有区间存在时是否在区间起始处开始播放。")) marker_start=!marker_start
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, marker_end, "在区间后停止播放", "有区间存在时是否在区间结束处停止播放。")) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 224 + (theme = 3) * 22, 218, 120, "播放")
+	    draw_areaheader(x1 + 22, y1 + 244 + (theme = 3) * 22, 218, 140, "播放")
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 32, y1 + 224 + 16 + (theme = 3) * 22, realvolume, "显示每层音量", "是否显示每层的音量。")) realvolume=!realvolume
-		if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realstereo, "关闭立体声", "关闭立体声音效。")) realstereo = !realstereo
-		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, looptobarend, "循环至小节尾", "到小节尾再循环。")) looptobarend = !looptobarend
-		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, show_soundcount, "显示正在播放的声音数", "在状态栏里显示正在播放的声音数。")) show_soundcount = !show_soundcount
-		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, channelstoggle, "提升声音限制", "提升可同时播放的声音数。")) channelstoggle = !channelstoggle
-		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, taskbar, "启用任务栏进度", "是否在任务栏显示当前歌曲的进度。")) taskbar = !taskbar
+	    if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realvolume, "显示每层音量", "是否显示每层的音量。")) realvolume=!realvolume
+		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, realstereo, "关闭立体声", "关闭立体声音效。")) realstereo = !realstereo
+		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, looptobarend, "循环至小节尾", "到小节尾再循环。")) looptobarend = !looptobarend
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, show_soundcount, "显示正在播放的声音数", "在状态栏里显示正在播放的声音数。")) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, channelstoggle, "提升声音限制", "提升可同时播放的声音数。")) channelstoggle = !channelstoggle
+		if (draw_checkbox(x1 + 32, y1 + 344 + 16 + (theme = 3) * 22, taskbar, "启用任务栏进度", "是否在任务栏显示当前歌曲的进度。")) taskbar = !taskbar
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 233 + 22, y1 + 224 + (theme = 3) * 22, 223, 60, "速度单位")
+		draw_areaheader(x1 + 233 + 22, y1 + 244 + (theme = 3) * 22, 223, 60, "速度单位")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_radiobox(x1 + 233 + 32, y1 + 224 + 16 + (theme = 3) * 22, !use_bpm, "红石刻 / 秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
-		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, use_bpm, "拍数 / 分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, "红石刻 / 秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, "拍数 / 分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
 		}
 	}
 	

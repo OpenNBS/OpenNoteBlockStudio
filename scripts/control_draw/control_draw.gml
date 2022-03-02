@@ -1,6 +1,6 @@
 function control_draw() {
 	// control_draw()
-	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev, colr;
+	var a, b, c, d, e, f, g, p, l, s, exist, str, str2, m, xx, x1, y1, x2, y2, iconcolor, showmenu, totalcols, totalrows, compx, prev, colr, note_offset;
 
 	var targetspeed = 1000000 / room_speed
 	currspeed = targetspeed / delta_time
@@ -334,17 +334,18 @@ function control_draw() {
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
 	}
+	note_offset = floor(((marker_pos - floor(marker_pos + 0.5 * !isplayer)) * 32) + 0.5) * ((playing && marker_follow && marker_pagebypage = 2 && (median(0, marker_pos - floor(totalcols / 2), enda + 1) < enda + 1 && median(0, marker_pos - floor(totalcols / 2), enda) > 1)) || isplayer)
 	if (!isplayer) {
 	for (a = 0; a < totalcols; a += 1) {
 		if (!blackout) {
 			if ((starta + a) mod (timesignature * 4) == 0) {
 				draw_set_alpha(0.3)
 				if (window_scale < 1) draw_set_alpha(0.5) //Issue #254, make the lines more obvious when scaled down
-				draw_rectangle(x1 + 2 + 32 * a, y1 + 34, (x1 + 2 + 32 * a) + 1, y1 + 34 + totalrows * 32, false)
+				draw_rectangle(x1 + 2 + 32 * a - note_offset, y1 + 34, (x1 + 2 + 32 * a) + 1 - note_offset, y1 + 34 + totalrows * 32, false)
 			} else {
 				draw_set_alpha(0.1)
 				if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
-				draw_line(x1 + 2 + 32 * a, y1 + 34, x1 + 2 + 32 * a, y1 + 34 + totalrows * 32)
+				draw_line(x1 + 2 + 32 * a - note_offset, y1 + 34, x1 + 2 + 32 * a - note_offset, y1 + 34 + totalrows * 32)
 			}
 		}
 	    for (b = 0; b < totalrows; b += 1) {
@@ -363,7 +364,7 @@ function control_draw() {
 	                                }
 	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            }
-	                            draw_block(x1 + 2 + 32 * a, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
+	                            draw_block(x1 + 2 + 32 * a - note_offset, y1 + 34 + 32 * b, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b], song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
 	                } else {
@@ -397,7 +398,7 @@ function control_draw() {
 	                                if (fade=0) c += ((selbx = starta + a && selby = startb + b && select = 0 && window = 0  && cursmarker = 0) || s) * 0.5
 	                            }
 								realkey = song_key[starta + a, startb + b] + song_pit[starta + a, startb + b] / 100
-	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + floor(((marker_pos - floor(marker_pos)) * 32) + 0.5), song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b] * (layervol[b] / 100), song_pit[starta + a, startb + b], c, s * 0.8)
+	                            draw_block(floor(rw / 2 - (52 * 39) / 2) + floor(19.5 * (realkey + floor(realkey / 12) * 2 + (realkey mod 12 >= 8) + (realkey mod 12 >= 3))) + 4, rh - 154 - a * 32 - 32 + note_offset, song_ins[starta + a, startb + b], song_key[starta + a, startb + b], song_pan[starta + a, startb + b], song_vel[starta + a, startb + b] * (layervol[b] / 100), song_pit[starta + a, startb + b], c, s * 0.8)
 	                        }
 	                    }
 	                } else {
@@ -944,9 +945,9 @@ function control_draw() {
 
 	while (xx < totalcols * 32 + 16) {
 	    if (a > 0) draw_set_halign(fa_center)
-	    draw_text_dynamic(x1 + 2 + xx, y1 + 2, time_str(a))
+	    draw_text(x1 + 2 + xx - note_offset, y1 + 2, time_str(a))
 	    draw_set_alpha(0.6)
-	    draw_line(x1 + 2 + xx, y1 + 2 + 12, x1 + 2 + xx, y1 + 2 + 15)
+	    draw_line(x1 + 2 + xx - note_offset, y1 + 2 + 12, x1 + 2 + xx - note_offset, y1 + 2 + 15)
 	    draw_set_alpha(1)
 	    draw_set_halign(fa_left)
 	    xx += (32 * tempo) * c
@@ -956,11 +957,11 @@ function control_draw() {
 	for (a = 0; a <= totalcols; a += 1) {
 	    b = ((starta + a) mod 4 == 0)
 	    draw_set_alpha(0.6)
-	    draw_line(x1 + 2 + 32 * a, y1 + 33, x1 + 2 + 32 * a, y1 + 30 - 3 * b)
+	    draw_line(x1 + 2 + 32 * a - note_offset, y1 + 33, x1 + 2 + 32 * a - note_offset, y1 + 30 - 3 * b)
 	    draw_set_alpha(1)
 	    if (b) {
 	        if (a > 0) draw_set_halign(fa_center)
-	        draw_text_dynamic(x1 + 2 + 32 * a, y1 + 17, string(starta + a))
+	        draw_text(x1 + 2 + 32 * a - note_offset, y1 + 17, string(starta + a))
 	        draw_set_halign(fa_left)
 	    }
 	}
