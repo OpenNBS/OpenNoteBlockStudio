@@ -341,7 +341,8 @@ function control_draw() {
 			if ((starta + a) mod (timesignature * 4) == 0) {
 				draw_set_alpha(0.3)
 				if (window_scale < 1) draw_set_alpha(0.5) //Issue #254, make the lines more obvious when scaled down
-				draw_rectangle(x1 + 2 + 32 * a - note_offset, y1 + 34, (x1 + 2 + 32 * a) + 1 - note_offset, y1 + 34 + totalrows * 32, false)
+				if (playing && marker_pagebypage = 2 && window_scale < 1) draw_line(x1 + 2 + 32 * a - note_offset, y1 + 34, (x1 + 2 + 32 * a) - note_offset, y1 + 34 + totalrows * 32)
+				else draw_rectangle(x1 + 2 + 32 * a - note_offset, y1 + 34, (x1 + 2 + 32 * a) + 1 - note_offset, y1 + 34 + totalrows * 32, false)
 			} else {
 				draw_set_alpha(0.1)
 				if ((starta + a) mod 4 == 0) draw_set_alpha(0.25)
