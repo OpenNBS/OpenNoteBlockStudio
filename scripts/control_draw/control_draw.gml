@@ -334,7 +334,7 @@ function control_draw() {
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
 	}
 	}
-	note_offset = floor(((marker_pos - floor(marker_pos + 0.5 * !isplayer)) * 32) + 0.5) * ((playing && marker_follow && marker_pagebypage = 2 && (marker_pos - floor(totalcols / 2) < enda + 1 && marker_pos - floor(totalcols / 2) > 0)) || isplayer)
+	note_offset = floor(((marker_pos - floor(marker_pos + 0.5 * !isplayer)) * 32) + 0.5) * ((playing && marker_follow && marker_pagebypage = 2 && (marker_pos - floor(totalcols / 2 + 0.5) < enda + 1 && marker_pos - floor(totalcols / 2 + 0.5) > 0)) || isplayer)
 	if (!isplayer) {
 	for (a = 0; a < totalcols; a += 1) {
 		if (!blackout) {
