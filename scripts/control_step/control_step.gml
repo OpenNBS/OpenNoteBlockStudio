@@ -11,8 +11,8 @@ function control_step() {
 	}
 	if (current_time - pingtime >= 1000){
 	if (presence && obj_presence.ready) {
-		if (RUN_FROM_IDE != 1) np_setpresence(condstr(totalblocks > 0, string_format_thousands(totalblocks) + " note" + condstr(totalblocks > 1, "s") + " placed"), "Debugging", "note", "")
-		else np_setpresence(condstr(totalblocks > 0, string_format_thousands(totalblocks) + " note" + condstr(totalblocks > 1, "s") + condstr(!isplayer, " placed")), condstr((filename = "" || filename = "-player") && !isplayer, "Unsaved song") + condstr(filename != "" && filename != "-player" && !isplayer, "Editing ") + condstr(((filename != "" && filename != "-player") || midiname != "") && isplayer, "Listening to ") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname), "note", "")
+		if (RUN_FROM_IDE != 1) np_setpresence(condstr(totalblocks > 0, string_format_thousands(totalblocks) + " note" + condstr(totalblocks > 1, "s") + " placed"), "Debugging", "noteflat", "")
+		else np_setpresence(condstr(totalblocks > 0, string_format_thousands(totalblocks) + " note" + condstr(totalblocks > 1, "s") + condstr(!isplayer, " placed")), condstr((filename = "" || filename = "-player") && !isplayer, "Unsaved song") + condstr(filename != "" && filename != "-player" && !isplayer, "Editing ") + condstr(((filename != "" && filename != "-player") || midiname != "") && isplayer, "Listening to ") + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname), "noteflat", "")
 	} else {
 		np_clearpresence()
 	}
