@@ -9,7 +9,7 @@ function draw_window_about() {
 	draw_theme_font(font_main)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "About")
 	else draw_text_dynamic(x1 + 8, y1 + 8, "关于")
-	draw_sprite_ext(spr_logo, 0, x1 + 86, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
+	draw_sprite_ext(spr_logo, 0, x1 + 80, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
 	draw_set_halign(fa_center)
 	draw_theme_font(font_info_med_bold)
 	draw_text_dynamic(x1 + 150, y1 + 200, "Open Note Block Studio")
