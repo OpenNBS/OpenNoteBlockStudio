@@ -70,6 +70,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "acrylic",            acrylic)
 	ini_write_real_clean("preferences", "taskbar",            taskbar)
 	ini_write_real_clean("preferences", "remove_effect",      remove_effect)
+	ini_write_real_clean("preferences", "window_icon",        window_icon)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

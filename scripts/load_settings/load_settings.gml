@@ -72,6 +72,7 @@ function load_settings() {
 	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
 	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
 	remove_effect =      ini_read_real(  "preferences", "remove_effect",      remove_effect)
+	window_icon =        ini_read_real(  "preferences", "window_icon",        window_icon)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
