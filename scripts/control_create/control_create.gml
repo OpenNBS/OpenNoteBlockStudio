@@ -47,6 +47,15 @@ function control_create() {
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
+	window_icon = 0
+	icon_buffer = window_set_icon_impl_load(data_directory + "icon.ico")
+	icon_size_buffer = window_set_icon_impl_argbuf()
+	buffer_write(icon_size_buffer, buffer_u32, buffer_get_size(icon_buffer))
+	buffer_write(icon_size_buffer, buffer_u32, $80004005)
+	buffer_write(icon_size_buffer, buffer_string, "DLL is not loaded")
+	icon_time = -1
+	last_icon = -1
+	icon_display = 1
 	
 	font_table =
 	[

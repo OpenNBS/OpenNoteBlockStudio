@@ -19,6 +19,10 @@ function control_draw() {
 	if (channelstoggle) channels = 32768
 	else channels = 256
 	audio_channel_num(channels)
+	if (icon_display) {
+		if (window_icon) window_set_icon_raw(window_handle(), buffer_get_address(icon_buffer), buffer_get_address(icon_size_buffer))
+		else window_reset_icon_raw(window_handle())
+	}
 	
 	if (!mouseover) curs = cr_default
 	showmenu = 0

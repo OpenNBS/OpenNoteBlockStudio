@@ -7,7 +7,7 @@ function draw_window_greeting() {
 	x1 = floor(rw / 2 - 350)
 	y1 = floor(rh / 2 - 210) + windowoffset
 	draw_window(x1, y1, x1 + 700, y1 + 430)
-	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
+	draw_sprite_ext(spr_logo, window_icon, x1 + 64, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
 	draw_theme_font(font_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_theme_font(font_main_bold)
