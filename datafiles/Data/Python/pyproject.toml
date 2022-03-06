@@ -5,8 +5,8 @@ description = "Python extensions for Open Note Block Studio"
 authors = ["OpenNBS"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
 nbs-audio = {git = "https://github.com/Bentroen/nbs-audio.git", rev = "main"}
+python = "3.9.5"
 
 [tool.poetry.dev-dependencies]
 
