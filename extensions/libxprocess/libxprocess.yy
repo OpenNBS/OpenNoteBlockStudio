@@ -135,7 +135,7 @@
         {"externalName":"EnvironmentGetVariableExists","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"EnvironmentGetVariableExists","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
+        {"externalName":"ProcInfoFromProcIdEx","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
             2,
           ],"resourceVersion":"1.0","name":"ProcInfoFromProcIdEx","tags":[],"resourceType":"GMExtensionFunction",},
