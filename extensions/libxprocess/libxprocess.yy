@@ -135,18 +135,18 @@
         {"externalName":"EnvironmentGetVariableExists","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"EnvironmentGetVariableExists","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
+        {"externalName":"ProcInfoFromProcIdEx","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
             2,
             2,
           ],"resourceVersion":"1.0","name":"ProcInfoFromProcIdEx","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[
-        {"value":"0x00800000","hidden":false,"resourceVersion":"1.0","name":"KINFO_EXEP","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x00C00000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CWDP","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x40000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_PPID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x02000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CPID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x04000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_ARGV","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x08000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_ENVV","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x00400000","hidden":false,"resourceVersion":"1.0","name":"KINFO_OWID","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x1000","hidden":false,"resourceVersion":"1.0","name":"KINFO_EXEP","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x2000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CWDP","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x0100","hidden":false,"resourceVersion":"1.0","name":"KINFO_PPID","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x0200","hidden":false,"resourceVersion":"1.0","name":"KINFO_CPID","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x0010","hidden":false,"resourceVersion":"1.0","name":"KINFO_ARGV","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x0020","hidden":false,"resourceVersion":"1.0","name":"KINFO_ENVV","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x0001","hidden":false,"resourceVersion":"1.0","name":"KINFO_OWID","tags":[],"resourceType":"GMExtensionConstant",},
       ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
