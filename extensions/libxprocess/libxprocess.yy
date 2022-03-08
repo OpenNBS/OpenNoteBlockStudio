@@ -132,7 +132,22 @@
         {"externalName":"WindowIdFromNativeWindow","kind":1,"help":"WindowIdFromNativeWindow(window)","hidden":false,"returnType":1,"argCount":0,"args":[
             1,
           ],"resourceVersion":"1.0","name":"WindowIdFromNativeWindow","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[],"ProxyFiles":[
+        {"externalName":"EnvironmentGetVariableExists","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[
+            1,
+          ],"resourceVersion":"1.0","name":"EnvironmentGetVariableExists","tags":[],"resourceType":"GMExtensionFunction",},
+        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
+            2,
+            2,
+          ],"resourceVersion":"1.0","name":"ProcInfoFromProcIdEx","tags":[],"resourceType":"GMExtensionFunction",},
+      ],"constants":[
+        {"value":"0x00800000","hidden":false,"resourceVersion":"1.0","name":"KINFO_EXEP","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x00C00000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CWDP","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x40000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_PPID","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x02000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CPID","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x04000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_ARGV","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x08000000","hidden":false,"resourceVersion":"1.0","name":"KINFO_ENVV","tags":[],"resourceType":"GMExtensionConstant",},
+        {"value":"0x00400000","hidden":false,"resourceVersion":"1.0","name":"KINFO_OWID","tags":[],"resourceType":"GMExtensionConstant",},
+      ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":6,"resourceVersion":"1.0","name":"libxprocess_x64.dll","tags":[],"resourceType":"GMProxyFile",},
@@ -170,12 +185,14 @@
         {"name":"DirectoryGetCurrentWorking","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"DirectorySetCurrentWorking","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"EnvironmentGetVariable","path":"extensions/libxprocess/libxprocess.yy",},
+        {"name":"EnvironmentGetVariableExists","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"EnvironmentSetVariable","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"EnvironmentUnsetVariable","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"DirectoryGetTemporaryPath","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"FreeExecutedProcessStandardInput","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"FreeExecutedProcessStandardOutput","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"ProcInfoFromProcId","path":"extensions/libxprocess/libxprocess.yy",},
+        {"name":"ProcInfoFromProcIdEx","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"ExeFromProcId","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"CwdFromProcId","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"WindowIdFromNativeWindow","path":"extensions/libxprocess/libxprocess.yy",},
