@@ -903,7 +903,8 @@ function control_draw() {
 		}
 		if (keyboard_check_released(ord("D")) && isplayer) {
 			if (!dropmode) window_maximize()
-			else window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+			//else window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+			else window_normal()
 			dropmode = !dropmode
 			debug_option = 1
 			set_msg("[Debug] Toggle experimental drop mode")
