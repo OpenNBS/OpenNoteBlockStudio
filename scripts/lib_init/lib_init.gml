@@ -21,7 +21,7 @@ function lib_init() {
 	globalvar lib_midi_input_key_releases, lib_midi_input_key_release_note, lib_midi_input_key_release_time;
 	globalvar lib_midi_input_instrument, lib_midi_input_pitch_wheel, lib_midi_input_control;
 
-	//log("File", path_file)
+	log("File", path_file)
 
 	//lib_open_url = external_define(path_file, "open_url", dll_cdecl, ty_real, 1, ty_string)
 	//lib_execute = external_define(path_file, "execute", dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real)
