@@ -197,13 +197,25 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "followalong": {
+	        if (sel = 0) load_followalong_song("")
 	        if (sel = 1) load_followalong_song("")
+	        if (sel = 2) load_followalong_song("")
 			
-			if (language != 1) {
-	        if (sel = 2) open_url("http://www.youtube.com/watch?v=NIxNTK6nfJI")
+			/*if (language != 1) {
+	        if (sel = 2) open_url("https://yt5s.com/en61/youtube-to-mp3")
+			
+			temp solution
+			i would like to have it download the file and start it inside nbs but somethin something laws
+			and it seems to not be exactly easy to implement
+			(maybe run https://github.com/ytdl-org/youtube-dl somehow)
+			
 			} else {
-	        if (sel = 2) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
-			}
+	        if (sel = 2) open_url("")
+			
+			smth similiar here for bilibili i guess?
+			if they upload songs there
+			
+			}*/
 			
 	        break
 	    }

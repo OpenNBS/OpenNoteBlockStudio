@@ -335,6 +335,7 @@
     {"id":{"name":"selection_changekey","path":"scripts/selection_changekey/selection_changekey.yy",},"order":7,},
     {"id":{"name":"selection_changevel","path":"scripts/selection_changevel/selection_changevel.yy",},"order":8,},
     {"id":{"name":"selection_changepan","path":"scripts/selection_changepan/selection_changepan.yy",},"order":9,},
+    {"id":{"name":"toggle_followalong","path":"scripts/toggle_followalong/toggle_followalong.yy",},"order":0,},
     {"id":{"name":"selection_changepit","path":"scripts/selection_changepit/selection_changepit.yy",},"order":10,},
     {"id":{"name":"selection_setkey","path":"scripts/selection_setkey/selection_setkey.yy",},"order":11,},
     {"id":{"name":"selection_setvel","path":"scripts/selection_setvel/selection_setvel.yy",},"order":12,},
@@ -570,6 +571,8 @@
     {"folderPath":"folders/Extensions.yy","order":61,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Shaders.yy","order":62,"resourceVersion":"1.0","name":"Shaders","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Languages.yy","order":13,"resourceVersion":"1.0","name":"Languages","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Resources.yy","order":63,"resourceVersion":"1.0","name":"Resources","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts/FollowAlong.yy","order":14,"resourceVersion":"1.0","name":"FollowAlong","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

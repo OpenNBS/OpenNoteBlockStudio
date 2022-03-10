@@ -1491,7 +1491,7 @@ function control_draw() {
 		//end magic
 		
 		//menu
-	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.INTERNET) + "Youtube Link|" + "Open mp3/mp4/wav")
+	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.OPEN) + "Open mp3/ogg/wav|"/* + "Download youtube video as mp3"*/)
 	}
 	} else {
 	if (draw_tab("文件")) {
