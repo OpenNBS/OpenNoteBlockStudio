@@ -270,7 +270,7 @@
     {"id":{"name":"draw_text_edit","path":"scripts/draw_text_edit/draw_text_edit.yy",},"order":23,},
     {"id":{"name":"draw_textarea","path":"scripts/draw_textarea/draw_textarea.yy",},"order":24,},
     {"id":{"name":"draw_window","path":"scripts/draw_window/draw_window.yy",},"order":25,},
-    {"id":{"name":"window_normal","path":"scripts/window_normal/window_normal.yy",},"order":4,},
+    {"id":{"name":"window_setnormal","path":"scripts/window_setnormal/window_setnormal.yy",},"order":4,},
     {"id":{"name":"icon","path":"scripts/icon/icon.yy",},"order":26,},
     {"id":{"name":"draw_theme_color","path":"scripts/draw_theme_color/draw_theme_color.yy",},"order":27,},
     {"id":{"name":"swap_text_edit","path":"scripts/swap_text_edit/swap_text_edit.yy",},"order":28,},

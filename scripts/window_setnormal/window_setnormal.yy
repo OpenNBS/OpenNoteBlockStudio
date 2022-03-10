@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Libraries/window.yy",
   },
   "resourceVersion": "1.0",
-  "name": "window_normal",
+  "name": "window_setnormal",
   "tags": [],
   "resourceType": "GMScript",
 }
