@@ -196,6 +196,17 @@ function menu_click(argument0) {
 	        if (sel = 11) window = w_about
 	        break
 	    }
+	    case "followalong": {
+	        if (sel = 1) load_followalong_song("")
+			
+			if (language != 1) {
+	        if (sel = 2) open_url("http://www.youtube.com/watch?v=NIxNTK6nfJI")
+			} else {
+	        if (sel = 2) open_url("https://www.bilibili.com/video/BV1Mx411a76p?p=2")
+			}
+			
+	        break
+	    }
 	    case "section": {
 	        if (sel = 0) {
 	            section_exists = 0

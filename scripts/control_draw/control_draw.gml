@@ -1466,6 +1466,33 @@ function control_draw() {
 	if (draw_tab("Help")) {
 	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
 	}
+	
+	if (draw_tab("FollowAlong")) {
+		//magic code that seems important
+	    str = ""
+	    customstr = ""
+		insmenu = 3
+	    for (a = 0; a < ds_list_size(instrument_list); a++) {
+	        var ins = instrument_list[| a];
+	        if (ins.user)
+	            customstr += check(instrument = ins) + clean(ins.name) + "|"
+	        else{
+				if(a < 9){
+					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+				}else{
+				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
+				}
+			}
+			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+				customstr += "-|More...|\\|"
+				insmenu++
+			}
+	    }
+		//end magic
+		
+		//menu
+	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.INTERNET) + "Youtube Link|" + "Open mp3/mp4/wav")
+	}
 	} else {
 	if (draw_tab("文件")) {
 	    str = ""
