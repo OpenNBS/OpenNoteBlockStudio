@@ -10,7 +10,8 @@ function mp3_export() {
 	var args = [temp_file, fn]
 	var kwargs = {
 		default_sound_path: sounds_directory,
-		custom_sound_path: sounds_directory
+		custom_sound_path: sounds_directory,
+		ignore_missing_instruments: true
 	}
 	
 	try {
