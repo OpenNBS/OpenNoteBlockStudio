@@ -2,7 +2,7 @@ function toggle_playing(argument0) {
 	// toggle_playing(cols)
 	var xx, a, b, c, d, e;
 	playing=!playing
-	toggle_followalong(playing,marker_pos)
+	toggle_followalong(playing,marker_pos/tempo)
 	if (playing = 1) {
 	    if (marker_pos = enda + argument0) marker_pos = 0
 	    if (marker_start && section_exists) marker_pos = section_start

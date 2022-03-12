@@ -428,6 +428,28 @@ function control_draw() {
 		    }
 		}
 	}
+	
+	
+	//FollowAlong music control
+	if(variable_global_exists("followalongPlayingSound")&&!is_undefined("followalongPlayingSound")){
+		if(!variable_global_exists("followalongPaused")) global.followalongPaused = 0
+		if(!variable_global_exists("followalongPlayingSound")) global.followalongPlayingSound = undefined
+		if(playing = 1 && global.followalongPaused = 0){
+			if(is_undefined(global.followalongPlayingSound)){
+				global.followalongPlayingSound = audio_play_sound(global.followalongSound,10,false)
+				audio_sound_set_track_position(global.followalongPlayingSound, marker_pos/tempo);
+			}
+		}else{
+			if(!is_undefined(global.followalongPlayingSound)){
+				audio_stop_sound(global.followalongPlayingSound);
+				global.followalongPlayingSound = undefined;
+			}
+		}
+	}
+	
+	
+	
+	
 	if (window = w_dragselection) {
 	    selection_x = starta + floor((mouse_x - (x1 + 2)) / 32) - select_pressa
 	    selection_y = startb + floor((mouse_y - (y1 + 34)) / 32) - select_pressb
@@ -700,6 +722,12 @@ function control_draw() {
 	        marker_prevpos = 0
 	    }
 		if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols) timestoloop = real(loopmax)
+		
+		//followalong keybind
+		if (keyboard_check(vk_shift) && !keyboard_check_pressed(ord("`"))) { 
+			pause_followalong()
+		}
+		
 	    if (keyboard_check_pressed(vk_f1)) {
 	        if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 			else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
@@ -942,6 +970,8 @@ function control_draw() {
 			timestoloop --
 			starta = loopstart
 			marker_pos = starta
+			
+			
 			metronome_played = -1
 			sb_val[scrollbarh] = starta
 			if loopmax != 0 {
@@ -950,6 +980,17 @@ function control_draw() {
 					timestoloop = real(loopmax)
 				}
 			} 
+			
+			if(variable_global_exists("followalongPlayingSound")&&!is_undefined("followalongPlayingSound")){
+				if(!variable_global_exists("followalongPaused")) global.followalongPaused = 0
+				if(!variable_global_exists("followalongPlayingSound")) global.followalongPlayingSound = undefined
+				if(playing = 1 && global.followalongPaused=0){
+					if(!is_undefined(global.followalongPlayingSound)){
+						audio_sound_set_track_position(global.followalongPlayingSound, marker_pos/tempo);
+					}
+				}
+			}
+			
 		}
 	    if (marker_pos > enda + totalcols) {
 	        marker_pos = enda + totalcols
@@ -1491,7 +1532,7 @@ function control_draw() {
 		//end magic
 		
 		//menu
-	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.OPEN) + "Open mp3/ogg/wav|"/* + "Download youtube video as mp3"*/)
+	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.OPEN) + "Open mp3/ogg/wav|"+icon(icons.PLAY)+"Shift+`$Pause playback"/* + "Download youtube video as mp3"*/)
 	}
 	} else {
 	if (draw_tab("文件")) {

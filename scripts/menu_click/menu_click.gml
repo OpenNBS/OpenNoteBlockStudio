@@ -197,9 +197,9 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "followalong": {
+	        //if (sel = 0) load_followalong_song("")
 	        if (sel = 0) load_followalong_song("")
-	        if (sel = 1) load_followalong_song("")
-	        if (sel = 2) load_followalong_song("")
+	        if (sel = 1) pause_followalong()
 			
 			/*if (language != 1) {
 	        if (sel = 2) open_url("https://yt5s.com/en61/youtube-to-mp3")

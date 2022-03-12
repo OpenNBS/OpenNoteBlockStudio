@@ -6,7 +6,7 @@
     "path": "folders/Scripts/FollowAlong.yy",
   },
   "resourceVersion": "1.0",
-  "name": "load_followalong_song",
+  "name": "pause_followalong",
   "tags": [],
   "resourceType": "GMScript",
 }
