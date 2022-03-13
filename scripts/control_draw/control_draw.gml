@@ -428,6 +428,28 @@ function control_draw() {
 		    }
 		}
 	}
+	
+	
+	//FollowAlong music control
+	if(variable_global_exists("followalongPlayingSound")&&!is_undefined("followalongPlayingSound")){
+		if(!variable_global_exists("followalongPaused")) global.followalongPaused = 0
+		if(!variable_global_exists("followalongPlayingSound")) global.followalongPlayingSound = undefined
+		if(playing = 1 && global.followalongPaused = 0){
+			if(is_undefined(global.followalongPlayingSound)){
+				global.followalongPlayingSound = audio_play_sound(global.followalongSound,10,false)
+				audio_sound_set_track_position(global.followalongPlayingSound, marker_pos/tempo);
+			}
+		}else{
+			if(!is_undefined(global.followalongPlayingSound)){
+				audio_stop_sound(global.followalongPlayingSound);
+				global.followalongPlayingSound = undefined;
+			}
+		}
+	}
+	
+	
+	
+	
 	if (window = w_dragselection) {
 	    selection_x = starta + floor((mouse_x - (x1 + 2)) / 32) - select_pressa
 	    selection_y = startb + floor((mouse_y - (y1 + 34)) / 32) - select_pressb
@@ -700,6 +722,12 @@ function control_draw() {
 	        marker_prevpos = 0
 	    }
 		if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols) timestoloop = real(loopmax)
+		
+		//followalong keybind
+		if (keyboard_check(vk_shift) && !keyboard_check_pressed(ord("`"))) { 
+			pause_followalong()
+		}
+		
 	    if (keyboard_check_pressed(vk_f1)) {
 	        if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 			else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
@@ -942,6 +970,8 @@ function control_draw() {
 			timestoloop --
 			starta = loopstart
 			marker_pos = starta
+			
+			
 			metronome_played = -1
 			sb_val[scrollbarh] = starta
 			if loopmax != 0 {
@@ -950,6 +980,17 @@ function control_draw() {
 					timestoloop = real(loopmax)
 				}
 			} 
+			
+			if(variable_global_exists("followalongPlayingSound")&&!is_undefined("followalongPlayingSound")){
+				if(!variable_global_exists("followalongPaused")) global.followalongPaused = 0
+				if(!variable_global_exists("followalongPlayingSound")) global.followalongPlayingSound = undefined
+				if(playing = 1 && global.followalongPaused=0){
+					if(!is_undefined(global.followalongPlayingSound)){
+						audio_sound_set_track_position(global.followalongPlayingSound, marker_pos/tempo);
+					}
+				}
+			}
+			
 		}
 	    if (marker_pos > enda + totalcols) {
 	        marker_pos = enda + totalcols
@@ -1465,6 +1506,33 @@ function control_draw() {
 	}
 	if (draw_tab("Help")) {
 	    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
+	}
+	
+	if (draw_tab("FollowAlong")) {
+		//magic code that seems important
+	    str = ""
+	    customstr = ""
+		insmenu = 3
+	    for (a = 0; a < ds_list_size(instrument_list); a++) {
+	        var ins = instrument_list[| a];
+	        if (ins.user)
+	            customstr += check(instrument = ins) + clean(ins.name) + "|"
+	        else{
+				if(a < 9){
+					 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+				}else{
+				  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
+				}
+			}
+			if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
+				customstr += "-|More...|\\|"
+				insmenu++
+			}
+	    }
+		//end magic
+		
+		//menu
+	    show_menu_ext("followalong", 149 - 30 * isplayer, 19, icon(icons.OPEN) + "Open mp3/ogg/wav|"+icon(icons.PLAY)+"Shift+`$Pause playback"/* + "Download youtube video as mp3"*/)
 	}
 	} else {
 	if (draw_tab("文件")) {
