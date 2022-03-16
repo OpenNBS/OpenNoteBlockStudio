@@ -507,6 +507,7 @@ function control_create() {
 	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	window_set_min_width(800 * window_scale)
 	window_set_min_height(500 * window_scale)
+	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
 
 	// Updates
 	if (check_update)
