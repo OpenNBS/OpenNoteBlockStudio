@@ -1,6 +1,6 @@
 function draw_textarea() {
 	// draw_textarea(id, x, y, w, h, val, str)
-	var i, xx, yy, w, h, val, str, on, focus, hoffset, alpha, prevalpha;
+	var i, xx, yy, w, h, val, str, on, focus, hoffset, alpha, prevalpha, notwindow;
 	i = argument[0]
 	xx = argument[1]
 	yy = argument[2]
@@ -12,7 +12,8 @@ function draw_textarea() {
 	alpha = 1
 	prevalpha = draw_get_alpha()
 	if (argument_count > 7) hoffset = argument[7] 
-	if (argument_count > 8) alpha = argument[8] 
+	if (argument_count > 8) alpha = argument[8]
+	if (argument_count > 9) notwindow = argument[9]
 	draw_set_color(c_white)
 
 	on = mouse_rectangle(xx, yy, w, h)
@@ -28,7 +29,8 @@ function draw_textarea() {
 	draw_set_alpha(alpha * draw_get_alpha() * !focus + focus)
 	if (theme != 3 || !focus || !fdark || alpha != 1) draw_rectangle(xx + 1, yy + 1, xx + w - 1, yy + h - 1, 0)
 	draw_set_alpha(prevalpha)
-	popup_set_window(xx, yy, w, h, str)
+	if (notwindow) popup_set(xx, yy, w, h, str)
+	else popup_set_window(xx, yy, w, h, str)
 
 	if (theme = 0) {
 	    draw_sprite(spr_textbox, 0 + 8 * on, xx, yy)

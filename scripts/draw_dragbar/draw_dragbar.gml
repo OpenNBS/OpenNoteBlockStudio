@@ -27,11 +27,11 @@ function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 11, 0)
 		draw_set_alpha(1 * dropalpha)
 		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 10, 0)
-		draw_set_color(accent[5 + mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left))])
+		draw_set_color(accent[5 + (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left))) * (window = obj_controller.window)])
 		draw_set_alpha(0.5 * dropalpha)
-		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 6 + mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left)), 0)
+		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 6 + (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left))) * (window = obj_controller.window), 0)
 		draw_set_alpha(1 * dropalpha)
-		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 5 + mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left)), 0)
+		draw_circle(floor(x + (value / max) * length + 0.5), y + 1, 5 + (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) * (!mouse_check_button(mb_left)) - ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || aa = id) && mouse_check_button(mb_left))) * (window = obj_controller.window), 0)
 	}
 	draw_theme_color()
 	if (a || aa = id) {
@@ -52,7 +52,7 @@ function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 	draw_set_color(last_color)
 	
 	if (window = 0) {
-		if (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13)) {
+		if (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) && window = obj_controller.window) {
 			draw_popup(mouse_x, y + 20, kstr, true)
 		} else if (a || aa = id) {
 			draw_popup(mouse_x, y + 20, str, true)

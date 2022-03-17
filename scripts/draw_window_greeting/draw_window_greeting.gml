@@ -212,7 +212,7 @@ function draw_window_greeting() {
 
 	window_set_cursor(curs)
 	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
-	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"))) {
+	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"), 0, 0, 1)) {
 		isplayer = 1 //Go into player mode if button is pressed in the greeting screen
 		//window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 		window_setnormal()

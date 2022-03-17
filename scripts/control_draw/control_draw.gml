@@ -1219,15 +1219,17 @@ function control_draw() {
 			// Name
 			m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 		    draw_sprite(spr_layerbox, 0 + (theme = 2) + (2 + fdark) * (theme = 3), x1, y1)
-		    if (language != 1) popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
-		    else popup_set(x1 + 10, y1 + 10, 75, 13, "本层名称")
+			if (window = 0) {
+				if (language != 1) popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
+				else popup_set(x1 + 10, y1 + 10, 75, 13, "本层名称")
+			}
 			draw_theme_font(font_small)
 			prev = layername[startb + b]
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
-			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist))
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist), 1)
+			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist), 1)
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)

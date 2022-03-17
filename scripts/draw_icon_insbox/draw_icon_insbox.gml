@@ -11,7 +11,7 @@ function draw_icon_insbox() {
 	isaction = (argument_count > 5 ? argument[5] : true)
 	pressed = (argument_count > 6 ? argument[6] : false)
 	clickable = (boxed ? window == w_insbox : window == 0)
-	popup_set_window(xx, yy, 25, 25, str)
+	if (window = 0 || window = w_insbox) popup_set_window(xx, yy, 25, 25, str)
 	a = (mouse_rectangle(xx, yy, 25, 25) && (clickable) && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
