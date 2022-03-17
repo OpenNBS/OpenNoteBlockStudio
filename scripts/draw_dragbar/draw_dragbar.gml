@@ -17,7 +17,7 @@ function draw_dragbar(value, max, x, y, length, id, str, kstr, window){
 		draw_rectangle(x - 1, y + 1, floor(x + (value / max) * length + 0.5), y + 2, 0)
 	}
 	draw_set_alpha(1 * dropalpha)
-	a = (mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || mouse_rectangle(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3)) && window = 0)
+	a = ((mouse_rectangle(x + (value / max) * length - 6, y + 1 - 6, 13, 13) || mouse_rectangle(x - 3, y + 1 - 3, length + 6, 6 + (theme = 3))) && window = obj_controller.window)
 	if (theme != 3) {
 		draw_sprite(spr_icons, 9, x + (value / max) * length - 12, y + 1 - 11)
 	} else {
