@@ -901,14 +901,14 @@ function control_draw() {
 			debug_option = 1
 			set_msg("[Debug] Window => 0")
 		}
-		if (keyboard_check_released(ord("D")) && isplayer) {
-			if (!dropmode) window_maximize()
-			//else window_set_size(floor(800 * window_scale), floor(500 * window_scale))
-			else window_setnormal()
-			dropmode = !dropmode
-			debug_option = 1
-			set_msg("[Debug] Toggle experimental drop mode")
-		}
+		//if (keyboard_check_released(ord("D")) && isplayer) {
+		//	if (!dropmode) window_maximize()
+		//	//else window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+		//	else window_setnormal()
+		//	dropmode = !dropmode
+		//	debug_option = 1
+		//	set_msg("[Debug] Toggle experimental drop mode")
+		//}
 	}
 	if (keyboard_check_released(vk_f3)) debug_option = 0
 	if (!isplayer) {
@@ -1785,6 +1785,7 @@ function control_draw() {
 	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
+	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, "Exit", "Enter") + "the drop mode", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
 	} else {
 	while (1) {
 	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "撤销", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 312) break}
@@ -1805,6 +1806,7 @@ function control_draw() {
 	if (draw_icon(icons.INTERNET, xx, yy, "访问 Open Note Block Studio 官方网站")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
+	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, "关闭", "开启") + "下落模式", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
 	}
 	if (aa = 2 && mouse_check_button_released(mb_left) && windowsound) {
 		play_sound(soundding, 45, 100, 100, 0)
