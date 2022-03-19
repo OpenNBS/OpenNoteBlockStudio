@@ -480,7 +480,7 @@ function control_draw() {
 	}
 
 	// Draw selection
-	if (selected > 0) selection_draw(x1 + 2, y1 + 34, totalcols, totalrows)
+	if (selected > 0) selection_draw(x1 + 2 - note_offset, y1 + 34, totalcols, totalrows)
 	marker_prevpos = marker_pos
 	if (window = w_dragselection) {
 	    if (!mouse_check_button(mb_left)) {
@@ -1111,15 +1111,15 @@ function control_draw() {
 	    section_end = median(0, section_end, enda + totalcols)
 	    draw_set_alpha(0.25)
 	    draw_set_color(c_blue)
-	    draw_rectangle(x1 + 2 + floor(section_start - starta + 0.5) * 32, y1 + 2, x1 + 2 + floor(section_end - starta + 0.5) * 32, y1 + 33, 0)
+	    draw_rectangle(x1 + 2 + floor(section_start - starta + 0.5) * 32 - note_offset, y1 + 2, x1 + 2 + floor(section_end - starta + 0.5) * 32 - note_offset, y1 + 33, 0)
 	    draw_theme_color()
 	    draw_set_alpha(1)
-	    a = floor(section_start * 32 - starta * 32)
-	    draw_sprite(spr_marker, 2 + (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32, y1 + 2)
-	    draw_sprite_ext(spr_marker, 3 + (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
-	    a = floor(section_end * 32 - starta * 32)
-	    draw_sprite(spr_marker, 4 - (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32, y1 + 2)
-	    draw_sprite_ext(spr_marker, 5 - (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32, y1 + 2, 1, totalrows * 2 + 10, 0, -1, 1)
+	    a = floor(section_start * 32 - starta * 32 + 0.5)
+	    draw_sprite(spr_marker, 2 + (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32 - note_offset, y1 + 2)
+	    draw_sprite_ext(spr_marker, 3 + (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32 - note_offset, y1 + 2, 1, (totalrows + 1) * 32 / 15, 0, -1, 1)
+	    a = floor(section_end * 32 - starta * 32 + 0.5)
+	    draw_sprite(spr_marker, 4 - (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32 - note_offset, y1 + 2)
+	    draw_sprite_ext(spr_marker, 5 - (section_end < section_start) * 2, x1 + 2 + floor((a / 32) + 0.5) * 32 - note_offset, y1 + 2, 1, (totalrows + 1) * 32 / 15, 0, -1, 1)
 	}
 	}
 
