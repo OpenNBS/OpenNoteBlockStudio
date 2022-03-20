@@ -31,10 +31,10 @@ function lib_init() {
 	lib_file_rename = external_define(path_file, "file_rename", dll_cdecl, ty_real, 2, ty_string, ty_string)
 	lib_file_copy = external_define(path_file, "file_copy", dll_cdecl, ty_real, 2, ty_string, ty_string)
 	lib_file_delete = external_define(path_file, "file_delete", dll_cdecl, ty_real, 1, ty_string)
-	//lib_file_exists = external_define(path_file, "file_exists", dll_cdecl, ty_real, 1, ty_string)
+	lib_file_exists = external_define(path_file, "file_exists", dll_cdecl, ty_real, 1, ty_string)
 	lib_directory_create = external_define(path_file, "directory_create", dll_cdecl, ty_real, 1, ty_string)
 	lib_directory_delete = external_define(path_file, "directory_delete", dll_cdecl, ty_real, 1, ty_string)
-	//lib_directory_exists = external_define(path_file, "directory_exists", dll_cdecl, ty_real, 1, ty_string)
+	lib_directory_exists = external_define(path_file, "directory_exists", dll_cdecl, ty_real, 1, ty_string)
 
 	log("Audio", path_file)
 
