@@ -18,8 +18,8 @@ contents_pname = filename_path(macos_dname);     // = "/Path/To/YourAppBundle.ap
 resources_pname = contents_pname + "Resources/"; // = "/Path/To/YourAppBundle.app/Contents/Resources/";
 
 // if running from the IDE change working directory to:
-if (directory_exists(game_save_id + "/game/assets/")) {
-  success = directory_set_current_working(game_save_id + "/game/assets/");
+if (directory_exists(filename_path(parameter_string(1)))) {
+  success = directory_set_current_working(filename_path(parameter_string(1)));
 } // if "/Path/To/YourAppBundle.app/Contents/MacOS/YourExe" and "/Path/To/YourAppBundle.app/Contents/Resources/" exists
 else if (macos_bname == "MacOS" && contents_bname == "Contents" && app_ename == ".app" && directory_exists(resources_pname)) {
   // set working directory to "/Path/To/YourAppBundle.app/Contents/Resources/" and allow loading normal included files
