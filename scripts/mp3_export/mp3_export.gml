@@ -36,10 +36,11 @@ function mp3_export() {
 	                var key = song_key[a, b];
 	                var vel = song_vel[a, b]; 
 					var pit = song_pit[a, b];
+					var keyshift = key + (ins.key + (pit/100) - 78)
 	                if (ins.loaded) {
 	                    err = audio_sound_add(ins.file_id,
 	                                          a / tempo,
-	                                          0.5 * power(1.06, (key + (ins.key + (pit/100) - 78 - 0.23))),
+	                                          0.5 * power(2, keyshift / 12),
 	                                          layervol[b] / 100 / 100 * vel)
 	                    if (err < 0) {
 	                        if (language != 1) message("There was an error when saving as MP3.\nError code: c" + string(err), "Error")
