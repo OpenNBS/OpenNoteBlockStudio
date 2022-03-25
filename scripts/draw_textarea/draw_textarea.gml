@@ -11,6 +11,7 @@ function draw_textarea() {
 	hoffset = 0
 	alpha = 1
 	prevalpha = draw_get_alpha()
+	notwindow = 0
 	if (argument_count > 7) hoffset = argument[7] 
 	if (argument_count > 8) alpha = argument[8]
 	if (argument_count > 9) notwindow = argument[9]
