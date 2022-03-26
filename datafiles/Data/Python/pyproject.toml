@@ -9,6 +9,8 @@ python = "3.9.5"
 nbswave = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
+black = "^22.1.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
