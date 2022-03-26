@@ -98,7 +98,8 @@ def main():
                     os.remove(os.path.join(root, filename))
 
     # Delete virtual environment
-    # shutil.rmtree(ENV_PATH)
+    print("Removing virtual environment")
+    shutil.rmtree(ENV_PATH)
 
     print(f"Done! {package_count} packages were added.")
 
