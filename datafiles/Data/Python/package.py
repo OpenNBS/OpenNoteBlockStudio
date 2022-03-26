@@ -1,3 +1,4 @@
+import compileall
 import os
 import shutil
 import sys
@@ -16,6 +17,13 @@ DO_NOT_ADD = [
      'wheel',
      '_virtualenv.py',
 ]
+
+BLACKLIST = [
+     "numpy" # Special case - can't be loaded from ZIP
+]
+
+DO_NOT_ADD.extend(BLACKLIST)
+
 
 ENV_PATH = Path(".venv")
 LIB_PATH = Path(ENV_PATH, "Lib", "site-packages")
@@ -71,6 +79,20 @@ def main():
                          print(f"Packaging {lib_name}")
                          package_count += 1
                     
+     # Handle special cases
+     for lib_name in BLACKLIST:
+          print(f"Packaging {lib_name}")
+          package_count += 1
+          inpath = Path(LIB_PATH, lib_name)
+          outpath = Path(OUT_PATH, lib_name)
+          shutil.copytree(inpath, outpath, ignore=copy_filter)
+          compileall.compile_dir(outpath, force=True, quiet=True, legacy=True)
+          # Remove corresponding .py files
+          for root, _, files in os.walk(outpath):
+               for filename in files:
+                    if filename.endswith('.py'):
+                         os.remove(os.path.join(root, filename))
+
      # Delete virtual environment
      #shutil.rmtree(ENV_PATH)
 
