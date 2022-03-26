@@ -8,6 +8,7 @@ from pathlib import Path
 PYTHON_VERSION = "3.9.5"
 
 DO_NOT_ADD = [
+     '__pycache__',
      '_distutils_hack',
      'pip',
      'pkg_resources',
@@ -49,24 +50,31 @@ def main():
 
      # Delete previous build directory
      if Path.exists(OUT_PATH):
+          print("Removing output directory")
           shutil.rmtree(OUT_PATH)
 
      # Create output directory
      os.makedirs(OUT_PATH)
 
      # Package dependencies
+     package_count = 0
      with zipfile.PyZipFile(ZIP_PATH, mode='w') as zip_module:
           for path in os.listdir(LIB_PATH):
                lib_name = os.path.basename(path)
                lib_path = Path(LIB_PATH, lib_name)
-               print(path)
                try:
                     zip_module.writepy(lib_path, filterfunc=pack_filter)
-               except RuntimeError:  # only directories or .py files
+               except RuntimeError:  # only directories or .py files accepted
                     continue
-
+               else:
+                    if pack_filter(lib_path):
+                         print(f"Packaging {lib_name}")
+                         package_count += 1
+                    
      # Delete virtual environment
      #shutil.rmtree(ENV_PATH)
+
+     print(f"Done! {package_count} packages were added.")
 
 
 if __name__ == "__main__":
