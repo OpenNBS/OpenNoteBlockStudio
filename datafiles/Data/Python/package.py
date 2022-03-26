@@ -4,8 +4,7 @@ import zipfile
 from pathlib import Path
 
 
-DO_NOT_ADD_TO_BUILD = [
-     '__pycache__',
+DO_NOT_ADD = [
      '_distutils_hack',
      'pip',
      'pkg_resources',
@@ -19,16 +18,11 @@ LIB_PATH = Path(ENV_PATH, "Lib", "site-packages")
 OUT_PATH = Path("site-packages")
 
 
-def pack_module(path, package_name):
-     full_output_path = Path(OUT_PATH, f'{package_name}.zip')
-     with zipfile.PyZipFile(full_output_path, mode='w') as zip_module:
-          zip_module.writepy(path)
+def pack_filter(path):
+     fn = os.path.basename(path)
+     return not (fn in DO_NOT_ADD or '.dist-info' in fn)
 
-
-def pack_file(path, package_name):
-     full_output_path = Path(OUT_PATH, path, f'{package_name}.zip')
-     with zipfile.PyZipFile(full_output_path, mode='w') as zip_module:
-          zip_module.writepy(path)
+copy_filter = shutil.ignore_patterns('__pycache__')
 
 
 def main():
@@ -47,25 +41,15 @@ def main():
      os.makedirs(OUT_PATH)
 
      # Package dependencies
-     package_list = []
-     for path in os.listdir(LIB_PATH):
-          lib_name = os.path.basename(path)
-          lib_path = Path(LIB_PATH, lib_name)
-          if lib_name not in DO_NOT_ADD_TO_BUILD:
-               if os.path.isdir(lib_path):
-                    if '.dist-info' not in lib_name:
-                         pack_module(lib_path, lib_name)
-                         package_list.append(lib_name)
-               else:
-                    filename, ext = os.path.splitext(lib_name)
-                    if ext == '.py':
-                         pack_module(lib_path, filename)
-                         package_list.append(filename)
-
-     # Add zip files to sys.path
-     fpath = Path(OUT_PATH, 'packages.pth')
-     with open(fpath, 'w') as f:
-          f.writelines(f'{package}.zip\n' for package in package_list)
+     with zipfile.PyZipFile("site-packages.zip", mode='w') as zip_module:
+          for path in os.listdir(LIB_PATH):
+               lib_name = os.path.basename(path)
+               lib_path = Path(LIB_PATH, lib_name)
+               print(path)
+               try:
+                    zip_module.writepy(lib_path, filterfunc=pack_filter)
+               except RuntimeError:  # only directories or .py files
+                    continue
 
      # Delete virtual environment
      #shutil.rmtree(ENV_PATH)
