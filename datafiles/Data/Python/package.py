@@ -42,6 +42,10 @@ def main():
           raise RuntimeWarning("This script must be run from the datafiles/Data/Python "
                                "subfolder in the Open Note Block Studio root directory.")
 
+     if not os.path.exists('.venv'):
+          raise FileNotFoundError("The .venv directory was not found. Have you ran"
+                                  "poetry install before running this script?")
+
      # Delete previous build directory
      if Path.exists(OUT_PATH):
           shutil.rmtree(OUT_PATH)
