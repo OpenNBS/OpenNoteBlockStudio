@@ -637,6 +637,7 @@
     {"CopyToMask":0,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":"pyproject.toml","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ffmpeg.exe","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ffprobe.exe","resourceType":"GMIncludedFile",},
+    {"CopyToMask":0,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":"README.md","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.2.0.614",
