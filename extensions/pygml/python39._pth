@@ -3,5 +3,5 @@ python39.zip
 
 # Path where python scripts reside in your game's files
 Data/Python/
-Data/Python/site-packages/
-Data/Python/site-packages.zip/
+Data/Python/Lib/site-packages/
+Data/Python/Lib/site-packages.zip/

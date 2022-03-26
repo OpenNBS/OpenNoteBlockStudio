@@ -18,7 +18,8 @@ DO_NOT_ADD = [
 
 ENV_PATH = Path(".venv")
 LIB_PATH = Path(ENV_PATH, "Lib", "site-packages")
-OUT_PATH = Path("site-packages")
+OUT_PATH = Path("Lib", "site-packages")
+ZIP_PATH = Path("Lib", "site-packages.zip")
 
 
 def pack_filter(path):
@@ -54,7 +55,7 @@ def main():
      os.makedirs(OUT_PATH)
 
      # Package dependencies
-     with zipfile.PyZipFile("site-packages.zip", mode='w') as zip_module:
+     with zipfile.PyZipFile(ZIP_PATH, mode='w') as zip_module:
           for path in os.listdir(LIB_PATH):
                lib_name = os.path.basename(path)
                lib_path = Path(LIB_PATH, lib_name)
