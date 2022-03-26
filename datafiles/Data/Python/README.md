@@ -11,6 +11,7 @@ This is a subproject of Open Note Block Studio, which holds the Python modules u
 3. This subproject uses [poetry](https://python-poetry.org/) for managing dependencies. Make sure to install it, and run the following command with the subproject's root (`datafiles/Data/Python`) as your current working directory:
 
    ```shell
+   $ poetry env use 3.9 # if you have more than one Python version installed
    $ poetry install --no-dev
    ```
 
