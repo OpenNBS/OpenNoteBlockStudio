@@ -1,8 +1,11 @@
 import os
 import shutil
+import sys
 import zipfile
 from pathlib import Path
 
+
+PYTHON_VERSION = "3.9.5"
 
 DO_NOT_ADD = [
      '_distutils_hack',
@@ -26,6 +29,12 @@ copy_filter = shutil.ignore_patterns('__pycache__')
 
 
 def main():
+
+     # Check if the Python version is correct
+     py_version = '.'.join(str(s) for s in sys.version_info[:3])
+     if py_version != PYTHON_VERSION:
+          raise RuntimeError(f"This script must be run in Python {PYTHON_VERSION} "
+                             f"(you're running {py_version})")
 
      # Check the script is being run from the right subdirectory
      cwd = Path.cwd()
