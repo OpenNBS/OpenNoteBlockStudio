@@ -5,7 +5,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-PYTHON_VERSION = "3.9.5"
+PYTHON_VERSION = "3.8.10"
 
 DO_NOT_ADD = [
     "__pycache__",

@@ -5,7 +5,7 @@ description = "Python extensions for Open Note Block Studio"
 authors = ["OpenNBS"]
 
 [tool.poetry.dependencies]
-python = "3.9.5"
+python = "3.8.10"
 nbswave = "^0.1.1"
 
 [tool.poetry.dev-dependencies]

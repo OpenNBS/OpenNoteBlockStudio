@@ -6,12 +6,12 @@ This is a subproject of Open Note Block Studio, which holds the Python modules u
 
 1. Make sure to install [Git LFS](https://git-lfs.github.com/) before cloning the project and/or contributing.
 
-2. Make sure to install the **exact** Python version that `GMPython` was compiled with. This is currently 3.9.5 (32-bit). ([download](https://www.python.org/downloads/release/python-395/))
+2. Make sure to install the **exact** Python version that `GMPython` was compiled with. This is currently 3.8.10 (32-bit). ([download](https://www.python.org/downloads/release/python-3810/))
 
 3. This subproject uses [poetry](https://python-poetry.org/) for managing dependencies. Make sure to install it, and run the following command with the subproject's root (`datafiles/Data/Python`) as your current working directory:
 
    ```shell
-   $ poetry env use 3.9 # if you have more than one Python version installed
+   $ poetry env use 3.8 # if you have more than one Python version installed
    $ poetry install --no-dev
    ```
 
