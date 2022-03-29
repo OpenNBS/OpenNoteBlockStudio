@@ -26,6 +26,7 @@ ENV_PATH = Path(".venv")
 LIB_PATH = Path(ENV_PATH, "Lib", "site-packages")
 OUT_PATH = Path("Lib", "site-packages")
 ZIP_PATH = Path("Lib", "site-packages.zip")
+REL_PATH = Path("Data", "Python", OUT_PATH)
 
 
 def pack_filter(path):
@@ -74,6 +75,18 @@ def main():
         for path in os.listdir(LIB_PATH):
             lib_name = os.path.basename(path)
             lib_path = Path(LIB_PATH, lib_name)
+
+            # Pre-compile all modules without absolute paths
+            path_prefix = REL_PATH
+            if os.path.isdir(lib_path):
+                compileall.compile_dir(
+                    lib_path, ddir=path_prefix, force=True, quiet=2, legacy=True
+                )
+            else:
+                compileall.compile_file(
+                    str(lib_path), ddir=path_prefix, force=True, quiet=2, legacy=True
+                )
+
             try:
                 zip_module.writepy(lib_path, filterfunc=pack_filter)
             except RuntimeError:  # only directories or .py files accepted
@@ -90,7 +103,9 @@ def main():
         inpath = Path(LIB_PATH, lib_name)
         outpath = Path(OUT_PATH, lib_name)
         shutil.copytree(inpath, outpath, ignore=copy_filter)
-        compileall.compile_dir(outpath, force=True, quiet=True, legacy=True)
+        compileall.compile_dir(
+            outpath, ddir=REL_PATH, force=True, quiet=True, legacy=True
+        )
         # Remove corresponding .py files
         for root, _, files in os.walk(outpath):
             for filename in files:
