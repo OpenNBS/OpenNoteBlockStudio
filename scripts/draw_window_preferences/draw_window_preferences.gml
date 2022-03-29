@@ -450,7 +450,7 @@ function draw_window_preferences() {
 	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 210, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 230, show_layers, "Show layer boxes", "Whether the layer boxes should be shown\non the left side of the workspace.")) show_layers = !show_layers
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, "Show remove effect", "Whether to show an fading borders effect\nwhen removing a note block.")) remove_effect = !remove_effect
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, "Show effect on removal", "Whether to show a fading border\nwhen removing a note block.")) remove_effect = !remove_effect
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "Piano")
 		if (theme = 3) draw_theme_font(font_main)

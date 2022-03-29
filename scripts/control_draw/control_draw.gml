@@ -1785,7 +1785,7 @@ function control_draw() {
 	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Open Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
-	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, "Exit", "Enter") + "the drop mode", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
+	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, "Exit", "Enter") + " the drop mode", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
 	} else {
 	while (1) {
 	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "撤销", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 312) break}
