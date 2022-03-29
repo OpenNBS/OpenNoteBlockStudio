@@ -5,7 +5,9 @@ import sys
 import zipfile
 from pathlib import Path
 
+
 PYTHON_VERSION = "3.8.10"
+
 
 DO_NOT_ADD = [
     "__pycache__",
@@ -24,6 +26,7 @@ DO_NOT_ADD.extend(BLACKLIST)
 
 ENV_PATH = Path(".venv")
 LIB_PATH = Path(ENV_PATH, "Lib", "site-packages")
+
 OUT_PATH = Path("Lib", "site-packages")
 ZIP_PATH = Path("Lib", "site-packages.zip")
 REL_PATH = Path("Data", "Python", OUT_PATH)
@@ -55,7 +58,7 @@ def main():
             "subfolder in the Open Note Block Studio root directory."
         )
 
-    if not os.path.exists(".venv"):
+    if not os.path.exists(ENV_PATH):
         raise FileNotFoundError(
             "The .venv directory was not found. Have you ran"
             "poetry install before running this script?"
@@ -71,7 +74,7 @@ def main():
 
     # Package dependencies
     package_count = 0
-    with zipfile.PyZipFile(ZIP_PATH, mode="w") as zip_module:
+    with zipfile.PyZipFile(ZIP_PATH, mode="w") as zip_file:
         for path in os.listdir(LIB_PATH):
             lib_name = os.path.basename(path)
             lib_path = Path(LIB_PATH, lib_name)
@@ -87,8 +90,9 @@ def main():
                     str(lib_path), ddir=path_prefix, force=True, quiet=2, legacy=True
                 )
 
+            # Write to ZIP
             try:
-                zip_module.writepy(lib_path, filterfunc=pack_filter)
+                zip_file.writepy(lib_path, filterfunc=pack_filter)
             except RuntimeError:  # only directories or .py files accepted
                 continue
             else:
