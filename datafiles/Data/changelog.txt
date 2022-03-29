@@ -1,180 +1,35 @@
-Changes in v3.9.3 (2021.12.07):
-* Fixed the auto-updater checking for updates indefinitely.
-* Updated the website link due to an internal change.
+Changes in v3.10.0-beta.1 (2022.03.29):
+* The MP3 export back-end has been reworked from scratch:
+   * Added stereo support! Panning on notes and layers will now be rendered
+      correctly.
+   * Added smart clipping detection! Clipping will no longer occur on louder
+      parts of the song.
+   * Fixed exported notes getting out of tune as they moved away from their
+      original key.
+   * The export time has been cut down by about 60%.
+* Added an experimental drop mode! In this mode, instead of their usual grid
+   arrangement, notes will scroll vertically and follow their corresponding
+   key on the piano. This mode is only accessible in the player mode.
+* Added smooth scrolling! The workspace no longer clips to the grid while the
+   song is playing. This behavior can be enabled in Preferences > Playback. 
+* The player mode can now be accessed from the greeting window, through
+   a newly added button or by pressing F12.
+* Added a fading border effect when removing a note block by right-clicking.
+   This effect can be toggled in the Preferences.
+* The note volume displayed on note blocks is now multiplied by the layer
+   volume.
+* The Note Block Studio icon has been updated. It's possible to return to the
+   previous icon in Preferences.
+* The color of the window title bar will now match the program's theme.
+* The master volume bar can now be changed with the mouse wheel.
+* Fixed a rounding error in the pitch calculation, which caused all played
+   notes to gradually drift out of tune the more they moved away from their
+   original key.
+* Fixed the 'Get extra notes resource pack' button not working correctly.
+* Fixed the master volume bar being changeable while a window is open.
+* Fixed popups in the main area appearing while a window is open.
 
-Changes in v3.9.2 (2021.12.06):
-* Added a master volume slider, which controls the output level of all sounds.
-* MIDI files can now be opened by dragging and dropping them into the
-   window.
-* Data packs can now be exported with tempos up to 60 t/s.
-* Updated data packs to pack format 8 (matching Java Edition 1.18).
-* Updated the extra notes resource pack to pack format 8 (matching Java
-   Edition 1.18).
-* On the "Set pitch" macro, it's now possible to add the value to the current
-   pitch instead of setting it to the chosen value.
-* Added an option to check for development versions on startup. Enabling this
-   option will notify you when a development version is released in the future.
-* The data pack visualizer will now offset blocks correctly according to their
-   pitch value.
-* When using the Fluent theme, the song title in Song stats will now be shown
-   in the accent color.
-* Pitch changes are now limited to +/-1200.
-* Bugfixes and improvements:
-   * Fixed data packs not working in-game when the song tempo was not a
-   multiple of 0.25.
-   * Fixed data packs playing wrong notes (or not playing at all) when pitch
-   changes cause a note to cross the out-of-range boundary.
-   * Fixed the data pack visualizer using incorrect blocks.
-   * Fixed the 'Reset' button appearing in Song stats when using the player
-      mode.
-   * Fixed the song work stats being updated while using the player mode.
-   * Fixed the song info window not opening in the player mode.
-   * The 'Import pattern' and 'Export pattern' menu entries will now be locked
-      according to whether there are selected note blocks.
-   * Fixed the Compatibility popups appearing in the wrong position when the
-      window scale is not 100%.
-   * Fixed the note velocity going higher than 100 when using keyboard
-      shortcuts.
-   * Fixed keyboard shortcuts not working after editing the song tempo.
-   * Fixed a crash when closing the tempo edit box if it was empty.
-   * Fixed a crash on schematic and data pack export when using custom
-      instruments.
-   * Fixed notes generated from MIDI import not being added to the note count
-      per instrument, causing incorrect reports on Song stats and options like
-      "Select all <instrument>" to behave incorrectly.
-   * Fixed the color picker and tempo box values altering default instrument
-      names.
-   * Fixed note chart appearing when hovering black keys if key numbers are
-      enabled.
-   * Fixed some of the white piano keys ignoring the 'Show keyboard shortcut'
-      setting.
-   * Fixed the default song and pattern folders incorrectly pointing to paths
-      inside the "Data" folder.
-   * Fixed the overlay on detuned note blocks being one pixel too large.
-   * Fixed lines under URLs being skewed when the window scale is not 100%.
-   * Fixed the program using the wrong FPS value when setting it to 240 FPS
-      with F7.
-   * Fixed the 'Playing' bounding box being too small on the Playback tab of
-      Preferences.
-   * Fixed the GitHub and Website button links being switched in the About
-      window.
-   * Improved performance when drawing multi-language text.
-   * Improved performance slightly when many notes are displayed on screen.
-   * Improved wording in the Edit menu and the Compatibility window.
 
-Changes in v3.9.1 (2021.09.25):
-* Fixed a crash on startup when the current wallpaper is too large.
-* The wallpaper will no longer be accessed when transparency effects are
-   disabled.
-* Fixed the tempo tapper window displaying the wrong language.
-* Changed the tempo tapper sound to match the metronome.
-* Increased the size of the Changelist text area.
-* Removed older versions from the Changelist to improve performance.
 
-Changes in v3.9.0 (2021.09.25):
-* Added Discord Rich Presence. Show the world what you are working on!
-   Your current song and note count will appear on your Discord status activity
-   for everyone to see.
-   * If you prefer to hide your status, you can disable this option in Preferences.
-* Added a new theme, inspired by Microsoft's Fluent Design:
-   * Features new fonts, icons, layouts, and much more!
-   * Enabled by default; the previous themes are still available from the
-      Preferences.
-   * Comes with light and dark versions! The dark mode will be enabled
-      automatically if you were using the Dark theme before.
-   * Allows you to pick an accent color to be applied to various details across
-      the interface! Click the color widget by the Theme dropdown menu to pick
-      your favorite color.
-   * Features sounds when navigating the interface! You can toggle them in
-      Preferences.
-   * Added a new piano design matching the theme. It will also respond to the
-      dark mode!
-   * Features window animations, fading effects, and dimmed backgrounds.
-   * Features the Acrylic material, with transparency effects on menus and 
-      tooltips!
-   * Features the Mica material, allowing you to see your desktop wallpaper
-      through the window!
-   * Transparency effects can be toggled in Preferences.
-   * Some checkboxes across the interface were replaced with toggle switches.
-* The tempo changing controls were reworked:
-  * Along with dragging, you can now click the tempo box to enter a precise
-     value!
-  * You can now right-click the tempo box to choose the tempo unit or change
-     the tempo to a preset value.
-  * Added a tempo tapper! Right-click the tempo box, click 'Tempo tapper',
-     and tap the T key to set a new tempo. Useful to match the tempo of the
-     original song if you're making a cover!
-  * The maximum allowed tempo was increased to 60 ticks per second (three
-     times faster than Minecraft's tick speed).
-  * The song tempo is no longer restricted to steps of 0.25 ticks per second.
-  * Added popup hints to guide you through the new tempo controls.
-* Added new shortcuts:
-   * F7 to change the max framerate
-   * Ctrl + P to open/close Preferences
-   * Ctrl + '+' to increase the window scale
-   * Ctrl + '-' to decrease the window scale
-   * Ctrl + 0 to reset the window scale
-   * Alt + Enter to toggle fullscreen (for the window, not the workspace!)
-   * Ctrl + Scroll wheel to increase or decrease the window scale
-* It's now possible to select individual note blocks by clicking a note while
-    holding Ctrl. Right-clicking a selected note will also deselect it.
-* Added Simplified Chinese translations!
-   * The language can be changed with a new setting in Preferences.
-   * The language will change automatically based on your system settings.
-   * When using the Simplified Chinese language, opening the tutorial videos
-      will redirect you to Bilibili instead of YouTube.
-* The metronome now has its own unique sounds!
-* Added more framerate options: you can now use 120, 144, or 240 FPS!
-* Added two new demo songs!
-* Added an option to increase the maximum sound channel count to 32,768,
-   allowing more sounds to be played at once.
-* Added an experimental player mode!
-   * In this mode, you will be able to listen to the song, but not edit it.
-   * Accessible by running the 'NBS Player Mode' file in the program's folder.
-   * Improves performance on older PCs.
-* Schematics can now be saved to the structure block format (.nbt),
-   compatible with 1.13 and above.
-* It's now possible to import MIDI files with 2, 4, or 8 times as much spacing
-   between each note.
-* You can now play on a MIDI device while the song is playing, allowing you
-   to play live accompaniments to the song.
-* The 'Set velocity' macro now allows you to apply the velocity as a percentage
-   of each note's current velocity.
-* It's now possible to open .nbs files by dragging them into the program.
-* If you are using Windows 8 or above, the taskbar icon will now show the
-   progress of the song playback.
-* Added popup messages when performing certain actions, like toggling 
-   fullscreen, blackout mode, or changing various options.
-* Added credits to the About window, acknowledging all the great people who
-   allowed Note Block Studio to come this far!
-* Replaced links to the Minecraft Forums and Minecraft Wiki pages with the
-   Note Block Studio website.
-* Added a link to Note Block Studio's Discord server to the greeting window,
-   the Help menu, and the About window. Join the server to connect with other
-   note block musicians!
-* Added a link for reporting bugs to the Help menu.
-* Added a secret RAINBOW MODE!! Just press Ctrl + Shift + F5 while using the
-   Fluent theme. Okay, it's not so secret anymore, is it? ;)
-* Bugfixes and improvements:
-  * A new tab was added to Preferences.
-  * The song will now be marked as unsaved when you cut, paste, change, or
-     delete a selection.
-  * Various radio boxes across the interface were changed to dropdown menus.
-  * Fixed right-click menu going off-screen when opening it too close to the
-     right edge of the window.
-  * Fixed menu width being too small in some cases, causing text to overlap or
-     flow out of the menu.
-  * Fixed 'Original author' not appearing in song stats if the 'Song author' 
-     is empty.
-  * Fixed lines in the note block area being too thin or disappearing when using
-     a smaller window scale.
-  * Fixed sections moving more smoothly than the song when using the tick by
-     tick scroll option.
-  * Fixed the 'Loop to bar end' option re-enabling itself automatically.
-  * Fixed the 'Show old warning' option not working for Classic songs.
-  * Fixed the secret clipboard editor not working properly.
-  * Fixed excessive disk reads on the Changelist window.
-  * Fixed a crash when playing a song under some specific circumstances.
-  * "Hardened Clay" and "Stained Clay" were renamed to "Terracotta" in 
-     schematic exports, conforming to their current names in Minecraft.
-  * Updated the version number shown on the Windows program properties.
+
+
