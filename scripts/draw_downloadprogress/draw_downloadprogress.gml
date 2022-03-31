@@ -42,7 +42,9 @@ function draw_downloadprogress(argument0, argument1, argument2, argument3) {
 		total_text = string_format(total_mb, 0, 2)
 	}
 	text = done_text + "/" + total_text + " MB (" + string(round(percent * 100)) + "%)"
+	if (theme = 3 && !fdark) draw_set_color(0)
 	draw_text_dynamic(floor(rw / 2), y1 + 65 - 5 * (theme = 3), text)
+	draw_theme_color()
 	draw_set_halign(fa_left)
 
 
