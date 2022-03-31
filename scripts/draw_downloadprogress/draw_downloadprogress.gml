@@ -17,10 +17,22 @@ function draw_downloadprogress(argument0, argument1, argument2, argument3) {
 	draw_theme_font(font_main)
 	draw_set_halign(fa_center)
 	draw_text_dynamic(floor(rw / 2), y1 + 40, desc)
-	draw_set_color(10512464)
-	draw_rectangle(x1 + 30, y1 + 60, x1 + 30 + percent * 240, y1 + 80, 0)
-	draw_theme_color()
-	draw_rectangle(x1 + 30, y1 + 60, x1 + 270, y1 + 80, 1)
+	if (theme = 3) {
+		draw_theme_color()
+		draw_line(x1 + 30, y1 + 77, x1 + 270, y1 + 77)
+		draw_set_color(accent[5])
+		draw_set_alpha(0.5)
+		draw_rectangle(x1 + 30, y1 + 77 - 1, x1 + 30 + percent * 240, y1 + 77 + 1, 0)
+		draw_set_alpha(1)
+		draw_rectangle(x1 + 30 + 1, y1 + 77 - 1, x1 + 30 + clamp(percent * 240, 1, 239), y1 + 77 + 1, 0)
+		draw_rectangle(x1 + 30, y1 + 77, x1 + 30 + percent * 240, y1 + 77, 0)
+		draw_theme_color()
+	} else {
+		draw_set_color(10512464)
+		draw_rectangle(x1 + 30, y1 + 60, x1 + 30 + percent * 240, y1 + 80, 0)
+		draw_theme_color()
+		draw_rectangle(x1 + 30, y1 + 60, x1 + 270, y1 + 80, 1)
+	}
 	if (percent > 0.5) draw_set_color(c_white)
 	if (total <= 0) {
 		done_text = "-.--"
@@ -30,7 +42,7 @@ function draw_downloadprogress(argument0, argument1, argument2, argument3) {
 		total_text = string_format(total_mb, 0, 2)
 	}
 	text = done_text + "/" + total_text + " MB (" + string(round(percent * 100)) + "%)"
-	draw_text_dynamic(floor(rw / 2), y1 + 65, text)
+	draw_text_dynamic(floor(rw / 2), y1 + 65 - 5 * (theme = 3), text)
 	draw_set_halign(fa_left)
 
 
