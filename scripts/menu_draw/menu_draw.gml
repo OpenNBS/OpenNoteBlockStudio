@@ -39,6 +39,8 @@ function menu_draw() {
 		if (theme = 3 && o.acrylic) draw_surface_blur_alt(application_surface, dx, dy, menu_wid[m] + 1, hei + 1, 0.5)
 		if (theme = 3 && o.acrylic) draw_set_alpha(0.6)
 		if (theme = 3 && o.acrylic) draw_acrylic_texture(dx, dy, menu_wid[m] + 1, hei + 1)
+		var col = o.fdark ? o.accent[8] : o.accent[7]
+		draw_set_color(col)
 	    if (theme != 3) draw_rectangle(dx, dy, dx + menu_wid[m], dy + hei, 0)
 		else draw_roundrect(dx, dy, dx + menu_wid[m], dy + hei, 0)
 	    draw_set_alpha(0.25)

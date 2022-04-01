@@ -20,7 +20,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "show_welcome",       show_welcome)
 	ini_write_real_clean("preferences", "autosave",           autosave)
 	ini_write_real_clean("preferences", "autosavemins",       autosavemins)
-	ini_write_real_clean("preferences", "theme",              theme)
+	ini_write_real_clean("preferences", "theme",              temptheme)
 	ini_write_real_clean("preferences", "blackout",           blackout)
 	ini_write_real_clean("preferences", "window_scale",       window_scale)
 	ini_write_real_clean("preferences", "refresh_rate",       refreshrate)

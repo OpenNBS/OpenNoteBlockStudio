@@ -1,3 +1,12 @@
+Changes in v3.10.0-rgb.1 (2022.04.01):
+* Made ~ C O L O R F U L ~ note blocks, buttons, dropdowns, scrollbars,
+   dragbars, radio buttons, instruments, layers, checkboxes, popups, text
+   fields, piano keys, windows, backgrounds and the workspace
+* Removed boring gray looks from the interface
+* Removed all themes, now everything is ~ C O L O R F U L ~
+* Removed blackout mode. Why would you want to use that?!?!
+* You'll never be bored while composing anymore!
+
 Changes in v3.10.0-beta.1 (2022.03.29):
 * The MP3 export back-end has been reworked from scratch:
    * Added stereo support! Panning on notes and layers will now be rendered

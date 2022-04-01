@@ -9,6 +9,39 @@ function draw_window() {
 	if (argument_count > 4) {
 		sml = argument[4]
 	}
+	
+	/* Test colors
+	var xx = x1
+	var yy = y1 - 100
+	draw_set_color(accent[0])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[1])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[2])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[3])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[4])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[5])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[6])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[7])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	draw_set_color(accent[8])
+	draw_rectangle(xx, yy, xx + 15, yy + 15, false)
+	xx += 20
+	*/
+
 	draw_set_color(15790320)
 	if (theme = 1) draw_set_color(13160660)
 	if (theme = 2) draw_set_color(c_dark)
@@ -25,9 +58,17 @@ function draw_window() {
 			draw_sprite(spr_shadow, 6 + 8, x2, y1 - 16)
 			draw_sprite_ext(spr_shadow, 7 + 8, x1, y1 - 16, x2 - x1, 1, 0, -1, draw_get_alpha())
 		}
+		
+		if (fdark) draw_set_color(accent[8])
+		else draw_set_color(accent[7])
+		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 0)
+		
 		draw_set_color(15987699)
 		if (fdark) draw_set_color(2105376)
+		draw_set_alpha(0.6)
 		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 0)
+		draw_set_alpha(1)
+		
 		//draw_set_color(7368816)
 		draw_set_color(4144959)
 		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 1)

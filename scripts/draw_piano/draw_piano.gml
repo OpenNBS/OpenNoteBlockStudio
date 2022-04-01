@@ -9,6 +9,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	b = 0
 	d = -1
 	selectedkey = -1
+	
 	alpha = max(0, 3 - startkey) * !isplayer + 3 * isplayer
 	midi_devices = midi_input_devices()
 	for (a = 0; a < midi_devices; a += 1) {
@@ -16,6 +17,9 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	    midi_releases[a] = midi_input_key_releases(a)
 	}
 	for (a = 0; a < k; a += 1) {
+		
+		var colorful = make_color_hsv((255 - (a * 10) + rainbow * 360/255) % 255, 128, 255)
+		
 	    c = (startkey + a) mod 7
 	    if (a > 0 && c != 2 && c != 5) { // Sharp key to the left
 	        c1 = startkey + sharpkeys + b
@@ -59,9 +63,10 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 			showclicks2 = !out && show_keynumbers
 	        col = c_white
 	        down[1] = 0
-			if (!isplayer) {
-				if (show_outofrange && out) col = 8224255
-				if (selected_key = c2 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
+			if (true) {
+				//if (show_outofrange && out) col = 8224255
+				if (selected_key = c2 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[5]}
+				if (!(selected_key = c2)) col = colorful
 			}
 	        if (current_time - key_played[c2] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c2]) / 300) down[1] = ((current_time - key_played[c2]) / 300) * 2 if (down[1] > 1) down[1] = 2 - down[1] down[1] = floor(down[1] * 3) / 3}
 	        if (key_midipress[c2] || key_press[c2] || key_click[c2]) down[1] = 0.75
@@ -72,9 +77,10 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        out = (c1 < 33 || c1 > 57)
 			showclicks1 = !out && show_keynumbers
 	        col = c_white
-			if (!isplayer) {
-				if (show_outofrange && out) col = 8224255
-				if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
+			if (true) {
+				//if (show_outofrange && out) col = 8224255
+				if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[5]}
+				if (!(selected_key = c1)) col = colorful
 			}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down[0] = ((current_time - key_played[c1]) / 300) * 2 if (down[0] > 1) down[0] = 2 - down[0] down[0] = floor(down[0] * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down[0] = 0.75
@@ -106,9 +112,10 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 			showclicks1 = !out && show_keynumbers
 	        col = c_white
 	        down = 0
-			if (!isplayer) {
-				if (show_outofrange && out) col = 8224255
-				if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[7]}
+			if (true) {
+				//if (show_outofrange && out) col = 8224255
+				if (selected_key = c1 && playing = 0) {if (theme != 3) col = 16753828 else col = accent[5]}
+				if (!(selected_key = c1)) col = colorful
 			}
 	        if (current_time - key_played[c1] < 300) {col = merge_color(col, c_yellow, 1 - (current_time - key_played[c1]) / 300) down = ((current_time - key_played[c1]) / 300) * 2 if (down > 1) down = 2 - down down = floor(down * 3) / 3}
 	        if (key_midipress[c1] || key_press[c1] || key_click[c1]) down = 0.75

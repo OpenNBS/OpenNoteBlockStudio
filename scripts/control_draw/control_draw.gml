@@ -128,8 +128,8 @@ function control_draw() {
 	if (theme = 1) window_background = 13160660
 	if (theme = 2) window_background = c_dark
 	// if (theme = 3) window_background = c_white
-	if (theme = 3) window_background = 15987699
-	if (theme = 3 && fdark) window_background = 2105376
+	if (theme = 3) window_background = accent[7]
+	if (theme = 3 && fdark) window_background = accent[8]
 	draw_clear(window_background)
 	if (theme = 3 && acrylic && wpaperexist) draw_sprite_tiled_ext(wpaperblur, 0,
 	0 - window_get_x() * (1 / window_scale) - (sprite_get_width(wpaper) * (display_height / sprite_get_height(wpaper)) - display_width) * (1 / window_scale) * (wpaperside) / 2,
@@ -140,12 +140,20 @@ function control_draw() {
 		draw_set_color(15790320)
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
+		if (theme = 3) draw_set_color(accent[7])
+		if (theme = 3 && acrylic && wpaperexist) draw_set_color(accent[7])
+		if (theme = 3 && fdark) draw_set_color(accent[8])
+		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(accent[8])
+		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.875)
+		draw_rectangle(0, 0, rw, rh, 0)
+		
 		if (theme = 3) draw_set_color(15987699)
 		if (theme = 3 && acrylic && wpaperexist) draw_set_color(15198183)
 		if (theme = 3 && fdark) draw_set_color(2105376)
 		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(1315860)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.875)
+		draw_set_alpha(0.6)
 		draw_rectangle(0, 0, rw, rh, 0)
+		
 		draw_set_alpha(1)
 	}
 
@@ -336,6 +344,11 @@ function control_draw() {
 		draw_set_color(16382457)
 		if (fdark) draw_set_color(2565927)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+		draw_set_alpha(0.4)
+		draw_set_color(accent[7])
+		if (fdark) draw_set_color(accent[8])
+		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+		draw_set_alpha(1)
 	}
 	}
 	note_offset = floor(((marker_pos - floor(marker_pos + 0.5 * !isplayer)) * 32) + 0.5) * ((playing && marker_follow && marker_pagebypage = 2 && (marker_pos - floor(totalcols / 2 + 0.5) < enda + 1 && marker_pos - floor(totalcols / 2 + 0.5) > 0)) || isplayer)
@@ -751,7 +764,7 @@ function control_draw() {
 	    }
 		// Instrument shortcuts
 		if (keyboard_check_pressed(vk_f5) && keyboard_check(vk_control) && keyboard_check(vk_shift) && theme = 3) {
-			rainbowtoggle = !rainbowtoggle
+			rainbowtoggle = 1
 			if (language != 1) {
 			if (rainbowtoggle) {
 				set_msg("Rainbow mode => ON")
@@ -1135,17 +1148,30 @@ function control_draw() {
 		draw_set_color(15790320)
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
-		if (theme = 3) draw_set_color(15987699)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_color(c_white)
-		if (theme = 3 && fdark) draw_set_color(2105376)
-		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(1315860)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.875)
+		if (theme = 3) draw_set_color(accent[7])
+		if (theme = 3 && acrylic && wpaperexist) draw_set_color(accent[7])
+		if (theme = 3 && fdark) draw_set_color(accent[8])
+		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(accent[8])
+		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.4)
+		else draw_set_alpha(0.3)
 		draw_rectangle(0, y1 + 1, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
 		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 52, rw, rh, 0)
 		draw_rectangle(x1 + totalcols * 32 + 20, y1 + 1, rw, y1 + totalrows * 32 + 51, 0)
 		draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
 		draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
+		
+		if (theme = 3) draw_set_color(15987699)
+		if (theme = 3 && acrylic && wpaperexist) draw_set_color(c_white)
+		if (theme = 3 && fdark) draw_set_color(2105376)
+		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(1315860)
+		draw_set_alpha(0.6)
+		draw_rectangle(0, y1 + 1, x1, rh, 0)
+		draw_rectangle(0, 0, rw, y1, 0)
+		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 52, rw, rh, 0)
+		draw_rectangle(x1 + totalcols * 32 + 20, y1 + 1, rw, y1 + totalrows * 32 + 51, 0)
+		draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
+		
 		draw_set_alpha(1)
 	}
 	draw_theme_color()
@@ -1438,7 +1464,8 @@ function control_draw() {
 	} //from the if (!isplayer) up there
 	
 	if (dropmode && theme = 3) {
-		draw_set_color(0)
+		var col = fdark ? accent[8] : accent[7]
+		draw_set_color(col)
 		draw_set_alpha(0.2 * dropalpha)
 		draw_roundrect_ext(0, 0, 530, 90, 20, 20, 0)
 		draw_set_alpha(dropalpha)

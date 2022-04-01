@@ -282,10 +282,10 @@ function menu_click(argument0) {
 			break
 		}
 		case "theme": {
-			if (sel = 0) {theme = 0 change_theme() window_unset_darkmode()}
-			else if (sel = 2) {theme = 1 change_theme() window_unset_darkmode()}
-			else if (sel = 1) {theme = 2 change_theme() window_set_darkmode()}
-			else if (sel = 3) {theme = 3 change_theme() if (fdark) window_set_darkmode()}
+			//if (sel = 0) {theme = 0 change_theme() window_unset_darkmode()}
+			//else if (sel = 2) {theme = 1 change_theme() window_unset_darkmode()}
+			//else if (sel = 1) {theme = 2 change_theme() window_set_darkmode()}
+			//else if (sel = 3) {theme = 3 change_theme() if (fdark) window_set_darkmode()}
 			break
 		}
 		case "filep": {

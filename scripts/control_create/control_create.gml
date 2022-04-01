@@ -90,9 +90,11 @@ function control_create() {
 	update_success = 0
 	show_welcome = 1
 	scroll_wheel = 0
+	temptheme = 0
 	theme = 3 // Using Fluent as the default theme
 	fdark = 0 // Fluent dark mode
 	blackout = 0
+	blackout_timer = 0
 	editmode = 0
 	clickinarea = 0
 	dontplace = 0
@@ -127,7 +129,7 @@ function control_create() {
 	nocdrag = 0
 	resetcolor = 0
 	rainbow = 0
-	rainbowtoggle = 0
+	rainbowtoggle = 1
 	pingtime = current_time
 	debug_overlay = 0
 	debug_option = 0

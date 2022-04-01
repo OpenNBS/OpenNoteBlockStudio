@@ -38,6 +38,10 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 		}
 	}
 	draw_sprite_ext(sprite, frame, xx, yy, 1, 1, 0, -1, alpha)
+	draw_set_color(accent[0])
+	draw_set_alpha(0.2)
+	draw_rectangle(xx, yy, xx + 31, yy + 31, false)
+	
 	draw_set_alpha(1)
 	if (use_icons) {
 		if (iscustom) {
