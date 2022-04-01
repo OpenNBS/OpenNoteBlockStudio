@@ -473,8 +473,12 @@ function control_create() {
 	//Datapack
 	dat_reset(0)
 
-	//MP3
-	mp3_includelocked = 0
+	//Audio export
+	audio_exp_format = "MP3"
+	audio_exp_sample_rate = 44100
+	audio_exp_channels = 2
+	audio_exp_include_locked = 0
+	audio_exp_target_bitrate = 320
 
 	// Macros
 	stereo_reverse = 0

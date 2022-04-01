@@ -348,6 +348,43 @@ function menu_click(argument0) {
 			language = sel
 			break
 		}
+		case "audio_exp_format": {
+			switch (sel) {
+				case 0:
+					audio_exp_format = "MP3";
+					break;
+				case 1:
+					audio_exp_format = "WAV";
+					break;
+				case 2:
+					audio_exp_format = "OGG";
+					break;
+				case 3:
+					audio_exp_format = "AIFF";
+					break;
+				case 4:
+					audio_exp_format = "FLAC";
+					break;
+			}
+			break;
+		}
+		case "audio_exp_sample_rate": {
+			switch (sel) {
+				case 0: audio_exp_sample_rate = 8000 break;
+				case 1: audio_exp_sample_rate = 11025 break;
+				case 2: audio_exp_sample_rate = 16000 break;
+				case 3: audio_exp_sample_rate = 22050 break;
+				case 4: audio_exp_sample_rate = 44100 break;
+				case 5: audio_exp_sample_rate = 48000 break;
+				case 6: audio_exp_sample_rate = 88200 break;
+				case 7: audio_exp_sample_rate = 96000 break;
+				case 8: audio_exp_sample_rate = 176400 break;
+				case 9: audio_exp_sample_rate = 192000 break;
+				case 10: audio_exp_sample_rate = 352800 break;
+				case 11: audio_exp_sample_rate = 384000 break;
+			}
+			break;
+		}
 	}
 	mouse_clear(mb_left)
 	io_clear()

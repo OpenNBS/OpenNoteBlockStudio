@@ -103,4 +103,11 @@ function macros() {
 #macro font_info_med 5
 #macro font_info_med_bold 6
 #macro font_med 7
+
+#macro format_mp3 "MP3"
+#macro format_wav "WAV"
+#macro format_ogg "OGG"
+#macro format_flac "AIFF"
+#macro format_aiff "FLAC"
+
 }
