@@ -1464,7 +1464,7 @@ function control_draw() {
 		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
 		                             inactive(selected != 0)+"Import pattern...|"+
 									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
-		                             inactive(totalblocks = 0) + "Export as MP3...|"+
+		                             inactive(totalblocks = 0) + "Export as audio track...|"+
 		                             inactive(totalblocks = 0) + "Export as schematic...|"+
 		                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
 									 inactive(totalblocks = 0) + "Export as data pack...|-|" + 

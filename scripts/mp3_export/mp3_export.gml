@@ -102,7 +102,7 @@ function mp3_export() {
 	}
 	*/
 
-	if (language != 1) {if (question("MP3 saved! Do you want to open it?", "MP3 Export")) open_url(fn)}
+	if (language != 1) {if (question("Track saved! Do you want to open it?", "Audio Export")) open_url(fn)}
 	else {if (question("MP3 已保存！现在打开吗？", "导出 MP3")) open_url(fn)}
 
 
