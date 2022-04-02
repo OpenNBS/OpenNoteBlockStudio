@@ -3,6 +3,20 @@ function mp3_export() {
 
 	var fn, err, a, b;
 	
+	// Report missing instruments
+	var missing_str = ""
+	for (var i = 0; i < ds_list_size(instrument_list); i++) {
+		var ins = instrument_list[| i]
+		if (!ins.loaded && ins.filename != "" && ins.num_blocks > 0) {
+			missing_str += ins.filename + "\n"
+		}
+	}
+	if (missing_str != "") {
+		if (!question("Some sounds could be not be loaded and will be missing from the exported track:\n\n" + missing_str + "\nWould you like to export anyway?", "Audio export")) {
+			return 0
+		}
+	}
+	
 	var output_format = audio_exp_format
 	var output_ext = "." + string_lower(output_format)
 	
