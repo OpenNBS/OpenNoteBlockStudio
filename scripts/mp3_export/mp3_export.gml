@@ -2,7 +2,11 @@ function mp3_export() {
 	// mp3_export()
 
 	var fn, err, a, b;
-	fn = string(get_save_filename_ext("MP3 files (*.mp3)|*.mp3", filename_new_ext(filename, "") + ".mp3", filename_path(filename), condstr(language != 1, "Export MP3", "导出 MP3")))
+	
+	var output_format = audio_exp_format
+	var output_ext = "." + string_lower(output_format)
+	
+	fn = string(get_save_filename_ext(output_format + " files (*" + output_ext + ")|*" + output_ext, filename_new_ext(filename, "") + output_ext, filename_path(filename), condstr(language != 1, "Export audio track", "")))
 	if (fn = "") return 0
 
 	save_song(temp_file, true);
@@ -12,7 +16,10 @@ function mp3_export() {
 		default_sound_path: sounds_directory,
 		custom_sound_path: sounds_directory,
 		ignore_missing_instruments: true,
-		format: "mp3"
+		format: string_lower(output_format),
+		sample_rate: audio_exp_sample_rate,
+		channels: audio_exp_channels,
+		include_locked_layers: audio_exp_include_locked
 	}
 	
 	try {
