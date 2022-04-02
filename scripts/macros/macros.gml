@@ -107,7 +107,7 @@ function macros() {
 #macro format_mp3 "MP3"
 #macro format_wav "WAV"
 #macro format_ogg "OGG"
-#macro format_flac "AIFF"
-#macro format_aiff "FLAC"
+#macro format_aiff "AIFF"
+#macro format_flac "FLAC"
 
 }
