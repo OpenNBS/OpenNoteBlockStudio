@@ -63,7 +63,7 @@ python-versions = "*"
 
 [[package]]
 name = "nbswave"
-version = "0.2.0"
+version = "0.2.1"
 description = "An utility to render note block songs to a variety of audio formats"
 category = "main"
 optional = false
@@ -137,7 +137,7 @@ python-versions = ">=3.6"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8.10"
-content-hash = "92f4447cb73d1358e6e8f5aefbb752c084711fecaa50232073d8579bb6fe3cba"
+content-hash = "00c194b39a92889fb0cd96fb1a914e65c8d3685d1434d77aac702d43295fcc0a"
 
 [metadata.files]
 black = [
@@ -182,8 +182,8 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 nbswave = [
-    {file = "nbswave-0.2.0-py3-none-any.whl", hash = "sha256:d9b05beffe3bfa55c092af8f96d42192b94cd5e694c3af7150370ea27539a4e5"},
-    {file = "nbswave-0.2.0.tar.gz", hash = "sha256:d70c129cb9477103bc8b2812799c55dc0785b39ba3ec382f58f749f25735a96e"},
+    {file = "nbswave-0.2.1-py3-none-any.whl", hash = "sha256:1ad8ab623eedf82a9ef1bbd033e60738c6508c696255cf9233e376a54849ca63"},
+    {file = "nbswave-0.2.1.tar.gz", hash = "sha256:65b0290889d4e9e7085ad2fce57e1e94d0e6c8adb7a3717ba275b973aaae63af"},
 ]
 numpy = [
     {file = "numpy-1.22.3-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:92bfa69cfbdf7dfc3040978ad09a48091143cffb778ec3b03fa170c494118d75"},
