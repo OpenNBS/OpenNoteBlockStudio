@@ -33,7 +33,7 @@ function mp3_export() {
 		format: string_lower(output_format),
 		sample_rate: audio_exp_sample_rate,
 		channels: audio_exp_channels,
-		include_locked_layers: audio_exp_include_locked
+		exclude_locked_layers: !audio_exp_include_locked
 	}
 	
 	try {
