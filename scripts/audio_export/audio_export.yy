@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Windows",
-    "path": "folders/Scripts/Interface/Windows.yy",
+    "name": "Controller",
+    "path": "folders/Scripts/Controller.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_window_mp3_export",
+  "name": "audio_export",
   "tags": [],
   "resourceType": "GMScript",
 }
