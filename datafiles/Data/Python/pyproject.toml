@@ -6,7 +6,7 @@ authors = ["OpenNBS"]
 
 [tool.poetry.dependencies]
 python = "3.8.10"
-nbswave = "^0.1.1"
+nbswave = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
