@@ -12,7 +12,8 @@ function mp3_export() {
 		}
 	}
 	if (missing_str != "") {
-		if (!question("Some sounds could be not be loaded and will be missing from the exported track:\n\n" + missing_str + "\nWould you like to export anyway?", "Audio export")) {
+		if (!question(condstr(language != 1, "Some sounds could be not be loaded and will be missing from the exported track:\n\n" + missing_str + "\nWould you like to export anyway?",
+		                                     "某些音频由于无法加载，将从导出后的文件中缺失：\n\n" + missing_str + "\n继续导出吗？"), condstr(language != 1, "Audio export", "音频导出"))) {
 			return 0
 		}
 	}
@@ -20,7 +21,7 @@ function mp3_export() {
 	var output_format = audio_exp_format
 	var output_ext = "." + string_lower(output_format)
 	
-	fn = string(get_save_filename_ext(output_format + " files (*" + output_ext + ")|*" + output_ext, filename_new_ext(filename, "") + output_ext, filename_path(filename), condstr(language != 1, "Export audio track", "")))
+	fn = string(get_save_filename_ext(output_format + " files (*" + output_ext + ")|*" + output_ext, filename_new_ext(filename, "") + output_ext, filename_path(filename), condstr(language != 1, "Export audio track", "导出音频文件")))
 	if (fn = "") return 0
 
 	save_song(temp_file, true);
@@ -45,7 +46,7 @@ function mp3_export() {
 	}
 
 	if (language != 1) {if (question("Track saved! Do you want to open it?", "Audio Export")) open_url(fn)}
-	else {if (question("MP3 已保存！现在打开吗？", "导出 MP3")) open_url(fn)}
+	else {if (question("音频已保存！现在打开吗？", "音频导出")) open_url(fn)}
 
 
 

@@ -15,7 +15,8 @@ function draw_window_mp3_export() {
 
 	// Title
 	draw_theme_font(font_main_bold)
-	draw_text_dynamic(x1 + 8, y1 + 8, "Audio Export")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Audio Export")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "音频导出")
 	draw_theme_font(font_main)
 
 	// Header
@@ -29,7 +30,8 @@ function draw_window_mp3_export() {
 	y1 += 180
 	
 	// Format
-	draw_text_dynamic(x1, y1, "Output format")
+	if (language != 1) draw_text_dynamic(x1, y1, "Output format")
+	else draw_text_dynamic(x1, y1, "导出格式")
 	y1 += 17
 	draw_area(x1, y1, x1 + 140, y1 + 20)
 	if (draw_abutton(x1 + 140 - 18, y1 + 1)) {
@@ -45,7 +47,8 @@ function draw_window_mp3_export() {
 	y1 += 40
 	
 	// Sample rate
-	draw_text_dynamic(x1, y1, "Sampling rate")
+	if (language != 1) draw_text_dynamic(x1, y1, "Sampling rate")
+	else draw_text_dynamic(x1, y1, "采样率")
 	y1 += 17
 	draw_area(x1, y1, x1 + 140, y1 + 20)
 	if (draw_abutton(x1 + 140 - 18, y1 + 1)) {
@@ -68,27 +71,28 @@ function draw_window_mp3_export() {
 	y1 += 40
 	
 	// Channels
-	draw_text_dynamic(x1, y1, "Channels")
+	if (language != 1) draw_text_dynamic(x1, y1, "Channels")
+	else draw_text_dynamic(x1, y1, "通道")
 	y1 += 17
-	if (draw_radiobox(x1, y1, audio_exp_channels == 1, "1 (mono)", "Export the track with a single channel.")) {
+	if (draw_radiobox(x1, y1, audio_exp_channels == 1, condstr(language != 1, "1 (mono)", "1（单声道）"), condstr(language != 1, "Export the track with a single channel.", "导出单声道的音频。"))) {
 		audio_exp_channels = 1
 	}
 	y1 += 15
-	if (draw_radiobox(x1, y1, audio_exp_channels == 2, "2 (stereo)", "Export the track with two channels.")) {
+	if (draw_radiobox(x1, y1, audio_exp_channels == 2, condstr(language != 1, "2 (stereo)", "2（立体声）"), condstr(language != 1, "Export the track with two channels.", "导出立体声的音频。"))) {
 		audio_exp_channels = 2
 	}
 	
 	y1 += 30
 
 	// Locked layers
-	if (draw_checkbox(x1, y1, audio_exp_include_locked, "Include locked layers", "Whether to export locked layers in the audio track.", false, true)) audio_exp_include_locked = !audio_exp_include_locked
+	if (draw_checkbox(x1, y1, audio_exp_include_locked, condstr(language != 1, "Include locked layers", "包括已静音的层"), condstr(language != 1, "Whether to export locked layers in the audio track.", "是否在音频内包含已静音的层。"), false, true)) audio_exp_include_locked = !audio_exp_include_locked
 
 	// Footer buttons
 	x1 = x2 - 8 - 72
 	y1 = y2 - 8 - 24
-	if (draw_button2(x1, y1, 72, "Export", false)) mp3_export()
+	if (draw_button2(x1, y1, 72, condstr(language != 1, "Export", "导出"), false)) mp3_export()
 	x1 -= 77
-	if (draw_button2(x1, y1, 72, "Cancel", false) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1, y1, 72, condstr(language != 1, "Cancel", "取消"), false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	
