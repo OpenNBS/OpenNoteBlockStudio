@@ -1,4 +1,5 @@
 import subprocess
+from typing import Dict, Sequence, Union
 
 
 def patch_arguments(function, **patched_kwargs):
@@ -9,12 +10,21 @@ def patch_arguments(function, **patched_kwargs):
     return decorate_name
 
 
+def convert_to_int(kwargs: Dict[str, Union[float, int]], fields: Sequence[str]):
+    for field in fields:
+        kwargs[field] = int(kwargs[field])
+    return kwargs
+
+
 def main(*args, **kwargs):
 
     # Monkey-patch to avoid ffmpeg/ffprobe calls opening console window
     subprocess.Popen = patch_arguments(
         subprocess.Popen, creationflags=subprocess.CREATE_NO_WINDOW
     )
+
+    # Convert float arguments to int
+    kwargs = convert_to_int(kwargs, ["sample_rate", "channels"])
 
     import nbswave
 
