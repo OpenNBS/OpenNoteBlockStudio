@@ -1,3 +1,12 @@
+Changes in v3.10.0-beta.2 (2022.04.05):
+* The MP3 export was renamed to 'Audio export'.
+* Added more output formats: MP3, WAV, OGG, AIFF, FLAC.
+* Added an option to choose the sampling rate of the exported track.
+* Added an option to choose between mono and stereo.
+* The "Include locked layers" option now works again.
+* Dramatically decreased memory usage while exporting a song.
+* Fixed NBS possibly running out of memory on songs with lots of notes.
+
 Changes in v3.10.0-beta.1 (2022.03.29):
 * The MP3 export back-end has been reworked from scratch:
    * Added stereo support! Panning on notes and layers will now be rendered
