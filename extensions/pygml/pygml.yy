@@ -27,7 +27,7 @@
             2,
           ],"resourceVersion":"1.0","name":"_python_prepare_buffer","tags":[],"resourceType":"GMExtensionFunction",},
         {"externalName":"python_set_buffer_size","kind":2,"help":"python_set_buffer_size(bytes)","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"python_set_buffer_size","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[],"ProxyFiles":[],"copyToTargets":144150411102650604,"order":[
+      ],"constants":[],"ProxyFiles":[],"copyToTargets":144150411102650596,"order":[
         {"name":"python_call_function","path":"extensions/pygml/pygml.yy",},
         {"name":"_python_prepare_buffer","path":"extensions/pygml/pygml.yy",},
         {"name":"python_set_buffer_size","path":"extensions/pygml/pygml.yy",},
