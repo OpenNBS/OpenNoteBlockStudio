@@ -1550,7 +1550,7 @@ function control_draw() {
 		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
 		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
 		                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
-		                             inactive(totalblocks = 0) + "导出为 MP3......|"+
+		                             inactive(totalblocks = 0) + "导出音频文件......|"+
 		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
 		                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
 									 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
