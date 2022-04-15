@@ -343,10 +343,10 @@
         {"value":"8","hidden":false,"resourceVersion":"1.0","name":"DC_RAND","tags":[],"resourceType":"GMExtensionConstant",},
       ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libfilesystem.dylib","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libfilesystem.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":6,"resourceVersion":"1.0","name":"libfilesystem_x64.dll","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libfilesystem_arm.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libfilesystem_arm64.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libfilesystem.so","tags":[],"resourceType":"GMProxyFile",},
       ],"copyToTargets":202375362,"order":[
         {"name":"file_copy","path":"extensions/libfilesystem/libfilesystem.yy",},
         {"name":"file_rename","path":"extensions/libfilesystem/libfilesystem.yy",},

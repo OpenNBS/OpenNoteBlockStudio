@@ -501,7 +501,7 @@
     {"name":"tvOS","path":"options/tvos/options_tvos.yy",},
     {"name":"Windows UWP","path":"options/windowsuap/options_windowsuap.yy",},
   ],
-  "isDnDProject": false,
+  "defaultScriptType": 1,
   "isEcma": false,
   "configs": {
     "name": "Default",
@@ -573,8 +573,8 @@
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Fonts","resourceType":"GMTextureGroup",},
+    {"isScaled":false,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Fonts","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":"banjo.ogg","resourceType":"GMIncludedFile",},
@@ -783,9 +783,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":"wallpaper.bat","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.1.1.610",
+    "IDEVersion": "2022.300.0.499",
   },
-  "resourceVersion": "1.4",
+  "resourceVersion": "1.5",
   "name": "Minecraft Note Block Studio",
   "tags": [],
   "resourceType": "GMProject",

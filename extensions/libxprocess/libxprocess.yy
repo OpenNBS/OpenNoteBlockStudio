@@ -7,7 +7,7 @@
   "packageId": "",
   "productId": "",
   "author": "",
-  "date": "2021-06-09T03:32:23.3229009-07:00",
+  "date": "2021-06-09T06:32:23.3229009-04:00",
   "license": "",
   "description": "",
   "helpfile": "",
@@ -149,10 +149,10 @@
         {"value":"0x0001","hidden":false,"resourceVersion":"1.0","name":"KINFO_OWID","tags":[],"resourceType":"GMExtensionConstant",},
       ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":6,"resourceVersion":"1.0","name":"libxprocess_x64.dll","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess_arm.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess_arm64.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
       ],"copyToTargets":194,"order":[
         {"name":"ProcessExecute","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"ProcessExecuteAsync","path":"extensions/libxprocess/libxprocess.yy",},

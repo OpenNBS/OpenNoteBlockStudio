@@ -221,10 +221,10 @@
         {"value":"\"X11\"","hidden":false,"resourceVersion":"1.0","name":"ws_x11","tags":[],"resourceType":"GMExtensionConstant",},
       ],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libdlgmod.dylib","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libdlgmod.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":6,"resourceVersion":"1.0","name":"libdlgmod_x64.dll","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libdlgmod_arm.so","tags":[],"resourceType":"GMProxyFile",},
         {"TargetMask":7,"resourceVersion":"1.0","name":"libdlgmod_arm64.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libdlgmod.so","tags":[],"resourceType":"GMProxyFile",},
       ],"copyToTargets":202375362,"order":[
         {"name":"show_message","path":"extensions/libdlgmodule/libdlgmodule.yy",},
         {"name":"show_question","path":"extensions/libdlgmodule/libdlgmodule.yy",},
