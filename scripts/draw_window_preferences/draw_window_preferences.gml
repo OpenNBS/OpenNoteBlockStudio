@@ -242,7 +242,7 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where saving/loading should be opened in.", "")
-	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
+	        a = string(GetSaveFileName("", "Select song folder", songfolder, "Song folder"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
 	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
@@ -258,7 +258,7 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "Change", 0, 1)) {
 	        message("Select the directory where patterns can be imported/exported to.", "")
-	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
+	        a = string(GetSaveFileName("", "Select patterns folder", patternfolder, "Pattern folder"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
 	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
@@ -275,7 +275,7 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "修改", 0, 1)) {
 	        message("选择保存和打开的文件夹", "")
-	        a = string(get_save_filename_ext("", "选择歌曲文件夹", songfolder, "歌曲文件夹"))
+	        a = string(GetSaveFileName("", "选择歌曲文件夹", songfolder, "歌曲文件夹"))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
 	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, "还原默认", 0, 1)) songfolder = songs_directory
@@ -291,7 +291,7 @@ function draw_window_preferences() {
 	    }
 	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "修改", 0, 1)) {
 	        message("选择导出和导入片段的文件夹", "")
-	        a = string(get_save_filename_ext("", "选择片段文件夹", patternfolder, "片段文件夹"))
+	        a = string(GetSaveFileName("", "选择片段文件夹", patternfolder, "片段文件夹"))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
 	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "还原默认", 0, 1)) patternfolder = pattern_directory
