@@ -1,6 +1,6 @@
 function schematic_export() {
 	// schematic_export()
-	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins, insblock;
+	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
 	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
 	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
@@ -38,22 +38,6 @@ function schematic_export() {
 		ins[13] = "bit"
 		ins[14] = "banjo"
 		ins[15] = "pling"
-		insblock[0] = "dirt"
-		insblock[1] = "oak_planks"
-		insblock[2] = "cobblestone"
-		insblock[3] = "sand"
-		insblock[4] = "glass"
-		insblock[5] = "white_wool"
-		insblock[6] = "clay"
-		insblock[7] = "gold_block"
-		insblock[8] = "packed_ice"
-		insblock[9] = "bone_block"
-		insblock[10] = "iron_block"
-		insblock[11] = "soul_sand"
-		insblock[12] = "pumpkin"
-		insblock[13] = "emerald_block"
-		insblock[14] = "hay_block"
-		insblock[15] = "glowstone"
 		instrument_list = o.instrument_list
 	    layers = ceil(o.sch_exp_maxheight[o.sch_exp_compress] / 4)
 	    block_walkway_block = o.sch_exp_walkway_block
@@ -718,13 +702,17 @@ function schematic_export() {
 			insnum += (instrument_list[| a].num_blocks != 0)
 			insind[a] = (instrument_list[| a].num_blocks != 0)
 		}
-		TAG_List("palette", 27 + insnum * 26, 10)
-			TAG_String("Name", "minecraft:stone")
+		TAG_List("palette", 29 + insnum * 26, 10)
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_walkway_block, block_walkway_data))
+			TAG_End()
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_circuit_block, block_circuit_data))
+			TAG_End()
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_ground_block, block_ground_data))
 			TAG_End()
 			for (a = 0; a < 16; a += 1) {
 				show_debug_message(instrument_list[| a])
 				if ((instrument_list[| a].num_blocks != 0)) {
-					TAG_String("Name", "minecraft:" + insblock[a])
+					TAG_String("Name", "minecraft:" + block_get_namespaced_id(o.sch_exp_ins_block[a], o.sch_exp_ins_data[a]))
 					if (a = 9) {
 						TAG_Compound("Properties")
 							TAG_String("axis", "y")
@@ -914,7 +902,7 @@ function schematic_export() {
 				buffer_write_int_be(wid - 1 - signy)
 				buffer_write_int_be(signz)
 				buffer_write_int_be(signx)
-			TAG_Int("state", insnum * 26 + 17)
+			TAG_Int("state", insnum * 26 + 19)
 	        TAG_End()
 			if (sch_loop) {
 				TAG_Compound("nbt")
@@ -929,7 +917,7 @@ function schematic_export() {
 					buffer_write_int_be(wid - 1 - signy)
 					buffer_write_int_be(signz - 1)
 					buffer_write_int_be(signx)
-				TAG_Int("state", insnum * 26 + 17)
+				TAG_Int("state", insnum * 26 + 19)
 				TAG_End()
 			}
 			for (a = 0; a < noteblocks; a += 1) {
@@ -937,7 +925,7 @@ function schematic_export() {
 					buffer_write_int_be(wid - 1 - noteblocky[a])
 					buffer_write_int_be(noteblockz[a])
 					buffer_write_int_be(noteblockx[a])
-	            TAG_Int("state", 1 + insnum + noteblocknote[a])
+	            TAG_Int("state", 3 + insnum + noteblocknote[a])
 	            TAG_End()
 	        }
 			if (chest) {
@@ -966,48 +954,50 @@ function schematic_export() {
 							buffer_write_int_be(wid - b - 1)
 							buffer_write_int_be(c)
 							buffer_write_int_be(a)
-						if (sch_block_read(a, b, c) = 0) TAG_Int("state", insnum * 26 + 2)
-						else if (sch_block_read(a, b, c) = 1) TAG_Int("state", 0)
-						else if (sch_block_read(a, b, c) = 3) TAG_Int("state", 1)
-						else if (sch_block_read(a, b, c) = 5) TAG_Int("state", 1 + insind[0])
-						else if (sch_block_read(a, b, c) = 4) TAG_Int("state", 1 + insind[0] + insind[1])
-						else if (sch_block_read(a, b, c) = 12) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2])
-						else if (sch_block_read(a, b, c) = 20) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3])
-						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 0) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4])
-						else if (sch_block_read(a, b, c) = 82) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5])
-						else if (sch_block_read(a, b, c) = 41) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6])
-						else if (sch_block_read(a, b, c) = 174) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7])
-						else if (sch_block_read(a, b, c) = 216) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8])
-						else if (sch_block_read(a, b, c) = 42) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9])
-						else if (sch_block_read(a, b, c) = 88) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10])
-						else if (sch_block_read(a, b, c) = 86) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11])
-						else if (sch_block_read(a, b, c) = 133) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12])
-						else if (sch_block_read(a, b, c) = 170) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12] + insind[13])
-						else if (sch_block_read(a, b, c) = 89) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[1] + insind[12] + insind[13] + insind[14])
-						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 11) TAG_Int("state", insnum * 26 + 1)
-						else if (sch_block_read(a, b, c) = 65) TAG_Int("state", insnum * 26 + 3)
-						else if (sch_block_read(a, b, c) = 55) TAG_Int("state", insnum * 26 + 4)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3) TAG_Int("state", insnum * 26 + 5)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4) TAG_Int("state", insnum * 26 + 6)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 2) TAG_Int("state", insnum * 26 + 7)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 3) TAG_Int("state", insnum * 26 + 8)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 9)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4) TAG_Int("state", insnum * 26 + 10)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 2) TAG_Int("state", insnum * 26 + 11)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 3) TAG_Int("state", insnum * 26 + 12)
-						else if (sch_block_read(a, b, c) = 94) TAG_Int("state", insnum * 26 + 13)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 14)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 15)
-						else if (sch_block_read(a, b, c) = 77) TAG_Int("state", insnum * 26 + 16)
-						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 18)
-						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 20)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 21)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 22)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 23)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 24)
-						else if (sch_block_read(a, b, c) = 69) TAG_Int("state", insnum * 26 + 25)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 4) TAG_Int("state", insnum * 26 + 26)
-						else TAG_Int("state", insnum * 26 + 2)
+						if (sch_block_read(a, b, c) = 0) TAG_Int("state", insnum * 26 + 4) //air
+						else if (sch_block_read(a, b, c) = block_walkway_block && sch_data_read(a, b, c) = block_walkway_data) TAG_Int("state", 0) //walkway
+						else if (sch_block_read(a, b, c) = block_circuit_block && sch_data_read(a, b, c) = block_circuit_data) TAG_Int("state", 1) //circuit
+						else if (sch_block_read(a, b, c) = block_ground_block && sch_data_read(a, b, c) = block_ground_data) TAG_Int("state", 2) //ground
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[0] && sch_data_read(a, b, c) = o.sch_exp_ins_data[0]) TAG_Int("state", 3) //vanilla instruments (only)
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[1] && sch_data_read(a, b, c) = o.sch_exp_ins_data[1]) TAG_Int("state", 3 + insind[0])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[2] && sch_data_read(a, b, c) = o.sch_exp_ins_data[2]) TAG_Int("state", 3 + insind[0] + insind[1])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[3] && sch_data_read(a, b, c) = o.sch_exp_ins_data[3]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[4] && sch_data_read(a, b, c) = o.sch_exp_ins_data[4]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[5] && sch_data_read(a, b, c) = o.sch_exp_ins_data[5]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[6] && sch_data_read(a, b, c) = o.sch_exp_ins_data[6]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[7] && sch_data_read(a, b, c) = o.sch_exp_ins_data[7]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[8] && sch_data_read(a, b, c) = o.sch_exp_ins_data[8]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[9] && sch_data_read(a, b, c) = o.sch_exp_ins_data[9]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[10] && sch_data_read(a, b, c) = o.sch_exp_ins_data[10]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[11] && sch_data_read(a, b, c) = o.sch_exp_ins_data[11]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[12] && sch_data_read(a, b, c) = o.sch_exp_ins_data[12]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[13] && sch_data_read(a, b, c) = o.sch_exp_ins_data[13]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[14] && sch_data_read(a, b, c) = o.sch_exp_ins_data[14]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12] + insind[13])
+						else if (sch_block_read(a, b, c) = o.sch_exp_ins_block[15] && sch_data_read(a, b, c) = o.sch_exp_ins_data[15]) TAG_Int("state", 3 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[1] + insind[12] + insind[13] + insind[14])
+						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 11) TAG_Int("state", insnum * 26 + 3) //blue_wool
+						else if (sch_block_read(a, b, c) = 65) TAG_Int("state", insnum * 26 + 5) //ladder
+						else if (sch_block_read(a, b, c) = 55) TAG_Int("state", insnum * 26 + 6) //redstone_wire
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3) TAG_Int("state", insnum * 26 + 7) //east repeater 1
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4) TAG_Int("state", insnum * 26 + 8) //east repeater 2
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 2) TAG_Int("state", insnum * 26 + 9) //east repeater 3
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 3) TAG_Int("state", insnum * 26 + 10) //east repeater 4
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 11) //west repeater 1
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4) TAG_Int("state", insnum * 26 + 12) //west repeater 2
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 2) TAG_Int("state", insnum * 26 + 13) //west repeater 3
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 3) TAG_Int("state", insnum * 26 + 14) //west repeater 4
+						else if (sch_block_read(a, b, c) = 94) TAG_Int("state", insnum * 26 + 15) //south repeater 4
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 16) //unlit torch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 17) //lit torch
+						else if (sch_block_read(a, b, c) = 77) TAG_Int("state", insnum * 26 + 18) //south stone_button
+						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 20) //ns powered_rail
+						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 22) //ns rail
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 23) //east unlit walltorch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 24) //east lit walltorch
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 25) //west unlit walltorch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 26) //west lit walltorch
+						else if (sch_block_read(a, b, c) = 69) TAG_Int("state", insnum * 26 + 27) //south lever
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 4) TAG_Int("state", insnum * 26 + 28) //north lit walltorch
+						else TAG_Int("state", insnum * 26 + 4)
 						TAG_End()
 						}
 			        }
