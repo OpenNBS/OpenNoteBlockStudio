@@ -201,7 +201,7 @@ function schematic_export() {
 	            if (o.colamount[a] > 0) { // Calculate note blocks for this tick
 	                for (b = 0; b <= o.collast[a]; b += 1) {
 	                    if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.sch_exp_includelocked)) {
-	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
+	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.structure && o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
 	                            nblockpit[nblocks] = o.song_pit[a, b]
@@ -468,7 +468,7 @@ function schematic_export() {
 	            if (o.colamount[a] > 0) { // Calculate note blocks for this tick
 	                for (b = 0; b <= o.collast[a]; b += 1) {
 	                    if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.sch_exp_includelocked)) {
-	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
+	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.structure && o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
 	                            nblockpit[nblocks] = o.song_pit[a, b]
