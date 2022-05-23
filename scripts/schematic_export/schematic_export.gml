@@ -1,7 +1,7 @@
 function schematic_export() {
 	// schematic_export()
 	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, ins;
-	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins;
+	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit;
 	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
 	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
 	if (fn = "") return 0
@@ -204,15 +204,18 @@ function schematic_export() {
 	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
+	                            nblockpit[nblocks] = o.song_pit[a, b]
 	                            nblocks += 1
 	                        } else if (!o.sch_exp_compress) {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
+	                            nblockpit[nblocks] = 0
 	                            nblocks += 1 
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
 	                        nblockkey[nblocks] = 0
+	                        nblockpit[nblocks] = 0
 	                        nblocks += 1
 	                    }
 	                }
@@ -239,6 +242,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -252,6 +256,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -265,6 +270,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -278,6 +284,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -450,7 +457,7 @@ function schematic_export() {
 	        signz = hei - 1
 	        xx = 1
 	        yy = wid - 7
-	        var rep, dir, nblocks, nblockins, nblockkey, turn;
+	        var rep, dir, nblocks, nblockins, nblockkey, nblockpit, turn;
 	        rep = 0
 	        dir = -1 // 1 or -1
 	        for (a = 0; a <= o.enda; a += 1) {
@@ -464,15 +471,18 @@ function schematic_export() {
 	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
+	                            nblockpit[nblocks] = o.song_pit[a, b]
 	                            nblocks += 1
 	                        } else if (!o.sch_exp_compress) {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
+	                            nblockpit[nblocks] = 0
 	                            nblocks += 1 
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
 	                        nblockkey[nblocks] = 0
+	                        nblockpit[nblocks] = 0
 	                        nblocks += 1
 	                    }
 	                }
@@ -499,6 +509,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -512,6 +523,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -525,6 +537,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -538,6 +551,7 @@ function schematic_export() {
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
 								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -936,10 +950,10 @@ function schematic_export() {
 				if (o.command_block) {
 					TAG_Compound("nbt")
 						soundname = dat_instrument(noteblockins[a])
-						soundpitch = dat_pitch(noteblocknote[a] + 33)
+						soundpitch = dat_pitch(noteblocknote[a] + 33 + noteblockpit[a] / 100)
 						if (noteblocknote[a] < 0) soundname += "_-1"
 						else if (noteblocknote[a] > 24) soundname += "_1"
-						TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(dat_pitch(noteblocknote[a] + 33)))
+						TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(soundpitch))
 						TAG_Byte("TrackOutput", 0)
 						TAG_Byte("powered", 0)
 						TAG_Byte("auto", 0)
