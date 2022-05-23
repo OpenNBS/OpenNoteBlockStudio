@@ -97,10 +97,10 @@ function draw_window_schematic_export() {
 	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
 	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
 	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
-	    draw_text_dynamic(x1 + 16, y1 + 220 + 54, "For Minecraft version:")
-	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is supported.")) structure = true
-	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
-	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
+	    draw_text_dynamic(x1 + 16, y1 + 280, "For Minecraft version:")
+	    if (draw_radiobox(x1 + 32, y1 + 300, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is supported.")) structure = true
+	    if (draw_radiobox(x1 + 32, y1 + 320, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
+	    if (draw_radiobox(x1 + 32, y1 + 340, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
 	    draw_text_dynamic(x1 + 170, y1 + 220, "Repeaters per row:")
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
@@ -108,10 +108,13 @@ function draw_window_schematic_export() {
 		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
 	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.", false, true)) sch_exp_compress=!sch_exp_compress
 		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.", false, true)) sch_exp_minecart=!sch_exp_minecart
-	        if (draw_checkbox(x1 + 170 + 16, y1 + 310, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
+	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.", false, true)) sch_exp_minecart=!sch_exp_minecart
+	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
 			if (sch_exp_layout = 0) {
-	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
+	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
+			}
+			if (structure = true) {
+				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "Use Command Blocks", "Whether to use command blocks instesd of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
 			}
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
@@ -133,10 +136,10 @@ function draw_window_schematic_export() {
 	    draw_text_dynamic(x1 + 16, y1 + 220, "分布:")
 	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "普通过道", "生成过道延伸到歌曲末尾。")) sch_exp_layout = 1
 	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "环形过道", "生成让玩家来回走的过道。")) sch_exp_layout = 0
-	    draw_text_dynamic(x1 + 16, y1 + 220 + 54, "导出为 Minecraft 版本:")
-	    if (draw_radiobox(x1 + 32, y1 + 290, structure, "1.13+", "创建一个兼容 1.13+ 的结构方块文件。只兼容默认方块。")) structure = true
-	    if (draw_radiobox(x1 + 32, y1 + 310, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "创建一个兼容 1.11 和 1.12 的 Schematic 文件。")) {sch_exp_minecraft_old = false structure = false}
-	    if (draw_radiobox(x1 + 32, y1 + 330, (sch_exp_minecraft_old && !structure), "pre 1.11", "创建一个只兼容 1.11 之前旧版本的 Schematic 文件。")) {sch_exp_minecraft_old = true structure = false}
+	    draw_text_dynamic(x1 + 16, y1 + 280, "导出为 Minecraft 版本:")
+	    if (draw_radiobox(x1 + 32, y1 + 300, structure, "1.13+", "创建一个兼容 1.13+ 的结构方块文件。只兼容默认方块。")) structure = true
+	    if (draw_radiobox(x1 + 32, y1 + 320, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "创建一个兼容 1.11 和 1.12 的 Schematic 文件。")) {sch_exp_minecraft_old = false structure = false}
+	    if (draw_radiobox(x1 + 32, y1 + 340, (sch_exp_minecraft_old && !structure), "pre 1.11", "创建一个只兼容 1.11 之前旧版本的 Schematic 文件。")) {sch_exp_minecraft_old = true structure = false}
 	    draw_text_dynamic(x1 + 170, y1 + 220, "每行中继器个数:")
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
@@ -144,10 +147,13 @@ function draw_window_schematic_export() {
 		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "包括已静音的层", "是否在 Schematic 内包括已静音的层。", false, true)) sch_exp_includelocked=!sch_exp_includelocked
 	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "压缩每层", "压缩每层以节省竖向空间。", false, true)) sch_exp_compress=!sch_exp_compress
 		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_minecart, "包括矿车轨道", "包括一个跟随歌曲进度的矿车轨道。", false, true)) sch_exp_minecart=!sch_exp_minecart
-	        if (draw_checkbox(x1 + 170 + 16, y1 + 310, sch_exp_chest, "添加矿车箱", "是否在歌曲开始处添加一个装满矿车的箱子。", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
+	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, "包括矿车轨道", "包括一个跟随歌曲进度的矿车轨道。", false, true)) sch_exp_minecart=!sch_exp_minecart
+	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, "添加矿车箱", "是否在歌曲开始处添加一个装满矿车的箱子。", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
 			if (sch_exp_layout = 0) {
-	            if (draw_checkbox(x1 + 170, y1 + 330, sch_exp_loop, "包括循环选项", "是否添加开关循环功能的拉杆。", false, true)) sch_exp_loop=!sch_exp_loop
+	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "包括循环选项", "是否添加开关循环功能的拉杆。", false, true)) sch_exp_loop=!sch_exp_loop
+			}
+			if (structure = true) {
+				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "使用命令方块", "是否使用命令方块代替音符盒以获得更广音域。\n（需要更多音符资源包）", false, true)) command_block=!command_block
 			}
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass

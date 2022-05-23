@@ -118,6 +118,7 @@ function save_settings() {
 			ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 		}
 	}
+	ini_write_real_clean("schematic_export", "command_block",  command_block)
 
 	// Branch export settings
 	ini_write_real_clean("branch_export", "stereo",      sch_exp_stereo)

@@ -123,6 +123,7 @@ function load_settings() {
 	   sch_exp_ins_block[a] = ini_read_real("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
 	   sch_exp_ins_data[a] =  ini_read_real("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 	}
+	command_block =            ini_read_real("schematic_export", "command_block",  command_block)
 
 	// Branch export settings
 	sch_exp_stereo =      ini_read_real("branch_export", "stereo",      sch_exp_stereo)

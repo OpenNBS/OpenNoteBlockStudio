@@ -469,6 +469,7 @@ function control_create() {
 	reset_schematic_export(0)
 	block_color = 0
 	structure = 0
+	command_block = 0
 
 	//Datapack
 	dat_reset(0)
