@@ -945,7 +945,7 @@ function schematic_export() {
 				TAG_Int("state", insnum * 26 + 19)
 				TAG_End()
 			}
-			var soundname, soundpitch;
+			var soundname, soundpitch, soundnote;
 			for (a = 0; a < noteblocks; a += 1) {
 				if (o.command_block) {
 					TAG_Compound("nbt")
@@ -965,7 +965,7 @@ function schematic_export() {
 					buffer_write_int_be(wid - 1 - noteblocky[a])
 					buffer_write_int_be(noteblockz[a])
 					buffer_write_int_be(noteblockx[a])
-	            TAG_Int("state", 3 + insnum + noteblockins[a] * 25 + noteblocknote[a])
+	            TAG_Int("state", 3 + insnum + (noteblockins[a] * 25 + noteblocknote[a]) * !o.command_block)
 	            TAG_End()
 	        }
 			if (chest) {
