@@ -42,7 +42,9 @@
         {"externalName":"ifd_load_fonts","kind":1,"help":"IfdLoadFonts()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"IfdLoadFonts","tags":[],"resourceType":"GMExtensionFunction",},
       ],"constants":[],"ProxyFiles":[
         {"TargetMask":1,"resourceVersion":"1.0","name":"libfiledialogs.dylib","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libfiledialogs.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libfiledialogs_arm.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libfiledialogs_arm64.so","tags":[],"resourceType":"GMProxyFile",},
+        {"TargetMask":7,"resourceVersion":"1.0","name":"libfiledialogs.so","tags":[],"resourceType":"GMProxyFile",},        
       ],"copyToTargets":194,"order":[
         {"name":"GetOpenFileName","path":"extensions/libfiledialogs/libfiledialogs.yy",},
         {"name":"GetOpenFileNames","path":"extensions/libfiledialogs/libfiledialogs.yy",},
@@ -51,7 +53,7 @@
         {"name":"IfdLoadFonts","path":"extensions/libfiledialogs/libfiledialogs.yy",},
       ],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
     {"filename":"sdl2.dll","origname":"","init":"","final":"","kind":1,"uncompress":false,"functions":[],"constants":[],"ProxyFiles":[],"copyToTargets":64,"order":[],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
-    {"filename":"filedialogs.zip","origname":"","init":"","final":"","kind":4,"uncompress":false,"functions":[],"constants":[],"ProxyFiles":[],"copyToTargets":0,"order":[],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
+    {"filename":"libfiledialogs.zip","origname":"","init":"","final":"","kind":4,"uncompress":false,"functions":[],"constants":[],"ProxyFiles":[],"copyToTargets":0,"order":[],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
   ],
   "classname": "",
   "tvosclassname": null,
