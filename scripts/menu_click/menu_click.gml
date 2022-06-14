@@ -53,10 +53,13 @@ function menu_click(argument0) {
 	            if (calculate_size()) window = w_schematic_export
 	        }
 	        if (sel = b + 13) {
+	            if (calculate_size()) window = w_track_export
+	        }
+	        if (sel = b + 14) {
 	            if (calculate_size()) window = w_branch_export
 	        }
-			if(sel = b + 14) window = w_datapack_export
-	        if (sel = b + 15) game_end()
+			if(sel = b + 15) window = w_datapack_export
+	        if (sel = b + 16) game_end()
 	        break
 	    }
 	    case "edit": {

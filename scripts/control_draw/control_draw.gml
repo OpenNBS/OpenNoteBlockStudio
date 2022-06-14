@@ -122,6 +122,13 @@ function control_draw() {
 		else set_msg("全屏模式 => 关闭")
 		}
 	}
+	if (keyboard_check_pressed(ord("M"))) {
+		minus -= 1
+	}
+	if (keyboard_check_pressed(ord("N"))) {
+		minus += 1
+	}
+	//show_debug_message(minus)
 	}
 
 	if (theme = 0) window_background = 15790320
@@ -1466,6 +1473,7 @@ function control_draw() {
 									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
 		                             inactive(totalblocks = 0) + "Export as audio track...|"+
 		                             inactive(totalblocks = 0) + "Export as schematic...|"+
+		                             inactive(totalblocks = 0) + "Export as track schematic...|"+
 		                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
 									 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
 		                             "Alt + F4$Exit")
@@ -1552,6 +1560,7 @@ function control_draw() {
 		                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
 		                             inactive(totalblocks = 0) + "导出音频文件......|"+
 		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
+		                             inactive(totalblocks = 0) + "导出为直轨 schematic......|"+
 		                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
 									 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
 		                             "Alt + F4$退出")

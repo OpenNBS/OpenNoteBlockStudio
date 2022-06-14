@@ -1,5 +1,5 @@
-function draw_window_schematic_export() {
-	// draw_window_schematic_export()
+function draw_window_track_export() {
+	// draw_window_track_export()
 	windowanim = 1
 	if (theme = 3) draw_set_alpha(windowalpha)
 	var x1, y1, a, b, c, d, str, nsel, tabs, tabstr, tabw, tabtip, menun, menua, menub, block, blocks, c1, c2;
@@ -15,8 +15,8 @@ function draw_window_schematic_export() {
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Schematic Export")
-	else draw_text_dynamic(x1 + 8, y1 + 8, "导出 Schematic")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Track Export")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "导出直轨")
 	draw_theme_font(font_main)
 
 	b = 8
@@ -95,81 +95,39 @@ function draw_window_schematic_export() {
 		if (language != 1) {
 	    draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
 	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
-	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
-	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
+	    draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.", 1)
 	    draw_text_dynamic(x1 + 16, y1 + 280, "For Minecraft version:")
-	    if (draw_radiobox(x1 + 32, y1 + 300, structure, "1.13+", "Create a Structure block file that is compatible with 1.13+.")) structure = true
-	    if (draw_radiobox(x1 + 32, y1 + 320, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "Create a Schematic that is compatible with 1.11 or 1.12.")) {sch_exp_minecraft_old = false structure = false}
-	    if (draw_radiobox(x1 + 32, y1 + 340, (sch_exp_minecraft_old && !structure), "pre 1.11", "Create a Schematic that is compatible with\nold Minecraft versions only, before 1.11.")) {sch_exp_minecraft_old = true structure = false}
-	    draw_text_dynamic(x1 + 170, y1 + 220, "Repeaters per row:")
-	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
-	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
-	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
+	    draw_radiobox(x1 + 32, y1 + 300, 1, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is supported.", 1)
 		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.", false, true)) sch_exp_compress=!sch_exp_compress
-		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.", false, true)) sch_exp_minecart=!sch_exp_minecart
-	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
-			if (sch_exp_layout = 0) {
-	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
-			}
-			if (structure = true) {
-				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "Use Command Blocks", "Whether to use command blocks instesd of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
-			}
-	    } else {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
-	    }
+		if (draw_checkbox(x1 + 170, y1 + 260 + (sch_exp_layout = 0) * 20, command_block, "Use Command Blocks", "Whether to use command blocks instesd of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
 	    draw_text_dynamic(x1 + 380, y1 + 220, "Note blocks:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "Size:")
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
-	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
-	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(66 + enda * 9))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(39 + enda * 2) + "x" + string(98) + "x" + string(19))
 	    draw_set_halign(fa_left)
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "Tempo:")
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 ticks / second", "Generate song at 10 ticks / second")) sch_exp_tempo = 0
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 ticks / second", "Generate song at 5 ticks / second")) sch_exp_tempo = 1
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) sch_exp_tempo = 2
+	    draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, 1, "10 ticks / second", "Generate song at 10 ticks / second", 1)
 		} else {
 		draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
 	    draw_text_dynamic(x1 + 16, y1 + 220, "分布:")
-	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "普通过道", "生成过道延伸到歌曲末尾。")) sch_exp_layout = 1
-	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "环形过道", "生成让玩家来回走的过道。")) sch_exp_layout = 0
+	    draw_radiobox(x1 + 32, y1 + 240, 1, "普通过道", "生成过道延伸到歌曲末尾。", 1)
 	    draw_text_dynamic(x1 + 16, y1 + 280, "导出为 Minecraft 版本:")
-	    if (draw_radiobox(x1 + 32, y1 + 300, structure, "1.13+", "创建一个兼容 1.13+ 的结构方块文件。")) structure = true
-	    if (draw_radiobox(x1 + 32, y1 + 320, (!sch_exp_minecraft_old && !structure), "1.11-1.12", "创建一个兼容 1.11 和 1.12 的 Schematic 文件。")) {sch_exp_minecraft_old = false structure = false}
-	    if (draw_radiobox(x1 + 32, y1 + 340, (sch_exp_minecraft_old && !structure), "pre 1.11", "创建一个只兼容 1.11 之前旧版本的 Schematic 文件。")) {sch_exp_minecraft_old = true structure = false}
-	    draw_text_dynamic(x1 + 170, y1 + 220, "每行中继器个数:")
-	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
-	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
-	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "Schematic 里每行中继器的个数。拖拽来更改。")
+	    draw_radiobox(x1 + 32, y1 + 300, 1, "1.13+", "创建一个兼容 1.13+ 的结构方块文件。", 1)
 		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "包括已静音的层", "是否在 Schematic 内包括已静音的层。", false, true)) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "压缩每层", "压缩每层以节省竖向空间。", false, true)) sch_exp_compress=!sch_exp_compress
-		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, "包括矿车轨道", "包括一个跟随歌曲进度的矿车轨道。", false, true)) sch_exp_minecart=!sch_exp_minecart
-	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, "添加矿车箱", "是否在歌曲开始处添加一个装满矿车的箱子。", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
-			if (sch_exp_layout = 0) {
-	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "包括循环选项", "是否添加开关循环功能的拉杆。", false, true)) sch_exp_loop=!sch_exp_loop
-			}
-			if (structure = true) {
-				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "使用命令方块", "是否使用命令方块代替音符盒以获得更广音域。\n（需要更多音符资源包）", false, true)) command_block=!command_block
-			}
-	    } else {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
-	    }
+		if (draw_checkbox(x1 + 170, y1 + 260, command_block, "使用命令方块", "是否使用命令方块代替音符盒以获得更广音域。\n（需要更多音符资源包）", false, true)) command_block=!command_block
 	    draw_text_dynamic(x1 + 380, y1 + 220, "音符盒:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "中继器:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "大小:")
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
-	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(sch_exp_repeaters[sch_exp_includelocked, sch_exp_tempo]) + "x" + string(ceil(sch_exp_maxheight[sch_exp_compress] / 4)))
-	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(66 + enda * 9))
+	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(39 + enda * 2) + "x" + string(98) + "x" + string(19))
 	    draw_set_halign(fa_left)
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "速度:")
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 红石刻 / 秒", "生成一个 10 红石刻 / 秒 的歌曲")) sch_exp_tempo = 0
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 红石刻 / 秒", "生成一个 5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 1
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 红石刻 / 秒", "生成一个 2.5 红石刻 / 秒 的歌曲")) sch_exp_tempo = 2
+	    draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, 1, "10 红石刻 / 秒", "生成一个 10 红石刻 / 秒 的歌曲", 1)
 		}
 	} else {
 	    if (theme = 1) {
@@ -236,11 +194,9 @@ function draw_window_schematic_export() {
 		if (language != 1) {
 	    draw_text_dynamic(x1 + 16, y1 + 270, "Block for walkway:")
 	    draw_text_dynamic(x1 + 16, y1 + 300, "Block for circuitry:")
-	    draw_text_dynamic(x1 + 16, y1 + 330, "Block for ground:")
 		} else {
 		draw_text_dynamic(x1 + 16, y1 + 270, "过道所用方块:")
 	    draw_text_dynamic(x1 + 16, y1 + 300, "电路所用方块:")
-	    draw_text_dynamic(x1 + 16, y1 + 330, "地面所用方块:")
 		}
     
 	    draw_set_color(c_white)
@@ -268,19 +224,6 @@ function draw_window_schematic_export() {
 	    else popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "为电路用的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
-    
-	    draw_set_color(c_white)
-		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
-	    draw_rectangle(x1 + 200, y1 + 265 + 60, x1 + 200 + 140, y1 + 265 + 21 + 60, 0)
-	    draw_area(x1 + 200, y1 + 265 + 60, x1 + 200 + 140, y1 + 265 + 21 + 60)
-	    if ((draw_abutton(x1 + 200 + 121, y1 + 267 + 60) || (mouse_rectangle(x1 + 200, y1 + 265 + 60, 140, 21) && mouse_check_button_pressed(mb_left))) && wmenu = 0) {
-	        menun = 1
-	        menua = 2
-	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.")
-	    else popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "为地面用的方块。选草方块会刷一堆生物。")
-	    draw_theme_color()
-	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 60, block_get_name(sch_exp_ground_block, sch_exp_ground_data))
 	}
 	if (language != 1) {
 	if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
@@ -289,7 +232,7 @@ function draw_window_schematic_export() {
 	    } else if (schematic_length() >= 2000 || schematic_width() >= 2000 || schematic_height() >= 256) {
 	        message("The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size.", "Error")
 	    } else {
-	        schematic_export()
+	        track_export()
 	    }
 	}
 	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
@@ -302,10 +245,8 @@ function draw_window_schematic_export() {
 	if (draw_button2(x1 + 470, y1 + 368, 72, "导出") && wmenu = 0) {
 	    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
 	        message("没有方块可以导出！", "导出 Schematic")
-	    } else if (schematic_length() >= 2000 || schematic_width() >= 2000 || schematic_height() >= 256) {
-	        message("这个 Schematic 太大了。大小限制为 2000x2000x256。\n可以更改“每行中继器个数”来减小大小。", "错误")
 	    } else {
-	        schematic_export()
+	        track_export()
 	    }
 	}
 	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {

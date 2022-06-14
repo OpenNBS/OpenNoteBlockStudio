@@ -185,7 +185,7 @@ function schematic_export() {
 	        // Add note blocks
 	        xx = 3
 	        yy = 0
-	        var circ, rep, dir, nblocks, nblockins, nblockkey, turn, lturnx, lturny, lturndel;
+	        var circ, rep, dir, nblocks, nblockins, nblockkey, nblockpit, turn, lturnx, lturny, lturndel;
 	        rep = 0
 	        dir = 1 // 1 or -1
 	        circ = 1 // 1 = From, -1 = To
