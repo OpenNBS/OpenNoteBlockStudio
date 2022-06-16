@@ -56,7 +56,6 @@ function control_create() {
 	icon_time = -1
 	last_icon = -1
 	icon_display = 1
-	minus = 0
 	
 	font_table =
 	[

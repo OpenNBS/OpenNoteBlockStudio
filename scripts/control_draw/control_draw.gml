@@ -122,13 +122,6 @@ function control_draw() {
 		else set_msg("全屏模式 => 关闭")
 		}
 	}
-	if (keyboard_check_pressed(ord("M"))) {
-		minus -= 1
-	}
-	if (keyboard_check_pressed(ord("N"))) {
-		minus += 1
-	}
-	//show_debug_message(minus)
 	}
 
 	if (theme = 0) window_background = 15790320

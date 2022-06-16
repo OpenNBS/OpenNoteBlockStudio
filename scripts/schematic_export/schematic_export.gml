@@ -951,8 +951,8 @@ function schematic_export() {
 					TAG_Compound("nbt")
 						soundname = dat_instrument(noteblockins[a])
 						soundpitch = dat_pitch(noteblocknote[a] + 33 + noteblockpit[a] / 100)
-						if (noteblocknote[a] < 0) soundname += "_-1"
-						else if (noteblocknote[a] > 24) soundname += "_1"
+						if (noteblocknote[a] + noteblockpit[a] / 100 < 0) soundname += "_-1"
+						else if (noteblocknote[a] + noteblockpit[a] / 100 > 24) soundname += "_1"
 						TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(soundpitch))
 						TAG_Byte("TrackOutput", 0)
 						TAG_Byte("powered", 0)

@@ -1,5 +1,5 @@
 function block_other_track(x, y, z, id, data){
-	var insnum = insnum = ds_list_size(instrument_list)
+	var insnum = ds_list_size(instrument_list)
 	if (id = 0) TAG_Int("state", insnum * 26 + 4) //air
 	else if (id = 35 && data = 11) TAG_Int("state", insnum * 26 + 3) //blue_wool
 	else if (id = 65) TAG_Int("state", insnum * 26 + 5) //ladder
@@ -23,8 +23,9 @@ function block_other_track(x, y, z, id, data){
 		}
 	}
 	TAG_List("pos", 3, 3)
-		buffer_write_int_be(y)
+		buffer_write_int_be(99 - y)
 		buffer_write_int_be(z)
 		buffer_write_int_be(x)
 	TAG_End()
+	totalblocksc++
 }
