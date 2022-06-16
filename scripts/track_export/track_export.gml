@@ -1,6 +1,6 @@
 function track_export() {
 	// track_export()
-	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, x1, insnum, ins, repeats, remain, replen, blockamount, cpan, cvol, blocktagpos;
+	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, x1, insnum, ins, repeats, remain, replen, blockamount, nbamount, cpan, cvol, blocktagpos;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, SLAB, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit;
 	fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Track"))
 	if (fn = "") return 0
@@ -55,8 +55,8 @@ function track_export() {
 	    blocksam = o.sch_exp_totalblocks[o.sch_exp_includelocked] // Amount of blocks
 		totalblocksc = 0
 	    with (o) {
-	        len = 39 + enda * 2
-	        wid = 98
+	        len = 40 + enda * 2
+	        wid = 99
 	        hei = 20
 	    }
 	    noteblocks = 0
@@ -67,7 +67,8 @@ function track_export() {
 		signx = 2
 		signy = yy
 		signz = hei - 1
-		blockamount = 79 + (len - 2) * 3 + 549 + (216 - o.minus) * o.enda
+		blockamount = 80 + (len - 2) * 3 + 549 + (216 - o.minus) * o.enda + 27 * 3 + 61
+		nbamount = 0
 		for (a = 0; a <= o.enda; a += 1) {
 			for (b = 0; b <= o.collast[a]; b += 1) {
 		        if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.sch_exp_includelocked)) {
@@ -76,36 +77,37 @@ function track_export() {
 						else cpan = (layerstereo[b] + song_pan[a, b]) / 2
 						cvol = (o.layervol[b] / 100) * o.song_vel[a, b]
 						if ((((cpan > 80 && cpan < 120) || (cpan > 0 && cpan <= 80)) && cvol > 0.0 && cvol <= 0.2) || (cpan >= 180 && cpan < 200)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120) || (cpan > 0 && cpan <= 80)) && cvol > 0.2 && cvol <= 0.4) || (cpan >= 160 && cpan < 180)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120) || (cpan > 0 && cpan <= 80)) && cvol > 0.4 && cvol <= 0.6) || (cpan >= 140 && cpan < 160)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120 && cvol <= 0.8) || (cpan > 0 && cpan <= 80)) && cvol > 0.6) || (cpan >= 120 && cpan < 140)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if (cpan > 80 && cpan < 120 && cvol > 0.8) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120 && cvol <= 0.8) || (cpan > 120 && cpan <= 200)) && cvol > 0.6) || (cpan > 60 && cpan <= 80)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120) || (cpan > 120 && cpan <= 200)) && cvol > 0.4 && cvol <= 0.6) || (cpan > 40 && cpan <= 60)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120) || (cpan > 120 && cpan <= 200)) && cvol > 0.2 && cvol <= 0.4) || (cpan > 20 && cpan <= 40)) {
-							blockamount += 3
+							nbamount += 3
 						}
 						if ((((cpan > 80 && cpan < 120) || (cpan > 120 && cpan <= 200)) && cvol > 0.0 && cvol <= 0.2) || (cpan > 00 && cpan <= 20)) {
-							blockamount += 3
+							nbamount += 3
 						}
 					}
 				}
 			}
 		}
+		show_debug_message("nbamount: " + string(nbamount))
 		
 	    // Write to file
 	    buffer = buffer_create(8, buffer_grow, 1)
@@ -523,16 +525,52 @@ function track_export() {
 		else {addamount = r * 50 + 30; addprev = r * 50 - 20}
 		show_debug_message(r)
 		show_debug_message(repeats - 1)
+		show_debug_message(addprev)
+		show_debug_message(addamount)
+		noteblocks = 0
+		noteblockx = 0
+		noteblocky = 0
+		noteblockz = 0
+		noteblocknote = 0
+		noteblockins = 0
+		noteblockpit = 0
 		for (a = addprev; a <= addamount; a += 1) {
 		    nblocks = 0
+			nblockins = 0
+			nblockkey = 0
+			nblockpit = 0
 			nblocksl1 = 0
+			nblockinsl1 = 0
+			nblockkeyl1 = 0
+			nblockpitl1 = 0
 			nblocksl2 = 0
+			nblockinsl2 = 0
+			nblockkeyl2 = 0
+			nblockpitl2 = 0
 			nblocksl3 = 0
+			nblockinsl3 = 0
+			nblockkeyl3 = 0
+			nblockpitl3 = 0
 			nblocksl4 = 0
+			nblockinsl4 = 0
+			nblockkeyl4 = 0
+			nblockpitl4 = 0
 			nblocksr1 = 0
+			nblockinsr1 = 0
+			nblockkeyr1 = 0
+			nblockpitr1 = 0
 			nblocksr2 = 0
+			nblockinsr2 = 0
+			nblockkeyr2 = 0
+			nblockpitr2 = 0
 			nblocksr3 = 0
+			nblockinsr3 = 0
+			nblockkeyr3 = 0
+			nblockpitr3 = 0
 			nblocksr4 = 0
+			nblockinsr4 = 0
+			nblockkeyr4 = 0
+			nblockpitr4 = 0
 		    rep += 1
 		    if (o.colamount[a] > 0) { // Calculate note blocks for this tick
 		        for (b = 0; b <= o.collast[a]; b += 1) {
@@ -675,8 +713,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocks > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockins[nblocks] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockins[nblocks]], o.sch_exp_ins_data[nblockins[nblocks]])
@@ -746,8 +784,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksl1 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsl1[nblocksl1] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsl1[nblocksl1]], o.sch_exp_ins_data[nblockinsl1[nblocksl1]])
@@ -817,8 +855,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksl2 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsl2[nblocksl2] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsl2[nblocksl2]], o.sch_exp_ins_data[nblockinsl2[nblocksl2]])
@@ -888,8 +926,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksl3 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsl3[nblocksl3] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsl3[nblocksl3]], o.sch_exp_ins_data[nblockinsl3[nblocksl3]])
@@ -959,8 +997,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksl4 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsl4[nblocksl4] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsl4[nblocksl4]], o.sch_exp_ins_data[nblockinsl4[nblocksl4]])
@@ -1030,8 +1068,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksr1 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsr1[nblocksr1] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsr1[nblocksr1]], o.sch_exp_ins_data[nblockinsr1[nblocksr1]])
@@ -1101,8 +1139,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
-		        if (nblocksr2 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
+		        if (nblocksr2 > -1) { // Note block #1x
 		            if (nblockinsr2[nblocksr2] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsr2[nblocksr2]], o.sch_exp_ins_data[nblockinsr2[nblocksr2]])
@@ -1172,8 +1210,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksr3 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsr3[nblocksr3] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsr3[nblocksr3]], o.sch_exp_ins_data[nblockinsr3[nblocksr3]])
@@ -1243,8 +1281,8 @@ function track_export() {
 		        block_circuit(x1 + 2, y1, b * 4 + adds)
 		        block_circuit(x1 + dir, y1, b * 4 + adds)
 		        block_circuit(x1 + dir * 2, y1, b * 4 + 1 + adds)
+		        block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		        if (nblocksr4 > -1) { // Note block #1
-		            block_other(x1 + dir, y1, b * 4 + 1 + adds, WIRE, 0)
 		            if (nblockinsr4[nblocksr4] > -1) {
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + 1 + adds, 25, 0)
 		                block_other(x1 + dir * 2, y1 - 1, b * 4 + adds, o.sch_exp_ins_block[nblockinsr4[nblocksr4]], o.sch_exp_ins_data[nblockinsr4[nblocksr4]])
