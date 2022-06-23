@@ -1949,8 +1949,8 @@ function control_draw() {
 		draw_theme_color()
 	
 		xx += 4
-		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Panning: " + string(selected_pan)) xx += 95}
-		else {draw_text_dynamic(xx, rh - 18, "声道: " + string(selected_pan)) xx += 95}
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Panning: " + string(selected_pan - 100)) xx += 95}
+		else {draw_text_dynamic(xx, rh - 18, "声道: " + string(selected_pan - 100)) xx += 95}
 		draw_separator(xx, rh - 20)
 		draw_theme_color()
 	
