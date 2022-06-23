@@ -118,7 +118,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	    if (a < 3 && alpha < 3 && !isplayer) alpha += 1
 	    if (a > k - min(5, 54 - (startkey + k)) && !isplayer) alpha -= 1
 	}
-	if (selectedkey > -1) selected_key = selectedkey
+	if (selectedkey > -1) {selected_key = selectedkey; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	draw_set_alpha(1)
 	if (d = 0 && startkey > 0 && !mouse_check_button(mb_left)) {
 	    a = startkey mod 7
@@ -141,7 +141,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	for (a = 0; a <= 87; a += 1) {
 	    if (piano_key[a] > 0) {
 	        if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
-	            if (select_lastpressed) selected_key = a
+	            if (select_lastpressed) {selected_key = a; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	            if (record = 0) play_sound(instrument, a, 100 ,100, 0)
 	            if (playing = 0.25) toggle_playing(totalcols)
 	            if (playing && record) {

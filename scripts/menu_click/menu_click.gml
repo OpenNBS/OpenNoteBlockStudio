@@ -168,7 +168,7 @@ function menu_click(argument0) {
 			var insoffset = ds_list_size(instrument_list) + insmenu - 1
 			var ins = sel - 1
 			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
-	        if (sel < insoffset + 1) instrument = instrument_list[| ins]
+	        if (sel < insoffset + 1) {instrument = instrument_list[| ins]; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	        if (sel = insoffset + 1) window = w_instruments
 	        if (sel = insoffset + 2) window = w_songinfoedit
 	        if (sel = insoffset + 3) window = w_properties

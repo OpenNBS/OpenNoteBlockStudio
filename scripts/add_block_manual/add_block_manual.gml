@@ -68,7 +68,7 @@ function add_block_manual(argument0, argument1, argument2, argument3, argument4,
 	if (xx >= enda) enda = xx
 	if (yy >= endb) endb = yy
 
-	if (ins.loaded) play_sound(ins, key, 100 ,100, 0)
+	if (ins.loaded) play_sound(ins, key, vel, pan, pit)
 	history_set(h_addblock, xx, yy, ins, key, vel, pan, pit)
 	return 1
 

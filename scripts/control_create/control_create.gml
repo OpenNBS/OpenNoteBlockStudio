@@ -292,6 +292,9 @@ function control_create() {
 	key_edit = -1
 	init_keys()
 	selected_key = 39
+	selected_vel = 100
+	selected_pan = 100
+	selected_pit = 0
 	startkey = 0
 	sharpkeys = 0
 	keysshow = 0

@@ -292,21 +292,33 @@ function control_draw() {
 	    if (mouse_wheel_down() && insindex > 0) {
 	        insindex--
 	        instrument = instrument_list[| insindex]
+			selected_vel = 100
+			selected_pan = 100
+			selected_pit = 0
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	    if (mouse_wheel_up() && insindex < ds_list_size(instrument_list) - 1) {
 	        insindex++
 	        instrument = instrument_list[| insindex]
+			selected_vel = 100
+			selected_pan = 100
+			selected_pit = 0
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	}
 	if (mousewheel = 2 && window = 0 && (exist = 0 || changepitch = 0) && !isplayer && !volume_scroll) {
 	    if (mouse_wheel_down() && selected_key > 0) {
 	        selected_key -= 1
+			selected_vel = 100
+			selected_pan = 100
+			selected_pit = 0
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	    if (mouse_wheel_up() && selected_key < 87) {
 	        selected_key += 1
+			selected_vel = 100
+			selected_pan = 100
+			selected_pit = 0
 	        play_sound(instrument, selected_key, 100 ,100, 0)
 	    }
 	}
@@ -519,11 +531,11 @@ function control_draw() {
 	        if (selected = 0) {
 	            if (dontplace = 0) {
 	                if (exist = 1) {
-	                    change_block_manual(selbx, selby, instrument, selected_key, 100, 100, 0)
+	                    change_block_manual(selbx, selby, instrument, selected_key, selected_vel, selected_pan, selected_pit)
 	                } else {
-	                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, 100, 100, 0)
+	                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, selected_vel, selected_pan, selected_pit)
 	                    draw_set_halign(fa_center)
-	                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, 100, 100, 0, 0.5, 0)    
+	                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, selected_vel, selected_pan, selected_pit, 0.5, 0)    
 						draw_theme_color()
 	                    draw_set_halign(fa_left)
 	                    draw_set_alpha(1)
@@ -538,7 +550,16 @@ function control_draw() {
 			if (exist = 1) {
 				selected_key = song_key[selbx, selby]
 				instrument = song_ins[selbx, selby]
-				play_sound(instrument, selected_key, 100, 100, 0)
+				if (keyboard_check(vk_control)) {
+					selected_vel = song_vel[selbx, selby]
+					selected_pan = song_pan[selbx, selby]
+					selected_pit = song_pit[selbx, selby]
+				} else {
+					selected_vel = 100
+					selected_pan = 100
+					selected_pit = 0
+				}
+				play_sound(instrument, selected_key, selected_vel, selected_pan, selected_pit)
 			}
 				
 		}
@@ -776,6 +797,9 @@ function control_draw() {
 			   for (a = 1; a <= 9; a++) {
 	             if (keyboard_check_pressed(ord(string(a % 10)))) {
 	                instrument = instrument_list[| a - 1]
+					selected_vel = 100
+					selected_pan = 100
+					selected_pit = 0
 	                play_sound(instrument, selected_key, 100 ,100, 0)
 	             }
 	           }
@@ -784,6 +808,9 @@ function control_draw() {
 			  for (a = 1; a <= 7; a++) {
 				if (keyboard_check_pressed(ord(string(a % 10)))) {
 					instrument = instrument_list[| a + 8]
+					selected_vel = 100
+					selected_pan = 100
+					selected_pit = 0
 					play_sound(instrument, selected_key, 100 ,100, 0)
 				}
 			  }
@@ -1726,6 +1753,9 @@ function control_draw() {
 				if (draw_icon_insbox(insindex, xx + b * 25, yy + a * 25, condstr(language != 1, "Change instrument to ", "更改音色为") + ins.name, true, false, instrument = ins)) {
 					play_sound(ins, selected_key, 100, 100, 0)
 					instrument = ins
+					selected_vel = 100
+					selected_pan = 100
+					selected_pit = 0
 					// Set the first instrument of the collapsed row
 					insbox_start = min(floor(insindex / ins_icons) * ins_icons, ds_list_size(instrument_list) - ins_icons)
 				}
@@ -1758,6 +1788,9 @@ function control_draw() {
 		    if (draw_icon_insbox(a, xx, yy, condstr(language != 1, "Change instrument to ", "更改音色为") + ins.name, false, false, instrument = ins)) {
 				play_sound(ins, selected_key, 100, 100, 0)
 				instrument = ins
+				selected_vel = 100
+				selected_pan = 100
+				selected_pit = 0
 			}
 			xx += 25
 		}
@@ -1907,6 +1940,26 @@ function control_draw() {
 	else {draw_text_dynamic(xx, rh - 18, "音: " + get_keyname(selected_key, 1)) xx += 75}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
+	
+	if (selected_vel != 100 || selected_pan != 100 || selected_pit != 0) {
+		xx += 4
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Velovity: " + string(selected_vel)) xx += 100}
+		else {draw_text_dynamic(xx, rh - 18, "音量: " + string(selected_vel)) xx += 100}
+		draw_separator(xx, rh - 20)
+		draw_theme_color()
+	
+		xx += 4
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Panning: " + string(selected_pan)) xx += 95}
+		else {draw_text_dynamic(xx, rh - 18, "声道: " + string(selected_pan)) xx += 95}
+		draw_separator(xx, rh - 20)
+		draw_theme_color()
+	
+		xx += 4
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Pitch: " + string(selected_pit)) xx += 85}
+		else {draw_text_dynamic(xx, rh - 18, "音高: " + string(selected_pit)) xx += 85}
+		draw_separator(xx, rh - 20)
+		draw_theme_color()
+	}
 
 	xx += 4
 	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Tick: " + test(selbx = -1, "None", string(selbx))) xx += 90}

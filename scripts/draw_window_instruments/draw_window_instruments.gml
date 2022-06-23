@@ -84,6 +84,9 @@ function draw_window_instruments() {
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
 			if (instrument = userselect)
 				instrument = instrument_list[| 0]
+				selected_vel = 100
+				selected_pan = 100
+				selected_pit = 0
 			c = 1
 		}
 	}
@@ -112,6 +115,9 @@ function draw_window_instruments() {
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
 			if (instrument = userselect)
 				instrument = instrument_list[| 0]
+				selected_vel = 100
+				selected_pan = 100
+				selected_pit = 0
 			c = 1
 		}
 	}
