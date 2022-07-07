@@ -45,7 +45,7 @@ function control_draw() {
 		work_mins += 1 / (room_speed * 60)
 	}
 	
-	file_dnd_set_files("*.nbs;*.mid;*.midi", 1, 0, 0)
+	file_dnd_set_files("*.nbs;*.mid;*.midi;*.nbp", 1, 0, 0)
 	dndfile = file_dnd_get_files()
 
 	remove_emitters()
@@ -2258,7 +2258,11 @@ function control_draw() {
 	draw_windows()
 	if (showmsg) draw_msg()
 	if (rainbowtoggle) draw_accent_rainbow()
-	if (lastfile != dndfile && dndfile != "") {load_song(dndfile) lastfile = dndfile}
+	if (lastfile != dndfile && dndfile != "") {
+		if (filename_ext(dndfile) = ".nbp") pattern_import(dndfile, 1)
+		else load_song(dndfile)
+		lastfile = dndfile
+	}
 
 	// Draw update progress bar
 	if (update == 4) {

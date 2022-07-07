@@ -1,8 +1,17 @@
 function pattern_import() {
-	// selection_import()
+	// selection_import([filename, at_mouse_pos])
 	// Can successfully read and store all the below into the arrays/variables, but can't seem to display or place the imported selection.
-	var a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, byte1, byte2, temp_str, selection_l_temp;
+	var a, b, fn, file_ext, nw, temp_colfirst, temp_enda, temp_endb, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played, byte1, byte2, temp_str, selection_l_temp, at_mouse_pos, loadx, loady;
 	fn = ""
+	at_mouse_pos = 0
+	if (argument_count > 0) fn = argument[0]
+	if (argument_count > 1) at_mouse_pos = argument[1]
+	loadx = 0
+	loady = 0
+	if (at_mouse_pos) {
+		if (selbx > -1 && selby > -1) {loadx = selbx; loady = selby}
+		else {loadx = starta; loady = startb}
+	}
 	if (selected != 0) return 0
 	if (fn = "") {
 	    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
@@ -60,7 +69,7 @@ function pattern_import() {
 			    selection_collast[a] = temp_collast[a]
 		//		show_debug_message("selection_collast " + string(a) + " " + string(selection_collast[a]))
 			}
-			selection_load(0,0, selection_copied, false)
+			selection_load(loadx, loady, selection_copied, false)
 		} else {
 			selection_l = selection_l_temp
 			if (language != 1) message("There are more custom instruments in the pattern than what is loaded in the song!", "Error")
