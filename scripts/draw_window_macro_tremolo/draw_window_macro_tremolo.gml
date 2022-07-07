@@ -76,6 +76,8 @@ function draw_window_macro_tremolo() {
 		window = 0
 	}
 	if (draw_button2(x1 + 80, y1 + 215, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

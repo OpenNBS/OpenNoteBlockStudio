@@ -89,5 +89,7 @@ function draw_window_about() {
 	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

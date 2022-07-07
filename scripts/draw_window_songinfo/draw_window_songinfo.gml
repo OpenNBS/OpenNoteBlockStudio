@@ -139,5 +139,7 @@ function draw_window_songinfo() {
 			windowclose = 1
 		}
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

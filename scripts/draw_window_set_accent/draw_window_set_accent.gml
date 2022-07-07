@@ -149,6 +149,8 @@ function draw_window_set_accent() {
 			else message("请输入一个有效的数字！", "设置主题颜色")
 		}
 	}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

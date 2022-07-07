@@ -84,6 +84,8 @@ function draw_window_mididevices() {
 	draw_set_color(12632256)
 	draw_line(x1 + 18 + 250 + 70, y1 + 87, x1 + 18 + 250 + 70, y1 + 86 + 20 * a)
 	draw_line(x1 + 18 + 250 + 70 + 64 + 85, y1 + 87, x1 + 18 + 250 + 70 + 64 + 85, y1 + 86 + 20 * a)
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }
