@@ -71,6 +71,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "taskbar",            taskbar)
 	ini_write_real_clean("preferences", "remove_effect",      remove_effect)
 	ini_write_real_clean("preferences", "window_icon",        window_icon)
+	ini_write_real_clean("preferences", "keynames_flat",      keynames_flat)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

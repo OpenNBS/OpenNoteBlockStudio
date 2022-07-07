@@ -222,6 +222,7 @@ function control_create() {
 	changepitch = 1
 	
 	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+	keynames_flat = 0
 
 	// History
 	historypos = 0
@@ -517,6 +518,7 @@ function control_create() {
 	window_set_min_width(800 * window_scale)
 	window_set_min_height(500 * window_scale)
 	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
+	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
 
 	// Updates
 	if (check_update)

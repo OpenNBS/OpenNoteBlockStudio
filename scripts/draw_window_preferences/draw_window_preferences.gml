@@ -455,20 +455,21 @@ function draw_window_preferences() {
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "Piano")
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "Show piano", "Whether the piano should be visible.", false, true)) show_piano = !show_piano
-		if (draw_checkbox(x1 + 40, y1 + 355 + (theme = 3) * 22, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
-	    if (draw_checkbox(x1 + 40, y1 + 395 + (theme = 3) * 22, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-	    if (draw_checkbox(x1 + 40, y1 + 415 + (theme = 3) * 22, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-	    if (draw_checkbox(x1 + 40, y1 + 435 + (theme = 3) * 22, show_outofrange, "Highlight out-of-range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
+		if (draw_checkbox(x1 + 40, y1 + 350 + (theme = 3) * 22, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
+	    if (draw_checkbox(x1 + 40, y1 + 370 + (theme = 3) * 22, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
+	    if (draw_checkbox(x1 + 40, y1 + 390 + (theme = 3) * 22, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
+	    if (draw_checkbox(x1 + 40, y1 + 410 + (theme = 3) * 22, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
+	    if (draw_checkbox(x1 + 40, y1 + 430 + (theme = 3) * 22, show_outofrange, "Highlight out-of-range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
+	    if (draw_checkbox(x1 + 40, y1 + 450 + (theme = 3) * 22, keynames_flat, "Use flat symbol", "Whether to use the flat symbol (b) instead of\nthe sharp symbol (#) on keynames.")) {keynames_flat=!keynames_flat; if (keynames_flat) {keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]} else {keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]}}
 	    if (!show_piano) draw_set_color(c_gray)
-		draw_text_dynamic(x1 + 70, y1 + 330 + (theme = 3) * 22, "Keys to show:")
+		draw_text_dynamic(x1 + 70, y1 + 328 + (theme = 3) * 22, "Keys to show:")
 		if (show_piano) {
-			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax, 2), 50)
+			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax, 2), 50)
 		} else {
-			draw_text_dynamic(x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax)
+			draw_text_dynamic(x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax)
 		}
 		draw_theme_color()
-	    popup_set_window(x1 + 180, y1 + 275 + (theme = 3) * 22, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+	    popup_set_window(x1 + 70, y1 + 328 + (theme = 3) * 22, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 196, "音符盒")
@@ -486,20 +487,21 @@ function draw_window_preferences() {
 	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "琴键")
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "显示琴键", "钢琴键是否可见。", false, true)) show_piano = !show_piano
-		if (draw_checkbox(x1 + 40, y1 + 355 + (theme = 3) * 22, show_keynames, "显示键名", "显示琴键所对应音的名称。")) show_keynames=!show_keynames
-	    if (draw_checkbox(x1 + 40, y1 + 375 + (theme = 3) * 22, show_keynumbers, "显示音符序号", "在 2 八度内的琴键上显示需要按右键次数。")) show_keynumbers=!show_keynumbers
-	    if (draw_checkbox(x1 + 40, y1 + 395 + (theme = 3) * 22, show_keyboard, "显示键盘键位", "在琴键上显示绑定的键盘键位。")) show_keyboard=!show_keyboard
-	    if (draw_checkbox(x1 + 40, y1 + 415 + (theme = 3) * 22, show_notechart, "在琴键上时显示五线谱对应音符", "在鼠标停留在琴键上时是否显示五线谱。")) show_notechart=!show_notechart
-	    if (draw_checkbox(x1 + 40, y1 + 435 + (theme = 3) * 22, show_outofrange, "标记超范围琴键", "是否为在 2 八度之外的琴键上标红。")) show_outofrange=!show_outofrange
+		if (draw_checkbox(x1 + 40, y1 + 350 + (theme = 3) * 22, show_keynames, "显示键名", "显示琴键所对应音的名称。")) show_keynames=!show_keynames
+	    if (draw_checkbox(x1 + 40, y1 + 370 + (theme = 3) * 22, show_keynumbers, "显示音符序号", "在 2 八度内的琴键上显示需要按右键次数。")) show_keynumbers=!show_keynumbers
+	    if (draw_checkbox(x1 + 40, y1 + 390 + (theme = 3) * 22, show_keyboard, "显示键盘键位", "在琴键上显示绑定的键盘键位。")) show_keyboard=!show_keyboard
+	    if (draw_checkbox(x1 + 40, y1 + 410 + (theme = 3) * 22, show_notechart, "在琴键上时显示五线谱对应音符", "在鼠标停留在琴键上时是否显示五线谱。")) show_notechart=!show_notechart
+	    if (draw_checkbox(x1 + 40, y1 + 430 + (theme = 3) * 22, show_outofrange, "标记超范围琴键", "是否为在 2 八度之外的琴键上标红。")) show_outofrange=!show_outofrange
+	    if (draw_checkbox(x1 + 40, y1 + 450 + (theme = 3) * 22, keynames_flat, "使用降记号", "是否为键名使用降记号（b）而不是升记号（#）。")) {keynames_flat=!keynames_flat; if (keynames_flat) {keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]} else {keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]}}
 	    if (!show_piano) draw_set_color(c_gray)
-		draw_text_dynamic(x1 + 70, y1 + 330 + (theme = 3) * 22, "最多显示键数:")
+		draw_text_dynamic(x1 + 70, y1 + 328 + (theme = 3) * 22, "最多显示键数:")
 		if (show_piano) {
-			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax, 2), 50)
+			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax, 2), 50)
 		} else {
-			draw_text_dynamic(x1 + 150, y1 + 330 + (theme = 3) * 22, keysmax)
+			draw_text_dynamic(x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax)
 		}
 		draw_theme_color()
-	    popup_set_window(x1 + 180, y1 + 275 + (theme = 3) * 22, 150, 21, "同屏显示的琴键数。过多可能会在老电脑上造成卡顿。")
+	    popup_set_window(x1 + 70, y1 + 328 + (theme = 3) * 22, 150, 21, "同屏显示的琴键数。过多可能会在老电脑上造成卡顿。")
 		}
 	} else if (selected_tab = 3) {
 		if (language != 1) {
