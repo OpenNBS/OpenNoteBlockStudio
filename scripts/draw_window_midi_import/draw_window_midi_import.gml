@@ -220,7 +220,8 @@ function draw_window_midi_import() {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2] + tabw[3], y1 + 174 + 20 * a, "-")
 	        } else {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, string(midi_channelpatch[b] + 1))
-	            draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, midi_ins[midi_channelpatch[b], 0])
+				if (midi_channelpatch[b] < 128) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, midi_ins[midi_channelpatch[b], 0])
+				else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, condstr(language != 1, "Unknown", "未知"))
 	            if (midi_channelins[b] = -1) {
 	                draw_set_color(c_gray)
 	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "Ignore")

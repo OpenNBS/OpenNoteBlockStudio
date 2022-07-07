@@ -204,12 +204,24 @@ function open_midi(argument0) {
 	sb_val[midi_sb2] = 0
 	sb_val[midi_sb3] = 0
 	for (a = 0; a < 16; a += 1) { // Load channel settings from database
-	    midi_channelins[a] = midi_ins[midi_channelpatch[a], 1]
-	    midi_channeloctave[a] = midi_ins[midi_channelpatch[a], 2]
+		try {
+			midi_channelins[a] = midi_ins[midi_channelpatch[a], 1]
+			midi_channeloctave[a] = midi_ins[midi_channelpatch[a], 2]
+		}
+		catch(e) {
+			midi_channelins[a] = -1
+			midi_channeloctave[a] = 0
+		}
 	}
 	for (a = 0; a < midi_percamount; a += 1) { // Load percussion settings from database
-	    midi_percins[a] = midi_drum[midi_percnote[a], 1]
-	    midi_percpitch[a] = midi_drum[midi_percnote[a], 2] + 33
+		try {
+		    midi_percins[a] = midi_drum[midi_percnote[a], 1]
+		    midi_percpitch[a] = midi_drum[midi_percnote[a], 2] + 33
+		}
+		catch(e) {
+			midi_percins[a] = -1
+			midi_percpitch[a] = 33
+		}
 	}
 	/* // CODE FOR TESTING INSTRUMENTS
 	midi_channels = 127
