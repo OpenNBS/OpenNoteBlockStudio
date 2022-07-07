@@ -2270,7 +2270,7 @@ function control_draw() {
 	// Draw debug overlay
 	if (debug_overlay) draw_debug_overlay()
 	
-	window_set_cursor(curs)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) window_set_cursor(curs)
 	mouse_xprev = mouse_x
 	mouse_yprev = mouse_y
 	
