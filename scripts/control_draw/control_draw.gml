@@ -131,7 +131,7 @@ function control_draw() {
 	if (theme = 3) window_background = 15987699
 	if (theme = 3 && fdark) window_background = 2105376
 	draw_clear(window_background)
-	if (theme = 3 && acrylic && wpaperexist) draw_sprite_tiled_ext(wpaperblur, 0,
+	if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_sprite_tiled_ext(wpaperblur, 0,
 	0 - window_get_x() * (1 / window_scale) - (sprite_get_width(wpaper) * (display_height / sprite_get_height(wpaper)) - display_width) * (1 / window_scale) * (wpaperside) / 2,
 	0 - window_get_y() * (1 / window_scale) - (sprite_get_height(wpaper) * (display_width / sprite_get_width(wpaper)) - display_height) * (1 / window_scale) * (!wpaperside) / 2,
 	(1 / window_scale) * (display_width / sprite_get_width(wpaper)) * (!wpaperside) + (1 / window_scale) * (display_height / sprite_get_height(wpaper)) * (wpaperside),
@@ -141,10 +141,10 @@ function control_draw() {
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
 		if (theme = 3) draw_set_color(15987699)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_color(15198183)
+		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_color(15198183)
 		if (theme = 3 && fdark) draw_set_color(2105376)
-		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(1315860)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.875)
+		if (theme = 3 && fdark && acrylic && wpaperexist && can_draw_mica) draw_set_color(1315860)
+		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_alpha(0.875)
 		draw_rectangle(0, 0, rw, rh, 0)
 		draw_set_alpha(1)
 	}
@@ -1165,10 +1165,10 @@ function control_draw() {
 		if (theme = 1) draw_set_color(13160660)
 		if (theme = 2) draw_set_color(c_dark)
 		if (theme = 3) draw_set_color(15987699)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_color(c_white)
+		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_color(c_white)
 		if (theme = 3 && fdark) draw_set_color(2105376)
-		if (theme = 3 && fdark && acrylic && wpaperexist) draw_set_color(1315860)
-		if (theme = 3 && acrylic && wpaperexist) draw_set_alpha(0.875)
+		if (theme = 3 && fdark && acrylic && wpaperexist && can_draw_mica) draw_set_color(1315860)
+		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_alpha(0.875)
 		draw_rectangle(0, y1 + 1, x1, rh, 0)
 		draw_rectangle(0, 0, rw, y1, 0)
 		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 52, rw, rh, 0)
@@ -1257,8 +1257,8 @@ function control_draw() {
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist), 1)
-			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist) + (!acrylic || !wpaperexist), 1)
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist && can_draw_mica) + (!acrylic || !wpaperexist || !can_draw_mica), 1)
+			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist && can_draw_mica) + (!acrylic || !wpaperexist || !can_draw_mica), 1)
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)

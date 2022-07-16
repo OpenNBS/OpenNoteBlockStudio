@@ -44,6 +44,7 @@ function control_create() {
 	msgstart = 0
 	currentfont = 0
 	acrylic = 1
+	can_draw_mica = 1
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
