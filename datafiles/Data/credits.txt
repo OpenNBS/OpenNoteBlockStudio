@@ -78,7 +78,7 @@ by Samuel Venable
 File Dropper|https://marketplace.yoyogames.com/assets/8207/file-dropper
 by Samuel Venable
 
-pynbs|https://github.com/vberlier/pynbs
+pynbs|https://github.com/OpenNBS/pynbs
 by Valentin Berlier
 
 pybind11|https://github.com/pybind/pybind11
