@@ -359,13 +359,13 @@ function menu_click(argument0) {
 				case 1:
 					audio_exp_format = "WAV";
 					break;
+				//case 2:
+				//	audio_exp_format = "OGG";
+				//	break;
 				case 2:
-					audio_exp_format = "OGG";
-					break;
-				case 3:
 					audio_exp_format = "AIFF";
 					break;
-				case 4:
+				case 3:
 					audio_exp_format = "FLAC";
 					break;
 			}

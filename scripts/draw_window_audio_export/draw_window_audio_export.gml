@@ -37,7 +37,7 @@ function draw_window_mp3_export() {
 	if (draw_abutton(x1 + 140 - 18, y1 + 1)) {
 		var outputstr = check(audio_exp_format == format_mp3) + format_mp3 + "|" +
 						check(audio_exp_format == format_wav) + format_wav + "|" +
-						check(audio_exp_format == format_ogg) + format_ogg + "|" +
+						//check(audio_exp_format == format_ogg) + format_ogg + "|" +
 						check(audio_exp_format == format_aiff) + format_aiff + "|" +
 						check(audio_exp_format == format_flac) + format_flac;
 	    menu = show_menu_ext("audio_exp_format", x1, y1, outputstr)
