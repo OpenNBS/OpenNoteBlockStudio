@@ -1,3 +1,23 @@
+Changes in v3.10.0-beta.3 (2022.07.27)
+- Added a setting to show flat symbols (b) instead of sharp symbols (#) on
+   the piano.
+- Added a track export to create schematics in a straight line.
+- Added Ctrl + middle-click to copy note velocity, panning and pitch values.
+- Added custom block selections for structure block export.
+- Added a command block option to schematic export.
+- Added an outline effect when deleting selected blocks.
+- Added the ability to drag and drop pattern files into the window.
+- Bugfixes and improvements:
+   - Fixed pitch of custom instruments not working correctly in the audio export.
+   - Fixed issues when audio exporting NBS files with non-English characters.
+   - Removed OGG export (temporarily).
+   - Removed MP3 reference from audio export sprites.
+   - The cursor no longer flashes when hovering the mouse near the edges of
+      the window.
+   - This is the first version compiled with YYC, which should give a significant
+      performance boost.
+   - Fixed crashes under various circumstances.
+
 Changes in v3.10.0-beta.2 (2022.04.05):
 * The MP3 export was renamed to 'Audio export'.
 * Added more output formats: MP3, WAV, OGG, AIFF, FLAC.
