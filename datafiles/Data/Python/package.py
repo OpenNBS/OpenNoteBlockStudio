@@ -116,11 +116,10 @@ def main():
                 if filename.endswith(".py"):
                     os.remove(os.path.join(root, filename))
 
-    # Delete virtual environment
-    print("Removing virtual environment")
-    shutil.rmtree(ENV_PATH)
-
     print(f"Done! {package_count} packages were added.")
+    print(
+        f"Don't forget to delete the {ENV_PATH} directory before building the GameMaker project."
+    )
 
 
 if __name__ == "__main__":

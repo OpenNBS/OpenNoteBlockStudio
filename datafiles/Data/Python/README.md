@@ -10,19 +10,21 @@ This is a subproject of Open Note Block Studio, which holds the Python modules u
 
 3. This subproject uses [poetry](https://python-poetry.org/) for managing dependencies. Make sure to install it, and run the following command with the subproject's root (`datafiles/Data/Python`) as your current working directory:
 
-   ```shell
-   $ poetry env use 3.8 # if you have more than one Python version installed
-   $ poetry install --no-dev
-   ```
+    ```shell
+    $ poetry env use 3.8 # if you have more than one Python version installed
+    $ poetry install --no-dev
+    ```
 
 4. Run `package.py`:
 
-   ```shell
-   $ python package.py
-   ```
+    ```shell
+    $ python package.py
+    ```
 
-   This will delete the virtual environment created on the last step, and prepare all dependencies to be packaged with Note Block Studio's executable.
+    This will prepare all dependencies to be packaged with Note Block Studio's executable.
 
-5. Open the project in GameMaker, and save it so the included files are registered. **Do NOT commit the changes to the project file.**
+5. Delete the `.venv` directory that was created.
 
-6. You can now build the project in GameMaker!
+6. Open the project in GameMaker, and save it so the included files are registered. **Do NOT commit the changes to the project file.**
+
+7. You can now build the project in GameMaker!
