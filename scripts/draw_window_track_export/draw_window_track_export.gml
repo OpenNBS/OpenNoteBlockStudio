@@ -99,7 +99,7 @@ function draw_window_track_export() {
 	    draw_text_dynamic(x1 + 16, y1 + 280, "For Minecraft version:")
 	    draw_radiobox(x1 + 32, y1 + 300, 1, "1.13+", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is supported.", 1)
 		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
-		if (draw_checkbox(x1 + 170, y1 + 260 + (sch_exp_layout = 0) * 20, command_block, "Use Command Blocks", "Whether to use command blocks instesd of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
+		if (draw_checkbox(x1 + 170, y1 + 260 + (sch_exp_layout = 0) * 20, command_block, "Use command blocks", "Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
 	    draw_text_dynamic(x1 + 380, y1 + 220, "Note blocks:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
 	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "Size:")

@@ -114,7 +114,7 @@ function draw_window_schematic_export() {
 	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
 			}
 			if (structure = true) {
-				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "Use Command Blocks", "Whether to use command blocks instesd of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
+				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "Use command blocks", "Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
 			}
 	    } else {
 	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass

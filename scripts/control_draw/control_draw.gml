@@ -1945,7 +1945,7 @@ function control_draw() {
 	
 	if (selected_vel != 100 || selected_pan != 100 || selected_pit != 0) {
 		xx += 4
-		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Velovity: " + string(selected_vel)) xx += 100}
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Velocity: " + string(selected_vel)) xx += 100}
 		else {draw_text_dynamic(xx, rh - 18, "音量: " + string(selected_vel)) xx += 100}
 		draw_separator(xx, rh - 20)
 		draw_theme_color()
