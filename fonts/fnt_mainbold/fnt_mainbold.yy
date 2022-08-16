@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "Open Sans",
   "styleName": "Bold",
   "size": 9.0,
@@ -20,6 +21,7 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
   "glyphs": {
     "32": {"x":448,"y":146,"w":3,"h":16,"character":32,"shift":3,"offset":0,},
     "33": {"x":348,"y":146,"w":3,"h":16,"character":33,"shift":3,"offset":0,},
@@ -554,8 +556,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "fnt_classic",
+    "path": "folders/Fonts/fnt_classic.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_mainbold",

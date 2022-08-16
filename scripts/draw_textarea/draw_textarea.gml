@@ -43,14 +43,25 @@ function draw_textarea() {
 	    draw_sprite(spr_textbox, 6 + 8 * on, xx + w - 2, yy)
 	    draw_sprite_ext(spr_textbox, 7 + 8 * on, xx + 2, yy, (w - 4) / 2, 1, 0, -1, 1)
 	} else if (theme = 3) {
-		draw_sprite_ext(spr_textbox_f, 0 + !fdark * 32, xx, yy, 1, 1, 0, -1, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 1 + !fdark * 32, xx, yy + 2, 1, (h - 4) / 2, 0, -1, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 2 + 16 * focus + !fdark * 32, xx, yy + h - 2, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 3 + 16 * focus + !fdark * 32, xx + 2, yy + h - 2, (w - 4) / 2, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 4 + 16 * focus + !fdark * 32, xx + w - 2, yy + h - 2, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 5 + !fdark * 32, xx + w - 2, yy + 2, 1, (h - 4) / 2, 0, -1, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 6 + !fdark * 32, xx + w - 2, yy, 1, 1, 0, -1, draw_get_alpha())
-	    draw_sprite_ext(spr_textbox_f, 7 + !fdark * 32, xx + 2, yy, (w - 4) / 2, 1, 0, -1, draw_get_alpha())
+		if (!hires) {
+			draw_sprite_ext(spr_textbox_f, 0 + !fdark * 32, xx, yy, 1, 1, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 1 + !fdark * 32, xx, yy + 2, 1, (h - 4) / 2, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 2 + 16 * focus + !fdark * 32, xx, yy + h - 2, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 3 + 16 * focus + !fdark * 32, xx + 2, yy + h - 2, (w - 4) / 2, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 4 + 16 * focus + !fdark * 32, xx + w - 2, yy + h - 2, 1, 1, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 5 + !fdark * 32, xx + w - 2, yy + 2, 1, (h - 4) / 2, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 6 + !fdark * 32, xx + w - 2, yy, 1, 1, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f, 7 + !fdark * 32, xx + 2, yy, (w - 4) / 2, 1, 0, -1, draw_get_alpha())
+		} else {
+			draw_sprite_ext(spr_textbox_f_hires, 0 + !fdark * 32, xx, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 1 + !fdark * 32, xx, yy + 2, 0.25, (h - 4) / 2 * 0.25, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 2 + 16 * focus + !fdark * 32, xx, yy + h - 2, 0.25, 0.25, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 3 + 16 * focus + !fdark * 32, xx + 2, yy + h - 2, (w - 4) / 2 * 0.25, 0.25, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 4 + 16 * focus + !fdark * 32, xx + w - 2, yy + h - 2, 0.25, 0.25, 0, accent[6] * focus - !focus, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 5 + !fdark * 32, xx + w - 2, yy + 2, 0.25, (h - 4) / 2 * 0.25, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 6 + !fdark * 32, xx + w - 2, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
+		    draw_sprite_ext(spr_textbox_f_hires, 7 + !fdark * 32, xx + 2, yy, (w - 4) / 2 * 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	} else {
 	    draw_area(xx, yy, xx + w, yy + h)
 	}

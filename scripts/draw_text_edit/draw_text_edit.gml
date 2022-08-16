@@ -89,7 +89,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
     
 	    deletetext = 0
 	    inserttext = ""
-	    lh = string_height(" ")
+	    lh = string_height_dynamic(" ")
 	    mouseover = (mouse_x >= xx && mouse_x < xx + w && mouse_y >= yy && mouse_y < yy + h)
     
 	    if (text_focus = i) {

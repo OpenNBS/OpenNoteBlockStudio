@@ -57,17 +57,30 @@ function control_create() {
 	icon_time = -1
 	last_icon = -1
 	icon_display = 1
+	hires = (window_scale > 1.25)
 	
 	font_table =
 	[
-		[ fnt_main,          fnt_wslui,               fnt_src               ], // font_main
-		[ fnt_mainbold,      fnt_wslui_bold,          fnt_src_bold          ], // font_main_bold
-		[ fnt_small,         fnt_wslui_small,         fnt_src_small         ], // font_small
-		[ fnt_smallbold,     fnt_wslui_small_bold,    fnt_src_small_bold    ], // font_small_bold
-		[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
-		[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
-		[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
-		[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+		[ // normal fonts
+			[ fnt_main,          fnt_wslui,               fnt_src               ], // font_main
+			[ fnt_mainbold,      fnt_wslui_bold,          fnt_src_bold          ], // font_main_bold
+			[ fnt_small,         fnt_wslui_small,         fnt_src_small         ], // font_small
+			[ fnt_smallbold,     fnt_wslui_small_bold,    fnt_src_small_bold    ], // font_small_bold
+			[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
+			[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
+			[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
+			[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+		],
+		[ // hires fonts
+			[ fnt_main,          fnt_wslui_hires,               fnt_src_hires               ], // font_main
+			[ fnt_mainbold,      fnt_wslui_bold_hires,          fnt_src_bold_hires          ], // font_main_bold
+			[ fnt_small,         fnt_wslui_small_hires,         fnt_src_small_hires         ], // font_small
+			[ fnt_smallbold,     fnt_wslui_small_bold_hires,    fnt_src_small_bold_hires    ], // font_small_bold
+			[ fnt_info_big,      fnt_wslui_info_big_hires,      fnt_src_info_big_hires      ], // font_info_big
+			[ fnt_info_med,      fnt_wslui_info_med_hires,      fnt_src_info_med_hires      ], // font_info_med
+			[ fnt_info_med_bold, fnt_wslui_info_med_bold_hires, fnt_src_info_med_bold_hires ], // font_info_med_bold
+			[ fnt_wslui_med,     fnt_wslui_med_hires,           fnt_src_med_hires           ]  // font_med
+		]
 	]
 	
 	// Wallpaper

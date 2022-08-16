@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "Arial",
   "styleName": "Regular",
   "size": 11.0,
@@ -20,6 +21,7 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
   "glyphs": {
     "32": {"x":312,"y":344,"w":4,"h":17,"character":32,"shift":4,"offset":0,},
     "33": {"x":292,"y":363,"w":2,"h":17,"character":33,"shift":4,"offset":1,},
@@ -1240,8 +1242,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "fnt_classic",
+    "path": "folders/Fonts/fnt_classic.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_info_med",

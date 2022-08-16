@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "WeblySleek UI Normal",
   "styleName": "Regular",
   "size": 10.0,
@@ -20,6 +21,7 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
   "glyphs": {
     "32": {"x":2,"y":2,"w":4,"h":18,"character":32,"shift":4,"offset":0,},
     "33": {"x":70,"y":42,"w":2,"h":18,"character":33,"shift":4,"offset":1,},
@@ -228,8 +230,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "fnt_wslui",
+    "path": "folders/Fonts/fnt_wslui.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_wslui_med",

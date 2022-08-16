@@ -15,10 +15,12 @@ function draw_icon_insbox() {
 	a = (mouse_rectangle(xx, yy, 25, 25) && (clickable) && sb_drag = -1)
 	a += ((mouse_check_button(mb_left) || mouse_check_button_released(mb_left)) && a)
 	if (pressed = 1) {
-	    draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3 - (a = 1) * (theme = 3), xx, yy)
-		if (theme = 3) draw_sprite_ext(spr_tabsel, 1, xx + 5, yy + 23, 1, 1, 0, accent[4], 1)
+	    if (hires && theme = 3) draw_sprite_ext(spr_frame1_hires, 2 + (fdark && theme = 3) * 3 - (a = 1) * (theme = 3), xx, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
+	    else draw_sprite(spr_frame1, 2 + 3 * theme + (fdark && theme = 3) * 3 - (a = 1) * (theme = 3), xx, yy)
+		if (theme = 3) draw_sprite_ext(spr_tabsel, 1 + 2 * hires, xx + 5, yy + 23, 1 - 0.75 * hires, 1 - 0.75 * hires, 0, accent[4], 1)
 	} else {
-	    draw_sprite(spr_frame1, a + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
+	    if (hires && theme = 3) draw_sprite_ext(spr_frame1_hires, a + (fdark && theme = 3) * 3, xx, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
+	    else draw_sprite(spr_frame1, a + 3 * theme + (fdark && theme = 3) * 3, xx, yy)
 	}
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
 	push = (a = 2 || pressed = 1) * (theme != 3)

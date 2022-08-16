@@ -42,7 +42,7 @@ function draw_window_songinfo() {
 	draw_theme_font(font_main)
 	var songdescwrap, songdeschei;
 	songdescwrap = string_word_wrap(song_desc, 216)
-	songdeschei = string_height(songdescwrap)
+	songdeschei = string_height_dynamic(songdescwrap)
 
 	h = songdeschei + 90
 	if (song_desc != "")

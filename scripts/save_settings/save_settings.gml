@@ -72,6 +72,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "remove_effect",      remove_effect)
 	ini_write_real_clean("preferences", "window_icon",        window_icon)
 	ini_write_real_clean("preferences", "keynames_flat",      keynames_flat)
+	ini_write_real_clean("preferences", "hires",              hires)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)

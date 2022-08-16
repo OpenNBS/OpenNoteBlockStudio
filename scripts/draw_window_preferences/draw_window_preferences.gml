@@ -123,7 +123,7 @@ function draw_window_preferences() {
 	        //draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 6, y1 + 30 + 21 + 18 - 6)
 	        //draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 7, y1 + 30 + 21 + 19 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 7, y1 + 30 + 21 + 19 - 6)
 	        //draw_line(x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 20 - 6, x1 + b + 5 + string_width_dynamic(str[a]) / 2 + 6, y1 + 30 + 21 + 20 - 6)
-			draw_sprite_ext(spr_tabsel, 0, x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, 1, 1, 0, accent[4], draw_get_alpha())
+			draw_sprite_ext(spr_tabsel, 2 * hires, x1 + b + 5 + string_width_dynamic(str[a]) / 2 - 6, y1 + 30 + 21 + 18 - 6, 1 - 0.75 * hires, 1 - 0.75 * hires, 0, accent[4], draw_get_alpha())
 			draw_set_color(c_black)
 			if (fdark) draw_set_color(c_white)
 	    }
@@ -373,8 +373,8 @@ function draw_window_preferences() {
 		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
 		//}
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,80,"Max frame rate (experimental)")
-	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,80,"帧率限制（实验性功能）")
+	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"Max frame rate (experimental)")
+	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"帧率限制（实验性功能）")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 274, y1 + 74 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 74 + 16 + 20 + (theme = 3) * 22 + 5)
 		if (draw_abutton(x1 + 374 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
@@ -406,20 +406,22 @@ function draw_window_preferences() {
 		//}
 
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 170 + (theme = 3) * 22, 220, 44, "Window")
-		else draw_areaheader(x1 + 258, y1 + 170 + (theme = 3) * 22, 220, 44, "窗口")
+		if (language != 1) draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 64, "Window")
+		else draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 64, "窗口")
 		if (theme = 3) draw_theme_font(font_main)
-		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 186 + (theme = 3) * 22, "Scale:             %")
-		else draw_text_dynamic(x1 + 276, y1 + 186 + (theme = 3) * 22, "缩放:              %")
-		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 186 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
+		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "Scale:             %")
+		else draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "缩放:              %")
+		window_scale = median(50, draw_dragvalue(19, x1 + 322, y1 + 166 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
 		if (language != 1) {
-		if (draw_button2(x1 + 394, y1 + 181 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
+		if (draw_checkbox(x1 + 276, y1 + 195 + (theme = 3) * 22, hires, "Optimize for high resolutions", "Whether to use higher resolution textures on the interface.\n" + condstr(theme = 3, "(May reduce performance and reduce readability at lower resolutions.)", "(Only applies to the Fluent theme.)"), (theme != 3), true)) hires = !hires
 		} else {
-		if (draw_button2(x1 + 394, y1 + 181 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
+		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()))) {
 			window_scale = get_default_window_scale()
 		}
+		if (draw_checkbox(x1 + 276, y1 + 195 + (theme = 3) * 22, hires, "为高分辨率优化", "是否在界面上使用更高分辨率的纹理。\n" + condstr(theme = 3, "（可能减弱性能并在低分辨率下减小可读性）", "（仅限 Fluent 主题）"), (theme != 3), true)) hires = !hires
 		}
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)

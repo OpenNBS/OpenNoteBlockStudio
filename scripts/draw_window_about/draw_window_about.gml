@@ -68,7 +68,8 @@ function draw_window_about() {
 		if (strurl[a] != "") {
 			draw_text_url(xx2, yy2, str[a], strurl[a])
 		} else {
-			draw_text(xx2, yy2, str[a])
+			if (!hires || obj_controller.theme != 3) draw_text(xx2, yy2, str[a])
+			else draw_text_transformed(xx2, yy2, str[a], 0.25, 0.25, 0)
 		}
 	}
 	draw_theme_font(font_main) 

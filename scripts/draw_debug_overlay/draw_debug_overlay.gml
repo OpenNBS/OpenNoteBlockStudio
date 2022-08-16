@@ -61,7 +61,7 @@ function draw_debug_overlay(){
 }
 
 function draw_debug_overlay_stack(x, y, str){
-	draw_theme_font(0)
+	draw_theme_font(0, 0, 1)
 	draw_set_alpha(0.5)
 	draw_set_color(0)
 	draw_rectangle(x - 4, y - 12, x + string_width(str) + 4, y + 4, 0)

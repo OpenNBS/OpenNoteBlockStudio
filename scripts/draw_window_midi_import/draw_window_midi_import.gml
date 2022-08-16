@@ -30,7 +30,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 260, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 260, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
 	
-	draw_text(x1 + 470, y1 + 32 + 20, "Time precision")
+	draw_text_dynamic(x1 + 470, y1 + 32 + 20, "Time precision")
 	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
 	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
 	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
@@ -162,10 +162,10 @@ function draw_window_midi_import() {
 	draw_text_dynamic(x1 + 590, y1 + 6, midifile)
 	draw_theme_font(font_main_bold)
 	if (midi_songlength > 0) {
-	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), time_str(midi_songlength))
+	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), time_str(midi_songlength))
 	} else {
-	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "Song tempo never defined")
-	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "速度未定义")
+	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "Song tempo never defined")
+	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "速度未定义")
 	}
 	draw_theme_font(font_main)
 	draw_set_halign(fa_left)

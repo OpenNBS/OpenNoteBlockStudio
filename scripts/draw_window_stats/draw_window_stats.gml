@@ -27,7 +27,9 @@ function draw_window_stats() {
 		if (ins.user) {
 			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true)
 		} else {
+			if (hires && theme = 3) gpu_set_texfilter(false)
 			draw_sprite(spr_instrumenticons, n, x1 + 32, y1 + 64 + 18 * a)
+			if (hires && theme = 3) gpu_set_texfilter(true)
 		}
 	    draw_text_dynamic(x1 + 50, y1 + 65 + 18 * a, "x" + string(ins.num_blocks) + " (" + string(floor(ins.num_blocks / max(0.001, totalblocks) * 100)) + "%)")
 	    popup_set_window(x1 + 32, y1 + 64 + 18 * a, 100, 18, ins.name)

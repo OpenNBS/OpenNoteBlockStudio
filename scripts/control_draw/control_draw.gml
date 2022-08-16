@@ -964,7 +964,9 @@ function control_draw() {
 	}
 
 	// Timeline and markers
+	if (hires && theme = 3) gpu_set_texfilter(false)
 	draw_sprite_ext(spr_timeline, (0 + theme = 2 + (fdark && theme = 3)) * !blackout + blackout * 2, x1 + 2, y1 + 2, totalcols * 32 + 18, 1, 0, -1, 1)
+	if (hires && theme = 3) gpu_set_texfilter(true)
 	draw_theme_font(font_small)
 	draw_set_halign(fa_left)
 	draw_theme_color()
@@ -980,7 +982,8 @@ function control_draw() {
 
 	while (xx < totalcols * 32 + 16) {
 	    if (a > 0) draw_set_halign(fa_center)
-	    draw_text(x1 + 2 + xx - note_offset, y1 + 2, time_str(a))
+	    if (!hires || obj_controller.theme != 3) draw_text(x1 + 2 + xx - note_offset, y1 + 2, time_str(a))
+	    else draw_text_transformed(x1 + 2 + xx - note_offset, y1 + 2, time_str(a), 0.25, 0.25, 0)
 	    draw_set_alpha(0.6)
 	    draw_line(x1 + 2 + xx - note_offset, y1 + 2 + 12, x1 + 2 + xx - note_offset, y1 + 2 + 15)
 	    draw_set_alpha(1)
@@ -996,7 +999,8 @@ function control_draw() {
 	    draw_set_alpha(1)
 	    if (b) {
 	        if (a > 0) draw_set_halign(fa_center)
-	        draw_text(x1 + 2 + 32 * a - note_offset, y1 + 17, string(starta + a))
+	        if (!hires || obj_controller.theme != 3) draw_text(x1 + 2 + 32 * a - note_offset, y1 + 17, string(starta + a))
+	        else draw_text_transformed(x1 + 2 + 32 * a - note_offset, y1 + 17, string(starta + a), 0.25, 0.25, 0)
 	        draw_set_halign(fa_left)
 	    }
 	}
@@ -1169,10 +1173,10 @@ function control_draw() {
 		if (theme = 3 && fdark) draw_set_color(2105376)
 		if (theme = 3 && fdark && acrylic && wpaperexist && can_draw_mica) draw_set_color(1315860)
 		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_alpha(0.875)
-		draw_rectangle(0, y1 + 1, x1, rh, 0)
-		draw_rectangle(0, 0, rw, y1, 0)
-		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 52, rw, rh, 0)
-		draw_rectangle(x1 + totalcols * 32 + 20, y1 + 1, rw, y1 + totalrows * 32 + 51, 0)
+		draw_rectangle(0, y1 + 3, x1, rh, 0)
+		draw_rectangle(0, 0, rw, y1 + 2, 0)
+		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 50, rw, rh, 0)
+		draw_rectangle(x1 + totalcols * 32 + 18, y1 + 3, rw, y1 + totalrows * 32 + 49, 0)
 		draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
 		draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
 		draw_set_alpha(1)
@@ -1279,7 +1283,9 @@ function control_draw() {
 				if(theme != 3) {
 		        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
+				if (hires) gpu_set_texfilter(false)
 				draw_sprite_ext(spr_volume_f, a / 30 + 4 * (!fdark), x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
+				if (hires) gpu_set_texfilter(true)
 				}
 		        if (language != 1) popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
 		        else popup_set(x1 + 90, y1 + 5, 12, 17, "本层的音量: " + string(a) + "%\n（拖拽来修改）")
@@ -1308,7 +1314,9 @@ function control_draw() {
 				if (theme != 3) {
 		        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
+				if (hires) gpu_set_texfilter(false)
 				draw_sprite_ext(spr_stereo_f, a / 50 + 5 * (!fdark), x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
+				if (hires) gpu_set_texfilter(true)
 				}
 				var stereostr
 				if (a > 100) { stereostr = "R " + string(a-100) }
@@ -2117,7 +2125,8 @@ function control_draw() {
 
 		if (!isplayer) {
 		// Bars-beats-sixteenths
-		draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 184, 57)
+		if (!hires || theme != 3) draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 184, 57)
+		else draw_sprite_ext(spr_tempobox_hires, 2 * (theme = 3) + 2 * (fdark && theme = 3), 184, 57, 0.25, 0.25, 0, -1, 1)
 		draw_set_halign(fa_right)
 		draw_text_dynamic(215, 60, ".")
 		draw_text_dynamic(230, 60, ".")
@@ -2130,9 +2139,11 @@ function control_draw() {
 		// Tempo
 		draw_set_halign(fa_center)
 		if (use_bpm) {
-			draw_sprite(spr_tempobox, 1 + 2 * (theme = 3) + 2 * (fdark && theme = 3), 101, 57)
+			if (!hires || theme != 3) draw_sprite(spr_tempobox, 1 + 2 * (theme = 3) + 2 * (fdark && theme = 3), 101, 57)
+			else draw_sprite_ext(spr_tempobox_hires, 1 + 2 * (theme = 3) + 2 * (fdark && theme = 3), 101, 57, 0.25, 0.25, 0, -1, 1)
 		} else {
-			draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
+			if (!hires || theme != 3) draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
+			else draw_sprite_ext(spr_tempobox_hires, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57, 0.25, 0.25, 0, -1, 1)
 		}
 		
 		if (window != w_settempo) {
