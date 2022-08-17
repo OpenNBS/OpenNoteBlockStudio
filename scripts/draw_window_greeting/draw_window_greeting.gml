@@ -164,7 +164,8 @@ function draw_window_greeting() {
 	            load_song(recent_song[a])
 	        }
 	    }
-	    draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
+	    if (!hires || theme != 3) draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
+	    else draw_sprite_ext(spr_frame5_hires, m + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	    draw_text_dynamic(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220), true)
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(b + 316 + (m = 2), c + 1 + (m = 2), seconds_to_str(floor(date_second_span(recent_song_time[a], date_current_datetime()))))

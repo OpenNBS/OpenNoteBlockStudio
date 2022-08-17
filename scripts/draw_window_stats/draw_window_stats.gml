@@ -25,7 +25,7 @@ function draw_window_stats() {
 	    if (n >= ds_list_size(instrument_list)) break
 	    ins = instrument_list[| n];
 		if (ins.user) {
-			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true)
+			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true, 1)
 		} else {
 			if (hires && theme = 3) gpu_set_texfilter(false)
 			draw_sprite(spr_instrumenticons, n, x1 + 32, y1 + 64 + 18 * a)

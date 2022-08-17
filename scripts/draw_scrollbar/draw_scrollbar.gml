@@ -56,15 +56,21 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	            }
 	        }
 	        if (sb_drag = i) ind = 2
-		
-			draw_sprite_ext(spr_scrollbar_h_bar_fill,(theme * 3) + ind + (fdark && theme = 3) * 3, xx + 20 + bpos, yy, floor(bwh) - 4 - 4 * (theme = 3), 1, 0, -1, draw_get_alpha())
-			if (theme != 3) {
-			draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind, xx + 17 + bpos, yy)
+			
+			if (!hires || theme != 3) {
+				draw_sprite_ext(spr_scrollbar_h_bar_fill, (theme * 3) + ind + (fdark && theme = 3) * 3, xx + 20 + bpos, yy, floor(bwh) - 4 - 4 * (theme = 3), 1, 0, -1, draw_get_alpha())
+				if (theme != 3) {
+				draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind, xx + 17 + bpos, yy)
+				} else {
+				draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind + fdark * 3, xx + 17 + bpos - 1, yy)
+				}
+				draw_sprite(spr_scrollbar_h_bar_right, (theme * 3) + ind + (fdark && theme = 3) * 3, xx + 17 + bpos + ceil(bwh - 2) - 4, yy)	
+				if (bwh > 20) draw_sprite(spr_scrollbar_h_bar_handle, (theme * 3) + ind, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
 			} else {
-			draw_sprite(spr_scrollbar_h_bar_left, (theme * 3) + ind + fdark * 3, xx + 17 + bpos - 1, yy)
+				draw_sprite_ext(spr_scrollbar_h_bar_fill_hires, ind + fdark * 3, xx + 20 + bpos, yy, (floor(bwh) - 4 - 4 * (theme = 3)) * 0.25, 0.25, 0, -1, draw_get_alpha())
+				draw_sprite_ext(spr_scrollbar_h_bar_left_hires, ind + fdark * 3, xx + 17 + bpos - 1, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
+				draw_sprite_ext(spr_scrollbar_h_bar_right_hires, ind + fdark * 3, xx + 17 + bpos + ceil(bwh - 2) - 4, yy, 0.25, 0.25, 0, -1, draw_get_alpha())	
 			}
-			draw_sprite(spr_scrollbar_h_bar_right, (theme * 3) + ind + (fdark && theme = 3) * 3, xx + 17 + bpos + ceil(bwh - 2) - 4, yy)	
-			if (bwh > 20) draw_sprite(spr_scrollbar_h_bar_handle, (theme * 3) + ind, xx + 17 + floor(bpos + bwh / 2 - 8), yy)
 		
 	    }
 	    if (mouse_rectangle(xx + 16, yy, bpos, 16) && locked = 0 && (window = 0 || win = 1) && sb_drag = -1) {
@@ -120,7 +126,8 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	        }
 	    }
 	
-	    draw_sprite(spr_scrollbar_h_button_left, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy)
+	    if (!hires || theme != 3) draw_sprite(spr_scrollbar_h_button_left, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy)
+	    else draw_sprite_ext(spr_scrollbar_h_button_left_hires, ind + fdark * 4, xx, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
 	
 	    ind = 0
 	    if ((mouse_rectangle(xx, yy, 32 + mwh, 16) && !locked && (window = 0 || win = 1) && sb_drag = -1) || sb_drag = i) {
@@ -143,7 +150,8 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	            }
 	        }
 	    }
-	    draw_sprite(spr_scrollbar_h_button_right, (theme * 4) + ind + (fdark && theme = 3) * 4, xx + mwh + 16, yy)
+	    if (!hires || theme != 3) draw_sprite(spr_scrollbar_h_button_right, (theme * 4) + ind + (fdark && theme = 3) * 4, xx + mwh + 16, yy)
+	    else draw_sprite_ext(spr_scrollbar_h_button_right_hires, ind + fdark * 4, xx + mwh + 16, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
 	} 
 
 	//Vertical scrollbar
@@ -186,14 +194,20 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	        }
 	        if (sb_drag = i) ind = 2
 		
-			draw_sprite_ext(spr_scrollbar_v_bar_fill,(theme * 3) + ind + (fdark && theme = 3) * 3, xx, yy + 20 + bpos, 1, floor(bwh) - 6, 0, -1, draw_get_alpha())
-			if (theme != 3) {
-			draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind, xx, yy + 17 + bpos)
+			if (!hires || theme != 3) {
+				draw_sprite_ext(spr_scrollbar_v_bar_fill,(theme * 3) + ind + (fdark && theme = 3) * 3, xx, yy + 20 + bpos, 1, floor(bwh) - 6, 0, -1, draw_get_alpha())
+				if (theme != 3) {
+				draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind, xx, yy + 17 + bpos)
+				} else {
+				draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind + fdark * 3, xx, yy + 17 + bpos - 1)
+				}
+				draw_sprite(spr_scrollbar_v_bar_down, (theme * 3) + ind + (fdark && theme = 3) * 3, xx, yy + 17 + bpos + ceil(bwh - 6))	
+				if (bwh > 20) draw_sprite(spr_scrollbar_v_bar_handle, (theme * 3) + ind, xx, yy + 17 + bpos + floor(bwh / 2) - 8)
 			} else {
-			draw_sprite(spr_scrollbar_v_bar_up, (theme * 3) + ind + fdark * 3, xx, yy + 17 + bpos - 1)
+				draw_sprite_ext(spr_scrollbar_v_bar_fill_hires, ind + fdark * 3, xx, yy + 20 + bpos, 0.25, (floor(bwh) - 6) * 0.25, 0, -1, draw_get_alpha())
+				draw_sprite_ext(spr_scrollbar_v_bar_up_hires, ind + fdark * 3, xx, yy + 17 + bpos - 1, 0.25, 0.25, 0, -1, draw_get_alpha())
+				draw_sprite_ext(spr_scrollbar_v_bar_down_hires, ind + fdark * 3, xx, yy + 17 + bpos + ceil(bwh - 6), 0.25, 0.25, 0, -1, draw_get_alpha())	
 			}
-			draw_sprite(spr_scrollbar_v_bar_down, (theme * 3) + ind + (fdark && theme = 3) * 3, xx, yy + 17 + bpos + ceil(bwh - 6))	
-			if (bwh > 20) draw_sprite(spr_scrollbar_v_bar_handle, (theme * 3) + ind, xx, yy + 17 + bpos + floor(bwh / 2) - 8)
 		
 	    }
 	    if (mouse_rectangle(xx, yy + 16, 16, bpos) && locked = 0 && (window = 0 || win = 1) && sb_drag = -1) {
@@ -248,7 +262,8 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	            }
 	        }
 	    }
-	    draw_sprite(spr_scrollbar_v_button_up, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy)
+	    if (!hires || theme != 3) draw_sprite(spr_scrollbar_v_button_up, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy)
+	    else draw_sprite_ext(spr_scrollbar_v_button_up_hires, ind + fdark * 4, xx, yy, 0.25, 0.25, 0, -1, draw_get_alpha())
 	
 	    ind = 0
 	    if ((mouse_rectangle(xx, yy, 16, 32 + mwh) && !locked && (window = 0 || win = 1) && sb_drag = -1) || sb_drag = i) {
@@ -271,7 +286,8 @@ function draw_scrollbar(argument0, argument1, argument2, argument3, argument4, a
 	            }
 	        }
 	    }
-	    draw_sprite(spr_scrollbar_v_button_down, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy + mwh + 16)
+	    if (!hires || theme != 3) draw_sprite(spr_scrollbar_v_button_down, (theme * 4) + ind + (fdark && theme = 3) * 4, xx, yy + mwh + 16)
+	    else draw_sprite_ext(spr_scrollbar_v_button_down_hires, ind + fdark * 4, xx, yy + mwh + 16, 0.25, 0.25, 0, -1, draw_get_alpha())
 	}
 	return round(sb_val[i])
 

@@ -43,7 +43,7 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	draw_set_alpha(1)
 	if (use_icons) {
 		if (iscustom) {
-			draw_icon_customins(xx + 16, yy + 16, index - first_custom_index, alpha, true)
+			draw_icon_customins(xx + 16, yy + 16, index - first_custom_index, alpha, true, 1)
 		} else {
 			if (hires && theme = 3) gpu_set_texfilter(false)
 			draw_sprite_ext(spr_instrumenticons, index, xx + 16, yy + 16, 1, 1, 0, -1, alpha)

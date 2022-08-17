@@ -25,14 +25,23 @@ function draw_icon_insbox() {
 	sprite = isaction ? i : icons.INS_1 + min(i, first_custom_index)
 	push = (a = 2 || pressed = 1) * (theme != 3)
 	if (theme != 3) {
-	draw_sprite(spr_icons, sprite, xx + push, yy + push)
+		draw_sprite(spr_icons, sprite, xx + push, yy + push)
 	} else {
-	if (!fdark) draw_sprite_ext(spr_icons_f, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
-	else draw_sprite_ext(spr_icons_d, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
-	draw_sprite_ext(spr_icons_col, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, accent[6 - 2 * !fdark], 1)
+		if (!hires) {
+			if (!fdark) draw_sprite_ext(spr_icons_f, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
+			else draw_sprite_ext(spr_icons_d, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, 1)
+		} else {
+			if (!fdark) {
+				draw_sprite_ext(spr_icons_f_hires, 26, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), (1 - 0.2 * (a = 2)) * 0.25, (1 - 0.2 * (a = 2)) * 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_icons_f_hires, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), (1 - 0.2 * (a = 2)) * 0.25, (1 - 0.2 * (a = 2)) * 0.25, 0, -1, 1)
+			} else {
+				draw_sprite_ext(spr_icons_d_hires, 26, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), (1 - 0.2 * (a = 2)) * 0.25, (1 - 0.2 * (a = 2)) * 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_icons_d_hires, sprite, xx + push + 25 * 0.1 * (a = 2), yy + push + 23 * 0.1 * (a = 2), (1 - 0.2 * (a = 2)) * 0.25, (1 - 0.2 * (a = 2)) * 0.25, 0, -1, 1)
+			}
+		}
 	}
 	if (!isaction && i >= first_custom_index) {
-		draw_icon_customins(xx + push, yy + push, i - first_custom_index, 1, false)
+		draw_icon_customins(xx + push, yy + push, i - first_custom_index, 1, false, 1 - 0.2 * (a = 2) * (theme = 3))
 	}
 	return (a && mouse_check_button_released(mb_left))
 
