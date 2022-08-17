@@ -31,6 +31,7 @@ function draw_icon() {
 	} else {
 	if (!fdark) draw_sprite_ext(spr_icons_f, i - locked, xx + 25 * 0.1 * (a = 2), yy + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, (!dropmode) + dropalpha * (dropmode))
 	else draw_sprite_ext(spr_icons_d, i - locked, xx + 25 * 0.1 * (a = 2), yy + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, -1, (!dropmode) + dropalpha * (dropmode))
+	draw_sprite_ext(spr_icons_col, i - locked, xx + 25 * 0.1 * (a = 2), yy + 23 * 0.1 * (a = 2), 1 - 0.2 * (a = 2), 1 - 0.2 * (a = 2), 0, accent[6 - 2 * !fdark], (!dropmode) + dropalpha * (dropmode))
 	}
 	// Repeat trigger when holding fast-forward and rewind
 	if (i = 7 || i = 8) return (a = 2)

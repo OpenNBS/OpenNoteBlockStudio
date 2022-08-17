@@ -118,9 +118,15 @@ function menu_draw() {
 	            if (item_image[m, i] > -1) draw_sprite(spr_icons, item_image[m, i], dx + 2, dy + iy - 6)
 				} else {
 					if (obj_controller.fdark && theme = 3) {
-						if (item_image[m, i] > -1) draw_sprite(spr_icons_d, item_image[m, i], dx + 2, dy + iy - 6)
+						if (item_image[m, i] > -1) {
+							draw_sprite(spr_icons_d, item_image[m, i], dx + 2, dy + iy - 6)
+							draw_sprite_ext(spr_icons_col, item_image[m, i], dx + 2, dy + iy - 6, 1, 1, 0, o.accent[6 - 2 * !o.fdark], draw_get_alpha())
+						}
 					} else {
-						if (item_image[m, i] > -1) draw_sprite(spr_icons_f, item_image[m, i], dx + 2, dy + iy - 6)
+						if (item_image[m, i] > -1) {
+							draw_sprite(spr_icons_f, item_image[m, i], dx + 2, dy + iy - 6)
+							draw_sprite_ext(spr_icons_col, item_image[m, i], dx + 2, dy + iy - 6, 1, 1, 0, o.accent[6 - 2 * !o.fdark], draw_get_alpha())
+						}
 					}
 				}
 				var color;
@@ -144,8 +150,10 @@ function menu_draw() {
 				} else {
 					if (obj_controller.fdark && theme = 3) {
 						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_d, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
+						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_col, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, o.accent[6 - 2 * !o.fdark], draw_get_alpha())
 					} else {
 						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_f, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, color, draw_get_alpha())
+						if (item_hasmenu[m, i] > 0) draw_sprite_ext(spr_icons_col, icons.SUB_MENU, dx + menu_wid[m] - 24, dy + iy - 6, 1, 1, 0, o.accent[6 - 2 * !o.fdark], draw_get_alpha())
 					}
 				}
 	            draw_set_alpha(1)

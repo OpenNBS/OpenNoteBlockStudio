@@ -88,6 +88,25 @@ function draw_button2() {
 					if (m == 2) draw_set_color(accent[3])
 				}
 				draw_roundrect_ext(xx, yy, xx + w - 2, yy + 21, 4, 4, 1)
+			} else {
+				if (a) {
+					if (m == 0) draw_set_color(16579836)
+					if (m == 1) draw_set_color(16185078)
+					if (m == 2) draw_set_color(16185078)
+				} else {
+					draw_set_color(accent[5 - m])
+				}
+				draw_roundrect_ext(xx, yy, xx + w - 2, yy + 21, 4, 4, 0)
+				if (a) {
+					if (m == 0) draw_set_color(15592941)
+					if (m == 1) draw_set_color(15066597)
+					if (m == 2) draw_set_color(15066597)
+				} else {
+					if (m == 0) draw_set_color(accent[4])
+					if (m == 1) draw_set_color(accent[5])
+					if (m == 2) draw_set_color(accent[3])
+				}
+				draw_roundrect_ext(xx, yy, xx + w - 2, yy + 21, 4, 4, 1)
 			}
 		    draw_theme_color()
 		}

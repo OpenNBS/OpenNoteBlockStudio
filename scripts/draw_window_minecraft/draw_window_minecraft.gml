@@ -109,6 +109,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 1 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		} else {
 			// not compatible
@@ -116,6 +117,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 0, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 0 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 0 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		}
 
@@ -148,6 +150,7 @@ function draw_window_minecraft() {
 		draw_sprite(spr_yesno, block_outside = 0, x1 + 25, yy + 8)
 		} else {
 		draw_sprite(spr_yesno_f, (block_outside = 0) + 3 * fdark, x1 + 25, yy + 8)
+		draw_sprite_ext(spr_yesno_f, (block_outside = 0) + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 		}
 		draw_theme_font(font_main_bold)
 		if (language != 1) draw_text_dynamic(x1 + 45, yy, "All blocks must be within Minecraft's 2 octave range.")
@@ -213,6 +216,7 @@ function draw_window_minecraft() {
 		draw_sprite(spr_yesno, block_custom = 0, x1 + 25, yy + 8)
 		} else {
 		draw_sprite(spr_yesno_f, (block_custom = 0) + 3 * fdark, x1 + 25, yy + 8)
+		draw_sprite_ext(spr_yesno_f, (block_custom = 0) + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 		}
 		draw_theme_font(font_main_bold)
 		draw_theme_color()
@@ -262,6 +266,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)	
 			} else {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)	
+			draw_sprite_ext(spr_yesno_f, 1 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())	
 			}
 			draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
@@ -272,6 +277,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)	
 			} else {
 			draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)	
+			draw_sprite_ext(spr_yesno_f, 2 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())	
 			}
 		    draw_set_color(c_orange)
 			if (language != 1) draw_text_dynamic(x1 + 45, yy + 32, "The tempo is " + string(tempo) + " ticks per second.")
@@ -305,6 +311,7 @@ function draw_window_minecraft() {
 		draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 		} else {
 		draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)
+		draw_sprite_ext(spr_yesno_f, 2 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 		}
 		    draw_set_color(c_orange)
 		    if (block_outside = 1) {
@@ -342,6 +349,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 1 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		    draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
@@ -361,6 +369,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 2 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		    draw_set_color(c_orange)
 		    if (block_custom = 1) draw_text_dynamic(x1 + 45, yy + 32, "There is 1 block with custom instruments.")
@@ -374,6 +383,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 1 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		    draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
@@ -389,6 +399,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 2, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 2 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 2 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		    draw_set_color(c_orange)
 		    draw_text_dynamic(x1 + 45, yy + 32, "有 " + string(block_custom) + " 个方块使用自定义音色。")
@@ -401,6 +412,7 @@ function draw_window_minecraft() {
 			draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
 			} else {
 			draw_sprite(spr_yesno_f, 1 + 3 * fdark, x1 + 25, yy + 8)
+			draw_sprite_ext(spr_yesno_f, 1 + 6, x1 + 25, yy + 8, 1, 1, 0, accent[6 - 2 * !fdark], draw_get_alpha())
 			}
 		    draw_set_color(c_green)
 			if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)

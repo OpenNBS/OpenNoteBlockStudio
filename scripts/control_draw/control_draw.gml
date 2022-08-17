@@ -1173,9 +1173,9 @@ function control_draw() {
 		if (theme = 3 && fdark) draw_set_color(2105376)
 		if (theme = 3 && fdark && acrylic && wpaperexist && can_draw_mica) draw_set_color(1315860)
 		if (theme = 3 && acrylic && wpaperexist && can_draw_mica) draw_set_alpha(0.875)
-		draw_rectangle(0, y1 + 3, x1, rh, 0)
+		draw_rectangle(0, y1 + 3, x1 + 1, rh, 0)
 		draw_rectangle(0, 0, rw, y1 + 2, 0)
-		draw_rectangle(x1 + 1, y1 + totalrows * 32 + 50, rw, rh, 0)
+		draw_rectangle(x1 + 2, y1 + totalrows * 32 + 50, rw, rh, 0)
 		draw_rectangle(x1 + totalcols * 32 + 18, y1 + 3, rw, y1 + totalrows * 32 + 49, 0)
 		draw_rectangle(x1 + totalcols * 32 + 2, y1 + totalrows * 32 + 32, x1 + totalcols * 32 + 2 + 17, y1 + totalrows * 32 + 32 + 18, 0)
 		draw_area(x1, y1, x1 + totalcols * 32 + 20, y1 + totalrows * 32 + 52)
@@ -1283,9 +1283,13 @@ function control_draw() {
 				if(theme != 3) {
 		        draw_sprite_ext(spr_volume, a / 30, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
-				if (hires) gpu_set_texfilter(false)
-				draw_sprite_ext(spr_volume_f, a / 30 + 4 * (!fdark), x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
-				if (hires) gpu_set_texfilter(true)
+				if (!hires || theme != 3) {
+					draw_sprite_ext(spr_volume_f, !fdark, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
+					draw_sprite_ext(spr_volume_f, a / 30 + 2, x1 + 91, y1 + 11 - c * 5, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+				} else {
+					draw_sprite_ext(spr_volume_f_hires, !fdark, x1 + 91, y1 + 11 - c * 5, 0.25, 0.25, 0, iconcolor, 1)
+					draw_sprite_ext(spr_volume_f_hires, a / 30 + 2, x1 + 91, y1 + 11 - c * 5, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+				}
 				}
 		        if (language != 1) popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
 		        else popup_set(x1 + 90, y1 + 5, 12, 17, "本层的音量: " + string(a) + "%\n（拖拽来修改）")
@@ -1314,9 +1318,13 @@ function control_draw() {
 				if (theme != 3) {
 		        draw_sprite_ext(spr_stereo, a / 50, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 0.7)
 				} else {
-				if (hires) gpu_set_texfilter(false)
-				draw_sprite_ext(spr_stereo_f, a / 50 + 5 * (!fdark), x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
-				if (hires) gpu_set_texfilter(true)
+				if (!hires || theme != 3) {
+					draw_sprite_ext(spr_stereo_f, !fdark, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, iconcolor, 1)
+					draw_sprite_ext(spr_stereo_f, a / 50 + 2, x1 + 110, y1 + 11 - c * 5, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+				} else {
+					draw_sprite_ext(spr_stereo_f_hires, !fdark, x1 + 110, y1 + 11 - c * 5, 0.25, 0.25, 0, iconcolor, 1)
+					draw_sprite_ext(spr_stereo_f_hires, a / 50 + 2, x1 + 110, y1 + 11 - c * 5, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+				}
 				}
 				var stereostr
 				if (a > 100) { stereostr = "R " + string(a-100) }
@@ -1879,6 +1887,8 @@ function control_draw() {
 		} else {
 		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
 		draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
+		draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+		draw_sprite_ext(spr_minecraft_f, 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
 		}
 		draw_set_color(c_green)
 		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
@@ -1895,6 +1905,8 @@ function control_draw() {
 		} else {
 		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
+		draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+		draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
 		}
 		draw_set_color(c_orange)
 		if (language != 1) draw_text_dynamic(rw - 65, 28, "Data pack only")
@@ -1910,6 +1922,8 @@ function control_draw() {
 		} else {
 		draw_sprite(spr_minecraft_f, 2 + fdark * 3, rw - 30, 25)
 		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
+		draw_sprite_ext(spr_minecraft_f, 2 + 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+		draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
 		}
 		draw_set_color(c_red)
 		if (language != 1) draw_text_dynamic(rw - 65, 28, "Resource pack only")
@@ -1934,9 +1948,9 @@ function control_draw() {
 
 	// Status bar
 	draw_set_color(make_color_rgb(128, 128, 128))
-	draw_line(0, rh - 24, rw, rh - 24)
+	if (!fdark || theme != 3) draw_line(0, rh - 24, rw, rh - 24)
 	draw_set_color(c_white)
-	draw_line(0, rh - 23, rw, rh - 23)
+	if (fdark || theme != 3) draw_line(0, rh - 23 - (theme = 3 && fdark), rw, rh - 23 - (theme = 3 && fdark))
 	draw_theme_color()
 	xx = 4
 

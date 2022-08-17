@@ -55,7 +55,8 @@ function draw_window_preferences() {
 				windowclose = 1
 			}
 		}
-		draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 14, y1 + 30 + 12)
+		if (!hires) draw_sprite(spr_back, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 14, y1 + 30 + 12)
+		else draw_sprite_ext(spr_back_hires, fdark + 2 * (c && mouse_rectangle(x1, y1 + 30, 40, 40)), x1 + 14, y1 + 30 + 12, 0.25, 0.25, 0, -1, draw_get_alpha())
 	}
 	if (theme = 1) {
 	    draw_window(x1 + 4, y1 + 45, x1 + 496, y1 + 474 - isplayer * 100)

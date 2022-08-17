@@ -21,9 +21,13 @@ function draw_layericon(argument0, argument1, argument2, argument3, argument4, a
 	if(theme != 3) {
 	draw_sprite_ext(spr_layericons, i - locked, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, color, 0.7)
 	} else {
-	if (hires) gpu_set_texfilter(false)
-	draw_sprite_ext(spr_layericons_f, i - locked + 9 * (!fdark), xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, color, 1)
-	if (hires) gpu_set_texfilter(true)
+	if (!hires || theme != 3) {
+		draw_sprite_ext(spr_layericons_f, i - locked + 9 * (!fdark), xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, color, 1)
+		draw_sprite_ext(spr_layericons_f, i - locked + 18, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 1, 1, 0, accent[6 - 2 * !fdark], 1)
+	} else {
+		draw_sprite_ext(spr_layericons_f_hires, i - locked + 9 * (!fdark), xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 0.25, 0.25, 0, color, 1)
+		draw_sprite_ext(spr_layericons_f_hires, i - locked + 18, xx + (a = 2 || pressed = 1), yy + (a = 2 || pressed = 1), 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+	}
 	}
 	return (a && mouse_check_button_released(mb_left))
 
