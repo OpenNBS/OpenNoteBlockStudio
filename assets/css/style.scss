@@ -1,10 +1,18 @@
 ---
 ---
 
-table tbody tr:nth-child(2n).newversion {
-	background-color: #00ff0032
+table tbody tr:nth-child(2n) {
+    &, & span {
+        &.newversion {
+            background-color: #00ff0032
+        }
+    }
 }
 
-table tbody tr:nth-child(2n+1).newversion {
-	background-color: #00ff0049
+table tbody tr:nth-child(2n+1) {
+    &, & span {
+        &.newversion {
+            background-color: #00ff0049
+        }
+    }
 }
