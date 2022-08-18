@@ -61,14 +61,15 @@ function draw_debug_overlay(){
 }
 
 function draw_debug_overlay_stack(x, y, str){
-	draw_theme_font(0, 0, 1)
+	draw_theme_font(0, 0)
 	draw_set_alpha(0.5)
 	draw_set_color(0)
-	draw_rectangle(x - 4, y - 12, x + string_width(str) + 4, y + 4, 0)
+	draw_rectangle(x - 4, y - 12, x + string_width_dynamic(str) + 4, y + 4, 0)
 	y -= 10
 	draw_set_alpha(1)
 	draw_set_color(c_white)
-	draw_text(x, y, str)
+	if (!hires || theme != 3) draw_text(x, y, str)
+	else draw_text_transformed(x, y, str, 0.25, 0.25, 0)
 	y -= 7
 	return y
 }

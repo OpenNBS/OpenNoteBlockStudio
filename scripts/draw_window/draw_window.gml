@@ -33,6 +33,7 @@ function draw_window() {
 		draw_roundrect(x1, y1, x2 - 1, y2 - 1, 1)
 	} else {
 		draw_rectangle(x1, y1, x2 - 1, y2 - 1, 0)
+		if (hires && theme = 3) gpu_set_texfilter(false)
 		draw_sprite(spr_interface2, 0 + 8 * theme + 8 * (theme = 3) * fdark, x1, y1)
 		draw_sprite_ext(spr_interface2, 1 + 8 * theme + 8 * (theme = 3) * fdark, x1, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, draw_get_alpha())
 		draw_sprite(spr_interface2, 2 + 8 * theme + 8 * (theme = 3) * fdark, x1, y2 - 2)
@@ -41,6 +42,7 @@ function draw_window() {
 		draw_sprite_ext(spr_interface2, 5 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y1 + 2, 1, (y2 - y1 - 4) / 2, 0, -1, draw_get_alpha())
 		draw_sprite(spr_interface2, 6 + 8 * theme + 8 * (theme = 3) * fdark, x2 - 2, y1)
 		draw_sprite_ext(spr_interface2, 7 + 8 * theme + 8 * (theme = 3) * fdark, x1 + 2, y1, (x2 - x1 - 4) / 2, 1, 0, -1, draw_get_alpha())
+		if (hires && theme = 3) gpu_set_texfilter(true)
 	}
 	draw_theme_color()
 

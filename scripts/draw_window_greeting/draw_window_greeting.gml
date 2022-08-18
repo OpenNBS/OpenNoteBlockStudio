@@ -94,10 +94,15 @@ function draw_window_greeting() {
 	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 0, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 0, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "创建歌曲")
@@ -114,10 +119,15 @@ function draw_window_greeting() {
 	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 1, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 1, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 1, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 1, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "打开歌曲")
@@ -181,10 +191,15 @@ function draw_window_greeting() {
 	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 2, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 2, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从 MIDI 文件生成")
@@ -203,10 +218,15 @@ function draw_window_greeting() {
 	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
 	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite_(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Watch tutorial videos")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")

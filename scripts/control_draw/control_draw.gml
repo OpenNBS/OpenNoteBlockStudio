@@ -1882,13 +1882,20 @@ function control_draw() {
 	draw_set_halign(fa_right)
 	if (compatible = 1) {
 		if (theme != 3) {
-		draw_sprite(spr_minecraft, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft, 0, rw - 59, 25)
+			draw_sprite(spr_minecraft, 0, rw - 30, 25)
+			draw_sprite(spr_minecraft, 0, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
-		draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
-		draw_sprite_ext(spr_minecraft_f, 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			if (!hires) {
+				draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
+				draw_sprite(spr_minecraft_f, fdark * 3, rw - 59, 25)
+				draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f, 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			} else {
+				draw_sprite_ext(spr_minecraft_f_hires, fdark * 3, rw - 30, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, fdark * 3, rw - 59, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 6, rw - 30, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 6, rw - 59, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+			}
 		}
 		draw_set_color(c_green)
 		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
@@ -1900,13 +1907,20 @@ function control_draw() {
 		else popup_set(rw - compx, 24, compx, 25, "此歌曲兼容 schematic 和数据包。\n（点击查看更多）")
 	} else if (compatible = 2) {
 		if (theme != 3) {
-		draw_sprite(spr_minecraft, 0, rw - 30, 25)
-		draw_sprite(spr_minecraft, 1, rw - 59, 25)
+			draw_sprite(spr_minecraft, 0, rw - 30, 25)
+			draw_sprite(spr_minecraft, 1, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
-		draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
-		draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			if (!hires) {
+				draw_sprite(spr_minecraft_f, fdark * 3, rw - 30, 25)
+				draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
+				draw_sprite_ext(spr_minecraft_f, 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			} else {
+				draw_sprite_ext(spr_minecraft_f_hires, fdark * 3, rw - 30, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 1 + fdark * 3, rw - 59, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 6, rw - 30, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 1 + 6, rw - 59, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+			}
 		}
 		draw_set_color(c_orange)
 		if (language != 1) draw_text_dynamic(rw - 65, 28, "Data pack only")
@@ -1917,13 +1931,20 @@ function control_draw() {
 		else popup_set(rw - compx, 24, compx, 25, "此歌曲仅兼容数据包。\n（点击查看更多）")
 	} else {
 		if (theme != 3) {
-		draw_sprite(spr_minecraft, 2, rw - 30, 25)
-		draw_sprite(spr_minecraft, 1, rw - 59, 25)
+			draw_sprite(spr_minecraft, 2, rw - 30, 25)
+			draw_sprite(spr_minecraft, 1, rw - 59, 25)
 		} else {
-		draw_sprite(spr_minecraft_f, 2 + fdark * 3, rw - 30, 25)
-		draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
-		draw_sprite_ext(spr_minecraft_f, 2 + 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
-		draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			if (!hires) {
+				draw_sprite(spr_minecraft_f, 2 + fdark * 3, rw - 30, 25)
+				draw_sprite(spr_minecraft_f, 1 + fdark * 3, rw - 59, 25)
+				draw_sprite_ext(spr_minecraft_f, 2 + 6, rw - 30, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f, 1 + 6, rw - 59, 25, 1, 1, 0, accent[6 - 2 * !fdark], 1)
+			} else {
+				draw_sprite_ext(spr_minecraft_f_hires, 2 + fdark * 3, rw - 30, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 1 + fdark * 3, rw - 59, 25, 0.25, 0.25, 0, -1, 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 2 + 6, rw - 30, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+				draw_sprite_ext(spr_minecraft_f_hires, 1 + 6, rw - 59, 25, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
+			}
 		}
 		draw_set_color(c_red)
 		if (language != 1) draw_text_dynamic(rw - 65, 28, "Resource pack only")
