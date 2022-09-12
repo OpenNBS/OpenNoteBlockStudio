@@ -21,11 +21,19 @@
 An open source continuation of Minecraft Note Block Studio with exciting new features!
 </p>
 
-### Download
+## Table of Contents
+1. [Download](#download)
+2. [Create Instructions](#create)
+3. [Export Instructions](#export)
+4. [Issues](#issues)
+5. [Contributions](#contributions)
+6. [Website](#website)
+
+### Download<a name="download"></a>
 You can download Open Note Block Studio [here](https://github.com/OpenNBS/OpenNoteBlockStudio/releases/latest).
 You can either download it as an `.exe` installer (recommended), or as a ZIP file.
 
-### Create Instructions
+### Create Instructions<a name="create"></a>
 ![Primary Launch Options](https://i.imgur.com/bZepaSm.png)</p>
 Launching the application offers 3 primary options to start from.
 
@@ -52,7 +60,7 @@ Instead of starting from scratch, you can import a standard MIDI file and the pr
 * WARNING: Do not expect this to be a perfect translation. MIDI files are much less information-dense than other filetypes, such as mp3.
 * Most users will need to do a lot of cleanup after importing an MIDI file, unless the file is very basic.
 
-### Export Instructions
+### Export Instructions<a name="export"></a>
 After you create a song, there are 4 ways to export it.
 
 #### Export as mp3...
@@ -83,13 +91,13 @@ Stop your song by running:<\p>
 
 Learn more here: https://opennbs.org/features
 
-### Issues
+### Issues<a name="issues"></a>
 To report issues, please head over to the [Issues](https://github.com/OpenNBS/OpenNoteBlockStudio/issues) page.
 You can also join our [Discord server](https://discord.gg/w35BqQp) to get support and share your creations!
 
-### Contributions
+### Contributions<a name="contributions"></a>
 This project is written in GameMaker Language (GML). You must have GameMaker Studio 2 in order to open the project and make changes.  
 For contributions, please open a pull request.
 
-### Website
+### Website<a name="website"></a>
 For everything else, please visit the [website](https://opennbs.org/).
