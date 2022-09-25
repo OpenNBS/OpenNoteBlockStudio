@@ -221,7 +221,7 @@ function draw_window_greeting() {
 		draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
 	} else {
 		if (!hires) {
-			if (!fdark) draw_sprite_(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
+			if (!fdark) draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
 			else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
 		} else {
 			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
