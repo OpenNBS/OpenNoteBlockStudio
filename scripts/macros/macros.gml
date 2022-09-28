@@ -1,7 +1,7 @@
 function macros() {
-#macro gm_runtime_version "2.3.7.603"
-#macro version_date "2021.12.08"
-#macro version "3.9.3"
+#macro gm_runtime_version "2022.6.1.40"
+#macro version_date "2022.10.01"
+#macro version "3.10.0"
 #macro is_prerelease 0 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
@@ -90,6 +90,7 @@ function macros() {
 #macro w_settempo 43
 #macro w_tempotapper 44
 #macro w_setaccent 45
+#macro w_track_export 46
 
 #macro br "\r\n"
 
@@ -103,4 +104,11 @@ function macros() {
 #macro font_info_med 5
 #macro font_info_med_bold 6
 #macro font_med 7
+
+#macro format_mp3 "MP3"
+#macro format_wav "WAV"
+#macro format_ogg "OGG"
+#macro format_aiff "AIFF"
+#macro format_flac "FLAC"
+
 }

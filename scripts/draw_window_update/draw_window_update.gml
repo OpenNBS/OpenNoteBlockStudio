@@ -15,9 +15,10 @@ function draw_window_update() {
 	    }
 		return 0
 	}
-	x1 = floor(rw / 2 - 250)
+	var theme_offset = (theme == 3 ? 0 : 20) // Add extra width to account for the wider font on non-Fluent themes
+	x1 = floor(rw / 2 - 250) - theme_offset / 2
 	y1 = floor(rh / 2 - 200) + windowoffset
-	draw_window(x1, y1, x1 + 500, y1 + 400)
+	draw_window(x1, y1, x1 + 500 + theme_offset, y1 + 400)
 	draw_theme_font(font_main_bold)
 	
 	if (language != 1) {
@@ -29,7 +30,7 @@ function draw_window_update() {
 	}
 	} else {
 	if (RUN_FROM_IDE != 1) {
-		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在IDE中运行！）")
+		draw_text_dynamic(x1 + 8, y1 + 8, "更新历史（正在 IDE 中运行！）")
 	} else {
 		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "更新")
 		else draw_text_dynamic(x1 + 8, y1 + 8, "更新历史")
@@ -43,10 +44,10 @@ function draw_window_update() {
 		}
 	} else {
 		if (window = w_update) {
-			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到" + version + "版本！")
+			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到 " + version + " 版本！")
 		}
 	}
-	draw_area(x1 + 16, y1 + 58, x1 + 487, y1 + 357)
+	draw_area(x1 + 16, y1 + 58, x1 + 487 + theme_offset, y1 + 357)
 	n = string_count("\n", fullstr) 
 	for (a = 0; a < n; a += 1) {
 	    str[a] = string_copy(fullstr, 1, string_pos("\n", fullstr) - 1)
@@ -58,14 +59,15 @@ function draw_window_update() {
 	    if (a >= n) break
 	    if (strb[a]) draw_theme_font(font_main_bold)
 	    else draw_theme_font(font_main)
-	    draw_text(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
+	    if (!hires || obj_controller.theme != 3) draw_text(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a])
+	    else draw_text_transformed(x1 + 32, y1 + 64 + 16 * (a - sb_val[update_scrollbar]), str[a], 0.25, 0.25, 0)
 	}
 	draw_theme_font(font_main)
-	draw_scrollbar(update_scrollbar, x1 + 470, y1 + 60, 12, 22, n, 0, 1)
+	draw_scrollbar(update_scrollbar, x1 + 470 + theme_offset, y1 + 60, 12, 22, n, 0, 1)
 	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, "Older versions...", "查看更旧版本…"))) {
 		open_url(link_changelog)
 	}
-	if (draw_button2(x1 + 487 - 72, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 487 - 72 + theme_offset, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {
 	        window = w_greeting
 			save_settings() // Save new version number
@@ -73,5 +75,7 @@ function draw_window_update() {
 	        windowclose = 1
 	    }
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

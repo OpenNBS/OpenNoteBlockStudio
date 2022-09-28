@@ -21,7 +21,7 @@ function draw_window_macro_setvelocity() {
 	}
 	if (language != 1) draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Velocity")
 	else draw_areaheader(x1 + 10, y1 + 53, 120, 35, "音量")
-	setvel = median(0, draw_dragvalue(10, x1 + 55, y1 + 65, setvel, 0.1), 100)
+	setvel = median(0, draw_dragvalue(10, x1 + 55, y1 + 65, setvel, 0.1), 100 + (percentvel * 900))
 
 	draw_theme_color()
 	if (language != 1) {if (draw_checkbox(x1 + 15, y1 + 80, percentvel, "Percent", "Apply the velocity as a percentage\nof each note's current velocity.", 0, 1)) percentvel = !percentvel}
@@ -40,11 +40,13 @@ function draw_window_macro_setvelocity() {
 			val += 4
 			if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
 			else arr_data[val] = setvel
+			if (arr_data[val] > 100) arr_data[val] = 100
 			val += 3
 			while arr_data[val] != -1 {
 				val += 3
 				if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
 				else arr_data[val] = setvel
+				if (arr_data[val] > 100) arr_data[val] = 100
 				val += 3
 			}
 			val ++
@@ -54,6 +56,8 @@ function draw_window_macro_setvelocity() {
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

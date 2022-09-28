@@ -39,7 +39,7 @@ function draw_window_macro_stagger() {
 		}
 		if string_count("-", pattern) != 0 {
 			if (language != 1) message("Stagger can only extend downwards!", "Error")
-			else message("Stagger只能向下延伸！", "错误")
+			else message("Stagger 只能向下延伸！", "错误")
 			return -1
 		}
 		windowalpha = 0
@@ -92,6 +92,8 @@ function draw_window_macro_stagger() {
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	}
 	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

@@ -7,7 +7,7 @@
 /// @param  fine pitch
 function play_sound(argument0, argument1, argument2, argument3, argument4) {
 
-	var ins, key, vol, pan, newemitter, emitter, pit
+	var ins, key, vol, pan, newemitter, emitter, pit, keyshift
 	ins = argument0
 	key = argument1
 	vol = argument2
@@ -17,7 +17,8 @@ function play_sound(argument0, argument1, argument2, argument3, argument4) {
 	if (!ins.loaded)
 	    return 0
 	emitter=audio_emitter_create()
-	audio_emitter_pitch(emitter, 0.495 * power(1.06, (key + (ins.key + (pit/100) - 78))))
+	keyshift = key + (ins.key + (pit/100) - 78)
+	audio_emitter_pitch(emitter, 0.5 * power(2, keyshift / 12))
 	audio_emitter_gain(emitter, (vol / 100) * mastervol)
 	if (realstereo = 0) audio_emitter_position(emitter,pan,0,0)
 	else audio_emitter_position(emitter,100,0,0)

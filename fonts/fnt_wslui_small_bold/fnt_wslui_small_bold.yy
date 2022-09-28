@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "WeblySleek UI Semibold",
   "styleName": "Semibold",
   "size": 8.0,
@@ -16,10 +17,11 @@
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
+    "name": "Fonts",
+    "path": "texturegroups/Fonts",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
   "glyphs": {
     "32": {"x":2,"y":2,"w":3,"h":14,"character":32,"shift":3,"offset":0,},
     "33": {"x":36,"y":66,"w":3,"h":14,"character":33,"shift":3,"offset":0,},
@@ -139,8 +141,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "fnt_wslui",
+    "path": "folders/Fonts/fnt_wslui.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_wslui_small_bold",

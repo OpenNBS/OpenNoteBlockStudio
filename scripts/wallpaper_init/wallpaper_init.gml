@@ -1,5 +1,6 @@
 function wallpaper_init() {
 	var tempsurf, wpaperwidth;
+	can_draw_mica = 1
 	ExecuteShell("\"" + data_directory + "wallpaper.bat", true, true)
 	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
 	if (wpaperexist) {
@@ -8,10 +9,20 @@ function wallpaper_init() {
 		wpaperwidth = (sprite_get_width(wpaper) / sprite_get_height(wpaper)) * 720
 		tempsurf = surface_create(wpaperwidth, 720)
 		surface_set_target(tempsurf)
-		draw_sprite_ext(wpaper, 0, 0, 0, 720 / sprite_get_height(wpaper), 720 / sprite_get_height(wpaper), 0, -1, 1)
+		try {
+			draw_sprite_ext(wpaper, 0, 0, 0, 720 / sprite_get_height(wpaper), 720 / sprite_get_height(wpaper), 0, -1, 1)
+		}
+		catch(e) {
+			can_draw_mica = 0
+		}
 		surface_reset_target()
 		sprite_delete(wpaper)
-		wpaper = sprite_create_from_surface(tempsurf, 0, 0, wpaperwidth, 720, 0, 1, 0, 0)
+		try {
+			wpaper = sprite_create_from_surface(tempsurf, 0, 0, wpaperwidth, 720, 0, 1, 0, 0)
+		}
+		catch(e) {
+			can_draw_mica = 0
+		}
 		surface_free(tempsurf)
 		wpaperblur = sprite_create_blur_alt(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 300, 8, 16)
 	}
