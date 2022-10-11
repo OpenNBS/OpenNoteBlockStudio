@@ -1178,20 +1178,18 @@ function track_export() {
     
 			var soundname, soundpitch, soundnote;
 			for (a = 0; a < noteblocks; a += 1) {
-				if (o.command_block) {
-					TAG_Compound("nbt")
-						soundname = dat_instrument(noteblockins[a])
-						soundpitch = dat_pitch(noteblocknote[a] + 33 + noteblockpit[a] / 100)
-						if (noteblocknote[a] + noteblockpit[a] / 100 < 0) soundname += "_-1"
-						else if (noteblocknote[a] + noteblockpit[a] / 100 > 24) soundname += "_1"
-						TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(soundpitch))
-						TAG_Byte("TrackOutput", 0)
-						TAG_Byte("powered", 0)
-						TAG_Byte("auto", 0)
-						TAG_Byte("conditionMet", 1)
-						TAG_Byte("UpdateLastExecution", 1)
-						TAG_End()
-				}
+				TAG_Compound("nbt") // the non-command-block setting still needs this part because of magic
+					soundname = dat_instrument(noteblockins[a])
+					soundpitch = dat_pitch(noteblocknote[a] + 33 + noteblockpit[a] / 100)
+					if (noteblocknote[a] + noteblockpit[a] / 100 < 0) soundname += "_-1"
+					else if (noteblocknote[a] + noteblockpit[a] / 100 > 24) soundname += "_1"
+					TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(soundpitch))
+					TAG_Byte("TrackOutput", 0)
+					TAG_Byte("powered", 0)
+					TAG_Byte("auto", 0)
+					TAG_Byte("conditionMet", 1)
+					TAG_Byte("UpdateLastExecution", 1)
+					TAG_End()
 				TAG_List("pos", 3, 3)
 					buffer_write_int_be(99 - noteblocky[a])
 					buffer_write_int_be(noteblockz[a])
