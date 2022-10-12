@@ -1,6 +1,6 @@
 function control_step() {
 	update_window()
-	if (os_version > 393217){
+	if (os_version > 393217 && os_type = os_windows){
 	if (enda = 0 || !taskbar) {
 		window_noprogress(window_handle())
 	} else {

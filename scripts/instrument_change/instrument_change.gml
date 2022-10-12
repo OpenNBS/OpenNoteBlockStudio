@@ -18,7 +18,7 @@ function instrument_change(ins) {
 	    changed = true
 	    with (ins) {
 	        filename = string_delete(newfn, 1, string_length(sounds_directory))
-			filename = string_replace_all(filename, "\\", "/")
+			if (os_type = os_windows) filename = string_replace_all(filename, "\\", "/")
 	        if (loaded)
 	            instrument_free()
 	        instrument_load()

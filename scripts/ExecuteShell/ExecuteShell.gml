@@ -22,23 +22,23 @@ function ExecuteShell() {
 	    return ExecuteShell_result;
 	}
 
-	if (os_type == os_macosx)
-	{
-	    var ExecuteShell_result = external_call(external_define("ExecuteShell.dylib", "ExecuteShell", dll_cdecl, ty_real, 2, ty_string, ty_real), argument[0], argument[1]);
-	    external_free("ExecuteShell.dylib");
-	    keyboard_clear(keyboard_lastkey);
-	    mouse_clear(mouse_lastbutton);
-	    return ExecuteShell_result;
-	}
+	//if (os_type == os_macosx)
+	//{
+	//    var ExecuteShell_result = external_call(external_define("ExecuteShell.dylib", "ExecuteShell", dll_cdecl, ty_real, 2, ty_string, ty_real), argument[0], argument[1]);
+	//    external_free("ExecuteShell.dylib");
+	//    keyboard_clear(keyboard_lastkey);
+	//    mouse_clear(mouse_lastbutton);
+	//    return ExecuteShell_result;
+	//}
 
-	if (os_type == os_linux) 
-	{
-	    var ExecuteShell_result = external_call(external_define("ExecuteShell.so", "ExecuteShell", dll_cdecl, ty_real, 2, ty_string, ty_real), argument[0], argument[1]);
-	    external_free("ExecuteShell.so");
-	    keyboard_clear(keyboard_lastkey);
-	    mouse_clear(mouse_lastbutton);
-	    return ExecuteShell_result;
-	}
+	//if (os_type == os_linux) 
+	//{
+	//    var ExecuteShell_result = external_call(external_define("ExecuteShell.so", "ExecuteShell", dll_cdecl, ty_real, 2, ty_string, ty_real), argument[0], argument[1]);
+	//    external_free("ExecuteShell.so");
+	//    keyboard_clear(keyboard_lastkey);
+	//    mouse_clear(mouse_lastbutton);
+	//    return ExecuteShell_result;
+	//}
 
 
 }

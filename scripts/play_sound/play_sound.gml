@@ -29,7 +29,7 @@ function play_sound(argument0, argument1, argument2, argument3, argument4) {
 	//Schedule emitter to be deleted from memory
 	newemitter = ds_list_create()
 	ds_list_add(newemitter,emitter) //store emitter id
-	var length = audio_sound_length(ins.sound) / 4 * (1/audio_emitter_get_pitch(emitter))
+	var length = audio_sound_length(ins.sound) / (1 + 3 * (os_type = os_windows)) * (1/audio_emitter_get_pitch(emitter))
 	ds_list_add(newemitter, (get_timer() + length * 1000000)) //store moment at which the emitter should be removed
 	ds_list_add(emitters_to_remove, newemitter)
 

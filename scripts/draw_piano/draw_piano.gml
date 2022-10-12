@@ -10,10 +10,12 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	d = -1
 	selectedkey = -1
 	alpha = max(0, 3 - startkey) * !isplayer + 3 * isplayer
-	midi_devices = midi_input_devices()
-	for (a = 0; a < midi_devices; a += 1) {
-	    midi_keys[a] = midi_input_key_presses(a)
-	    midi_releases[a] = midi_input_key_releases(a)
+	if (os_type = os_windows) {
+		midi_devices = midi_input_devices()
+		for (a = 0; a < midi_devices; a += 1) {
+		    midi_keys[a] = midi_input_key_presses(a)
+		    midi_releases[a] = midi_input_key_releases(a)
+		}
 	}
 	for (a = 0; a < k; a += 1) {
 	    c = (startkey + a) mod 7
@@ -152,7 +154,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        }
 	        key_press[a] = keyboard_check(piano_key[a])
 	    }
-	    midi_input_set_key(a, totalcols)
+	    if (os_type = os_windows) midi_input_set_key(a, totalcols)
 	}
 	}
 	draw_set_color(0)

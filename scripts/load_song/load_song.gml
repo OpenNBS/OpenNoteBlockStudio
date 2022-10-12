@@ -1,10 +1,14 @@
 function load_song() {
 	// load_song(fn [, backup])
-	var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff
+	var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff, start
 	fn = argument[0]
+	start = false
 	backup = false
 	if (argument_count > 1) {
 		backup = argument[1]
+	}
+	if (argument_count > 2) {
+		start = argument[2]
 	}
 	if (confirm() < 0) return 0
 	if (!backup && fn = "") {
@@ -27,7 +31,7 @@ function load_song() {
 	    open_schematic(fn)
 	    return 1
 	}
-	if (file_ext != ".nbs") { message(condstr(language != 1, "Error: This file cannot be opened in this program.", "警告：本软件无法打开此类型文件。"), condstr(language != 1, "Error", "错误")) return 0 }
+	if (file_ext != ".nbs" && !start) { message(condstr(language != 1, "Error: This file cannot be opened in this program.", "警告：本软件无法打开此类型文件。"), condstr(language != 1, "Error", "错误")) return 0 }
 	if (file_ext = ".nbs") {
 	    buffer = buffer_import(fn)
 	

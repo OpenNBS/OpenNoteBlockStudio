@@ -8,7 +8,7 @@ function control_create() {
 	log_init()
 
 	// Initialize DLLs
-	lib_init()
+	if (os_type = os_windows) lib_init()
 
 	// Window
 	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
@@ -43,21 +43,24 @@ function control_create() {
 	msgcontent = ""
 	msgstart = 0
 	currentfont = 0
-	acrylic = 1
+	acrylic = (os_type = os_windows)
 	can_draw_mica = 1
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
 	window_icon = 0
-	icon_buffer = window_set_icon_impl_load(data_directory + "icon.ico")
-	icon_size_buffer = window_set_icon_impl_argbuf()
-	buffer_write(icon_size_buffer, buffer_u32, buffer_get_size(icon_buffer))
-	buffer_write(icon_size_buffer, buffer_u32, $80004005)
-	buffer_write(icon_size_buffer, buffer_string, "DLL is not loaded")
+	if (os_type = os_windows) {
+		icon_buffer = window_set_icon_impl_load(data_directory + "icon.ico")
+		icon_size_buffer = window_set_icon_impl_argbuf()
+		buffer_write(icon_size_buffer, buffer_u32, buffer_get_size(icon_buffer))
+		buffer_write(icon_size_buffer, buffer_u32, $80004005)
+		buffer_write(icon_size_buffer, buffer_string, "DLL is not loaded")
+	}
 	icon_time = -1
 	last_icon = -1
 	icon_display = 1
 	hires = (window_scale > 1.25)
+	if (os_type = os_macosx) hires = 0
 	
 	font_table =
 	[
@@ -577,7 +580,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "" && filename != "-player") load_song(filename)
+		if (filename != "" && filename != "-player") load_song(filename, 0, 1)
 	}
 
 	log("Startup OK")

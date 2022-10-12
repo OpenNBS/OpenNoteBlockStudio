@@ -19,7 +19,7 @@ function control_draw() {
 	if (channelstoggle) channels = 32768
 	else channels = 256
 	audio_channel_num(channels)
-	if (icon_display) {
+	if (icon_display && os_type = os_windows) {
 		if (window_icon) window_set_icon_raw(window_handle(), buffer_get_address(icon_buffer), buffer_get_address(icon_size_buffer))
 		else window_reset_icon_raw(window_handle())
 	}
@@ -1508,12 +1508,12 @@ function control_draw() {
 		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
 		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
 		                             inactive(selected != 0)+"Import pattern...|"+
-									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
-		                             inactive(totalblocks = 0) + "Export as audio track...|"+
-		                             inactive(totalblocks = 0) + "Export as schematic...|"+
-		                             inactive(totalblocks = 0) + "Export as track schematic...|"+
-		                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
-									 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
+									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|"+inactive(os_type != os_windows)+"Import from schematic...|-|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as audio track...|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as schematic...|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as track schematic...|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as branch schematic...|"+
+									 inactive(totalblocks = 0 || os_type != os_windows) + "Export as data pack...|-|" + 
 		                             "Alt + F4$Exit")
 			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
 							
@@ -1577,7 +1577,7 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Ctrl+P$Preferences...")
+		                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI device manager|Ctrl+P$Preferences...")
 			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Ctrl+P$Preferences...")
 		}
 		if (draw_tab("Help")) {
@@ -1595,12 +1595,12 @@ function control_draw() {
 		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
 		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
-		                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
-		                             inactive(totalblocks = 0) + "导出音频文件......|"+
-		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
-		                             inactive(totalblocks = 0) + "导出为直轨 schematic......|"+
-		                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
-									 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
+		                             inactive(selected != 0) + "导入片段......|"+inactive(selected != 0) + "导出片段......|"+"从 MIDI 文件导入......|"+inactive(os_type != os_windows)+"从 Schematic 文件导入......|-|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出音频文件......|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出为 schematic......|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出为直轨 schematic......|"+
+		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出为分支 schematic......|"+
+									 inactive(totalblocks = 0 || os_type != os_windows) + "导出为数据包......|-|" + 
 		                             "Alt + F4$退出")
 			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
 							
@@ -1664,7 +1664,7 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
+		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI 设备管理器|Ctrl+P$首选项......")
 			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
 		}
 		if (draw_tab("帮助")) {
@@ -1830,7 +1830,7 @@ function control_draw() {
 	if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 312) break
 	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 312) break}
 	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager", (os_type != os_windows))) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
 	if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
 	    open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
@@ -1851,7 +1851,7 @@ function control_draw() {
 	if (draw_icon(icons.INFORMATION, xx, yy, "歌曲信息")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 312) break
 	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "歌曲属性")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 312) break}
 	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, "音色设置")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI 设备管理器")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI 设备管理器", (os_type != os_windows))) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
 	if (draw_icon(icons.HELP, xx, yy, "教程视频")) {
 	    open_url("https://www.bilibili.com/video/BV1Mx411a76p")
@@ -2088,18 +2088,20 @@ function control_draw() {
 		}
 	}
 
-	draw_set_halign(fa_right)
-	str = ""
-	for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
-	if (language != 1) {
-	if (midi_devices = 0) str = "No connected MIDI devices"
-	else str = "MIDI devices: " + str
-	} else {
-	if (midi_devices = 0) str = "无 MIDI 设备"
-	else str = "MIDI 设备: " + str
-	}
-	draw_text_dynamic(rw - 6, rh - 18, str)
-	draw_set_halign(fa_left)
+	if (os_type = os_windows) {
+		draw_set_halign(fa_right)
+		str = ""
+		for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
+		if (language != 1) {
+		if (midi_devices = 0) str = "No connected MIDI devices"
+		else str = "MIDI devices: " + str
+		} else {
+		if (midi_devices = 0) str = "无 MIDI 设备"
+		else str = "MIDI 设备: " + str
+		}
+		draw_text_dynamic(rw - 6, rh - 18, str)
+		draw_set_halign(fa_left)
+		}
 	}
 	
 	}
