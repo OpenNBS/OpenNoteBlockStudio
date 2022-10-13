@@ -13,7 +13,7 @@ function open_schematic(argument0) {
 	reset_add()
 	io_clear()
 	array_push(songs, create(obj_song))
-	song = array_length(songs) - 1
+	set_song(array_length(songs) - 1)
 	with (create(obj_dummy)) {
 	    window = -1
 	    d = sqrt(2000 * 256 * 2000)

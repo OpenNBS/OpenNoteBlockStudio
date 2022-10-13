@@ -5,7 +5,7 @@ function open_midi() {
 	var fn, r, t, p, x1, y1;
 	var trackend, delta, event, eventtype, channel, lasteventtype, lastchannel, newsong, replace;
 	fn = argument[0]
-	replace = false
+	replace = isplayer
 	if (argument_count > 1) {
 		replace = argument[1]
 	}
@@ -30,10 +30,12 @@ function open_midi() {
 
 	r = buffer_read_short_be()
 	if (r != 0 && r != 1 && r != 2) {message("Error loading MIDI file:\n\nFormat not supported.", "Error") reset_midi() buffer_delete(buffer) return 0}
+	for (var a = 0; a < 2000; a += 1) {try{songs[song].text_exists_song[a] = text_exists[a]}catch(ee){}; try{songs[song].text_str_song[a] = text_str[a]}catch(ee){}}
 	if (replace) close_song(0, 1)
 	newsong = create(obj_song)
 	array_push(songs, newsong)
 	song = array_length(songs) - 1
+	for (var a = 0; a < 2000; a += 1) {try{text_exists[a] = songs[song].text_exists_song[a]}catch(ee){}; try{text_str[a] = songs[song].text_str_song[a]}catch(ee){}}
 
 	midi_tracks = buffer_read_short_be()
 	newsong.midifile = filename_name(fn)

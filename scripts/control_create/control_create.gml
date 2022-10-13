@@ -152,6 +152,70 @@ function control_create() {
 	volume_scroll = 0
 	remove_effect = 1
 
+	// Instruments
+	original_instruments = []
+	array_push(original_instruments, new_instrument("Harp",          "harp.ogg",     false, true))
+	array_push(original_instruments, new_instrument("Double Bass",   "dbass.ogg",    false, true))
+	array_push(original_instruments, new_instrument("Bass Drum",     "bdrum.ogg",    false))
+	array_push(original_instruments, new_instrument("Snare Drum",    "sdrum.ogg",    false))
+	array_push(original_instruments, new_instrument("Click",         "click.ogg",    false))
+	array_push(original_instruments, new_instrument("Guitar",        "guitar.ogg",   false, true))
+	array_push(original_instruments, new_instrument("Flute",         "flute.ogg",    false, true))
+	array_push(original_instruments, new_instrument("Bell",          "bell.ogg",     false, true))
+	array_push(original_instruments, new_instrument("Chime",         "icechime.ogg", false, true))
+	array_push(original_instruments, new_instrument("Xylophone",     "xylobone.ogg", false, true))
+	array_push(original_instruments, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
+	array_push(original_instruments, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
+	array_push(original_instruments, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
+	array_push(original_instruments, new_instrument("Bit",           "bit.ogg", false, true))
+	array_push(original_instruments, new_instrument("Banjo",         "banjo.ogg", false, true))
+	array_push(original_instruments, new_instrument("Pling",         "pling.ogg", false, true))
+	
+	// Navigating sounds
+	str = ""
+	soundinvoke = create(obj_instrument)
+	soundinvoke.key = 45
+	soundinvoke.filename = "UI/invoke.ogg"
+	soundinvoke.user = 0
+	soundshow =   create(obj_instrument)
+	soundshow.key =   45
+	soundshow.filename =     "UI/show.ogg"
+	soundshow.user =   0
+	soundhide =   create(obj_instrument)
+	soundhide.key =   45
+	soundhide.filename =     "UI/hide.ogg"
+	soundhide.user =   0
+	soundgoback = create(obj_instrument)
+	soundgoback.key = 45
+	soundgoback.filename = "UI/goback.ogg"
+	soundgoback.user = 0
+	soundmetronome = create(obj_instrument)
+	soundmetronome.key = 45
+	soundmetronome.filename = "UI/metronome.ogg"
+	soundmetronome.user = 0
+	soundding = create(obj_instrument)
+	soundding.key = 45
+	soundding.filename = "UI/ding.ogg"
+	soundding.user = 0
+	soundmetronomeclick = create(obj_instrument)
+	soundmetronomeclick.key = 45
+	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	soundmetronomeclick.user = 0
+
+	first_custom_index = array_length(original_instruments)
+
+	insmenu = 0
+	emitters_to_remove = ds_list_create()
+	
+	// Initialize instruments
+	str = ""
+	with (obj_instrument)
+	    if (!instrument_load())
+	        str += filename + "\n"
+	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
+
+	log("Instruments loaded")
+
 	// File
 	songs = []
 	array_push(songs, create(obj_song))
@@ -333,50 +397,6 @@ function control_create() {
 	w_dragvalue = 0
 	init_midi()
 	
-	// Navigating sounds
-	str = ""
-	soundinvoke = create(obj_instrument)
-	soundinvoke.key = 45
-	soundinvoke.filename = "UI/invoke.ogg"
-	soundinvoke.user = 0
-	with (soundinvoke) if (!instrument_load()) str += filename + "\n"
-	soundshow =   create(obj_instrument)
-	soundshow.key =   45
-	soundshow.filename =     "UI/show.ogg"
-	soundshow.user =   0
-	with (soundshow) if (!instrument_load()) str += filename + "\n"
-	soundhide =   create(obj_instrument)
-	soundhide.key =   45
-	soundhide.filename =     "UI/hide.ogg"
-	soundhide.user =   0
-	with (soundhide) if (!instrument_load()) str += filename + "\n"
-	soundgoback = create(obj_instrument)
-	soundgoback.key = 45
-	soundgoback.filename = "UI/goback.ogg"
-	soundgoback.user = 0
-	with (soundgoback) if (!instrument_load()) str += filename + "\n"
-	soundmetronome = create(obj_instrument)
-	soundmetronome.key = 45
-	soundmetronome.filename = "UI/metronome.ogg"
-	soundmetronome.user = 0
-	with (soundmetronome) if (!instrument_load()) str += filename + "\n"
-	soundding = create(obj_instrument)
-	soundding.key = 45
-	soundding.filename = "UI/ding.ogg"
-	soundding.user = 0
-	with (soundding) if (!instrument_load()) str += filename + "\n"
-	soundmetronomeclick = create(obj_instrument)
-	soundmetronomeclick.key = 45
-	soundmetronomeclick.filename = "UI/metronome_click.ogg"
-	soundmetronomeclick.user = 0
-	with (soundmetronomeclick) if (!instrument_load()) str += filename + "\n"
-	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
-
-	first_custom_index = ds_list_size(songs[song].instrument_list)
-
-	insmenu = 0
-	emitters_to_remove = ds_list_create()
-
 	// Minecraft
 	selected_tab_mc = 0
 

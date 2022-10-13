@@ -3,7 +3,7 @@ function load_song() {
 	var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff, newsong, replace
 	fn = argument[0]
 	backup = false
-	replace = false
+	replace = isplayer
 	if (argument_count > 1) {
 		backup = argument[1]
 	}
@@ -33,10 +33,12 @@ function load_song() {
 	}
 	if (file_ext != ".nbs") { message(condstr(language != 1, "Error: This file cannot be opened in this program.", "警告：本软件无法打开此类型文件。"), condstr(language != 1, "Error", "错误")) return 0 }
 	if (file_ext = ".nbs") {
+		for (var a = 0; a < 2000; a += 1) {try{songs[song].text_exists_song[a] = text_exists[a]}catch(ee){}; try{songs[song].text_str_song[a] = text_str[a]}catch(ee){}}
 		if (replace) close_song(0, 1)
 		newsong = create(obj_song)
 		array_push(songs, newsong)
 		song = array_length(songs) - 1
+		for (var a = 0; a < 2000; a += 1) {try{text_exists[a] = songs[song].text_exists_song[a]}catch(ee){}; try{text_str[a] = songs[song].text_str_song[a]}catch(ee){}}
 		
 	    buffer = buffer_import(fn)
 	

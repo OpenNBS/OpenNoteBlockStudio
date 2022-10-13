@@ -6,8 +6,21 @@ function control_draw() {
 	currspeed = targetspeed / delta_time
 	
 	var current_song = songs[song]
+	var tabwidth = 180
+	if (179 * array_length(songs) + 30 > rw - 14) tabwidth = (rw - 14 - 30) / array_length(songs) + 1
 	
-	var song_tab_offset = (array_length(songs) > 1 && !fullscreen) * (30 + 10 * (theme = 3))
+	var song_tab_offset = 0
+	if (array_length(songs) > 1 && !fullscreen) {
+		if (theme = 0) song_tab_offset = 35
+		if (theme = 1) song_tab_offset = 30
+		if (theme = 2) song_tab_offset = 30
+		if (theme = 3) song_tab_offset = 40
+	}
+	var song_tab_texty = 0
+	if (theme = 0) song_tab_texty = 32
+	if (theme = 1) song_tab_texty = 30
+	if (theme = 2) song_tab_texty = 30
+	if (theme = 3) song_tab_texty = 34
 	
 	rw = floor(window_width * (1 / window_scale))
 	rh = floor(window_height * (1 / window_scale))
@@ -2141,6 +2154,7 @@ function control_draw() {
 		draw_set_alpha(1)
 		
 		if (isplayer) {
+			current_song = songs[song]
 			if (!dropmode) {
 				current_song.marker_pos = draw_dragbar(current_song.marker_pos, current_song.enda, rw / 2 - 200, rh / 2 + 25, 400, 1, time_str((clamp(((mouse_x - (rw / 2 - 200)) / 400) * current_song.enda, 0, current_song.enda)) / current_song.tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
 				draw_set_halign(fa_left)
@@ -2274,6 +2288,77 @@ function control_draw() {
 		}
 		}
 		draw_set_halign(fa_left)
+	}
+	
+	// Song Tabs
+	if (array_length(songs) > 1 && !fullscreen) {
+		for (tab = 0; tab < array_length(songs); tab++) {
+			tab_str = ""
+			taba = (mouse_rectangle(8 + tab * tabwidth - 2, 24 + 2, tabwidth - 2, 24 + 5 * (theme = 3)) && (window = 0) && (tab != song))
+			if (taba && mouse_check_button_pressed(mb_left)) taba += 1
+			if (taba = 2) {
+				set_song(tab)
+			}
+			if (theme != 3) {
+				closea = mouse_rectangle(7 - 20 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 16, 15) * (window = 0)
+				if (closea && mouse_check_button(mb_left)) closea++
+				draw_sprite_ext(spr_songtab, 9 + 10 * theme, 0, 24 - 5 * (theme = 1 || theme = 2), rw / 4, 1, 0, -1, 1)
+				draw_sprite_ext(spr_songtab, 0 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 6 + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+				draw_sprite_ext(spr_songtab, 1 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 10 + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), (tabwidth - 5) / 4, 1, 0, -1, 1)
+				draw_sprite_ext(spr_songtab, 2 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 5 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+				draw_sprite_ext(spr_frame4, closea + 3 * theme, 7 - 20 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 17/16, 1, 0, -1, 1)
+				draw_sprite_ext(spr_closetab, (closea > 0 && theme = 0), 7 - 20 + tabwidth + tab * tabwidth - 1 + 4 + (closea = 2 && theme != 0), 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0) + 4 + (closea = 2 && theme != 0), 1, 1, 0, -1 + (theme = 1), 1)
+			} else {
+				closea = mouse_rectangle(7 + tabwidth + tab * tabwidth - 35, 24 + 5, 30, 22) * (window = 0)
+				if (closea && mouse_check_button(mb_left)) closea++
+				if (fdark) {
+					hover_color = make_color_rgb(45, 45, 45)
+					sel_color = make_color_rgb(40, 40, 40)
+					if (tab = song) {
+						if (closea) close_color = make_color_rgb(53, 53, 53)
+						if (closea = 2) close_color = make_color_rgb(48, 48, 48)
+					} else {
+						if (closea) close_color = make_color_rgb(57, 57, 57)
+						if (closea = 2) close_color = make_color_rgb(53, 53, 53)
+					}
+				} else {
+					hover_color = make_color_rgb(233, 233, 233)
+					sel_color = make_color_rgb(249, 249, 249)
+					if (tab = song) {
+						if (closea) close_color = make_color_rgb(240, 240, 240)
+						if (closea = 2) close_color = make_color_rgb(243, 243, 243)
+					} else {
+						if (closea) close_color = make_color_rgb(225, 225, 225)
+						if (closea = 2) close_color = make_color_rgb(228, 228, 228)
+					}
+				}
+				draw_theme_color()
+				if (wpaperexist && acrylic && can_draw_mica) draw_set_alpha(0.8)
+				draw_line(0, 19 + 39, rw, 19 + 39)
+				if (taba = 1) draw_set_color(hover_color)
+				if (tab = song) draw_set_color(sel_color)
+				if (taba = 1 || tab = song) draw_roundrect(7 + tab * tabwidth, 24 + 2 * (tab != song), 7 + tabwidth + tab * tabwidth, 24 + 40 - 7, 0)
+				if (closea) draw_set_color(close_color)
+				draw_set_alpha(1)
+				if (closea) draw_roundrect(7 + tabwidth + tab * tabwidth - 35, 24 + 5, 7 + tabwidth + tab * tabwidth - 4, 24 + 28, 0)
+				draw_set_alpha(0.5)
+				draw_separator(7 + tabwidth + tab * tabwidth + 1, 24 + 8)
+				draw_set_alpha(1)
+				draw_sprite_ext(spr_closetab, 2, 7 + tabwidth + tab * tabwidth - 35 + 13, 24 + 5 + 8, 1, 1, 0, -1 + (!fdark), 1)
+			}
+			draw_theme_color()
+			draw_theme_font(font_main)
+			tab_str = songs[tab].song_title
+			if (string_width_dynamic(tab_str) > tabwidth - 20 - 15 * (theme = 3)) {
+				while (tab_str != "" && string_width_dynamic(tab_str) > tabwidth - 20 - 15 * (theme = 3) - 20 * (tab = song) - string_width("...")) {
+					tab_str = string_delete(tab_str, string_length(tab_str), 1)
+				}
+				tab_str += "..."
+			}
+			draw_text_dynamic(16 + tab * tabwidth - 1, song_tab_texty, tab_str)
+			
+			if (closea && mouse_check_button_released(mb_left)) close_song(tab)
+		}
 	}
 
 	// Piano

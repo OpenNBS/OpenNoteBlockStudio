@@ -13,6 +13,11 @@ marker_prevpos = 0
 section_exists = 0
 section_start = 0
 section_end = 0
+
+text_exists_song[2000] = 0
+for (var a = 0; a < 2000; a += 1) text_exists_song[a] = 0
+text_str_song[2000] = ""
+for (var a = 0; a < 2000; a += 1) text_str_song[a] = ""
 	
 // Note blocks
 starta = 0
@@ -96,32 +101,8 @@ song_nbs_version = 0
 // Instruments
 instrument_list = ds_list_create()
 
-ds_list_add(instrument_list, new_instrument("Harp",          "harp.ogg",     false, true))
-ds_list_add(instrument_list, new_instrument("Double Bass",   "dbass.ogg",    false, true))
-ds_list_add(instrument_list, new_instrument("Bass Drum",     "bdrum.ogg",    false))
-ds_list_add(instrument_list, new_instrument("Snare Drum",    "sdrum.ogg",    false))
-ds_list_add(instrument_list, new_instrument("Click",         "click.ogg",    false))
-ds_list_add(instrument_list, new_instrument("Guitar",        "guitar.ogg",   false, true))
-ds_list_add(instrument_list, new_instrument("Flute",         "flute.ogg",    false, true))
-ds_list_add(instrument_list, new_instrument("Bell",          "bell.ogg",     false, true))
-ds_list_add(instrument_list, new_instrument("Chime",         "icechime.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Xylophone",     "xylobone.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
-ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
+for (var i = 0; i < obj_controller.first_custom_index; i++) ds_list_add(instrument_list, obj_controller.original_instruments[i])
 
 instrument = instrument_list[| 0]
 insbox_start = 0
 user_instruments = 0
-
-// Initialize instruments
-var str = ""
-for (var i = 0; i < ds_list_size(instrument_list); i++)
-	with (instrument_list[| i]) if (!instrument_load())
-	    str += filename + "\n"
-if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
-
-log("Instruments loaded")

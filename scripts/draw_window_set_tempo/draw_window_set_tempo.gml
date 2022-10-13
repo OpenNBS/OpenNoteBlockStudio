@@ -2,7 +2,13 @@ function draw_window_set_tempo() {
 	// draw_window_set_tempo()
 	var bpm_multiplier = use_bpm ? 15 : 1
 	var input = string_format(songs[song].tempo * bpm_multiplier, 0, 2)
-	var song_tab_offset = (array_length(songs) > 1 && !fullscreen) * 40
+	var song_tab_offset = 0
+	if (array_length(songs) > 1 && !fullscreen) {
+		if (theme = 0) song_tab_offset = 35
+		if (theme = 1) song_tab_offset = 30
+		if (theme = 2) song_tab_offset = 30
+		if (theme = 3) song_tab_offset = 40
+	}
 	var xx, w
 	if (!use_bpm) {
 		xx = 108
