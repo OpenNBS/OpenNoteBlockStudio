@@ -1,17 +1,21 @@
-function open_midi(argument0) {
+function open_midi() {
 	// open_midi(filename)
 	// http://faydoc.tripod.com / formats / mid.htm
 	// http://dogsbodynet.com / fileformats / midi.html
 	var fn, r, t, p, x1, y1;
-	var trackend, delta, event, eventtype, channel, lasteventtype, lastchannel;
-	fn = argument0
-	if (confirm() < 0) return 0
+	var trackend, delta, event, eventtype, channel, lasteventtype, lastchannel, newsong, replace;
+	fn = argument[0]
+	replace = false
+	if (argument_count > 1) {
+		replace = argument[1]
+	}
+	//if (confirm() < 0) return 0
 	if (fn = "") {
 		if (language != 1) fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
 		else fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "从 MIDI 导入"))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
-	reset()
+	reset_add()
 	buffer = buffer_import(fn)
 
 	r = buffer_read_string_byte(4)
@@ -26,10 +30,14 @@ function open_midi(argument0) {
 
 	r = buffer_read_short_be()
 	if (r != 0 && r != 1 && r != 2) {message("Error loading MIDI file:\n\nFormat not supported.", "Error") reset_midi() buffer_delete(buffer) return 0}
+	if (replace) close_song(0, 1)
+	newsong = create(obj_song)
+	array_push(songs, newsong)
+	song = array_length(songs) - 1
 
 	midi_tracks = buffer_read_short_be()
-	midifile = filename_name(fn)
-	midiname = filename_name(fn)
+	newsong.midifile = filename_name(fn)
+	newsong.midiname = filename_name(fn)
 	midi_trackamount[midi_tracks] = 0
 	reset_midi()
 	midi_tempo = buffer_read_short_be()

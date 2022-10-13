@@ -203,7 +203,7 @@ function draw_window_preferences() {
 		if (language != 1) {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.", false, true)) autosave=!autosave}
 		else {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "启用自动保存", "歌曲是否每过一段时间自动保存一次。", false, true)) autosave=!autosave}
 		if (as != autosave) {
-		    changed = 1
+		    songs[song].changed = 1
 		    if (autosave = 0) tonextsave = 0
 		    if (autosave = 1) tonextsave = autosavemins
 		}
@@ -218,7 +218,7 @@ function draw_window_preferences() {
 		    else draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
 			as = autosavemins
 			autosavemins = median(1, draw_dragvalue(2, x1 + 375, y1 + 110 + (theme = 3) * 22, autosavemins, 1), 60)
-			if (autosavemins != a) {changed = 1 tonextsave = autosavemins}
+			if (autosavemins != a) {songs[song].changed = 1 tonextsave = autosavemins}
 		}
 		if (language != 1) popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "The amount of minutes between each auto-save.")
 		else popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "自动保存中间的间隔。")

@@ -41,7 +41,7 @@ function menu_click(argument0) {
 	            }
 				save_settings()
 	        }
-	        if (sel = b + 4) save_song(filename)
+	        if (sel = b + 4) save_song(songs[song].filename)
 	        if (sel = b + 5) save_song("")
 			if (sel = b + 6) window = w_saveoptions
 	        if (sel = b + 7) pattern_import("")
@@ -66,27 +66,27 @@ function menu_click(argument0) {
 			if ((editmode = m_key) && (sel >= 15)) {
 				sel += 2
 			}
-			var insoffset = ds_list_size(instrument_list) + insmenu - 1
+			var insoffset = ds_list_size(songs[song].instrument_list) + insmenu - 1
 			var ins = sel - 18
 			ins -= floor(ins / 26) // subtract the "More..." entries to get the instrument number
 	        if (sel = 0) action_undo()
 	        if (sel = 1) action_redo()
 	        if (sel = 2) action_copy()
 	        if (sel = 3) action_cut()
-	        if (sel = 4) action_paste(starta, startb)
+	        if (sel = 4) action_paste(songs[song].starta, songs[song].startb)
 	        if (sel = 5) action_delete()
 	        if (sel = 6) select_all(-1, 0)
 	        if (sel = 7) selection_place(0)
 	        if (sel = 8) selection_invert()
-	        if (sel = 9) select_all(instrument, 0)
-	        if (sel = 10) select_all(instrument, 1)
+	        if (sel = 9) select_all(songs[song].instrument, 0)
+	        if (sel = 10) select_all(songs[song].instrument, 1)
 	        if (sel = 11) mode_action(1)
 	        if (sel = 12) mode_action(2)
 	        if (sel = 13) mode_action(3)
 	        if (sel = 14) mode_action(4)
 	        if (sel = 15 && editmode != m_key) mode_action(5)
 	        if (sel = 16 && editmode != m_key) mode_action(6)
-	        if (sel > 17 && sel < 18 + insoffset) selection_changeins(instrument_list[| ins])
+	        if (sel > 17 && sel < 18 + insoffset) selection_changeins(songs[song].instrument_list[| ins])
 	        if (sel = 18 + insoffset) selection_expand()
 	        if (sel = 19 + insoffset) selection_compress()
 	        if (sel = 21 + insoffset) window = w_tremolo
@@ -114,7 +114,7 @@ function menu_click(argument0) {
 			if ((editmode = m_key) && (sel >= 15)) {
 				sel += 2
 			}
-			var insoffset = ds_list_size(instrument_list) + insmenu - 1
+			var insoffset = ds_list_size(songs[song].instrument_list) + insmenu - 1
 			var ins = sel - 18
 			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
 	        if (sel = 0) action_copy()
@@ -126,21 +126,21 @@ function menu_click(argument0) {
 	        if (sel = 6) selection_invert()
 	        if (sel = 7) {
 	            selection_place(0)
-	            selection_add(obj_menu.menuc + 1, 0, enda, endb, 0, 0)
+	            selection_add(obj_menu.menuc + 1, 0, songs[song].enda, songs[song].endb, 0, 0)
 	        }
 	        if (sel = 8) {
 	            selection_place(0)
-	            selection_add(0, 0, obj_menu.menuc, endb, 0, 0)
+	            selection_add(0, 0, obj_menu.menuc, songs[song].endb, 0, 0)
 	        }
-	        if (sel = 9) select_all(instrument, 0)
-	        if (sel = 10) select_all(instrument, 1)
+	        if (sel = 9) select_all(songs[song].instrument, 0)
+	        if (sel = 10) select_all(songs[song].instrument, 1)
 	        if (sel = 11) mode_action(1)
 	        if (sel = 12) mode_action(2)
 	        if (sel = 13) mode_action(3)
 	        if (sel = 14) mode_action(4)
 	        if (sel = 15 && editmode != m_key) mode_action(5)
 	        if (sel = 16 && editmode != m_key) mode_action(6)
-	        if (sel > 17 && sel < 18 + insoffset) selection_changeins(instrument_list[| ins])
+	        if (sel > 17 && sel < 18 + insoffset) selection_changeins(songs[song].instrument_list[| ins])
 	        if (sel = 18 + insoffset) selection_expand()
 	        if (sel = 19 + insoffset) selection_compress()
 	        if (sel = 21 + insoffset) window = w_tremolo
@@ -165,10 +165,10 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "settings": {
-			var insoffset = ds_list_size(instrument_list) + insmenu - 1
+			var insoffset = ds_list_size(songs[song].instrument_list) + insmenu - 1
 			var ins = sel - 1
 			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
-	        if (sel < insoffset + 1) {instrument = instrument_list[| ins]; selected_vel = 100; selected_pan = 100; selected_pit = 0}
+	        if (sel < insoffset + 1) {songs[song].instrument = songs[song].instrument_list[| ins]; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	        if (sel = insoffset + 1) window = w_instruments
 	        if (sel = insoffset + 2) window = w_songinfoedit
 	        if (sel = insoffset + 3) window = w_properties
@@ -201,19 +201,19 @@ function menu_click(argument0) {
 	    }
 	    case "section": {
 	        if (sel = 0) {
-	            section_exists = 0
-	            section_start = 0
-	            section_end = 0
+	            songs[song].section_exists = 0
+	            songs[song].section_start = 0
+	            songs[song].section_end = 0
 	        }
 	        if (sel = 1) {
-	            starta = section_start
-	            sb_val[0] = starta
+	            songs[song].starta = songs[song].section_start
+	            sb_val[0] = songs[song].starta
 	        }
 	        if (sel = 2) {
-	            starta = section_end - 1
-	            sb_val[0] = starta
+	            songs[song].starta = songs[song].section_end - 1
+	            sb_val[0] = songs[song].starta
 	        }
-	        if (sel = 3) selection_add(section_start, 0, section_end - 1, endb, 0, 0)
+	        if (sel = 3) selection_add(songs[song].section_start, 0, songs[song].section_end - 1, songs[song].endb, 0, 0)
 	        if (sel = 4) marker_start=!marker_start
 	        if (sel = 5) marker_end=!marker_end
 	        break
@@ -261,18 +261,18 @@ function menu_click(argument0) {
 	        break
 	    }
 	    case "instruments_press": {
-	        instrument_list[| obj_menu.menub].press = !sel
+	        songs[song].instrument_list[| obj_menu.menub].press = !sel
 	        break
 	    }
 	    case "instruments_pitch": {
-	        instrument_list[| obj_menu.menub].key = sel - floor((sel + 9) / 13) - 1
+	        songs[song].instrument_list[| obj_menu.menub].key = sel - floor((sel + 9) / 13) - 1
 	        break
 	    }
 	    case "mididevices_ins": {
 	        if (sel - 3 < 0)
 	            mididevice_instrument[obj_menu.mididevice] = sel - 3
 	        else
-	            mididevice_instrument[obj_menu.mididevice] = instrument_list[| sel - 3]
+	            mididevice_instrument[obj_menu.mididevice] = songs[song].instrument_list[| sel - 3]
 	        break
 	    }
 		case "refreshrate": {
@@ -336,14 +336,14 @@ function menu_click(argument0) {
 		case "tempo": {
 			if (sel = 0) use_bpm = false
 			else if (sel = 1) use_bpm = true
-			else if (sel = 2) tempo = 10
-			else if (sel = 3) tempo = 12
-			else if (sel = 4) tempo = 14
-			else if (sel = 5) tempo = 16
-			else if (sel = 6) tempo = 18
-			else if (sel = 7) tempo = 20
-			else if (sel = 8) tempo = 30
-			else if (sel = 9) tempo = 60
+			else if (sel = 2) songs[song].tempo = 10
+			else if (sel = 3) songs[song].tempo = 12
+			else if (sel = 4) songs[song].tempo = 14
+			else if (sel = 5) songs[song].tempo = 16
+			else if (sel = 6) songs[song].tempo = 18
+			else if (sel = 7) songs[song].tempo = 20
+			else if (sel = 8) songs[song].tempo = 30
+			else if (sel = 9) songs[song].tempo = 60
 			else if (sel = 10) window = w_tempotapper
 			break
 		}

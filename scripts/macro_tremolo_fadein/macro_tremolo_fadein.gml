@@ -1,8 +1,8 @@
 function macro_tremolo_fadein() {
 	// macro_tremolo_fadein()
 	var c, d , e, f, str, total_vals, total_cols, val, replength, colcount, decr, inc, tremolo_duration, prevlength, previous_colsegment, current_colsegment;
-	str = selection_code
-	if (selected = 0) return 0
+	str = songs[song].selection_code
+	if (songs[song].selected = 0) return 0
 	arr_temp = selection_to_array(str)
 	total_vals = string_count("|", str)
 	//show_debug_message("total vals is "+string(total_vals))
@@ -82,7 +82,7 @@ function macro_tremolo_fadein() {
 	//show_debug_message("Out of loop. arr_data has been changed to " + string(array_to_selection(arr_data, c)))
 	str = array_to_selection(arr_data, c)
 	arr_data = 0
-	selection_load(selection_x,selection_y,str,true)
+	selection_load(songs[song].selection_x,songs[song].selection_y,str,true)
 	selection_code_update()
 	if(!keyboard_check(vk_alt)) selection_place(false)
 

@@ -3,7 +3,7 @@ function import_midi() {
 	var a, b, deltapertick, t, e, channel, note, pos, yy, channelheight, posamount, framesps, smpte, ins, stop, vel;
 	var ins1notes, ins2notes, ins3notes, ins4notes, ins5notes, ins6notes, ins7notes, ins8notes, ins9notes, ins10notes;
 	io_clear()
-	reset()
+	reset_add()
 	deltapertick = (midi_tempo & $7FFF) / 4 / (w_midi_precision + 1)
 	// Calculate channel heights
 	for (a = 0; a <= midi_channels; a += 1) {
@@ -131,7 +131,7 @@ function import_midi() {
 	            // Add block, go lower if failed
 	            a = 0
 	            while (1) {
-	                if (add_block(pos, yy, instrument_list[| ins], note, vel, 100, 0)) break
+	                if (add_block(pos, yy, songs[song].instrument_list[| ins], note, vel, 100, 0)) break
 	                yy += 1
 	                a += 1
 	                if (a >= w_midi_maxheight && w_midi_maxheight < 20) break
@@ -140,8 +140,8 @@ function import_midi() {
 	    }
 	}
 	// Set tempo
-	if (w_midi_tempo && enda > 0 && midi_songlength > 0) {
-	    tempo = median(0.25, 10 / ((midi_songlength) / (enda / 10)), 1000)
+	if (w_midi_tempo && songs[song].enda > 0 && midi_songlength > 0) {
+	    songs[song].tempo = median(0.25, 10 / ((midi_songlength) / (songs[song].enda / 10)), 1000)
 	    //tempo = floor(tempo * 4) / 4
 	}
 	// Name
@@ -149,24 +149,24 @@ function import_midi() {
 	    yy = 0
 	    for (a = 0; a <= midi_channels; a += 1) {
 	        for (b = 0; b < channelheight[a]; b += 1) {
-				layerstereo[yy] = 100
-	            layername[yy] = "Channel " + string(a + 1)
+				songs[song].layerstereo[yy] = 100
+	            songs[song].layername[yy] = "Channel " + string(a + 1)
 	            if (w_midi_name_patch) {
 					try {
-						layername[yy] = midi_ins[midi_channelpatch[a], 3]
-						if (layername[yy] = "") layername[yy] = midi_ins[midi_channelpatch[a], 0]
+						songs[song].layername[yy] = midi_ins[midi_channelpatch[a], 3]
+						if (songs[song].layername[yy] = "") songs[song].layername[yy] = midi_ins[midi_channelpatch[a], 0]
 					}
 					catch(e) {
-						layername[yy] = "Unknown"
+						songs[song].layername[yy] = "Unknown"
 					}
-	                if (a = 9) layername[yy] = "Percussion"
+	                if (a = 9) songs[song].layername[yy] = "Percussion"
 	            }
-	            layerlock[yy] = 0
-	            layervol[yy] = 100
+	            songs[song].layerlock[yy] = 0
+	            songs[song].layervol[yy] = 100
 	            yy += 1
 	        }
 	    }
-	    endb2 = yy
+	    songs[song].endb2 = yy
 	}
 	if (w_midi_remember = 1) {
 	    for (a = 0; a < midi_channels; a += 1) {    
@@ -195,7 +195,7 @@ function import_midi() {
 	global.popup = 0
 	with (obj_popup) instance_destroy()
 	window = 0
-	changed = 0
+	songs[song].changed = 0
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 
 

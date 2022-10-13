@@ -11,7 +11,7 @@ function draw_block(argument0, argument1, argument2, argument3, argument4, argum
 	alpha = argument7
 	salpha = argument8
 
-	index = ds_list_find_index(instrument_list, ins)
+	index = ds_list_find_index(songs[song].instrument_list, ins)
 
 	//If index isnt found, don't draw
 	if(index = -1)return;
