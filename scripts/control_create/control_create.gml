@@ -18,6 +18,28 @@ function control_create() {
 		if (parameter_string(i) = "-player") isplayer = 1
 	}
 	//if (RUN_FROM_IDE != 1) isplayer = 1
+	destroy_self = 0
+	port_taken = 0
+	server_socket = -1
+	if (!isplayer) server_socket = network_create_server(network_socket_tcp, 30010, 1)
+	client_socket = -1
+	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
+	if (parameter_count() > 0) {
+		if (parameter_string(1) != "" && parameter_string(1) != "-player" && parameter_string(1) != "-game") {
+			if (port_taken) {
+				network_connect(client_socket, "127.0.0.1", 30010)
+				var temp_buffer = buffer_create(0, buffer_grow, 1)
+				buffer_write(temp_buffer, buffer_s8, 10)
+				buffer_write(temp_buffer, buffer_string, parameter_string(1))
+				network_send_packet(client_socket, temp_buffer, buffer_get_size(temp_buffer))
+				buffer_delete(temp_buffer)
+				destroy_self = 1
+				log("Sended opening song path, closing...")
+				game_end()
+			}
+		}
+	}
+	if (!destroy_self) {
 	window_width = 0
 	window_height = 0
 	if (!isplayer) window_maximize()
@@ -156,23 +178,109 @@ function control_create() {
 	else output_format = "VM"
 	volume_scroll = 0
 	remove_effect = 1
+	dragincxr = 0
+	dragincxl = 0
+	dragincyd = 0
+	dragincyu = 0
+	tabdrag = 0
+	draggingtab = -1
+	tabdest = -1
+
+	// Instruments
+	//current_resource = "Vanilla"
+	current_resource = "Vanilla"
+	resourcepacks = []
+	array_push(resourcepacks, new_resourcepack(0, "Vanilla"))
+	pack_to_push = file_find_first(resource_directory + "*", fa_directory)
+	var pack_ext = 0
+	while (pack_to_push != "") {
+		//if (filename_ext(pack_to_push) = ".zip") pack_ext = 1
+		if (filename_ext(pack_to_push) = ".zip") pack_ext = 0 // disable zip for now
+		else if (filename_ext(pack_to_push) = "") pack_ext = 2
+		else if (directory_exists(resource_directory + pack_to_push)) pack_ext = 2
+	    if (pack_ext != 0) array_push(resourcepacks, new_resourcepack(pack_ext, pack_to_push))
+		show_debug_message(pack_to_push)
+	    pack_to_push = file_find_next()
+	}
+	file_find_close()
+	
+	original_instruments = []
+	array_push(original_instruments, new_instrument("Harp",          "harp.ogg",     false, true))
+	array_push(original_instruments, new_instrument("Double Bass",   "dbass.ogg",    false, true))
+	array_push(original_instruments, new_instrument("Bass Drum",     "bdrum.ogg",    false))
+	array_push(original_instruments, new_instrument("Snare Drum",    "sdrum.ogg",    false))
+	array_push(original_instruments, new_instrument("Click",         "click.ogg",    false))
+	array_push(original_instruments, new_instrument("Guitar",        "guitar.ogg",   false, true))
+	array_push(original_instruments, new_instrument("Flute",         "flute.ogg",    false, true))
+	array_push(original_instruments, new_instrument("Bell",          "bell.ogg",     false, true))
+	array_push(original_instruments, new_instrument("Chime",         "icechime.ogg", false, true))
+	array_push(original_instruments, new_instrument("Xylophone",     "xylobone.ogg", false, true))
+	array_push(original_instruments, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
+	array_push(original_instruments, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
+	array_push(original_instruments, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
+	array_push(original_instruments, new_instrument("Bit",           "bit.ogg", false, true))
+	array_push(original_instruments, new_instrument("Banjo",         "banjo.ogg", false, true))
+	array_push(original_instruments, new_instrument("Pling",         "pling.ogg", false, true))
+	
+	// Navigating sounds
+	str = ""
+	soundinvoke = create(obj_instrument)
+	soundinvoke.key = 45
+	soundinvoke.filename = "UI/invoke.ogg"
+	soundinvoke.user = 0
+	soundshow =   create(obj_instrument)
+	soundshow.key =   45
+	soundshow.filename =     "UI/show.ogg"
+	soundshow.user =   0
+	soundhide =   create(obj_instrument)
+	soundhide.key =   45
+	soundhide.filename =     "UI/hide.ogg"
+	soundhide.user =   0
+	soundgoback = create(obj_instrument)
+	soundgoback.key = 45
+	soundgoback.filename = "UI/goback.ogg"
+	soundgoback.user = 0
+	soundmetronome = create(obj_instrument)
+	soundmetronome.key = 45
+	soundmetronome.filename = "UI/metronome.ogg"
+	soundmetronome.user = 0
+	soundding = create(obj_instrument)
+	soundding.key = 45
+	soundding.filename = "UI/ding.ogg"
+	soundding.user = 0
+	soundmetronomeclick = create(obj_instrument)
+	soundmetronomeclick.key = 45
+	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	soundmetronomeclick.user = 0
+
+	first_custom_index = array_length(original_instruments)
+
+	insmenu = 0
+	emitters_to_remove = ds_list_create()
+	
+	// Initialize instruments
+	str = ""
+	with (obj_instrument)
+	    if (!instrument_load())
+	        str += filename + "\n"
+	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
+
+	log("Instruments loaded")
 
 	// File
-	filename = ""
-	changed = 0
-	midifile = ""
-	midiname = ""
-	song_midi = ""
+	songs = []
+	array_push(songs, create(obj_song))
+	song = 0
 	for (a = 0; a < 11; a += 1) {
 	    mididevice_instrument[a] = -1
 	    recent_song[a] = ""
 	    recent_song_time[a] = 0
 	}
-	timesignature = 4
 	file_dnd_set_hwnd(hwnd_main)
 	file_dnd_set_enabled(true)
 	dndfile = ""
 	lastfile = ""
+	menutab = -1
 
 	// Playback
 	audio_listener_orientation(0,1,0, 0,0,1)
@@ -180,54 +288,24 @@ function control_create() {
 	playing = 0
 	record = 0
 	mastervol = 1
-	tempo = 10
 	tempodrag = 10
 	bpm = 0
 	use_bpm = 0
 	metronome = 0
 	metronome_played = -1
-	marker_pos = 0
-	marker_prevpos = 0
 	marker_follow = 1
 	marker_pagebypage = 1
 	marker_start = 1
 	marker_end = 0
 	marker_return = 1
 	forward = 0
-	section_exists = 0
-	section_start = 0
-	section_end = 0
 	timeline_pressa = -1
 	for (a = 0; a < 10000; a += 1) text_exists[a] = 0
 	currspeed = 0
 	taskbar = 1
 
 	// Note blocks
-	starta = 0
-	startb = 0
-	enda = 0
-	endb = 0
-	arraylength = 0
-	arrayheight = 0
-	endb2 = 0
-	compatible = 0
-	song_exists[0, 0] = 0
-	song_ins[0, 0] = 0
-	song_key[0, 0] = 0
-	song_vel[0, 0] = 0
-	song_pan[0, 0] = 0
-	song_pit[0, 0] = 0
-	song_played[0, 0] = 0
-	song_added[0, 0] = 0
-	block_outside = 0
-	block_custom = 0
-	block_pitched = 0
 	midi_devices = 0
-
-	colamount[0] = 0
-	rowamount[0] = 0
-	colfirst[0] = -1
-	collast[0] = -1
 
 	show_numbers = 1
 	show_octaves = 0
@@ -235,18 +313,12 @@ function control_create() {
 	use_icons = 0
 	use_shapes = 0
 	show_incompatible = 1
-	totalblocks = 0
 
 	mousewheel = 0
 	changepitch = 1
 	
 	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 	keynames_flat = 0
-
-	// History
-	historypos = 0
-	historylen = 0
-	for (a = 0; a < 16; a += 1) history[0, 15] = 0
 
 	// Selecting
 	select = 0
@@ -258,39 +330,12 @@ function control_create() {
 	select_pressa = -1
 	select_pressb = -1
 
-	selected = 0
 	selection_copied = ""
-	selection_code = ""
-	selection_x = 0
-	selection_y = 0
-	selection_l = 0
-	selection_h = 0
-	selection_exists[0, 0] = 0
-	selection_ins[0, 0] = 0
-	selection_key[0, 0] = 0
-	selection_vel[0, 0] = 0
-	selection_pan[0, 0] = 0
-	selection_pit[0, 0] = 0
-	selection_played[0, 0] = 0
-	selection_arraylength = 0
-	selection_arrayheight = 0
-	selection_colfirst[0] = -1
-	selection_collast[0] = -1
-
-	dragincxr = 0
-	dragincxl = 0
-	dragincyd = 0
-	dragincyu = 0
 
 	// Layers
 	show_layers = 1
 	realvolume = 1
 	realstereo = 0
-	layername[0] = ""
-	layerlock[0] = 0
-	layervol[0] = 100
-	layerstereo[0] = 100
-	solostr = ""
 	dragvolb = 0
 	dragvol = 0
 	dragstereob = 0
@@ -375,12 +420,8 @@ function control_create() {
 	asso_sch = 0
 	w_asso_start = 1
 	wmenu = 0
-	loop_session = 0
-	loop = 0
-	loopmax = 0
-	loopstart = 0
 	looptobarend = 1
-	timestoloop = loopmax
+	timestoloop = songs[song].loopmax
 	settempo = 0 // Tempo input box clicked
 	taptempo = 0 // Tempo in measuring
 	tapping = 0 // Is tapping?
@@ -409,84 +450,7 @@ function control_create() {
 	w_isdragging = 0
 	w_dragvalue = 0
 	init_midi()
-
-	// Song properties
-	song_name = ""
-	song_author = ""
-	song_orauthor = ""
-	song_desc = ""
-	work_mins = 0
-	work_left = 0
-	work_right = 0
-	work_add = 0
-	work_remove = 0
-
-	// Instruments
-	instrument_list = ds_list_create()
-
-	ds_list_add(instrument_list, new_instrument("Harp",          "harp.ogg",     false, true))
-	ds_list_add(instrument_list, new_instrument("Double Bass",   "dbass.ogg",    false, true))
-	ds_list_add(instrument_list, new_instrument("Bass Drum",     "bdrum.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Snare Drum",    "sdrum.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Click",         "click.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Guitar",        "guitar.ogg",   false, true))
-	ds_list_add(instrument_list, new_instrument("Flute",         "flute.ogg",    false, true))
-	ds_list_add(instrument_list, new_instrument("Bell",          "bell.ogg",     false, true))
-	ds_list_add(instrument_list, new_instrument("Chime",         "icechime.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Xylophone",     "xylobone.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
 	
-	// Navigating sounds
-	soundinvoke = create(obj_instrument)
-	soundinvoke.key = 45
-	soundinvoke.filename = "UI/invoke.ogg"
-	soundinvoke.user = 0
-	soundshow =   create(obj_instrument)
-	soundshow.key =   45
-	soundshow.filename =     "UI/show.ogg"
-	soundshow.user =   0
-	soundhide =   create(obj_instrument)
-	soundhide.key =   45
-	soundhide.filename =     "UI/hide.ogg"
-	soundhide.user =   0
-	soundgoback = create(obj_instrument)
-	soundgoback.key = 45
-	soundgoback.filename = "UI/goback.ogg"
-	soundgoback.user = 0
-	soundmetronome = create(obj_instrument)
-	soundmetronome.key = 45
-	soundmetronome.filename = "UI/metronome.ogg"
-	soundmetronome.user = 0
-	soundding = create(obj_instrument)
-	soundding.key = 45
-	soundding.filename = "UI/ding.ogg"
-	soundding.user = 0
-	soundmetronomeclick = create(obj_instrument)
-	soundmetronomeclick.key = 45
-	soundmetronomeclick.filename = "UI/metronome_click.ogg"
-	soundmetronomeclick.user = 0
-
-	instrument = instrument_list[| 0]
-	insbox_start = 0
-	insmenu = 0
-	first_custom_index = ds_list_size(instrument_list)
-	user_instruments = 0
-	emitters_to_remove = ds_list_create()
-
-	// Initialize instruments
-	str = ""
-	with (obj_instrument)
-	    if (!instrument_load())
-	        str += filename + "\n"
-	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
-
-	log("Instruments loaded")
-
 	// Minecraft
 	selected_tab_mc = 0
 
@@ -540,6 +504,10 @@ function control_create() {
 	window_set_min_height(500 * window_scale)
 	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
 	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
+	
+	if (current_resource != "Vanilla") {
+		set_resourcepack(current_resource)
+	}
 
 	// Updates
 	if (check_update)
@@ -571,24 +539,28 @@ function control_create() {
 	change_theme()
 
 	// Auto-recovery
-	// DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
-	// Implement in a better way that takes multiple instances into account.
-	/*
-	if (file_exists_lib(backup_file)) {
+	// PREVIOUSLY DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
+	// Implemented in a better way that takes multiple instances into account.
+	if (file_find_first(backup_file + "*_backup.nbs", 0) != "" && !port_taken && !isplayer) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
-			load_song(backup_file, true)
+			open_url(backup_file)
 		}
 	}
-	*/
 
 	// Open song
 	if (parameter_count() > 0) {
-		filename = parameter_string(1)
-		if (filename != "" && (filename_ext(filename) = ".mid" || filename_ext(filename) = ".midi" || filename_ext(filename) = ".schematic" || filename_ext(filename) = ".nbs")) load_song(filename, 0, 1)
+		songs[song].filename = parameter_string(1)
+		if (songs[song].filename != "" && (filename_ext(songs[song].filename) = ".mid" || filename_ext(songs[song].filename) = ".midi" || filename_ext(songs[song].filename) = ".schematic" || filename_ext(songs[song].filename) = ".nbs")) {
+			if (!port_taken) {
+				load_song(songs[song].filename, 0, 1)
+			}
+		}
 		else filename = ""
 	}
 
 	log("Startup OK")
+	
+	}
 
 
 }

@@ -33,7 +33,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	                key_click[c2] = (mouse_check_button(mb_left))
 	                if (t = 0 && key_click[c2]) {
 	                    selectedkey = c2
-	                    play_sound(instrument, c2, 100 ,100, 0)
+	                    play_sound(songs[song].instrument, c2, 100 ,100, 0)
 	                }
 	                if (a = k - 1) d = 1
 	                if (a = 0) d = 0
@@ -50,7 +50,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	            key_click[c1] = mouse_check_button(mb_left)
 	            if (t = 0 && key_click[c1]) {
 	                selectedkey = c1
-	                play_sound(instrument, c1, 100 ,100, 0)
+	                play_sound(songs[song].instrument, c1, 100 ,100, 0)
 	            }
 	        } else {
 	            key_click[c1] = 0
@@ -94,7 +94,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	                key_click[c1] = mouse_check_button(mb_left)
 	                if (t = 0 && key_click[c1]) {
 	                    selectedkey = c1
-	                    play_sound(instrument, c1, 100 ,100, 0)
+	                    play_sound(songs[song].instrument, c1, 100 ,100, 0)
 	                }
 	                if (a = k - 1) d = 1
 	                if (a = 0) d = 0
@@ -144,12 +144,12 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	    if (piano_key[a] > 0) {
 	        if (key_press[a] = 0 && keyboard_check(piano_key[a])) {
 	            if (select_lastpressed) {selected_key = a; selected_vel = 100; selected_pan = 100; selected_pit = 0}
-	            if (record = 0) play_sound(instrument, a, 100 ,100, 0)
+	            if (record = 0) play_sound(songs[song].instrument, a, 100 ,100, 0)
 	            if (playing = 0.25) toggle_playing(totalcols)
 	            if (playing && record) {
 	                b = 0
-	                while (!add_block_manual(ceil(marker_pos), b, instrument, a, 100, 100, 0)) b += 1
-	                song_played[round(marker_pos), b] = current_time
+	                while (!add_block_manual(ceil(songs[song].marker_pos), b, songs[song].instrument, a, 100, 100, 0)) b += 1
+	                songs[song].song_played[round(songs[song].marker_pos), b] = current_time
 	            }
 	        }
 	        key_press[a] = keyboard_check(piano_key[a])

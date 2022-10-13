@@ -17,7 +17,7 @@ function region_code_load(argument0, argument1, argument2) {
 	        str = string_delete(str, 1, string_pos("|", str))
 	        if (val = -1) break
 	        cb += val
-	        ins = instrument_list[| real(string_copy(str, 1, string_pos("|", str) - 1))]
+	        ins = songs[song].instrument_list[| real(string_copy(str, 1, string_pos("|", str) - 1))]
 	        str = string_delete(str, 1, string_pos("|", str))
 	        key = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))

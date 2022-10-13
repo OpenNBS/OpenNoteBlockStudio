@@ -136,7 +136,7 @@ function draw_window_greeting() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-	    load_song("")
+	    load_song("", 0, 1)
 	    return 1
 	}
 	b = x1 + 320
@@ -171,7 +171,7 @@ function draw_window_greeting() {
 				windowalpha = 0
 				windowclose = 0
 				windowopen = 0
-	            load_song(recent_song[a])
+	            load_song(recent_song[a], 0, 1)
 	        }
 	    }
 	    if (!hires || theme != 3) draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
@@ -208,7 +208,7 @@ function draw_window_greeting() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		open_midi("")
+		open_midi("", 1)
 	}
 
 	b = x1 + 300
@@ -243,6 +243,8 @@ function draw_window_greeting() {
 	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"), 0, 0, 1)) {
 		isplayer = 1 //Go into player mode if button is pressed in the greeting screen
 		//window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+		if (!port_taken) network_destroy(server_socket)
+		else network_destroy(client_socket)
 		window_setnormal()
 	}
 }

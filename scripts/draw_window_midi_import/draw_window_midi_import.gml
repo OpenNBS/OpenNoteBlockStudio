@@ -40,7 +40,7 @@ function draw_window_midi_import() {
 	
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {songs[song].midifile = "" w_midi_tab = 0 windowclose = 1}
 	} else {
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "导入MIDI")
@@ -66,7 +66,7 @@ function draw_window_midi_import() {
 	
 	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "记住我的更改", "下次导入 MIDI 文件时是否使用同样的设定。", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "导入") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {songs[song].midifile = "" w_midi_tab = 0 windowclose = 1}
 	}
 	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, condstr(language != 1, "Use default", "使用默认值")) && wmenu = 0) {
 	    if (question(condstr(language != 1, "Are you sure?", "你确定吗？"), condstr(language != 1, "Confirm", "确定"))) { 
@@ -161,13 +161,13 @@ function draw_window_midi_import() {
 	}
 	draw_theme_color()
 	draw_set_halign(fa_right)
-	draw_text_dynamic(x1 + 590, y1 + 6, midifile, true)
+	draw_text_dynamic(x1 + 590, y1 + 6, songs[song].midifile, true)
 	draw_theme_font(font_main_bold)
 	if (midi_songlength > 0) {
-	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), time_str(midi_songlength))
+	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(songs[song].midifile), time_str(midi_songlength))
 	} else {
-	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "Song tempo never defined")
-	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "速度未定义")
+	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(songs[song].midifile), "Song tempo never defined")
+	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(songs[song].midifile), "速度未定义")
 	}
 	draw_theme_font(font_main)
 	draw_set_halign(fa_left)
@@ -229,21 +229,21 @@ function draw_window_midi_import() {
 	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "Ignore")
 	                else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "无")
 	            } else {
-	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, instrument_list[| midi_channelins[b]].name)
+	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, songs[song].instrument_list[| midi_channelins[b]].name)
 	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, "Click to play this sound")
 	                else popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, "点击预览声音")
 	                if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20) && wmenu = 0) {
 	                    curs = cr_handpoint
 	                    if (mouse_check_button_pressed(mb_left)) {
-	                        play_sound(instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 100 ,100, 0)
+	                        play_sound(songs[song].instrument_list[| midi_channelins[b]], 45 + midi_channeloctave[b] * 12, 100 ,100, 0)
 	                    }
 	                }
 	            }
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] + tabw[3] - 20, y1 + 172 + 20 * a) && wmenu = 0) {
 	                if (language != 1) str = check(midi_channelins[b] = -1) + "Ignore|"
 	                else str = check(midi_channelins[b] = -1) + "无|"
-	                for (c = 0; c < ds_list_size(instrument_list); c += 1) {
-	                    var ins = instrument_list[| c];
+	                for (c = 0; c < ds_list_size(songs[song].instrument_list); c += 1) {
+	                    var ins = songs[song].instrument_list[| c];
 	                    str += check(midi_channelins[b] = c) + clean(ins.name) + "|"
 	                }
 	                menu = show_menu_ext("midiimport_ins", x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 190 + 20 * a, str)
@@ -315,13 +315,13 @@ function draw_window_midi_import() {
 	            draw_text_dynamic(x1 + 12 + 4, y1 + 174 + 20 * a, string(midi_percnote[b]))
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, midi_drum[midi_percnote[b], 0])
 	            if (midi_percins[b] > -1) {
-	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, instrument_list[| midi_percins[b]].name)
+	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, songs[song].instrument_list[| midi_percins[b]].name)
 	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20, "Click to play this sound")
 	                else popup_set_window(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20, "点击预览声音")
 	                if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20) && wmenu = 0) {
 	                    curs = cr_handpoint
 	                    if (mouse_check_button_pressed(mb_left)) {
-	                        play_sound(instrument_list[| midi_percins[b]], midi_percpitch[b], 100 ,100, 0)
+	                        play_sound(songs[song].instrument_list[| midi_percins[b]], midi_percpitch[b], 100 ,100, 0)
 	                    }
 	                }
 	            } else {
@@ -332,8 +332,8 @@ function draw_window_midi_import() {
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] - 19, y1 + 172 + 20 * a) && wmenu = 0) {
 	                if (language != 1) str = check(midi_percins[b] = -1) + "Ignore|"
 	                else str = check(midi_percins[b] = -1) + "无|"
-	                for (c = 0; c < ds_list_size(instrument_list); c += 1) {
-	                    var ins = instrument_list[| c];
+	                for (c = 0; c < ds_list_size(songs[song].instrument_list); c += 1) {
+	                    var ins = songs[song].instrument_list[| c];
 	                    str += check(midi_percins[b] = c) + clean(ins.name) + "|"
 	                }
 	                menu = show_menu_ext("midiimport_percins", x1 + 8 + tabw[0] + tabw[1], y1 + 190 + 20 * a, str)

@@ -1,6 +1,6 @@
 function macros() {
 #macro gm_runtime_version "2022.6.1.40"
-#macro version_date "2022.12.28"
+#macro version_date "2023.11.15"
 #macro version "3.10.1-beta.1"
 #macro is_prerelease 1 // remember to change to 0 in the release!
 #macro nbs_version 5
@@ -24,6 +24,7 @@ function macros() {
 
 #macro data_directory    file_directory + "data" + condstr(os_type = os_windows, "\\", "/")
 #macro sounds_directory  file_directory + "data/sounds" + condstr(os_type = os_windows, "\\", "/")
+#macro resource_directory	sounds_directory + "resourcepacks" + condstr(os_type = os_windows, "\\", "/")
 #macro songs_directory   file_directory + "songs" + condstr(os_type = os_windows, "\\", "/")
 #macro pattern_directory file_directory + "patterns" + condstr(os_type = os_windows, "\\", "/")
 #macro log_file          file_directory + "log.txt"
@@ -31,7 +32,7 @@ function macros() {
 #macro update_file       file_directory + "minecraft note block studio installer.exe"
 #macro settings_file     file_directory + "settings.ini"
 #macro settings_dev_file file_directory + "settings_dev.ini"
-#macro backup_file       file_directory + "backup.nbs"
+#macro backup_file       file_directory
 
 #macro h_stereoize 12
 #macro h_swaplayer 11
@@ -98,6 +99,7 @@ function macros() {
 #macro w_tempotapper 44
 #macro w_setaccent 45
 #macro w_track_export 46
+#macro w_dragtab 47
 
 #macro br "\r\n"
 

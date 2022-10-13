@@ -207,8 +207,8 @@ function draw_window_schematic_export() {
 		}
 	    for (a = 0; a < 9; a += 1) {
 	        b = floor(sb_val[sch_exp_scrollbar] + a)
-	        if (b >= ds_list_size(instrument_list)) break
-	        var ins = instrument_list[| b];
+	        if (b >= ds_list_size(songs[song].instrument_list)) break
+	        var ins = songs[song].instrument_list[| b];
 	        draw_theme_color()
 	        draw_text_dynamic(x1 + 12 + 4, y1 + 74 + 20 * a, ins.name)
 	        draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 74 + 20 * a, string(sch_exp_ins_block[b]) + ", " + string(sch_exp_ins_data[b]))
@@ -224,7 +224,7 @@ function draw_window_schematic_export() {
 	    draw_set_color(12632256)
 	    draw_line(x1 + 9 + tabw[0], y1 + 70, x1 + 9 + tabw[0], y1 + 70 + 20 * a)
 	    draw_line(x1 + 8 + tabw[0] + tabw[1], y1 + 70, x1 + 8 + tabw[0] + tabw[1], y1 + 70 + 20 * a)
-	    draw_scrollbar(sch_exp_scrollbar, x1 + 524, y1 + 71, 17, 9, ds_list_size(instrument_list), 0, 1)
+	    draw_scrollbar(sch_exp_scrollbar, x1 + 524, y1 + 71, 17, 9, ds_list_size(songs[song].instrument_list), 0, 1)
 	    xx = x1 + 524 + 16
 	    for (a = tabs - 1; a >= 0; a -= 1) {
 	        draw_window(xx - tabw[a], y1 + 51, xx, y1 + 51 + 20, 1)

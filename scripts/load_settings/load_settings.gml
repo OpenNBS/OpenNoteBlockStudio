@@ -75,6 +75,7 @@ function load_settings() {
 	window_icon =        ini_read_real(  "preferences", "window_icon",        window_icon)
 	keynames_flat =      ini_read_real(  "preferences", "keynames_flat",      keynames_flat)
 	hires =              ini_read_real(  "preferences", "hires",              hires)
+	current_resource =   ini_read_string("preferences", "current_resource",   current_resource)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
@@ -163,7 +164,7 @@ function load_settings() {
 
 	// Default instrument presses
 	for (a = 0; a < first_custom_index; a += 1) {
-		var ins = ds_list_find_value(instrument_list, a)
+		var ins = ds_list_find_value(songs[song].instrument_list, a)
 		ins.press = ini_read_real("instruments", "ins_" + string(a) + "_press", ins.press)
 	}
 

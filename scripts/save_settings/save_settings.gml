@@ -73,6 +73,7 @@ function save_settings() {
 	ini_write_real_clean("preferences", "window_icon",        window_icon)
 	ini_write_real_clean("preferences", "keynames_flat",      keynames_flat)
 	ini_write_real_clean("preferences", "hires",              hires)
+	ini_write_string(    "preferences", "current_resource",   current_resource)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
@@ -158,7 +159,7 @@ function save_settings() {
 
 	// Default instrument presses
 	for (a = 0; a < first_custom_index; a += 1) {
-		var ins = ds_list_find_value(instrument_list, a)
+		var ins = ds_list_find_value(songs[song].instrument_list, a)
 		ini_write_real_clean("instruments", "ins_" + string(a) + "_press", ins.press)
 	}
 
