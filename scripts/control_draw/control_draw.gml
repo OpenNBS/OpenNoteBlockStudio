@@ -115,7 +115,7 @@ function control_draw() {
 	if (current_song.totalblocks > 0) {
 		tonextbackup -= 1 / room_speed / 60
 		if (tonextbackup <= 0 && playing == 0) {
-			save_song(backup_file, true)
+			save_song(backup_file + condstr(current_song.filename != "", filename_name(current_song.filename), string(floor(random(x) * 200000))) + "_backup.nbs", true)
 			tonextbackup = backupmins
 		}
 	}

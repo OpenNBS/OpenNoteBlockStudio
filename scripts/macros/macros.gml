@@ -1,6 +1,6 @@
 function macros() {
 #macro gm_runtime_version "2022.6.1.40"
-#macro version_date "2022.10.11"
+#macro version_date "2022.10.14"
 #macro version "3.10.1-beta.1"
 #macro is_prerelease 1 // remember to change to 0 in the release!
 #macro nbs_version 5
@@ -24,7 +24,7 @@ function macros() {
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
 #macro settings_file		file_directory + "settings.ini"
 #macro settings_dev_file	file_directory + "settings_dev.ini"
-#macro backup_file			file_directory + "backup.nbs"
+#macro backup_file			file_directory
 
 #macro h_stereoize 12
 #macro h_swaplayer 11
