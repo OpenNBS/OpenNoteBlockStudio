@@ -5,6 +5,7 @@ midifile = ""
 midiname = ""
 song_midi = ""
 timesignature = 4
+song_backupid = string(floor(random(800000)))
 
 // Playback
 tempo = 10

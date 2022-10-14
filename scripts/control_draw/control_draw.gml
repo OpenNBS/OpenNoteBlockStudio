@@ -115,7 +115,7 @@ function control_draw() {
 	if (current_song.totalblocks > 0) {
 		tonextbackup -= 1 / room_speed / 60
 		if (tonextbackup <= 0 && playing == 0) {
-			for (var sss = 0; sss < array_length(songs); sss++) save_song(backup_file + condstr(songs[sss].filename != "", filename_name(songs[sss].filename), string(floor(random(x) * 200000))) + "_backup.nbs", true)
+			for (var sss = 0; sss < array_length(songs); sss++) save_song(backup_file + condstr(songs[sss].filename != "", filename_name(songs[sss].filename), songs[sss].song_backupid) + "_backup.nbs", true)
 			tonextbackup = backupmins
 		}
 	}
