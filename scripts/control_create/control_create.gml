@@ -155,6 +155,9 @@ function control_create() {
 	dragincxl = 0
 	dragincyd = 0
 	dragincyu = 0
+	tabdrag = 0
+	draggingtab = -1
+	tabdest = -1
 
 	// Instruments
 	original_instruments = []

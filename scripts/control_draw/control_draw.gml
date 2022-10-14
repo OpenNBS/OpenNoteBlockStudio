@@ -2292,24 +2292,36 @@ function control_draw() {
 	
 	// Song Tabs
 	if (array_length(songs) > 1 && !fullscreen) {
+		if (tabdrag) {
+			tabdest = (mouse_x - 7 + (tabwidth - 1) / 2) div (tabwidth - 1)
+			if (tabdest >= array_length(songs)) tabdest = array_length(songs)
+			if (tabdest < 0) tabdest = 0
+		}
+		if (theme != 3) {
+			draw_sprite_ext(spr_songtab, 9 + 10 * theme, 0, 24 - 5 * (theme = 1 || theme = 2), rw / 4, 1, 0, -1, 1)
+		} else {
+			draw_theme_color()
+			if (wpaperexist && acrylic && can_draw_mica) draw_set_alpha(0.8)
+			draw_line(0, 19 + 39, rw, 19 + 39)
+			draw_set_alpha(1)
+		}
 		for (tab = 0; tab < array_length(songs); tab++) {
 			tab_str = ""
-			taba = (mouse_rectangle(8 + tab * tabwidth - 2, 24 + 2, tabwidth - 2, 24 + 5 * (theme = 3)) && (window = 0) && (tab != song))
-			if (taba && mouse_check_button_pressed(mb_left)) taba += 1
+			taba = (mouse_rectangle(8 + tab * (tabwidth - 1) - 2, 24 + 2, tabwidth - 2, 24 + 5 * (theme = 3)) && (window = 0) && (!tabdrag))
+			if (taba && mouse_check_button(mb_left)) taba += 1
 			if (taba = 2) {
 				set_song(tab)
 			}
 			if (theme != 3) {
-				closea = mouse_rectangle(7 - 20 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 16, 15) * (window = 0)
+				closea = mouse_rectangle(7 - 20 + (tabwidth - 1) + tab * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 16, 15) * (window = 0) * (!tabdrag)
 				if (closea && mouse_check_button(mb_left)) closea++
-				draw_sprite_ext(spr_songtab, 9 + 10 * theme, 0, 24 - 5 * (theme = 1 || theme = 2), rw / 4, 1, 0, -1, 1)
-				draw_sprite_ext(spr_songtab, 0 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 6 + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
-				draw_sprite_ext(spr_songtab, 1 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 10 + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), (tabwidth - 5) / 4, 1, 0, -1, 1)
-				draw_sprite_ext(spr_songtab, 2 + 3 * (taba = 1) + 6 * (tab = song) + 10 * theme, 5 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
-				draw_sprite_ext(spr_frame4, closea + 3 * theme, 7 - 20 + tabwidth + tab * tabwidth - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 17/16, 1, 0, -1, 1)
-				draw_sprite_ext(spr_closetab, (closea > 0 && theme = 0), 7 - 20 + tabwidth + tab * tabwidth - 1 + 4 + (closea = 2 && theme != 0), 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0) + 4 + (closea = 2 && theme != 0), 1, 1, 0, -1 + (theme = 1), 1)
+				draw_sprite_ext(spr_songtab, 0 + 3 * (taba = 1 && tab != song) + 6 * (tab = song) + 10 * theme, 6 + tab * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+				draw_sprite_ext(spr_songtab, 1 + 3 * (taba = 1 && tab != song) + 6 * (tab = song) + 10 * theme, 10 + tab * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), (tabwidth - 5) / 4, 1, 0, -1, 1)
+				draw_sprite_ext(spr_songtab, 2 + 3 * (taba = 1 && tab != song) + 6 * (tab = song) + 10 * theme, 5 + (tabwidth - 1) + tab * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+				draw_sprite_ext(spr_frame4, closea + 3 * theme, 7 - 20 + (tabwidth - 1) + tab * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0), 17/16, 1, 0, -1, 1)
+				draw_sprite_ext(spr_closetab, (closea > 0 && theme = 0), 7 - 20 + (tabwidth - 1) + tab * (tabwidth - 1) - 1 + 4 + (closea = 2 && theme != 0), 24 - 5 * (theme = 1 || theme = 2) + 7 + 3 * (theme != 0) + 4 + (closea = 2 && theme != 0), 1, 1, 0, -1 + (theme = 1), 1)
 			} else {
-				closea = mouse_rectangle(7 + tabwidth + tab * tabwidth - 35, 24 + 5, 30, 22) * (window = 0)
+				closea = mouse_rectangle(7 + (tabwidth - 1) + tab * (tabwidth - 1) - 35, 24 + 5, 30, 22) * (window = 0) * (!tabdrag)
 				if (closea && mouse_check_button(mb_left)) closea++
 				if (fdark) {
 					hover_color = make_color_rgb(45, 45, 45)
@@ -2334,30 +2346,79 @@ function control_draw() {
 				}
 				draw_theme_color()
 				if (wpaperexist && acrylic && can_draw_mica) draw_set_alpha(0.8)
-				draw_line(0, 19 + 39, rw, 19 + 39)
 				if (taba = 1) draw_set_color(hover_color)
 				if (tab = song) draw_set_color(sel_color)
-				if (taba = 1 || tab = song) draw_roundrect(7 + tab * tabwidth, 24 + 2 * (tab != song), 7 + tabwidth + tab * tabwidth, 24 + 40 - 7, 0)
+				if (taba = 1 || tab = song) draw_roundrect(7 + tab * (tabwidth - 1), 24 + 2 * (tab != song), 7 + (tabwidth - 1) + tab * (tabwidth - 1), 24 + 40 - 7, 0)
 				if (closea) draw_set_color(close_color)
 				draw_set_alpha(1)
-				if (closea) draw_roundrect(7 + tabwidth + tab * tabwidth - 35, 24 + 5, 7 + tabwidth + tab * tabwidth - 4, 24 + 28, 0)
+				if (closea) draw_roundrect(7 + (tabwidth - 1) + tab * (tabwidth - 1) - 35, 24 + 5, 7 + (tabwidth - 1) + tab * (tabwidth - 1) - 4, 24 + 28, 0)
 				draw_set_alpha(0.5)
-				draw_separator(7 + tabwidth + tab * tabwidth + 1, 24 + 8)
+				draw_separator(7 + (tabwidth - 1) + tab * (tabwidth - 1) + 1, 24 + 8)
 				draw_set_alpha(1)
-				draw_sprite_ext(spr_closetab, 2, 7 + tabwidth + tab * tabwidth - 35 + 13, 24 + 5 + 8, 1, 1, 0, -1 + (!fdark), 1)
+				draw_sprite_ext(spr_closetab, 2, 7 + (tabwidth - 1) + tab * (tabwidth - 1) - 35 + 13, 24 + 5 + 8, 1, 1, 0, -1 + (!fdark), 1)
 			}
 			draw_theme_color()
 			draw_theme_font(font_main)
 			tab_str = songs[tab].song_title
-			if (string_width_dynamic(tab_str) > tabwidth - 20 - 15 * (theme = 3)) {
-				while (tab_str != "" && string_width_dynamic(tab_str) > tabwidth - 20 - 15 * (theme = 3) - 20 * (tab = song) - string_width("...")) {
+			if (string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 20 - 15 * (theme = 3)) {
+				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width("...")) {
 					tab_str = string_delete(tab_str, string_length(tab_str), 1)
 				}
 				tab_str += "..."
 			}
-			draw_text_dynamic(16 + tab * tabwidth - 1, song_tab_texty, tab_str)
+			draw_text_dynamic(16 + tab * (tabwidth - 1) - 1, song_tab_texty, tab_str)
+			
+			if (taba = 2 && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) {
+				tabdrag = 1
+				draggingtab = tab
+				curs = cr_handpoint
+				window = w_dragtab
+			}
 			
 			if (closea && mouse_check_button_released(mb_left)) close_song(tab)
+		}
+		if (tabdrag) {
+			draw_set_color(0)
+			if (theme = 2 || (theme = 3 && fdark)) draw_set_color(c_white)
+			draw_line(7 + tabdest * (tabwidth - 1) + 1 - 1, 24 + 8 - 5 - 5 * (theme != 3), 7 + tabdest * (tabwidth - 1) + 1 - 1, 24 + 8 + 5 - 5 * (theme != 3) + 18)
+			show_debug_message(tabdest)
+		}
+		if (tabdrag && mouse_check_button_released(mb_left)) {
+			array_insert(songs, tabdest, songs[draggingtab])
+			array_delete(songs, draggingtab + (tabdest < draggingtab), 1)
+			song = tabdest - (tabdest > draggingtab)
+			draggingtab = -1
+			curs = cr_default
+			window = 0
+		}
+		if (draggingtab = -1) tabdrag = 0
+		
+		// new song button
+		var newsongbtnwidth = 32
+		taba = (mouse_rectangle(8 + array_length(songs) * (tabwidth - 1) - 2, 24 + 2, newsongbtnwidth - 2, 24 + 5 * (theme = 3)) && (window = 0) && (!tabdrag))
+		if (taba && mouse_check_button_released(mb_left)) taba += 1
+		if (taba = 2) {
+			new_song()
+		}
+		if (theme != 3) {
+			draw_sprite_ext(spr_songtab, 0 + 3 * (taba = 1) + 10 * theme, 6 + array_length(songs) * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+			draw_sprite_ext(spr_songtab, 1 + 3 * (taba = 1) + 10 * theme, 10 + array_length(songs) * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), (newsongbtnwidth - 5) / 4, 1, 0, -1, 1)
+			draw_sprite_ext(spr_songtab, 2 + 3 * (taba = 1) + 10 * theme, 5 + (newsongbtnwidth - 1) + array_length(songs) * (tabwidth - 1) - 1, 24 - 5 * (theme = 1 || theme = 2), 1, 1, 0, -1, 1)
+		} else {
+			if (fdark) {
+				hover_color = make_color_rgb(45, 45, 45)
+				sel_color = make_color_rgb(40, 40, 40)
+			} else {
+				hover_color = make_color_rgb(233, 233, 233)
+				sel_color = make_color_rgb(249, 249, 249)
+			}
+			draw_theme_color()
+			if (wpaperexist && acrylic && can_draw_mica) draw_set_alpha(0.8)
+			if (taba = 1) draw_set_color(hover_color)
+			if (tab = song) draw_set_color(sel_color)
+			if (taba = 1) draw_roundrect(7 + array_length(songs) * (tabwidth - 1), 24 + 2, 7 + (newsongbtnwidth - 1) + array_length(songs) * (tabwidth - 1), 24 + 40 - 7, 0)
+			draw_set_alpha(1)
+			draw_sprite_ext(spr_newtab, 0, 7 + array_length(songs) * (tabwidth - 1) + 15 - 6, 24 + 2 + 15 - 7, 1, 1, 0, -1 + (!fdark), 1)
 		}
 	}
 

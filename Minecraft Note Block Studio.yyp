@@ -180,6 +180,7 @@
     {"id":{"name":"save_settings","path":"scripts/save_settings/save_settings.yy",},"order":6,},
     {"id":{"name":"save_song","path":"scripts/save_song/save_song.yy",},"order":7,},
     {"id":{"name":"pattern_import","path":"scripts/pattern_import/pattern_import.yy",},"order":8,},
+    {"id":{"name":"spr_newtab","path":"sprites/spr_newtab/spr_newtab.yy",},"order":56,},
     {"id":{"name":"pattern_export","path":"scripts/pattern_export/pattern_export.yy",},"order":9,},
     {"id":{"name":"filename_new_ext","path":"scripts/filename_new_ext/filename_new_ext.yy",},"order":10,},
     {"id":{"name":"spr_back_hires","path":"sprites/spr_back_hires/spr_back_hires.yy",},"order":51,},
