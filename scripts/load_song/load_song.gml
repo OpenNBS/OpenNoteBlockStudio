@@ -19,7 +19,7 @@ function load_song() {
 
 	// When not opening from auto-recovery, delete the backup file
 	if (!backup) {
-		backup_clear()
+		//backup_clear()
 	}
 	reset_add()
 	file_ext = filename_ext(fn)
@@ -207,7 +207,7 @@ function load_song() {
 	else {
 		newsong.changed = 1
 	}
-	backup_clear()
+	//backup_clear()
 	blocks_set_instruments()
 	io_clear()
 

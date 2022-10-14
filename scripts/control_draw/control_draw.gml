@@ -115,7 +115,7 @@ function control_draw() {
 	if (current_song.totalblocks > 0) {
 		tonextbackup -= 1 / room_speed / 60
 		if (tonextbackup <= 0 && playing == 0) {
-			save_song(backup_file + condstr(current_song.filename != "", filename_name(current_song.filename), string(floor(random(x) * 200000))) + "_backup.nbs", true)
+			for (var sss = 0; sss < array_length(songs); sss++) save_song(backup_file + condstr(songs[sss].filename != "", filename_name(songs[sss].filename), string(floor(random(x) * 200000))) + "_backup.nbs", true)
 			tonextbackup = backupmins
 		}
 	}
@@ -2381,7 +2381,6 @@ function control_draw() {
 			draw_set_color(0)
 			if (theme = 2 || (theme = 3 && fdark)) draw_set_color(c_white)
 			draw_line(7 + tabdest * (tabwidth - 1) + 1 - 1, 24 + 8 - 5 - 5 * (theme != 3), 7 + tabdest * (tabwidth - 1) + 1 - 1, 24 + 8 + 5 - 5 * (theme != 3) + 18)
-			show_debug_message(tabdest)
 		}
 		if (tabdrag && mouse_check_button_released(mb_left)) {
 			array_insert(songs, tabdest, songs[draggingtab])
