@@ -151,6 +151,10 @@ function control_create() {
 	else output_format = "VM"
 	volume_scroll = 0
 	remove_effect = 1
+	dragincxr = 0
+	dragincxl = 0
+	dragincyd = 0
+	dragincyu = 0
 
 	// Instruments
 	original_instruments = []

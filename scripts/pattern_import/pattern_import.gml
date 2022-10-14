@@ -69,6 +69,10 @@ function pattern_import() {
 			    songs[song].selection_collast[a] = temp_collast[a]
 		//		show_debug_message("selection_collast " + string(a) + " " + string(selection_collast[a]))
 			}
+			copied_arraylength = songs[song].selection_arraylength
+			copied_arrayheight = songs[song].selection_arrayheight
+			copied_colfirstlen = array_length(songs[song].selection_colfirst)
+			copied_collastlen = array_length(songs[song].selection_collast)
 			selection_load(loadx, loady, selection_copied, false)
 		} else {
 			songs[song].selection_l = selection_l_temp
