@@ -76,6 +76,7 @@ function draw_window_songinfo() {
 	    draw_theme_font(font_info_med_bold)
 	    draw_text_dynamic(x1 + floor(w / 2 + w1 / 2) + 1, yy + 1, str[1])
 	    draw_set_color(col[1])
+		if (theme = 3) draw_set_color(accent[3])
 	    draw_text_dynamic(x1 + floor(w / 2 + w1 / 2), yy, str[1])
 	}
 	if (song_orauthor != "") {
