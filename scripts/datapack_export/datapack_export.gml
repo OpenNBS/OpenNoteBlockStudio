@@ -23,7 +23,7 @@ function datapack_export() {
 		var path = dat_getpath(o.dat_path)
 		var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
 		var tag = objective
-		var pack_format = 8
+		var pack_format = 10
 		var playspeed = min(round(o.songs[o.song].tempo * 4), 120)
 		var rootfunction = "0_" + string(power(2, floor(log2(o.songs[o.song].enda))+1)-1)
 		var tempdir
