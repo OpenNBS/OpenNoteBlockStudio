@@ -5,7 +5,7 @@ function draw_window_macro_setpitch() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	text_exists[0] = 0
-	if (songs[song].selected = 0) return 0
+	if (selected = 0) return 0
 	x1 = floor(rw / 2 - 80)
 	y1 = floor(rh / 2 - 80) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 130)
@@ -30,7 +30,7 @@ function draw_window_macro_setpitch() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		str = songs[song].selection_code
+		str = selection_code
 		val = 0
 		arr_data = selection_to_array(str)
 		window = 0
@@ -50,7 +50,7 @@ function draw_window_macro_setpitch() {
 			val ++
 		}
 		str = array_to_selection(arr_data, total_vals)
-		selection_load(songs[song].selection_x,songs[song].selection_y,str,true)
+		selection_load(selection_x,selection_y,str,true)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

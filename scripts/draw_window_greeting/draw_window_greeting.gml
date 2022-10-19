@@ -136,7 +136,7 @@ function draw_window_greeting() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-	    load_song("", 0, 1)
+	    load_song("")
 	    return 1
 	}
 	b = x1 + 320
@@ -171,7 +171,7 @@ function draw_window_greeting() {
 				windowalpha = 0
 				windowclose = 0
 				windowopen = 0
-	            load_song(recent_song[a], 0, 1)
+	            load_song(recent_song[a])
 	        }
 	    }
 	    if (!hires || theme != 3) draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
@@ -208,7 +208,7 @@ function draw_window_greeting() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		open_midi("", 1)
+		open_midi("")
 	}
 
 	b = x1 + 300

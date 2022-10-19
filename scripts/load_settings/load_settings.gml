@@ -162,7 +162,7 @@ function load_settings() {
 
 	// Default instrument presses
 	for (a = 0; a < first_custom_index; a += 1) {
-		var ins = ds_list_find_value(songs[song].instrument_list, a)
+		var ins = ds_list_find_value(instrument_list, a)
 		ins.press = ini_read_real("instruments", "ins_" + string(a) + "_press", ins.press)
 	}
 

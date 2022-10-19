@@ -1,7 +1,7 @@
 function branch_export() {
 	// branch_export()
 	var a, b, c, o
-	var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(songs[song].filename, "") + ".schematic", "", "Export Branch Schematic"))
+	var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Branch Schematic"))
 	if (fn = "") return 0
 	o = obj_controller
 	window = -1
@@ -52,14 +52,14 @@ function branch_export() {
 		//show_debug_message("LAYER")
 		for (b = 0; b < range_len; b ++) {
 			accepted = 0
-			if (o.songs[o.song].song_exists[sch_exp_range_start + b, sch_exp_layer[a]]) {
-				if (o.songs[o.song].song_key[sch_exp_range_start + b, sch_exp_layer[a]] > 32 && o.songs[o.song].song_key[sch_exp_range_start + b, sch_exp_layer[a]] < 58) {
+			if (o.song_exists[sch_exp_range_start + b, sch_exp_layer[a]]) {
+				if (o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] > 32 && o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] < 58) {
 					switch (sch_exp_stereo) {
-						case 1: if o.songs[o.song].song_pan[sch_exp_range_start + b, sch_exp_layer[a]] > 100 accepted = 1; // Right Notes
+						case 1: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] > 100 accepted = 1; // Right Notes
 						break;
-						case 2: if o.songs[o.song].song_pan[sch_exp_range_start + b, sch_exp_layer[a]] < 100 accepted = 1; // Left Notes
+						case 2: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] < 100 accepted = 1; // Left Notes
 						break;
-						case 3: if o.songs[o.song].song_pan[sch_exp_range_start + b, sch_exp_layer[a]] = 100 accepted = 1; // Center Notes
+						case 3: if o.song_pan[sch_exp_range_start + b, sch_exp_layer[a]] = 100 accepted = 1; // Center Notes
 						break;
 						case 4: accepted = 1; // All Notes
 						break;
@@ -71,9 +71,9 @@ function branch_export() {
 				}
 			} 
 			if accepted = 1 {
-				nblocknote[a, ticks] = o.songs[o.song].song_key[sch_exp_range_start + b, sch_exp_layer[a]] 
-				nblockins[a, ticks] = ds_list_find_index(o.songs[o.song].instrument_list, o.songs[o.song].song_ins[sch_exp_range_start + b, sch_exp_layer[a]])
-				nblockvel[a, ticks] = o.songs[o.song].song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
+				nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] 
+				nblockins[a, ticks] = ds_list_find_index(o.instrument_list, o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]])
+				nblockvel[a, ticks] = o.song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
 				nblockkey[a, ticks] = nblocknote[a, ticks] - 33
 				sch_exp_totalnoteblocks ++
 				accepted = 0

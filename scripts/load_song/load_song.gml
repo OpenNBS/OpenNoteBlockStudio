@@ -1,16 +1,12 @@
 function load_song() {
 	// load_song(fn [, backup])
-	var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff, newsong, replace
+	var fn, backup, file_ext, f, str, stats, tstr, ca, cb, bstr, a, b, c, d, w, hei, byte1, byte2, song_first_custom_index, custom_index_diff
 	fn = argument[0]
 	backup = false
-	replace = false
 	if (argument_count > 1) {
 		backup = argument[1]
 	}
-	if (argument_count > 2) {
-		replace = argument[2]
-	}
-	//if (confirm() < 0) return 0
+	if (confirm() < 0) return 0
 	if (!backup && fn = "") {
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
 	    fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, condstr(language != 1, "Load song", "打开歌曲")))
@@ -21,7 +17,7 @@ function load_song() {
 	if (!backup) {
 		backup_clear()
 	}
-	reset_add()
+	reset()
 	file_ext = filename_ext(fn)
 	if (file_ext = ".mid" || file_ext = ".midi") {
 	    open_midi(fn)
@@ -33,21 +29,16 @@ function load_song() {
 	}
 	if (file_ext != ".nbs") { message(condstr(language != 1, "Error: This file cannot be opened in this program.", "警告：本软件无法打开此类型文件。"), condstr(language != 1, "Error", "错误")) return 0 }
 	if (file_ext = ".nbs") {
-		if (replace) close_song(0, 1)
-		newsong = create(obj_song)
-		array_push(songs, newsong)
-		song = array_length(songs) - 1
-		
 	    buffer = buffer_import(fn)
 	
 		byte1 = buffer_read_byte()
 		byte2 = buffer_read_byte()
 	
 		if (byte1 = 0 && byte2 = 0) {
-			newsong.song_nbs_version = buffer_read_byte()
-			if (language != 1) {if (show_oldwarning && newsong.song_nbs_version < nbs_version) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
-			else {if (show_oldwarning && newsong.song_nbs_version < nbs_version) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
-			if newsong.song_nbs_version > nbs_version {
+			song_nbs_version = buffer_read_byte()
+			if (language != 1) {if (show_oldwarning && song_nbs_version < nbs_version) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
+			else {if (show_oldwarning && song_nbs_version < nbs_version) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
+			if song_nbs_version > nbs_version {
 				if (language != 1) message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
 				else message("警告：你正在打开在新版 Note Block Studio 里保存的文件。\n请用保存选项菜单将其保存到" + string(nbs_version) + "版本或以下。","错误")
 				return -1
@@ -56,13 +47,13 @@ function load_song() {
 			custom_index_diff = first_custom_index - song_first_custom_index
 		
 			//From nbs version 3, we save the song length again
-			if(newsong.song_nbs_version >= 3) {
+			if(song_nbs_version >= 3) {
 				buffer_read_short()
 			}
 		} else {
 			if (language != 1) {if (show_oldwarning) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
 			else {if (show_oldwarning) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
-			newsong.song_nbs_version = 0
+			song_nbs_version = 0
 			custom_index_diff = 0
 			song_first_custom_index = 0
 		}
@@ -70,45 +61,45 @@ function load_song() {
 		hei = buffer_read_short()
     
 	    // SONG NAME
-	    newsong.song_name = buffer_read_string_int()
+	    song_name = buffer_read_string_int()
 	    // SONG AUTHOR
-	    newsong.song_author = buffer_read_string_int()
+	    song_author = buffer_read_string_int()
 	    // SONG ORIGINAL AUTHOR
-	    newsong.song_orauthor = buffer_read_string_int()
+	    song_orauthor = buffer_read_string_int()
 	    // SONG DESCRIPTION
-	    newsong.song_desc = buffer_read_string_int()
+	    song_desc = buffer_read_string_int()
 	    // TEMPO
-		newsong.tempo = buffer_read_short() / 100
+		tempo = buffer_read_short() / 100
 	    // AUTOSAVE (deprecated)
 	    buffer_read_byte()
 	    // AUTOSAVE MINUTES (deprecated)
 	    buffer_read_byte()
 	    // TIME SIGNATURE
 	    a = buffer_read_byte()
-	    newsong.timesignature = median(2, a, 8)
+	    timesignature = median(2, a, 8)
 	    // WORK
 	    a = buffer_read_int()
-	    newsong.work_mins = max(0, a)
+	    work_mins = max(0, a)
 	    a = buffer_read_int()
-	    newsong.work_left = max(0, a)
+	    work_left = max(0, a)
 	    a = buffer_read_int()
-	    newsong.work_right = max(0, a)
+	    work_right = max(0, a)
 	    a = buffer_read_int()
-	    newsong.work_add = max(0, a)
+	    work_add = max(0, a)
 	    a = buffer_read_int()
-	    newsong.work_remove = max(0, a)
+	    work_remove = max(0, a)
 	    // MIDI FILENAME
-	    newsong.song_midi = buffer_read_string_int()
+	    song_midi = buffer_read_string_int()
 		// LOOP
-		if (newsong.song_nbs_version >= 4) {
-			newsong.loop = buffer_read_byte()
-			newsong.loop_session = newsong.loop
+		if (song_nbs_version >= 4) {
+			loop = buffer_read_byte()
+			loop_session = loop
 			if (string_count("format4beta", filename_name(fn)) = 1) {
-				newsong.loopstart = buffer_read_byte()
-				newsong.loopmax = 0
+				loopstart = buffer_read_byte()
+				loopmax = 0
 			} else {
-				newsong.loopmax = buffer_read_byte()
-				newsong.loopstart = buffer_read_short()
+				loopmax = buffer_read_byte()
+				loopstart = buffer_read_short()
 			}
 		}
 	    // Note blocks
@@ -125,7 +116,7 @@ function load_song() {
 	            var ins = buffer_read_byte();
 				if(ins >= song_first_custom_index) ins += custom_index_diff //If instrument is custom, add custom_index_diff so it works when adding future instruments
 	            var key = buffer_read_byte();
-				if newsong.song_nbs_version>=4 {
+				if song_nbs_version>=4 {
 					var vel = buffer_read_byte();
 					var pan = buffer_read_byte();
 					var pit = buffer_read_short();
@@ -141,37 +132,37 @@ function load_song() {
 	        buffer_delete(buffer)
 	        add_to_recent(fn)
 	        window = w_menu
-	        newsong.filename = fn
-	        newsong.changed = 0
+	        filename = fn
+	        changed = 0
 	        blocks_set_instruments()
 	        return 0
 	    }
 	    // a = buffer_read_short()
 	    // Layer names
 	    for (b = 0; b < hei; b += 1) {
-	        newsong.layername[b] = buffer_read_string_int()
-			if newsong.song_nbs_version >= 4 && string_count("format4beta", filename_name(fn)) != 1 {
-				newsong.layerlock[b] = buffer_read_byte()
+	        layername[b] = buffer_read_string_int()
+			if song_nbs_version >= 4 && string_count("format4beta", filename_name(fn)) != 1 {
+				layerlock[b] = buffer_read_byte()
 			}
-	        else newsong.layerlock[b] = 0
-	        newsong.layervol[b] = buffer_read_byte()
-	        if (newsong.layervol[b] = -1) newsong.layervol[b] = 100
-	        newsong.layervol[b] = median(0, newsong.layervol[b], 100)
-	        if (newsong.layervol[b] < 100) realvolume = 1
-			if newsong.song_nbs_version >= 2 {
-				newsong.layerstereo[b] = buffer_read_byte()
+	        else layerlock[b] = 0
+	        layervol[b] = buffer_read_byte()
+	        if (layervol[b] = -1) layervol[b] = 100
+	        layervol[b] = median(0, layervol[b], 100)
+	        if (layervol[b] < 100) realvolume = 1
+			if song_nbs_version >= 2 {
+				layerstereo[b] = buffer_read_byte()
 			}
 			else {
-				newsong.layerstereo[b] = 100
+				layerstereo[b] = 100
 			}
-	        newsong.endb2 += 1
+	        endb2 += 1
 	    }
 	    if (buffer_is_eof()) { // End?
 	        buffer_delete(buffer)
 	        add_to_recent(fn)
 	        window = w_menu
-	        newsong.filename = fn
-	        newsong.changed = 0
+	        filename = fn
+	        changed = 0
 	        blocks_set_instruments()
 	        return 0
 	    }
@@ -188,7 +179,7 @@ function load_song() {
 	        with (ins)
 	            if (!instrument_load() && insfn != "")
 	                str += insfn + "\n"
-	        ds_list_add(newsong.instrument_list, ins)
+	        ds_list_add(instrument_list, ins)
 	    }
 
 	    if (str != "")
@@ -198,12 +189,12 @@ function load_song() {
 	}
 	if (!backup) {
 		add_to_recent(fn)
-		if (window != w_instruments && newsong.song_name != "") window = w_songinfo
-		newsong.filename = fn
-		newsong.changed = 0
+		if (window != w_instruments && song_name != "") window = w_songinfo
+		filename = fn
+		changed = 0
 	}
 	else {
-		newsong.changed = 1
+		changed = 1
 	}
 	backup_clear()
 	blocks_set_instruments()

@@ -5,7 +5,7 @@ function draw_window_macro_stagger() {
 	if (theme = 3) draw_set_alpha(windowalpha)
 	curs = cr_default
 	text_exists[0] = 0
-	if (songs[song].selected = 0) return 0
+	if (selected = 0) return 0
 	x1 = floor(rw / 2 - 80)
 	y1 = floor(rh / 2 - 70) + windowoffset
 	draw_window(x1, y1, x1 + 150, y1 + 160)
@@ -46,7 +46,7 @@ function draw_window_macro_stagger() {
 		windowclose = 0
 		windowopen = 0
 		window = 0
-		str = songs[song].selection_code
+		str = selection_code
 		arr_data = selection_to_array(str)
 		total_vals = string_count("|", str)
 		val = 0
@@ -64,13 +64,13 @@ function draw_window_macro_stagger() {
 		        maxlength = i;
 		    }
 		}
-		for (a = 0; a < songs[song].selection_arraylength; a++) {  // Expand array entries by highest number
+		for (a = 0; a < selection_arraylength; a++) {  // Expand array entries by highest number
 		    for (b = 0; b <= arp[maxlength]; b ++) {
-		        songs[song].selection_exists[a, b] = 0
+		        selection_exists[a, b] = 0
 		    }
 		}
 
-		songs[song].selection_arrayheight = arp[maxlength]
+		selection_arrayheight = arp[maxlength]
 
 		while (val < total_vals) {
 			for (i = 0; i < arplen; i++;) {
@@ -87,9 +87,9 @@ function draw_window_macro_stagger() {
 		if val >= total_vals break
 		}
 		str = array_to_selection(arr_data, total_vals)
-		selection_load(songs[song].selection_x,songs[song].selection_y,str,true)
+		selection_load(selection_x,selection_y,str,true)
 		selection_code_update()
-		history_set(h_selectchange, songs[song].selection_x, songs[song].selection_y, songs[song].selection_code, songs[song].selection_x, songs[song].selection_y, str)
+		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	}
 	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

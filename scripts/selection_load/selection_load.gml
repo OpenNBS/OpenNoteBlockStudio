@@ -19,32 +19,32 @@ function selection_load(argument0, argument1, argument2, argument3) {
 	        str = string_delete(str, 1, string_pos("|", str))
 	        if (val = -1) break
 	        cb += val
-	        songs[song].selection_exists[ca, cb] = 1
+	        selection_exists[ca, cb] = 1
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
-	        songs[song].selection_ins[ca, cb] = songs[song].instrument_list[| val]
+	        selection_ins[ca, cb] = instrument_list[| val]
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
-	        songs[song].selection_key[ca, cb] = val
+	        selection_key[ca, cb] = val
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
-			songs[song].selection_vel[ca, cb] = val
+			selection_vel[ca, cb] = val
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
-			songs[song].selection_pan[ca, cb] = val
+			selection_pan[ca, cb] = val
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
-			songs[song].selection_pit[ca, cb] = val
-	        songs[song].selected += 1
-	        if (songs[song].selection_colfirst[ca] = -1) songs[song].selection_colfirst[ca] = cb
-	        songs[song].selection_collast[ca] = cb
+			selection_pit[ca, cb] = val
+	        selected += 1
+	        if (selection_colfirst[ca] = -1) selection_colfirst[ca] = cb
+	        selection_collast[ca] = cb
 	        h = max(h, cb)
 	    }
 	}
-	songs[song].selection_x = xx
-	songs[song].selection_y = yy
-	songs[song].selection_l = ca + 1
-	songs[song].selection_h = h + 1
+	selection_x = xx
+	selection_y = yy
+	selection_l = ca + 1
+	selection_h = h + 1
 	selection_code_update()
 
 
