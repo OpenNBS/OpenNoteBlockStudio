@@ -88,6 +88,7 @@ function draw_window_songinfo() {
 	    else draw_text_dynamic(x1 + floor(w / 2 - w4 / 2), yy, "原作者：")
 	    draw_theme_font(font_info_med_bold)
 	    draw_text_dynamic(x1 + floor(w / 2 + w3 / 2) + 1, yy + 1, str[2])
+		if (theme = 3) draw_set_color(accent[3])
 	    draw_set_color(col[2])
 	    draw_text_dynamic(x1 + floor(w / 2 + w3 / 2), yy, str[2])
 	}
