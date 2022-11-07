@@ -492,15 +492,13 @@ function control_create() {
 	change_theme()
 
 	// Auto-recovery
-	// DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
-	// Implement in a better way that takes multiple instances into account.
-	/*
-	if (file_exists_lib(backup_file)) {
+	// PREVIOUSLY DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
+	// Implemented in a better way that takes multiple instances into account.
+	if (file_find_first(backup_file + "*_backup.nbs", 0) != "" && !port_taken) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
-			load_song(backup_file, true)
+			open_url(backup_file)
 		}
 	}
-	*/
 
 	// Open song
 	if (parameter_count() > 0) {
