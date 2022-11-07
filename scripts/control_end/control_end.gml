@@ -9,7 +9,7 @@ function control_end() {
 	}
 	
 	save_settings()
-	backup_clear()
+	if (!isplayer) backup_clear()
 
 
 }

@@ -99,9 +99,10 @@ function control_create() {
 
 	// Application
 	port_taken = 0
-	server_socket = network_create_server(network_socket_tcp, 30010, 1)
+	server_socket = -1
+	if (!isplayer) server_socket = network_create_server(network_socket_tcp, 30010, 1)
 	client_socket = -1
-	if (server_socket < 0) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
+	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	update = 0
 	check_update = 1
 	check_prerelease = 0
