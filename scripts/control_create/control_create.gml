@@ -98,6 +98,10 @@ function control_create() {
 	show_soundcount = 0
 
 	// Application
+	port_taken = 0
+	server_socket = network_create_server(network_socket_tcp, 30010, 1)
+	client_socket = -1
+	if (server_socket < 0) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	update = 0
 	check_update = 1
 	check_prerelease = 0
@@ -501,7 +505,19 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		songs[song].filename = parameter_string(1)
-		if (songs[song].filename != "" && songs[song].filename != "-player") load_song(songs[song].filename)
+		if (songs[song].filename != "" && songs[song].filename != "-player") {
+			if (!port_taken) {
+				load_song(songs[song].filename)
+			} else {
+				network_connect(client_socket, "127.0.0.1", 30010)
+				var temp_buffer = buffer_create(0, buffer_grow, 1)
+				buffer_write(temp_buffer, buffer_s8, 10)
+				buffer_write(temp_buffer, buffer_string, songs[song].filename)
+				network_send_packet(client_socket, temp_buffer, buffer_get_size(temp_buffer))
+				buffer_delete(temp_buffer)
+				game_end()
+			}
+		}
 	}
 
 	log("Startup OK")

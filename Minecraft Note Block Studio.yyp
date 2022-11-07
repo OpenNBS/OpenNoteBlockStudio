@@ -71,6 +71,7 @@
     {"id":{"name":"spr_tooltip_ml_middle","path":"sprites/spr_tooltip_ml_middle/spr_tooltip_ml_middle.yy",},"order":1,},
     {"id":{"name":"spr_bigicons_f","path":"sprites/spr_bigicons_f/spr_bigicons_f.yy",},"order":3,},
     {"id":{"name":"block_circuit_track","path":"scripts/block_circuit_track/block_circuit_track.yy",},"order":0,},
+    {"id":{"name":"control_networking","path":"scripts/control_networking/control_networking.yy",},"order":16,},
     {"id":{"name":"spr_tooltip_ml_right","path":"sprites/spr_tooltip_ml_right/spr_tooltip_ml_right.yy",},"order":2,},
     {"id":{"name":"fnt_wslui_hires","path":"fonts/fnt_wslui_hires/fnt_wslui_hires.yy",},"order":0,},
     {"id":{"name":"spr_inputbox_n_right","path":"sprites/spr_inputbox_n_right/spr_inputbox_n_right.yy",},"order":0,},
