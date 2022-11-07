@@ -46,9 +46,9 @@ function control_draw() {
 	cursmarker = 0
 	compx = 160
 	for (var nn = 0; nn < array_length(songs); nn++) {
-		songs[nn].song_title = condstr((songs[nn].filename = "" || songs[nn].filename = "-player") && (songs[nn].midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(songs[nn].filename != "-player", filename_name(songs[nn].filename)) + condstr((songs[nn].filename = "" || songs[nn].filename = "-player") && songs[nn].midiname != "" && isplayer, songs[nn].midiname) + condstr(songs[nn].changed && songs[nn].filename != "" && songs[nn].filename != "-player", "*")
+		songs[nn].song_title = condstr((songs[nn].filename = "" || songs[nn].filename = "-player") && (songs[nn].midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(songs[nn].filename != "-player", filename_name(songs[nn].filename)) + condstr((songs[nn].filename = "" || songs[nn].filename = "-player") && songs[nn].midiname != "" && isplayer, songs[nn].midiname)
 	}
-	window_set_caption(songs[song].song_title + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(songs[song].song_title + condstr(songs[song].changed && songs[song].filename != "" && songs[song].filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -2361,10 +2361,10 @@ function control_draw() {
 			draw_theme_font(font_main)
 			tab_str = songs[tab].song_title
 			if (string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 20 - 15 * (theme = 3)) {
-				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width("...")) {
+				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width("...") - string_width("*") * (songs[tab].changed && songs[tab].filename != "" && songs[tab].filename != "-player")) {
 					tab_str = string_delete(tab_str, string_length(tab_str), 1)
 				}
-				tab_str += "..."
+				tab_str += "..." + condstr(songs[song].changed && songs[song].filename != "" && songs[song].filename != "-player", "*")
 			}
 			draw_text_dynamic(16 + tab * (tabwidth - 1) - 1, song_tab_texty, tab_str)
 			
