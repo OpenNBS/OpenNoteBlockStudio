@@ -512,7 +512,7 @@ function control_create() {
 	// Auto-recovery
 	// PREVIOUSLY DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
 	// Implemented in a better way that takes multiple instances into account.
-	if (file_find_first(backup_file + "*_backup.nbs", 0) != "" && !port_taken) {
+	if (file_find_first(backup_file + "*_backup.nbs", 0) != "" && !port_taken && !isplayer) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
 			open_url(backup_file)
 		}
