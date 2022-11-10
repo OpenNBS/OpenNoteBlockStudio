@@ -350,7 +350,7 @@ function control_draw() {
 	    if (current_song.solostr != "") {
 	        if (string_count("|" + string(current_song.startb + b) + "|", current_song.solostr) = 0) {
 	            lockedlayer[current_song.startb + b] = 1
-	        } else if (layerlock[current_song.startb + b] = 1) {
+	        } else if (current_song.layerlock[current_song.startb + b] = 1) {
 	            lockedlayer[current_song.startb + b] = 1
 	        }
 	    } else if (current_song.startb + b < current_song.endb2) {

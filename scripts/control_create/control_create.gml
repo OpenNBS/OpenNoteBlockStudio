@@ -18,6 +18,28 @@ function control_create() {
 		if (parameter_string(i) = "-player") isplayer = 1
 	}
 	//if (RUN_FROM_IDE != 1) isplayer = 1
+	destroy_self = 0
+	port_taken = 0
+	server_socket = -1
+	if (!isplayer) server_socket = network_create_server(network_socket_tcp, 30010, 1)
+	client_socket = -1
+	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
+	if (parameter_count() > 0) {
+		if (parameter_string(1) != "" && parameter_string(1) != "-player") {
+			if (port_taken) {
+				network_connect(client_socket, "127.0.0.1", 30010)
+				var temp_buffer = buffer_create(0, buffer_grow, 1)
+				buffer_write(temp_buffer, buffer_s8, 10)
+				buffer_write(temp_buffer, buffer_string, parameter_string(1))
+				network_send_packet(client_socket, temp_buffer, buffer_get_size(temp_buffer))
+				buffer_delete(temp_buffer)
+				destroy_self = 1
+				log("Sended opening song path, closing...")
+				game_end()
+			}
+		}
+	}
+	if (!destroy_self) {
 	window_width = 0
 	window_height = 0
 	if (!isplayer) window_maximize()
@@ -98,11 +120,6 @@ function control_create() {
 	show_soundcount = 0
 
 	// Application
-	port_taken = 0
-	server_socket = -1
-	if (!isplayer) server_socket = network_create_server(network_socket_tcp, 30010, 1)
-	client_socket = -1
-	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	update = 0
 	check_update = 1
 	check_prerelease = 0
@@ -506,20 +523,14 @@ function control_create() {
 		songs[song].filename = parameter_string(1)
 		if (songs[song].filename != "" && songs[song].filename != "-player") {
 			if (!port_taken) {
-				load_song(songs[song].filename)
-			} else {
-				network_connect(client_socket, "127.0.0.1", 30010)
-				var temp_buffer = buffer_create(0, buffer_grow, 1)
-				buffer_write(temp_buffer, buffer_s8, 10)
-				buffer_write(temp_buffer, buffer_string, songs[song].filename)
-				network_send_packet(client_socket, temp_buffer, buffer_get_size(temp_buffer))
-				buffer_delete(temp_buffer)
-				game_end()
+				load_song(songs[song].filename, 0, 1)
 			}
 		}
 	}
 
 	log("Startup OK")
+	
+	}
 
 
 }
