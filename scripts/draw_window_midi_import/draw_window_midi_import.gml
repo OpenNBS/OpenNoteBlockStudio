@@ -30,7 +30,7 @@ function draw_window_midi_import() {
 	if (draw_checkbox(x1 + 260, y1 + 72, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
 	if (draw_checkbox(x1 + 260, y1 + 92, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
 	
-	draw_text(x1 + 470, y1 + 32 + 20, "Time precision")
+	draw_text_dynamic(x1 + 470, y1 + 32 + 20, "Time precision")
 	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
 	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
 	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
@@ -45,24 +45,24 @@ function draw_window_midi_import() {
 	draw_text_dynamic(x1 + 8, y1 + 8, "导入MIDI")
 	draw_theme_font(font_main)
 	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "去除开始时空部分", "是否移除歌曲开始时无音符的部分。") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
-	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "给每层命名......", "是否根据MIDI内数据为每层命名。") && wmenu = 0) w_midi_name=!w_midi_name
-	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "......根据乐器", "是否根据MIDI中的乐器为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
-	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "......根据层号", "是否根据MIDI中的层序号为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
-	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "导入速度", "是否将速度设定为与MIDI文件中一样。") && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "给每层命名......", "是否根据 MIDI 内数据为每层命名。") && wmenu = 0) w_midi_name=!w_midi_name
+	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "......根据乐器", "是否根据 MIDI 中的乐器为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
+	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "......根据层号", "是否根据 MIDI 中的层序号为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
+	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "导入速度", "是否将速度设定为与 MIDI 文件中一样。") && wmenu = 0) w_midi_tempo=!w_midi_tempo
 	draw_text_dynamic(x1 + 300, y1 + 52, "通道最高层数:")
 	popup_set_window(x1 + 300, y1 + 52, 140, 16, "每个通道所允许使用的最多层数。拖拽来更改。")
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
-	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "保持八度范围", "是否自动将音符转换到2八度限制内。") && wmenu = 0) w_midi_octave=!w_midi_octave
-	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "导入音符音量", "是否将MIDI文件中音符音量应用到音符上。") && wmenu = 0) w_midi_vel=!w_midi_vel
+	if (draw_checkbox(x1 + 300, y1 + 72, w_midi_octave, "保持八度范围", "是否自动将音符转换到 2 八度限制内。") && wmenu = 0) w_midi_octave=!w_midi_octave
+	if (draw_checkbox(x1 + 300, y1 + 92, w_midi_vel, "导入音符音量", "是否将 MIDI 文件中音符音量应用到音符上。") && wmenu = 0) w_midi_vel=!w_midi_vel
 	
 	draw_text_dynamic(x1 + 470, y1 + 32 + 20, "精准度")
 	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "调整音符间的距离，以在中间放下更多音符。")
-	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1倍", "与MIDI文件中音符间距一致。") && wmenu = 0) w_midi_precision = 0
-	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2倍", "在音符间使用两倍间距。") && wmenu = 0) w_midi_precision = 1
-	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4倍", "在音符间使用四倍间距。") && wmenu = 0) w_midi_precision = 3
-	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8倍", "在音符间使用八倍间距。\n（歌曲将会很长！）") && wmenu = 0) w_midi_precision = 7
+	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1 倍", "与 MIDI 文件中音符间距一致。") && wmenu = 0) w_midi_precision = 0
+	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2 倍", "在音符间使用两倍间距。") && wmenu = 0) w_midi_precision = 1
+	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4 倍", "在音符间使用四倍间距。") && wmenu = 0) w_midi_precision = 3
+	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8 倍", "在音符间使用八倍间距。\n（歌曲将会很长！）") && wmenu = 0) w_midi_precision = 7
 	
-	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "记住我的更改", "下次导入MIDI文件时是否使用同样的设定。", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
+	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "记住我的更改", "下次导入 MIDI 文件时是否使用同样的设定。", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
 	if (draw_button2(x1 + 520, y1 + 368, 72, "导入") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "取消") && wmenu = 0 && (windowopen = 1 || theme != 3)) {midifile = "" w_midi_tab = 0 windowclose = 1}
 	}
@@ -162,10 +162,10 @@ function draw_window_midi_import() {
 	draw_text_dynamic(x1 + 590, y1 + 6, midifile)
 	draw_theme_font(font_main_bold)
 	if (midi_songlength > 0) {
-	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), time_str(midi_songlength))
+	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), time_str(midi_songlength))
 	} else {
-	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "Song tempo never defined")
-	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height(midifile), "速度未定义")
+	    if (language != 1) draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "Song tempo never defined")
+	    else draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), "速度未定义")
 	}
 	draw_theme_font(font_main)
 	draw_set_halign(fa_left)
@@ -220,11 +220,12 @@ function draw_window_midi_import() {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2] + tabw[3], y1 + 174 + 20 * a, "-")
 	        } else {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, string(midi_channelpatch[b] + 1))
-	            draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, midi_ins[midi_channelpatch[b], 0])
+				if (midi_channelpatch[b] < 128) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, midi_ins[midi_channelpatch[b], 0])
+				else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, condstr(language != 1, "Unknown", "未知"))
 	            if (midi_channelins[b] = -1) {
 	                draw_set_color(c_gray)
 	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "Ignore")
-	                else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "无视")
+	                else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "无")
 	            } else {
 	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, instrument_list[| midi_channelins[b]].name)
 	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, "Click to play this sound")
@@ -238,7 +239,7 @@ function draw_window_midi_import() {
 	            }
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] + tabw[3] - 20, y1 + 172 + 20 * a) && wmenu = 0) {
 	                if (language != 1) str = check(midi_channelins[b] = -1) + "Ignore|"
-	                else str = check(midi_channelins[b] = -1) + "无视|"
+	                else str = check(midi_channelins[b] = -1) + "无|"
 	                for (c = 0; c < ds_list_size(instrument_list); c += 1) {
 	                    var ins = instrument_list[| c];
 	                    str += check(midi_channelins[b] = c) + clean(ins.name) + "|"
@@ -328,7 +329,7 @@ function draw_window_midi_import() {
 	            }
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] - 19, y1 + 172 + 20 * a) && wmenu = 0) {
 	                if (language != 1) str = check(midi_percins[b] = -1) + "Ignore|"
-	                else str = check(midi_percins[b] = -1) + "无视|"
+	                else str = check(midi_percins[b] = -1) + "无|"
 	                for (c = 0; c < ds_list_size(instrument_list); c += 1) {
 	                    var ins = instrument_list[| c];
 	                    str += check(midi_percins[b] = c) + clean(ins.name) + "|"
@@ -422,6 +423,8 @@ function draw_window_midi_import() {
 	if (w_midi_tab > 2) w_midi_tab = 0
 	draw_theme_color()
 	if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

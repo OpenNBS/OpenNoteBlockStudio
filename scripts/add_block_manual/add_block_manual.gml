@@ -34,12 +34,12 @@ function add_block_manual(argument0, argument1, argument2, argument3, argument4,
 
 	if ((key < 33  || key > 57) && warning_octaves = 0) {
 	    if (language != 1) message("NOTE: Since this block is outside the 2 octave limit, you won't be able to import it into Minecraft without a resource pack.\n\nThis warning will never be shown again.", "Warning")
-	    else message("注意：由于此方块在2八度的范围外，您将无法不使用资源包将该歌曲导入进Minecraft中。\n此消息将不再提示。", "警告")
+	    else message("注意：由于此方块在 2 八度的范围外，您将无法不使用资源包将该歌曲导入进 Minecraft 中。\n此消息将不再提示。", "警告")
 	    warning_octaves = 1
 		save_settings()
 	} else if (ins.user && warning_instrument = 0) {
 	    if (language != 1) message("NOTE: Since this block has a custom instrument, you won't be able to import it into Minecraft without mods or resource packs.\n\nThis warning will never be shown again.", "Warning")
-	    else message("注意：由于此方块包含自定义音色，您将无法不使用模组或资源包将该歌曲导入进Minecraft中。\n此消息将不再提示。", "警告")
+	    else message("注意：由于此方块包含自定义音色，您将无法不使用模组或资源包将该歌曲导入进 Minecraft 中。\n此消息将不再提示。", "警告")
 	    warning_instrument = 1
 		save_settings()
 	}
@@ -68,7 +68,7 @@ function add_block_manual(argument0, argument1, argument2, argument3, argument4,
 	if (xx >= enda) enda = xx
 	if (yy >= endb) endb = yy
 
-	if (ins.loaded) play_sound(ins, key, 100 ,100, 0)
+	if (ins.loaded) play_sound(ins, key, vel, pan, pit)
 	history_set(h_addblock, xx, yy, ins, key, vel, pan, pit)
 	return 1
 

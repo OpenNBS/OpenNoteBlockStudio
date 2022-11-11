@@ -22,10 +22,9 @@ function control_create() {
 	window_height = 0
 	if (!isplayer) window_maximize()
 	window_set_focus()
-	window_set_min_width(100)
-	window_set_min_height(100)
+	window_set_min_width(800)
+	window_set_min_height(500)
 	window_scale = get_default_window_scale()
-	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -45,20 +44,43 @@ function control_create() {
 	msgstart = 0
 	currentfont = 0
 	acrylic = 1
+	can_draw_mica = 1
 	mouseover = 0
 	display_width = display_get_width()
 	display_height = display_get_height()
+	window_icon = 0
+	icon_buffer = window_set_icon_impl_load(data_directory + "icon.ico")
+	icon_size_buffer = window_set_icon_impl_argbuf()
+	buffer_write(icon_size_buffer, buffer_u32, buffer_get_size(icon_buffer))
+	buffer_write(icon_size_buffer, buffer_u32, $80004005)
+	buffer_write(icon_size_buffer, buffer_string, "DLL is not loaded")
+	icon_time = -1
+	last_icon = -1
+	icon_display = 1
+	hires = (window_scale > 1.25)
 	
 	font_table =
 	[
-		[ fnt_main,          fnt_wslui,               fnt_src               ], // font_main
-		[ fnt_mainbold,      fnt_wslui_bold,          fnt_src_bold          ], // font_main_bold
-		[ fnt_small,         fnt_wslui_small,         fnt_src_small         ], // font_small
-		[ fnt_smallbold,     fnt_wslui_small_bold,    fnt_src_small_bold    ], // font_small_bold
-		[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
-		[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
-		[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
-		[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+		[ // normal fonts
+			[ fnt_main,          fnt_wslui,               fnt_src               ], // font_main
+			[ fnt_mainbold,      fnt_wslui_bold,          fnt_src_bold          ], // font_main_bold
+			[ fnt_small,         fnt_wslui_small,         fnt_src_small         ], // font_small
+			[ fnt_smallbold,     fnt_wslui_small_bold,    fnt_src_small_bold    ], // font_small_bold
+			[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
+			[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
+			[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
+			[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+		],
+		[ // hires fonts
+			[ fnt_main,          fnt_wslui_hires,               fnt_src_hires               ], // font_main
+			[ fnt_mainbold,      fnt_wslui_bold_hires,          fnt_src_bold_hires          ], // font_main_bold
+			[ fnt_small,         fnt_wslui_small_hires,         fnt_src_small_hires         ], // font_small
+			[ fnt_smallbold,     fnt_wslui_small_bold_hires,    fnt_src_small_bold_hires    ], // font_small_bold
+			[ fnt_info_big,      fnt_wslui_info_big_hires,      fnt_src_info_big_hires      ], // font_info_big
+			[ fnt_info_med,      fnt_wslui_info_med_hires,      fnt_src_info_med_hires      ], // font_info_med
+			[ fnt_info_med_bold, fnt_wslui_info_med_bold_hires, fnt_src_info_med_bold_hires ], // font_info_med_bold
+			[ fnt_wslui_med,     fnt_wslui_med_hires,           fnt_src_med_hires           ]  // font_med
+		]
 	]
 	
 	// Wallpaper
@@ -121,6 +143,14 @@ function control_create() {
 	rainbow = 0
 	rainbowtoggle = 0
 	pingtime = current_time
+	debug_overlay = 0
+	debug_option = 0
+	os_info = os_get_info()
+	is_yyc = code_is_compiled()
+	if (is_yyc) output_format = "Native"
+	else output_format = "VM"
+	volume_scroll = 0
+	remove_effect = 1
 
 	// File
 	filename = ""
@@ -206,6 +236,7 @@ function control_create() {
 	changepitch = 1
 	
 	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+	keynames_flat = 0
 
 	// History
 	historypos = 0
@@ -276,6 +307,9 @@ function control_create() {
 	key_edit = -1
 	init_keys()
 	selected_key = 39
+	selected_vel = 100
+	selected_pan = 100
+	selected_pit = 0
 	startkey = 0
 	sharpkeys = 0
 	keysshow = 0
@@ -349,6 +383,9 @@ function control_create() {
 	tapdouble = 0 // Set to double tempo?
 	percentvel = 0
 	addpitch = 0
+	dropmode = 0
+	dropalpha = 1
+	dropalphawait = 0
 	draw_set_circle_precision(64);
 
 	// Midi export / import
@@ -450,12 +487,17 @@ function control_create() {
 	reset_schematic_export(0)
 	block_color = 0
 	structure = 0
+	command_block = 0
 
 	//Datapack
 	dat_reset(0)
 
-	//MP3
-	mp3_includelocked = 0
+	//Audio export
+	audio_exp_format = "MP3"
+	audio_exp_sample_rate = 44100
+	audio_exp_channels = 2
+	audio_exp_include_locked = 0
+	audio_exp_target_bitrate = 320
 
 	// Macros
 	stereo_reverse = 0
@@ -486,6 +528,11 @@ function control_create() {
 	change_theme()
 	if (show_welcome) window = w_greeting
 	draw_accent_init()
+	if (isplayer) window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+	window_set_min_width(800 * window_scale)
+	window_set_min_height(500 * window_scale)
+	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
+	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
 
 	// Updates
 	if (check_update)

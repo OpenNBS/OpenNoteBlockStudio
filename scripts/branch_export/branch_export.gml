@@ -72,7 +72,7 @@ function branch_export() {
 			} 
 			if accepted = 1 {
 				nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] 
-				nblockins[a, ticks] = o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]] - 100002
+				nblockins[a, ticks] = ds_list_find_index(o.instrument_list, o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]])
 				nblockvel[a, ticks] = o.song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
 				nblockkey[a, ticks] = nblocknote[a, ticks] - 33
 				sch_exp_totalnoteblocks ++

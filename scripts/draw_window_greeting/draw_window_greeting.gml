@@ -7,14 +7,14 @@ function draw_window_greeting() {
 	x1 = floor(rw / 2 - 350)
 	y1 = floor(rh / 2 - 210) + windowoffset
 	draw_window(x1, y1, x1 + 700, y1 + 430)
-	draw_sprite_ext(spr_logo, 0, x1 + 64, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
+	draw_sprite_ext(spr_logo, window_icon, x1 + 64, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
 	draw_theme_font(font_info_med_bold)
 	draw_text_center(x1 + 132, y1 + 213, "Open Note Block Studio")
 	draw_theme_font(font_main_bold)
 	var dev_label_offset = (is_prerelease) ? 15 : 0
 	if (RUN_FROM_IDE != 1) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在IDE中运行")	
+		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在 IDE 中运行")	
 	} else if (check_update) {
 		if (update_success) {
 	        draw_set_color(c_lime)
@@ -55,7 +55,7 @@ function draw_window_greeting() {
 		else draw_text_center(x1 + 132, y1 + 233, "本地版本")
 	} else {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
-		else draw_text_center(x1 + 132, y1 + 233, "版本" + version + " - 发布于" + version_date)
+		else draw_text_center(x1 + 132, y1 + 233, "版本 " + version + " - 发布于 " + version_date)
 	}
 	if (is_prerelease) {
 		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "(Development version)")
@@ -91,12 +91,18 @@ function draw_window_greeting() {
 	if (!isplayer) {
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 0, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 0, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 0, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 0, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 0, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "创建歌曲")
@@ -110,12 +116,18 @@ function draw_window_greeting() {
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 1, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 1, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 1, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 1, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 1, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 1, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "打开歌曲")
@@ -162,7 +174,8 @@ function draw_window_greeting() {
 	            load_song(recent_song[a])
 	        }
 	    }
-	    draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
+	    if (!hires || theme != 3) draw_sprite(spr_frame5, theme * 3 + m + 3 * (fdark && theme = 3), b, c)
+	    else draw_sprite_ext(spr_frame5_hires, m + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	    draw_text_dynamic(b + 2 + (m = 2), c + 1 + (m = 2), string_truncate(filename_name(recent_song[a]), 220), true)
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(b + 316 + (m = 2), c + 1 + (m = 2), seconds_to_str(floor(date_second_span(recent_song_time[a], date_current_datetime()))))
@@ -175,15 +188,21 @@ function draw_window_greeting() {
 	b = x1 + 300
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 2, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 2, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 2, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 2, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 2, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
-	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从MIDI文件生成")
+	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从 MIDI 文件生成")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 		windowalpha = 0
@@ -196,12 +215,18 @@ function draw_window_greeting() {
 	c += 44
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
-	draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
+	else draw_sprite_ext(spr_frame2_hires, a + 3 * fdark, b, c, 0.25, 0.25, 0, -1, draw_get_alpha())
 	if (theme != 3) {
-	draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
+		draw_sprite(spr_bigicons, 6, b + (a > 1), c + (a > 1))
 	} else {
-	if (!fdark) draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
-	else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
+		if (!hires) {
+			if (!fdark) draw_sprite(spr_bigicons_f, 6, b + (a > 1), c + (a > 1))
+			else draw_sprite(spr_bigicons_d, 6, b + (a > 1), c + (a > 1))
+		} else {
+			if (!fdark) draw_sprite_ext(spr_bigicons_f_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+			else draw_sprite_ext(spr_bigicons_d_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
+		}
 	}
 	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Watch tutorial videos")
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "教程视频")
@@ -211,6 +236,13 @@ function draw_window_greeting() {
 		else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
 	}
 
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
+	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"), 0, 0, 1)) {
+		isplayer = 1 //Go into player mode if button is pressed in the greeting screen
+		//window_set_size(floor(800 * window_scale), floor(500 * window_scale))
+		window_setnormal()
+	}
 }

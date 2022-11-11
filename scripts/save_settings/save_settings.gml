@@ -69,6 +69,10 @@ function save_settings() {
 	ini_write_real_clean("preferences", "language",           language)
 	ini_write_real_clean("preferences", "acrylic",            acrylic)
 	ini_write_real_clean("preferences", "taskbar",            taskbar)
+	ini_write_real_clean("preferences", "remove_effect",      remove_effect)
+	ini_write_real_clean("preferences", "window_icon",        window_icon)
+	ini_write_real_clean("preferences", "keynames_flat",      keynames_flat)
+	ini_write_real_clean("preferences", "hires",              hires)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
@@ -116,6 +120,7 @@ function save_settings() {
 			ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 		}
 	}
+	ini_write_real_clean("schematic_export", "command_block",  command_block)
 
 	// Branch export settings
 	ini_write_real_clean("branch_export", "stereo",      sch_exp_stereo)

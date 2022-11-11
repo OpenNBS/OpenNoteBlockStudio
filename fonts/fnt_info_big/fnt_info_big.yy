@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "Arial",
   "styleName": "Bold",
   "size": 18.0,
@@ -16,10 +17,11 @@
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {
-    "name": "Default",
-    "path": "texturegroups/Default",
+    "name": "Fonts",
+    "path": "texturegroups/Fonts",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
   "glyphs": {
     "32": {"x":936,"y":392,"w":7,"h":28,"character":32,"shift":7,"offset":0,},
     "33": {"x":730,"y":422,"w":4,"h":28,"character":33,"shift":8,"offset":2,},
@@ -1646,8 +1648,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "fnt_classic",
+    "path": "folders/Fonts/fnt_classic.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_info_big",

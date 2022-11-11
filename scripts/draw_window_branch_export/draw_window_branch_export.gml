@@ -94,40 +94,40 @@ function draw_window_branch_export() {
 	if (selected_tab_sch = 0) {
 		if (language != 1) {
 	    draw_sprite(spr_schematic_br, 0, x1 + 15, y1 + 56)
-	    draw_text(x1 + 16, y1 + 220, "Layout:")
+	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
 		if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_stereo = 4, "All", "Exports all notes.")) sch_exp_stereo = 4
 		if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_stereo = 3, "Center", "Only exports notes which have no panning values.")) sch_exp_stereo = 3
 	    if (draw_radiobox(x1 + 32, y1 + 280, sch_exp_stereo = 2, "Left", "Only exports notes that have left stereo values.")) sch_exp_stereo = 2
 	    if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values.")) sch_exp_stereo = 1
 	
-		draw_text(x1 + 170, y1 + 220, "Polyphony:")
+		draw_text_dynamic(x1 + 170, y1 + 220, "Polyphony:")
 		sch_exp_polyphony = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_polyphony, 1), 3)
-	    draw_text(x1 + 170, y1 + 240, "Main layer:")
+	    draw_text_dynamic(x1 + 170, y1 + 240, "Main layer:")
 	    sch_exp_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_exp_layer1, 1), sch_exp_maxheight[0] + 1)
 		sch_exp_layer_index[0] = sch_exp_layer1
-		draw_text(x1 + 170, y1 + 260, "Chord layer 1:")
-		draw_text(x1 + 170, y1 + 280, "Chord layer 2:")
+		draw_text_dynamic(x1 + 170, y1 + 260, "Chord layer 1:")
+		draw_text_dynamic(x1 + 170, y1 + 280, "Chord layer 2:")
 		if (sch_exp_polyphony > 1 ) {
 			sch_exp_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_exp_layer2, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[1] = sch_exp_layer2
 		} else {
-			draw_text(x1 + 260, y1 + 260, "None")
+			draw_text_dynamic(x1 + 260, y1 + 260, "None")
 		}
 		if sch_exp_polyphony > 2 {
 			sch_exp_layer3 = median(1, draw_dragvalue(17, x1 + 260, y1 + 280, sch_exp_layer3, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[2] = sch_exp_layer3
 		} else {
-			draw_text(x1 + 260, y1 + 280, "None")
+			draw_text_dynamic(x1 + 260, y1 + 280, "None")
 		}
 	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.", false, true)) sch_exp_velocity=!sch_exp_velocity
 		if sch_exp_velocity = 1 var schwidth = 35 else schwidth = 1
 		if sch_exp_polyphony > 1 && sch_exp_velocity = 0 var schwidth = 3
 	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.", true, true)) sch_exp_circuitry=!sch_exp_circuitry
-		draw_text(x1 + 380, y1 + 240 + 16, "Size:")
+		draw_text_dynamic(x1 + 380, y1 + 240 + 16, "Size:")
 	    draw_set_halign(fa_right)
-	    draw_text(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
+	    draw_text_dynamic(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
 		draw_set_halign(fa_left)
-		draw_text(x1 + 380, y1 + 280, "Range:")
+		draw_text_dynamic(x1 + 380, y1 + 280, "Range:")
 		sch_exp_range_start = draw_inputbox(55,x1 + 380, y1 + 300,40,sch_exp_range_start,"Start Tick")
 		sch_exp_range_end = draw_inputbox(56,x1 + 425, y1 + 300,40,sch_exp_range_end,"End Tick")
 	    draw_set_halign(fa_left)
@@ -144,8 +144,8 @@ function draw_window_branch_export() {
 	    draw_text_dynamic(x1 + 170, y1 + 240, "主层数：")
 	    sch_exp_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_exp_layer1, 1), sch_exp_maxheight[0] + 1)
 		sch_exp_layer_index[0] = sch_exp_layer1
-		draw_text_dynamic(x1 + 170, y1 + 260, "和弦层1：")
-		draw_text_dynamic(x1 + 170, y1 + 280, "和弦层2：")
+		draw_text_dynamic(x1 + 170, y1 + 260, "和弦层 1：")
+		draw_text_dynamic(x1 + 170, y1 + 280, "和弦层 2：")
 		if (sch_exp_polyphony > 1 ) {
 			sch_exp_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_exp_layer2, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[1] = sch_exp_layer2
@@ -451,6 +451,8 @@ function draw_window_branch_export() {
 	        menu.menua = menua
 	    }
 	}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

@@ -6,6 +6,7 @@ function save_song() {
 	if (argument_count > 1) {
 		backup = argument[1]
 	}
+	if (isplayer) return 0
 	if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
 	    playing = 0
 	    fsave = filename_name(filename)

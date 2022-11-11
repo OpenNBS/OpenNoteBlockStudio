@@ -53,10 +53,13 @@ function menu_click(argument0) {
 	            if (calculate_size()) window = w_schematic_export
 	        }
 	        if (sel = b + 13) {
+	            if (calculate_size()) window = w_track_export
+	        }
+	        if (sel = b + 14) {
 	            if (calculate_size()) window = w_branch_export
 	        }
-			if(sel = b + 14) window = w_datapack_export
-	        if (sel = b + 15) game_end()
+			if(sel = b + 15) window = w_datapack_export
+	        if (sel = b + 16) game_end()
 	        break
 	    }
 	    case "edit": {
@@ -103,7 +106,7 @@ function menu_click(argument0) {
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
 	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
-	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
+	            else {if (question("转换音符使其在 Minecraft 的 2 八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -157,7 +160,7 @@ function menu_click(argument0) {
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
 	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
-	            else {if (question("转换音符使其在Minecraft的2八度以内吗？", "转换音符")) selection_transpose()}
+	            else {if (question("转换音符使其在 Minecraft 的 2 八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
 	    }
@@ -165,7 +168,7 @@ function menu_click(argument0) {
 			var insoffset = ds_list_size(instrument_list) + insmenu - 1
 			var ins = sel - 1
 			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
-	        if (sel < insoffset + 1) instrument = instrument_list[| ins]
+	        if (sel < insoffset + 1) {instrument = instrument_list[| ins]; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	        if (sel = insoffset + 1) window = w_instruments
 	        if (sel = insoffset + 2) window = w_songinfoedit
 	        if (sel = insoffset + 3) window = w_properties
@@ -282,10 +285,10 @@ function menu_click(argument0) {
 			break
 		}
 		case "theme": {
-			if (sel = 0) {theme = 0 change_theme()}
-			else if (sel = 2) {theme = 1 change_theme()}
-			else if (sel = 1) {theme = 2 change_theme()}
-			else if (sel = 3) {theme = 3 change_theme()}
+			if (sel = 0) {theme = 0 change_theme() window_unset_darkmode()}
+			else if (sel = 2) {theme = 1 change_theme() window_unset_darkmode()}
+			else if (sel = 1) {theme = 2 change_theme() window_set_darkmode()}
+			else if (sel = 3) {theme = 3 change_theme() if (fdark) window_set_darkmode()}
 			break
 		}
 		case "filep": {
@@ -347,6 +350,43 @@ function menu_click(argument0) {
 		case "language": {
 			language = sel
 			break
+		}
+		case "audio_exp_format": {
+			switch (sel) {
+				case 0:
+					audio_exp_format = "MP3";
+					break;
+				case 1:
+					audio_exp_format = "WAV";
+					break;
+				//case 2:
+				//	audio_exp_format = "OGG";
+				//	break;
+				case 2:
+					audio_exp_format = "AIFF";
+					break;
+				case 3:
+					audio_exp_format = "FLAC";
+					break;
+			}
+			break;
+		}
+		case "audio_exp_sample_rate": {
+			switch (sel) {
+				case 0: audio_exp_sample_rate = 8000 break;
+				case 1: audio_exp_sample_rate = 11025 break;
+				case 2: audio_exp_sample_rate = 16000 break;
+				case 3: audio_exp_sample_rate = 22050 break;
+				case 4: audio_exp_sample_rate = 44100 break;
+				case 5: audio_exp_sample_rate = 48000 break;
+				case 6: audio_exp_sample_rate = 88200 break;
+				case 7: audio_exp_sample_rate = 96000 break;
+				case 8: audio_exp_sample_rate = 176400 break;
+				case 9: audio_exp_sample_rate = 192000 break;
+				case 10: audio_exp_sample_rate = 352800 break;
+				case 11: audio_exp_sample_rate = 384000 break;
+			}
+			break;
 		}
 	}
 	mouse_clear(mb_left)

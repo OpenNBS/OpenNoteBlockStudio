@@ -15,13 +15,25 @@ function draw_popup(x, y, str, singleline, alpha = 1) {
 	}
 	} else {
 	if (singleline) {
-	    draw_sprite_ext(spr_tooltip_sl_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
-	    draw_sprite_ext(spr_tooltip_sl_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
-	    draw_sprite_ext(spr_tooltip_sl_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		if (!obj_controller.hires) {
+		    draw_sprite_ext(spr_tooltip_sl_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
+		    draw_sprite_ext(spr_tooltip_sl_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		    draw_sprite_ext(spr_tooltip_sl_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		} else {
+			draw_sprite_ext(spr_tooltip_sl_left_hires, obj_controller.fdark, x, y, 0.25, 0.25, 0, -1, alpha * 0.6)
+		    draw_sprite_ext(spr_tooltip_sl_middle_hires, obj_controller.fdark, x + 4, y, (maxw + 8) * 0.25, 0.25, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		    draw_sprite_ext(spr_tooltip_sl_right_hires, obj_controller.fdark, x + 4 + (maxw + 8), y, 0.25, 0.25, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		}
 	} else {
-	    draw_sprite_ext(spr_tooltip_ml_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
-	    draw_sprite_ext(spr_tooltip_ml_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
-	    draw_sprite_ext(spr_tooltip_ml_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		if (!obj_controller.hires) {
+		    draw_sprite_ext(spr_tooltip_ml_left, theme + obj_controller.fdark, x, y, 1, 1, 0, -1, alpha * 0.6)
+		    draw_sprite_ext(spr_tooltip_ml_middle, theme + obj_controller.fdark, x + 4, y, (maxw + 8), 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		    draw_sprite_ext(spr_tooltip_ml_right, theme + obj_controller.fdark, x + 4 + (maxw + 8), y, 1, 1, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		} else {
+			draw_sprite_ext(spr_tooltip_ml_left_hires, obj_controller.fdark, x, y, 0.25, 0.25, 0, -1, alpha * 0.6)
+		    draw_sprite_ext(spr_tooltip_ml_middle_hires, obj_controller.fdark, x + 4, y, (maxw + 8) * 0.25, 0.25, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		    draw_sprite_ext(spr_tooltip_ml_right_hires, obj_controller.fdark, x + 4 + (maxw + 8), y, 0.25, 0.25, 0, -1, alpha * (0.6 + 0.4 * !obj_controller.acrylic))
+		}
 	}
 	}
 	draw_set_alpha(alpha)

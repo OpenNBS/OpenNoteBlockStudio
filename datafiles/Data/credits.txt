@@ -30,6 +30,15 @@ by the FFmpeg contributors
 LAME|https://lame.sourceforge.io/index.php/
 by the LAME contributors
 
+NumPy|https://numpy.org/
+by the NumPy contributors
+
+GMPython|https://github.com/Bentroen/GMPython
+by Bentroen
+
+nbswave|https://github.com/Bentroen/nbswave
+by Bentroen
+
 audio-DLL|https://github.com/stuffbydavid/audio-DLL/
 by David Norgren
 
@@ -48,11 +57,14 @@ by Foxy Of Jungle
 7-Zip|https://www.7-zip.org/
 by Igor Pavlov
 
+Pydub|http://pydub.com/
+by James Robert
+
 zlib| http://zlib.net/
 by Jean-loup Gailly and Mark Adler
 
 Fluent Icons|https://github.com/microsoft/fluentui-system-icons
-by Microsoft
+by Microsoft Corporation
 
 NekoPresence|https://github.com/nkrapivin/NekoPresence/
 by Nikita Krapivin
@@ -65,6 +77,12 @@ by Samuel Venable
 
 File Dropper|https://marketplace.yoyogames.com/assets/8207/file-dropper
 by Samuel Venable
+
+pynbs|https://github.com/OpenNBS/pynbs
+by Valentin Berlier
+
+pybind11|https://github.com/pybind/pybind11
+by Wenzel Jakob
 
 
 

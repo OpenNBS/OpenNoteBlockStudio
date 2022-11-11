@@ -48,7 +48,7 @@ function check_updates() {
 					if (new_version == version) {
 						update = 2;
 					} else {
-						if (question("Version " + new_version + " is available! Do you want to download it?", "Update available!")) {
+						if (question(condstr(language != 1, "Version " + new_version + " is available! Do you want to download it?", "版本 " + new_version + " 可用！是否现在下载？"), condstr(language != 1, "Update available!", "更新可用！"))) {
 							var download_url = release.assets[0].browser_download_url;
 							update_download = http_get_file(download_url, update_file);
 							update = 4;
