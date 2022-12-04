@@ -23,7 +23,8 @@ function init_midi() {
 	    midi_channelins[a] = 0
 	    midi_channeloctave[a] = 0
 	}
-
-
+	
+	midi_tempo_changer_x[0] = -1
+	midi_tempo_changer_tempo[0] = -1
 
 }

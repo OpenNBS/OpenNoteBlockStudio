@@ -114,6 +114,9 @@ function open_midi() {
 	                    v1 = buffer_read_byte()
 	                    v2 = buffer_read_byte()
 	                    v3 = buffer_read_byte()
+						midi_tempo_changer_x[midi_tempo_changers] = p
+						midi_tempo_changer_tempo[midi_tempo_changers] = 60000000 / (v1 * 256 * 256 + v2 * 256 + v3)
+						midi_tempo_changers++
 	                    if (midi_micsecqn = 0) midi_micsecqn = v1 * 256 * 256 + v2 * 256 + v3
 	                    break
 	                }

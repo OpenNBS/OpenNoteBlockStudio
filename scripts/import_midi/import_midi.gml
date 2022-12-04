@@ -4,6 +4,9 @@ function import_midi() {
 	var ins1notes, ins2notes, ins3notes, ins4notes, ins5notes, ins6notes, ins7notes, ins8notes, ins9notes, ins10notes;
 	io_clear()
 	reset_add()
+	
+	if (w_midi_tempo_changer) ds_list_add(songs[song].instrument_list, new_instrument("Tempo Changer", "", true))
+	
 	deltapertick = (midi_tempo & $7FFF) / 4 / (w_midi_precision + 1)
 	// Calculate channel heights
 	for (a = 0; a <= midi_channels; a += 1) {
@@ -128,6 +131,7 @@ function import_midi() {
 	            }
 	            // Find y
 	            for (a = 0; a < channel; a += 1) yy += channelheight[a]
+				if (w_midi_tempo_changer) yy += 1
 	            // Add block, go lower if failed
 	            a = 0
 	            while (1) {
@@ -139,14 +143,30 @@ function import_midi() {
 	        }
 	    }
 	}
+	
+	if (w_midi_tempo_changer) {
+		for (t = 0; t < midi_tempo_changers; t += 1) {
+			pos = floor((midi_tempo_changer_x[t]) / deltapertick)
+			add_block(pos, 0, songs[song].instrument_list[| first_custom_index], 39, 100, 100, midi_tempo_changer_tempo[t] * (w_midi_precision + 1))
+		}
+	}
+	
 	// Set tempo
-	if (w_midi_tempo && songs[song].enda > 0 && midi_songlength > 0) {
-	    songs[song].tempo = median(0.25, 10 / ((midi_songlength) / (songs[song].enda / 10)), 1000)
-	    //tempo = floor(tempo * 4) / 4
+	if (!w_midi_tempo_changer || midi_tempo_changers = 0) {
+		if (w_midi_tempo && songs[song].enda > 0 && midi_songlength > 0) {
+		    songs[song].tempo = median(0.25, 10 / ((midi_songlength) / (songs[song].enda / 10)), 1000)
+		    //tempo = floor(tempo * 4) / 4
+		}
+	} else {
+		songs[song].tempo = (midi_tempo_changer_tempo[0] * (w_midi_precision + 1)) / 15
 	}
 	// Name
 	if (w_midi_name = 1) {
 	    yy = 0
+		if (w_midi_tempo_changer) {
+			yy += 1
+			songs[song].layername[0] = "TempoChgr"
+		}
 	    for (a = 0; a <= midi_channels; a += 1) {
 	        for (b = 0; b < channelheight[a]; b += 1) {
 				songs[song].layerstereo[yy] = 100
