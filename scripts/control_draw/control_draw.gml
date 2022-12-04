@@ -1595,7 +1595,8 @@ function control_draw() {
 		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
 		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
-		                             "导入片段......|"+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
+		                             inactive(selected != 0)+"导入片段......|"+
+									 inactive(selected = 0)+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
 		                             inactive(totalblocks = 0) + "导出音频文件......|"+
 		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
 		                             inactive(totalblocks = 0) + "导出为直轨 schematic......|"+
