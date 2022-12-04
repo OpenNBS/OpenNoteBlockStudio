@@ -25,7 +25,7 @@ function control_create() {
 	client_socket = -1
 	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	if (parameter_count() > 0) {
-		if (parameter_string(1) != "" && parameter_string(1) != "-player") {
+		if (parameter_string(1) != "" && parameter_string(1) != "-player" && parameter_string(1) != "-game") {
 			if (port_taken) {
 				network_connect(client_socket, "127.0.0.1", 30010)
 				var temp_buffer = buffer_create(0, buffer_grow, 1)
