@@ -702,7 +702,7 @@ function control_draw() {
 	    if (playing = 0) {
 	        if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
 	            if (keyboard_check_pressed(ord("N")) && !isplayer) new_song()
-	            if (keyboard_check_pressed(ord("O"))) load_song("")
+	            if (keyboard_check_pressed(ord("O"))) {load_song("") current_song = songs[song]}
 	            if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(current_song.filename)
 	            if (keyboard_check_pressed(ord("A")) && !isplayer) select_all(-1, 0)
 	            if (keyboard_check_pressed(ord("A")) && keyboard_check(vk_shift) && !isplayer) selection_place(0)
@@ -1709,7 +1709,7 @@ function control_draw() {
 	yy = 23 + song_tab_offset
 	if (language != 1) {
 	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} if (!isplayer) xx += 25
-	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
+	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("") if (isplayer) current_song = songs[song]} xx += 25 + isplayer * 4
 	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(current_song.filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
 	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(current_song.loopmax)
