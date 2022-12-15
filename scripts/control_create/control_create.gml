@@ -402,6 +402,7 @@ function control_create() {
 	w_midi_octave = 0
 	w_midi_vel = 1
 	w_midi_precision = 1
+	w_midi_tempo_changer = 0
 	w_isdragging = 0
 	w_dragvalue = 0
 	init_midi()
@@ -536,6 +537,7 @@ function control_create() {
 	window_set_min_height(500 * window_scale)
 	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
 	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
+	if (w_midi_tempo_changer) w_midi_removesilent = 0
 
 	// Updates
 	if (check_update)

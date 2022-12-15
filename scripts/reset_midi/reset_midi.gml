@@ -30,6 +30,11 @@ function reset_midi() {
 	}
 	midi_percamount = 0
 
-
+	midi_tempo_changers = 0
+	array_delete(midi_tempo_changer_x, 0, array_length(midi_tempo_changer_x))
+	array_delete(midi_tempo_changer_tempo, 0, array_length(midi_tempo_changer_x))
+	midi_tempo_changer_x[0] = -1
+	midi_tempo_changer_tempo[0] = -1
+	
 
 }

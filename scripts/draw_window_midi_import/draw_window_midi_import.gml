@@ -19,11 +19,12 @@ function draw_window_midi_import() {
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "MIDI Import")
 	draw_theme_font(font_main)
-	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "Remove silent parts at beginning", "Whether to remove any silent parts\nat the beginning of the song.") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
+	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "Remove silent parts at beginning", condstr(w_midi_tempo_changer, "This option is disabled when\nthe tempo changes option is on.", "Whether to remove any silent parts\nat the beginning of the song."), w_midi_tempo_changer) && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "Name layers...", "If the layers should be given names\ndepending on the data in the MIDI file.") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "...after patches", "If the layers should be named\nafter the instruments in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
 	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "...channel numbers", "If the layers should be named\nafter the channels in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
 	if (draw_checkbox(x1 + 260, y1 + 32, w_midi_tempo, "Same tempo as in file", "Set the song's tempo to match\nthe one of the MIDI file.") && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	if (draw_checkbox(x1 + 410, y1 + 32, w_midi_tempo_changer, "Tempo changes", "Whether to add tempo changesfound in the MIDI file.\nTempo changers are not supported in game and most NBS-compatible softwares.") && wmenu = 0) {w_midi_tempo_changer=!w_midi_tempo_changer if(w_midi_tempo_changer) {w_midi_removesilent = 0 midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}}
 	draw_text_dynamic(x1 + 260, y1 + 52, "Max. channel height:")
 	popup_set_window(x1 + 260, y1 + 52, 140, 16, "The maximum allowed layers per channel.\nClick and drag to adjust.")
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 380, y1 + 52, w_midi_maxheight, 1), 20)
@@ -44,11 +45,12 @@ function draw_window_midi_import() {
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "导入MIDI")
 	draw_theme_font(font_main)
-	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "去除开始时空部分", "是否移除歌曲开始时无音符的部分。") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
+	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "去除开始时空部分", condstr(w_midi_tempo_changer, "该选项在开启速度变化时不可用。", "是否移除歌曲开始时无音符的部分。"), w_midi_tempo_changer) && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
 	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "给每层命名......", "是否根据 MIDI 内数据为每层命名。") && wmenu = 0) w_midi_name=!w_midi_name
 	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "......根据乐器", "是否根据 MIDI 中的乐器为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
 	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "......根据层号", "是否根据 MIDI 中的层序号为每层命名。", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
 	if (draw_checkbox(x1 + 300, y1 + 32, w_midi_tempo, "导入速度", "是否将速度设定为与 MIDI 文件中一样。") && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	if (draw_checkbox(x1 + 410, y1 + 32, w_midi_tempo_changer, "速度变化", "是否添加 MIDI 文件中的速度变化。\n速度调节器（Tempo Changer）在游戏中及大多数NBS兼容软件中不被支持。") && wmenu = 0) {w_midi_tempo_changer=!w_midi_tempo_changer if(w_midi_tempo_changer) {w_midi_removesilent = 0 midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}}
 	draw_text_dynamic(x1 + 300, y1 + 52, "通道最高层数:")
 	popup_set_window(x1 + 300, y1 + 52, 140, 16, "每个通道所允许使用的最多层数。拖拽来更改。")
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 420, y1 + 52, w_midi_maxheight, 1), 20)
@@ -159,7 +161,7 @@ function draw_window_midi_import() {
 	}
 	draw_theme_color()
 	draw_set_halign(fa_right)
-	draw_text_dynamic(x1 + 590, y1 + 6, midifile)
+	draw_text_dynamic(x1 + 590, y1 + 6, midifile, true)
 	draw_theme_font(font_main_bold)
 	if (midi_songlength > 0) {
 	    draw_text_dynamic(x1 + 590, y1 + 6 + string_height_dynamic(midifile), time_str(midi_songlength))
