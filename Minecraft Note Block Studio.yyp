@@ -1607,6 +1607,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":"poetry.toml","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":"poetry.lock","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":"package.py","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data/Python","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",
