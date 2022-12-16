@@ -582,7 +582,7 @@ function control_create() {
 	// Open song
 	if (parameter_count() > 0) {
 		filename = parameter_string(1)
-		if (filename != "" && filename != "-player") load_song(filename, 0, 1)
+		if (filename != "" && (filename_ext(filename) = ".mid" || filename_ext(filename) = ".midi" || filename_ext(filename) = ".schematic" || filename_ext(filename) = ".nbs")) load_song(filename, 0, 1)
 	}
 
 	log("Startup OK")
