@@ -139,7 +139,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	    }
 	}
 	// Check key presses
-	if (window = 0 && text_focus = -1 && key_edit = -1 && !keyboard_check(vk_control)) {
+	if (window = 0 && text_focus = -1 && key_edit = -1 && !check_ctrl()) {
 	for (a = 0; a <= 87; a += 1) {
 	    if (piano_key[a] > 0) {
 	        if (key_press[a] = 0 && keyboard_check(piano_key[a])) {

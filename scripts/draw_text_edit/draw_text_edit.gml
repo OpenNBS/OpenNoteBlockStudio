@@ -157,7 +157,7 @@ function draw_text_edit(argument0, argument1, argument2, argument3, argument4, a
 	            text_marker = current_time
 	        }
 	        menu = -1
-	        if (keyboard_check(vk_control)) {  // Ctrl commands
+	        if (check_ctrl()) {  // Ctrl commands
 	            if (!readonly && keyboard_check_pressed(ord("X"))) menu = 0
 	            if (keyboard_check_pressed(ord("C"))) menu = 1
 	            if (!readonly && key_press[ord("V")]) menu = 2

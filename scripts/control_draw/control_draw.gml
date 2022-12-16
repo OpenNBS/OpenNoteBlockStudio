@@ -514,11 +514,11 @@ function control_draw() {
 	// Controls
 	if (sela > -1 && selb > -1 && window = 0 && cursmarker = 0 && clickinarea = 1) {
 	    if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
-	        if (mouse_check_button_pressed(mb_left) && !keyboard_check(vk_control) && selected > 0) {
+	        if (mouse_check_button_pressed(mb_left) && !check_ctrl() && selected > 0) {
 	            selection_place(0)
 	            dontplace = 1
 	        }
-			if (mouse_check_button_pressed(mb_left) && keyboard_check(vk_control)) {selection_add(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
+			if (mouse_check_button_pressed(mb_left) && check_ctrl()) {selection_add(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
 	        select_pressx = mouse_x
 	        select_pressy = mouse_y
 	        select_pressa = starta + sela
@@ -544,7 +544,7 @@ function control_draw() {
 	                }
 	            }
 	        } else {
-	            if (select = 0 && !keyboard_check(vk_control)) selection_place(0)
+	            if (select = 0 && !check_ctrl()) selection_place(0)
 	        }
 	        dontplace = 0
 	    }
@@ -552,7 +552,7 @@ function control_draw() {
 			if (exist = 1) {
 				selected_key = song_key[selbx, selby]
 				instrument = song_ins[selbx, selby]
-				if (keyboard_check(vk_control)) {
+				if (check_ctrl()) {
 					selected_vel = song_vel[selbx, selby]
 					selected_pan = song_pan[selbx, selby]
 					selected_pit = song_pit[selbx, selby]
@@ -565,8 +565,8 @@ function control_draw() {
 			}
 				
 		}
-		if (mouse_check_button_pressed(mb_right) && keyboard_check(vk_control)) {selection_remove(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
-	    if (mouse_check_button(mb_right) && !keyboard_check(vk_control)) {
+		if (mouse_check_button_pressed(mb_right) && check_ctrl()) {selection_remove(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
+	    if (mouse_check_button(mb_right) && !check_ctrl()) {
 	        if ((starta + sela != select_pressa || startb + selb != select_pressb) && select_pressx != -1) {
 	            select = 2
 	        } else if (exist = 1) {
@@ -575,7 +575,7 @@ function control_draw() {
 	        }
 	    }
 	    if (mouse_check_button_released(mb_right)) {
-	        if (starta + sela = select_pressa && startb + selb = select_pressb && select_pressx != -1 && !keyboard_check(vk_control)) {
+	        if (starta + sela = select_pressa && startb + selb = select_pressb && select_pressx != -1 && !check_ctrl()) {
 	            str = ""
 	            customstr = ""
 				insmenu = 1
@@ -594,80 +594,80 @@ function control_draw() {
 						insmenu++
 					}
 				}
-	            if (language != 1) menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-	                                      inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
+	            if (language != 1) menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + get_hotkey("copy") + "$Copy|"+
+	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + get_hotkey("cut") + "$Cut|"+
+	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + get_hotkey("paste") + "$Paste|"+
+	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + get_hotkey("delete") + "$Delete|-|"+
+	                                      inactive(totalblocks = 0) + get_hotkey("select_all") + "$Select all|"+
 	                                      inactive(selected = 0) + "Deselect all|"+
-	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
+	                                      inactive(selected = 0 && totalblocks = 0) + get_hotkey("invert_selection") + "$Invert selection|-|"+
 	                                      inactive(totalblocks = 0 || selbx >= enda) + "Select all to the right ->|"+
 	                                      inactive(totalblocks = 0 || selbx <= 0) + "Select all to the left <-|-|"+
 	                                      inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
 	                                      inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
-	                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+	                                        inactive(selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_4") + "$" + get_mode_actions(4) + "|"+
+											condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_5") + "$" + get_mode_actions(5) + "|") +
+											condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_6") + "$" + get_mode_actions(6) + "|") +
 	                                        inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
 	                                        inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
-											"Ctrl+Shift+Q$Fade in|"+
-											"Ctrl+Shift+W$Fade out|"+
-											"Ctrl+Shift+E$Replace key|"+
-											"Ctrl+Shift+R$Set velocity...|"+
-											"Ctrl+Shift+T$Set panning...|"+
-											"Ctrl+Shift+Y$Set pitch...|"+
-											"Ctrl+Shift+U$Reset all properties|"+
+											get_hotkey("tremolo") + "$Tremolo...|"+
+											get_hotkey("stereo") + "$Stereo...|"+
+											get_hotkey("arpeggio") + "$Arpeggio...|"+
+											get_hotkey("portamento") + "$Portamento...|"+
+											get_hotkey("vibrato") + "$Vibrato|"+
+											get_hotkey("stagger") + "$Stagger...|"+
+											get_hotkey("chorus") + "$Chorus|"+
+											get_hotkey("volume_lfo") + "$Volume LFO|"+
+											get_hotkey("fade_in") + "$Fade in|"+
+											get_hotkey("fade_out") + "$Fade out|"+
+											get_hotkey("replace_key") + "$Replace key|"+
+											get_hotkey("set_velocity") + "$Set velocity...|"+
+											get_hotkey("set_panning") + "$Set panning...|"+
+											get_hotkey("set_pitch") + "$Set pitch...|"+
+											get_hotkey("reset_properties") + "$Reset all properties|"+
 											"/|-|"+
 	                                        inactive(selected = 0) + "Transpose notes outside octave range|")
-	            else menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
-	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
-	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
-	                                      inactive(totalblocks = 0) + "Ctrl+A$全选|"+
+	            else menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + get_hotkey("copy") + "$复制|"+
+	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + get_hotkey("cut") + "$剪切|"+
+	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + get_hotkey("paste") + "$粘贴|"+
+	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + get_hotkey("delete") + "$删除|-|"+
+	                                      inactive(totalblocks = 0) + get_hotkey("select_all") + "$全选|"+
 	                                      inactive(selected = 0) + "全不选|"+
-	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
+	                                      inactive(selected = 0 && totalblocks = 0) + get_hotkey("invert_selection") + "$选择反转|-|"+
 	                                      inactive(totalblocks = 0 || selbx >= enda) + "选择右侧所有 ->|"+
 	                                      inactive(totalblocks = 0 || selbx <= 0) + "选择左侧所有 <-|-|"+
 	                                      inactive(instrument.num_blocks = 0) + "选择所有 " + clean(instrument.name) + "|"+
 	                                      inactive(instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(instrument.name) + "|-|"+
-	                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+	                                        inactive(selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+
+	                                        inactive(selected = 0) + get_hotkey("action_4") + "$" + get_mode_actions(4) + "|"+
+											condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_5") + "$" + get_mode_actions(5) + "|") +
+											condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_6") + "$" + get_mode_actions(6) + "|") +
 	                                        inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
 	                                        inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
-											"Ctrl+Shift+Q$淡入|"+
-											"Ctrl+Shift+W$淡出|"+
-											"Ctrl+Shift+E$替换音|"+
-											"Ctrl+Shift+R$设定音量......|"+
-											"Ctrl+Shift+T$设定声道......|"+
-											"Ctrl+Shift+Y$设定音高......|"+
-											"Ctrl+Shift+U$重置所有属性|"+
+											get_hotkey("tremolo") + "$Tremolo...|"+
+											get_hotkey("stereo") + "$Stereo...|"+
+											get_hotkey("arpeggio") + "$Arpeggio...|"+
+											get_hotkey("portamento") + "$Portamento...|"+
+											get_hotkey("vibrato") + "$Vibrato|"+
+											get_hotkey("stagger") + "$Stagger...|"+
+											get_hotkey("chorus") + "$Chorus|"+
+											get_hotkey("volume_lfo") + "$Volume LFO|"+
+											get_hotkey("fade_in") + "$淡入|"+
+											get_hotkey("fade_out") + "$淡出|"+
+											get_hotkey("replace_key") + "$替换音|"+
+											get_hotkey("set_velocity") + "$设定音量......|"+
+											get_hotkey("set_panning") + "$设定声道......|"+
+											get_hotkey("set_pitch") + "$设定音高......|"+
+											get_hotkey("reset_properties") + "$重置所有属性|"+
 											"/|-|"+
 	                                        inactive(selected = 0) + "转换所有超出八度范围的音符|")
 	            menu.menuc = selbx
@@ -680,7 +680,7 @@ function control_draw() {
 	// Keyboard shortcuts
 	if (window = 0 && text_focus = -1) {
 	    if (playing = 0) {
-	        if (keyboard_check(vk_control) && !keyboard_check(vk_shift)) {
+	        if (check_ctrl() && !keyboard_check(vk_shift)) {
 	            if (keyboard_check_pressed(ord("N")) && !isplayer) new_song()
 	            if (keyboard_check_pressed(ord("O"))) load_song("")
 	            if (keyboard_check_pressed(ord("S")) && !isplayer) save_song(filename)
@@ -706,7 +706,7 @@ function control_draw() {
 					window_scale = get_default_window_scale()
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
-	            if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
+	            if ((os_type != os_macosx && keyboard_check_pressed(187)) || (os_type = os_macosx && keyboard_check_pressed(24)) || (mouse_wheel_up())) {
 					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67}
 					else if (window_scale < 0.75) {window_scale = 0.75}
 					else if (window_scale < 0.8) {window_scale = 0.8}
@@ -722,7 +722,7 @@ function control_draw() {
 					else if (window_scale < 4) {window_scale = 4}
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
-	            if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
+	            if ((os_type != os_macosx && keyboard_check_pressed(189)) || (os_type = os_macosx && keyboard_check_pressed(109)) || (mouse_wheel_down())) {
 					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5}
 					else if (window_scale > 3) {window_scale = 3}
 					else if (window_scale > 2.5) {window_scale = 2.5}
@@ -739,7 +739,7 @@ function control_draw() {
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
 				}
 	        }
-	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
+	        if ((os_type != os_macosx && keyboard_check_pressed(vk_delete)) || (os_type = os_macosx && keyboard_check_pressed(vk_backspace)) && selected > 0 && !isplayer) {
 				selection_delete(0)
 				changed = 1
 			}
@@ -1369,9 +1369,9 @@ function control_draw() {
 		        }
 		    }
 			// Select all
-		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Select all note blocks in this layer\n(Hold Ctrl to select multiple layers)", "选择本层所有方块\n（按住Ctrl选择多层）"), 0, 0)) {
+		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Select all note blocks in this layer\n(Hold " + condstr(os_type != os_macosx, "Ctrl", "command") + " to select multiple layers)", "选择本层所有方块\n（按住" + condstr(os_type != os_macosx, "Ctrl", "command") + "选择多层）"), 0, 0)) {
 		        playing = 0
-				if (!keyboard_check(vk_control)) {
+				if (!check_ctrl()) {
 					selection_place(0)
 				}
 		        selection_add(0, startb + b, enda, startb + b, 0, 0)
@@ -1503,9 +1503,9 @@ function control_draw() {
 		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 		    }
-		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
-		                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
-		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+get_hotkey("new_song") + "$New song|"+
+		                             icon(icons.OPEN)+get_hotkey("open_song") + "$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
+		                             icon(icons.SAVE)+get_hotkey("save_song") + "$Save song|"+
 		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
 		                             inactive(selected != 0)+"Import pattern...|"+
 									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|"+inactive(os_type != os_windows)+"Import from schematic...|-|"+
@@ -1514,8 +1514,8 @@ function control_draw() {
 		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as track schematic...|"+
 		                             inactive(totalblocks = 0 || os_type != os_windows) + "Export as branch schematic...|"+
 									 inactive(totalblocks = 0 || os_type != os_windows) + "Export as data pack...|-|" + 
-		                             "Alt + F4$Exit")
-			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
+		                             get_hotkey("exit") + "$Exit")
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+get_hotkey("open_song") + "$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + get_hotkey("exit") + "$Exit")
 							
 		}
 		if (!isplayer) if (draw_tab("Edit")) {
@@ -1533,23 +1533,23 @@ function control_draw() {
 					insmenu++
 				}
 		    }
-		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$Undo|"+
-		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$Redo|-|"+
-		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-		                              inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
+		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + get_hotkey("undo") + "$Undo|"+
+		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + get_hotkey("redo") + "$Redo|-|"+
+		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + get_hotkey("copy") + "$Copy|"+
+		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + get_hotkey("cut") + "$Cut|"+
+		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + get_hotkey("paste") + "$Paste|"+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + get_hotkey("delete") + "$Delete|-|"+
+		                              inactive(totalblocks = 0) + get_hotkey("select_all") + "$Select all|"+
 		                              inactive(selected = 0) + "Deselect all|"+
-		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
+		                              inactive(selected = 0 && totalblocks = 0) + get_hotkey("invert_selection") + "$Invert selection|-|"+
 		                              inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
 		                              inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
-		                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-		                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-		                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-		                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+		                                inactive(selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_4") + "$" + get_mode_actions(4) + "|"+
+												condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_5") + "$" + get_mode_actions(5) + "|") +
+												condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_6") + "$" + get_mode_actions(6) + "|") +
 		                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
 		                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
 		                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
@@ -1566,9 +1566,9 @@ function control_draw() {
 		            customstr += check(instrument = ins) + clean(ins.name) + "|"
 		        else{
 					if(a < 9){
-						 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+						 str += check(instrument = ins) + get_hotkey("ins_ctrl") + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 					}else{
-					  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
+					  str += check(instrument = ins) + get_hotkey("ins_ctrl_shift") + string((a + 2) % 10) + "$" + clean(ins.name) + "|"
 					}
 				}
 				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
@@ -1577,8 +1577,8 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI device manager|Ctrl+P$Preferences...")
-			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Ctrl+P$Preferences...")
+		                        icon(icons.INSTRUMENTS)+"Instrument settings...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI device manager|" + get_hotkey("preferences") + "$Preferences...")
+			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + get_hotkey("preferences") + "$Preferences...")
 		}
 		if (draw_tab("Help")) {
 		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|-|Changelist...|About...")
@@ -1591,9 +1591,9 @@ function control_draw() {
 		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 		    }
-		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$新文件|"+
-		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
-		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+get_hotkey("new_song") + "$新文件|"+
+		                             icon(icons.OPEN)+get_hotkey("open_song") + "$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
+		                             icon(icons.SAVE)+get_hotkey("save_song") + "$保存歌曲|"+
 		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
 		                             inactive(selected != 0)+"导入片段......|"+
                                      inactive(selected = 0)+"导出片段......|"+"从 MIDI 文件导入......|"+inactive(os_type != os_windows)+"从 Schematic 文件导入......|-|"+
@@ -1602,8 +1602,8 @@ function control_draw() {
 		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出为直轨 schematic......|"+
 		                             inactive(totalblocks = 0 || os_type != os_windows) + "导出为分支 schematic......|"+
 									 inactive(totalblocks = 0 || os_type != os_windows) + "导出为数据包......|-|" +
-		                             "Alt + F4$退出")
-			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
+		                             get_hotkey("exit") + "$退出")
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+get_hotkey("open_song") + "$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + get_hotkey("exit") + "$退出")
 							
 		}
 		if (!isplayer) if (draw_tab("编辑")) {
@@ -1621,23 +1621,23 @@ function control_draw() {
 					insmenu++
 				}
 		    }
-		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$撤销|"+
-		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$重做|-|"+
-		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
-		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
-		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
-		                              inactive(totalblocks = 0) + "Ctrl+A$全选|"+
+		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + get_hotkey("undo") + "$撤销|"+
+		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + get_hotkey("redo") + "$重做|-|"+
+		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + get_hotkey("copy") + "$复制|"+
+		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + get_hotkey("cut") + "$剪切|"+
+		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + get_hotkey("paste") + "$粘贴|"+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + get_hotkey("delete") + "$删除|-|"+
+		                              inactive(totalblocks = 0) + get_hotkey("select_all") + "$全选|"+
 		                              inactive(selected = 0) + "全不选|"+
-		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
+		                              inactive(selected = 0 && totalblocks = 0) + get_hotkey("invert_selection") + "$选择反转|-|"+
 		                              inactive(instrument.num_blocks = 0) + "选择所有 " + clean(instrument.name) + "|"+
 		                              inactive(instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(instrument.name) + "|-|"+
-		                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
-		                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
-		                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
-		                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
-												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
-												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
+		                                inactive(selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+
+		                                inactive(selected = 0) + get_hotkey("action_4") + "$" + get_mode_actions(4) + "|"+
+												condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_5") + "$" + get_mode_actions(5) + "|") +
+												condstr((editmode != m_key), inactive(selected = 0) + get_hotkey("action_6") + "$" + get_mode_actions(6) + "|") +
 		                                inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
 		                                inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
 		                                inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
@@ -1654,9 +1654,9 @@ function control_draw() {
 		            customstr += check(instrument = ins) + clean(ins.name) + "|"
 		        else{
 					if(a < 10){
-						 str += check(instrument = ins) + "Ctrl+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+						 str += check(instrument = ins) + get_hotkey("ins_ctrl") + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 					}else{
-					  str += check(instrument = ins) + "      Ctrl+Shift+" + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
+					  str += check(instrument = ins) + get_hotkey("ins_ctrl_shift") + string((a + 1) % 10) + "$" + clean(ins.name) + "|"
 					}
 				}
 				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
@@ -1665,8 +1665,8 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI 设备管理器|Ctrl+P$首选项......")
-			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
+		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + inactive(os_type != os_windows) + "MIDI 设备管理器|" + get_hotkey("preferences") + "$首选项......")
+			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + get_hotkey("preferences") + "$首选项......")
 		}
 		if (draw_tab("帮助")) {
 		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|-|更新历史......|关于......")
