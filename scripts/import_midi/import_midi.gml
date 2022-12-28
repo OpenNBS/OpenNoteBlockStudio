@@ -146,8 +146,10 @@ function import_midi() {
 	
 	if (w_midi_tempo_changer) {
 		for (t = 0; t < midi_tempo_changers; t += 1) {
-			pos = floor((midi_tempo_changer_x[t]) / deltapertick)
-			add_block(pos, 0, songs[song].instrument_list[| first_custom_index], 39, 100, 100, midi_tempo_changer_tempo[t] * (w_midi_precision + 1))
+			pos = floor((midi_tempo_changer_x[t] - midi_minpos * w_midi_removesilent) / deltapertick)
+			if (pos < 0) pos = 0
+			if (!songs[song].song_exists[pos, 0]) add_block(pos, 0, songs[song].instrument_list[| first_custom_index], 39, 100, 100, midi_tempo_changer_tempo[t] * (w_midi_precision + 1))
+			else change_block(pos, 0, songs[song].instrument_list[| first_custom_index], 39, 100, 100, midi_tempo_changer_tempo[t] * (w_midi_precision + 1))
 		}
 	}
 	
