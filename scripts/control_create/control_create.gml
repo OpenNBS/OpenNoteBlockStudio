@@ -537,7 +537,6 @@ function control_create() {
 	window_set_min_height(500 * window_scale)
 	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
 	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
-	if (w_midi_tempo_changer) w_midi_removesilent = 0
 
 	// Updates
 	if (check_update)
