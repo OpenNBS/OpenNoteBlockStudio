@@ -567,6 +567,28 @@ function draw_window_preferences() {
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
+		if (theme = 3) draw_theme_font(font_info_med)
+		draw_areaheader(x1 + 233 + 22, y1 + 329 + (theme = 3) * 22, 223, 55, "Resource pack")
+		if (theme = 3) draw_theme_font(font_main)
+		draw_area(x1 + 233 + 22 + 18, y1 + 329 + (theme = 3) * 22 + 16 + 5, x1 + 233 + 22 + 18 + 100, y1 + 329 + (theme = 3) * 22 + 16 + 5 + 20)
+		var rp_str = ""
+		var display_resource = current_resource
+		if (string_width_dynamic(display_resource) > 82) {
+			while (display_resource != "" && string_width_dynamic(display_resource) > 82 - string_width("...")) {
+				display_resource = string_delete(display_resource, string_length(display_resource), 1)
+			}
+			display_resource += "..."
+		}
+		for (var l = 0; l < array_length(resourcepacks); l++) {
+			rp_str += check(current_resource = resourcepacks[l].filename)
+			rp_str += resourcepacks[l].filename
+			if (l != array_length(resourcepacks) - 1) rp_str += "|"
+		}
+		if (draw_abutton(x1 + 233 + 22 + 18 + 100 - 17, y1 + 329 + (theme = 3) * 22 + 17 + 5) && wmenu = 0) {
+			menu = show_menu_ext("resourcepack", x1 + 233 + 22 + 18, y1 + 329 + (theme = 3) * 22 + 16 + 5 + 21, rp_str)
+		}
+		draw_text_dynamic(x1 + 233 + 22 + 18 + 3, y1 + 329 + (theme = 3) * 22 + 19 + 5, display_resource)
+		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, "进度条")
@@ -591,6 +613,28 @@ function draw_window_preferences() {
 		if (theme = 3) draw_theme_font(font_main)
 		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, "红石刻 / 秒 (t/s)", "使用每秒几刻显示速度。")) use_bpm = 0
 		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, "拍数 / 分钟 (BPM)", "使用每分钟多少拍显示速度。")) use_bpm = 1
+		if (theme = 3) draw_theme_font(font_info_med)
+		draw_areaheader(x1 + 233 + 22, y1 + 329 + (theme = 3) * 22, 223, 55, "资源包")
+		if (theme = 3) draw_theme_font(font_main)
+		draw_area(x1 + 233 + 22 + 18, y1 + 329 + (theme = 3) * 22 + 16 + 5, x1 + 233 + 22 + 18 + 100, y1 + 329 + (theme = 3) * 22 + 16 + 5 + 20)
+		var rp_str = ""
+		var display_resource = current_resource
+		if (string_width_dynamic(display_resource) > 82) {
+			while (display_resource != "" && string_width_dynamic(display_resource) > 82 - string_width("...")) {
+				display_resource = string_delete(display_resource, string_length(display_resource), 1)
+			}
+			display_resource += "..."
+		}
+		for (var l = 0; l < array_length(resourcepacks); l++) {
+			rp_str += check(current_resource = resourcepacks[l].filename)
+			rp_str += resourcepacks[l].filename
+			if (l != array_length(resourcepacks) - 1) rp_str += "|"
+		}
+		if (draw_abutton(x1 + 233 + 22 + 18 + 100 - 17, y1 + 329 + (theme = 3) * 22 + 17 + 5) && wmenu = 0) {
+			menu = show_menu_ext("resourcepack", x1 + 233 + 22 + 18, y1 + 329 + (theme = 3) * 22 + 16 + 5 + 21, rp_str)
+		}
+		draw_text_dynamic(x1 + 233 + 22 + 18 + 3, y1 + 329 + (theme = 3) * 22 + 19 + 5, display_resource)
+		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
 		}
 	}
 	

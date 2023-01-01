@@ -388,6 +388,10 @@ function menu_click(argument0) {
 			}
 			break;
 		}
+		case "resourcepack": {
+			set_resourcepack(resourcepacks[sel].filename)
+			break;
+		}
 	}
 	mouse_clear(mb_left)
 	io_clear()

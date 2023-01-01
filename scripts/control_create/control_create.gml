@@ -182,6 +182,23 @@ function control_create() {
 	tabdest = -1
 
 	// Instruments
+	//current_resource = "Vanilla"
+	current_resource = "Vanilla"
+	resourcepacks = []
+	array_push(resourcepacks, new_resourcepack(0, "Vanilla"))
+	pack_to_push = file_find_first(resource_directory + "*", fa_directory)
+	var pack_ext = 0
+	while (pack_to_push != "") {
+		//if (filename_ext(pack_to_push) = ".zip") pack_ext = 1
+		if (filename_ext(pack_to_push) = ".zip") pack_ext = 0 // disable zip for now
+		else if (filename_ext(pack_to_push) = "") pack_ext = 2
+		else if (directory_exists(resource_directory + pack_to_push)) pack_ext = 2
+	    if (pack_ext != 0) array_push(resourcepacks, new_resourcepack(pack_ext, pack_to_push))
+		show_debug_message(pack_to_push)
+	    pack_to_push = file_find_next()
+	}
+	file_find_close()
+	
 	original_instruments = []
 	array_push(original_instruments, new_instrument("Harp",          "harp.ogg",     false, true))
 	array_push(original_instruments, new_instrument("Double Bass",   "dbass.ogg",    false, true))
@@ -480,6 +497,10 @@ function control_create() {
 	window_set_min_height(500 * window_scale)
 	if ((theme = 3 && fdark) || theme = 2) window_set_darkmode()
 	if (keynames_flat) keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
+	
+	if (current_resource != "Vanilla") {
+		set_resourcepack(current_resource)
+	}
 
 	// Updates
 	if (check_update)

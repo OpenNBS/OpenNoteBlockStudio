@@ -75,6 +75,7 @@ function load_settings() {
 	window_icon =        ini_read_real(  "preferences", "window_icon",        window_icon)
 	keynames_flat =      ini_read_real(  "preferences", "keynames_flat",      keynames_flat)
 	hires =              ini_read_real(  "preferences", "hires",              hires)
+	current_resource =   ini_read_string("preferences", "current_resource",   current_resource)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
