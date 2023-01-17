@@ -450,6 +450,11 @@ function control_draw() {
 	    }
 	    draw_theme_color()
 	}
+	} else {
+		try {
+		if (current_song.song_exists[current_song.starta + a, current_song.startb + b]) {}
+		}
+		catch (e) {}
 	}
 	draw_set_alpha(1)
 	draw_set_halign(fa_left)
