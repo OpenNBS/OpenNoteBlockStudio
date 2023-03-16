@@ -134,6 +134,7 @@
     {"id":{"name":"buffer_skip","path":"scripts/buffer_skip/buffer_skip.yy",},"order":14,},
     {"id":{"name":"buffer_write_byte","path":"scripts/buffer_write_byte/buffer_write_byte.yy",},"order":15,},
     {"id":{"name":"libfilesystem","path":"extensions/libfilesystem/libfilesystem.yy",},"order":4,},
+    {"id":{"name":"libfiledialogs","path":"extensions/libfiledialogs/libfiledialogs.yy",},"order":4,},
     {"id":{"name":"buffer_write_double","path":"scripts/buffer_write_double/buffer_write_double.yy",},"order":16,},
     {"id":{"name":"buffer_write_double_be","path":"scripts/buffer_write_double_be/buffer_write_double_be.yy",},"order":17,},
     {"id":{"name":"buffer_write_float_be","path":"scripts/buffer_write_float_be/buffer_write_float_be.yy",},"order":18,},
