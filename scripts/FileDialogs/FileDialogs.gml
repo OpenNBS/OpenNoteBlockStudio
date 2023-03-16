@@ -42,7 +42,7 @@ function DialogSetOwnerWindow(lpOwner) {
 	return bool(environment_set_variable("IMGUI_DIALOG_PARENT", string(int64(lpOwner))));
 }
 
-function DialogGetWindowCaption(lpCaption) {
+function DialogGetWindowCaption() {
 	return string(environment_get_variable("IMGUI_DIALOG_CAPTION"));
 }
 
