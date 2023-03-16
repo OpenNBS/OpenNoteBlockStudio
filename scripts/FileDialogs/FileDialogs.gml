@@ -144,5 +144,5 @@ function DialogInitialize() {
 	DialogSetOwnerWindow(window_handle());
 	DialogSetWindowCaption(window_get_caption());
 	DialogSetFontFiles(working_directory + string_lower("Data/Fonts/NotoSansCJK-Bold.ttc"));
-	DialogSetWindowSize(480, 320);
+	DialogSetWindowSize(640, 360);
 }
