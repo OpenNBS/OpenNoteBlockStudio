@@ -1,10 +1,15 @@
 function question(argument0, argument1) {
 	// question(str, caption)
-	var a;
-	widget_set_caption(argument1)
-	a = show_question(argument0)
+	var a, b, c, d, e;
+	b = DialogGetWindowCaption()
+	DialogSetWindowCaption(argument1)
+	c = DialogGetWindowWidth();
+	d = DialogGetWindowHeight();
+	DialogSetWindowSize(320, 200);
+	e = ShowQuestion(argument0)
+	if (e == environment_get_variable("IMGUI_YES")) a = true;
+	else a = false;
+	DialogSetWindowSize(c, d)
+	DialogSetWindowCaption(b)
 	return a
-
-
-
 }

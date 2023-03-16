@@ -409,37 +409,37 @@ function control_create() {
 	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
-	soundinvoke.filename = "UI/invoke.ogg"
+	soundinvoke.filename = "UI" + condstr(os_type = os_windows, "\\", "/") + "invoke.ogg"
 	if (os_type = os_linux) soundinvoke.filename = string_lower(soundinvoke.filename)
 	soundinvoke.user = 0
 	soundshow =   create(obj_instrument)
 	soundshow.key =   45
-	soundshow.filename =     "UI/show.ogg"
+	soundshow.filename =     "UI" + condstr(os_type = os_windows, "\\", "/") + "show.ogg"
 	if (os_type = os_linux) soundshow.filename = string_lower(soundshow.filename)
 	soundshow.user =   0
 	soundhide =   create(obj_instrument)
 	soundhide.key =   45
-	soundhide.filename =     "UI/hide.ogg"
+	soundhide.filename =     "UI" + condstr(os_type = os_windows, "\\", "/") + "hide.ogg"
 	if (os_type = os_linux) soundhide.filename = string_lower(soundhide.filename)
 	soundhide.user =   0
 	soundgoback = create(obj_instrument)
 	soundgoback.key = 45
-	soundgoback.filename = "UI/goback.ogg"
+	soundgoback.filename = "UI" + condstr(os_type = os_windows, "\\", "/") + "goback.ogg"
 	if (os_type = os_linux) soundgoback.filename = string_lower(soundgoback.filename)
 	soundgoback.user = 0
 	soundmetronome = create(obj_instrument)
 	soundmetronome.key = 45
-	soundmetronome.filename = "UI/metronome.ogg"
+	soundmetronome.filename = "UI" + condstr(os_type = os_windows, "\\", "/") + "metronome.ogg"
 	if (os_type = os_linux) soundmetronome.filename = string_lower(soundmetronome.filename)
 	soundmetronome.user = 0
 	soundding = create(obj_instrument)
 	soundding.key = 45
-	soundding.filename = "UI/ding.ogg"
+	soundding.filename = "UI" + condstr(os_type = os_windows, "\\", "/") + "ding.ogg"
 	if (os_type = os_linux) soundding.filename = string_lower(soundding.filename)
 	soundding.user = 0
 	soundmetronomeclick = create(obj_instrument)
 	soundmetronomeclick.key = 45
-	soundmetronomeclick.filename = "UI/metronome_click.ogg"
+	soundmetronomeclick.filename = "UI" + condstr(os_type = os_windows, "\\", "/") + "metronome_click.ogg"
 	if (os_type = os_linux) soundmetronomeclick.filename = string_lower(soundmetronomeclick.filename)
 	soundmetronomeclick.user = 0
 

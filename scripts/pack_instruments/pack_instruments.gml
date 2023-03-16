@@ -3,15 +3,15 @@
 function pack_instruments() {
 	var fn, tempdir, ins, src, dst, count;
 	show_debug_message(song_name)
-	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, "") + " - ") + "Instruments.zip", "", "Pack instruments to ZIP file"));
-	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
+	if (language != 1) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, "") + " - ") + "Instruments.zip", "", "Pack instruments to ZIP file"));
+	else fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
 	if (fn = "") return 0;
 	
 	tempdir = data_directory + "Temp\\";
 	if (directory_exists(tempdir)) {
 		directory_destroy(tempdir);
 	}
-	directory_create_lib(tempdir);
+	directory_create(tempdir);
 	
 	count = 0;
 	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {
@@ -25,16 +25,15 @@ function pack_instruments() {
 			}
 			show_debug_message(filename_dir(dst))
 			if (!directory_exists(filename_dir(dst))) {
-				directory_create_lib(filename_dir(dst))
+				directory_create(filename_dir(dst))
 			}
 			file_copy(src, dst);
 			count++;
 		}
 	}
 	
-	if (os_type = os_windows) ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true, true)
+	if (os_type = os_windows) execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true)
 	directory_destroy(tempdir);
 	if (language != 1) message(string(count) + " instrument" + condstr(count > 1, "s were", " was") + " saved!", "Pack instruments");
 	else message(string(count) + "个音色已保存！", "导出音色");
-	
 }

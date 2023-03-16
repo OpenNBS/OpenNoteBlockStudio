@@ -1,7 +1,12 @@
 function wallpaper_init() {
 	var tempsurf, wpaperwidth;
-	if (os_type = os_windows) ExecuteShell("\"" + data_directory + "wallpaper.bat", true, true)
-	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
+	wpaperexist = false;
+	if (os_type = os_windows) {
+		wpaperexist = file_exists(data_directory + "Wallpaper.jpg");
+		if (wpaperexist) wpaperexist = file_delete(data_directory + "Wallpaper.jpg") // file_delete returns true on success
+		execute_program("cmd", "\"" + data_directory + "wallpaper.bat\"", true);
+		wpaperexist = file_exists(data_directory + "Wallpaper.jpg");
+	} // FIXME: add macOS/Linux equivalents here
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
 		if (display_width / display_height < sprite_get_width(wpaper) / sprite_get_height(wpaper)) wpaperside = 1
