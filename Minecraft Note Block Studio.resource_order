@@ -154,6 +154,7 @@
     {"name":"draw_window_instruments","order":4,"path":"scripts/draw_window_instruments/draw_window_instruments.yy",},
     {"name":"draw_window_mididevices","order":5,"path":"scripts/draw_window_mididevices/draw_window_mididevices.yy",},
     {"name":"draw_window_midi_import","order":6,"path":"scripts/draw_window_midi_import/draw_window_midi_import.yy",},
+    {"name":"FileDialogs","order":15,"path":"scripts/FileDialogs/FileDialogs.yy",},
     {"name":"draw_window_preferences","order":7,"path":"scripts/draw_window_preferences/draw_window_preferences.yy",},
     {"name":"draw_window_clip_editor","order":8,"path":"scripts/draw_window_clip_editor/draw_window_clip_editor.yy",},
     {"name":"draw_window_properties","order":9,"path":"scripts/draw_window_properties/draw_window_properties.yy",},
