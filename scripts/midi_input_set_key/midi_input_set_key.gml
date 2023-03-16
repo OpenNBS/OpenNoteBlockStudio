@@ -13,7 +13,7 @@ function midi_input_set_key(argument0, argument1) {
 						vel = min(midi_input_key_press_velocity(d, k), 100)
 		                if (ins = -1) ins = instrument
 		                if (ins >= 0) play_sound(ins, key, vel ,100, 0)
-		                if (select_lastpressed) selected_key = key
+		                if (select_lastpressed) {selected_key = key; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 		                if (playing = 0.25) toggle_playing(totalcols)
 		                if (playing && record) {
 		                    b = 0

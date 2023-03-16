@@ -4,12 +4,12 @@ function datapack_export() {
 	o = obj_controller
 
 	if (language != 1) {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
-	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
+	if (o.dat_usezip) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
+	else fn = string(GetSaveFileName("Data Pack Folder", dat_name, "", "Data Pack Export"))
 	} else {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
+	if (o.dat_usezip) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
 	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
-	else fn = string(get_save_filename_ext("数据包目录", dat_name, "", "导出数据包"))
+	else fn = string(GetSaveFileName("数据包目录", dat_name, "", "导出数据包"))
 	}
 	if (fn = "") return 0
 
@@ -23,7 +23,8 @@ function datapack_export() {
 		var path = dat_getpath(o.dat_path)
 		var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
 		var tag = objective
-		var playspeed = min(o.tempo * 4, 120)
+		var pack_format = 8
+		var playspeed = min(round(o.tempo * 4), 120)
 		var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 		var tempdir
 		var functionpath
@@ -51,7 +52,7 @@ function datapack_export() {
 		functiondir = dat_makefolders(path, namespace)
 	
 		//pack.mcmeta
-		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
+		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": " + string(pack_format) + ",\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
 		dat_writefile(inputString, tempdir + "pack.mcmeta")
 	
 		//Minecraft folder:

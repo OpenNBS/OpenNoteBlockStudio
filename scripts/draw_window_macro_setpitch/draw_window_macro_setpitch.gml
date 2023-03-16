@@ -21,9 +21,11 @@ function draw_window_macro_setpitch() {
 	}
 	if (language != 1) draw_areaheader(x1 + 10, y1 + 53, 120, 35, "Pitch")
 	else draw_areaheader(x1 + 10, y1 + 53, 120, 35, "音高")
-	setpit = median(-1000, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1000)
+	setpit = median(-1200, draw_dragvalue(18, x1 + 55, y1 + 65, setpit, 0.1), 1200)
 
 	draw_theme_color()
+	if (language != 1) {if (draw_checkbox(x1 + 15, y1 + 80, addpitch, "Add mode", "Add the pitch amount to each note,\ninstead of setting it.", 0, 1)) addpitch = !addpitch}
+	else {if (draw_checkbox(x1 + 15, y1 + 80, addpitch, "加法模式", "将数值叠加至音符上，而不是直接设置。", 0, 1)) addpitch = !addpitch}
 	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确定"))) {
 		windowalpha = 0
 		windowclose = 0
@@ -36,11 +38,13 @@ function draw_window_macro_setpitch() {
 		val = 0
 		while (val < total_vals) {
 			val += 6
-			arr_data[val] = setpit
+			if (!addpitch) arr_data[val] = setpit
+			else arr_data[val] = real(arr_data[val]) + real(setpit)
 			val += 1
 			while arr_data[val] != -1 {
 				val += 5
-				arr_data[val] = setpit
+				if (!addpitch) arr_data[val] = setpit
+				else arr_data[val] = real(arr_data[val]) + real(setpit)
 				val += 1
 			}
 			val ++
@@ -50,6 +54,8 @@ function draw_window_macro_setpitch() {
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

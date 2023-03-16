@@ -6,11 +6,12 @@ function save_song() {
 	if (argument_count > 1) {
 		backup = argument[1]
 	}
+	if (isplayer) return 0
 	if ((!backup) && (fn = "" || filename_ext(filename) != ".nbs")) {
 	    playing = 0
 	    fsave = filename_name(filename)
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(get_save_filename_ext("Note Block Songs (*.nbs)|*.nbs", fsave + condstr(filename_ext(filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, "Save song", "保存歌曲")))
+	    fn = string(GetSaveFileName("Note Block Songs (*.nbs)|*.nbs", fsave + condstr(filename_ext(filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, "Save song", "保存歌曲")))
 		show_debug_message(string_char_at(fn, string_length(fn) - 3))
 	    if (fn = "") return 0
 	}

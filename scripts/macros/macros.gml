@@ -1,25 +1,29 @@
 function macros() {
-#macro gm_runtime_version "2.3.3.443"
-#macro version_date "2021.09.25"
-#macro version "3.9.1"
-#macro snapshot 0 // remember to change to 0 in the release!
+#macro gm_runtime_version "2022.6.1.40"
+#macro version_date "2022.10.01"
+#macro version "3.10.0"
+#macro is_prerelease 0 // remember to change to 0 in the release!
 #macro nbs_version 5
 #macro pat_version 1
 
-#macro link_github "https://github.com/HielkeMinecraft/OpenNoteBlockStudio"
-#macro link_report "https://github.com/HielkeMinecraft/OpenNoteBlockStudio/issues/new/choose"
-#macro link_website "https://hielkeminecraft.github.io/OpenNoteBlockStudio"
+#macro link_github "https://github.com/OpenNBS/OpenNoteBlockStudio"
+#macro link_report "https://github.com/OpenNBS/OpenNoteBlockStudio/issues/new/choose"
+#macro link_releases "https://api.github.com/repos/OpenNBS/OpenNoteBlockStudio/releases"
+#macro link_latest "https://api.github.com/repos/OpenNBS/OpenNoteBlockStudio/releases/latest"
+#macro link_changelog "https://opennbs.org/changelog"
+#macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"
 #macro sounds_directory		data_directory + "Sounds\\"
-#macro songs_directory		data_directory + "Songs\\"
-#macro pattern_directory	data_directory + "Patterns\\"
+#macro songs_directory		working_directory + "Songs\\"
+#macro pattern_directory	working_directory + "Patterns\\"
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
 #macro settings_file		file_directory + "settings.ini"
+#macro settings_dev_file	file_directory + "settings_dev.ini"
 #macro backup_file			file_directory + "backup.nbs"
 
 #macro h_stereoize 12
@@ -86,17 +90,25 @@ function macros() {
 #macro w_settempo 43
 #macro w_tempotapper 44
 #macro w_setaccent 45
+#macro w_track_export 46
 
 #macro br "\r\n"
 
 #macro c_dark 1644825
 
-#macro font_main 1
-#macro font_main_bold 2
-#macro font_small 3
-#macro font_small_bold 4
-#macro font_info_big 5
-#macro font_info_med 6
-#macro font_info_med_bold 7
-#macro font_med 8
+#macro font_main 0
+#macro font_main_bold 1
+#macro font_small 2
+#macro font_small_bold 3
+#macro font_info_big 4
+#macro font_info_med 5
+#macro font_info_med_bold 6
+#macro font_med 7
+
+#macro format_mp3 "MP3"
+#macro format_wav "WAV"
+#macro format_ogg "OGG"
+#macro format_aiff "AIFF"
+#macro format_flac "FLAC"
+
 }

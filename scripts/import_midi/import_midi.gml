@@ -131,7 +131,7 @@ function import_midi() {
 	            // Add block, go lower if failed
 	            a = 0
 	            while (1) {
-	                if (add_block(pos, yy, instrument_list[| ins], note, vel, 100, 0, true)) break
+	                if (add_block(pos, yy, instrument_list[| ins], note, vel, 100, 0)) break
 	                yy += 1
 	                a += 1
 	                if (a >= w_midi_maxheight && w_midi_maxheight < 20) break
@@ -152,8 +152,13 @@ function import_midi() {
 				layerstereo[yy] = 100
 	            layername[yy] = "Channel " + string(a + 1)
 	            if (w_midi_name_patch) {
-	                layername[yy] = midi_ins[midi_channelpatch[a], 3]
-	                if (layername[yy] = "") layername[yy] = midi_ins[midi_channelpatch[a], 0]
+					try {
+						layername[yy] = midi_ins[midi_channelpatch[a], 3]
+						if (layername[yy] = "") layername[yy] = midi_ins[midi_channelpatch[a], 0]
+					}
+					catch(e) {
+						layername[yy] = "Unknown"
+					}
 	                if (a = 9) layername[yy] = "Percussion"
 	            }
 	            layerlock[yy] = 0
@@ -165,12 +170,16 @@ function import_midi() {
 	}
 	if (w_midi_remember = 1) {
 	    for (a = 0; a < midi_channels; a += 1) {    
-	        midi_ins[midi_channelpatch[a], 1] = midi_channelins[a]
-	        midi_ins[midi_channelpatch[a], 2] = midi_channeloctave[a]
+			try {
+				midi_ins[midi_channelpatch[a], 1] = midi_channelins[a]
+				midi_ins[midi_channelpatch[a], 2] = midi_channeloctave[a]
+			}
 	    }
 	    for (a = 0; a < midi_percamount; a += 1) {
-	        midi_drum[midi_percnote[a], 1] = midi_percins[a]
-	        midi_drum[midi_percnote[a], 2] = midi_percpitch[a] - 33
+			try {
+				midi_drum[midi_percnote[a], 1] = midi_percins[a]
+				midi_drum[midi_percnote[a], 2] = midi_percpitch[a] - 33
+			}
 	    }
 	} else {
 	    w_midi_removesilent = 1

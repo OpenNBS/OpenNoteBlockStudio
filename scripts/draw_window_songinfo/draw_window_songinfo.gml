@@ -5,7 +5,6 @@ function draw_window_songinfo() {
 	var x1, y1, a, b, n, str, w, h, yy, w1, w2, w3, w4, w5, w6, col, r, g, b, str2, cut;
 	with (obj_popup) instance_destroy()
 	global.popup = 0
-	if (song_name = "" && window = w_songinfo) {window = 0 windowopen = 0 return 0}
 	col[0] = 16728176
 	col[1] = 16737419
 	col[2] = 16737419
@@ -43,7 +42,7 @@ function draw_window_songinfo() {
 	draw_theme_font(font_main)
 	var songdescwrap, songdeschei;
 	songdescwrap = string_word_wrap(song_desc, 216)
-	songdeschei = string_height(songdescwrap)
+	songdeschei = string_height_dynamic(songdescwrap)
 
 	h = songdeschei + 90
 	if (song_desc != "")
@@ -65,6 +64,7 @@ function draw_window_songinfo() {
 	draw_theme_color()
 	draw_text_dynamic(x1 + floor(w / 2) + 1, y1 + 16 + 1, str[0])
 	draw_set_color(col[0])
+	if (theme = 3) draw_set_color(accent[3])
 	draw_text_dynamic(x1 + floor(w / 2), y1 + 16, str[0])
 	draw_theme_font(font_info_med)
 	draw_theme_color()
@@ -139,5 +139,7 @@ function draw_window_songinfo() {
 			windowclose = 1
 		}
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

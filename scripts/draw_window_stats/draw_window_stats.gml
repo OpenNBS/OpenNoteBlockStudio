@@ -25,9 +25,11 @@ function draw_window_stats() {
 	    if (n >= ds_list_size(instrument_list)) break
 	    ins = instrument_list[| n];
 		if (ins.user) {
-			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true)
+			draw_icon_customins(x1 + 32, y1 + 64 + 18 * a, n - first_custom_index, 1, true, 1)
 		} else {
+			if (hires && theme = 3) gpu_set_texfilter(false)
 			draw_sprite(spr_instrumenticons, n, x1 + 32, y1 + 64 + 18 * a)
+			if (hires && theme = 3) gpu_set_texfilter(true)
 		}
 	    draw_text_dynamic(x1 + 50, y1 + 65 + 18 * a, "x" + string(ins.num_blocks) + " (" + string(floor(ins.num_blocks / max(0.001, totalblocks) * 100)) + "%)")
 	    popup_set_window(x1 + 32, y1 + 64 + 18 * a, 100, 18, ins.name)
@@ -39,7 +41,7 @@ function draw_window_stats() {
 	draw_set_halign(fa_right)
 	draw_text_dynamic(x1 + 260, y1 + 226, string(floor(work_mins)) + "\n" + string(work_left) + "\n" + string(work_right) + "\n" + string(work_add) + "\n" + string(work_remove))
 	draw_set_halign(fa_left)
-	if (draw_button2(x1 + 200, y1 + 320, 72, "Reset")) {
+	if (!isplayer && draw_button2(x1 + 200, y1 + 320, 72, "Reset")) {
 	    if (question("Are you sure? This cannot be undone.", "Confirm")) {
 	        work_mins = 0
 	        work_left = 0
@@ -57,7 +59,7 @@ function draw_window_stats() {
 	draw_set_halign(fa_right)
 	draw_text_dynamic(x1 + 260, y1 + 226, string(floor(work_mins)) + "\n" + string(work_left) + "\n" + string(work_right) + "\n" + string(work_add) + "\n" + string(work_remove))
 	draw_set_halign(fa_left)
-	if (draw_button2(x1 + 200, y1 + 320, 72, "重置")) {
+	if (!isplayer && draw_button2(x1 + 200, y1 + 320, 72, "重置")) {
 	    if (question("你确定吗？这将无法恢复。", "确定")) {
 	        work_mins = 0
 	        work_left = 0
@@ -69,5 +71,7 @@ function draw_window_stats() {
 	}
 	if (draw_button2(x1 + 220, y1 + 368, 72, "确定") && (windowopen = 1 || theme != 3)) windowclose = 1
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

@@ -2,7 +2,11 @@ function save_settings() {
 	// save_settings()
 	var a;
 
-	ini_open(settings_file)
+	if (is_prerelease) {
+		ini_open(settings_dev_file)
+	} else {
+		ini_open(settings_file)
+	}
 
 	// Recent songs
 	for (a = 0; a < 11; a += 1) {
@@ -12,6 +16,7 @@ function save_settings() {
 	// Preferences
 	ini_write_string(    "preferences", "last_version",       version)
 	ini_write_real_clean("preferences", "check_update",       check_update)
+	ini_write_real_clean("preferences", "check_prerelease",   check_prerelease)
 	ini_write_real_clean("preferences", "show_welcome",       show_welcome)
 	ini_write_real_clean("preferences", "autosave",           autosave)
 	ini_write_real_clean("preferences", "autosavemins",       autosavemins)
@@ -60,9 +65,14 @@ function save_settings() {
 	ini_write_real_clean("preferences", "accent3",            accent3)
 	ini_write_real_clean("preferences", "structure",          structure)
 	ini_write_real_clean("preferences", "percentvel",         percentvel)
+	ini_write_real_clean("preferences", "addpitch",           addpitch)
 	ini_write_real_clean("preferences", "language",           language)
 	ini_write_real_clean("preferences", "acrylic",            acrylic)
 	ini_write_real_clean("preferences", "taskbar",            taskbar)
+	ini_write_real_clean("preferences", "remove_effect",      remove_effect)
+	ini_write_real_clean("preferences", "window_icon",        window_icon)
+	ini_write_real_clean("preferences", "keynames_flat",      keynames_flat)
+	ini_write_real_clean("preferences", "hires",              hires)
 
 	// Midi import settings
 	ini_write_real_clean("midi_import", "remember",        w_midi_remember)
@@ -101,10 +111,16 @@ function save_settings() {
 	ini_write_real_clean("schematic_export", "glass",          sch_exp_glass)
 	ini_write_real_clean("schematic_export", "minecart",       sch_exp_minecart)
 	ini_write_real_clean("schematic_export", "chest",          sch_exp_chest)
-	for (a = 0; a < 34; a += 1) {
-	    ini_write_real_clean("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
-	    ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
+	for (a = 0; a < 256; a += 1) {
+		// The default value for ID and data are 1 and 0, respectively, so we may avoid writing these entries
+		if (sch_exp_ins_block[a] != 1) {
+		    ini_write_real_clean("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
+		}
+		if (sch_exp_ins_data[a] != 0) {
+			ini_write_real_clean("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
+		}
 	}
+	ini_write_real_clean("schematic_export", "command_block",  command_block)
 
 	// Branch export settings
 	ini_write_real_clean("branch_export", "stereo",      sch_exp_stereo)

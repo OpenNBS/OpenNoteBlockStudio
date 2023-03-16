@@ -7,10 +7,10 @@ function get_mode_actions(argument0) {
 	if (language != 1) switch editmode {
 		case m_key: {
 			switch num {
-				case 1: return "Increase octave" break
-				case 2: return "Decrease octave" break
-				case 3: return "Increase key" break
-				case 4: return "Decrease key" break
+				case 1: return "Transpose one octave up" break
+				case 2: return "Transpose one octave down" break
+				case 3: return "Transpose up" break
+				case 4: return "Transpose down" break
 				default: return ""
 			}
 			break
@@ -57,16 +57,16 @@ function get_mode_actions(argument0) {
 			switch num {
 				case 1: return "升八度" break
 				case 2: return "降八度" break
-				case 3: return "升一音" break
-				case 4: return "降一音" break
+				case 3: return "升半音" break
+				case 4: return "降半音" break
 				default: return ""
 			}
 			break
 		}
 		case m_vel: {
 			switch num {
-				case 1: return "增加10音量" break
-				case 2: return "减小10音量" break
+				case 1: return "增加 10 音量" break
+				case 2: return "减小 10 音量" break
 				case 3: return "增加音量" break
 				case 4: return "减小音量" break
 				case 5: return "设定音量……" break
@@ -77,8 +77,8 @@ function get_mode_actions(argument0) {
 		}
 		case m_pan: {
 			switch num {
-				case 1: return "向右声道移动10" break
-				case 2: return "向左声道移动10" break
+				case 1: return "向右声道移动 10" break
+				case 2: return "向左声道移动 10" break
 				case 3: return "向右声道移动" break
 				case 4: return "向左声道移动" break
 				case 5: return "设定音符声道……" break
@@ -89,10 +89,10 @@ function get_mode_actions(argument0) {
 		}
 		case m_pit: {
 			switch num {
-				case 1: return "上调10微分" break
-				case 2: return "下调10微分" break
-				case 3: return "上调1微分" break
-				case 4: return "下调1微分" break
+				case 1: return "上调 10 微分" break
+				case 2: return "下调 10 微分" break
+				case 3: return "上调 1 微分" break
+				case 4: return "下调 1 微分" break
 				case 5: return "设定音高……" break
 				case 6: return "重置音高" break
 				default: return ""

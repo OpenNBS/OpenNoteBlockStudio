@@ -3,8 +3,8 @@ function datapack_getinstextures() {
 	//allows the user to save the resource pack containing note block textures corresponding to the default instruments.
 
 	var fn, src
-	if (language != 1) fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "Note Block Textures", "", "Replaces instrument blocks with note block textures."))
-	else fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "音符盒纹理", "", "用自定义纹理替换音色方块"))
+	if (language != 1) fn = string(GetSaveFileName("Resource pack (*.zip)|*.zip", "Note Block Textures", "", "Replaces instrument blocks with note block textures."))
+	else fn = string(GetSaveFileName("Resource pack (*.zip)|*.zip", "音符盒纹理", "", "用自定义纹理替换音色方块"))
 	if (fn = "") return 0
 
 	src = data_directory + "instrumenttextures.zip"

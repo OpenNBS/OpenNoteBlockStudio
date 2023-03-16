@@ -12,7 +12,7 @@ function draw_window_tempo_tapper() {
 	ins = soundmetronome
 	draw_theme_font(font_main_bold)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Tempo tapper")
-	else draw_text_dynamic(x1 + 8, y1 + 8, "节奏测量器")
+	else draw_text_dynamic(x1 + 8, y1 + 8, "速度测量器")
 	draw_theme_font(font_main)
 	if (theme = 0) {
 	    draw_set_color(c_white)
@@ -24,8 +24,8 @@ function draw_window_tempo_tapper() {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
 		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (T to tap)")
 	} else {
-		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按T打节奏)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按T打节奏)")
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按 T 打速度)")
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按 T 打速度)")
 	}
 
 	//tempoo = draw_textarea(57, x1 + 15, y1 + 50, 113, 25, string(tempoo), "Will always floor to integer if using BPM.") 
@@ -46,7 +46,7 @@ function draw_window_tempo_tapper() {
 		else draw_text_dynamic(x1 + 60, y1 + 55, ctempo / 15)
 	}
 	if (language != 1) {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "Double tempo", "Double the tempo to apply.", 0, 1)) tapdouble = !tapdouble}
-	else {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "双倍节奏", "应用时使节奏x2。", 0, 1)) tapdouble = !tapdouble}
+	else {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "双倍速度", "应用时使速度 x2。", 0, 1)) tapdouble = !tapdouble}
 
 	draw_theme_color()
 	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
@@ -59,7 +59,7 @@ function draw_window_tempo_tapper() {
 		}
 		catch(e) {
 			if (language != 1) message("An error occurred.", "Tempo tapper")
-			else message("发生了一个错误。", "节奏测量器")
+			else message("发生了一个错误。", "速度测量器")
 		}
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消"))) {
@@ -68,6 +68,8 @@ function draw_window_tempo_tapper() {
 		ltime = 0
 		windowclose = 1
 	}
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

@@ -84,6 +84,9 @@ function draw_window_instruments() {
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
 			if (instrument = userselect)
 				instrument = instrument_list[| 0]
+				selected_vel = 100
+				selected_pan = 100
+				selected_pit = 0
 			c = 1
 		}
 	}
@@ -100,18 +103,21 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 456, y1 + 318, 80, "OK") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
-			show_message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
+			message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
 			save_version = nbs_version
 		}
 		save_settings()
 	}
 	} else {
 	if (draw_button2(x1 + 194, y1 + 318, 80, "移除", userselect < 0) && wmenu = 0) {
-		if ((userselect.num_blocks == 0) || (message_yesnocancel("这将移除使用该音色的" + string(userselect.num_blocks) + "个方块并且不能撤销。确定吗？", "警告"))) {
+		if ((userselect.num_blocks == 0) || (message_yesnocancel("这将移除使用该音色的 " + string(userselect.num_blocks) + " 个方块并且不能撤销。确定吗？", "警告"))) {
 			instrument_remove(userselect)
 			insselect = min(ds_list_size(instrument_list) - 1, insselect)
 			if (instrument = userselect)
 				instrument = instrument_list[| 0]
+				selected_vel = 100
+				selected_pan = 100
+				selected_pit = 0
 			c = 1
 		}
 	}
@@ -128,7 +134,7 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 456, y1 + 318, 80, "确定") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
-			show_message("此歌曲含有多于18个音色，无法保存为版本" + string(save_version) + "。将保存为版本" + string(nbs_version) + "。")
+			message("此歌曲含有多于18个音色，无法保存为版本 " + string(save_version) + "。将保存为版本 " + string(nbs_version) + "。")
 			save_version = nbs_version
 		}
 		save_settings()
@@ -158,7 +164,7 @@ function draw_window_instruments() {
 	    if (insselect = b) draw_set_color(c_white)
 	    // INS NAME
 		prev = ins.name
-	    ins.name = draw_text_edit(60 + b, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < first_custom_index)
+	    ins.name = draw_text_edit(70 + b, ins.name, x1 + 18, y1 + 90 + 20 * a, 178, 20, 1, b < first_custom_index)
 		if (ins.name != prev) changed = 1
 	    // INS SOUND
 	    draw_set_color(make_color_rgb(120, 120, 120))
@@ -235,7 +241,9 @@ function draw_window_instruments() {
 	draw_line(x1 + 13 + 194 + 160, y1 + 87, x1 + 13 + 194 + 160, y1 + 86 + 20 * a)
 	draw_line(x1 + 13 + 194 + 160 + 80, y1 + 87, x1 + 13 + 194 + 160 + 80, y1 + 86 + 20 * a)
 	draw_scrollbar(insscrollbar, x1 + 14 + 194 + 160 + 80 + 70, y1 + 88, 21, 9, ds_list_size(instrument_list) - 2, 0, 1)
-	window_set_cursor(curs)
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		window_set_cursor(curs)
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 	
 }

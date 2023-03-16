@@ -14,8 +14,8 @@ function get_update() {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)
 			update = 5
 			if (file_get_size(update_file) == total_size) {
-				if (language != 1) show_message("Download complete! Click OK to begin installing the update.")
-				else show_message("下载完成！点击“OK”来安装更新。")
+				if (language != 1) message("Download complete! Click OK to begin installing the update.")
+				else message("下载完成！点击“OK”来安装更新。")
 				// At this point, the game is paused until the user dismisses the message
 				ExecuteShell("\"" + update_file + "\"", false, true)
 				game_end()
@@ -25,7 +25,7 @@ function get_update() {
 					open_url(link_website)
 				}
 				} else {
-				if (question("下载更新失败。你想要到Note Block Studio官网手动更新吗？", "失败")) {
+				if (question("下载更新失败。你想要到 Note Block Studio 官网手动更新吗？", "失败")) {
 					open_url(link_website)
 				}
 				}

@@ -9,7 +9,7 @@ function load_song() {
 	if (confirm() < 0) return 0
 	if (!backup && fn = "") {
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, condstr(language != 1, "Load song", "打开歌曲")))
+	    fn = string(GetOpenFileName("Note Block Songs (*.nbs)|*.nbs|MIDI Sequences (*.mid)|*.mid;*.midi|Minecraft Schematics (*.schematic)|*.schematic", "", songfolder, condstr(language != 1, "Load song", "打开歌曲")))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 
@@ -37,10 +37,10 @@ function load_song() {
 		if (byte1 = 0 && byte2 = 0) {
 			song_nbs_version = buffer_read_byte()
 			if (language != 1) {if (show_oldwarning && song_nbs_version < nbs_version) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
-			else {if (show_oldwarning && song_nbs_version < nbs_version) message("警告：你正在打开旧版的NBS文件。保存此文件会使其与旧版Note Block Studio不兼容。","警告")}
+			else {if (show_oldwarning && song_nbs_version < nbs_version) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 			if song_nbs_version > nbs_version {
 				if (language != 1) message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
-				else message("警告：你正在打开在新版Note Block Studio里保存的文件。\n请用保存选项菜单将其保存到" + string(nbs_version) + "版本或以下。","错误")
+				else message("警告：你正在打开在新版 Note Block Studio 里保存的文件。\n请用保存选项菜单将其保存到" + string(nbs_version) + "版本或以下。","错误")
 				return -1
 			}
 			song_first_custom_index = buffer_read_byte()
@@ -52,7 +52,7 @@ function load_song() {
 			}
 		} else {
 			if (language != 1) {if (show_oldwarning) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
-			else {if (show_oldwarning) message("警告：你正在打开旧版的NBS文件。保存此文件会使其与旧版Note Block Studio不兼容。","警告")}
+			else {if (show_oldwarning) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 			song_nbs_version = 0
 			custom_index_diff = 0
 			song_first_custom_index = 0
@@ -189,7 +189,7 @@ function load_song() {
 	}
 	if (!backup) {
 		add_to_recent(fn)
-		if (window != w_instruments) window = w_songinfo
+		if (window != w_instruments && song_name != "") window = w_songinfo
 		filename = fn
 		changed = 0
 	}

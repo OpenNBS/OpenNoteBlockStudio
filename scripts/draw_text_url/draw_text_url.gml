@@ -24,7 +24,7 @@ function draw_text_url(argument0, argument1, argument2, argument3) {
 	}
 	if (theme != 3) draw_set_color(make_color_rgb(62, 144, 255))
 	draw_text_center(xx, yy, text)
-	draw_line(xx - floor(width/2) - 1, yy + 12, xx + ceil(width/2) - 1, yy + 13)
+	draw_line(xx - floor(width/2) - 1, yy + 12, xx + ceil(width/2) - 1, yy + 12)
 	draw_theme_color()
 
 

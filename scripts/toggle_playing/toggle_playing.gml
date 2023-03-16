@@ -10,7 +10,7 @@ function toggle_playing(argument0) {
 	            starta = median(0, marker_pos - 1, enda)
 	            sb_val[scrollbarh] = starta
 	        }
-	        if (marker_pagebypage = 0) {
+	        if (marker_pagebypage = 0 || marker_pagebypage = 2) {
 	            starta = median(0, marker_pos - floor(argument0 / 2), enda)
 	            sb_val[scrollbarh] = starta
 	        }

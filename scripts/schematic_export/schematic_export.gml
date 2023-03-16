@@ -1,9 +1,9 @@
 function schematic_export() {
 	// schematic_export()
-	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, insind, ins, insblock;
-	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote;
-	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
-	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
+	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, ins;
+	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit;
+	if (!structure) fn = string(GetSaveFileName("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
+	else fn = string(GetSaveFileName("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -38,22 +38,9 @@ function schematic_export() {
 		ins[13] = "bit"
 		ins[14] = "banjo"
 		ins[15] = "pling"
-		insblock[0] = "dirt"
-		insblock[1] = "oak_planks"
-		insblock[2] = "cobblestone"
-		insblock[3] = "sand"
-		insblock[4] = "glass"
-		insblock[5] = "white_wool"
-		insblock[6] = "clay"
-		insblock[7] = "gold_block"
-		insblock[8] = "packed_ice"
-		insblock[9] = "bone_block"
-		insblock[10] = "iron_block"
-		insblock[11] = "soul_sand"
-		insblock[12] = "pumpkin"
-		insblock[13] = "emerald_block"
-		insblock[14] = "hay_block"
-		insblock[15] = "glowstone"
+		for (var a = 0; a < 240; a++) {
+			ins[16 + a] = "harp"
+		}
 		instrument_list = o.instrument_list
 	    layers = ceil(o.sch_exp_maxheight[o.sch_exp_compress] / 4)
 	    block_walkway_block = o.sch_exp_walkway_block
@@ -198,7 +185,7 @@ function schematic_export() {
 	        // Add note blocks
 	        xx = 3
 	        yy = 0
-	        var circ, rep, dir, nblocks, nblockins, nblockkey, turn, lturnx, lturny, lturndel;
+	        var circ, rep, dir, nblocks, nblockins, nblockkey, nblockpit, turn, lturnx, lturny, lturndel;
 	        rep = 0
 	        dir = 1 // 1 or -1
 	        circ = 1 // 1 = From, -1 = To
@@ -214,18 +201,21 @@ function schematic_export() {
 	            if (o.colamount[a] > 0) { // Calculate note blocks for this tick
 	                for (b = 0; b <= o.collast[a]; b += 1) {
 	                    if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.sch_exp_includelocked)) {
-	                        if (o.song_key[a, b] > 32 && o.song_key[a, b] < 58) {
+	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.structure && o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
+	                            nblockpit[nblocks] = o.song_pit[a, b]
 	                            nblocks += 1
 	                        } else if (!o.sch_exp_compress) {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
+	                            nblockpit[nblocks] = 0
 	                            nblocks += 1 
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
 	                        nblockkey[nblocks] = 0
+	                        nblockpit[nblocks] = 0
 	                        nblocks += 1
 	                    }
 	                }
@@ -251,6 +241,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir * 2
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -263,6 +255,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir * 2
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -275,6 +269,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -287,6 +283,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -459,7 +457,7 @@ function schematic_export() {
 	        signz = hei - 1
 	        xx = 1
 	        yy = wid - 7
-	        var rep, dir, nblocks, nblockins, nblockkey, turn;
+	        var rep, dir, nblocks, nblockins, nblockkey, nblockpit, turn;
 	        rep = 0
 	        dir = -1 // 1 or -1
 	        for (a = 0; a <= o.enda; a += 1) {
@@ -470,18 +468,21 @@ function schematic_export() {
 	            if (o.colamount[a] > 0) { // Calculate note blocks for this tick
 	                for (b = 0; b <= o.collast[a]; b += 1) {
 	                    if (o.song_exists[a, b] && (o.lockedlayer[b] = 0 || o.sch_exp_includelocked)) {
-	                        if (o.song_key[a, b] > 32 && o.song_key[a, b] < 58) {
+	                        if ((o.song_key[a, b] > 32 && o.song_key[a, b] < 58) || (o.structure && o.command_block && o.song_key[a, b] >= 9 && o.song_key[a, b] <= 81)) {
 	                            nblockins[nblocks] = ds_list_find_index(other.instrument_list, o.song_ins[a, b])
 	                            nblockkey[nblocks] = o.song_key[a, b]
+	                            nblockpit[nblocks] = o.song_pit[a, b]
 	                            nblocks += 1
 	                        } else if (!o.sch_exp_compress) {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
+	                            nblockpit[nblocks] = 0
 	                            nblocks += 1 
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
 	                        nblockkey[nblocks] = 0
+	                        nblockpit[nblocks] = 0
 	                        nblocks += 1
 	                    }
 	                }
@@ -507,6 +508,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir * 2
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -519,6 +522,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir * 2
 	                            noteblockz[noteblocks] = b * 3 + 1
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -531,6 +536,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -543,6 +550,8 @@ function schematic_export() {
 	                            noteblocky[noteblocks] = y1 + dir
 	                            noteblockz[noteblocks] = b * 3 + 2
 	                            noteblocknote[noteblocks] = nblockkey[nblocks] - 33
+								noteblockins[noteblocks] = nblockins[nblocks]
+								noteblockpit[noteblocks] = nblockpit[nblocks]
 	                            noteblocks += 1
 	                        }
 	                        nblocks -= 1
@@ -714,33 +723,37 @@ function schematic_export() {
 			buffer_write_int_be(hei)
 			if (len <= 32) buffer_write_int_be(len)
 			else buffer_write_int_be(32)
-		for (a = 0; a < 16; a += 1) {
-			insnum += (instrument_list[| a].num_blocks != 0)
-			insind[a] = (instrument_list[| a].num_blocks != 0)
-		}
-		TAG_List("palette", 27 + insnum * 26, 10)
-			TAG_String("Name", "minecraft:stone")
+		insnum = ds_list_size(instrument_list)
+		TAG_List("palette", 29 + insnum * 26, 10)
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_walkway_block, block_walkway_data))
 			TAG_End()
-			for (a = 0; a < 16; a += 1) {
-				show_debug_message(instrument_list[| a])
-				if ((instrument_list[| a].num_blocks != 0)) {
-					TAG_String("Name", "minecraft:" + insblock[a])
-					if (a = 9) {
-						TAG_Compound("Properties")
-							TAG_String("axis", "y")
-							TAG_End()
-					}
-					TAG_End()
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_circuit_block, block_circuit_data))
+			TAG_End()
+			TAG_String("Name", "minecraft:" + block_get_namespaced_id(block_ground_block, block_ground_data))
+			TAG_End()
+			for (a = 0; a < insnum; a += 1) {
+				TAG_String("Name", "minecraft:" + block_get_namespaced_id(o.sch_exp_ins_block[a], o.sch_exp_ins_data[a]))
+				if (a = 9) {
+					TAG_Compound("Properties")
+						TAG_String("axis", "y")
+						TAG_End()
 				}
+				TAG_End()
 			}
-			for (a = 0; a < 16; a += 1) {
+			for (a = 0; a < insnum; a += 1) {
 				for (b = 0; b < 25; b += 1) {
-					if ((instrument_list[| a].num_blocks != 0)) {
+					if (!o.command_block) {
 						TAG_String("Name", "minecraft:note_block")
 						TAG_Compound("Properties")
 							TAG_String("instrument", ins[a])
 							TAG_String("note", string(b))
 							TAG_String("powered", "false")
+							TAG_End()
+						TAG_End()
+					} else {
+						TAG_String("Name", "minecraft:command_block")
+						TAG_Compound("Properties")
+							TAG_String("facing", "up")
 							TAG_End()
 						TAG_End()
 					}
@@ -914,7 +927,7 @@ function schematic_export() {
 				buffer_write_int_be(wid - 1 - signy)
 				buffer_write_int_be(signz)
 				buffer_write_int_be(signx)
-			TAG_Int("state", insnum * 26 + 17)
+			TAG_Int("state", insnum * 26 + 19)
 	        TAG_End()
 			if (sch_loop) {
 				TAG_Compound("nbt")
@@ -929,15 +942,30 @@ function schematic_export() {
 					buffer_write_int_be(wid - 1 - signy)
 					buffer_write_int_be(signz - 1)
 					buffer_write_int_be(signx)
-				TAG_Int("state", insnum * 26 + 17)
+				TAG_Int("state", insnum * 26 + 19)
 				TAG_End()
 			}
+			var soundname, soundpitch, soundnote;
 			for (a = 0; a < noteblocks; a += 1) {
+				if (o.command_block) {
+					TAG_Compound("nbt")
+						soundname = dat_instrument(noteblockins[a])
+						soundpitch = dat_pitch(noteblocknote[a] + 33 + noteblockpit[a] / 100)
+						if (noteblocknote[a] + noteblockpit[a] / 100 < 0) soundname += "_-1"
+						else if (noteblocknote[a] + noteblockpit[a] / 100 > 24) soundname += "_1"
+						TAG_String("Command", "playsound "+ soundname +" block @a ~ ~ ~ 3 " + string(soundpitch))
+						TAG_Byte("TrackOutput", 0)
+						TAG_Byte("powered", 0)
+						TAG_Byte("auto", 0)
+						TAG_Byte("conditionMet", 1)
+						TAG_Byte("UpdateLastExecution", 1)
+						TAG_End()
+				}
 				TAG_List("pos", 3, 3)
 					buffer_write_int_be(wid - 1 - noteblocky[a])
 					buffer_write_int_be(noteblockz[a])
 					buffer_write_int_be(noteblockx[a])
-	            TAG_Int("state", 1 + insnum + noteblocknote[a])
+	            TAG_Int("state", 3 + insnum + (noteblockins[a] * 25 + noteblocknote[a]) * !o.command_block)
 	            TAG_End()
 	        }
 			if (chest) {
@@ -955,7 +983,7 @@ function schematic_export() {
 					buffer_write_int_be(wid - 1 - chesty)
 					buffer_write_int_be(chestz)
 					buffer_write_int_be(chestx)
-				TAG_Int("state", insnum * 26 + 19)
+				TAG_Int("state", insnum * 26 + 21)
 				TAG_End()
 			}
 			for (c = 0; c < hei; c += 1) {
@@ -966,48 +994,39 @@ function schematic_export() {
 							buffer_write_int_be(wid - b - 1)
 							buffer_write_int_be(c)
 							buffer_write_int_be(a)
-						if (sch_block_read(a, b, c) = 0) TAG_Int("state", insnum * 26 + 2)
-						else if (sch_block_read(a, b, c) = 1) TAG_Int("state", 0)
-						else if (sch_block_read(a, b, c) = 3) TAG_Int("state", 1)
-						else if (sch_block_read(a, b, c) = 5) TAG_Int("state", 1 + insind[0])
-						else if (sch_block_read(a, b, c) = 4) TAG_Int("state", 1 + insind[0] + insind[1])
-						else if (sch_block_read(a, b, c) = 12) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2])
-						else if (sch_block_read(a, b, c) = 20) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3])
-						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 0) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4])
-						else if (sch_block_read(a, b, c) = 82) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5])
-						else if (sch_block_read(a, b, c) = 41) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6])
-						else if (sch_block_read(a, b, c) = 174) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7])
-						else if (sch_block_read(a, b, c) = 216) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8])
-						else if (sch_block_read(a, b, c) = 42) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9])
-						else if (sch_block_read(a, b, c) = 88) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10])
-						else if (sch_block_read(a, b, c) = 86) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11])
-						else if (sch_block_read(a, b, c) = 133) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12])
-						else if (sch_block_read(a, b, c) = 170) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[11] + insind[12] + insind[13])
-						else if (sch_block_read(a, b, c) = 89) TAG_Int("state", 1 + insind[0] + insind[1] + insind[2] + insind[3] + insind[4] + insind[5] + insind[6] + insind[7] + insind[8] + insind[9] + insind[10] + insind[1] + insind[12] + insind[13] + insind[14])
-						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 11) TAG_Int("state", insnum * 26 + 1)
-						else if (sch_block_read(a, b, c) = 65) TAG_Int("state", insnum * 26 + 3)
-						else if (sch_block_read(a, b, c) = 55) TAG_Int("state", insnum * 26 + 4)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3) TAG_Int("state", insnum * 26 + 5)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4) TAG_Int("state", insnum * 26 + 6)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 2) TAG_Int("state", insnum * 26 + 7)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 3) TAG_Int("state", insnum * 26 + 8)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 9)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4) TAG_Int("state", insnum * 26 + 10)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 2) TAG_Int("state", insnum * 26 + 11)
-						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 3) TAG_Int("state", insnum * 26 + 12)
-						else if (sch_block_read(a, b, c) = 94) TAG_Int("state", insnum * 26 + 13)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 14)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 15)
-						else if (sch_block_read(a, b, c) = 77) TAG_Int("state", insnum * 26 + 16)
-						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 18)
-						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 20)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 21)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 22)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 23)
-						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 24)
-						else if (sch_block_read(a, b, c) = 69) TAG_Int("state", insnum * 26 + 25)
-						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 4) TAG_Int("state", insnum * 26 + 26)
-						else TAG_Int("state", insnum * 26 + 2)
+						if (sch_block_read(a, b, c) = 0) TAG_Int("state", insnum * 26 + 4) //air
+						else if (sch_block_read(a, b, c) = block_walkway_block && sch_data_read(a, b, c) = block_walkway_data) TAG_Int("state", 0) //walkway
+						else if (sch_block_read(a, b, c) = block_circuit_block && sch_data_read(a, b, c) = block_circuit_data) TAG_Int("state", 1) //circuit
+						else if (sch_block_read(a, b, c) = block_ground_block && sch_data_read(a, b, c) = block_ground_data) TAG_Int("state", 2) //ground
+						else if (sch_block_read(a, b, c) = 35 && sch_data_read(a, b, c) = 11) TAG_Int("state", insnum * 26 + 3) //blue_wool
+						else if (sch_block_read(a, b, c) = 65) TAG_Int("state", insnum * 26 + 5) //ladder
+						else if (sch_block_read(a, b, c) = 55) TAG_Int("state", insnum * 26 + 6) //redstone_wire
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3) TAG_Int("state", insnum * 26 + 7) //east repeater 1
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4) TAG_Int("state", insnum * 26 + 8) //east repeater 2
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 2) TAG_Int("state", insnum * 26 + 9) //east repeater 3
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 3 + 4 * 3) TAG_Int("state", insnum * 26 + 10) //east repeater 4
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 11) //west repeater 1
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4) TAG_Int("state", insnum * 26 + 12) //west repeater 2
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 2) TAG_Int("state", insnum * 26 + 13) //west repeater 3
+						else if (sch_block_read(a, b, c) = 93 && sch_data_read(a, b, c) = 1 + 4 * 3) TAG_Int("state", insnum * 26 + 14) //west repeater 4
+						else if (sch_block_read(a, b, c) = 94) TAG_Int("state", insnum * 26 + 15) //south repeater 4
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 16) //unlit torch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 5) TAG_Int("state", insnum * 26 + 17) //lit torch
+						else if (sch_block_read(a, b, c) = 77) TAG_Int("state", insnum * 26 + 18) //south stone_button
+						else if (sch_block_read(a, b, c) = 27) TAG_Int("state", insnum * 26 + 20) //ns powered_rail
+						else if (sch_block_read(a, b, c) = 66) TAG_Int("state", insnum * 26 + 22) //ns rail
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 23) //east unlit walltorch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 1) TAG_Int("state", insnum * 26 + 24) //east lit walltorch
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 25) //west unlit walltorch
+						else if (sch_block_read(a, b, c) = 76 && sch_data_read(a, b, c) = 2) TAG_Int("state", insnum * 26 + 26) //west lit walltorch
+						else if (sch_block_read(a, b, c) = 69) TAG_Int("state", insnum * 26 + 27) //south lever
+						else if (sch_block_read(a, b, c) = 75 && sch_data_read(a, b, c) = 4) TAG_Int("state", insnum * 26 + 28) //north lit walltorch
+						else {
+							for (var i = 0; i < insnum; i++) {
+								if (sch_block_read(a, b, c) = o.sch_exp_ins_block[i] && sch_data_read(a, b, c) = o.sch_exp_ins_data[i]) {TAG_Int("state", 3 + i); break;}
+								else if (i = insnum - 1) {TAG_Int("state", insnum * 26 + 4); break;}
+							}
+						}
 						TAG_End()
 						}
 			        }
@@ -1021,7 +1040,7 @@ function schematic_export() {
 	    instance_destroy()
 	}
 	if (o.language != 1) message("Schematic saved!", "Schematic Export")
-	else message("Schematic已保存！", "导出Schematic")
+	else message("Schematic 已保存！", "导出 Schematic")
 	window = w_schematic_export
 
 

@@ -2,8 +2,13 @@ function load_settings() {
 	// load_settings()
 	var a;
 	log("Load settings")
-	if (!file_exists(settings_file)) return 0
-	ini_open(settings_file)
+	if (is_prerelease && file_exists(settings_dev_file)) {
+		ini_open(settings_dev_file);
+	} else if (file_exists(settings_file)) {
+		ini_open(settings_file);
+	} else {
+		return;
+	}
 
 	// Recent songs
 	for (a = 0; a < 11; a += 1) {
@@ -13,6 +18,7 @@ function load_settings() {
 	// Preferences
 	vers =               ini_read_string("preferences", "last_version",       version)
 	check_update =       ini_read_real(  "preferences", "check_update",       check_update)
+	check_prerelease =   ini_read_real(  "preferences", "check_prerelease",   check_prerelease)
 	show_welcome =       ini_read_real(  "preferences", "show_welcome",       show_welcome)
 	autosave =           ini_read_real(  "preferences", "autosave",           autosave)
 	autosavemins =       ini_read_real(  "preferences", "autosavemins",       autosavemins)
@@ -61,9 +67,14 @@ function load_settings() {
 	accent3 =            ini_read_real(  "preferences", "accent3",            accent3)
 	structure =          ini_read_real(  "preferences", "structure",          structure)
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
+	addpitch =           ini_read_real(  "preferences", "addpitch",           addpitch)
 	language =           ini_read_real(  "preferences", "language",           language)
 	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
 	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
+	remove_effect =      ini_read_real(  "preferences", "remove_effect",      remove_effect)
+	window_icon =        ini_read_real(  "preferences", "window_icon",        window_icon)
+	keynames_flat =      ini_read_real(  "preferences", "keynames_flat",      keynames_flat)
+	hires =              ini_read_real(  "preferences", "hires",              hires)
 
 	// Midi import settings
 	w_midi_remember =     ini_read_real(  "midi_import", "remember",        w_midi_remember)
@@ -110,10 +121,11 @@ function load_settings() {
 	sch_exp_glass =            ini_read_real("schematic_export", "glass",          sch_exp_glass)
 	sch_exp_minecart =         ini_read_real("schematic_export", "minecart",       sch_exp_minecart)
 	sch_exp_chest =            ini_read_real("schematic_export", "chest",          sch_exp_chest)
-	for (a = 0; a < 34; a += 1) {
+	for (a = 0; a < 256; a += 1) {
 	   sch_exp_ins_block[a] = ini_read_real("schematic_export", "ins_block_" + string(a), sch_exp_ins_block[a])
 	   sch_exp_ins_data[a] =  ini_read_real("schematic_export", "ins_data_"  + string(a), sch_exp_ins_data[a])
 	}
+	command_block =            ini_read_real("schematic_export", "command_block",  command_block)
 
 	// Branch export settings
 	sch_exp_stereo =      ini_read_real("branch_export", "stereo",      sch_exp_stereo)

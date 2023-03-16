@@ -3,8 +3,8 @@ function datapack_getextranotes() {
 	//allows the user to save the resource pack containing extra notes to their location of choice
 
 	var fn, src
-	if (language != 1) fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "Extra Note Blocks", "", "Save extra notes for data pack"))
-	else fn = string(get_save_filename_ext("Resource pack (*.zip)|*.zip", "更多音符盒", "", "为数据包保存音符盒资源包"))
+	if (language != 1) fn = string(GetSaveFileName("Resource pack (*.zip)|*.zip", "Extra Note Blocks", "", "Save extra notes for data pack"))
+	else fn = string(GetSaveFileName("Resource pack (*.zip)|*.zip", "更多音符盒", "", "为数据包保存音符盒资源包"))
 	if (fn = "") return 0
 
 	src = data_directory + "extranotes.zip"

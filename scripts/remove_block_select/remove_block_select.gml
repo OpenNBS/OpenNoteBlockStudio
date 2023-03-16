@@ -21,7 +21,7 @@ function remove_block_select(argument0, argument1) {
 	colamount[xx] -= 1
 	rowamount[yy] -= 1
 	totalblocks -= 1
-
+	
 
 
 }

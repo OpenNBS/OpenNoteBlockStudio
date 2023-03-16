@@ -1,7 +1,7 @@
 function instrument_change(ins) {
 	var fn, newfn;
-	if (language != 1) fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "Load sound file"))
-	else fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "打开声音文件"))
+	if (language != 1) fn = string(GetOpenFileName("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "Load sound file"))
+	else fn = string(GetOpenFileName("Supported sounds (*.ogg;*.wav;*.mp3)|*.ogg;*.wav;*.mp3", "", sounds_directory, "打开声音文件"))
 	if (file_exists_lib(fn)) {
 		if (string_count(sounds_directory, fn) > 0) {
 			// Sound is already in the Sounds folder or in a subfolder
@@ -13,7 +13,7 @@ function instrument_change(ins) {
 		}
 		if (string_copy(ins.name, 0, 19) == "Custom instrument #") {
 			ins.name = filename_change_ext(filename_name(newfn), "")
-			text_exists[60 + ds_list_find_index(instrument_list, ins)] = 0
+			text_exists[70 + ds_list_find_index(instrument_list, ins)] = 0
 		}
 	    changed = true
 	    with (ins) {

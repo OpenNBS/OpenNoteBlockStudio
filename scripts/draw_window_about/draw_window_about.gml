@@ -9,7 +9,7 @@ function draw_window_about() {
 	draw_theme_font(font_main)
 	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "About")
 	else draw_text_dynamic(x1 + 8, y1 + 8, "关于")
-	draw_sprite_ext(spr_logo, 0, x1 + 86, y1 + 50, 0.55, 0.55, 0, c_white, draw_get_alpha())
+	draw_sprite_ext(spr_logo, window_icon, x1 + 80, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
 	draw_set_halign(fa_center)
 	draw_theme_font(font_info_med_bold)
 	draw_text_dynamic(x1 + 150, y1 + 200, "Open Note Block Studio")
@@ -68,7 +68,8 @@ function draw_window_about() {
 		if (strurl[a] != "") {
 			draw_text_url(xx2, yy2, str[a], strurl[a])
 		} else {
-			draw_text(xx2, yy2, str[a])
+			if (!hires || obj_controller.theme != 3) draw_text(xx2, yy2, str[a])
+			else draw_text_transformed(xx2, yy2, str[a], 0.25, 0.25, 0)
 		}
 	}
 	draw_theme_font(font_main) 
@@ -77,10 +78,10 @@ function draw_window_about() {
 	// End credits box
 
 	if (draw_button2(x1 + 36, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false)) {
-		open_url(link_github)
+		open_url(link_website)
 	}
 	if (draw_button2(x1 + 112, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false)) {
-		open_url(link_website)
+		open_url(link_github)
 	}
 	if (draw_button2(x1 + 188, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false)) {
 		open_url(link_discord)
@@ -89,5 +90,7 @@ function draw_window_about() {
 	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
+		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
+	}
 }

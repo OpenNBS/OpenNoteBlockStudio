@@ -1,4 +1,4 @@
-function block_get_namespaced_id(argument0, argument1) {
+function block_get_namespaced_id(argument0, argument1=0) {
 	// block_get_namespaced_id(val, data)
 	// Returns the namespaced ID of the block with the given value and data.
 
@@ -84,7 +84,7 @@ function block_get_namespaced_id(argument0, argument1) {
 	    case 89: return "glowstone"
 	    case 91: return "jack_o_lantern"
 	    case 92: return "cake"
-	    case 95: return color + "_stained_glass"
+	    case 95: return color + "stained_glass"
 	    case 97: return "infested_stone"
 	    case 98: return "stone_bricks"
 	    case 99: return "brown_mushroom_block"

@@ -118,6 +118,9 @@ function reset() {
 	}
 	user_instruments = 0
 	instrument = instrument_list[| 0]
+	selected_vel = 100
+	selected_pan = 100
+	selected_pit = 0
 	insselect = -1
 	insedit = -1
 
