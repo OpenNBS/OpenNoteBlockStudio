@@ -8,11 +8,8 @@ function question(argument0, argument1) {
 	DialogSetWindowSize(320, 200);
 	e = ShowQuestion(argument0)
 	if (e == environment_get_variable("IMGUI_YES")) a = true;
-	if (e == environment_get_variable("IMGUI_NO")) a = false;
+	else a = false;
 	DialogSetWindowSize(c, d)
 	DialogSetWindowCaption(b)
 	return a
-
-
-
 }
