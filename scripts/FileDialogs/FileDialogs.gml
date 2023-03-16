@@ -143,6 +143,6 @@ function DialogSetInitLocale(bInit) {
 function DialogInitialize() {
 	DialogSetOwnerWindow(window_handle());
 	DialogSetWindowCaption(window_get_caption());
-	DialogSetFontFiles(working_directory + string_lower("Data/Fonts/NotoSans-Bold.ttc"));
+	DialogSetFontFiles(working_directory + string_lower("Data/Fonts/NotoSans-Bold.ttf"));
 	DialogSetWindowSize(640, 360);
 }
