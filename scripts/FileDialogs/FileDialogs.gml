@@ -74,6 +74,26 @@ function DialogSetFullScreen(bFullScreen) {
 	return bool(environment_set_variable("IMGUI_DIALOG_FULLSCREEN", string(bool(bFullScreen))));
 }
 
+function DialogGetColorTheme() {
+	return int64(environment_get_variable("IMGUI_DIALOG_THEME"));
+}
+
+function DialogGetDarkTheme() {
+	return 0;
+}
+
+function DialogGetLightTheme() {
+	return 1;
+}
+
+function DialogGetClassicTheme() {
+	return -1;
+}
+
+function DialogSetColorTheme(nTheme) {
+	return bool(environment_set_variable("IMGUI_DIALOG_THEME", string(nTheme)));
+}
+
 function DialogSetLocaleToAmericanEnglish() {
 	/* Translation contributed by Samuel Venable */
 	environment_set_variable("IMGUI_QUICK_ACCESS",                       "Quick Access");
@@ -143,7 +163,8 @@ function DialogSetInitLocale(bInit) {
 function DialogInitialize() {
 	DialogSetOwnerWindow(window_handle());
 	DialogSetWindowCaption(window_get_caption());
-	DialogSetResizeable(true);
+	DialogSetColorTheme(DialogGetLightTheme());
+	DialogSetResizeable(true)
 	DialogSetFontSize(16);
 	DialogSetFontFiles(working_directory + string_lower("Data/Fonts/NotoSans-Bold.ttf"));
 	DialogSetWindowSize(640, 360);
