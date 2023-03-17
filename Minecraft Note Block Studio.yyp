@@ -550,7 +550,6 @@
     {"id":{"name":"selection_remove","path":"scripts/selection_remove/selection_remove.yy",},},
     {"id":{"name":"spr_tabsel","path":"sprites/spr_tabsel/spr_tabsel.yy",},},
     {"id":{"name":"selection_transpose","path":"scripts/selection_transpose/selection_transpose.yy",},},
-    {"id":{"name":"libfilesystem","path":"extensions/libfilesystem/libfilesystem.yy",},},
     {"id":{"name":"selection_trim","path":"scripts/selection_trim/selection_trim.yy",},},
     {"id":{"name":"selection_to_array","path":"scripts/selection_to_array/selection_to_array.yy",},},
     {"id":{"name":"spr_macroicons_hires","path":"sprites/spr_macroicons_hires/spr_macroicons_hires.yy",},},
