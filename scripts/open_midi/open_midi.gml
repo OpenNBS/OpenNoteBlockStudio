@@ -7,8 +7,8 @@ function open_midi(argument0) {
 	fn = argument0
 	if (confirm() < 0) return 0
 	if (fn = "") {
-		if (language != 1) fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
-		else fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "从 MIDI 导入"))
+		if (language != 1) fn = string(GetOpenFileName("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
+		else fn = string(GetOpenFileName("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "从 MIDI 导入"))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	reset()

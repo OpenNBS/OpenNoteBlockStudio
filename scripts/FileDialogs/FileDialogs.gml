@@ -1,9 +1,58 @@
+function ShowMessage(lpMessage) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-message "' + string(lpMessage) + @'"');
+}
+
+function ShowQuestion(lpMessage) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question "' + string(lpMessage) + @'"');
+}
+
+function ShowQuestionExt(lpMessage) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question-ext "' + string(lpMessage) + @'"');
+}
+
+function GetOpenFileName(lpFilter, lpFileName, lpDir, lpTitle) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+}
+
+function GetOpenFileNames(lpFilter, lpFileName, lpDir, lpTitle) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filenames-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+}
+
+function GetSaveFileName(lpFilter, lpFileName, lpDir, lpTitle) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-save-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+}
+
+function GetDirectory(lpCapt, lpRoot) {
+  if (os_type == os_windows) ext = "exe";
+  else if (os_type == os_macosx) ext = "app";
+  else ext = "elf";
+  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-directory-alt "' + string(lpCapt) + @'" "' + string(lpRoot) + @'"');
+}
+
 function DialogGetFontFolder() {
 	return string(environment_get_variable("IMGUI_FONT_PATH"));
 }
 
 function DialogSetFontFolder(lpParentFolder) {
-	var bResult = bool(environment_set_variable("IMGUI_FONT_PATH", lpParentFolder)); IfdLoadFonts(); return bResult;
+	return bool(environment_set_variable("IMGUI_FONT_PATH", lpParentFolder));
 }
 
 function DialogGetFontFiles() {
@@ -150,18 +199,13 @@ function DialogSetLocaleToSimplifiedChinese() {
 	environment_set_variable("IMGUI_OPEN",                               "打开");
 }
 
-function DialogGetInitLocale() {
-	if (environment_get_variable_exists("IMGUI_DIALOG_INITLOC"))
-		return bool(environment_get_variable("IMGUI_DIALOG_INITLOC"))
-	return false;
-}
-
-function DialogSetInitLocale(bInit) {
-	return bool(environment_set_variable("IMGUI_DIALOG_INITLOC", string(bInit)))
-}
-
 function DialogInitialize() {
-	DialogSetOwnerWindow(window_handle());
+	directory_create(game_save_id);
+    if (os_type == os_windows) ext = "exe";
+    else if (os_type == os_macosx) ext = "app";
+    else ext = "elf";
+	file_copy(string_lower("Data/CLI/filedialogs." + ext), game_save_id + "filedialogs." + ext);
+	ProcessExecute(@'chmod +x "' + game_save_id + "filedialogs." + ext + @'"')
 	DialogSetWindowCaption(window_get_caption());
 	DialogSetColorTheme(DialogGetLightTheme());
 	DialogSetResizeable(true);
