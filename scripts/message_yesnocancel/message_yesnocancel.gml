@@ -7,8 +7,8 @@ function message_yesnocancel(argument0, argument1) {
 	d = DialogGetWindowHeight();
 	DialogSetWindowSize(480, 200);
 	e = ShowQuestionExt(argument0)
-	if (e == environment_get_variable("IMGUI_YES")) a = 1;
-	if (e == environment_get_variable("IMGUI_NO"))  a = 0;
+	if (e == EnvironmentGetVariable("IMGUI_YES")) a = 1;
+	if (e == EnvironmentGetVariable("IMGUI_NO"))  a = 0;
 	else a = -1;
 	DialogSetWindowSize(c, d)
 	DialogSetWindowCaption(b)
