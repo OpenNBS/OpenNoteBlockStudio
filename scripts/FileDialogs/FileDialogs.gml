@@ -2,42 +2,68 @@ function ShowMessage(lpMessage) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-message "' + string(lpMessage) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-message "' + string(lpMessage) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace(string_replace(res, "\n", ""), "\r", "");
 }
 
 function ShowQuestion(lpMessage) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question "' + string(lpMessage) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question "' + string(lpMessage) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace(string_replace(res, "\n", ""), "\r", "");
 }
 
 function ShowQuestionExt(lpMessage) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question-ext "' + string(lpMessage) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question-ext "' + string(lpMessage) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace(string_replace(res, "\n", ""), "\r", "");
 }
 
 function GetOpenFileName(lpFilter, lpFileName, lpDir, lpTitle) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace_all(string_replace(string_replace(res, "\n", ""), "\r", ""), "\a", "");
 }
 
 function GetOpenFileNames(lpFilter, lpFileName, lpDir, lpTitle) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filenames-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filenames-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	res = string_replace_all(string_replace_all(res, "\r", ""), "\a", "");
+	if (string_length(res)) res = string_copy(res, 0, string_length(res) - 1);
+	return res;
 }
 
 function GetSaveFileName(lpFilter, lpFileName, lpDir, lpTitle) {
 	if (os_type == os_windows) ext = "exe";
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
-	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-save-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	pid = ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-save-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace_all(string_replace(string_replace(res, "\n", ""), "\r", ""), "\a", "");
 }
 
 function GetDirectory(lpCapt, lpRoot) {
@@ -45,6 +71,10 @@ function GetDirectory(lpCapt, lpRoot) {
 	else if (os_type == os_macosx) ext = "app";
 	else ext = "elf";
 	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-directory-alt "' + string(lpCapt) + @'" "' + string(lpRoot) + @'"');
+	res = ExecutedProcessReadFromStandardOutput(pid);
+	FreeExecutedProcessStandardOutput(pid);
+	FreeExecutedProcessStandardInput(pid);
+	return string_replace_all(string_replace(string_replace(res, "\n", ""), "\r", ""), "\a", "");
 }
 
 function DialogGetFontFolder() {
