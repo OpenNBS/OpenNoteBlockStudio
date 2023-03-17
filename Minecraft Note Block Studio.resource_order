@@ -371,7 +371,6 @@
     {"name":"selection_remove","order":25,"path":"scripts/selection_remove/selection_remove.yy",},
     {"name":"spr_tabsel","order":43,"path":"sprites/spr_tabsel/spr_tabsel.yy",},
     {"name":"selection_transpose","order":26,"path":"scripts/selection_transpose/selection_transpose.yy",},
-    {"name":"libfilesystem","order":8,"path":"extensions/libfilesystem/libfilesystem.yy",},
     {"name":"selection_trim","order":27,"path":"scripts/selection_trim/selection_trim.yy",},
     {"name":"selection_to_array","order":28,"path":"scripts/selection_to_array/selection_to_array.yy",},
     {"name":"spr_macroicons_hires","order":47,"path":"sprites/spr_macroicons_hires/spr_macroicons_hires.yy",},
