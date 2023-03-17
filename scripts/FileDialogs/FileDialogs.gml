@@ -1,50 +1,50 @@
 function ShowMessage(lpMessage) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-message "' + string(lpMessage) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-message "' + string(lpMessage) + @'"');
 }
 
 function ShowQuestion(lpMessage) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question "' + string(lpMessage) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question "' + string(lpMessage) + @'"');
 }
 
 function ShowQuestionExt(lpMessage) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question-ext "' + string(lpMessage) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --show-question-ext "' + string(lpMessage) + @'"');
 }
 
 function GetOpenFileName(lpFilter, lpFileName, lpDir, lpTitle) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
 }
 
 function GetOpenFileNames(lpFilter, lpFileName, lpDir, lpTitle) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filenames-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-open-filenames-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
 }
 
 function GetSaveFileName(lpFilter, lpFileName, lpDir, lpTitle) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-save-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-save-filename-ext "' + string(lpFilter) + @'" "' + string(lpFileName) + @'" "' + string(lpDir) + @'" "' + string(lpTitle) + @'"');
 }
 
 function GetDirectory(lpCapt, lpRoot) {
-  if (os_type == os_windows) ext = "exe";
-  else if (os_type == os_macosx) ext = "app";
-  else ext = "elf";
-  ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-directory-alt "' + string(lpCapt) + @'" "' + string(lpRoot) + @'"');
+	if (os_type == os_windows) ext = "exe";
+	else if (os_type == os_macosx) ext = "app";
+	else ext = "elf";
+	ProcessExecute(@'"' + game_save_id + "filedialogs." + ext + @'" --get-directory-alt "' + string(lpCapt) + @'" "' + string(lpRoot) + @'"');
 }
 
 function DialogGetFontFolder() {
