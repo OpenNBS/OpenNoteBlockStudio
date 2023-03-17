@@ -346,7 +346,6 @@
     {"id":{"name":"mouse_rectangle","path":"scripts/mouse_rectangle/mouse_rectangle.yy",},},
     {"id":{"name":"test","path":"scripts/test/test.yy",},},
     {"id":{"name":"new","path":"scripts/new/new.yy",},},
-    {"id":{"name":"ExecuteShell","path":"scripts/ExecuteShell/ExecuteShell.yy",},},
     {"id":{"name":"instrument_free","path":"scripts/instrument_free/instrument_free.yy",},},
     {"id":{"name":"instrument_load","path":"scripts/instrument_load/instrument_load.yy",},},
     {"id":{"name":"fnt_src_med_hires","path":"fonts/fnt_src_med_hires/fnt_src_med_hires.yy",},},

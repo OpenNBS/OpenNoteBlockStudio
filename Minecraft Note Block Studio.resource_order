@@ -179,7 +179,6 @@
     {"name":"mouse_rectangle","order":3,"path":"scripts/mouse_rectangle/mouse_rectangle.yy",},
     {"name":"test","order":4,"path":"scripts/test/test.yy",},
     {"name":"new","order":5,"path":"scripts/new/new.yy",},
-    {"name":"ExecuteShell","order":6,"path":"scripts/ExecuteShell/ExecuteShell.yy",},
     {"name":"instrument_load","order":1,"path":"scripts/instrument_load/instrument_load.yy",},
     {"name":"fnt_src_med_hires","order":5,"path":"fonts/fnt_src_med_hires/fnt_src_med_hires.yy",},
     {"name":"draw_icon_customins","order":30,"path":"scripts/draw_icon_customins/draw_icon_customins.yy",},
