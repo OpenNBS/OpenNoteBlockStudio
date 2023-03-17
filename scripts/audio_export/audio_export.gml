@@ -40,8 +40,8 @@ function mp3_export() {
 	try {
 		var result = python_call_function("audio_export", "main", args, kwargs);
 	} catch (e) {
-		if (language != 1) show_message("An error occurred while exporting the song:\n\n" + e)
-		else show_message("导出歌曲时发生错误：\n\n" + e)
+		if (language != 1) message("An error occurred while exporting the song:\n\n" + e)
+		else message("导出歌曲时发生错误：\n\n" + e)
 		return -1;
 	}
 

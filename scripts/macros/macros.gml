@@ -15,16 +15,16 @@ function macros() {
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
 #macro file_directory		game_save_id
-#macro data_directory		working_directory + "Data" + condstr(os_type = os_windows, "\\", "/")
-#macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory		working_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory	working_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
-#macro log_file				file_directory + "log.txt"
-#macro temp_file			file_directory + "tmp.file"
-#macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
-#macro settings_file		file_directory + "settings.ini"
-#macro settings_dev_file	file_directory + "settings_dev.ini"
-#macro backup_file			file_directory + "backup.nbs"
+#macro data_directory		working_directory + string_lower("Data") + condstr(os_type = os_windows, "\\", "/")
+#macro sounds_directory		data_directory + string_lower("Sounds") + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory		working_directory + string_lower("Songs") + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory	working_directory + string_lower("Patterns") + condstr(os_type = os_windows, "\\", "/")
+#macro log_file				file_directory + string_lower("log.txt")
+#macro temp_file			file_directory + string_lower("tmp.file")
+#macro update_file			file_directory + string_lower("Minecraft Note Block Studio Installer.exe")
+#macro settings_file		file_directory + string_lower("settings.ini")
+#macro settings_dev_file	file_directory + string_lower("settings_dev.ini")
+#macro backup_file			file_directory + string_lower("backup.nbs")
 
 #macro h_stereoize 12
 #macro h_swaplayer 11

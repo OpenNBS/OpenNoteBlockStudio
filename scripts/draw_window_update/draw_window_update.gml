@@ -6,8 +6,8 @@ function draw_window_update() {
 	if (window = w_update && theme != 3) windowopen = 1
 	fullstr = changelogstr
 	if (fullstr = 0) {
-		if (language != 1) show_message("Changelist not found!")
-		else show_message("找不到更新历史！")
+		if (language != 1) message("Changelist not found!")
+		else message("找不到更新历史！")
 		if (window = w_update) {
 	        window = w_greeting
 	    } else {
