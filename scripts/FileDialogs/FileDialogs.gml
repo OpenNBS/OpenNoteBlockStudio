@@ -173,62 +173,6 @@ function DialogSetColorTheme(nTheme) {
 	return bool(EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(nTheme)));
 }
 
-function DialogSetLocaleToAmericanEnglish() {
-	/* Translation contributed by Samuel Venable */
-	EnvironmentSetVariable("IMGUI_QUICK_ACCESS",                       "Quick Access");
-	EnvironmentSetVariable("IMGUI_THIS_PC",                            "This PC");
-	EnvironmentSetVariable("IMGUI_ALL_FILES",                          "All Files (*.*)");
-	EnvironmentSetVariable("IMGUI_NAME",                               "Name");
-	EnvironmentSetVariable("IMGUI_DATE_MODIFIED",                      "Date modified");
-	EnvironmentSetVariable("IMGUI_SIZE",                               "Size");
-	EnvironmentSetVariable("IMGUI_NEW_FILE",                           "New file");
-	EnvironmentSetVariable("IMGUI_NEW_DIRECTORY",                      "New directory");
-	EnvironmentSetVariable("IMGUI_DELETE",                             "Delete");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE",                       "Are you sure?");
-	EnvironmentSetVariable("IMGUI_OVERWRITE_FILE",                     "Overwrite file?");
-	EnvironmentSetVariable("IMGUI_ENTER_FILE_NAME",                    "Enter file name");
-	EnvironmentSetVariable("IMGUI_ENTER_DIRECTORY_NAME",               "Enter directory name");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE_YOU_WANT_TO_DELETE",    "Are you sure you want to delete %s?");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE_YOU_WANT_TO_OVERWRITE", "Are you sure you want to overwrite %s?");
-	EnvironmentSetVariable("IMGUI_YES",                                "Yes");
-	EnvironmentSetVariable("IMGUI_NO",                                 "No");
-	EnvironmentSetVariable("IMGUI_OK",                                 "OK");
-	EnvironmentSetVariable("IMGUI_CANCEL",                             "Cancel");
-	EnvironmentSetVariable("IMGUI_SEARCH",                             "Search");
-	EnvironmentSetVariable("IMGUI_FILE_NAME_WITH_COLON",               "File name:");
-	EnvironmentSetVariable("IMGUI_FILE_NAME_WITHOUT_COLON",            "File name");
-	EnvironmentSetVariable("IMGUI_SAVE",                               "Save");
-	EnvironmentSetVariable("IMGUI_OPEN",                               "Open");
-}
-
-function DialogSetLocaleToSimplifiedChinese() {
-	/* Translation contributed by chenxi050402 */
-	EnvironmentSetVariable("IMGUI_QUICK_ACCESS",                       "主文件夹");
-	EnvironmentSetVariable("IMGUI_THIS_PC",                            "此电脑");
-	EnvironmentSetVariable("IMGUI_ALL_FILES",                          "所有文件 (*.*)");
-	EnvironmentSetVariable("IMGUI_NAME",                               "名称");
-	EnvironmentSetVariable("IMGUI_DATE_MODIFIED",                      "修改日期");
-	EnvironmentSetVariable("IMGUI_SIZE",                               "大小");
-	EnvironmentSetVariable("IMGUI_NEW_FILE",                           "新建文件");
-	EnvironmentSetVariable("IMGUI_NEW_DIRECTORY",                      "新建文件夹");
-	EnvironmentSetVariable("IMGUI_DELETE",                             "删除");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE",                       "确定吗？");
-	EnvironmentSetVariable("IMGUI_OVERWRITE_FILE",                     "覆盖文件吗？");
-	EnvironmentSetVariable("IMGUI_ENTER_FILE_NAME",                    "输入文件名");
-	EnvironmentSetVariable("IMGUI_ENTER_DIRECTORY_NAME",               "输入目录名");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE_YOU_WANT_TO_DELETE",    "确定要删除 %s 吗？");
-	EnvironmentSetVariable("IMGUI_ARE_YOU_SURE_YOU_WANT_TO_OVERWRITE", "确定要覆盖 %s 吗？");
-	EnvironmentSetVariable("IMGUI_YES",                                "是");
-	EnvironmentSetVariable("IMGUI_NO",                                 "否");
-	EnvironmentSetVariable("IMGUI_OK",                                 "确定");
-	EnvironmentSetVariable("IMGUI_CANCEL",                             "取消");
-	EnvironmentSetVariable("IMGUI_SEARCH",                             "搜索");
-	EnvironmentSetVariable("IMGUI_FILE_NAME_WITH_COLON",               "文件名：");
-	EnvironmentSetVariable("IMGUI_FILE_NAME_WITHOUT_COLON",            "文件名");
-	EnvironmentSetVariable("IMGUI_SAVE",                               "保存");
-	EnvironmentSetVariable("IMGUI_OPEN",                               "打开");
-}
-
 function DialogInitialize() {
 	directory_create(game_save_id);
 	if (os_type == os_windows) ext = "exe";
