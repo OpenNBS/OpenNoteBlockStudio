@@ -16,7 +16,7 @@ function macros() {
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + string_lower("Data") + condstr(os_type = os_windows, "\\", "/")
-#macro sounds_directory		data_directory + string_lower("Sounds") + condstr(os_type = os_windows, "\\", "/")
+#macro sounds_directory		string_lower(data_directory + "Sounds") + condstr(os_type = os_windows, "\\", "/")
 #macro songs_directory		working_directory + string_lower("Songs") + condstr(os_type = os_windows, "\\", "/")
 #macro pattern_directory	working_directory + string_lower("Patterns") + condstr(os_type = os_windows, "\\", "/")
 #macro log_file				file_directory + string_lower("log.txt")
