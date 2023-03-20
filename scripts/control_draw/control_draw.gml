@@ -727,6 +727,7 @@ function control_draw() {
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
+	            if (keyboard_check_pressed(ord("W"))) {close_song(song); current_song = songs[song]}
 				if keyboard_check_pressed(ord("0")) {
 					window_scale = get_default_window_scale()
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
@@ -1528,7 +1529,7 @@ function control_draw() {
 		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 		    }
-		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl+N$New song|"+
 		                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
 		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
@@ -1539,8 +1540,8 @@ function control_draw() {
 		                             inactive(current_song.totalblocks = 0) + "Export as track schematic...|"+
 		                             inactive(current_song.totalblocks = 0) + "Export as branch schematic...|"+
 									 inactive(current_song.totalblocks = 0) + "Export as data pack...|-|" + 
-		                             "Alt + F4$Exit")
-			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
+		                             "Alt+F4$Exit")
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt+F4$Exit")
 							
 		}
 		if (!isplayer) if (draw_tab("Edit")) {
@@ -2386,6 +2387,11 @@ function control_draw() {
 				draw_set_alpha(1)
 				draw_sprite_ext(spr_closetab, 2, 7 + (tabwidth - 1) + tab * (tabwidth - 1) - 35 + 13, 24 + 5 + 8, 1, 1, 0, -1 + (!fdark), 1)
 			}
+			if (taba = 1 && mouse_check_button_released(mb_right)) {
+				menutab = tab
+				if (language != 1) show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + "Ctrl+N$New song|-|" + icon(icons.DELETE) + "Ctrl+W$Close song|" + inactive(array_length(songs) <= 1) + "Close other songs|" + inactive(tab = array_length(songs) - 1) + "Close songs to the right")
+				else show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + "Ctrl+N$新文件|-|" + icon(icons.DELETE) + "Ctrl+W$关闭歌曲|" + inactive(array_length(songs) <= 1) + "关闭其他歌曲|" + inactive(tab = array_length(songs) - 1) + "关闭右侧歌曲")
+			}
 			draw_theme_color()
 			draw_theme_font(font_main)
 			tab_str = songs[tab].song_title
@@ -2393,8 +2399,9 @@ function control_draw() {
 				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width("...") - string_width("*") * (songs[tab].changed && songs[tab].filename != "" && songs[tab].filename != "-player")) {
 					tab_str = string_delete(tab_str, string_length(tab_str), 1)
 				}
-				tab_str += "..." + condstr(songs[song].changed && songs[song].filename != "" && songs[song].filename != "-player", "*")
+				tab_str += "..."
 			}
+			tab_str += condstr(songs[tab].changed && songs[tab].filename != "" && songs[tab].filename != "-player", "*")
 			draw_text_dynamic(16 + tab * (tabwidth - 1) - 1, song_tab_texty, tab_str)
 			
 			if (taba = 2 && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) {

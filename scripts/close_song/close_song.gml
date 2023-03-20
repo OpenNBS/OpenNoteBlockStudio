@@ -8,7 +8,7 @@ function close_song(){
 	if (argument_count > 2) {
 		noconfirm = argument[2]
 	}
-	if (!noconfirm) if (confirm() < 0) return 0
+	if (!noconfirm) if (confirm(0, sid) < 0) return 0
 	for (var a = 0; a < 2000; a += 1) {try{songs[song].text_exists_song[a] = text_exists[a]}catch(ee){}; try{songs[song].text_str_song[a] = text_str[a]}catch(ee){}}
 	for (var i = first_custom_index; i < ds_list_size(songs[sid].instrument_list); i++)
 	with (songs[sid].instrument_list[| i]) {instrument_free(); instance_destroy()}

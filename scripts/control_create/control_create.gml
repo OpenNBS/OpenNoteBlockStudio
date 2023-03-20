@@ -275,6 +275,7 @@ function control_create() {
 	file_dnd_set_enabled(true)
 	dndfile = ""
 	lastfile = ""
+	menutab = -1
 
 	// Playback
 	audio_listener_orientation(0,1,0, 0,0,1)

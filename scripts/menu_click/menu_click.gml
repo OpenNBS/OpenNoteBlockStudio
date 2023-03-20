@@ -392,6 +392,36 @@ function menu_click(argument0) {
 			set_resourcepack(resourcepacks[sel].filename)
 			break;
 		}
+		case "songtab": {
+			switch (sel) {
+				case 0: {
+					array_insert(songs, menutab + 1, create(obj_song))
+					set_song(menutab + 1)
+					reset_add()
+					break;
+				}
+				case 1: close_song(menutab); break;
+				case 2: {
+					var menutabvar = menutab
+					for (var i = array_length(songs) - 1; i >= 0; i--) {
+						if (i != menutabvar) {
+							close_song(i)
+							if (i < menutab) menutabvar--
+						}
+						set_song(menutabvar)
+					}
+					break;
+				}
+				case 3: {
+					for (var i = array_length(songs) - 1; i > menutab; i--) {
+						close_song(i)
+					}
+					break;
+				}
+			}
+			menutab = -1
+			break;
+		}
 	}
 	mouse_clear(mb_left)
 	io_clear()
