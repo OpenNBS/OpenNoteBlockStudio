@@ -19,4 +19,7 @@ function set_song(argument0){
 
 	// Piano
 	key_edit = -1
+	
+	sb_val[0] = songs[song].starta
+	sb_val[1] = songs[song].startb
 }
