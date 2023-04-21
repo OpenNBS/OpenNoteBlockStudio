@@ -14,7 +14,7 @@ permalink: /nbs
 				<h2>About NBS</h2>
 				<p>
 					The .nbs format (Note Block Song) was created to work with Minecraft Note Block Studio, and contains data about how note blocks are laid out in the program to form a song. <br><br> To bring new features to Note Block Studio and make it future-proof, we are using an improved file format. The first 2 bytes of the .nbs file have been changed to 0 to indicate the new format.<br><br>
-					Unless specified otherwise the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
+					Unless specified otherwise, the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
 				</p>
 				<ol>
 					<li><a href="/nbs#part1">Header</a></li>
@@ -357,27 +357,27 @@ permalink: /nbs
 <section id="three" class="wrapper style1">
 	<div class="container"> 
         <h2>Calculations</h2>
-        <p>While processing the nbs file it is necessary to calculate some values by combining multiple sources (typically layer and note).</p>
+        <p>While processing the NBS file, the actual values of some properties must be calculated from multiple sources (typically layer and note).</p>
         <div>        
-            <h3>Note's volume</h3>
-            <p>In nbs there is a note volume value stored. However, in order to play a note you need to combine this value with volume of the layer this note belongs to. Following formula is used:</p>
-            <code>(layer volume * note volume) / 100</code>
+            <h3>Note volume</h3>
+            <p>In Note Block Studio, each note can have its own velocity value. However, the actual volume of the note, when played, is affected according to the volume of the layer it's placed at. The following formula is used to achieve this behavior:</p>
+            <code>(layer_volume * note_volume) / 100</code>
         </div>
         <div>
-            <h3>Note's panning</h3>
-            <p>Similarly note panning also has to be calculated from note and layer panning values.</p>
-            <p>If the layer panning equals 100 (center), note panning is used without any modifications. Otherwise, following formula is used:</p>
-            <code>(layer panning + note panning) / 2</code>
+            <h3>Note panning</h3>
+            <p>Similarly, the actual panning is also calculated from note and layer panning values.</p>
+            <p>If the layer panning equals 100 (center), note panning is used without any modifications for playback. Otherwise, the following formula is applied:</p>
+            <code>(layer_panning + note_panning) / 2</code>
         </div>
         <div>
-            <h3>Note's pitch</h3>
-            <p>To calculate note's pitch it is necessary to combine it's key and fine-pitch using the following formula:</p>
-            <code>(key * 100) + pitch</code>
+            <h3>Note pitch</h3>
+            <p>To calculate the actual pitch, it is necessary to combine its key and pitch (detune) using the following formula:</p>
+            <code>(note_key * 100) + note_pitch</code>
         </div>
         <div>
-            <h3>Custom instrument and note's pitch</h3>
-            <p>Custom instrument's audio sample may have different key than F#4 (45) which is the center of the Minecraft octave range and therefore the final pitch would not correspond to pitch displayed in Open Note Block Studio. This issue is solved by sound pitch value of the custom instrument. The final pitch is calculated using the following formula:</p>
-            <code>note key + sound key - 45 + (note pitch / 100)</code>
+            <h3>Custom instrument and note pitch</h3>
+            <p>The audio file used for a custom instrument may be in a key other than F#4 (45), which is the center of Minecraft's 2-octave range and also the default value for all vanilla instruments. If that's the case, the final pitch of the played notes would not correspond to the pitch displayed in Note Block Studio. As such, the instrument's pitch must be taken into account while calculating the actual pitch of the played note. The final pitch is calculated using the following formula:</p>
+            <code>note_key + instrument_key - 45 + (note_pitch / 100)</code>
         </div>
     </div>
 </section>
