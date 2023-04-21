@@ -14,13 +14,13 @@ permalink: /nbs
 				<h2>About NBS</h2>
 				<p>
 					The .nbs format (Note Block Song) was created to work with Minecraft Note Block Studio, and contains data about how note blocks are laid out in the program to form a song. <br><br> To bring new features to Note Block Studio and make it future-proof, we are using an improved file format. The first 2 bytes of the .nbs file have been changed to 0 to indicate the new format.<br><br>
-					All the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
+					Unless specified otherwise, the data types found in a .nbs file are <a href="http://en.wikipedia.org/wiki/Signedness" target="_blank">signed</a>, and in <a href="http://en.wikipedia.org/wiki/Endianness" target="_blank">little-endian</a>. Strings consist of a 32-bit integer, and then that many bytes for the characters. The file is made up of four parts, two of which are mandatory:
 				</p>
 				<ol>
-					<li>Header</li>
-					<li>Note blocks</li>
-					<li>Layers (Optional)</li>
-					<li>Custom instruments (Optional)</li>
+					<li><a href="/nbs#part1">Header</a></li>
+					<li><a href="/nbs#part2">Note blocks</a></li>
+					<li><a href="/nbs#part3">Layers</a> (Optional)</li>
+					<li><a href="/nbs#part4">Custom instruments</a> (Optional)</li>
 				</ol>
 				<p>
 					<span>If the information provided below differs from the old .nbs format, they are marked </span> <strong><span style="color: #01cc01c7">Green</span></strong>.
@@ -55,7 +55,7 @@ permalink: /nbs
 <!-- Two -->
 <section id="two" class="wrapper style2">
 	<div class="container">	
-		<h2>Part 1: Header</h2>
+		<h2 id="part1">Part 1: Header</h2>
 		<p>The header contains information about the file, all the data must be in the following order:</p>
 		<div class="table-wrapper">
 			<table class="alt">
@@ -183,7 +183,7 @@ permalink: /nbs
 			</table>
 		</div>
 		<hr>
-		<h2>Part 2: Note blocks</h2>
+		<h2 id="part2">Part 2: Note blocks</h2>
 		<p>The next part contains the information about how the note blocks are placed, what instruments they have and what note. As you may know, the song is divided into ticks (horizontally) and layers (vertically). Often, a majority of the ticks and layers in the song are empty, which is why we specify the amount of "jumps" to the next active tick or layer, rather than just a bunch of empty slots.<br><br>
 		The pattern of the note block format is as follows:</p>
 		<div class="table-wrapper">
@@ -241,12 +241,12 @@ permalink: /nbs
 						<td>The velocity/volume of the note block, from 0% to 100%.</td>
 					</tr>
 					<tr class="newversion">
-						<td>Byte</td>
+						<td>Byte (unsigned)</td>
 						<td>Note block panning</td>
-						<td>The stereo position of the note block, from 0-200. 100 is center panning.</td>
+						<td>The stereo position of the note block, from 0-200. 0 is 2 blocks right, 100 is center, 200 is 2 blocks left.</td>
 					</tr>
 					<tr class="newversion">
-						<td>Short (Signed)</td>
+						<td>Short</td>
 						<td>Note block pitch</td>
 						<td>The fine pitch of the note block, from -32,768 to 32,767 cents (but the max in Note Block Studio is limited to -1200 and +1200). 0 is no fine-tuning. ±100 cents is a single semitone difference. After reading this, we go back to step 2.</td>
 					</tr>
@@ -254,7 +254,7 @@ permalink: /nbs
 			</table>
 		</div>
 		<hr>
-		<h2>Part 3: Layers</h2>
+		<h2 id="part3">Part 3: Layers</h2>
 		<p>
 			This part is optional. You can choose to stop writing here and the Note Block Studio will still load the song.
 			However, you cannot simply jump to the next part.<br>
@@ -287,7 +287,7 @@ permalink: /nbs
 						<td>The volume of the layer (percentage). Ranges from 0-100.</td>
 					</tr>
 					<tr class="newversion">
-						<td>Byte</td>
+						<td>Byte (unsigned)</td>
 						<td>Layer stereo</td>
 						<td>How much this layer is panned to the left/right. 0 is 2 blocks right, 100 is center, 200 is 2 blocks left.</td>
 					</tr>
@@ -295,24 +295,24 @@ permalink: /nbs
 			</table>
 		</div>
 		<hr>
-		<h2>Part 4: Custom instruments</h2>
+		<h2 id="part4">Part 4: Custom instruments</h2>
 		<p>Finally, the custom instruments of the song are stored. Like the previous part, this is optional. You can stop writing here and the song will still be loaded.<br><br>
-			A song can have a maximum of <span class="newversion">18</span> custom instruments, each with a name and sound file assigned to it. The sound file must be located in the /Sounds folder of the Minecraft Note Block Studio directory.
+			A song can have a maximum of <span class="newversion">240</span> custom instruments, each with a name and sound file assigned to it. The sound file must be located in the /Sounds folder of the Minecraft Note Block Studio directory.
 		Before we begin, we need to know the amount of custom instruments:</p>
 		<div class="table-wrapper">
 			<table class="alt">
 				<thead>
 					<tr>
-						<th style="text-align: left">Type</th>
-						<th style="text-align: left">Name</th>
-						<th style="text-align: left">Description</th>
+						<th>Type</th>
+						<th>Name</th>
+						<th>Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="text-align: left">Byte</td>
-						<td style="text-align: left">Custom instruments</td>
-						<td style="text-align: left">The amount of custom instruments (0-<span class="newversion">18</span>).</td>
+						<td>Byte (unsigned)</td>
+						<td>Custom instruments</td>
+						<td>The amount of custom instruments (0-<span class="newversion">240</span>).</td>
 					</tr>
 				</tbody>
 			</table>
@@ -322,34 +322,62 @@ permalink: /nbs
 			<table class="alt">
 				<thead>
 					<tr>
-						<th style="text-align: left">Type</th>
-						<th style="text-align: left">Name</th>
-						<th style="text-align: left">Description</th>
+						<th>Type</th>
+						<th>Name</th>
+						<th>Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="text-align: left">String</td>
-						<td style="text-align: left">Instrument name</td>
-						<td style="text-align: left">The name of the instrument.</td>
+						<td>String</td>
+						<td>Instrument name</td>
+						<td>The name of the instrument.</td>
 					</tr>
 					<tr>
-						<td style="text-align: left">String</td>
-						<td style="text-align: left">Sound file</td>
-						<td style="text-align: left">The sound file of the instrument (just the file name, not the path).</td>
+						<td>String</td>
+						<td>Sound file</td>
+						<td>The sound file of the instrument (relative path from the /Sounds directory).</td>
 					</tr>
 					<tr>
-						<td style="text-align: left">Byte</td>
-						<td style="text-align: left">Sound pitch</td>
-						<td style="text-align: left">The pitch of the sound file. Just like the note blocks, this ranges from 0-87. Default is 45 (F#4).</td>
+						<td>Byte</td>
+						<td>Sound key</td>
+						<td>The key of the sound file. Just like the note blocks, this ranges from 0-87. Default is 45 (F#4).</td>
 					</tr>
 					<tr>
-						<td style="text-align: left">Byte</td>
-						<td style="text-align: left">Press key</td>
-						<td style="text-align: left">Whether the piano should automatically press keys with this instrument when the marker passes them (0 or 1).</td>
+						<td>Byte</td>
+						<td>Press piano key</td>
+						<td>Whether the piano should automatically press keys with this instrument when the marker passes them (0 or 1).</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+</section>
+<!-- Three -->
+<section id="three" class="wrapper style1">
+	<div class="container"> 
+        <h2>Calculations</h2>
+        <p>While processing the NBS file, the actual values of some properties must be calculated from multiple sources (typically layer and note).</p>
+        <div>        
+            <h3>Note volume</h3>
+            <p>In Note Block Studio, each note can have its own velocity value. However, the actual volume of the note, when played, is affected according to the volume of the layer it's placed at. The following formula is used to achieve this behavior:</p>
+            <code>(layer_volume * note_volume) / 100</code>
+        </div>
+        <div>
+            <h3>Note panning</h3>
+            <p>Similarly, the actual panning is also calculated from note and layer panning values.</p>
+            <p>If the layer panning equals 100 (center), note panning is used without any modifications for playback. Otherwise, the following formula is applied:</p>
+            <code>(layer_panning + note_panning) / 2</code>
+        </div>
+        <div>
+            <h3>Note pitch</h3>
+            <p>To calculate the actual pitch, it is necessary to combine its key and pitch (detune) using the following formula:</p>
+            <code>(note_key * 100) + note_pitch</code>
+        </div>
+        <div>
+            <h3>Custom instrument and note pitch</h3>
+            <p>The audio file used for a custom instrument may be in a key other than F#4 (45), which is the center of Minecraft's 2-octave range and also the default value for all vanilla instruments. If that's the case, the final pitch of the played notes would not correspond to the pitch displayed in Note Block Studio. As such, the instrument's pitch must be taken into account while calculating the actual pitch of the played note. The final pitch is calculated using the following formula:</p>
+            <code>note_key + instrument_key - 45 + (note_pitch / 100)</code>
+        </div>
+    </div>
 </section>
