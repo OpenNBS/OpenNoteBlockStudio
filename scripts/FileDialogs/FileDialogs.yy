@@ -1,11 +1,12 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "FileDialogs",
-  "isCompatibility": false,
   "isDnD": false,
+  "isCompatibility": false,
   "parent": {
-    "name": "File",
-    "path": "folders/Scripts/File.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
+  "resourceVersion": "1.0",
+  "name": "filedialogs",
+  "tags": [],
+  "resourceType": "GMScript",
 }

@@ -103,7 +103,7 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 456, y1 + 318, 80, "OK") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
-			message("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
+			ShowMessage("This song contains more than 18 instruments and cannot be saved in version " + string(save_version) + ". The save version will be changed to " + string(nbs_version) + ".")
 			save_version = nbs_version
 		}
 		save_settings()
@@ -134,7 +134,7 @@ function draw_window_instruments() {
 	if (draw_button2(x1 + 456, y1 + 318, 80, "确定") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		if (save_version < 5 && user_instruments > 18) {
-			message("此歌曲含有多于18个音色，无法保存为版本 " + string(save_version) + "。将保存为版本 " + string(nbs_version) + "。")
+			ShowMessage("此歌曲含有多于18个音色，无法保存为版本 " + string(save_version) + "。将保存为版本 " + string(nbs_version) + "。")
 			save_version = nbs_version
 		}
 		save_settings()

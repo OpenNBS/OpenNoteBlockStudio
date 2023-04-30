@@ -1,15 +1,9 @@
-function message(argument0, argument1 = "(null)") {
-	// message(text, caption)
-	var a = 1, b, c, d;
+function message(argument0, argument1) {
+	// message(str, caption)
 	log(argument1, argument0)
-	b = DialogGetWindowCaption()
-	DialogSetWindowCaption(((argument1 == "(null)") ? "" : argument1))
-	c = DialogGetWindowWidth();
-	d = DialogGetWindowHeight();
-	DialogSetWindowSize(480, 200);
-	ShowMessage(argument0)
-	DialogSetWindowSize(c, d)
-	DialogSetWindowCaption(b)
-	return a
+	EnvironmentSetVariable("IMGUI_DIALOG_CAPTION", string(argument1))
+	a = ShowMessage(string(argument0))
+
+
 
 }

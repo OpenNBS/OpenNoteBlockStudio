@@ -421,51 +421,51 @@ function control_create() {
 	// Instruments
 	instrument_list = ds_list_create()
 
-	ds_list_add(instrument_list, new_instrument("Harp",          string_lower("harp.ogg"),     false, true))
-	ds_list_add(instrument_list, new_instrument("Double Bass",   string_lower("dbass.ogg"),    false, true))
-	ds_list_add(instrument_list, new_instrument("Bass Drum",     string_lower("bdrum.ogg"),    false))
-	ds_list_add(instrument_list, new_instrument("Snare Drum",    string_lower("sdrum.ogg"),    false))
-	ds_list_add(instrument_list, new_instrument("Click",         string_lower("click.ogg"),    false))
-	ds_list_add(instrument_list, new_instrument("Guitar",        string_lower("guitar.ogg"),   false, true))
-	ds_list_add(instrument_list, new_instrument("Flute",         string_lower("flute.ogg"),    false, true))
-	ds_list_add(instrument_list, new_instrument("Bell",          string_lower("bell.ogg"),     false, true))
-	ds_list_add(instrument_list, new_instrument("Chime",         string_lower("icechime.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Xylophone",     string_lower("xylobone.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Iron Xylophone",string_lower("iron_xylophone.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Cow Bell",      string_lower("cow_bell.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Didgeridoo",    string_lower("didgeridoo.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Bit",           string_lower("bit.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Banjo",         string_lower("banjo.ogg"), false, true))
-	ds_list_add(instrument_list, new_instrument("Pling",         string_lower("pling.ogg"), false, true))
+	ds_list_add(instrument_list, new_instrument("Harp",          "harp.ogg",     false, true))
+	ds_list_add(instrument_list, new_instrument("Double Bass",   "dbass.ogg",    false, true))
+	ds_list_add(instrument_list, new_instrument("Bass Drum",     "bdrum.ogg",    false))
+	ds_list_add(instrument_list, new_instrument("Snare Drum",    "sdrum.ogg",    false))
+	ds_list_add(instrument_list, new_instrument("Click",         "click.ogg",    false))
+	ds_list_add(instrument_list, new_instrument("Guitar",        "guitar.ogg",   false, true))
+	ds_list_add(instrument_list, new_instrument("Flute",         "flute.ogg",    false, true))
+	ds_list_add(instrument_list, new_instrument("Bell",          "bell.ogg",     false, true))
+	ds_list_add(instrument_list, new_instrument("Chime",         "icechime.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Xylophone",     "xylobone.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
 	
 	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
-	soundinvoke.filename = string_lower("UI/invoke.ogg")
+	soundinvoke.filename = "UI/invoke.ogg"
 	soundinvoke.user = 0
 	soundshow =   create(obj_instrument)
 	soundshow.key =   45
-	soundshow.filename =     string_lower("UI/show.ogg")
+	soundshow.filename =     "UI/show.ogg"
 	soundshow.user =   0
 	soundhide =   create(obj_instrument)
 	soundhide.key =   45
-	soundhide.filename =     string_lower("UI/hide.ogg")
+	soundhide.filename =     "UI/hide.ogg"
 	soundhide.user =   0
 	soundgoback = create(obj_instrument)
 	soundgoback.key = 45
-	soundgoback.filename = string_lower("UI/goback.ogg")
+	soundgoback.filename = "UI/goback.ogg"
 	soundgoback.user = 0
 	soundmetronome = create(obj_instrument)
 	soundmetronome.key = 45
-	soundmetronome.filename = string_lower("UI/metronome.ogg")
+	soundmetronome.filename = "UI/metronome.ogg"
 	soundmetronome.user = 0
 	soundding = create(obj_instrument)
 	soundding.key = 45
-	soundding.filename = string_lower("UI/ding.ogg")
+	soundding.filename = "UI/ding.ogg"
 	soundding.user = 0
 	soundmetronomeclick = create(obj_instrument)
 	soundmetronomeclick.key = 45
-	soundmetronomeclick.filename = string_lower("UI/metronome_click.ogg")
+	soundmetronomeclick.filename = "UI/metronome_click.ogg"
 	soundmetronomeclick.user = 0
 
 	instrument = instrument_list[| 0]

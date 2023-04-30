@@ -5,7 +5,7 @@ function log_init() {
 	var f = file_text_open_write(log_file);
 	if (f < 0)
 	{
-	    message("Could not access file directory. Try running in administrator mode or re-install.")
+	    ShowMessage("Could not access file directory. Try running in administrator mode or re-install.")
 	    return false
 	}
 
@@ -25,15 +25,15 @@ function log_init() {
 	log("os_is_network_connected", os_is_network_connected())
 	log("os_get_language", os_get_language())
 	log("os_get_region", os_get_region())
-	log("USERDOMAIN", EnvironmentGetVariable("USERDOMAIN"))
-	log("USERNAME", EnvironmentGetVariable("USERNAME"))
-	log("USERPROFILE", EnvironmentGetVariable("USERPROFILE"))
-	log("APPDATA", EnvironmentGetVariable("APPDATA"))
-	log("NUMBER_OF_PROCESSORS", EnvironmentGetVariable("NUMBER_OF_PROCESSORS"))
-	log("PROCESSOR_ARCHITECTURE", EnvironmentGetVariable("PROCESSOR_ARCHITECTURE"))
-	log("PROCESSOR_IDENTFIER", EnvironmentGetVariable("PROCESSOR_IDENTFIER"))
-	log("PROCESSOR_LEVEL", EnvironmentGetVariable("PROCESSOR_LEVEL"))
-	log("PROCESSOR_REVISION", EnvironmentGetVariable("PROCESSOR_REVISION"))
+	log("USERDOMAIN", environment_get_variable("USERDOMAIN"))
+	log("USERNAME", environment_get_variable("USERNAME"))
+	log("USERPROFILE", environment_get_variable("USERPROFILE"))
+	log("APPDATA", environment_get_variable("APPDATA"))
+	log("NUMBER_OF_PROCESSORS", environment_get_variable("NUMBER_OF_PROCESSORS"))
+	log("PROCESSOR_ARCHITECTURE", environment_get_variable("PROCESSOR_ARCHITECTURE"))
+	log("PROCESSOR_IDENTFIER", environment_get_variable("PROCESSOR_IDENTFIER"))
+	log("PROCESSOR_LEVEL", environment_get_variable("PROCESSOR_LEVEL"))
+	log("PROCESSOR_REVISION", environment_get_variable("PROCESSOR_REVISION"))
 
 
 
