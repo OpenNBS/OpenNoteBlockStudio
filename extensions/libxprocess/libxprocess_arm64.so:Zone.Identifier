@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://github.com/time-killer-games/libxprocess/releases/tag/v1.0.0.0
-HostUrl=https://objects.githubusercontent.com/github-production-release-asset-2e65be/527882598/43ca4210-e6f3-4933-b445-2b9eebbb43e7?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230428%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230428T182927Z&X-Amz-Expires=300&X-Amz-Signature=1074a6896c681ca18a0187f7a71d9f1169bd93c478f6368c815408104885b637&X-Amz-SignedHeaders=host&actor_id=4379204&key_id=0&repo_id=527882598&response-content-disposition=attachment%3B%20filename%3Dlibxprocess_arm64.so&response-content-type=application%2Foctet-stream
