@@ -25,7 +25,7 @@
 		_ShowMessage(string(argument0));
 		return 1;
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-message "' + string(argument0) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-message "' + string(argument0) + @'" 2> /dev/null');
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
 	}
@@ -35,7 +35,7 @@
 	if (os_type != os_linux) {
 		res = _ShowQuestion(string(argument0));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-question "' + string(argument0) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-question "' + string(argument0) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -47,7 +47,7 @@
 	if (os_type != os_linux) {
 		res = _ShowQuestionExt(string(argument0));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-question-ext "' + string(argument0) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --show-question-ext "' + string(argument0) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -64,7 +64,7 @@
 	if (os_type != os_linux) {
 		res = _GetString(string(argument0), string(argument1));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-string "' + string(argument0) + @'" "' + string(argument1) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-string "' + string(argument0) + @'" "' + string(argument1) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -76,7 +76,7 @@
 	if (os_type != os_linux) {
 		res = _GetNumber(string(argument0), real(argument1));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-number "' + string(argument0) + @'" "' + string(argument1) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-number "' + string(argument0) + @'" "' + string(argument1) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -88,7 +88,7 @@
 	if (os_type != os_linux) {
 		res = _GetOpenFileName(string(argument0), string(argument1), string(argument2), string(argument3));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-open-filename-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-open-filename-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -101,7 +101,7 @@
 	if (os_type != os_linux) {
 		res = _GetOpenFileNames(string(argument0), string(argument1), string(argument2), string(argument3));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-open-filenames-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-open-filenames-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -115,7 +115,7 @@
 	if (os_type != os_linux) {
 		res = _GetSaveFileName(string(argument0), string(argument1), string(argument2), string(argument3));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-save-filename-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-save-filename-ext "' + string(argument0) + @'" "' + string(argument1) + @'" "' + string(argument2) + @'" "' + string(argument3) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
@@ -128,7 +128,7 @@
 	if (os_type != os_linux) {
 		res = _GetDirectory(string(argument0), string(argument1));
 	} else {
-		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-directory-alt "' + string(argument0) + @'" "' + string(argument1) + @'"');
+		pid = ProcessExecute(@'"' + game_save_id + @'filedialogs.AppImage" --get-directory-alt "' + string(argument0) + @'" "' + string(argument1) + @'" 2> /dev/null');
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);
 		FreeExecutedProcessStandardInput(pid);
