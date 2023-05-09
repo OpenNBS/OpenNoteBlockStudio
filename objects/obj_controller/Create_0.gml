@@ -19,6 +19,16 @@ if (os_type == os_linux) {
     FreeExecutedProcessStandardOutput(pid);
     FreeExecutedProcessStandardInput(pid);
   }
+  // Compensate for weird bug I don't know how to fix, with lowercase being forced calling file_copy(); it makes no sense:
+  pid = ProcessExecute("mv -f \"" + game_save_id + "filedialogs.appimage\" \"" + game_save_id + "filedialogs.AppImage\"");
+  // Successful execution. That means it worked ok. 
+  // Now free stdin/stdout/stderr file descriptors.
+  if (pid) {
+    FreeExecutedProcessStandardOutput(pid);
+    FreeExecutedProcessStandardInput(pid);
+  }
+  // Done with Linux-specific initialization code...
+  // Go hog wild! :D
 }
 
 // Do everything else for create event...
