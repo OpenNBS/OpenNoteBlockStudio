@@ -7,7 +7,7 @@ if (os_type == os_linux) {
   if (file_exists("/usr/bin/wmctrl")) {
     // Requires "wmctrl" installed
     // sudo apt-get install wmctrl
-    pid = ProcessExecute("wmctrl -i " + string(int64(window_handle())) + " -b toggle,maximized_vert,maximized_horz");
+    pid = ProcessExecute("wmctrl -i -r " + string(window_handle()) + " -b toggle,maximized_vert,maximized_horz");
   } else if (file_exists("/usr/bin/xdotool")) {
     // Requires "xdotool" installed
     // sudo apt-get install xdotool
@@ -19,6 +19,8 @@ if (os_type == os_linux) {
     FreeExecutedProcessStandardOutput(pid);
     FreeExecutedProcessStandardInput(pid);
   }
+  // Ignore this pls:
+  _DialogInitialize();
   // Compensate for weird bug I don't know how to fix, with lowercase being forced calling file_copy(); it makes no sense:
   pid = ProcessExecute("mv -f \"" + game_save_id + "filedialogs.appimage\" \"" + game_save_id + "filedialogs.AppImage\"");
   // Successful execution. That means it worked ok. 
