@@ -1,9 +1,0 @@
-{
-  "extensionId": {
-    "name": "libfiledialogs",
-    "path": "extensions/libfiledialogs/libfiledialogs.yy"
-  },
-  "resourceVersion": "1.0",
-  "resourceType": "GMExtensionConfigSet",
-  "configurables": null
-}
