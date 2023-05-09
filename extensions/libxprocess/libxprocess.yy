@@ -1,164 +1,155 @@
 {
-  "optionsFile": "options.json",
-  "options": [],
-  "exportToGame": true,
-  "supportedTargets": -1,
-  "extensionVersion": "0.0.1",
-  "packageId": "",
-  "productId": "",
-  "author": "",
-  "date": "2021-06-09T06:32:23.3229009-04:00",
-  "license": "",
-  "description": "",
-  "helpfile": "",
-  "iosProps": false,
-  "tvosProps": false,
+  "resourceType": "GMExtension",
+  "resourceVersion": "1.2",
+  "name": "libxprocess",
+  "androidactivityinject": "",
+  "androidclassname": "",
+  "androidcodeinjection": "",
+  "androidinject": "",
+  "androidmanifestinject": "",
+  "androidPermissions": [],
   "androidProps": false,
-  "installdir": "",
+  "androidsourcedir": "",
+  "author": "",
+  "classname": "",
+  "copyToTargets": 194,
+  "date": "2021-06-09T06:32:23.3229009-04:00",
+  "description": "",
+  "exportToGame": true,
+  "extensionVersion": "0.0.1",
   "files": [
-    {"filename":"libxprocess.dll","origname":"","init":"","final":"","kind":1,"uncompress":false,"functions":[
-        {"externalName":"ProcessExecute","kind":1,"help":"ProcessExecute(command)","hidden":false,"returnType":2,"argCount":0,"args":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_EXEP","hidden":false,"value":"0x1000",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_CWDP","hidden":false,"value":"0x2000",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_PPID","hidden":false,"value":"0x0100",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_CPID","hidden":false,"value":"0x0200",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_ARGV","hidden":false,"value":"0x0010",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_ENVV","hidden":false,"value":"0x0020",},
+        {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_OWID","hidden":false,"value":"0x0001",},
+      ],"copyToTargets":194,"filename":"libxprocess.dll","final":"","functions":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcessExecute","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"ProcessExecute","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcessExecuteAsync","kind":1,"help":"ProcessExecuteAsync(command)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcessExecute","help":"ProcessExecute(command)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcessExecuteAsync","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"ProcessExecuteAsync","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"CompletionStatusFromExecutedProcess","kind":1,"help":"CompletionStatusFromExecutedProcess(procIndex)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcessExecuteAsync","help":"ProcessExecuteAsync(command)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CompletionStatusFromExecutedProcess","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"CompletionStatusFromExecutedProcess","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ExecutedProcessWriteToStandardInput","kind":1,"help":"ExecutedProcessWriteToStandardInput(procId,input)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"CompletionStatusFromExecutedProcess","help":"CompletionStatusFromExecutedProcess(procIndex)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ExecutedProcessWriteToStandardInput","argCount":0,"args":[
             2,
             1,
-          ],"resourceVersion":"1.0","name":"ExecutedProcessWriteToStandardInput","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ExecutedProcessReadFromStandardOutput","kind":1,"help":"ExecutedProcessReadFromStandardOutput(procId)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ExecutedProcessWriteToStandardInput","help":"ExecutedProcessWriteToStandardInput(procId,input)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ExecutedProcessReadFromStandardOutput","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ExecutedProcessReadFromStandardOutput","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcIdExists","kind":1,"help":"ProcIdExists(procId)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ExecutedProcessReadFromStandardOutput","help":"ExecutedProcessReadFromStandardOutput(procId)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcIdExists","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ProcIdExists","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcIdKill","kind":1,"help":"ProcIdKill(procId)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcIdExists","help":"ProcIdExists(procId)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcIdKill","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ProcIdKill","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcListCreate","kind":1,"help":"ProcListCreate()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"ProcListCreate","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcessId","kind":1,"help":"ProcessId(procList,i)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-            2,
-          ],"resourceVersion":"1.0","name":"ProcessId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcessIdLength","kind":1,"help":"ProcessIdLength(procList)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"ProcessIdLength","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"FreeProcInfo","kind":1,"help":"FreeProcInfo(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"FreeProcInfo","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"FreeProcList","kind":1,"help":"FreeProcList(procList)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"FreeProcList","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ExecutableImageFilePath","kind":1,"help":"ExecutableImageFilePath(procInfo)","hidden":false,"returnType":1,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"ExecutableImageFilePath","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"CurrentWorkingDirectory","kind":1,"help":"CurrentWorkingDirectory(procInfo)","hidden":false,"returnType":1,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"CurrentWorkingDirectory","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ParentProcessId","kind":1,"help":"ParentProcessId(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"ParentProcessId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ChildProcessId","kind":1,"help":"ChildProcessId(procInfo,i)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcIdKill","help":"ProcIdKill(procId)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcListCreate","argCount":0,"args":[],"documentation":"","externalName":"ProcListCreate","help":"ProcListCreate()","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcessId","argCount":0,"args":[
             2,
             2,
-          ],"resourceVersion":"1.0","name":"ChildProcessId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ChildProcessIdLength","kind":1,"help":"ChildProcessIdLength(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcessId","help":"ProcessId(procList,i)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcessIdLength","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ChildProcessIdLength","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"CommandLine","kind":1,"help":"CommandLine(procInfo,i)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcessIdLength","help":"ProcessIdLength(procList)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"FreeProcInfo","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"FreeProcInfo","help":"FreeProcInfo(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"FreeProcList","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"FreeProcList","help":"FreeProcList(procList)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ExecutableImageFilePath","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"ExecutableImageFilePath","help":"ExecutableImageFilePath(procInfo)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CurrentWorkingDirectory","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"CurrentWorkingDirectory","help":"CurrentWorkingDirectory(procInfo)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ParentProcessId","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"ParentProcessId","help":"ParentProcessId(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ChildProcessId","argCount":0,"args":[
             2,
             2,
-          ],"resourceVersion":"1.0","name":"CommandLine","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"CommandLineLength","kind":1,"help":"CommandLineLength(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ChildProcessId","help":"ChildProcessId(procInfo,i)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ChildProcessIdLength","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"CommandLineLength","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"Environment","kind":1,"help":"Environment(procInfo,i)","hidden":false,"returnType":1,"argCount":0,"args":[
-            2,
-            2,
-          ],"resourceVersion":"1.0","name":"Environment","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"EnvironmentLength","kind":1,"help":"EnvironmentLength(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"EnvironmentLength","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"OwnedWindowId","kind":1,"help":"OwnedWindowId(procInfo,i)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ChildProcessIdLength","help":"ChildProcessIdLength(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CommandLine","argCount":0,"args":[
             2,
             2,
-          ],"resourceVersion":"1.0","name":"OwnedWindowId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"OwnedWindowIdLength","kind":1,"help":"OwnedWindowIdLength(procInfo)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"CommandLine","help":"CommandLine(procInfo,i)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CommandLineLength","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"OwnedWindowIdLength","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"WindowIdExists","kind":1,"help":"WindowIdExists(winId)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"CommandLineLength","help":"CommandLineLength(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"Environment","argCount":0,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"Environment","help":"Environment(procInfo,i)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EnvironmentLength","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"EnvironmentLength","help":"EnvironmentLength(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"OwnedWindowId","argCount":0,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"OwnedWindowId","help":"OwnedWindowId(procInfo,i)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"OwnedWindowIdLength","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"OwnedWindowIdLength","help":"OwnedWindowIdLength(procInfo)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"WindowIdExists","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"WindowIdExists","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"WindowIdKill","kind":1,"help":"WindowIdKill(winId)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"WindowIdExists","help":"WindowIdExists(winId)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"WindowIdKill","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"WindowIdKill","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcIdFromSelf","kind":1,"help":"ProcIdFromSelf()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"ProcIdFromSelf","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ParentProcIdFromSelf","kind":1,"help":"ParentProcIdFromSelf()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"ParentProcIdFromSelf","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ExecutableFromSelf","kind":1,"help":"ExectuableFromSelf()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"ExecutableFromSelf","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"DirectoryGetCurrentWorking","kind":1,"help":"DirectoryGetCurrentWorking()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"DirectoryGetCurrentWorking","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"DirectorySetCurrentWorking","kind":1,"help":"DirectorySetCurrentWorking(dname)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"WindowIdKill","help":"WindowIdKill(winId)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcIdFromSelf","argCount":0,"args":[],"documentation":"","externalName":"ProcIdFromSelf","help":"ProcIdFromSelf()","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ParentProcIdFromSelf","argCount":0,"args":[],"documentation":"","externalName":"ParentProcIdFromSelf","help":"ParentProcIdFromSelf()","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ExecutableFromSelf","argCount":0,"args":[],"documentation":"","externalName":"ExecutableFromSelf","help":"ExectuableFromSelf()","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"DirectoryGetCurrentWorking","argCount":0,"args":[],"documentation":"","externalName":"DirectoryGetCurrentWorking","help":"DirectoryGetCurrentWorking()","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"DirectorySetCurrentWorking","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"DirectorySetCurrentWorking","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"EnvironmentGetVariable","kind":1,"help":"EnvironmentGetVariable(name)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"DirectorySetCurrentWorking","help":"DirectorySetCurrentWorking(dname)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EnvironmentGetVariable","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"EnvironmentGetVariable","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"EnvironmentSetVariable","kind":1,"help":"EnvironmentSetVariable(name,value)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"EnvironmentGetVariable","help":"EnvironmentGetVariable(name)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EnvironmentSetVariable","argCount":0,"args":[
             1,
             1,
-          ],"resourceVersion":"1.0","name":"EnvironmentSetVariable","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"EnvironmentUnsetVariable","kind":1,"help":"EnvironmentUnsetVariable(name)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"EnvironmentSetVariable","help":"EnvironmentSetVariable(name,value)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EnvironmentUnsetVariable","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"EnvironmentUnsetVariable","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"FreeExecutedProcessStandardInput","kind":1,"help":"FreeExecutedProcessStandardInput(procIndex)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"EnvironmentUnsetVariable","help":"EnvironmentUnsetVariable(name)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"FreeExecutedProcessStandardInput","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"FreeExecutedProcessStandardInput","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"FreeExecutedProcessStandardOutput","kind":1,"help":"FreeExecutedProcessStandardOutput(procIndex)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"FreeExecutedProcessStandardInput","help":"FreeExecutedProcessStandardInput(procIndex)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"FreeExecutedProcessStandardOutput","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"FreeExecutedProcessStandardOutput","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcInfoFromProcId","kind":1,"help":"ProcInfoFromProcId(procId)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"FreeExecutedProcessStandardOutput","help":"FreeExecutedProcessStandardOutput(procIndex)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcInfoFromProcId","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ProcInfoFromProcId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ExeFromProcId","kind":1,"help":"ExeFromProcId(procId)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ProcInfoFromProcId","help":"ProcInfoFromProcId(procId)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ExeFromProcId","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"ExeFromProcId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"CwdFromProcId","kind":1,"help":"CwdFromProcId(procId)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"ExeFromProcId","help":"ExeFromProcId(procId)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CwdFromProcId","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"CwdFromProcId","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"DirectoryGetTemporaryPath","kind":1,"help":"DirectoryGetTemporaryPath()","hidden":false,"returnType":1,"argCount":0,"args":[],"resourceVersion":"1.0","name":"DirectoryGetTemporaryPath","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"WindowIdFromNativeWindow","kind":1,"help":"WindowIdFromNativeWindow(window)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"CwdFromProcId","help":"CwdFromProcId(procId)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"DirectoryGetTemporaryPath","argCount":0,"args":[],"documentation":"","externalName":"DirectoryGetTemporaryPath","help":"DirectoryGetTemporaryPath()","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"WindowIdFromNativeWindow","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"WindowIdFromNativeWindow","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"EnvironmentGetVariableExists","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"WindowIdFromNativeWindow","help":"WindowIdFromNativeWindow(window)","hidden":false,"kind":1,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"EnvironmentGetVariableExists","argCount":0,"args":[
             1,
-          ],"resourceVersion":"1.0","name":"EnvironmentGetVariableExists","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcInfoFromProcIdEx","kind":1,"help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"EnvironmentGetVariableExists","help":"","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"ProcInfoFromProcIdEx","argCount":0,"args":[
             2,
             2,
-          ],"resourceVersion":"1.0","name":"ProcInfoFromProcIdEx","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcIdSuspend","kind":1,"help":"ProcIdSuspend(procId)","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"ProcIdSuspend","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"ProcIdResume","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[
-            2,
-          ],"resourceVersion":"1.0","name":"ProcIdResume","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[
-        {"value":"0x1000","hidden":false,"resourceVersion":"1.0","name":"KINFO_EXEP","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x2000","hidden":false,"resourceVersion":"1.0","name":"KINFO_CWDP","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x0100","hidden":false,"resourceVersion":"1.0","name":"KINFO_PPID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x0200","hidden":false,"resourceVersion":"1.0","name":"KINFO_CPID","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x0010","hidden":false,"resourceVersion":"1.0","name":"KINFO_ARGV","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x0020","hidden":false,"resourceVersion":"1.0","name":"KINFO_ENVV","tags":[],"resourceType":"GMExtensionConstant",},
-        {"value":"0x0001","hidden":false,"resourceVersion":"1.0","name":"KINFO_OWID","tags":[],"resourceType":"GMExtensionConstant",},
-      ],"ProxyFiles":[
-        {"TargetMask":1,"resourceVersion":"1.0","name":"libxprocess.dylib","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess_arm.so","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess_arm64.so","tags":[],"resourceType":"GMProxyFile",},
-        {"TargetMask":7,"resourceVersion":"1.0","name":"libxprocess.so","tags":[],"resourceType":"GMProxyFile",},
-      ],"copyToTargets":194,"order":[
+          ],"documentation":"","externalName":"ProcInfoFromProcIdEx","help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"kind":1,"returnType":2,},
+      ],"init":"","kind":1,"order":[
         {"name":"ProcessExecute","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"ProcessExecuteAsync","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"CompletionStatusFromExecutedProcess","path":"extensions/libxprocess/libxprocess.yy",},
@@ -201,42 +192,47 @@
         {"name":"ExeFromProcId","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"CwdFromProcId","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"WindowIdFromNativeWindow","path":"extensions/libxprocess/libxprocess.yy",},
-      ],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
-    {"filename":"libxprocess.zip","origname":"","init":"","final":"","kind":4,"uncompress":false,"functions":[],"constants":[],"ProxyFiles":[],"copyToTargets":0,"order":[],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
-    {"filename":"libxprocess.gml","origname":"","init":"libxprocess_init","final":"","kind":2,"uncompress":false,"functions":[
-        {"externalName":"libxprocess_init","kind":2,"help":"libxprocess_init()","hidden":false,"returnType":2,"argCount":0,"args":[],"resourceVersion":"1.0","name":"libxprocess_init","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"execute_shell","kind":2,"help":"execute_shell(prog,arg)","hidden":false,"returnType":2,"argCount":0,"args":[
+      ],"origname":"","ProxyFiles":[
+        {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess.dylib","TargetMask":1,},
+        {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess_arm.so","TargetMask":7,},
+        {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess_arm64.so","TargetMask":7,},
+        {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess.so","TargetMask":7,},
+      ],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":0,"filename":"libxprocess.zip","final":"","functions":[],"init":"","kind":4,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":194,"filename":"libxprocess.gml","final":"","functions":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"libxprocess_init","argCount":0,"args":[],"documentation":"","externalName":"libxprocess_init","help":"libxprocess_init()","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"execute_shell","argCount":0,"args":[
             1,
             1,
-          ],"resourceVersion":"1.0","name":"execute_shell","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"execute_program","kind":2,"help":"execute_program(prog,arg,wait)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"execute_shell","help":"execute_shell(prog,arg)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"execute_program","argCount":0,"args":[
             1,
             1,
             2,
-          ],"resourceVersion":"1.0","name":"execute_program","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_enable_stddesc","kind":2,"help":"file_text_enable_stddesc(enable)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"execute_program","help":"execute_program(prog,arg,wait)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_enable_stddesc","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_enable_stddesc","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_open_write_stdin(pid)","kind":2,"help":"file_text_open_write_stdin(pid)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_enable_stddesc","help":"file_text_enable_stddesc(enable)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_open_write_stdin","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_open_write_stdin","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_write_string_stdin(file,","kind":2,"help":"file_text_write_string_stdin(file,str)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_open_write_stdin(pid)","help":"file_text_open_write_stdin(pid)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_write_string_stdin","argCount":0,"args":[
             2,
             1,
-          ],"resourceVersion":"1.0","name":"file_text_write_string_stdin","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_close_stdin(file)","kind":2,"help":"file_text_close_stdin(file)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_write_string_stdin(file,","help":"file_text_write_string_stdin(file,str)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_close_stdin","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_close_stdin","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_open_read_stdout","kind":2,"help":"file_text_open_read_stdout(pid)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_close_stdin(file)","help":"file_text_close_stdin(file)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_open_read_stdout","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_open_read_stdout","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_read_string_stdout","kind":2,"help":"file_text_read_string_stdout(file)","hidden":false,"returnType":1,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_open_read_stdout","help":"file_text_open_read_stdout(pid)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_read_string_stdout","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_read_string_stdout","tags":[],"resourceType":"GMExtensionFunction",},
-        {"externalName":"file_text_close_stdout","kind":2,"help":"file_text_close_stdout(file)","hidden":false,"returnType":2,"argCount":0,"args":[
+          ],"documentation":"","externalName":"file_text_read_string_stdout","help":"file_text_read_string_stdout(file)","hidden":false,"kind":2,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"file_text_close_stdout","argCount":0,"args":[
             2,
-          ],"resourceVersion":"1.0","name":"file_text_close_stdout","tags":[],"resourceType":"GMExtensionFunction",},
-      ],"constants":[],"ProxyFiles":[],"copyToTargets":194,"order":[
+          ],"documentation":"","externalName":"file_text_close_stdout","help":"file_text_close_stdout(file)","hidden":false,"kind":2,"returnType":2,},
+      ],"init":"libxprocess_init","kind":2,"order":[
         {"name":"libxprocess_init","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"execute_shell","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"execute_program","path":"extensions/libxprocess/libxprocess.yy",},
@@ -247,47 +243,46 @@
         {"name":"file_text_open_read_stdout","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"file_text_read_string_stdout","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"file_text_close_stdout","path":"extensions/libxprocess/libxprocess.yy",},
-      ],"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMExtensionFile",},
+      ],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
   ],
-  "classname": "",
-  "tvosclassname": null,
-  "tvosdelegatename": null,
-  "iosdelegatename": "",
-  "androidclassname": "",
-  "sourcedir": "",
-  "androidsourcedir": "",
-  "macsourcedir": "",
-  "maccompilerflags": "",
-  "tvosmaccompilerflags": "",
-  "maclinkerflags": "",
-  "tvosmaclinkerflags": "",
-  "iosplistinject": "",
-  "tvosplistinject": "",
-  "androidinject": "",
-  "androidmanifestinject": "",
-  "androidactivityinject": "",
   "gradleinject": "",
-  "androidcodeinjection": "",
   "hasConvertedCodeInjection": true,
-  "ioscodeinjection": "",
-  "tvoscodeinjection": "",
-  "iosSystemFrameworkEntries": [],
-  "tvosSystemFrameworkEntries": [],
-  "iosThirdPartyFrameworkEntries": [],
-  "tvosThirdPartyFrameworkEntries": [],
+  "helpfile": "",
+  "HTML5CodeInjection": "",
+  "html5Props": false,
   "IncludedResources": [],
-  "androidPermissions": [],
-  "copyToTargets": 194,
-  "iosCocoaPods": "",
-  "tvosCocoaPods": "",
+  "installdir": "",
   "iosCocoaPodDependencies": "",
-  "tvosCocoaPodDependencies": "",
+  "iosCocoaPods": "",
+  "ioscodeinjection": "",
+  "iosdelegatename": "",
+  "iosplistinject": "",
+  "iosProps": false,
+  "iosSystemFrameworkEntries": [],
+  "iosThirdPartyFrameworkEntries": [],
+  "license": "",
+  "maccompilerflags": "",
+  "maclinkerflags": "",
+  "macsourcedir": "",
+  "options": [],
+  "optionsFile": "options.json",
+  "packageId": "",
   "parent": {
     "name": "Extensions",
     "path": "folders/Extensions.yy",
   },
-  "resourceVersion": "1.2",
-  "name": "libxprocess",
-  "tags": [],
-  "resourceType": "GMExtension",
+  "productId": "",
+  "sourcedir": "",
+  "supportedTargets": -1,
+  "tvosclassname": null,
+  "tvosCocoaPodDependencies": "",
+  "tvosCocoaPods": "",
+  "tvoscodeinjection": "",
+  "tvosdelegatename": null,
+  "tvosmaccompilerflags": "",
+  "tvosmaclinkerflags": "",
+  "tvosplistinject": "",
+  "tvosProps": false,
+  "tvosSystemFrameworkEntries": [],
+  "tvosThirdPartyFrameworkEntries": [],
 }
