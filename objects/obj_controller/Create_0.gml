@@ -1,6 +1,7 @@
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
 
+// Start OpenNBS Maximized (Linux):
 if (os_type == os_linux) {
   var pid = 0;
   if (file_exists("/usr/bin/wmctrl")) {
