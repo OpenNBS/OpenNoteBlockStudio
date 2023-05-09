@@ -6,7 +6,7 @@ if (os_type == os_linux) {
   if (file_exists("/usr/bin/wmctrl")) {
     // Requires "wmctrl" installed
     // sudo apt-get install wmctrl
-    pid = ProcessExecute(wmctrl -i " + string(int64(window_handle())) + " -b toggle,maximized_vert,maximized_horz");
+    pid = ProcessExecute("wmctrl -i " + string(int64(window_handle())) + " -b toggle,maximized_vert,maximized_horz");
   } else if (file_exists("/usr/bin/xdotool")) {
     // Requires "xdotool" installed
     // sudo apt-get install xdotool
