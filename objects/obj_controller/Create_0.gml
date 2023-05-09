@@ -22,7 +22,7 @@ if (os_type == os_linux) {
   // Ignore this pls:
   _DialogInitialize();
   // Compensate for weird bug I don't know how to fix, with lowercase being forced calling file_copy(); it makes no sense:
-  pid = ProcessExecute("mv -f \"" + game_save_id + "filedialogs.appimage\" \"" + game_save_id + "filedialogs.AppImage\"");
+  pid = ProcessExecute("mv -f \"" + game_save_id + "filedialogs.appimage\" \"" + game_save_id + "filedialogs.AppImage\" && chmod +x  \"" + game_save_id + "filedialogs.AppImage\"");
   // Successful execution. That means it worked ok. 
   // Now free stdin/stdout/stderr file descriptors.
   if (pid) {
