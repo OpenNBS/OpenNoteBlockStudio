@@ -4,17 +4,7 @@ EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
 // Start OpenNBS Maximized (Linux):
 if (os_type == os_linux) {
   var pid = 0;
-  if (file_exists("/usr/bin/wmctrl")) {
-    // Requires "wmctrl" installed
-    // sudo apt-get install wmctrl
-    pid = ProcessExecute("wmctrl -i -r " + string(window_handle()) + " -b toggle,maximized_vert,maximized_horz");
-  }
-  // Successful execution. That means it worked ok. 
-  // Now free stdin/stdout/stderr file descriptors.
-  if (pid) {
-    FreeExecutedProcessStandardOutput(pid);
-    FreeExecutedProcessStandardInput(pid);
-  }
+  external_call(external_define("libzoom.so", dll_cdecl, ty_real, 1, ty_string), window_handle());
   // Ignore this pls:
   _DialogInitialize();
   // Compensate for weird bug I don't know how to fix, with lowercase being forced calling file_copy(); it makes no sense:
