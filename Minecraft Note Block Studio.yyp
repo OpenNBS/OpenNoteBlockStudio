@@ -877,6 +877,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"110-NotoSansOsmanya-Regular.ttf","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"010-NotoSansArabicUI-Regular.ttf","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"024-NotoSansCaucasianAlbanian-Regular.ttf","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"libzoom.so","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",
