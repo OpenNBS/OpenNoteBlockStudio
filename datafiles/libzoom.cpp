@@ -41,7 +41,7 @@ EXPORTED_FUNCTION void window_zoom(void *window) {
   #if defined(_WIN32)
   ShowWindow((HWND)window, SW_MAXIMIZE);
   #elif (defined(__APPLE__) && defined(__MACH__))
-  [(NSWindow *)window zoom];
+  [(NSWindow *)window zoom:nil];
   #else
   Display *display = XOpenDisplay(nullptr);
   XClientMessageEvent ev;
