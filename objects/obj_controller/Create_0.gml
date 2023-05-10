@@ -1,8 +1,14 @@
 // copy defaults insto sandbox to allow modification
 directory_create(game_save_id)
-if (!directory_exists_lib(data_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
-if (!directory_exists_lib(songs_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_songs_directory) + @'" "' + filename_dir(songs_directory) + @'"', true)
-if (!directory_exists_lib(pattern_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_pattern_directory) + @'" "' + filename_dir(pattern_directory) + @'"', true)
+if (os_type != os_windows) {
+  if (!directory_exists(data_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
+  if (!directory_exists(songs_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_songs_directory) + @'" "' + filename_dir(songs_directory) + @'"', true)
+  if (!directory_exists(pattern_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_pattern_directory) + @'" "' + filename_dir(pattern_directory) + @'"', true)
+} else {
+  if (!directory_exists(data_directory)) execute_program("Xcopy", @'/E /I "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
+  if (!directory_exists(songs_directory)) execute_program("Xcopy", @'/E /I "' + filename_dir(bundled_songs_directory) + @'" "' + filename_dir(songs_directory) + @'"', true)
+  if (!directory_exists(pattern_directory)) execute_program("Xcopy", @'/E /I "' + filename_dir(bundled_pattern_directory) + @'" "' + filename_dir(pattern_directory) + @'"', true)
+}
 
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
