@@ -8,10 +8,6 @@ if (os_type == os_linux) {
     // Requires "wmctrl" installed
     // sudo apt-get install wmctrl
     pid = ProcessExecute("wmctrl -i -r " + string(window_handle()) + " -b toggle,maximized_vert,maximized_horz");
-  } else if (file_exists("/usr/bin/xdotool")) {
-    // Requires "xdotool" installed
-    // sudo apt-get install xdotool
-    pid = ProcessExecute("xdotool windowsize " + string(int64(window_handle())) + " 100% 100%");
   }
   // Successful execution. That means it worked ok. 
   // Now free stdin/stdout/stderr file descriptors.
