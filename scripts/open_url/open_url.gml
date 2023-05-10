@@ -2,9 +2,9 @@ function open_url(url) {
   if (os_type = os_windows) execute_shell("cmd", @'explorer "' + url + @'"');
   else if (os_type = os_macosx) execute_shell("open", @'"' + url + @'"');
   else if (os_type = os_linux) {
+	// The xdg-open command doesn't work in an AppImage bundle apparently...
     if (string_length(url)) {
-      if (string_copy(url, 0, 1) == "/") {
-        // xdg-open doesn't work in an appimage bundle apparently...
+      if (string_copy(url, 0, 1) == "/" || url == sounds_directory) {
         if (file_exists("/usr/bin/nautilus")) {
           execute_shell("nautilus", @'"' + url + @'"');
         } else if (file_exists("/usr/bin/dolphin")) {
@@ -17,7 +17,7 @@ function open_url(url) {
           execute_shell("pcmanfm", @'"' + url + @'"');
         }
       } else {
-        url_open(url);  
+        execute_shell("firefox", @'"' + url + @'"');
       }
     }
   }
