@@ -1,6 +1,12 @@
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
 
+// Start OpenNBS Maximized (macOS):
+if (os_type == os_macosx) {
+  // Maxmize window on startup
+  external_call(external_define(current_directory + "libzoom.dylib", "window_zoom", dll_cdecl, ty_real, 1, ty_string), window_handle());
+}
+
 // Start OpenNBS Maximized (Linux):
 if (os_type == os_linux) {
   var pid = 0;
