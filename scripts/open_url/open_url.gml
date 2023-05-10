@@ -3,8 +3,8 @@ function open_url(url) {
   else if (os_type = os_macosx) execute_shell("open", @'"' + url + @'"');
   else if (os_type = os_linux) {
     var path = EnvironmentGetVariable("PATH");
-	  EnvironmentSetVariable("PATH", "/usr/bin:" + path);
+    EnvironmentSetVariable("PATH", "/usr/bin:" + path);
     execute_shell("xdg-open", @'"' + url + @'"');
-	  EnvironmentSetVariable("PATH", path);
+    EnvironmentSetVariable("PATH", path);
   }
 }
