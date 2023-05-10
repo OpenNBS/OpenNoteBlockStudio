@@ -4,7 +4,17 @@ function open_url(url) {
   else if (os_type = os_linux) {
     if (string_length(url)) {
       if (string_copy(url, 0, 1) == "/") {
-        execute_shell("nautilus", @'"' + url + @'"');
+        if (file_exists("/usr/bin/nautilus")) {
+          execute_shell("nautilus", @'"' + url + @'"');
+        } else if (file_exists("/usr/bin/dolphin")) {
+          execute_shell("dolphin", @'"' + url + @'"');
+        } else if (file_exists("/usr/bin/thunar")) {
+          execute_shell("thunar", @'"' + url + @'"');
+        } else if (file_exists("/usr/bin/caja")) {
+          execute_shell("caja", @'"' + url + @'"');
+        } else if (file_exists("/usr/bin/pcmanfm")) {
+          execute_shell("pcmanfm", @'"' + url + @'"');
+        }
       } else {
         url_open(url);  
       }
