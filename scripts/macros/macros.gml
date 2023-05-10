@@ -14,11 +14,12 @@ function macros() {
 #macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
+#macro current_directory    working_directory
 #macro file_directory		game_save_id
-#macro data_directory		((os_type == os_linux) ? (program_directory + "assets/") : working_directory) + "Data" + condstr(os_type = os_windows, "\\", "/")
+#macro data_directory		current_directory + "Data" + condstr(os_type = os_windows, "\\", "/")
 #macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory		((os_type == os_linux) ? (program_directory + "assets/") : working_directory) + "Songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory	((os_type == os_linux) ? (program_directory + "assets/") : working_directory) + "Patterns" + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory		current_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory	current_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
 #macro log_file				file_directory + "log.txt"
 #macro temp_file			file_directory + "tmp.file"
 #macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
