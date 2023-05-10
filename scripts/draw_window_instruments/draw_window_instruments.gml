@@ -27,7 +27,7 @@ function draw_window_instruments() {
 	}
 	if (language != 1) {
 	if (draw_button2(x1 + 455, y1 + 9, 80, "Import", 0, 1)) load_instruments("")
-	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder", 0, 1)) open_url(((os_type == os_linux) ? "file:///" : "") + sounds_directory)
+	if (draw_button2(x1 + 455, y1 + 36, 80, "Open Folder", 0, 1)) open_url(sounds_directory)
 	// Tabs
 	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "Whether notes of this type should be\npressed when the marker reaches them.")
@@ -43,7 +43,7 @@ function draw_window_instruments() {
 	draw_text_dynamic(x1 + 18 - 2, y1 + 70, "Name")
 	} else {
 	if (draw_button2(x1 + 455, y1 + 9, 80, "导入", 0, 1)) load_instruments("")
-	if (draw_button2(x1 + 455, y1 + 36, 80, "打开目录", 0, 1)) open_url(((os_type == os_linux) ? "file:///" : "") + sounds_directory)
+	if (draw_button2(x1 + 455, y1 + 36, 80, "打开目录", 0, 1)) open_url(sounds_directory)
 	draw_window(x1 + 13 + 194 + 160 + 80, y1 + 67, x1 + 14 + 194 + 160 + 80 + 88 - 1, y1 + 67 + 20, 1)
 	popup_set_window(x1 + 13 + 194 + 160 + 80 - 1, y1 + 67, 88, 20, "播放该音色时是否在琴键上显示。")
 	draw_text_dynamic(x1 + 18 + 194 + 160 + 80 - 1, y1 + 70, "显示")
