@@ -2,9 +2,12 @@ function open_url(url) {
   if (os_type = os_windows) execute_shell("cmd", @'explorer "' + url + @'"');
   else if (os_type = os_macosx) execute_shell("open", @'"' + url + @'"');
   else if (os_type = os_linux) {
-    var path = EnvironmentGetVariable("PATH");
-    EnvironmentSetVariable("PATH", "/usr/bin:" + path);
-    execute_shell("xdg-open", @'"' + url + @'"');
-    EnvironmentSetVariable("PATH", path);
+    if (string_length(url)) {
+      if (string_copy(url, 0, 1) == "/") {
+        execute_shell("nautilus", @'"' + url + @'"');
+      } else {
+        url_open(url);  
+      }
+    }
   }
 }
