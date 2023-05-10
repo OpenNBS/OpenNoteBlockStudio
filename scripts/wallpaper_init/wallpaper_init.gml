@@ -1,7 +1,7 @@
 function wallpaper_init() {
 	var tempsurf, wpaperwidth;
 	can_draw_mica = 1
-	ExecuteShell("\"" + data_directory + "wallpaper.bat", true, true)
+	execute_program("cmd", "\"" + data_directory + "wallpaper.bat", true)
 	wpaperexist = file_exists(data_directory + "Wallpaper.jpg")
 	if (wpaperexist) {
 		wpaper = sprite_add(data_directory + "Wallpaper.jpg", 1, 0, 0, 0, 0)
