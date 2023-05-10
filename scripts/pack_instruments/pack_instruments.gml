@@ -32,7 +32,7 @@ function pack_instruments() {
 		}
 	}
 	
-	ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true, true)
+	execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true)
 	directory_delete_lib(tempdir);
 	if (language != 1) message(string(count) + " instrument" + condstr(count > 1, "s were", " was") + " saved!", "Pack instruments");
 	else message(string(count) + "个音色已保存！", "导出音色");
