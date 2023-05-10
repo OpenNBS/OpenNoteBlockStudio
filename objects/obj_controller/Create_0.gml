@@ -1,3 +1,10 @@
+// copy defaults insto sandbox to allow modification
+directory_create(game_save_id)
+execute_program("cp", @'-fR "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
+execute_program("cp", @'-fR "' + filename_dir(bundled_sounds_directory) + @'" "' + filename_dir(sounds_directory) + @'"', true)
+execute_program("cp", @'-fR "' + filename_dir(bundled_songs_directory) + @'" "' + filename_dir(songs_directory) + @'"', true)
+execute_program("cp", @'-fR "' + filename_dir(bundled_pattern_directory) + @'" "' + filename_dir(pattern_directory) + @'"', true)
+
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
 
