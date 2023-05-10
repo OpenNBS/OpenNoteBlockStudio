@@ -1,12 +1,11 @@
-// copy defaults insto sandbox to allow modification
-directory_create(game_save_id)
-execute_program("cp", @'-fR "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
-execute_program("cp", @'-fR "' + filename_dir(bundled_sounds_directory) + @'" "' + filename_dir(sounds_directory) + @'"', true)
-execute_program("cp", @'-fR "' + filename_dir(bundled_songs_directory) + @'" "' + filename_dir(songs_directory) + @'"', true)
-execute_program("cp", @'-fR "' + filename_dir(bundled_pattern_directory) + @'" "' + filename_dir(pattern_directory) + @'"', true)
-
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
+
+// Start OpenNBS Maximized (macOS):
+if (os_type == os_macosx) {
+  // Maxmize window on startup
+  external_call(external_define(current_directory + "libzoom.dylib", "window_zoom", dll_cdecl, ty_real, 1, ty_string), window_handle());
+}
 
 // Start OpenNBS Maximized (Linux):
 if (os_type == os_linux) {
