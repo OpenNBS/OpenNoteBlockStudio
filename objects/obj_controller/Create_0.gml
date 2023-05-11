@@ -1,4 +1,4 @@
-// copy defaults insto sandbox to allow modification
+// copy defaults into sandbox to allow modification
 directory_create(game_save_id)
 if (os_type != os_windows) {
   if (!directory_exists(data_directory)) execute_program("cp", @'-fR "' + filename_dir(bundled_data_directory) + @'" "' + filename_dir(data_directory) + @'"', true)
@@ -12,6 +12,7 @@ if (os_type != os_windows) {
 
 // Use light theme to match default UI theme of OpenNBS:
 EnvironmentSetVariable("IMGUI_DIALOG_THEME", string(1));
+EnvironmentSetVariable("IMGUI_DIALOG_NOBORDER", string(1));
 
 // Start OpenNBS Maximized (macOS):
 if (os_type == os_macosx) {
