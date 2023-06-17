@@ -117,7 +117,7 @@
             1,
             2,
           ],"documentation":"","externalName":"GetNumber","help":"GetNumber(lpMsgStr,nDefNum)","hidden":false,"kind":2,"returnType":2,},
-      ],"init":"","kind":2,"order":[
+      ],"init":"_DialogInitialize","kind":2,"order":[
         {"name":"GetOpenFileName","path":"extensions/libfiledialogs/libfiledialogs.yy",},
         {"name":"GetOpenFileNames","path":"extensions/libfiledialogs/libfiledialogs.yy",},
         {"name":"GetSaveFileName","path":"extensions/libfiledialogs/libfiledialogs.yy",},
