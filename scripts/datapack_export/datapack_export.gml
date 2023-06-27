@@ -4,12 +4,12 @@ function datapack_export() {
 	o = obj_controller
 
 	if (language != 1) {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
-	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
+	if (o.dat_usezip) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
+	else fn = string(GetSaveFileName("Data Pack Folder", dat_name, "", "Data Pack Export"))
 	} else {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
+	if (o.dat_usezip) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
 	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
-	else fn = string(get_save_filename_ext("数据包目录", dat_name, "", "导出数据包"))
+	else fn = string(GetSaveFileName("数据包目录", dat_name, "", "导出数据包"))
 	}
 	if (fn = "") return 0
 
@@ -180,9 +180,9 @@ function datapack_export() {
 	
 		// Execute shell command to create ZIP, or to move temp folder to location
 		if (o.dat_usezip) {
-			ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true, true)
+			execute_program("7za", "a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true)
 		} else {
-			ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
+			execute_program("cmd", "\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true)
 		}
 	
 		directory_delete_lib(tempdir)

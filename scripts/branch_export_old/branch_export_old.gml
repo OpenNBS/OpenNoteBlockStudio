@@ -1,7 +1,7 @@
 function branch_export_old() {
 	// branch_export()
 	var fn, a, b, o, z, sch_len, nblocks, nblockins, nblockvel, zvel, pass, tags, sch_layer1, sch_layer2, sch_layer3, entries
-	fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+	fn = string(GetSaveFileName("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"

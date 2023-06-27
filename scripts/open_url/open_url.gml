@@ -1,10 +1,6 @@
-function open_url(argument0) {
-	// open_url(url)
-
-	//external_call(lib_open_url, argument0)
-	if (os_type = os_windows) ExecuteShell("explorer \"" + argument0 + "\"", false)
-	else url_open(argument0)
-
-
-
+function open_url(url) {
+  if (string_copy(url, 0, 7) == "assets/") url = program_directory + url;
+  if (os_type = os_windows) execute_shell("cmd", @'explorer "' + url + @'"');
+  else if (os_type == os_macosx) execute_shell("open", @'"' + url + @'"');
+  else if (os_type == os_linux) execute_shell("xdg-open", @'"' + url + @'"');
 }

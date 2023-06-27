@@ -14,17 +14,24 @@ function macros() {
 #macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
 
-#macro file_directory		game_save_id
-#macro data_directory		working_directory + "Data" + condstr(os_type = os_windows, "\\", "/")
-#macro sounds_directory		data_directory + "Sounds" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory		working_directory + "Songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory	working_directory + "Patterns" + condstr(os_type = os_windows, "\\", "/")
-#macro log_file				file_directory + "log.txt"
-#macro temp_file			file_directory + "tmp.file"
-#macro update_file			file_directory + "Minecraft Note Block Studio Installer.exe"
-#macro settings_file		file_directory + "settings.ini"
-#macro settings_dev_file	file_directory + "settings_dev.ini"
-#macro backup_file			file_directory + "backup.nbs"
+#macro current_directory working_directory
+#macro file_directory    game_save_id
+
+#macro bundled_data_directory    current_directory + "data" + condstr(os_type = os_windows, "\\", "/")
+#macro bundled_sounds_directory  current_directory + "data/sounds" + condstr(os_type = os_windows, "\\", "/")
+#macro bundled_songs_directory   current_directory + "songs" + condstr(os_type = os_windows, "\\", "/")
+#macro bundled_pattern_directory current_directory + "patterns" + condstr(os_type = os_windows, "\\", "/")
+
+#macro data_directory    file_directory + "data" + condstr(os_type = os_windows, "\\", "/")
+#macro sounds_directory  file_directory + "data/sounds" + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory   file_directory + "songs" + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory file_directory + "patterns" + condstr(os_type = os_windows, "\\", "/")
+#macro log_file          file_directory + "log.txt"
+#macro temp_file         file_directory + "tmp.file"
+#macro update_file       file_directory + "minecraft note block studio installer.exe"
+#macro settings_file     file_directory + "settings.ini"
+#macro settings_dev_file file_directory + "settings_dev.ini"
+#macro backup_file       file_directory + "backup.nbs"
 
 #macro h_stereoize 12
 #macro h_swaplayer 11
