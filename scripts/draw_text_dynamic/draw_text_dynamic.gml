@@ -30,7 +30,7 @@ function draw_text_dynamic(x, y, string, force = false){
 		for (var i = 1; i <= string_length(string); i += 1) {
 			char = string_char_at(string, i)
 			char_code = ord(char)
-			is_ascii = char_code <= 127
+			is_ascii = is_noncjk(char_code)
 			font_changed = is_ascii != is_ascii_prev
 			if (font_changed) {
 				draw_theme_font(obj_controller.currentfont, !is_ascii, true)
@@ -49,7 +49,7 @@ function draw_text_dynamic(x, y, string, force = false){
 	for(var i = 1; i <= string_length(string); i += 1) {
 		char = string_char_at(string, i)
 		char_code = ord(char)
-		is_ascii = char_code <= 127
+		is_ascii = is_noncjk(char_code)
 		font_changed = is_ascii != is_ascii_prev
 		if (font_changed) {
 			draw_theme_font(obj_controller.currentfont, !is_ascii)
@@ -71,4 +71,8 @@ function draw_text_dynamic(x, y, string, force = false){
 	}
 	draw_set_halign(halign)
 	draw_theme_font(obj_controller.currentfont)
+}
+
+function is_noncjk(char_code){
+	return (char_code <= 127 || char_code = 1025 || (char_code >= 1040 && char_code <= 1103) || char_code = 1105)
 }
