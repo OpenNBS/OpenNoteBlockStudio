@@ -596,7 +596,7 @@ function draw_window_preferences() {
 		}
 	}
 	
-	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定")) || keyboard_check_released(vk_escape) || (prevwindow == window && check_ctrl() && keyboard_check_pressed(ord("P")))) {
+	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定")) || keyboard_check_released(vk_escape) || (prevwindow == window && check_ctrl() && keyboard_check_pressed(ord("P")) || (keyboard_check_pressed(188) && os_type = os_macosx))) {
 		if (theme != 3) {
 			window = 0
 			window_set_cursor(curs)

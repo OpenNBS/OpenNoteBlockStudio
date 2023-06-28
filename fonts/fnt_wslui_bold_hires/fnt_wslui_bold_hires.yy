@@ -4,7 +4,7 @@
   "interpreter": 0,
   "pointRounding": 0,
   "applyKerning": 0,
-  "fontName": "WeblySleek UI Semibold",
+  "fontName": "WeblySleek UI",
   "styleName": "Semibold",
   "size": 36.0,
   "bold": true,
@@ -184,7 +184,7 @@
     "1102": {"x":544,"y":68,"w":36,"h":64,"character":1102,"shift":41,"offset":3,},
     "1103": {"x":582,"y":68,"w":22,"h":64,"character":1103,"shift":26,"offset":1,},
     "1105": {"x":126,"y":200,"w":22,"h":64,"character":1105,"shift":26,"offset":2,},
-    "9647": {"x":172,"y":266,"w":28,"h":64,"character":9647,"shift":47,"offset":9,},
+    "9647": {"x":172,"y":266,"w":15,"h":64,"character":9647,"shift":29,"offset":7,},
   },
   "kerningPairs": [
     {"first":34,"second":114,"amount":-1,},

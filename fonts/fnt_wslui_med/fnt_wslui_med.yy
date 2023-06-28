@@ -21,7 +21,7 @@
     "path": "texturegroups/Fonts",
   },
   "ascenderOffset": 0,
-  "ascender": 0,
+  "ascender": 13,
   "glyphs": {
     "32": {"x":2,"y":2,"w":4,"h":18,"character":32,"shift":4,"offset":0,},
     "33": {"x":70,"y":42,"w":2,"h":18,"character":33,"shift":4,"offset":1,},
@@ -118,7 +118,7 @@
     "124": {"x":221,"y":2,"w":2,"h":18,"character":124,"shift":3,"offset":1,},
     "125": {"x":215,"y":2,"w":4,"h":18,"character":125,"shift":4,"offset":0,},
     "126": {"x":39,"y":62,"w":7,"h":18,"character":126,"shift":9,"offset":1,},
-    "9647": {"x":48,"y":62,"w":8,"h":18,"character":9647,"shift":13,"offset":2,},
+    "9647": {"x":48,"y":62,"w":4,"h":18,"character":9647,"shift":8,"offset":2,},
   },
   "kerningPairs": [
     {"first":40,"second":106,"amount":1,},
@@ -224,6 +224,9 @@
   ],
   "ranges": [
     {"lower":32,"upper":127,},
+    {"lower":1025,"upper":1025,},
+    {"lower":1040,"upper":1103,},
+    {"lower":1105,"upper":1105,},
     {"lower":9647,"upper":9647,},
   ],
   "regenerateBitmap": false,

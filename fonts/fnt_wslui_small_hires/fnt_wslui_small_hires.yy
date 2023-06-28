@@ -151,7 +151,7 @@
     "243": {"x":142,"y":61,"w":22,"h":57,"character":243,"shift":25,"offset":2,},
     "247": {"x":119,"y":61,"w":21,"h":57,"character":247,"shift":29,"offset":4,},
     "248": {"x":247,"y":120,"w":24,"h":57,"character":248,"shift":25,"offset":1,},
-    "9647": {"x":166,"y":297,"w":26,"h":57,"character":9647,"shift":42,"offset":8,},
+    "9647": {"x":166,"y":297,"w":14,"h":57,"character":9647,"shift":26,"offset":6,},
   },
   "kerningPairs": [
     {"first":34,"second":114,"amount":-1,},
@@ -766,7 +766,9 @@
   ],
   "ranges": [
     {"lower":32,"upper":255,},
+    {"lower":1025,"upper":1025,},
     {"lower":1040,"upper":1103,},
+    {"lower":1105,"upper":1105,},
     {"lower":9647,"upper":9647,},
   ],
   "regenerateBitmap": false,

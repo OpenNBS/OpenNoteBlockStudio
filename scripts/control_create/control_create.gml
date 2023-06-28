@@ -72,7 +72,8 @@ function control_create() {
 			[ fnt_info_big,      fnt_wslui_info_big,      fnt_src_info_big      ], // font_info_big
 			[ fnt_info_med,      fnt_wslui_info_med,      fnt_src_info_med      ], // font_info_med
 			[ fnt_info_med_bold, fnt_wslui_info_med_bold, fnt_src_info_med_bold ], // font_info_med_bold
-			[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ]  // font_med
+			[ fnt_wslui_med,     fnt_wslui_med,           fnt_src_med           ], // font_med
+			[ fnt_symbol_small,  fnt_symbol_small,        fnt_symbol_small      ]
 		],
 		[ // hires fonts
 			[ fnt_main,          fnt_wslui_hires,               fnt_src_hires               ], // font_main
@@ -82,7 +83,8 @@ function control_create() {
 			[ fnt_info_big,      fnt_wslui_info_big_hires,      fnt_src_info_big_hires      ], // font_info_big
 			[ fnt_info_med,      fnt_wslui_info_med_hires,      fnt_src_info_med_hires      ], // font_info_med
 			[ fnt_info_med_bold, fnt_wslui_info_med_bold_hires, fnt_src_info_med_bold_hires ], // font_info_med_bold
-			[ fnt_wslui_med,     fnt_wslui_med_hires,           fnt_src_med_hires           ]  // font_med
+			[ fnt_wslui_med,     fnt_wslui_med_hires,           fnt_src_med_hires           ], // font_med
+			[ fnt_symbol_small,  fnt_symbol_small_hires,        fnt_symbol_small_hires      ]
 		]
 	]
 	

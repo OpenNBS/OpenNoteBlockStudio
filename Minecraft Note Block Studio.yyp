@@ -17,6 +17,7 @@
     {"id":{"name":"spr_marker","path":"sprites/spr_marker/spr_marker.yy",},"order":10,},
     {"id":{"name":"spr_note","path":"sprites/spr_note/spr_note.yy",},"order":11,},
     {"id":{"name":"spr_textbox_f_hires","path":"sprites/spr_textbox_f_hires/spr_textbox_f_hires.yy",},"order":45,},
+    {"id":{"name":"fnt_symbol_small","path":"fonts/fnt_symbol_small/fnt_symbol_small.yy",},"order":0,},
     {"id":{"name":"spr_notechart","path":"sprites/spr_notechart/spr_notechart.yy",},"order":12,},
     {"id":{"name":"spr_piano","path":"sprites/spr_piano/spr_piano.yy",},"order":13,},
     {"id":{"name":"spr_schematic_exp","path":"sprites/spr_schematic_exp/spr_schematic_exp.yy",},"order":14,},
@@ -199,6 +200,7 @@
     {"id":{"name":"is_inside","path":"scripts/is_inside/is_inside.yy",},"order":2,},
     {"id":{"name":"mouse_rectangle","path":"scripts/mouse_rectangle/mouse_rectangle.yy",},"order":3,},
     {"id":{"name":"test","path":"scripts/test/test.yy",},"order":4,},
+    {"id":{"name":"fnt_symbol_small_hires","path":"fonts/fnt_symbol_small_hires/fnt_symbol_small_hires.yy",},"order":1,},
     {"id":{"name":"new","path":"scripts/new/new.yy",},"order":5,},
     {"id":{"name":"instrument_free","path":"scripts/instrument_free/instrument_free.yy",},"order":0,},
     {"id":{"name":"instrument_load","path":"scripts/instrument_load/instrument_load.yy",},"order":1,},
@@ -657,6 +659,7 @@
     {"folderPath":"folders/Fonts/fnt_wslui.yy","order":25,"resourceVersion":"1.0","name":"fnt_wslui","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Fonts/fnt_src_hires.yy","order":26,"resourceVersion":"1.0","name":"fnt_src_hires","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Fonts/fnt_wslui_hires.yy","order":27,"resourceVersion":"1.0","name":"fnt_wslui_hires","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Fonts/fnt_symbol.yy","order":28,"resourceVersion":"1.0","name":"fnt_symbol","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
