@@ -177,7 +177,7 @@ function get_hotkey(action){
 		}
 		case "preferences": {
 			if (os_type != os_macosx) return "Ctrl+P"
-			else return "cmd+P"
+			else return "cmd+,"
 			break
 		}
 		case "": {

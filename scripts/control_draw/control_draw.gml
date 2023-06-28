@@ -28,7 +28,7 @@ function control_draw() {
 	showmenu = 0
 	cursmarker = 0
 	compx = 160
-	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + condstr(os_type != os_macosx, " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode")))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -701,7 +701,7 @@ function control_draw() {
 	            if (keyboard_check_pressed(ord("F")) && !isplayer) mode_action(4)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("T"))) && !isplayer) mode_action(5)
 	            if ((editmode != m_key) && (keyboard_check_pressed(ord("G"))) && !isplayer) mode_action(6)
-	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
+	            if (keyboard_check_pressed(ord("P")) || (keyboard_check_pressed(188) && os_type = os_macosx)) window = w_preferences
 				if keyboard_check_pressed(ord("0")) {
 					window_scale = get_default_window_scale()
 					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
