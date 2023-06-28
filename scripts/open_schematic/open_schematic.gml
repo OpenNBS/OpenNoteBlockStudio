@@ -571,7 +571,7 @@ function open_schematic(argument0) {
 	        }
 	    }
 	    window = 0
-	    if (debugstr) clipboard_set_text(str)
+	    if (debugstr) if (os_type = os_windows) clipboard_set_text(str) else text_clipboard = str
 	    if (queuenoteblocks = 0) {
 	        message("None of the note blocks in the Schematic could be added. This could be to none of them being connected to any inputs (buttons or levers).", "Error")
 	        instance_destroy()

@@ -333,7 +333,7 @@ function control_create() {
 	globalvar text_focus;
 	globalvar text_select, text_exists, text_str, text_start, text_line, text_line_wrap, text_line_single, text_lines;
 	globalvar text_sline, text_spos, text_eline, text_epos, text_cline, text_cpos, text_mline, text_mpos;
-	globalvar text_click, text_marker, text_key_delay, text_lastwidth, text_laststr, text_lastfocus, text_mouseover, text_chars;
+	globalvar text_click, text_marker, text_key_delay, text_lastwidth, text_laststr, text_lastfocus, text_mouseover, text_chars, text_clipboard;
 	text_select = -1
 	text_exists[10000] = 0
 	text_click = current_time
@@ -342,6 +342,7 @@ function control_create() {
 	text_lastfocus = -1
 	text_mouseover = []
 	text_focus = -1
+	text_clipboard = ""
 
 	globalvar sb_count, sb_drag, sb_mprev, sb, sb_press, sb_sel;
 	sb_count = 0
