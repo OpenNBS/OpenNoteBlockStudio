@@ -11,7 +11,7 @@ function schematic_count(argument0, argument1, argument2) {
 
 	// Looks for specific blocks in the schematic and returns the amount of them.
 	// See this article for data values:
-	//      http://minecraft.gamepedia.com/Data_Values
+	//      http://minecraft.wiki/w/Data_Values
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 

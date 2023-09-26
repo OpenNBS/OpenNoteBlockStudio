@@ -6,7 +6,7 @@ function schematic_block_set(argument0, argument1, argument2, argument3, argumen
 
 	// Sets the block ID at x,y,z in the given schematic.
 	// See this article for data values:
-	//      http://minecraft.gamepedia.com/Data_Values
+	//      http://minecraft.wiki/w/Data_Values
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 

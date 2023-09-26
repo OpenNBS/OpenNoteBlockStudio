@@ -6,7 +6,7 @@ function schematic_save(argument0, argument1) {
 	// Saves the given schematic into a .schematic file.
 	// Will overwrite the file if it exists.
 	// Schematic file format:
-	//      http://minecraft.gamepedia.com/Schematic
+	//      http://minecraft.wiki/w/Schematic
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
