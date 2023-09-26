@@ -15,7 +15,7 @@ function schematic_replace(argument0, argument1, argument2, argument3, argument4
 
 	// Replaces all occurrences of the given block and/or data.
 	// See this article for data values:
-	//      http://minecraft.gamepedia.com/Data_Values
+	//      http://minecraft.wiki/w/Data_Values
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 

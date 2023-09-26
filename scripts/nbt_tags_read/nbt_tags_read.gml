@@ -7,7 +7,7 @@ function nbt_tags_read(argument0, argument1) {
 	// Important info is stored in the schematic instance.
 	// Used when loading schematic files, which are in the NBT (Named Binary Tag) format by Notch.
 	// Schematic file format:
-	//      http://minecraft.gamepedia.com/Schematic
+	//      http://minecraft.wiki/w/Schematic
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
