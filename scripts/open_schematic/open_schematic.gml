@@ -1,6 +1,6 @@
 function open_schematic(argument0) {
 	// open_schematic(filename)
-	// https://minecraft.wiki/w/Java_Edition_Alpha_level_format
+	// https://minecraft.wiki/w/Java_Edition_Alpha_level_format#Chunk_format
 	var fn, t;
 	fn = argument0
 	//if (confirm() < 0) return 0
