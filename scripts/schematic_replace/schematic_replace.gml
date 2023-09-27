@@ -15,7 +15,7 @@ function schematic_replace(argument0, argument1, argument2, argument3, argument4
 
 	// Replaces all occurrences of the given block and/or data.
 	// See this article for data values:
-	//      http://minecraft.wiki/w/Data_Values
+	//      https://minecraft.wiki/w/Java_Edition_data_values/Pre-flattening
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 

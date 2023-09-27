@@ -7,7 +7,7 @@ function schematic_cell_set(argument0, argument1, argument2, argument3, argument
 
 	// Sets the block ID and data at x,y,z in the given schematic.
 	// See this article for data values:
-	//      http://minecraft.wiki/w/Data_Values
+	//      https://minecraft.wiki/w/Java_Edition_data_values/Pre-flattening
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
