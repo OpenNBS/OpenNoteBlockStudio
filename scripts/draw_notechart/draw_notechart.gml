@@ -1,11 +1,11 @@
 function draw_notechart(argument0, argument1, argument2, argument3) {
-	// draw_notechart(x, y, key, sharp)
-	var x1, xx, yy, key, sharp, a;
+	// draw_notechart(x, y, key, accidental)
+	var x1, xx, yy, key, accidental, a;
 	x1 = argument0
 	xx = median(0, x1 - 32, rw - 320)
 	yy = argument1
 	key = argument2
-	sharp = argument3
+	accidental = argument3
 	draw_sprite(spr_notechart, 0 + 3 * theme, xx, yy - 320 + 1)
 	draw_sprite(spr_notechart, (1 + (x1 > rw - 250)) + 3 * theme, x1 - 16 * (x1 > rw - 250), yy)
 
@@ -21,7 +21,8 @@ function draw_notechart(argument0, argument1, argument2, argument3) {
 	draw_line(xx + 32, yy - 250 + 16 * 6, xx + 32, yy - 250 + 16 * 10)
 	draw_sprite(spr_Gclef, 0, xx + 58, yy - 250 + 16 * 3)
 	draw_sprite(spr_Fclef, 0, xx + 48, yy - 250 + 16 * 7)
-	draw_sprite(spr_note, sharp + 2 * (key > 22), xx + 152, yy - 250 - 8 * (key - 33))
+	if (keynames_flat) draw_sprite(spr_note_flat, accidental + 2 * (key > 22), xx + 152, yy - 250 - 8 * (key - 33))
+	else draw_sprite(spr_note_sharp, accidental + 2 * (key > 22), xx + 152, yy - 250 - 8 * (key - 33))
 	if (key > 22 && key < 25) {
 	    draw_set_alpha(0.25)
 	    draw_line(xx + 122, yy - 250 + 16 * 5, xx + 180, yy - 250 + 16 * 5)

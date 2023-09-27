@@ -24,7 +24,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        k2 = show_keyboard && piano_key[c2] > 0
 	        if (window = 0 && mouse_rectangle(xx + 39 * a, yy, 39, 128)) {
 	            if (!mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71) && (!mouse_rectangle(xx + 39 * a + 27, yy - 7, 25, 71) || (a = k - 1 || c = 1 || c = 4))) {
-	                if (show_notechart && c2 > 6 && c2 < 69 && playing = 0 && !isplayer) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0)
+	                if (show_notechart && c2 > 6 && c2 < 69 && playing = 0 && !isplayer) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0) //handle all white keys except C and F
 	                if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c2
 	                // Check mouse clicks
 	                t = key_click[c2]
@@ -42,8 +42,9 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	            key_click[c2] = 0
 	        }
 	        if (window = 0 && mouse_rectangle(xx + 39 * a - 12, yy - 7, 25, 71)) {
-	            if (show_notechart && c1 > 6 && c1 < 70 && playing = 0 && !isplayer) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1)
-	            if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
+	            if (show_notechart && !keynames_flat && c1 > 6 && c1 < 70 && playing = 0 && !isplayer) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a - 1, 1) //handles all sharps
+				if (show_notechart && keynames_flat && c1 > 5 && c1 < 69 && playing = 0 && !isplayer) draw_notechart(xx + 39 * a - 12 + 12, yy - 32, startkey + a, 1) //handles all flats
+				if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
 	            t = key_click[c1]
 	            key_click[c1] = mouse_check_button(mb_left)
 	            if (t = 0 && key_click[c1]) {
@@ -86,7 +87,7 @@ function draw_piano(argument0, argument1, argument2, argument3) {
 	        k1 = (show_keyboard && piano_key[c1] > 0)
 	        if (window = 0 && mouse_rectangle(xx + 39 * a, yy, 39, 128)) {
 	            if (!mouse_rectangle(xx + 39 * a + 27, yy - 7, 25, 71) || (a = k - 1 || c = 1 || c = 4)) {
-	                if (show_notechart && c1 > 6 && c1 < 69 && playing = 0) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0)
+	                if (show_notechart && c1 > 6 && c1 < 69 && playing = 0) draw_notechart(xx + 39 * a + 18, yy - 32, startkey + a, 0) //handles C and F
 	                if (mouse_check_button_pressed(mb_right) && show_keyboard) key_edit = c1
 	                t = key_click[c1]
 	                key_click[c1] = mouse_check_button(mb_left)
