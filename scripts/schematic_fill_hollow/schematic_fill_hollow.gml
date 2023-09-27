@@ -9,7 +9,7 @@ function schematic_fill_hollow(argument0, argument1, argument2, argument3, argum
 
 	// Creates a hollow cube with the given thickness, using the given block and data.
 	// See this article for data values:
-	//      http://minecraft.wiki/w/Data_Values
+	//      https://minecraft.wiki/w/Java_Edition_data_values/Pre-flattening
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
