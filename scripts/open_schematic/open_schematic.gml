@@ -1,6 +1,6 @@
 function open_schematic(argument0) {
 	// open_schematic(filename)
-	// http://www.minecraftwiki.net/wiki/Alpha_Level_Format/Chunk_File_Format
+	// https://minecraft.wiki/w/Java_Edition_Alpha_level_format
 	var fn, t;
 	fn = argument0
 	//if (confirm() < 0) return 0
@@ -159,7 +159,7 @@ function open_schematic(argument0) {
 	        sch_type[t div d, t mod d] = t_NOTE
 	    }
 	    // Place blocks
-	    // http://www.minecraftwiki.net/wiki/Data_values#Data
+	    // https://minecraft.wiki/w/Java_Edition_data_values/Pre-flattening
 	    var queuelength, queuet, queuex, queuey, queuez, queuedel, queueinput, queuenoteblocks, debugstr;
 	    var i, a, b, c, cx, cy, cz, ct, cd, ci, tx, ty, tz, type, block, data, dir, str, stop, start;
 	    debugstr = 1
