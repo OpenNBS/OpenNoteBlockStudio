@@ -5,7 +5,7 @@ function schematic_block_get(argument0, argument1, argument2, argument3) {
 
 	// Returns the block ID at x,y,z in the given schematic.
 	// See this article for data values:
-	//      http://minecraft.gamepedia.com/Data_Values
+	//      https://minecraft.wiki/w/Java_Edition_data_values/Pre-flattening
 
 	// By David "Davve" Norgren for GMschematic - www.stuffbydavid.com
 
