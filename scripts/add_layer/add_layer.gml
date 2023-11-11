@@ -46,7 +46,7 @@ function add_layer() {
 	selection_place(true)
 
 	// Set properties on last layer (will be shifted up)
-	text_str[songs[song].endb2 + 100] = ""
+	text_str[songs[song].endb2 + 400] = ""
 	songs[song].layername[songs[song].endb2] = ""
 	songs[song].layerlock[songs[song].endb2] = 0
 	songs[song].layervol[songs[song].endb2] = 100
@@ -67,7 +67,7 @@ function add_layer() {
 		selection_load(xx, num, blocks, true)
 		selection_place(true)
 	}
-	text_str[num + 100] = name
+	text_str[num + 400] = name
 	songs[song].layername[num] = name
 	songs[song].layerlock[num] = lock
 	songs[song].layervol[num] = vol

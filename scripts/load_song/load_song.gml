@@ -152,6 +152,11 @@ function load_song() {
 	    // Layer names
 	    for (b = 0; b < hei; b += 1) {
 	        newsong.layername[b] = buffer_read_string_int()
+			text_exists[400 + b] = 1
+			text_exists_song[400 + b] = 1
+			text_str[400 + b] = newsong.layername[b]
+			text_str_song[400 + b] = newsong.layername[b]
+			text_laststr[400 + b] = "-"
 			if newsong.song_nbs_version >= 4 && string_count("format4beta", filename_name(fn)) != 1 {
 				newsong.layerlock[b] = buffer_read_byte()
 			}
