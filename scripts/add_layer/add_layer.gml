@@ -46,7 +46,7 @@ function add_layer() {
 	selection_place(true)
 
 	// Set properties on last layer (will be shifted up)
-	text_str[endb2 + 100] = ""
+	text_str[endb2 + 400] = ""
 	layername[endb2] = ""
 	layerlock[endb2] = 0
 	layervol[endb2] = 100
@@ -67,7 +67,7 @@ function add_layer() {
 		selection_load(xx, num, blocks, true)
 		selection_place(true)
 	}
-	text_str[num + 100] = name
+	text_str[num + 400] = name
 	layername[num] = name
 	layerlock[num] = lock
 	layervol[num] = vol
