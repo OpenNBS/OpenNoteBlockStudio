@@ -552,10 +552,10 @@ function control_create() {
 		songs[song].filename = parameter_string(1)
 		if (songs[song].filename != "" && (filename_ext(songs[song].filename) = ".mid" || filename_ext(songs[song].filename) = ".midi" || filename_ext(songs[song].filename) = ".schematic" || filename_ext(songs[song].filename) = ".nbs")) {
 			if (!port_taken) {
-				load_song(songs[song].filename, 0, 1)
+				load_song(songs[song].filename, 0, 1, 1)
 			}
 		}
-		else filename = ""
+		else songs[song].filename = ""
 	}
 
 	log("Startup OK")

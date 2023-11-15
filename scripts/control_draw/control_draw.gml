@@ -1569,7 +1569,7 @@ function control_draw() {
 		                              inactive(current_song.selected = 0) + "Deselect all|"+
 		                              inactive(current_song.selected = 0 && current_song.totalblocks = 0) + get_hotkey("invert_selection") + "$Invert selection|-|"+
 		                              inactive(current_song.instrument.num_blocks = 0) + "Select all " + clean(current_song.instrument.name) + "|"+
-		                              inactive(current_song.instrument.num_blocks = totalblocks) + "Select all but " + clean(current_song.instrument.name) + "|-|"+
+		                              inactive(current_song.instrument.num_blocks = current_song.totalblocks) + "Select all but " + clean(current_song.instrument.name) + "|-|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+
@@ -1657,7 +1657,7 @@ function control_draw() {
 		                              inactive(current_song.selected = 0) + "全不选|"+
 		                              inactive(current_song.selected = 0 && current_song.totalblocks = 0) + get_hotkey("invert_selection") + "$选择反转|-|"+
 		                              inactive(current_song.instrument.num_blocks = 0) + "选择所有 " + clean(current_song.instrument.name) + "|"+
-		                              inactive(current_song.instrument.num_blocks = totalblocks) + "选择所有除了 " + clean(current_song.instrument.name) + "|-|"+
+		                              inactive(current_song.instrument.num_blocks = current_song.totalblocks) + "选择所有除了 " + clean(current_song.instrument.name) + "|-|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_1") + "$" + get_mode_actions(1) + "|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_2") + "$" + get_mode_actions(2) + "|"+
 		                                inactive(current_song.selected = 0) + get_hotkey("action_3") + "$" + get_mode_actions(3) + "|"+

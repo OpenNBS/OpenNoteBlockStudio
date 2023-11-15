@@ -2,8 +2,9 @@ function draw_text_dynamic(x, y, string, force = false){
 	// draw_text_dynamic()
 
 	// Skip drawing dynamic text when using English
-	if (!force && obj_controller.language != 1) {
-		if (!obj_controller.hires || obj_controller.theme != 3) draw_text(x, y, string);
+	var o = obj_controller
+	if (!force && o.language != 1) {
+		if (!o.hires || o.theme != 3) draw_text(x, y, string);
 		else draw_text_transformed(x, y, string, 0.25, 0.25, 0);
 		return;
 	}
@@ -33,7 +34,7 @@ function draw_text_dynamic(x, y, string, force = false){
 			is_not_ascii = is_nonascii(char_code)
 			font_changed = is_not_ascii != is_not_ascii_prev
 			if (font_changed) {
-				draw_theme_font(obj_controller.currentfont, is_not_ascii, true)
+				draw_theme_font(o.currentfont, is_not_ascii, true)
 			}
 			linewidth[lines] += string_width(char)
 			if (char = "\n") {lines += 1 array_push(linewidth, 0)}
@@ -52,11 +53,11 @@ function draw_text_dynamic(x, y, string, force = false){
 		is_not_ascii = is_nonascii(char_code)
 		font_changed = is_not_ascii != is_not_ascii_prev
 		if (font_changed) {
-			draw_theme_font(obj_controller.currentfont, is_not_ascii)
+			draw_theme_font(o.currentfont, is_not_ascii)
 		}
 		y_offset = lines * 16
 		
-		if (!obj_controller.hires || obj_controller.theme != 3) {
+		if (!o.hires || o.theme != 3) {
 			if (halign = fa_left) draw_text (x + width, y - 1 * !(!is_not_ascii) + y_offset, char)
 			else if (halign = fa_center) draw_text (x - floor(linewidth[lines] / 2) + width, y - 1 * !(!is_not_ascii) + y_offset, char)
 			else if (halign = fa_right) draw_text (x - linewidth[lines] + width, y - 1 * !(!is_not_ascii) + y_offset, char)
@@ -65,12 +66,12 @@ function draw_text_dynamic(x, y, string, force = false){
 			else if (halign = fa_center) draw_text_transformed (x - floor(linewidth[lines] / 2) + width, y - 1 * !(!is_not_ascii) + y_offset, char, 0.5 - 0.25 * (is_not_ascii != 1), 0.5 - 0.25 * (is_not_ascii != 1), 0)
 			else if (halign = fa_right) draw_text_transformed (x - linewidth[lines] + width, y - 1 * !(!is_not_ascii) + y_offset, char, 0.5 - 0.25 * (is_not_ascii != 1), 0.5 - 0.25 * (is_not_ascii != 1), 0)
 		}
-		width += string_width(char) / (1 + (obj_controller.hires || obj_controller.theme != 3) * (obj_controller.theme = 3) + 2 * ((obj_controller.hires || obj_controller.theme != 3) && is_not_ascii != 1) * (obj_controller.theme = 3))
+		width += string_width(char) / (1 + (o.hires || o.theme != 3) * (o.theme = 3) + 2 * ((o.hires || o.theme != 3) && is_not_ascii != 1) * (o.theme = 3))
 		if (char = "\n") {lines += 1 width = 0}
 		is_not_ascii_prev = is_not_ascii
 	}
 	draw_set_halign(halign)
-	draw_theme_font(obj_controller.currentfont, 0)
+	draw_theme_font(o.currentfont, 0)
 }
 
 function is_nonascii(char_code){

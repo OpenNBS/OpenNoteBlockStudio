@@ -1,6 +1,7 @@
 function draw_theme_font() {
 	var font, type, lang, index, is_hires, force_lores, symbols;
-	var fluent = (obj_controller.theme == 3);
+	var fluent = 0;
+	if (obj_controller.theme == 3) fluent = 1
 	lang = 0
 	type = argument[0]
 	force_lores = 0
