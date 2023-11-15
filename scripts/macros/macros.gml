@@ -22,11 +22,11 @@ function macros() {
 #macro bundled_songs_directory   current_directory + "songs" + condstr(os_type = os_windows, "\\", "/")
 #macro bundled_pattern_directory current_directory + "patterns" + condstr(os_type = os_windows, "\\", "/")
 
-#macro data_directory    file_directory + "data" + condstr(os_type = os_windows, "\\", "/")
-#macro sounds_directory  file_directory + "data/sounds" + condstr(os_type = os_windows, "\\", "/")
+#macro data_directory    condstr(os_type = os_windows, working_directory, file_directory) + "data" + condstr(os_type = os_windows, "\\", "/")
+#macro sounds_directory  condstr(os_type = os_windows, working_directory, file_directory) + "data/sounds" + condstr(os_type = os_windows, "\\", "/")
 #macro resource_directory	sounds_directory + "resourcepacks" + condstr(os_type = os_windows, "\\", "/")
-#macro songs_directory   file_directory + "songs" + condstr(os_type = os_windows, "\\", "/")
-#macro pattern_directory file_directory + "patterns" + condstr(os_type = os_windows, "\\", "/")
+#macro songs_directory   condstr(os_type = os_windows, working_directory, file_directory) + "songs" + condstr(os_type = os_windows, "\\", "/")
+#macro pattern_directory condstr(os_type = os_windows, working_directory, file_directory) + "patterns" + condstr(os_type = os_windows, "\\", "/")
 #macro log_file          file_directory + "log.txt"
 #macro temp_file         file_directory + "tmp.file"
 #macro update_file       file_directory + "minecraft note block studio installer.exe"
