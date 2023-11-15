@@ -6,7 +6,7 @@
     "path": "folders/Scripts/File.yy",
   },
   "resourceVersion": "1.0",
-  "name": "backup_clear",
+  "name": "save_unsaved",
   "tags": [],
   "resourceType": "GMScript",
 }

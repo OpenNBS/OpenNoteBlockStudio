@@ -11,6 +11,11 @@ function backup_clear() {
 		if (file = "") break
 		files_delete_lib(backup_file + file)
 	}
+	while(1) {
+		file = file_find_first(backup_file + "*_unsaved.nbs", 0)
+		if (file = "") break
+		files_delete_lib(backup_file + file)
+	}
 
 
 }
