@@ -180,6 +180,11 @@ function get_hotkey(action){
 			else return "⌘ ,"
 			break
 		}
+		case "close_song": {
+			if (os_type != os_macosx) return "Ctrl+W"
+			else return "⌘ W"
+			break
+		}
 		case "": {
 			if (os_type != os_macosx) return ""
 			else return ""

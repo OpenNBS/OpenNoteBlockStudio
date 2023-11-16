@@ -2391,14 +2391,14 @@ function control_draw() {
 			}
 			if (taba = 1 && mouse_check_button_released(mb_right)) {
 				menutab = tab
-				if (language != 1) show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + "Ctrl+N$New song|-|" + icon(icons.DELETE) + "Ctrl+W$Close song|" + inactive(array_length(songs) <= 1) + "Close other songs|" + inactive(tab = array_length(songs) - 1) + "Close songs to the right")
-				else show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + "Ctrl+N$新文件|-|" + icon(icons.DELETE) + "Ctrl+W$关闭歌曲|" + inactive(array_length(songs) <= 1) + "关闭其他歌曲|" + inactive(tab = array_length(songs) - 1) + "关闭右侧歌曲")
+				if (language != 1) show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + get_hotkey("new_song") + "$New song|-|" + icon(icons.DELETE) + get_hotkey("close_song") + "$Close song|" + inactive(array_length(songs) <= 1) + "Close other songs|" + inactive(tab = array_length(songs) - 1) + "Close songs to the right")
+				else show_menu_ext("songtab", mouse_x, mouse_y, icon(icons.NEW) + get_hotkey("new_song") + "$新文件|-|" + icon(icons.DELETE) + get_hotkey("close_song") + "$关闭歌曲|" + inactive(array_length(songs) <= 1) + "关闭其他歌曲|" + inactive(tab = array_length(songs) - 1) + "关闭右侧歌曲")
 			}
 			draw_theme_color()
 			draw_theme_font(font_main)
 			tab_str = songs[tab].song_title
 			if (string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 20 - 15 * (theme = 3)) {
-				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width("...") - string_width("*") * (songs[tab].changed && songs[tab].filename != "" && songs[tab].filename != "-player")) {
+				while (tab_str != "" && string_width_dynamic(tab_str) > (tabwidth - 1) - 20 - 15 * (theme = 3) - 20 - string_width_dynamic("...") - string_width_dynamic("*") * (songs[tab].changed && songs[tab].filename != "" && songs[tab].filename != "-player")) {
 					tab_str = string_delete(tab_str, string_length(tab_str), 1)
 				}
 				tab_str += "..."
