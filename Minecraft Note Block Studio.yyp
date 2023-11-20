@@ -164,6 +164,7 @@
     {"id":{"name":"buffer_write_string_utf8_int","path":"scripts/buffer_write_string_utf8_int/buffer_write_string_utf8_int.yy",},"order":23,},
     {"id":{"name":"buffer_write_string_short_be","path":"scripts/buffer_write_string_short_be/buffer_write_string_short_be.yy",},"order":24,},
     {"id":{"name":"obj_resource","path":"objects/obj_resource/obj_resource.yy",},"order":10,},
+    {"id":{"name":"is_mobile","path":"scripts/is_mobile/is_mobile.yy",},"order":17,},
     {"id":{"name":"wallpaper_init","path":"scripts/wallpaper_init/wallpaper_init.yy",},"order":39,},
     {"id":{"name":"draw_dragbar","path":"scripts/draw_dragbar/draw_dragbar.yy",},"order":40,},
     {"id":{"name":"anim_window_open","path":"scripts/anim_window_open/anim_window_open.yy",},"order":28,},
@@ -745,6 +746,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"The Ground's Colour Is Yellow.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/ResourcePacks","resourceVersion":"1.0","name":"Please put your note block sound resource packs here.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"156-NotoSansSC-Regular.otf","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",

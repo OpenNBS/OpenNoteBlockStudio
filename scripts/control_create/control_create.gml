@@ -47,6 +47,7 @@ function control_create() {
 	window_set_min_width(800)
 	window_set_min_height(500)
 	window_scale = get_default_window_scale()
+	if (window_scale > 2 && is_mobile()) window_scale = 2
 	cam_window = camera_create()
 	view_set_camera(0, cam_window)
 	window_background = c_white
@@ -276,6 +277,7 @@ function control_create() {
 	    recent_song[a] = ""
 	    recent_song_time[a] = 0
 	}
+	if (os_type = os_ios) recent_song[0] = bundled_songs_directory + "the_ground's_colour_is_yellow.nbs"
 	file_dnd_set_hwnd(hwnd_main)
 	file_dnd_set_enabled(true)
 	dndfile = ""
