@@ -305,6 +305,7 @@
     {"id":{"name":"draw_loading","path":"scripts/draw_loading/draw_loading.yy",},"order":17,},
     {"id":{"name":"draw_downloadprogress","path":"scripts/draw_downloadprogress/draw_downloadprogress.yy",},"order":18,},
     {"id":{"name":"draw_radiobox","path":"scripts/draw_radiobox/draw_radiobox.yy",},"order":19,},
+    {"id":{"name":"blur_scripts","path":"scripts/blur_scripts/blur_scripts.yy",},"order":44,},
     {"id":{"name":"fnt_src_info_med","path":"fonts/fnt_src_info_med/fnt_src_info_med.yy",},"order":3,},
     {"id":{"name":"draw_separator","path":"scripts/draw_separator/draw_separator.yy",},"order":20,},
     {"id":{"name":"pygml","path":"extensions/pygml/pygml.yy",},"order":4,},
