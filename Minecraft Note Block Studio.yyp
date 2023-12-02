@@ -747,8 +747,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"The Ground's Colour Is Yellow.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/ResourcePacks","resourceVersion":"1.0","name":"Please put your note block sound resource packs here.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"156-NotoSansSC-Regular.otf","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",
