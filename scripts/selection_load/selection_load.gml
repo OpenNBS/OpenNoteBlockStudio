@@ -22,6 +22,7 @@ function selection_load(argument0, argument1, argument2, argument3) {
 	        songs[song].selection_exists[ca, cb] = 1
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
+			if (val >= ds_list_size(songs[song].instrument_list)) val = 0
 	        songs[song].selection_ins[ca, cb] = songs[song].instrument_list[| val]
 	        val = real(string_copy(str, 1, string_pos("|", str) - 1))
 	        str = string_delete(str, 1, string_pos("|", str))
