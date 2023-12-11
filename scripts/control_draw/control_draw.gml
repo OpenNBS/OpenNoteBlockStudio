@@ -504,6 +504,7 @@ function control_draw() {
 		                    if (current_song.song_ins[xx, b].loaded) play_sound(current_song.song_ins[xx, b], current_song.song_key[xx, b], c , d, e)
 							if (current_song.instrument_list[| ds_list_find_index(current_song.instrument_list, current_song.song_ins[xx, b])].name = "Tempo Changer") current_song.tempo = floor(abs(e)) / 15
 							if (current_song.instrument_list[| ds_list_find_index(current_song.instrument_list, current_song.song_ins[xx, b])].name = "Toggle Rainbow") {rainbowtoggle = !rainbowtoggle draw_accent_init()}
+							if (current_song.instrument_list[| ds_list_find_index(current_song.instrument_list, current_song.song_ins[xx, b])].name = "Sound Stopper") {remove_emitters_all()}
 		                    if (current_song.song_ins[xx, b].press || isplayer) key_played[current_song.song_key[xx, b]] = current_time
 		                    current_song.song_played[xx, b] = current_time
 		                }
