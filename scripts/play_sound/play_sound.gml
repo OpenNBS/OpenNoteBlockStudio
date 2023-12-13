@@ -5,16 +5,24 @@
 /// @param  volume
 /// @param  pan
 /// @param  fine pitch
-function play_sound(argument0, argument1, argument2, argument3, argument4) {
+function play_sound() {
+	
+	var argument_0 = argument[0]
+	var argument_1 = argument[1]
+	var argument_2 = argument[2]
+	var argument_3 = argument[3]
+	var argument_4 = argument[4]
+	var argument_5 = 0
+	if (argument_count > 5) argument_5 = argument[5]
 	
 	if (os_type != os_macosx) {
 
 	var ins, key, vol, pan, newemitter, emitter, pit, keyshift
-	ins = argument0
-	key = argument1
-	vol = argument2
-	pan = argument3
-	pit = argument4
+	ins = argument_0
+	key = argument_1
+	vol = argument_2
+	pan = argument_3
+	pit = argument_4
 
 	if (!ins.loaded)
 	    return 0
@@ -33,16 +41,17 @@ function play_sound(argument0, argument1, argument2, argument3, argument4) {
 	ds_list_add(newemitter,emitter) //store emitter id
 	var length = audio_sound_length(ins.sound) / (1 + 3 * (os_type = os_windows)) * (1/audio_emitter_get_pitch(emitter))
 	ds_list_add(newemitter, (get_timer() + length * 1000000)) //store moment at which the emitter should be removed
+	ds_list_add(newemitter, argument_5)
 	ds_list_add(emitters_to_remove, newemitter)
 	
 	} else {
 	
 	var ins, key, vol, pan, newemitter, emitter, pit, keyshift
-	ins = argument0
-	key = argument1
-	vol = argument2
-	pan = argument3
-	pit = argument4
+	ins = argument_0
+	key = argument_1
+	vol = argument_2
+	pan = argument_3
+	pit = argument_4
 
 	if (!ins.loaded)
 	    return 0
@@ -63,6 +72,7 @@ function play_sound(argument0, argument1, argument2, argument3, argument4) {
 	ds_list_add(newemitter,soundid) //store emitter id
 	var length = audio_sound_length(ins.sound) / (1 + 3 * (os_type = os_windows)) * (1/emitter_pitch)
 	ds_list_add(newemitter, (get_timer() + length * 1000000)) //store moment at which the emitter should be removed
+	ds_list_add(newemitter, argument_5)
 	ds_list_add(emitters_to_remove, newemitter)
 	
 	}
