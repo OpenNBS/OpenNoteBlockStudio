@@ -1,7 +1,7 @@
 function check_args(arg_type = "", do_return_value = false){
 	var p_num = parameter_count()
 	if (arg_type != "") {
-		for (var i = 0; i < p_num; i += 1) {
+		for (var i = 1; i < p_num; i += 1) {
 			if (parameter_string(i) = arg_type) {
 				if (!do_return_value) return 1
 				else if (i = p_num - 1) return -1
@@ -10,7 +10,7 @@ function check_args(arg_type = "", do_return_value = false){
 			}
 		}
 	} else {
-		for (var i = 0; i < p_num; i += 1) {
+		for (var i = 1; i < p_num; i += 1) {
 			if (string_char_at(parameter_string(i), 0) != "-" && (i = 0 || check_boolean_arg(parameter_string(i - 1)))) return parameter_string(i)
 		}
 	}
