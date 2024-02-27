@@ -2,7 +2,7 @@ function instrument_load() {
 	// instrument_load()
 
 	var fn = bundled_sounds_directory + filename;
-	if (os_type = os_windows) fn = string_replace_all(fn, "/", "\\")
+	if (os_type = os_windows) fn = string_replace_all(sounds_directory + filename, "/", "\\")
 
 	log("Load instrument", fn)
 
