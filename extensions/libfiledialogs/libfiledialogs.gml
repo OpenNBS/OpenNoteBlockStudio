@@ -4,6 +4,7 @@
 		EnvironmentSetVariable("IMGUI_FONT_PATH", working_directory + string_lower("Fonts"));
 		_IfdLoadFonts();
 	} else {
+		EnvironmentSetVariable("IMGUI_FONT_PATH", program_directory + "assets/" + string_lower("Fonts"));
 		pid = ProcessExecute("uname -m");
 		res = ExecutedProcessReadFromStandardOutput(pid);
 		FreeExecutedProcessStandardOutput(pid);

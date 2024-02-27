@@ -43,14 +43,6 @@ if (os_type == os_linux) {
   if (evaluate_command("uname", "-m") == "x86_64\n") external_call(external_define(current_directory + "libzoom.so", "window_zoom", dll_cdecl, ty_real, 1, ty_string), window_handle());
   else if (evaluate_command("uname", "-m") == "aarch64\n") external_call(external_define(current_directory + "libzoom_arm64.so", "window_zoom", dll_cdecl, ty_real, 1, ty_string), window_handle());
   else if (evaluate_command("uname", "-m") == "armv7l\n") external_call(external_define(current_directory + "libzoom_arm.so", "window_zoom", dll_cdecl, ty_real, 1, ty_string), window_handle());
-  if (evaluate_command("uname", "-m") == "aarch64\n" || evaluate_command("uname", "-m") == "armv7l\n") {
-    // The Raspberry Pi and similar ARM devices can't handle combining tons of font files like we're doing
-	// on x86 platforms, use English-only; it's better than having no fonts displaying correctly at all...
-    execute_program("cp", "-fR \"" + current_directory + "/fonts\" \"" + file_directory + "/\"", true);
-	directory_create(file_directory + "/fonts/arm/");
-    execute_program("mv", "-f \"" + file_directory + "/fonts/000-notosans-regular.ttf\" \"" + file_directory + "/fonts/arm/000-notosans-regular.ttf\"", true);
-    EnvironmentSetVariable("IMGUI_FONT_PATH", file_directory + "/fonts/arm/");
-  }
   // Ignore this pls:
   _DialogInitialize();
   // Compensate for weird bug I don't know how to fix, with lowercase being forced calling file_copy(); it makes no sense:
