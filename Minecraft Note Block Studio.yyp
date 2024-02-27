@@ -174,6 +174,7 @@
     {"id":{"name":"add_to_recent","path":"scripts/add_to_recent/add_to_recent.yy",},"order":1,},
     {"id":{"name":"easings","path":"scripts/easings/easings.yy",},"order":9,},
     {"id":{"name":"confirm","path":"scripts/confirm/confirm.yy",},"order":2,},
+    {"id":{"name":"check_args","path":"scripts/check_args/check_args.yy",},"order":18,},
     {"id":{"name":"load_settings","path":"scripts/load_settings/load_settings.yy",},"order":3,},
     {"id":{"name":"load_song","path":"scripts/load_song/load_song.yy",},"order":4,},
     {"id":{"name":"new_song","path":"scripts/new_song/new_song.yy",},"order":5,},
@@ -1638,6 +1639,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python/Lib/site-packages/numpy","resourceVersion":"1.0","name":"__config__.pyc","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python/Lib/site-packages/numpy","resourceVersion":"1.0","name":"__init__.pxd","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Python/Lib","resourceVersion":"1.0","name":"site-packages.zip","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":".gitignore","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",

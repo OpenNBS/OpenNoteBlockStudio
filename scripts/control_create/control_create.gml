@@ -13,10 +13,9 @@ function control_create() {
 	// Window
 	#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 	p_num = parameter_count()
-	isplayer = 0
-	for (var i = 0; i < p_num; i += 1) {
-		if (parameter_string(i) = "-player") isplayer = 1
-	}
+	isplayer = (check_args("--player") || check_args("-p"))
+	filenamearg = check_args("--song", 1)
+	if (filenamearg = 0 || filenamearg = -1) filenamearg = check_args()
 	//if (RUN_FROM_IDE != 1) isplayer = 1
 	destroy_self = 0
 	port_taken = 0
@@ -25,12 +24,12 @@ function control_create() {
 	client_socket = -1
 	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	if (parameter_count() > 0) {
-		if (parameter_string(1) != "" && (filename_ext(parameter_string(1)) = ".mid" || filename_ext(parameter_string(1)) = ".midi" || filename_ext(parameter_string(1)) = ".schematic" || filename_ext(parameter_string(1)) = ".nbs")) {
+		if (filenamearg != "" && (filename_ext(filenamearg) = ".mid" || filename_ext(filenamearg) = ".midi" || filename_ext(filenamearg) = ".schematic" || filename_ext(filenamearg) = ".nbs")) {
 			if (port_taken) {
 				network_connect(client_socket, "127.0.0.1", 30010)
 				var temp_buffer = buffer_create(0, buffer_grow, 1)
 				buffer_write(temp_buffer, buffer_s8, 10)
-				buffer_write(temp_buffer, buffer_string, parameter_string(1))
+				buffer_write(temp_buffer, buffer_string, filenamearg)
 				network_send_packet(client_socket, temp_buffer, buffer_get_size(temp_buffer))
 				buffer_delete(temp_buffer)
 				destroy_self = 1
@@ -176,7 +175,7 @@ function control_create() {
 	rainbow = 0
 	rainbowtoggle = 0
 	pingtime = current_time
-	debug_overlay = 0
+	debug_overlay = check_args("--debug")
 	debug_option = 0
 	os_info = os_get_info()
 	is_yyc = code_is_compiled()
@@ -495,7 +494,7 @@ function control_create() {
 	save_version = nbs_version
 
 	// Settings
-	load_settings()
+	if (!check_args("--prefreset")) load_settings()
 	switch(language) {
 		default:
 			lang_en_us()
@@ -562,7 +561,7 @@ function control_create() {
 
 	// Open song
 	if (parameter_count() > 0) {
-		songs[song].filename = parameter_string(1)
+		songs[song].filename = filenamearg
 		if (songs[song].filename != "" && (filename_ext(songs[song].filename) = ".mid" || filename_ext(songs[song].filename) = ".midi" || filename_ext(songs[song].filename) = ".schematic" || filename_ext(songs[song].filename) = ".nbs")) {
 			if (!port_taken) {
 				load_song(songs[song].filename, 0, 1, 1)
