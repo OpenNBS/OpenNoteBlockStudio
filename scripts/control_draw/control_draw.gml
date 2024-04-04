@@ -1370,6 +1370,7 @@ function control_draw() {
 		            layerlock[startb + b] = 2
 		            solostr += "|" + string(startb + b) + "|"
 		        }
+				changed = 1
 		    }
 			// Select all
 		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Select all note blocks in this layer\n(Hold Ctrl to select multiple layers)", "选择本层所有方块\n（按住Ctrl选择多层）"), 0, 0)) {
