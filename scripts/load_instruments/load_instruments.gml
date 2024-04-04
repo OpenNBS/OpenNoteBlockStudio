@@ -6,7 +6,7 @@ function load_instruments(argument0) {
 	fn = argument0
 	if (fn = "") {
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(GetOpenFileName("Note Block Songs (*.nbs)|*.nbs", "", songfolder, "Load instruments from song"))
+	    fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs", "", songfolder, "Load instruments from song"))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	buffer = buffer_import(fn)
