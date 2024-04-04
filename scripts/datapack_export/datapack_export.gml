@@ -189,7 +189,7 @@ function datapack_export() {
 		instance_destroy()
 	}
 
-	if (language != 1) message("Data pack saved!" + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "If you wish to uninstall it from" + br + "your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the " + br + "'datapacks' folder.","Data Pack Export")
+	if (language != 1) message("Data pack saved!" + br + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + br + "To play the song using a command block or function, use:" + br + br + "/execute as @p at @s run function " + functionpath + "play" + br + br + "(Replace @p with the player(s) you want to play the song to.)" + br + br + br + "If you wish to uninstall it from your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the 'datapacks' folder.","Data Pack Export")
 	else message("数据包已保存！" + br + br + "如想在游戏内播放，使用命令：" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "如果你想从你的世界中卸载它，" + br + "使用命令：" + br + br + "/function " + functionpath + "uninstall" + br + br + "然后从“datapacks”文件夹" + br + "取出就行了。","导出数据包")
 	window = w_datapack_export
 
