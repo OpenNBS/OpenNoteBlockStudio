@@ -339,16 +339,18 @@ function control_draw() {
 	        }
 	    }
 	}
-	if (!isplayer) {
 	if (blackout) {
 		draw_set_color(c_black)
-		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+		if (!isplayer) {
+			draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
+		} else {
+			draw_clear(c_black)
+		}
 	}
-	if (theme = 3 && !blackout) {
+	if (!isplayer && theme = 3 && !blackout) {
 		draw_set_color(16382457)
 		if (fdark) draw_set_color(2565927)
 		draw_rectangle(x1 + 2, y1 + 34, x1 + 2 + 32 * totalcols, y1 + 34 + 32 * totalrows, false)
-	}
 	}
 	note_offset = floor(((marker_pos - floor(marker_pos + 0.5 * !isplayer)) * 32) + 0.5) * ((playing && marker_follow && marker_pagebypage = 2 && (marker_pos - floor(totalcols / 2 + 0.5) < enda + 1 && marker_pos - floor(totalcols / 2 + 0.5) > 0)) || isplayer)
 	if (!isplayer) {
@@ -397,6 +399,7 @@ function control_draw() {
 	    draw_theme_color()
 	}
 	} else if (dropmode) {
+	// Drop mode notes
 	for (a = 0; a < totalcols; a += 1) {
 	    for (b = 0; b <= endb; b += 1) {
 	        if (floor(starta) + a <= enda) {
