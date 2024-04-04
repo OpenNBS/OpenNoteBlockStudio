@@ -2214,8 +2214,8 @@ function control_draw() {
 			// Input
 			if (mouse_check_button_released(mb_left)) {
 		        window = w_settempo
-				text_exists[100] = 0
-				text_focus = 100
+				text_exists[64] = 0
+				text_focus = 64
 			}
 			// Drag
 		    if (mouse_check_button(mb_left) && (mouse_x != mouse_xprev || mouse_y != mouse_yprev)) {
