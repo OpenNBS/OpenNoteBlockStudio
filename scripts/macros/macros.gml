@@ -13,6 +13,10 @@ function macros() {
 #macro link_changelog "https://opennbs.org/changelog"
 #macro link_website "https://opennbs.org/"
 #macro link_discord "https://discord.gg/sKPGjyVcyy"
+#macro link_twitter "https://twitter.com/OpenNBS"
+#macro link_github_org "https://github.com/OpenNBS"
+#macro link_youtube "https://youtube.com/@OpenNBS"
+#macro link_donate "https://opencollective.com/OpenNBS"
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"
