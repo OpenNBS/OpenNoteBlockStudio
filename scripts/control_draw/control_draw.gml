@@ -88,7 +88,7 @@ function control_draw() {
 	// Autosave
 	if (autosave && filename_ext(filename) = ".nbs") {
 	    tonextsave -= 1 / room_speed / 60
-	    if (tonextsave <= 0 && playing == 0) save_song(filename)
+	    if (tonextsave <= 0 && playing == 0) save_song(filename, true)
 	}
 
 	// Auto-recovery
