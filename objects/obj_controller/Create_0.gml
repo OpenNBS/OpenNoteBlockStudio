@@ -1,3 +1,6 @@
+// set parent window of dialogs to be game window
+widget_set_owner(string(int64(window_handle())))
+
 // copy defaults into sandbox to allow modification
 directory_create(game_save_id)
 if (os_type != os_windows) {
