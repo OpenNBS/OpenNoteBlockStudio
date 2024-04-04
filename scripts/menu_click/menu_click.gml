@@ -336,14 +336,14 @@ function menu_click(argument0) {
 		case "tempo": {
 			if (sel = 0) use_bpm = false
 			else if (sel = 1) use_bpm = true
-			else if (sel = 2) tempo = 10
-			else if (sel = 3) tempo = 12
-			else if (sel = 4) tempo = 14
-			else if (sel = 5) tempo = 16
-			else if (sel = 6) tempo = 18
-			else if (sel = 7) tempo = 20
-			else if (sel = 8) tempo = 30
-			else if (sel = 9) tempo = 60
+			else if (sel = 2) { tempo = 10 changed = 1 }
+			else if (sel = 3) { tempo = 12 changed = 1 }
+			else if (sel = 4) { tempo = 14 changed = 1 }
+			else if (sel = 5) { tempo = 16 changed = 1 }
+			else if (sel = 6) { tempo = 18 changed = 1 }
+			else if (sel = 7) { tempo = 20 changed = 1 }
+			else if (sel = 8) { tempo = 30 changed = 1 }
+			else if (sel = 9) { tempo = 60 changed = 1 }
 			else if (sel = 10) window = w_tempotapper
 			break
 		}

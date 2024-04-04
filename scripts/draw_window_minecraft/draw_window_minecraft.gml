@@ -147,10 +147,10 @@ function draw_window_minecraft() {
 		    else draw_text_dynamic(x1 + 45, yy + 16, "目前速度为每秒 " + string(tempo) + " 红石刻。")
 		    if (draw_button2(x1 + 45, yy + 34, 140, condstr(language != 1, "Fix tempo for schematic", "针对 Schematic 调整速度"), 0, 1)) {
 		        var otempo = tempo
-		        if (otempo > 10) tempo = 10
-		        if (otempo < 10) tempo = 10
-		        if (otempo < 7.5) tempo = 5
-		        if (otempo < 3.75) tempo = 2.5
+		        if (otempo > 10) tempo = 10 changed = 1
+		        if (otempo < 10) tempo = 10 changed = 1
+		        if (otempo < 7.5) tempo = 5 changed = 1
+		        if (otempo < 3.75) tempo = 2.5 changed = 1
 		    }
 		}
 		draw_theme_color()
@@ -315,16 +315,16 @@ function draw_window_minecraft() {
 			if (draw_button2(x1 + 45, yy + 50, 180, condstr(language != 1, "Optimize tempo for data pack", "针对数据包调整速度"), 0, 1)) {
 			    var otempo
 				otempo = tempo
-				if (otempo >= 15) tempo = 20
-		        if (otempo < 15) tempo = 10
-		        if (otempo < 7.5) tempo = 5
-		        if (otempo < 4.5) tempo = 4
-		        if (otempo < 3.25) tempo = 2.5
-				if (otempo < 2.25) tempo = 2
-				if (otempo < 1.625) tempo = 1.25
-				if (otempo < 1.125) tempo = 1
-				if (otempo < 0.75) tempo = 0.5
-				if (otempo < 0.375) tempo = 0.25
+				if (otempo >= 15) tempo = 20 changed = 1
+		        if (otempo < 15) tempo = 10 changed = 1
+		        if (otempo < 7.5) tempo = 5 changed = 1
+		        if (otempo < 4.5) tempo = 4 changed = 1
+		        if (otempo < 3.25) tempo = 2.5 changed = 1
+				if (otempo < 2.25) tempo = 2 changed = 1
+				if (otempo < 1.625) tempo = 1.25 changed = 1
+				if (otempo < 1.125) tempo = 1 changed = 1
+				if (otempo < 0.75) tempo = 0.5 changed = 1
+				if (otempo < 0.375) tempo = 0.25 changed = 1
 		    }
 		}
 		draw_theme_color()

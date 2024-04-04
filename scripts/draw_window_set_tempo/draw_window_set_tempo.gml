@@ -19,6 +19,8 @@ function draw_window_set_tempo() {
 		settempo = mouse_rectangle(xx, 57, w, 22)
 	}
 	
+	var otempo = tempo;
+	
 	// Set tempo and close
 	if ((mouse_check_button_released(mb_left) && !settempo && !mouse_rectangle(xx, 57, w, 22)) || keyboard_check_pressed(vk_enter)) {
 		try {
@@ -32,6 +34,9 @@ function draw_window_set_tempo() {
 				tempo /= 10
 			}
 			tempo = median(0.25, tempo, 60)
+		}
+		if (tempo != otempo) {
+			changed = 1
 		}
 		settempo = 0
 		text_focus = -1
