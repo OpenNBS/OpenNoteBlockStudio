@@ -26,7 +26,7 @@ function draw_window_set_tempo() {
 		try {
 			tempo = real(string_digits_symbol(string_replace(input, ",", "."), ".") / bpm_multiplier)
 		} catch (e) {
-			// Input is imvalid, don't change the tempo!
+			// Input is invalid, don't change the tempo!
 		} finally {
 			if (tempo >= 1000) {
 				tempo /= 100
