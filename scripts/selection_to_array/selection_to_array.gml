@@ -3,22 +3,28 @@ function selection_to_array(argument0) {
 	var array = undefined
 	var at = 0
 	var sel_str = argument0
-	var sub_str = ""
 	var main_str = string_delete(sel_str, string_length(sel_str), 1)
-	for(var i = 1; i < string_length(main_str)+1; i++)
-	{
-	   var next_char = string_char_at(main_str,i)
- 
-		if (next_char != "|") {
-	       sub_str = sub_str + next_char
-	   } else {
-	       //ADD TO ARRAY
-	       if(sub_str!="") array[at++] = sub_str
-	       sub_str = ""
-	   }
+	
+	var main_str_len = string_length(main_str)
+	var main_str_buffer = string_buffer_create(main_str)
+	var element_buffer = buffer_create(1, buffer_grow, 1)
+	var pipe_ord = ord("|")
+	var prev_pipe_pos = -1
+	var pipe_pos = 0
+	while (true) {
+		pipe_pos = buffer_pos_char(main_str_buffer, main_str_len, pipe_ord, pipe_pos)
+		var element_size = pipe_pos - prev_pipe_pos - 1
+		if (element_size > 0) {
+			array[at++] = buffer_substr_copy(main_str_buffer, prev_pipe_pos+1, element_size, element_buffer)
+		}
+		if (pipe_pos >= main_str_len) {
+			break
+		}
+		prev_pipe_pos = pipe_pos
+		pipe_pos++
 	}
-	if(sub_str!="") array[at++] = sub_str
+	buffer_delete(main_str_buffer)
+	buffer_delete(element_buffer)
+	
 	return array
-
-
 }

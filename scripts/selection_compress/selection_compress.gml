@@ -87,7 +87,7 @@ function selection_compress() {
 	selection_l = nw + 1
 	selection_h = nh + 1
 	selection_code_update()
-	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
+	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 
 
 

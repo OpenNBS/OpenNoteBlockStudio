@@ -19,7 +19,7 @@ function selection_transpose() {
 	}
 	message(string(am) + " notes were edited.", "Transpose notes")
 	selection_code_update()
-	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
+	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 
 
 

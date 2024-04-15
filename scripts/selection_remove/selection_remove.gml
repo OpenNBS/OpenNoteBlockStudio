@@ -28,7 +28,7 @@ function selection_remove(argument0, argument1, argument2, argument3, argument4,
 	    x2 = selection_x + selection_l
 	    y2 = selection_y + selection_h
 	}
-	if (!argument5) history_set(h_selectremove, x1, y1, x2, y2, selection_x, selection_y, selection_code, region_code_get(x1, y1, x2, y2))
+	if (!argument5) history_set(h_selectremove, x1, y1, x2, y2, selection_x, selection_y, try_compress_selection(selection_code), region_code_get(x1, y1, x2, y2))
 	if (ac = selected) {
 	    for (a = 0; a < selection_l; a += 1) {
 	        if (selection_colfirst[a] > -1) {
