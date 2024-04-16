@@ -75,10 +75,10 @@ function draw_window_macro_stagger() {
 		while (val < total_vals) {
 			for (i = 0; i < arplen; i++;) {
 				val += 1
-				arr_data[val] = real(arr_data[val]) + real(arp[i])
+				arr_data[val] = arr_data[val] + arp[i]
 				val += 6
 				while arr_data[val] != -1 {
-					arr_data[val] = real(arr_data[val]) + real(arp[i])
+					arr_data[val] = arr_data[val] + arp[i]
 					val += 6
 				}
 			val ++
@@ -86,10 +86,11 @@ function draw_window_macro_stagger() {
 			}
 		if val >= total_vals break
 		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
-		selection_code_update()
+		var new_str = array_to_selection(arr_data, total_vals)
+		selection_load(selection_x, selection_y, new_str, true)
 		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+		// Deselect selection
+		selection_remove(selection_x, selection_y, selection_x + selection_l, selection_y + selection_h, true, false)
 	}
 	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

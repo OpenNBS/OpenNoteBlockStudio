@@ -15,7 +15,7 @@ function selection_to_array(argument0) {
 		pipe_pos = buffer_pos_char(main_str_buffer, main_str_len, pipe_ord, pipe_pos)
 		var element_size = pipe_pos - prev_pipe_pos - 1
 		if (element_size > 0) {
-			array[at++] = buffer_substr_copy(main_str_buffer, prev_pipe_pos+1, element_size, element_buffer)
+			array[at++] = real(buffer_substr_copy(main_str_buffer, prev_pipe_pos+1, element_size, element_buffer))
 		}
 		if (pipe_pos >= main_str_len) {
 			break

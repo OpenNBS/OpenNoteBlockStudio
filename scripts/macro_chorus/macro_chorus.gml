@@ -11,7 +11,7 @@ function macro_chorus() {
 		val += 5
 		arr_data[val] = 140
 		val ++
-		arr_data[real(val)] = real(arr_data[real(val)]) + real(5)
+		arr_data[real(val)] = arr_data[real(val)] + real(5)
 		val ++
 		if arr_data[val] = -1 {
 			if (language != 1) message("There must be exactly two layers worth of note blocks in every applicable tick!", "Error")
@@ -21,7 +21,7 @@ function macro_chorus() {
 		val += 4
 		arr_data[val] = 60
 		val++
-		arr_data[real(val)] = real(arr_data[real(val)]) + real(-5)
+		arr_data[real(val)] = arr_data[real(val)] + real(-5)
 		val ++
 		if (arr_data[val] = -1) val++
 		else {
@@ -30,7 +30,7 @@ function macro_chorus() {
 				val += 5
 				arr_data[val] = 100 + 40 * power(-1, i)
 				val ++
-				arr_data[real(val)] = real(arr_data[real(val)]) + real(5) * power(-1, i)
+				arr_data[real(val)] = arr_data[real(val)] + real(5) * power(-1, i)
 				val ++
 				if arr_data[val] = -1 {
 					val++
@@ -41,8 +41,9 @@ function macro_chorus() {
 			}
 		}
 	}
-	str = array_to_selection(arr_data, total_vals)
-	selection_load(selection_x,selection_y,str,true)
+	var new_str = array_to_selection(arr_data, total_vals)
+	selection_load_ext(selection_x, selection_y, new_str)
+	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

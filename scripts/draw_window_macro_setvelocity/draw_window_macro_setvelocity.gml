@@ -38,21 +38,22 @@ function draw_window_macro_setvelocity() {
 		val = 0
 		while (val < total_vals) {
 			val += 4
-			if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
+			if (percentvel) arr_data[val] = arr_data[val] * setvel / 100
 			else arr_data[val] = setvel
 			if (arr_data[val] > 100) arr_data[val] = 100
 			val += 3
 			while arr_data[val] != -1 {
 				val += 3
-				if (percentvel) arr_data[val] = real(arr_data[val]) * setvel / 100
+				if (percentvel) arr_data[val] = arr_data[val] * setvel / 100
 				else arr_data[val] = setvel
 				if (arr_data[val] > 100) arr_data[val] = 100
 				val += 3
 			}
 			val ++
 		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
+		var new_str = array_to_selection(arr_data, total_vals)
+		selection_load_ext(selection_x, selection_y, new_str)
+		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

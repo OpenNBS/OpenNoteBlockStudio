@@ -77,9 +77,10 @@ function macro_tremolo_fadeout() {
 	}
 	arr_data[0] = 0
 	//show_debug_message("Out of loop. arr_data has been changed to " + string(array_to_selection(arr_data, c)))
-	str = array_to_selection(arr_data, c)
+	var new_str = array_to_selection(arr_data, c)
 	arr_data = 0
-	selection_load(selection_x,selection_y,str,true)
+	selection_load(selection_x, selection_y, new_str, true)
+	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 	if(!keyboard_check(vk_alt)) selection_place(false)
 	selection_code_update()
 
