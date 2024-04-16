@@ -30,30 +30,25 @@ function draw_window_macro_setvelocity() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		str = selection_code
-		val = 0
-		var arr_data = selection_to_array(str)
 		window = 0
-		total_vals = array_length(arr_data)
-		val = 0
-		while (val < total_vals) {
-			val += 4
-			if (percentvel) arr_data[val] = arr_data[val] * setvel / 100
-			else arr_data[val] = setvel
-			if (arr_data[val] > 100) arr_data[val] = 100
-			val += 3
-			while arr_data[val] != -1 {
-				val += 3
-				if (percentvel) arr_data[val] = arr_data[val] * setvel / 100
-				else arr_data[val] = setvel
-				if (arr_data[val] > 100) arr_data[val] = 100
-				val += 3
+		str = selection_code
+		if (!percentvel) {
+			selection_change(m_vel, setvel, false)
+		} else {
+			str = selection_code
+			if (selected = 0) return 0
+			for (a = 0; a < selection_l; a += 1) {
+			    if (selection_colfirst[a] > -1) {
+			        for (b = selection_colfirst[a]; b <= selection_collast[a]; b += 1) {
+			            if (selection_exists[a, b]) {
+							selection_vel[a, b] = selection_vel[a, b] * setvel / 100
+			            }
+			        }
+			    }
 			}
-			val ++
+			selection_code_update()
+			history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 		}
-		var new_str = array_to_selection(arr_data, total_vals)
-		selection_load_ext(selection_x, selection_y, new_str)
-		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

@@ -82,7 +82,6 @@ function macro_tremolo_fadeout() {
 	selection_load(selection_x, selection_y, new_str, true)
 	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 	if(!keyboard_check(vk_alt)) selection_place(false)
-	selection_code_update()
 
 
 }

@@ -53,7 +53,7 @@ function draw_window_macro_stagger() {
 		conf = 0
 		pattern = string_digits_symbol(pattern, "|")
 		pattern = string(pattern + "|")
-		arp = selection_to_array(pattern)
+		var arp = selection_to_array(pattern)
 		arplen = string_count("|", pattern)
 
 		maxlength = 0;
@@ -89,8 +89,7 @@ function draw_window_macro_stagger() {
 		var new_str = array_to_selection(arr_data, total_vals)
 		selection_load(selection_x, selection_y, new_str, true)
 		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
-		// Deselect selection
-		selection_remove(selection_x, selection_y, selection_x + selection_l, selection_y + selection_h, true, false)
+		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
