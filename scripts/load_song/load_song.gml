@@ -146,6 +146,9 @@ function load_song() {
 			text_laststr[400 + b] = "-"
 			if song_nbs_version >= 4 && string_count("format4beta", filename_name(fn)) != 1 {
 				layerlock[b] = buffer_read_byte()
+				if (layerlock[b] == 2) {
+					solostr += "|" + string(b) + "|"
+				}
 			}
 	        else layerlock[b] = 0
 	        layervol[b] = buffer_read_byte()
