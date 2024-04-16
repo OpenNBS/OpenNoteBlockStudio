@@ -33,9 +33,9 @@ function draw_window_macro_portamento() {
 		val = 0
 		decr = port_cent / string_count("-1", str)
 		inc = decr
-		arr_data = selection_to_array(str)
+		var arr_data = selection_to_array(str)
 		window = 0
-		total_vals = string_count("|", str)
+		total_vals = array_length(arr_data)
 		val = 0
 		while (val < total_vals) {
 			val += 6

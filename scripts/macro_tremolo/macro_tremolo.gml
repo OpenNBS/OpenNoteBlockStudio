@@ -3,8 +3,8 @@ function macro_tremolo() {
 	var k, l, d, c, e, str, total_vals, total_cols, val, replength, colcount;
 	if (selected = 0) return 0
 	str = selection_code
-	arr_temp = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_temp = selection_to_array(str)
+	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
 	total_cols = string_count("-1", str)
 	//show_debug_message("total cols is "+string(total_cols))

@@ -3,8 +3,8 @@ function macro_fadein() {
 	var str, total_vals, val, decr, inc, maxdecr, velval
 	str = selection_code
 	if (selected = 0) return 0
-	arr_data = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_data = selection_to_array(str)
+	total_vals = array_length(arr_data)
 	val = 0
 	// Check bottom-right note block's velocity value, calculate fade out from that.
 	velval = array_length_1d(arr_data)

@@ -3,8 +3,8 @@ function macro_tremolo_fadein() {
 	var c, d , e, f, str, total_vals, total_cols, val, replength, colcount, decr, inc, tremolo_duration, prevlength, previous_colsegment, current_colsegment;
 	str = selection_code
 	if (selected = 0) return 0
-	arr_temp = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_temp = selection_to_array(str)
+	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
 	total_cols = string_count("-1", str)
 	//show_debug_message("total cols is "+string(total_cols))
@@ -46,7 +46,7 @@ function macro_tremolo_fadein() {
 	    // show_debug_message("End loop. arr_data is now " + string(array_to_selection(arr_data, c)))
 		colcount++
 		current_colsegment = string_count("-1", string(array_to_selection(arr_data, c))) - previous_colsegment
-		tremolo_duration = (real(array_length_1d(arr_data)) - prevlength) // Calculate Fade-In
+		tremolo_duration = (real(array_length(arr_data)) - prevlength) // Calculate Fade-In
 		f = 0
 		if fade_auto = 1 {
 			if (current_colsegment - 4 > 0) decr = 100 / (current_colsegment - 4)
@@ -73,7 +73,7 @@ function macro_tremolo_fadein() {
 			decr = decr + inc
 			f ++
 		}
-		prevlength = real(array_length_1d(arr_data))
+		prevlength = real(array_length(arr_data))
 		previous_colsegment += current_colsegment
 		decr = 0
 		inc = 0

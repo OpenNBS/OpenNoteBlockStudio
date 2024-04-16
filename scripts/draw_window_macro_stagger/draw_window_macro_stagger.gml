@@ -47,8 +47,8 @@ function draw_window_macro_stagger() {
 		windowopen = 0
 		window = 0
 		str = selection_code
-		arr_data = selection_to_array(str)
-		total_vals = string_count("|", str)
+		var arr_data = selection_to_array(str)
+		total_vals = array_length(arr_data)
 		val = 0
 		conf = 0
 		pattern = string_digits_symbol(pattern, "|")
@@ -58,7 +58,7 @@ function draw_window_macro_stagger() {
 
 		maxlength = 0;
 	
-		var patlen = array_length_1d(arp);
+		var patlen = array_length(arp);
 		for (i = 0; i < patlen; i++) { // Calculate highest number in given pattern
 		    if (arp[i] > arp[maxlength]) {
 		        maxlength = i;

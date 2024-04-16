@@ -2,9 +2,9 @@ function macro_chorus() {
 	// macro_chorus()
 	var str, total_vals, val;
 	str = selection_code
-	arr_data = selection_to_array(str)
+	var arr_data = selection_to_array(str)
 	window = 0
-	total_vals = string_count("|", str)
+	total_vals = array_length(arr_data)
 	show_debug_message(str)
 	val = 0
 	while (val < total_vals) {
