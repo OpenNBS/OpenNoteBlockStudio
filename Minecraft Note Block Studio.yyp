@@ -744,7 +744,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"Megalovania - Super Smash Bros. Ultimate.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Songs","resourceVersion":"1.0","name":"The Ground's Colour Is Yellow.nbs","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds/ResourcePacks","resourceVersion":"1.0","name":"Please put your note block sound resource packs here.txt","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Fonts","resourceVersion":"1.0","name":"156-NotoSansSC-Regular.otf","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Data/Sounds","resourceVersion":"1.0","name":".gitignore","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
