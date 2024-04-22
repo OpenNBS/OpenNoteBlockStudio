@@ -33,7 +33,7 @@ function selection_delete(argument0) {
 	    }
 	}
 	selected = 0
-	if (!argument0) history_set(h_selectchange, 0, 0, "", selection_x, selection_y, try_compress_selection(selection_code))
+	if (!argument0) history_set(h_selectchange, 0, 0, "", selection_x, selection_y, selection_code)
 	selection_code = ""
 	selection_x = 0
 	selection_y = 0

@@ -29,13 +29,12 @@ function draw_window_macro_portamento() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		str = selection_code
-		val = 0
-		decr = port_cent / string_count("-1", str)
-		inc = decr
-		var arr_data = selection_to_array(str)
 		window = 0
+		str = selection_code
+		var arr_data = selection_to_array(str)
 		total_vals = array_length(arr_data)
+		decr = port_cent / macro_column_count(arr_data)
+		inc = decr
 		val = 0
 		while (val < total_vals) {
 			val += 6
@@ -57,7 +56,7 @@ function draw_window_macro_portamento() {
 		}
 		var new_str = array_to_selection(arr_data, total_vals)
 		selection_load_ext(selection_x, selection_y, new_str)
-		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

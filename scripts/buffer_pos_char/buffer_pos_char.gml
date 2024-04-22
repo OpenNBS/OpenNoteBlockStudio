@@ -1,10 +1,7 @@
-function buffer_pos_char(argument0, argument1, argument2){
+function buffer_pos_char(buffer, buffer_size, char){
 	// Find the position of a character in a text buffer, optionally from a start position.
 	// Return the buffer length if not found.
 	
-	var buffer = argument0
-	var buffer_size = argument1
-	var char = argument2
 	if (is_string(char)) {
 		char = ord(char)
 	}

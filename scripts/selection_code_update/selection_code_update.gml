@@ -48,6 +48,6 @@ function selection_code_update() {
 	}
 
 	buffer_seek(str_buffer, buffer_seek_start, 0)
-	selection_code = buffer_read(str_buffer, buffer_string)
+	selection_code = try_compress_selection(buffer_read(str_buffer, buffer_string))
 	buffer_delete(str_buffer)
 }

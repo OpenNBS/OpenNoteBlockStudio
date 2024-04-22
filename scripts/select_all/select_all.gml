@@ -61,7 +61,7 @@ function select_all(argument0, argument1) {
 	selection_h = endb + 1
 	selection_trim()
 	selection_code_update()
-	history_set(h_select, selection_x, selection_y, try_compress_selection(selection_code), x1, y1, try_compress_selection(str))
+	history_set(h_select, selection_x, selection_y, selection_code, x1, y1, str)
 
 
 

@@ -1,8 +1,8 @@
-function selection_to_array(argument0) {
-	// selection_to_array(string)
+function selection_to_array(str) {
+	// selection_to_array(str)
 	var array = undefined
 	var at = 0
-	var sel_str = argument0
+	var sel_str = try_decompress_selection(str)
 	var main_str = string_delete(sel_str, string_length(sel_str), 1)
 	
 	var main_str_len = string_length(main_str)

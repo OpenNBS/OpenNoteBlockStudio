@@ -6,7 +6,7 @@ function macro_tremolo_fadein() {
 	var arr_temp = selection_to_array(str)
 	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
-	total_cols = string_count("-1", str)
+	total_cols = macro_column_count(arr_temp)
 	//show_debug_message("total cols is "+string(total_cols))
 	val = 0
 	c = 0
@@ -45,7 +45,7 @@ function macro_tremolo_fadein() {
 		}
 	    // show_debug_message("End loop. arr_data is now " + string(array_to_selection(arr_data, c)))
 		colcount++
-		current_colsegment = string_count("-1", string(array_to_selection(arr_data, c))) - previous_colsegment
+		current_colsegment = macro_column_count(arr_data, c) - previous_colsegment
 		tremolo_duration = (real(array_length(arr_data)) - prevlength) // Calculate Fade-In
 		f = 0
 		if fade_auto = 1 {
@@ -83,7 +83,7 @@ function macro_tremolo_fadein() {
 	var new_str = array_to_selection(arr_data, c)
 	arr_data = 0
 	selection_load(selection_x, selection_y, new_str, true)
-	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

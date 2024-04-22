@@ -6,7 +6,7 @@ function macro_tremolo() {
 	var arr_temp = selection_to_array(str)
 	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
-	total_cols = string_count("-1", str)
+	total_cols = macro_column_count(arr_temp)
 	//show_debug_message("total cols is "+string(total_cols))
 	val = 0
 	c = 0

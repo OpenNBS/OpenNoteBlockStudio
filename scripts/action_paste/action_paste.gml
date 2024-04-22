@@ -4,7 +4,7 @@ function action_paste(argument0, argument1) {
 	xx = argument0
 	yy = argument1
 	selection_load(xx, yy, selection_copied, false)
-	history_set(h_selectpaste, xx, yy, try_compress_selection(selection_code))
+	history_set(h_selectpaste, xx, yy, selection_code)
 	changed = 1
 
 

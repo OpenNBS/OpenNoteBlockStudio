@@ -43,7 +43,7 @@ function macro_chorus() {
 	}
 	var new_str = array_to_selection(arr_data, total_vals)
 	selection_load_ext(selection_x, selection_y, new_str)
-	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

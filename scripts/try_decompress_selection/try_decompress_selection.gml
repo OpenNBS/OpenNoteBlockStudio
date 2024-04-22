@@ -1,8 +1,6 @@
-function try_decompress_selection(argument0){
+function try_decompress_selection(str){
 	// Decompress a base64-encoded selection code and return the uncompressed string.
 	// Return the original string if the input string is not compressed.
-	
-	var str = argument0
 	
 	if (str == "") {
 		return str

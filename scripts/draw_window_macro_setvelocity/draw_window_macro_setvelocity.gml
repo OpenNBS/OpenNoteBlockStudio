@@ -31,7 +31,6 @@ function draw_window_macro_setvelocity() {
 		windowclose = 0
 		windowopen = 0
 		window = 0
-		str = selection_code
 		if (!percentvel) {
 			selection_change(m_vel, setvel, false)
 		} else {
@@ -47,7 +46,7 @@ function draw_window_macro_setvelocity() {
 			    }
 			}
 			selection_code_update()
-			history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+			history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		}
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}

@@ -7,9 +7,9 @@ function macro_fadein() {
 	total_vals = array_length(arr_data)
 	val = 0
 	// Check bottom-right note block's velocity value, calculate fade out from that.
-	velval = array_length_1d(arr_data)
+	velval = array_length(arr_data)
 	maxdecr = arr_data[velval-4]
-	decr = maxdecr/string_count("-1", str)
+	decr = maxdecr/macro_column_count(arr_data)
 	show_debug_message(string(maxdecr))
 	inc = decr
 	//show_debug_message(string_count("-1", str))
@@ -28,7 +28,7 @@ function macro_fadein() {
 	}
 	var new_str = array_to_selection(arr_data, total_vals)
 	selection_load_ext(selection_x, selection_y, new_str)
-	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

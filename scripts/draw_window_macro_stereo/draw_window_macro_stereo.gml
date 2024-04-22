@@ -69,7 +69,7 @@ function draw_window_macro_stereo() {
 		}
 		var new_str = array_to_selection(arr_data, total_vals)
 		selection_load_ext(selection_x, selection_y, new_str)
-		history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

@@ -65,7 +65,7 @@ function selection_expand() {
 	}
 	selection_l = nw
 	selection_code_update()
-	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 
 
 

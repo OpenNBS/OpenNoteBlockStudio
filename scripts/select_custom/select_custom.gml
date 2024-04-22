@@ -56,7 +56,7 @@ function select_custom() {
 	selection_code_update()
 	starta = selection_x
 	sb_val[0] = starta
-	history_set(h_select, selection_x, selection_y, try_compress_selection(selection_code), 0, 0, try_compress_selection(str))
+	history_set(h_select, selection_x, selection_y, selection_code, 0, 0, str)
 
 
 
