@@ -2311,11 +2311,17 @@ function control_draw() {
 	draw_windows()
 	if (showmsg) draw_msg()
 	if (rainbowtoggle) draw_accent_rainbow()
-	if (lastfile != dndfile && dndfile != "") {
+	if (dndfile != "") {
 		if (filename_ext(dndfile) = ".nbp") pattern_import(dndfile, 1)
-		else load_song(dndfile)
-		lastfile = dndfile
-	}
+		else if (lastfile != dndfile) {
+			load_song(dndfile)
+			lastfile = dndfile
+		}
+		// Reset dndfile
+		file_dnd_set_enabled(false)
+		file_dnd_set_enabled(true)
+		dndfile = ""
+}
 
 	// Draw update progress bar
 	if (update == 4) {
