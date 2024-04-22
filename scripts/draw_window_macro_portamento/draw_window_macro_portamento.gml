@@ -31,7 +31,7 @@ function draw_window_macro_portamento() {
 		windowopen = 0
 		window = 0
 		str = selection_code
-		var arr_data = selection_to_array(str)
+		var arr_data = selection_to_array_ext()
 		total_vals = array_length(arr_data)
 		decr = port_cent / macro_column_count(arr_data)
 		inc = decr

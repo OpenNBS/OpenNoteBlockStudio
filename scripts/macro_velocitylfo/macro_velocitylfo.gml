@@ -3,7 +3,7 @@ function macro_velocitylfo() {
 	var str, total_vals, val, decr
 	str = selection_code
 	if (selected = 0) return 0
-	var arr_data = selection_to_array(str)
+	var arr_data = selection_to_array_ext()
 	total_vals = array_length(arr_data)
 	val = 0
 	decr = 100/macro_column_count(arr_data)

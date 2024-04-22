@@ -3,7 +3,7 @@ function macro_tremolo() {
 	var k, l, d, c, e, str, total_vals, total_cols, val, replength, colcount;
 	if (selected = 0) return 0
 	str = selection_code
-	var arr_temp = selection_to_array(str)
+	var arr_temp = selection_to_array_ext()
 	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
 	total_cols = macro_column_count(arr_temp)

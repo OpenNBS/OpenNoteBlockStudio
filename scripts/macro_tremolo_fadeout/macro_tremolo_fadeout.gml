@@ -3,7 +3,7 @@ function macro_tremolo_fadeout() {
 	var c, d , e, f, str, total_vals, total_cols, val, replength, colcount, decr, inc, tremolo_duration, prevlength, previous_colsegment, current_colsegment;
 	str = selection_code
 	if (selected = 0) return 0
-	var arr_temp = selection_to_array(str)
+	var arr_temp = selection_to_array_ext()
 	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
 	total_cols = macro_column_count(arr_temp)

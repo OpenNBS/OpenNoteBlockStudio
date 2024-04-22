@@ -37,7 +37,7 @@ function draw_window_macro_arpeggio() {
 	windowopen = 0
 	window = 0
 	str = selection_code
-	var arr_data = selection_to_array(str)
+	var arr_data = selection_to_array_ext()
 	total_vals = array_length(arr_data)
 	val = 0
 	pattern = string_digits_symbol(pattern, "|")

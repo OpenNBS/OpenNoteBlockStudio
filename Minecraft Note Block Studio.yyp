@@ -571,6 +571,8 @@
     {"id":{"name":"obj_instrument","path":"objects/obj_instrument/obj_instrument.yy",},"order":5,},
     {"id":{"name":"obj_schematic","path":"objects/obj_schematic/obj_schematic.yy",},"order":6,},
     {"id":{"name":"rm_app","path":"rooms/rm_app/rm_app.yy",},"order":0,},
+    {"id":{"name":"selection_to_array_ext","path":"scripts/selection_to_array_ext/selection_to_array_ext.yy",},"order":33,},
+    {"id":{"name":"macro_column_count","path":"scripts/macro_column_count/macro_column_count.yy",},"order":10,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},

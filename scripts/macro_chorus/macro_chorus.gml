@@ -2,7 +2,7 @@ function macro_chorus() {
 	// macro_chorus()
 	var str, total_vals, val;
 	str = selection_code
-	var arr_data = selection_to_array(str)
+	var arr_data = selection_to_array_ext()
 	window = 0
 	total_vals = array_length(arr_data)
 	show_debug_message(str)
