@@ -770,7 +770,7 @@ function control_draw() {
 	        marker_pos = 0
 	        marker_prevpos = 0
 	    }
-		if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols) timestoloop = real(loopmax)
+		if (keyboard_check_pressed(vk_space)) toggle_playing(totalcols)
 	    if (keyboard_check_pressed(vk_f1)) {
 	        if (language != 1) open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 			else open_url("https://www.bilibili.com/video/BV1Mx411a76p")
@@ -1037,14 +1037,16 @@ function control_draw() {
 		}
 		//loop song
 		if (loop_session = 1 && marker_pos > enda + 1 && (!looptobarend || marker_pos mod (timesignature * 4) < 1)) {
-			timestoloop --
+			--timestoloop
 			starta = loopstart
 			marker_pos = starta
 			metronome_played = -1
 			sb_val[scrollbarh] = starta
-			if loopmax != 0 {
-				if timestoloop < 0 {
+			if (loopmax != 0) {
+				if (timestoloop < 0) {
 					playing = 0
+					marker_pos = 0
+					marker_prevpos = 0
 					timestoloop = real(loopmax)
 				}
 			} 
@@ -1696,8 +1698,8 @@ function control_draw() {
 	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
 	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
-	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
-	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
+	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols)
+	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols)
 	xx += 25
 	if (draw_icon(icons.STOP, xx, yy, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
 	if (isplayer && !dropmode) if (draw_icon(icons.STOP, rw / 2 - 12 - 100, rh / 2 + 50, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
@@ -1729,8 +1731,8 @@ function control_draw() {
 	if (draw_icon(icons.OPEN, xx, yy, "打开歌曲", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
 	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "保存歌曲", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
-	if (draw_icon(icons.PLAY + playing, xx, yy, "播放 / 暂停", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
-	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "播放 / 暂停", 0, 0)) toggle_playing(totalcols) timestoloop = real(loopmax)
+	if (draw_icon(icons.PLAY + playing, xx, yy, "播放 / 暂停", 0, 0)) toggle_playing(totalcols)
+	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, rw / 2 - 12, rh / 2 + 50, "播放 / 暂停", 0, 0)) toggle_playing(totalcols)
 	xx += 25
 	if (draw_icon(icons.STOP, xx, yy, "停止歌曲", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
 	if (isplayer && !dropmode) if (draw_icon(icons.STOP, rw / 2 - 12 - 100, rh / 2 + 50, "停止歌曲", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
