@@ -4,7 +4,7 @@ function remove_block_select(argument0, argument1) {
 	xx = argument0
 	yy = argument1
 
-	if (song_exists[xx, yy] = 0) return 0
+	if (xx >= arraylength || yy >= arrayheight || song_exists[xx, yy] == 0) return 0
 	song_exists[xx, yy] = 0
 	song_ins[xx, yy].num_blocks--
 	if (song_key[xx, yy] < 33 || song_key[xx, yy] > 57) block_outside -= 1

@@ -12,9 +12,9 @@ function draw_window_macro_stagger() {
 	draw_theme_color()
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "Stagger")
-	draw_set_color(c_red)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
-	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）")
+	draw_set_color(c_green)
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CAN BE UNDONE)")
+	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）") // Please re-translate this
 	draw_theme_color()
 	pattern = ""
 	draw_theme_font(font_main)
@@ -87,7 +87,10 @@ function draw_window_macro_stagger() {
 		if val >= total_vals break
 		}
 		var new_str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x, selection_y, new_str, true)
+		var sel_x = selection_x
+		var sel_y = selection_y
+		selection_delete(true)
+		selection_load_ext(sel_x, sel_y, new_str)
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
