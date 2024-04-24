@@ -11,24 +11,8 @@ function selection_invert() {
 	    select_all(-1, 0)
 	    return 0
 	}
-	if (enda > selection_arraylength) { // New length
-	    for (a = selection_arraylength + 1; a <= enda; a += 1) {
-	        selection_colfirst[a] = -1
-	        selection_collast[a] = -1
-	        for (b = 0; b <= selection_arrayheight; b += 1) {
-	            selection_exists[a, b] = 0
-	        }
-	    }
-	    selection_arraylength = enda
-	}
-	if (endb > selection_arrayheight) { // New height
-	    for (a = 0; a <= selection_arraylength; a += 1) {
-	        for (b = selection_arrayheight + 1; b <= endb; b += 1) {
-	            selection_exists[a, b] = 0
-	        }
-	    }
-	    selection_arrayheight = endb
-	}
+	selection_extend_length()
+	selection_extend_height()
 	xx = selection_x
 	yy = selection_y
 	str = selection_code

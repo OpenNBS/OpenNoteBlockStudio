@@ -60,45 +60,13 @@ function selection_add() {
 	    selection_y = y1
 	    selection_l = al
 	    selection_h = ah
-	    if (al > selection_arraylength) { // New length
-	        for (a = selection_arraylength + 1; a <= al; a += 1) {
-	            selection_colfirst[a] = -1
-	            selection_collast[a] = -1
-	            for (b = 0; b <= selection_arrayheight; b += 1) {
-	                selection_exists[a, b] = 0
-	            }
-	        }
-	        selection_arraylength = al
-	    }
-	    if (ah > selection_arrayheight) { // New height
-	        for (a = 0; a <= selection_arraylength; a += 1) {
-	            for (b = selection_arrayheight + 1; b <= ah; b += 1) {
-	                selection_exists[a, b] = 0
-	            }
-	        }
-	        selection_arrayheight = ah
-	    }
+		selection_extend_length(al)
+		selection_extend_height(ah)
 	} else { // Add to existing
 	    al = selection_l + max(0, selection_x - x1) + max(0, x2 - (selection_x + selection_l))
 	    ah = selection_h + max(0, selection_y - y1) + max(0, y2 - (selection_y + selection_h))
-	    if (al > selection_arraylength) { // New length
-	        for (a = selection_arraylength + 1; a <= al; a += 1) {
-	            selection_colfirst[a] = -1
-	            selection_collast[a] = -1
-	            for (b = 0; b <= selection_arrayheight; b += 1) {
-	                selection_exists[a, b] = 0
-	            }
-	        }
-	        selection_arraylength = al
-	    }
-	    if (ah > selection_arrayheight) { // New height
-	        for (a = 0; a <= selection_arraylength; a += 1) {
-	            for (b = selection_arrayheight + 1; b <= ah; b += 1) {
-	                selection_exists[a, b] = 0
-	            }
-	        }
-	        selection_arrayheight = ah
-	    }
+	    selection_extend_length(al)
+		selection_extend_height(ah)
 	    if (x1 < selection_x || y1 < selection_y) { // Move blocks
 	        var temp_colfirst, temp_collast, temp_exists, temp_ins, temp_key, temp_vel, temp_pan, temp_pit, temp_played;
 	        for (a = 0; a < selection_l; a += 1) {
