@@ -575,6 +575,8 @@
     {"id":{"name":"rm_app","path":"rooms/rm_app/rm_app.yy",},"order":0,},
     {"id":{"name":"selection_to_array_ext","path":"scripts/selection_to_array_ext/selection_to_array_ext.yy",},"order":33,},
     {"id":{"name":"macro_column_count","path":"scripts/macro_column_count/macro_column_count.yy",},"order":10,},
+    {"id":{"name":"array_grow_then_set","path":"scripts/array_grow_then_set/array_grow_then_set.yy",},"order":12,},
+    {"id":{"name":"selection_load_from_array","path":"scripts/selection_load_from_array/selection_load_from_array.yy",},"order":36,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},

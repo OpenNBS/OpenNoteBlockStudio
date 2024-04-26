@@ -17,22 +17,29 @@ function selection_to_array_ext(){
 	var _selection_pit = selection_pit
 	
 	var ret = []
+	var at = 0
 	for (a = 0; a < _selection_l; a += 1) {
-	    if (_selection_colfirst[a] > -1) {
-			array_push(ret, ca)
-	        ca = 0
-	        cb = 0
-	        for (b = 0; b < _selection_h; b += 1) {
-	            if (_selection_exists[a, b]) {
-					array_push(ret, cb, ds_list_find_index(instrument_list, _selection_ins[a, b]), _selection_key[a, b], _selection_vel[a, b], _selection_pan[a, b], _selection_pit[a, b])
+		if (_selection_colfirst[a] > -1) {
+			array_grow_then_set(ret, at++, ca)
+			ca = 0
+			cb = 0
+			for (b = 0; b < _selection_h; b += 1) {
+				if (_selection_exists[a, b]) {
+					array_grow_then_set(ret, at++, cb)
+					array_grow_then_set(ret, at++, ds_list_find_index(instrument_list, _selection_ins[a, b]))
+					array_grow_then_set(ret, at++, _selection_key[a, b])
+					array_grow_then_set(ret, at++, _selection_vel[a, b])
+					array_grow_then_set(ret, at++, _selection_pan[a, b])
+					array_grow_then_set(ret, at++, _selection_pit[a, b])
 					cb = 0
-	            }
-	            cb += 1
-	        }
-			array_push(ret, -1)
-	    }
-	    ca += 1
+				}
+				cb += 1
+			}
+			array_grow_then_set(ret, at++, -1)
+		}
+		ca += 1
 	}
+	array_resize(ret, at)
 
 	return ret
 }

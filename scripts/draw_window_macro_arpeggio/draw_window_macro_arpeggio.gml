@@ -63,8 +63,7 @@ function draw_window_macro_arpeggio() {
 			}
 		if val >= total_vals break
 		}
-		var new_str = array_to_selection(arr_data, total_vals)
-		selection_load_ext(selection_x, selection_y, new_str)
+		selection_load_from_array(selection_x, selection_y, arr_data)
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}

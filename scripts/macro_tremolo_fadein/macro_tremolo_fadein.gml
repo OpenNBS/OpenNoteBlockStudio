@@ -82,11 +82,11 @@ function macro_tremolo_fadein() {
 	}
 	arr_data[0] = 0
 	//show_debug_message("Out of loop. arr_data has been changed to " + string(array_to_selection(arr_data, c)))
-	var new_str = array_to_selection(arr_data, c)
+	array_resize(arr_data, c)
 	var sel_x = selection_x
 	var sel_y = selection_y
 	selection_delete(true)
-	selection_load_ext(sel_x, sel_y, new_str)
+	selection_load_from_array(sel_x, sel_y, arr_data)
 	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
