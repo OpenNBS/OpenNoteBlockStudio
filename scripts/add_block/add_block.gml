@@ -16,19 +16,19 @@ function add_block() {
 
 	// Initialize cells
 	if (xx >= arraylength) {
-	    for (a = arraylength; a <= xx; a += 1) {
-	        colfirst[a] = -1
-	        collast[a] = -1
-	        colamount[a] = 0
-	        for (b = 0; b < max(yy + 1, arrayheight); b += 1) song_exists[a, b] = 0
-	    }
-	    arraylength = xx + 1
+		for (a = xx; a >= arraylength; --a) {
+		    colfirst[@ a] = -1
+		    collast[@ a] = -1
+		    colamount[@ a] = 0
+		    for (b = max(yy + 1, arrayheight) - 1; b >= 0; --b) song_exists[@ a, b] = 0
+		}
+		arraylength = xx + 1
 	}
 	if (yy >= arrayheight) {
-	    for (a = 0; a < arraylength; a += 1) {
-	        for (b = arrayheight; b <= yy ;b += 1) {
-	            rowamount[b] = 0
-	            song_exists[a, b] = 0
+	    for (a = arraylength - 1; a >= 0; --a) {
+	        for (b = yy; b >= arrayheight; --b) {
+	            rowamount[@ b] = 0
+	            song_exists[@ a, b] = 0
 	        }
 	    }
 	    arrayheight = yy + 1
@@ -37,16 +37,16 @@ function add_block() {
 	if (song_exists[xx, yy]) return 0
 
 	// Add block
-	song_exists[xx, yy] = 1
-	song_ins[xx, yy] = ins
-	song_key[xx, yy] = key
-	song_vel[xx, yy] = vel
-	song_pan[xx, yy] = pan
-	song_pit[xx, yy] = pit
-	song_played[xx, yy] = 0
-	song_added[xx, yy] = 0
-	colamount[xx] += 1
-	rowamount[yy] += 1
+	song_exists[@ xx, yy] = 1
+	song_ins[@ xx, yy] = ins
+	song_key[@ xx, yy] = key
+	song_vel[@ xx, yy] = vel
+	song_pan[@ xx, yy] = pan
+	song_pit[@ xx, yy] = pit
+	song_played[@xx, yy] = 0
+	song_added[@ xx, yy] = 0
+	colamount[@ xx] += 1
+	rowamount[@ yy] += 1
 	if (!insnum) {
 	    ins.num_blocks++
 	    if (ins.user) block_custom += 1
@@ -56,7 +56,7 @@ function add_block() {
 	totalblocks += 1
 
 	if (colfirst[xx] = -1 || yy < colfirst[xx]) colfirst[xx] = yy
-	if (yy > collast[xx]) collast[xx] = yy
+	if (yy > collast[xx]) collast[@ xx] = yy
 
 	if (xx >= enda) enda = xx
 	if (yy >= endb) endb = yy

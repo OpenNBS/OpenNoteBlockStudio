@@ -33,7 +33,7 @@ function load_song() {
 	
 		byte1 = buffer_read_byte()
 		byte2 = buffer_read_byte()
-	
+			
 		if (byte1 = 0 && byte2 = 0) {
 			song_nbs_version = buffer_read_byte()
 			if (language != 1) {if (show_oldwarning && song_nbs_version < nbs_version) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
@@ -102,6 +102,11 @@ function load_song() {
 				loopstart = buffer_read_short()
 			}
 		}
+		
+		// Song's notes will be put into the following array before being added to the program
+		var notes = []
+		var notes_at = 0
+		
 	    // Note blocks
 	    ca = -1
 	    while (1) {
@@ -125,9 +130,29 @@ function load_song() {
 					pan = 100
 					pit = 0
 				}
-	            add_block(ca, cb, ins, median(0, key, 87), vel, pan, pit, true)
+				array_grow_then_set(notes, notes_at++, {
+					a: ca,
+					b: cb,
+					ins: ins,
+					key: median(0, key, 87),
+					vel: vel,
+					pan: vel,
+					pit: pit,
+				});				
 	        }
 	    }
+		array_resize(notes, notes_at)
+		
+		if (array_length(notes) > 0) {
+			// Add blocks in reverse order to improve performance
+			var length = array_length(notes)
+			for (var i = length - 1; i >= 0; --i) {
+				var note = notes[i]
+				add_block(note.a, note.b, note.ins, note.key, note.vel, note.pan, note.pit, true)
+				delete notes[i]
+			}
+		}
+		
 	    if (buffer_is_eof()) { // End?
 	        buffer_delete(buffer)
 	        add_to_recent(fn)
@@ -206,6 +231,20 @@ function load_song() {
 	blocks_set_instruments()
 	io_clear()
 
+}
 
-
+function array_grow_then_set(array, index, value) {
+	// Behave like array_set(), except it allows custom growth of the array
+	
+	var length = array_length(array)
+	if (index >= length) {
+		var new_size = index + 1
+		var new_length = new_size * 3 / 2; // 1.5x growth factor
+		//var new_length = (new_size + (new_size >> 3) + 6) & ~3; // Python-style growth
+		show_debug_message(string(length) + " -> " + string(floor(new_length)))
+		for (var i = new_length - 1; i >= length; --i) {
+			array[@ i] = 0
+		}
+	}
+	array[@ index] = value
 }
