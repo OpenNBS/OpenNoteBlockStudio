@@ -531,6 +531,7 @@
     {"id":{"name":"nbt_tag_float","path":"scripts/nbt_tag_float/nbt_tag_float.yy",},"order":6,},
     {"id":{"name":"nbt_tag_double","path":"scripts/nbt_tag_double/nbt_tag_double.yy",},"order":7,},
     {"id":{"name":"spr_scrollbar_v_bar_up_hires","path":"sprites/spr_scrollbar_v_bar_up_hires/spr_scrollbar_v_bar_up_hires.yy",},"order":6,},
+    {"id":{"name":"register_url_protocol","path":"scripts/register_url_protocol/register_url_protocol.yy",},"order":15,},
     {"id":{"name":"nbt_tag_byte_array","path":"scripts/nbt_tag_byte_array/nbt_tag_byte_array.yy",},"order":8,},
     {"id":{"name":"nbt_tag_list","path":"scripts/nbt_tag_list/nbt_tag_list.yy",},"order":9,},
     {"id":{"name":"spr_mp3_exp_f","path":"sprites/spr_mp3_exp_f/spr_mp3_exp_f.yy",},"order":33,},

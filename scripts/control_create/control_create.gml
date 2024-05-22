@@ -561,6 +561,9 @@ function control_create() {
 		files_delete_lib(update_file)
 	}
 	
+	// Register as nbs:// url protocol handler
+	register_url_protocol()
+	
 	// Init wallpaper
 	change_theme()
 
