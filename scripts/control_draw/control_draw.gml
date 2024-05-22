@@ -2324,6 +2324,13 @@ function control_draw() {
 		else draw_downloadprogress("更新", "正在下载更新......", downloaded_size, total_size)
 	}
 	
+	// Draw song download progress bar
+	if (song_download_status == 1) {
+		window = -1
+		if (language != 1) draw_downloadprogress("Download", "Downloading song...", song_downloaded_size, song_total_size)
+		else draw_downloadprogress("___", "___", downloaded_size, total_size)
+	}
+	
 	// Draw debug overlay
 	if (debug_overlay) draw_debug_overlay()
 	

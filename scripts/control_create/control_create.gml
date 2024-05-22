@@ -15,7 +15,7 @@ function control_create() {
 	p_num = parameter_count()
 	isplayer = 0
 	for (var i = 0; i < p_num; i += 1) {
-		if (parameter_string(i) = "-player") isplayer = 1
+		if (parameter_string(i) = "-player" || parameter_string(i) == "--protocol-launcher") isplayer = 1
 	}
 	//if (RUN_FROM_IDE != 1) isplayer = 1
 	window_width = 0
@@ -555,6 +555,13 @@ function control_create() {
 	    window = w_update
 	    update_success = 1
 	}
+	
+	// Download song
+	protocol_data = pointer_null;
+	song_download_data = -1
+	song_downloaded_size = 0
+	song_total_size = -1
+	song_download_status = 0
 
 	// Delete old installer
 	if (file_exists_lib(update_file)) {
@@ -578,10 +585,43 @@ function control_create() {
 	}
 	*/
 
+	// Parse command line arguments
+	var p_num = parameter_count();
+	if (p_num > 1) {
+		for (var i = 1; i <= p_num; i++) {
+			var arg = parameter_string(i);
+			
+			if (arg == "-player") continue;
+			
+			// URL protocol
+			if (arg == "--protocol-launcher") {
+				if (p_num >= i + 1) {
+					protocol_data = parameter_string(i + 1);
+				}
+			
+			// File drop, etc.
+			} else {
+				filename = arg;
+			}
+			
+		}
+	}
+	
+	var args = ""
+	for (var i = 0; i <= parameter_count(); i++) {
+		args = args + parameter_string(i) + " ";
+	}
+	log("Run with command line args: " + args);
+	
+	// Download song
+	if (protocol_data != pointer_null) {
+		var download_url = string_replace(protocol_data, "nbs://", "")
+		song_download_data = http_get_file(download_url, downloaded_song_file)
+		song_download_status = 1
+	}
 	// Open song
-	if (parameter_count() > 0) {
-		filename = parameter_string(1)
-		if (filename != "" && filename != "-player") load_song(filename)
+	else if (filename != "") {
+		load_song(filename)
 	}
 
 	log("Startup OK")

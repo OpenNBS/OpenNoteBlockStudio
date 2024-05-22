@@ -29,6 +29,7 @@ function macros() {
 #macro settings_file		file_directory + "settings.ini"
 #macro settings_dev_file	file_directory + "settings_dev.ini"
 #macro backup_file			file_directory + "backup.nbs"
+#macro downloaded_song_file temp_directory + "song.nbs"
 
 #macro h_stereoize 12
 #macro h_swaplayer 11

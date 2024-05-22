@@ -178,6 +178,7 @@
     {"id":{"name":"save_song","path":"scripts/save_song/save_song.yy",},"order":7,},
     {"id":{"name":"pattern_import","path":"scripts/pattern_import/pattern_import.yy",},"order":8,},
     {"id":{"name":"pattern_export","path":"scripts/pattern_export/pattern_export.yy",},"order":9,},
+    {"id":{"name":"download_song_from_url","path":"scripts/download_song_from_url/download_song_from_url.yy",},"order":16,},
     {"id":{"name":"filename_new_ext","path":"scripts/filename_new_ext/filename_new_ext.yy",},"order":10,},
     {"id":{"name":"spr_back_hires","path":"sprites/spr_back_hires/spr_back_hires.yy",},"order":51,},
     {"id":{"name":"ini_write_real_clean","path":"scripts/ini_write_real_clean/ini_write_real_clean.yy",},"order":11,},
