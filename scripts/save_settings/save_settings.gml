@@ -140,6 +140,7 @@ function save_settings() {
 	ini_write_string(    "datapack_export", "namespace",     dat_namespace)
 	ini_write_string(    "datapack_export", "path",          dat_path)
 	ini_write_string(    "datapack_export", "source",        dat_source)
+	ini_write_real_clean("datapack_export", "mcversion",     dat_mcversion)
 	ini_write_real_clean("datapack_export", "use_zip",       dat_usezip)
 	ini_write_real_clean("datapack_export", "locked",        dat_includelocked)
 	ini_write_real_clean("datapack_export", "out_of_range",  dat_includeoutofrange)

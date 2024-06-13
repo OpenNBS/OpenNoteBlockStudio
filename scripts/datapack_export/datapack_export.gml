@@ -23,7 +23,12 @@ function datapack_export() {
 		var path = dat_getpath(o.dat_path)
 		var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
 		var tag = objective
-		var pack_format = 26
+		
+		// https://minecraft.wiki/w/Pack_format
+		var pack_format = (o.dat_mcversion == 0) ? 41 : 48
+		// https://minecraft.wiki/w/Java_Edition_1.21#Command_format_2
+		var function_registry = (o.dat_mcversion == 0) ? "functions" : "function";
+
 		var playspeed = min(round(o.tempo * 4), 120)
 		var rootfunction = "0_" + string(power(2, floor(log2(o.enda))+1)-1)
 		var tempdir
@@ -49,7 +54,7 @@ function datapack_export() {
 		if (directory_exists_lib(tempdir)) {
 			directory_delete_lib(tempdir)
 		}
-		functiondir = dat_makefolders(path, namespace)
+		functiondir = dat_makefolders(path, namespace, function_registry)
 	
 		//pack.mcmeta
 		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": " + string(pack_format) + ",\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Minecraft Note Block Studio\"\n\t}\n}"
@@ -59,11 +64,11 @@ function datapack_export() {
 	
 		//load.json
 		inputString = "{\"values\": [\"" + functionpath + "load\"]}"
-		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\load.json")
+		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\" + function_registry + "\\load.json")
 	
 		//tick.json
 		inputString = "{\"values\": [\"" + functionpath + "tick\"]}"
-		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\functions\\tick.json")
+		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\" + function_registry + "\\tick.json")
 	
 		//Song folder:
 	

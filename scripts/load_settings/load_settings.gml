@@ -146,6 +146,7 @@ function load_settings() {
 	dat_path =              ini_read_string("datapack_export", "path",          dat_path)
 	dat_source =            ini_read_string("datapack_export", "source",        dat_source)
 	dat_usezip =            ini_read_real(  "datapack_export", "use_zip",       dat_usezip)
+	dat_mcversion =         ini_read_real(  "datapack_export", "mcversion",     dat_mcversion)
 	dat_includelocked =     ini_read_real(  "datapack_export", "locked",        dat_includelocked)
 	dat_includeoutofrange = ini_read_real(  "datapack_export", "out_of_range",  dat_includeoutofrange)
 	dat_enableradius =      ini_read_real(  "datapack_export", "enable_radius", dat_enableradius)
