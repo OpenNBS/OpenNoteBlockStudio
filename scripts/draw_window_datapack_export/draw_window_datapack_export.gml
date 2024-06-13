@@ -275,8 +275,13 @@ function draw_window_datapack_export() {
 		if (draw_radiobox(x1 + 264, y1 + 285, dat_source = "voice", "语音", "由语音音量控制")) dat_source = "voice"
 		if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "天气", "由天气音量控制")) dat_source = "weather"
 
+		// Minecraft version
+		draw_text_dynamic(x1 + 187, y1 + 334, "TRANSLATE")
+		if (draw_radiobox(x1 + 192, y1 + 354, dat_mcversion == 0, "1.13-1.20", "TRANSLATE")) dat_mcversion = 0
+		if (draw_radiobox(x1 + 192, y1 + 374, dat_mcversion == 1, "1.21+", "TRANSLATE")) dat_mcversion = 1
+
 		//Export as ZIP
-		if (draw_checkbox(x1 + 192, y1 + 334, dat_usezip, "导出为 ZIP", "是否导出为 ZIP 格式的文件。"+br+"如关闭，将导出为文件夹。", false, true)) dat_usezip=!dat_usezip
+		if (draw_checkbox(x1 + 192, y1 + 404, dat_usezip, "导出为 ZIP", "是否导出为 ZIP 格式的文件。"+br+"如关闭，将导出为文件夹。", false, true)) dat_usezip=!dat_usezip
 
 		//Locked layers
 		if (draw_checkbox(x1 + 362, y1 + 213, dat_includelocked, "包括已静音的层", "是否在数据包内包括已静音的层。", false, true)) dat_includelocked=!dat_includelocked

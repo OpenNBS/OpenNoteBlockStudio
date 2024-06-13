@@ -2328,7 +2328,7 @@ function control_draw() {
 	if (song_download_status == 1) {
 		window = -1
 		if (language != 1) draw_downloadprogress("Download", "Downloading song...", song_downloaded_size, song_total_size)
-		else draw_downloadprogress("___", "___", downloaded_size, total_size)
+		else draw_downloadprogress("TRANSLATE", "TRANSLATE", song_downloaded_size, song_total_size)
 	}
 	
 	// Draw debug overlay
