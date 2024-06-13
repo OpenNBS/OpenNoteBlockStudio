@@ -22,7 +22,7 @@ function dat_preview(argument0, argument1, argument2) {
 		}
 	}
 
-	return string_truncate(preview, 350)
+	return string_truncate(preview, 150, true)
 
 
 }
