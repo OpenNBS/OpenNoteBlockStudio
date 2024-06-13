@@ -23,7 +23,7 @@ function dat_makefolders(path, namespace, function_registry) {
 	}
 
 	var tempdir = data_directory + "TempDatapack\\"
-	if (directory_exists_lib(tempdir)) directory_destroy(tempdir)
+	if (directory_exists_lib(tempdir)) directory_delete_lib(tempdir)
 
 	directory_create_lib(tempdir)
 	directory_create_lib(tempdir + "data\\")
