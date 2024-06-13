@@ -356,15 +356,15 @@ function draw_window_minecraft() {
 		        if (language != 1) draw_text_dynamic(x1 + 45, yy + 32, "There are " + string(block_outside) + " blocks outside the 2 octave range.")
 		        else draw_text_dynamic(x1 + 45, yy + 32, "有 " + string(block_outside) + " 个方块在 2 八度范围外。")
 		    }
-		    if (draw_button2(x1 + 45, yy + 50, 120, condstr(language != 1, "Select lower blocks", "选择过低的音符"), 0, 1)) {
+		    if (draw_button2(x1 + 45, yy + 50, 80, condstr(language != 1, "Select lower", "TRANSLATE"), 0, 1)) {
 		        select_outside(true, false)
 		        windowclose = 1
 		    }
-			if (draw_button2(x1 + 175, yy + 50, 120, condstr(language != 1, "Select higher blocks", "选择过高的音符"), 0, 1)) {
+			if (draw_button2(x1 + 135, yy + 50, 80, condstr(language != 1, "Select higher", "TRANSLATE"), 0, 1)) {
 		        select_outside(false, true)
 		        windowclose = 1
 		    }
-		    if (draw_button2(x1 + 305, yy + 50, 100, condstr(language != 1, "Transpose notes", "转换音符"), 0, 1)) {
+		    if (draw_button2(x1 + 225, yy + 50, 100, condstr(language != 1, "Transpose notes", "转换音符"), 0, 1)) {
 				if (language != 1) {
 		        if (question("Transpose notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) {
 		            select_all(-1, 0)
@@ -378,7 +378,10 @@ function draw_window_minecraft() {
 		            selection_place(0)
 		        }
 				}
-		    }
+			}
+			if (draw_button2(x1 + 335, yy + 50, 120, condstr(language != 1, "Save resource pack", "TRANSLATE"), 0, 1)) {
+				datapack_getextranotes()
+			}
 		} else {
 			if (theme != 3) {
 				draw_sprite(spr_yesno, 1, x1 + 25, yy + 8)
