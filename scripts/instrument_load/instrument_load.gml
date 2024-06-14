@@ -1,13 +1,33 @@
-function instrument_load() {
+function instrument_load(custom_sounds_path = "") {
 	// instrument_load()
 
-	var fn = sounds_directory + filename;
+	var fn;
+
+	if (filename == "") {
+		return false;
+	}
+
+	// If a custom Sounds folder is provided, try loading the sound from it.
+	// If not provided or the sound doesn't exist there, fall back to the default Sounds folder
+	if (custom_sounds_path == "") {
+		fn = sounds_directory + filename;
+	} else {
+		var custom_fn = custom_sounds_path + filename;
+		
+		if (file_exists_lib(custom_fn)) {
+			fn = custom_fn;
+		} else {
+			fn = sounds_directory + filename;
+		}
+	}
+
 	fn = string_replace_all(fn, "/", "\\");
 
 	log("Load instrument", fn)
 
-	if (filename = "" || !file_exists_lib(fn))
-	    return false
+	if (!file_exists_lib(fn)) {
+		return false
+	}
 
 	log("audio_file_decode")
 	var ret = audio_file_decode(fn, temp_file);
