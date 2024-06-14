@@ -70,7 +70,7 @@ function draw_window_greeting() {
 	//else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "原作者 David Norgren")
 	//draw_text_url(x1 + 132, y1 + 356 + dev_label_offset, "stuffbydavid.com", "https://www.stuffbydavid.com")
 	if (language != 1) draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "Follow OpenNBS:")
-	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "_________")
+	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "TRANSLATE")
 	draw_text_url(x1 + 80, y1 + 356 + dev_label_offset, "Discord", link_discord)
 	draw_text(x1 + 104, y1 + 356 + dev_label_offset, "|")
 	draw_text_url(x1 + 128, y1 + 356 + dev_label_offset, "Twitter", link_discord)
