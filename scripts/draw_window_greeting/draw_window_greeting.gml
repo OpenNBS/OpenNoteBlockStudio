@@ -73,13 +73,13 @@ function draw_window_greeting() {
 	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "TRANSLATE")
 	draw_text_url(x1 + 80, y1 + 356 + dev_label_offset, "Discord", link_discord)
 	draw_text(x1 + 104, y1 + 356 + dev_label_offset, "|")
-	draw_text_url(x1 + 128, y1 + 356 + dev_label_offset, "Twitter", link_discord)
+	draw_text_url(x1 + 128, y1 + 356 + dev_label_offset, "Twitter", link_twitter)
 	draw_text(x1 + 150, y1 + 356 + dev_label_offset, "|")
-	draw_text_url(x1 + 180, y1 + 356 + dev_label_offset, "YouTube", link_discord)
+	draw_text_url(x1 + 180, y1 + 356 + dev_label_offset, "YouTube", link_youtube)
 
-	draw_text_url(x1 + 108, y1 + 372 + dev_label_offset, "GitHub", link_discord)
+	draw_text_url(x1 + 108, y1 + 372 + dev_label_offset, "GitHub", link_github)
 	draw_text(x1 + 131, y1 + 372 + dev_label_offset, "|")
-	draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "_________", link_discord)
+	draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "Donate", link_donate)
 	draw_set_color(c_white)
 	
 	if (fdark && theme = 3) draw_set_color(0)
