@@ -9,6 +9,7 @@ function download_song_from_url() {
 		var status = async_load[? "status"];
 	    if (status == 1) {
 			song_downloaded_size = async_load[? "sizeDownloaded"];
+			song_download_status = 1;
 			song_total_size = async_load[? "contentLength"];
 		} else if (status == 0) {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)

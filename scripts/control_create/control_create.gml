@@ -617,7 +617,6 @@ function control_create() {
 	if (protocol_data != pointer_null) {
 		var download_url = string_replace(protocol_data, "nbs://", "")
 		song_download_data = http_get_file(download_url, downloaded_song_file)
-		song_download_status = 1
 	}
 	// Open song
 	else if (filename != "") {
