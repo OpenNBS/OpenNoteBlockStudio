@@ -116,4 +116,6 @@ function macros() {
 #macro format_aiff "AIFF"
 #macro format_flac "FLAC"
 
+#macro max_song_download_size 5242880  // 5 MiB
+
 }

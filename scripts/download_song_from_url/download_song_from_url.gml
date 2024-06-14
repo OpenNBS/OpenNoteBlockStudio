@@ -9,8 +9,13 @@ function download_song_from_url() {
 		var status = async_load[? "status"];
 	    if (status == 1) {
 			song_downloaded_size = async_load[? "sizeDownloaded"];
-			song_download_status = 1;
 			song_total_size = async_load[? "contentLength"];
+			if (song_total_size > max_song_download_size) {
+				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error")
+				song_download_data = -1; // Cancel
+			} else {
+				song_download_status = 1;
+			}
 		} else if (status == 0) {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)
 			song_download_data = -1;
