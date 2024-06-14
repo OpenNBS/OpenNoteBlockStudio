@@ -616,7 +616,22 @@ function control_create() {
 	// Download song
 	if (protocol_data != pointer_null) {
 		var download_url = string_replace(protocol_data, "nbs://", "")
-		song_download_data = http_get_file(download_url, downloaded_song_file)
+		
+		var download_url_noparams = download_url;
+		var params_pos = string_last_pos("?", download_url);
+		if (params_pos > 0) {
+			download_url_noparams = string_copy(download_url, 1, params_pos)
+		}
+		
+		var len = string_length(download_url_noparams)
+		var is_nbs = string_last_pos(".nbs", download_url_noparams) != len - 3
+		var is_zip = string_last_pos(".zip", download_url_noparams) != len - 3
+		if (!(is_nbs || is_zip)) {
+			message("Couldn't verify if the file you're trying to open is a valid song!", "Minecraft Note Block Studio")
+			game_end()
+		} else {
+			song_download_data = http_get_file(download_url, downloaded_song_file)
+		}
 	}
 	// Open song
 	else if (filename != "") {
