@@ -43,23 +43,24 @@ function menu_click(argument0) {
 	        }
 	        if (sel = b + 4) save_song(filename)
 	        if (sel = b + 5) save_song("")
-			if (sel = b + 6) window = w_saveoptions
-	        if (sel = b + 7) pattern_import("")
-	        if (sel = b + 8) pattern_export("")
-	        if (sel = b + 9) open_midi("")
-	        if (sel = b + 10) open_schematic("")
-	        if (sel = b + 11) window = w_mp3_export
-	        if (sel = b + 12) {
+			if (sel = b + 6) save_song_zip("")
+			if (sel = b + 7) window = w_saveoptions
+	        if (sel = b + 8) pattern_import("")
+	        if (sel = b + 9) pattern_export("")
+	        if (sel = b + 10) open_midi("")
+	        if (sel = b + 11) open_schematic("")
+	        if (sel = b + 12) window = w_mp3_export
+	        if (sel = b + 13) {
 	            if (calculate_size()) window = w_schematic_export
 	        }
-	        if (sel = b + 13) {
+	        if (sel = b + 14) {
 	            if (calculate_size()) window = w_track_export
 	        }
-	        if (sel = b + 14) {
+	        if (sel = b + 15) {
 	            if (calculate_size()) window = w_branch_export
 	        }
-			if(sel = b + 15) window = w_datapack_export
-	        if (sel = b + 16) game_end()
+			if(sel = b + 16) window = w_datapack_export
+	        if (sel = b + 17) game_end()
 	        break
 	    }
 	    case "edit": {

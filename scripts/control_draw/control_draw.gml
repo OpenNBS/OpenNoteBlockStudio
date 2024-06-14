@@ -1510,7 +1510,8 @@ function control_draw() {
 		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
 		                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
-		                             icon(icons.SAVE_AS)+"Save song as a new file...|Save options...|-|"+
+		                             icon(icons.SAVE_AS)+"Save song as a new file...|" +
+									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + icon(icons.INSTRUMENTS) + "Save song with custom sounds...|Save options...|-|"+
 		                             inactive(selected != 0)+"Import pattern...|"+
 									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
 		                             inactive(totalblocks = 0) + "Export as audio track...|"+
@@ -1599,6 +1600,7 @@ function control_draw() {
 		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
 		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
+									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + "TRANSLATE" +
 		                             inactive(selected != 0)+"导入片段......|"+
 									 inactive(selected = 0)+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
 		                             inactive(totalblocks = 0) + "导出音频文件......|"+
