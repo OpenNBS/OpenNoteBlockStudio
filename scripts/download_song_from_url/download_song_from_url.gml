@@ -11,8 +11,9 @@ function download_song_from_url() {
 			song_downloaded_size = async_load[? "sizeDownloaded"];
 			song_total_size = async_load[? "contentLength"];
 			if (song_total_size > max_song_download_size) {
-				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error")
+				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error");
 				song_download_data = -1; // Cancel
+				game_end();
 			} else {
 				song_download_status = 1;
 			}
@@ -29,6 +30,7 @@ function download_song_from_url() {
 				} else {
 					show_message("TRANSLATE");
 				}
+				game_end();
 			}
 		}
 	}
