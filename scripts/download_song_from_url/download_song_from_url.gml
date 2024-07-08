@@ -29,11 +29,21 @@ function download_song_from_url() {
 			var headers = async_load[? "response_headers"];
 			var contentLength = -1;
 			var contentDisposition = "";
+			var contentType = "";
 			if (headers > 0) {
 				contentLength = headers[? "Content-Length"];
-				contentDisposition = headers[? "Content-Disposition"]
+				contentDisposition = headers[? "Content-Disposition"];
+				contentType = headers[? "Content-Type"];
 			}
 			var writtenFileSize = file_get_size(song_download_file);
+			
+			// Check mimetype to see if response is a valid file
+			var invalid_type = false;
+			if (!is_undefined(contentType)) {
+				if !(contentType == "application/zip" || contentType == "application/octet-stream") {
+					invalid_type = true
+				}
+			}
 			
 			// Read file name from Content-Disposition header, if present
 			var override_fn = "";
@@ -45,7 +55,7 @@ function download_song_from_url() {
 				override_fn = string_copy(contentDisposition, firstQuotePos, lastQuotePos - firstQuotePos);
 			}
 			
-			if (contentLength > 0 && writtenFileSize == contentLength) {
+			if (!invalid_type && contentLength > 0 && writtenFileSize == contentLength) {
 				song_downloaded_size = song_total_size; // prevent freezing under 100%
 				show_debug_message(override_fn);
 				load_song(song_download_file, true); // load as backup file (keep unsaved, don't add to recent etc.)
