@@ -7,9 +7,14 @@ function download_song_from_url() {
 
 	if (async_load[? "id"] == song_download_data) {
 		var status = async_load[? "status"];
-	    if (status == 1) {
+		show_debug_message("Status: " + string(status));
+		
+	    if (status == 1) { // Downloading, if multiple packets are returned. The status may never be 1 if the server responds immediately
 			song_downloaded_size = async_load[? "sizeDownloaded"];
 			song_total_size = async_load[? "contentLength"];
+			
+			//show_debug_message(string(song_downloaded_size) + " " + string(song_total_size) + " " + string(file_get_size(song_download_file)))
+			
 			if (song_total_size > max_song_download_size) {
 				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error");
 				song_download_data = -1; // Cancel
@@ -21,7 +26,31 @@ function download_song_from_url() {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)
 			song_download_data = -1;
 			song_download_status = 0;
-			if (song_total_size > 0 && file_get_size(song_download_file) == song_total_size) {
+			
+			// The sizeDownloaded and contentLength variables may never be reported if the song is downloaded in one go.
+			// To avoid this from happening, we compare the Content-Length response header with the downloaded file's disk size.
+			var headers = async_load[? "response_headers"];
+			var contentLength = -1;
+			if (headers > 0) {
+				contentLength = headers[? "Content-Length"];
+			}
+			var writtenFileSize = file_get_size(song_download_file);
+			
+			show_debug_message(contentLength);
+			show_debug_message(writtenFileSize);
+			
+			//show_debug_message("Downloaded: " + string(async_load[? "sizeDownloaded"]));
+			//show_debug_message("Total: " + string(async_load[? "contentLength"]));
+			//
+			//var headers = ds_map_find_value(async_load, "response_headers")
+			//show_debug_message("Headers: " + string(headers));
+			//if (headers > 0) {
+			//	show_debug_message(ds_map_keys_to_array(headers));
+			//	show_debug_message(ds_map_values_to_array(headers));
+			//}
+			//show_debug_message(string(song_downloaded_size) + " " + string(song_total_size) + " " + string(file_get_size(song_download_file)))
+			
+			if (contentLength > 0 && writtenFileSize == contentLength) {
 				song_downloaded_size = song_total_size; // prevent freezing under 100%
 				load_song(song_download_file);
 				files_delete_lib(song_download_file);
