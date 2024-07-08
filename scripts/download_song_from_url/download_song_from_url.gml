@@ -28,14 +28,30 @@ function download_song_from_url() {
 			// To avoid this from happening, we compare the Content-Length response header with the downloaded file's disk size.
 			var headers = async_load[? "response_headers"];
 			var contentLength = -1;
+			var contentDisposition = "";
 			if (headers > 0) {
 				contentLength = headers[? "Content-Length"];
+				contentDisposition = headers[? "Content-Disposition"]
 			}
 			var writtenFileSize = file_get_size(song_download_file);
 			
+			// Read file name from Content-Disposition header, if present
+			var override_fn = "";
+			if (!is_undefined(contentDisposition) && string_count("attachment; filename=", contentDisposition) > 0) { // attachment; filename="<song.nbs>"
+				show_debug_message("Content-Disposition: " + contentDisposition)
+				
+				var firstQuotePos = string_pos("\"", contentDisposition) + 1;
+				var lastQuotePos = string_last_pos("\"", contentDisposition);
+				override_fn = string_copy(contentDisposition, firstQuotePos, lastQuotePos - firstQuotePos);
+			}
+			
 			if (contentLength > 0 && writtenFileSize == contentLength) {
 				song_downloaded_size = song_total_size; // prevent freezing under 100%
-				load_song(song_download_file);
+				show_debug_message(override_fn);
+				load_song(song_download_file, true); // load as backup file (keep unsaved, don't add to recent etc.)
+				if (override_fn != "") {
+					song_download_display_name = override_fn; // override title bar display name
+				}
 				files_delete_lib(song_download_file);
 			} else {
 				if (language != 1) {

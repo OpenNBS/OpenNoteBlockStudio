@@ -28,7 +28,7 @@ function control_draw() {
 	showmenu = 0
 	cursmarker = 0
 	compx = 160
-	window_set_caption(condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*") + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(condstr((protocol_data != pointer_null), song_download_display_name, condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*")) + " - Minecraft Note Block Studio" + condstr(isplayer, " - Player Mode"))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -2146,7 +2146,7 @@ function control_draw() {
 				draw_set_halign(fa_left)
 				draw_theme_color()
 				draw_theme_font(font_info_med)
-				draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname), true)
+				draw_text_dynamic(rw / 2 - 200, rh / 2 - 80, condstr((protocol_data != pointer_null), song_download_display_name, condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "", midiname), true))
 				draw_theme_font(font_main)
 				dropalpha = 1
 			} else {
