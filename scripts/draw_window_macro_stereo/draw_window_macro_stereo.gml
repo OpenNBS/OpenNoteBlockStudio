@@ -33,9 +33,9 @@ function draw_window_macro_stereo() {
 		windowclose = 0
 		windowopen = 0
 		str = selection_code
-		arr_data = selection_to_array(str)
+		var arr_data = selection_to_array_ext()
 		window = 0
-		total_vals = string_count("|", str)
+		total_vals = array_length(arr_data)
 		val = 0
 		while (val < total_vals) {
 			// First column panned left
@@ -67,8 +67,8 @@ function draw_window_macro_stereo() {
 			}
 			val ++
 		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
+		selection_load_from_array(selection_x, selection_y, arr_data)
+		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

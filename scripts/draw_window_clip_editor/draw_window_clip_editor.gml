@@ -22,7 +22,7 @@ function draw_window_clip_editor() {
 	else draw_areaheader(x1 + 22, y1 + 48, 396, 330, "剪贴板")
 	draw_theme_color()
 	//text_exists[59] = 0
-	selection_copied = draw_text_edit(59, selection_copied, x1 + 32, y1 + 23 * 3, 370, 300, 0, 0) 
+	selection_copied = try_compress_selection(draw_text_edit(59, try_decompress_selection(selection_copied), x1 + 32, y1 + 23 * 3, 370, 300, 0, 0))
 
 	if (draw_button2(x1 + 320, y1 + 398, 72, condstr(language != 1, "OK", "确定")) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1

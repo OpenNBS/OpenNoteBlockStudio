@@ -3,12 +3,14 @@ function macro_tremolo() {
 	var k, l, d, c, e, str, total_vals, total_cols, val, replength, colcount;
 	if (selected = 0) return 0
 	str = selection_code
-	arr_temp = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_temp = selection_to_array_ext()
+	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
-	total_cols = string_count("-1", str)
+	total_cols = macro_column_count(arr_temp)
 	//show_debug_message("total cols is "+string(total_cols))
 	val = 0
+	var arr_data = []
+	var arr_col = []
 	c = 0
 	colcount = 0
 	for (d = 0; d < total_cols; d++;) {
@@ -46,8 +48,11 @@ function macro_tremolo() {
 	}
 	arr_data[0] = 0
 	//show_debug_message("Out of loop. arr_data has been changed to " + string(array_to_selection(arr_data, c)))
-	str = array_to_selection(arr_data, c)
-	selection_load(selection_x, selection_y,str,true)
+	var sel_x = selection_x
+	var sel_y = selection_y
+	selection_delete(true)
+	selection_load_from_array(selection_x, selection_y, arr_data)
+	history_set(h_selectchange, selection_x, selection_y, try_compress_selection(selection_code), selection_x, selection_y, try_compress_selection(str))
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

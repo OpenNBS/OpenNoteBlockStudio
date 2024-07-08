@@ -2,8 +2,8 @@ function check_custom_instrument(argument0) {
 	// check_custom_instrument(string)
 	var str, total_vals, val
 	str = argument0
-	arr_data = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_data = selection_to_array_ext()
+	total_vals = array_length(arr_data)
 	val = 0
 	//show_debug_message(string_count("-1", str))
 	//for (var i = 0; i < total_vals; i++;) {show_debug_message(arr_data[i])}

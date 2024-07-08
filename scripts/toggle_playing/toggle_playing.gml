@@ -54,6 +54,8 @@ function toggle_playing(argument0) {
 	            }
 	        }
 	    }
+	} else {
+		timestoloop = real(loopmax)
 	}
 
 

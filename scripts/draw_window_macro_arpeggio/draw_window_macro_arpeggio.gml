@@ -37,24 +37,24 @@ function draw_window_macro_arpeggio() {
 	windowopen = 0
 	window = 0
 	str = selection_code
-	arr_data = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_data = selection_to_array_ext()
+	total_vals = array_length(arr_data)
 	val = 0
 	pattern = string_digits_symbol(pattern, "|")
 	pattern = string(pattern + "|")
-	arp = selection_to_array(pattern)
+	var arp = selection_to_array(pattern)
 	arplen = string_count("|", pattern)
 		while (val < total_vals) {
 			for (i = 0; i < arplen; i++;) {
 				val += 3
 				if (arr_data[val] + arp[i] > 0 || arr_data[val] + arp[i] < 88) {
-					arr_data[val] = real(arr_data[val]) + real(arp[i])
+					arr_data[val] = arr_data[val] + arp[i]
 				}
 				val += 4
 				while arr_data[val] != -1 {
 					val += 2
 					if (arr_data[val] + arp[i] > 0 || arr_data[val] + arp[i] < 88) {
-						arr_data[val] = real(arr_data[val]) + real(arp[i])
+						arr_data[val] = arr_data[val] + arp[i]
 					}
 					val += 4
 				}
@@ -63,9 +63,9 @@ function draw_window_macro_arpeggio() {
 			}
 		if val >= total_vals break
 		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
-		selection_code_update()
+		selection_load_from_array(selection_x, selection_y, arr_data)
+		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
+		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

@@ -33,23 +33,23 @@ function add_block_select(argument0, argument1, argument2, argument3, argument4,
 
 	// Add block
 	song_exists[xx, yy] = 1
-	song_ins[xx, yy] = ins
-	song_key[xx, yy] = key
-	song_vel[xx, yy] = vel
-	song_pan[xx, yy] = pan
-	song_pit[xx, yy] = pit
-	song_played[xx, yy] = 0
-	song_added[xx, yy] = 0
-	colamount[xx] += 1
-	rowamount[yy] += 1
+	song_ins[@ xx, yy] = ins
+	song_key[@ xx, yy] = key
+	song_vel[@ xx, yy] = vel
+	song_pan[@ xx, yy] = pan
+	song_pit[@ xx, yy] = pit
+	song_played[@ xx, yy] = 0
+	song_added[@ xx, yy] = 0
+	colamount[@ xx] += 1
+	rowamount[@ yy] += 1
 	ins.num_blocks++
 	if (key < 33 || key > 57) block_outside += 1
 	if (ins.user) block_custom += 1
 	if (pit != 0) block_pitched += 1
 	totalblocks += 1
 
-	if (colfirst[xx] = -1 || yy < colfirst[xx]) colfirst[xx] = yy
-	if (yy > collast[xx]) collast[xx] = yy
+	if (colfirst[xx] = -1 || yy < colfirst[xx]) colfirst[@ xx] = yy
+	if (yy > collast[xx]) collast[@ xx] = yy
 
 	if (xx >= enda) enda = xx
 	if (yy >= endb) endb = yy

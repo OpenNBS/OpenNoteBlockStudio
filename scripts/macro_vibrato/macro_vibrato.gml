@@ -3,10 +3,10 @@ function macro_vibrato() {
 	var str, total_vals, val, decr
 	str = selection_code
 	if (selected = 0) return 0
-	arr_data = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_data = selection_to_array_ext()
+	total_vals = array_length(arr_data)
 	val = 0
-	decr = 100/string_count("-1", str)
+	decr = 100/macro_column_count(arr_data)
 	//for (var i = 0; i < total_vals; i++;) {show_debug_message(arr_data[i])}
 	while (val < total_vals) {
 		// First column 100
@@ -49,8 +49,8 @@ function macro_vibrato() {
 		}
 		val ++
 	}
-	str = array_to_selection(arr_data, total_vals)
-	selection_load(selection_x,selection_y,str,true)
+	selection_load_from_array(selection_x, selection_y, arr_data)
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

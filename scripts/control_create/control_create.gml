@@ -58,6 +58,7 @@ function control_create() {
 	last_icon = -1
 	icon_display = 1
 	hires = (window_scale > 1.25)
+	surface_depth_disable(true)
 	
 	font_table =
 	[

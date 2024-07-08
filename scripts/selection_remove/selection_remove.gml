@@ -42,17 +42,17 @@ function selection_remove(argument0, argument1, argument2, argument3, argument4,
 	                    sa = selection_x + a
 	                    sb = selection_y + b
 	                    add_block_select(sa, sb, ins, key, vel, pan, pit)
-	                    selection_exists[a, b] = 0
-	                    selection_ins[a, b] = 0
-	                    selection_key[a, b] = 0
-	                    selection_vel[a, b] = 0
-	                    selection_pan[a, b] = 0
-	                    selection_pit[a, b] = 0
-	                    selection_played[a, b] = 0
+	                    selection_exists[@ a, b] = 0
+	                    selection_ins[@ a, b] = 0
+	                    selection_key[@ a, b] = 0
+	                    selection_vel[@ a, b] = 0
+	                    selection_pan[@ a, b] = 0
+	                    selection_pit[@ a, b] = 0
+	                    selection_played[@a, b] = 0
 	                }
 	            }
-	            selection_colfirst[a] = -1
-	            selection_collast[a] = -1
+	            selection_colfirst[@ a] = -1
+	            selection_collast[@ a] = -1
 	        }
 	    }
 	    update_songsize()

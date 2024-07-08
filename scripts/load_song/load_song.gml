@@ -55,6 +55,4 @@ function load_song() {
 	blocks_set_instruments()
 	io_clear()
 
-
-
 }

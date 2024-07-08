@@ -3,12 +3,14 @@ function macro_tremolo_fadein() {
 	var c, d , e, f, str, total_vals, total_cols, val, replength, colcount, decr, inc, tremolo_duration, prevlength, previous_colsegment, current_colsegment;
 	str = selection_code
 	if (selected = 0) return 0
-	arr_temp = selection_to_array(str)
-	total_vals = string_count("|", str)
+	var arr_temp = selection_to_array_ext()
+	total_vals = array_length(arr_temp)
 	//show_debug_message("total vals is "+string(total_vals))
-	total_cols = string_count("-1", str)
+	total_cols = macro_column_count(arr_temp)
 	//show_debug_message("total cols is "+string(total_cols))
 	val = 0
+	var arr_data = []
+	var arr_col = []
 	c = 0
 	colcount = 0
 	prevlength = 0
@@ -45,8 +47,8 @@ function macro_tremolo_fadein() {
 		}
 	    // show_debug_message("End loop. arr_data is now " + string(array_to_selection(arr_data, c)))
 		colcount++
-		current_colsegment = string_count("-1", string(array_to_selection(arr_data, c))) - previous_colsegment
-		tremolo_duration = (real(array_length_1d(arr_data)) - prevlength) // Calculate Fade-In
+		current_colsegment = macro_column_count(arr_data, c) - previous_colsegment
+		tremolo_duration = (real(array_length(arr_data)) - prevlength) // Calculate Fade-In
 		f = 0
 		if fade_auto = 1 {
 			if (current_colsegment - 4 > 0) decr = 100 / (current_colsegment - 4)
@@ -73,17 +75,19 @@ function macro_tremolo_fadein() {
 			decr = decr + inc
 			f ++
 		}
-		prevlength = real(array_length_1d(arr_data))
+		prevlength = real(array_length(arr_data))
 		previous_colsegment += current_colsegment
 		decr = 0
 		inc = 0
 	}
 	arr_data[0] = 0
 	//show_debug_message("Out of loop. arr_data has been changed to " + string(array_to_selection(arr_data, c)))
-	str = array_to_selection(arr_data, c)
-	arr_data = 0
-	selection_load(selection_x,selection_y,str,true)
-	selection_code_update()
+	array_resize(arr_data, c)
+	var sel_x = selection_x
+	var sel_y = selection_y
+	selection_delete(true)
+	selection_load_from_array(sel_x, sel_y, arr_data)
+	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 	if(!keyboard_check(vk_alt)) selection_place(false)
 
 

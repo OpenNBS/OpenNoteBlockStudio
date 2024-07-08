@@ -20,40 +20,64 @@ function action_undo() {
 	arg14 = history[historypos, 15]
 	historypos += 1
 	changed = 1
-	if (t = h_addblock) {
-	    remove_block(arg0, arg1)
-	} else if (t = h_removeblock) {
-	    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
-	} else if (t = h_changeblock) {
-	    change_block(arg0, arg1, arg7, arg8, arg9, arg10, arg11)
-	} else if (t = h_selectadd) {
-	    selection_remove(arg0, arg1, arg2, arg3, 0, 1)
-	} else if (t = h_selectremove) {
-	    selection_add(arg0, arg1, arg2 - 1, arg3 - 1, 0, 1)
-	    selection_delete(1)
-	    selection_load(arg4, arg5, arg6, true)
-	    region_code_load(arg0, arg1, arg7)
-	} else if (t = h_selectchange) {
-	    selection_delete(1)
-	    selection_load(arg3, arg4, arg5, 1)
-	} else if (t = h_selectmove) {
-	    selection_x = arg2
-	    selection_y = arg3
-	} else if (t = h_selectpaste) {
-	    selection_delete(1)
-	} else if (t = h_select) {
-	    selection_place(1)
-	    selection_load_ext(arg3, arg4, arg5)
-	} else if (t = h_addlayer) {
-		remove_layer(arg0, true)
-	} else if (t = h_removelayer) {
-		add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
-	} else if (t = h_swaplayer) {
-		shift_layers(arg1, arg0, true)
-	} else if (t = h_stereoize) {
-		selection_load(arg0, arg1, arg2, true)
+	switch (t) {		
+		case h_addblock: {
+		    remove_block(arg0, arg1)
+			break
+		}
+		case h_removeblock: {
+		    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+			break
+		}
+		case h_changeblock: {
+		    change_block(arg0, arg1, arg7, arg8, arg9, arg10, arg11)
+			break
+		}
+		case h_selectadd: {
+		    selection_remove(arg0, arg1, arg2, arg3, 0, 1)
+			break
+		}
+		case h_selectremove: {
+		    selection_add(arg0, arg1, arg2 - 1, arg3 - 1, 0, 1)
+		    selection_delete(1)
+		    selection_load(arg4, arg5, arg6, true)
+		    region_code_load(arg0, arg1, arg7)
+			break
+		}
+		case h_selectchange: {
+		    selection_delete(1)
+		    selection_load(arg3, arg4, arg5, 1)
+			break
+		}
+		case h_selectmove: {
+		    selection_x = arg2
+		    selection_y = arg3
+			break
+		}
+		case h_selectpaste: {
+		    selection_delete(1)
+			break
+		}
+		case h_select: {
+		    selection_place(1)
+		    selection_load_ext(arg3, arg4, arg5)
+			break
+		}
+		case h_addlayer: {
+			remove_layer(arg0, true)
+			break
+		}
+		case h_removelayer: {
+			add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
+			break
+		}
+		case h_swaplayer: {
+			shift_layers(arg1, arg0, true)
+			break
+		}
+		case h_stereoize: {
+			selection_load(arg0, arg1, arg2, true)
+			break
+		}
 	}
-
-
-
 }

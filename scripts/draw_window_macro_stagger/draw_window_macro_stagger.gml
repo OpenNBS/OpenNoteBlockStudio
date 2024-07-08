@@ -12,9 +12,9 @@ function draw_window_macro_stagger() {
 	draw_theme_color()
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "Stagger")
-	draw_set_color(c_red)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CANNOT BE UNDONE)")
-	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）")
+	draw_set_color(c_green)
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CAN BE UNDONE)")
+	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）") // Please re-translate this
 	draw_theme_color()
 	pattern = ""
 	draw_theme_font(font_main)
@@ -47,18 +47,18 @@ function draw_window_macro_stagger() {
 		windowopen = 0
 		window = 0
 		str = selection_code
-		arr_data = selection_to_array(str)
-		total_vals = string_count("|", str)
+		var arr_data = selection_to_array_ext()
+		total_vals = array_length(arr_data)
 		val = 0
 		conf = 0
 		pattern = string_digits_symbol(pattern, "|")
 		pattern = string(pattern + "|")
-		arp = selection_to_array(pattern)
+		var arp = selection_to_array(pattern)
 		arplen = string_count("|", pattern)
 
 		maxlength = 0;
 	
-		var patlen = array_length_1d(arp);
+		var patlen = array_length(arp);
 		for (i = 0; i < patlen; i++) { // Calculate highest number in given pattern
 		    if (arp[i] > arp[maxlength]) {
 		        maxlength = i;
@@ -75,10 +75,10 @@ function draw_window_macro_stagger() {
 		while (val < total_vals) {
 			for (i = 0; i < arplen; i++;) {
 				val += 1
-				arr_data[val] = real(arr_data[val]) + real(arp[i])
+				arr_data[val] = arr_data[val] + arp[i]
 				val += 6
 				while arr_data[val] != -1 {
-					arr_data[val] = real(arr_data[val]) + real(arp[i])
+					arr_data[val] = arr_data[val] + arp[i]
 					val += 6
 				}
 			val ++
@@ -86,10 +86,12 @@ function draw_window_macro_stagger() {
 			}
 		if val >= total_vals break
 		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
-		selection_code_update()
+		var sel_x = selection_x
+		var sel_y = selection_y
+		selection_delete(true)
+		selection_load_from_array(sel_x, sel_y, arr_data)
 		history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
+		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 75, y1 + 128, 60, condstr(language != 1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

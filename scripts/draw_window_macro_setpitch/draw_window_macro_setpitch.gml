@@ -30,27 +30,8 @@ function draw_window_macro_setpitch() {
 		windowalpha = 0
 		windowclose = 0
 		windowopen = 0
-		str = selection_code
-		val = 0
-		arr_data = selection_to_array(str)
 		window = 0
-		total_vals = string_count("|", str)
-		val = 0
-		while (val < total_vals) {
-			val += 6
-			if (!addpitch) arr_data[val] = setpit
-			else arr_data[val] = real(arr_data[val]) + real(setpit)
-			val += 1
-			while arr_data[val] != -1 {
-				val += 5
-				if (!addpitch) arr_data[val] = setpit
-				else arr_data[val] = real(arr_data[val]) + real(setpit)
-				val += 1
-			}
-			val ++
-		}
-		str = array_to_selection(arr_data, total_vals)
-		selection_load(selection_x,selection_y,str,true)
+		selection_change(m_pit, setpit, addpitch)
 		if(!keyboard_check(vk_alt)) selection_place(false)
 	}
 	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消")) && (windowopen = 1 || theme != 3)) {windowclose = 1}

@@ -21,35 +21,57 @@ function action_redo() {
 	arg14 = history[historypos, 15]
 	changed = 1
 
-	if (t = h_addblock) {
-	    add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
-	} else if (t = h_removeblock) {
-	    remove_block(arg0, arg1)
-	} else if (t = h_changeblock) {
-	    change_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
-	} else if (t = h_selectadd) {
-	    selection_add(arg0, arg1, arg2 - 1, arg3 - 1, arg4, 1)
-	} else if (t = h_selectremove) {
-	    selection_remove(arg0, arg1, arg2, arg3, 0, 1)
-	} else if (t = h_selectchange) {
-	    selection_delete(1)
-	    selection_load(arg0, arg1, arg2, 1)
-	} else if (t = h_selectmove) {
-	    selection_x = arg0
-	    selection_y = arg1
-	} else if (t = h_selectpaste) {
-	    selection_load(arg0, arg1, arg2, 1)
-	} else if (t = h_select) {
-	    selection_place(1)
-	    selection_load_ext(arg0, arg1, arg2)
-	} else if (t = h_addlayer) {
-		add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
-	} else if (t = h_removelayer) {
-		remove_layer(arg0, true)
-	} else if (t = h_swaplayer) {
-		shift_layers(arg0, arg1, true)
+	switch (t) {
+		case h_addblock: {
+			add_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+			break
+		}
+		case h_removeblock: {
+			remove_block(arg0, arg1)
+			break
+		}
+		case h_changeblock: {
+			change_block(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
+			break
+		}
+		case h_selectadd: {
+			selection_add(arg0, arg1, arg2 - 1, arg3 - 1, arg4, 1)
+			break
+		}
+		case h_selectremove: {
+			selection_remove(arg0, arg1, arg2, arg3, 0, 1)
+			break
+		}
+		case h_selectchange: {
+			selection_delete(1)
+			selection_load(arg0, arg1, arg2, 1)
+			break
+		}
+		case h_selectmove: {
+			selection_x = arg0
+			selection_y = arg1
+			break
+		}
+		case h_selectpaste: {
+			selection_load(arg0, arg1, arg2, 1)
+			break
+		}
+		case h_select: {
+			selection_place(1)
+			selection_load_ext(arg0, arg1, arg2)
+			break
+		}
+		case h_addlayer: {
+			add_layer(arg0, true, arg1, arg2, arg3, arg4, arg5, arg6)
+			break
+		}
+		case h_removelayer: {
+			remove_layer(arg0, true)
+			break
+		}
+		case h_swaplayer: {
+			shift_layers(arg0, arg1, true)
+			break
+		}
 	}
-
-
-
 }
