@@ -1,7 +1,6 @@
 function download_song_from_url() {
-	// download_song_from_url()
 	// Attempts to download a song from a URL
-	// status:
+	// Status:
 	// 1 - receiving packets (download in progress)
 	// 0 - success (download complete)
 
@@ -12,8 +11,6 @@ function download_song_from_url() {
 	    if (status == 1) { // Downloading, if multiple packets are returned. The status may never be 1 if the server responds immediately
 			song_downloaded_size = async_load[? "sizeDownloaded"];
 			song_total_size = async_load[? "contentLength"];
-			
-			//show_debug_message(string(song_downloaded_size) + " " + string(song_total_size) + " " + string(file_get_size(song_download_file)))
 			
 			if (song_total_size > max_song_download_size) {
 				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error");
@@ -35,20 +32,6 @@ function download_song_from_url() {
 				contentLength = headers[? "Content-Length"];
 			}
 			var writtenFileSize = file_get_size(song_download_file);
-			
-			show_debug_message(contentLength);
-			show_debug_message(writtenFileSize);
-			
-			//show_debug_message("Downloaded: " + string(async_load[? "sizeDownloaded"]));
-			//show_debug_message("Total: " + string(async_load[? "contentLength"]));
-			//
-			//var headers = ds_map_find_value(async_load, "response_headers")
-			//show_debug_message("Headers: " + string(headers));
-			//if (headers > 0) {
-			//	show_debug_message(ds_map_keys_to_array(headers));
-			//	show_debug_message(ds_map_values_to_array(headers));
-			//}
-			//show_debug_message(string(song_downloaded_size) + " " + string(song_total_size) + " " + string(file_get_size(song_download_file)))
 			
 			if (contentLength > 0 && writtenFileSize == contentLength) {
 				song_downloaded_size = song_total_size; // prevent freezing under 100%
