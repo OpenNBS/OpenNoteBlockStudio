@@ -11,9 +11,6 @@ function draw_window_macro_tremolo() {
 	draw_window(x1, y1, x1 + 150, y1 + 240)
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "Tremolo")
-	draw_set_color(c_green)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 23, "(CAN BE UNDONE)")
-	else draw_text_dynamic(x1 + 8, y1 + 23, "（无法还原！！）") // Please re-translate this
 	draw_theme_color()
 	draw_theme_font(font_main)
 	if (theme = 0) {
