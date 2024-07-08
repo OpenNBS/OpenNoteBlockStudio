@@ -21,9 +21,9 @@ function download_song_from_url() {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)
 			song_download_data = -1;
 			song_download_status = 0;
-			if (song_total_size > 0 && file_get_size(downloaded_song_file) == song_total_size) {
+			if (song_total_size > 0 && file_get_size(song_download_file) == song_total_size) {
 				song_downloaded_size = song_total_size; // prevent freezing under 100%
-				load_song(downloaded_song_file);
+				load_song(song_download_file);
 			} else {
 				if (language != 1) {
 					show_message("The song could not be downloaded! Please try again with a different song.");
