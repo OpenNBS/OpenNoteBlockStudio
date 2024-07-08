@@ -1,4 +1,4 @@
-function open_song_nbs(fn, sounds_path = "") {
+function open_song_nbs(fn, sounds_path = "", safeopen) {
 	
 	var str, ca, cb, a, b, hei, byte1, byte2, song_first_custom_index, custom_index_diff
 	
@@ -24,6 +24,10 @@ function open_song_nbs(fn, sounds_path = "") {
 			buffer_read_short()
 		}
 	} else {
+		if (safeopen) {
+			message("This file doesn't look like a valid song!", "Error")
+			return
+		}
 		if (language != 1) {if (show_oldwarning) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
 		else {if (show_oldwarning) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 		song_nbs_version = 0
