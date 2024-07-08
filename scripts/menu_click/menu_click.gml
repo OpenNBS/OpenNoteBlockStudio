@@ -171,11 +171,12 @@ function menu_click(argument0) {
 			ins -= floor((ins) / 26) // subtract the "More..." entries to get the instrument number
 	        if (sel < insoffset + 1) {instrument = instrument_list[| ins]; selected_vel = 100; selected_pan = 100; selected_pit = 0}
 	        if (sel = insoffset + 1) window = w_instruments
-	        if (sel = insoffset + 2) window = w_songinfoedit
-	        if (sel = insoffset + 3) window = w_properties
-	        if (sel = insoffset + 4) {selection_place(0) window = w_stats}
-	        if (sel = insoffset + 5) window = w_mididevices
-	        if (sel = insoffset + 6) window = w_preferences
+			if (sel = insoffset + 2) window = w_sound_import
+	        if (sel = insoffset + 3) window = w_songinfoedit
+	        if (sel = insoffset + 4) window = w_properties
+	        if (sel = insoffset + 5) {selection_place(0) window = w_stats}
+	        if (sel = insoffset + 6) window = w_mididevices
+	        if (sel = insoffset + 7) window = w_preferences
 	        break
 	    }
 	    case "help": {
@@ -388,6 +389,11 @@ function menu_click(argument0) {
 				case 10: audio_exp_sample_rate = 352800 break;
 				case 11: audio_exp_sample_rate = 384000 break;
 			}
+			break;
+		}
+		case "sound_import_asset_index": {
+			sound_import_asset_index_select = sel;
+			sound_import_asset_index_count = load_asset_index(sel, false);
 			break;
 		}
 	}

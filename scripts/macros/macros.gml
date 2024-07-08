@@ -96,6 +96,7 @@ function macros() {
 #macro w_tempotapper 44
 #macro w_setaccent 45
 #macro w_track_export 46
+#macro w_sound_import 47
 
 #macro br "\r\n"
 

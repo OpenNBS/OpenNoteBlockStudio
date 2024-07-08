@@ -50,6 +50,7 @@ function draw_windows() {
 	    case w_tempotapper: draw_window_tempo_tapper() break
 	    case w_setaccent: draw_window_set_accent() break
 	    case w_track_export: draw_window_track_export() break
+		case w_sound_import: draw_window_sound_import() break
 	}
 	draw_set_alpha(1)
 }
