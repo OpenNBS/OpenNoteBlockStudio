@@ -1,6 +1,6 @@
 function region_code_get(argument0, argument1, argument2, argument3) {
 	// region_code_get(x1, y1, x2, y2)
-	// Fetches the code of the specified region.z
+	// Fetches the code of the specified region.
 	//show_debug_message("region_code_get")
 	var x1, y1, x2, y2, str, a, b, ca, cb, am;
 	x1 = argument0

@@ -1,6 +1,6 @@
 function region_code_load(argument0, argument1, argument2) {
 	// region_code_load(x, y, code)
-	// Loads the specified code into the x, y position.z
+	// Loads the specified code into the x, y position.
 	//show_debug_message("region_code_load " + argument2)
 	var xx, yy, str, ca, cb, val, ins, key, vel, pan, pit;
 	xx = argument0
