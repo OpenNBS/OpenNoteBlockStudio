@@ -1,52 +1,86 @@
-Changes in v3.10.0 (2022.10.01):
-* The MP3 export functionality has been reworked from scratch:
-   * Renamed to 'Audio export', and added more output formats: WAV, AIFF, FLAC.
-   * Added stereo support! Panning on notes and layers will now be rendered
-      correctly.
-   * Added smart clipping detection! Clipping will no longer occur on louder parts
-      of the song, which is now normalized to 0 dBFS.
-   * Added an option to choose the sampling rate of the exported track.
-   * Added an option to choose between mono and stereo.
-   * Fixed exported notes getting out-of-tune as they moved away from their
-      original key.
-   * The export time has been cut down by about 60%.
-* Added drop mode! In this mode, instead of their usual grid arrangement, notes
-   will scroll vertically and follow their corresponding key on the piano.
-   This mode is only accessible in the player mode.
-* The player mode can now be accessed from the greeting window, through a
-   new button in the bottom-right corner, or by pressing F12.
-* Added smooth scrolling! The workspace no longer clips to the grid while the
-   song is playing. This behavior can be enabled in Preferences > Playback.
-* Added a track export option, to create schematics in a straight line.
-* Added a setting to show flat symbols (b) instead of sharp symbols (#) on the
-   piano.
-* Added a fading border effect when removing a note block by right-clicking, or
-   deleting a selection. This effect can be toggled in the Preferences.
-* Added Ctrl + middle-click to copy note velocity, panning and pitch values.
-* Added custom block selections for structure block export.
-* Added an option to place command blocks instead of note blocks in schematic
-   export.
-* Added the ability to drag and drop pattern files into the window.
-* The 'Set velocity' macro can now be set above 100% in percentage mode.
-* Bugfixes and improvements:
-   * Note Block Studio is now compiled to a native executable with YYC, which
-      should lead to a significant performance boost.
-   * Added a preference to optimize the window scale for high resolutions. With
-      this option enabled, setting the window scale larger than 100% will no longer
-      cause blurriness. (Only available in the Fluent theme.)
-   * The icon details in the Fluent theme will now reflect the accent color.
-   * The Note Block Studio icon has been updated. It's possible to return to the
-      previous icon in Preferences.
-   * The color of the window title bar will now match the program's theme.
-   * The master volume bar can now be changed with the mouse wheel.
-   * Fixed a rounding error in the global pitch calculation, which caused all played
-      notes to gradually drift out of tune the more they moved away from their
-      original key.
-   * Fixed the 'Get extra notes resource pack' button not working.
-   * Fixed the mouse cursor flashing when dragging the edges of the window.
-   * Fixed the master volume bar being changeable while a window is open.
-   * Fixed popups in the main area appearing while a window is open.
-   * Fixed crashes under various circumstances.
+Changes in v3.11.0 Beta 1 (2024.07.09):
+
+* Added a sound import assistant to help you use sounds from Minecraft: Java
+   Edition in your songs!
+    * Accessible from Settings > Import sounds from Minecraft.
+    * Make sure to launch the version you want from the Launcher before
+       importing its sounds. Set your Minecraft installation path and game version,
+       click the button to get sounds and watch them magically appear!
+    * The sounds from the selected version will be copied to the 'minecraft'
+       folder in your Sounds folder.
+
+* Note Block Studio now registers itself as a handler for the nbs:// URL
+   protocol on startup.
+    * This can be used to open NBS files from an external application, such as
+       a blog or website.
+    * By default, the program will launch in the player mode when handling the
+       protocol.
+    * To prevent security risks, the file won't be opened if it can't be
+       detected as a valid song, or if it's over a certain size.
+
+* It is now possible to save a song with its custom sound files attached.
+    * Reach over to File > Save song with instruments... to find this option.
+    * This makes sharing songs with custom instruments easier than ever!
+    * The saved file is a regular ZIP file containing the song, as well as the
+       sound files used in it.
+    * This feature replaces the 'Export sounds' option, previously accessible
+       from the Instruments window.
+
+* Added Minecraft version setting to data pack export.
+    * You can choose between 1.13-1.20 and 1.21+.
+    * This was necessary due to a change in the internal structure of data
+       packs, in order to not break compatibility with older versions.
+
+* Added new OpenNBS social links to the greeting window, the Help menu and the
+   About window.
+
+* Added donation links! If Note Block Studio is useful to you and you'd like to
+   support its development, feel free to check out these options.
+
+
+Bugfixes and improvements:
+
+* All operations involving selections are now much, much faster - including
+   loading a song, moving, selecting, placing and deleting notes, changing note
+   properties, applying macros, and undoing or redoing actions.
+* All macro operations can now be properly undone.
+* The 'Max loop count' option is now respected during playback.
+* The 'Show note chart' option now shows flat notes if the 'Use flat notes'
+   option is enabled.
+* The Chorus macro now better handles selections with more than three layers.
+* Fixed an error that would cause note blocks/command blocks in the track
+   export to be missing.
+* The resource pack used to play notes outside the 2-octave range can now be
+   saved from the Compatibility window.
+* Blackout mode is now available in player mode.
+* The popup shown when the data pack export is complete now shows the syntax to
+   play the song from a command block.
+* Added 'Schematic' and 'Structure Block' labels to the different Minecraft
+   version options in schematic export.
+* Fixed changing auto-save preferences marking song as unsaved.
+* Fixed a softlock caused by an auto-save triggering while a window is open.
+* The song is now marked as unsaved when changing the tempo.
+* The song is now marked as unsaved when toggling a layer's solo setting.
+* Solo layers are now loaded properly from songs.
+* Fixed the initial value of the tempo input box not following the current
+   tempo.
+* Fixed layer names below the workspace visible area getting deleted when
+   adding a new layer.
+* Fixed the note count in the Discord Rich Presence activity indicator having
+   an extra thousands separator at the start.
+* Fixed song author and original author fields in the Song info window not
+   using the Fluent theme's accent color.
+* Fixed previous data pack exported contents not being deleted from the temp
+   folder, causing them to reappear on subsequent exports.
+* Updated bundled resource packs to Minecraft: Java Edition 1.21.0.
+* Fixed a crash when clicking links in the About window credits box.
+* Fixed the demo songs using wrong custom instrument paths.
+
+Hidden changes:
+
+* Added tempo changer support to audio export.
+* Added tempo changer support to MIDI import.
+* Fix tempo changer not working when starting playback at its own tick.
 
 
 
