@@ -488,10 +488,12 @@ function control_create() {
 	// Import sounds
 	mc_default_path = string_copy(game_save_id, 0, string_last_pos("\\", string_copy(game_save_id, 1, string_length(game_save_id) - 1))) + ".minecraft\\";
 	mc_install_path = mc_default_path;
+	sound_import_selected_asset_index = "";
 	sound_import_asset_index_select = 0;
 	sound_import_asset_index_count = -1;
 	sound_import_asset_indexes = [];
 	sound_import_menu_str = "";
+	sound_import_status = 0;
 
 	// Schematic
 	reset_schematic_export(0)

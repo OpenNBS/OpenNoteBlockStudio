@@ -6,8 +6,8 @@ function draw_window_sound_import() {
 	var x1, y1, a, n;
 	
 	// Window frame
-	var width = 400;
-	var height = 300;
+	var width = 480;
+	var height = 320;
 	var startx = floor((rw - width) / 2);
 	var starty = floor((rh - height) / 2) + windowoffset;
 	var x1 = startx;
@@ -27,20 +27,20 @@ function draw_window_sound_import() {
 	y1 += 20;
 	draw_text_dynamic(
 		x1, y1,
-		"This assistant will help you extract sound files from your Minecraft:" + "\n" +
-		"Java Edition installation." + "\n" +
-		"Before continuing, ensure you have launched the version you want from " + "\n" +
-		"the Minecraft Launcher!" + "\n" +
-		"Click 'Find asset lists' to look for the available asset lists, select one" + "\n" +
-		"from the list, and then click 'Import' to look for sounds!"
+		"This assistant will help you extract sound files from your Minecraft: Java Edition" + "\n" +
+		"installation." + "\n" +
+		"Before continuing, ensure you have launched the version you want from the" + "\n" +
+		"Minecraft Launcher." + "\n" +
+		"Select a version from the list, and then click 'Import' to look for sounds!"
 	)
 	
 	// Minecraft installation path
 	x1 = startx;
-	y1 += 120;
+	y1 += 100;
 	draw_text_dynamic(x1, y1, "1. Set your Minecraft installation path:");
+	x1 += 16;
 	y1 += 20;
-	draw_text_dynamic(x1, y1, mc_install_path);
+	draw_text_dynamic(x1, y1, string_truncate(mc_install_path, 280, true));
 	x1 += 300;
 	
 	// Change button
@@ -48,59 +48,81 @@ function draw_window_sound_import() {
 	if (draw_button2(x1, y1, 72, "Change", false, true)) {
 		var fn = string(get_save_filename_ext("", "Select Minecraft installation directory", mc_install_path, "Minecraft installation directory"));
 		if (fn != "") mc_install_path = filename_dir(fn);
+		update_asset_index_menu();
 	}
 	x1 += 76;
 	
 	// Use default button
 	if (draw_button2(x1, y1, 72, "Use default", false, true)) {
-		mc_install_path = mc_default_path
+		mc_install_path = mc_default_path;
+		update_asset_index_menu();
 	}
 	y1 += 4
 	
-	// Import sounds button
-	x1 = startx;
-	y1 += 30;
-	draw_text_dynamic(x1, y1, "2. Search for available asset lists:");
-	y1 += 20;
-	if (draw_button2(x1, y1, 112, "Find asset lists", false, true)) {
-		sound_import_asset_indexes = find_asset_indexes();
-		show_debug_message(sound_import_asset_indexes);
-		
-		// Create menu
-		for (var i = 0; i < array_length(sound_import_asset_indexes); i++) {
-			sound_import_menu_str += check(sound_import_asset_index_select = i);
-			sound_import_menu_str += sound_import_asset_indexes[i] + "|";
-		}
-		sound_import_menu_str = string_delete(sound_import_menu_str, string_length(sound_import_menu_str), 1)
-		
-	}
-	
 	// Asset index select menu
 	x1 = startx;
-	y1 += 30;
-	draw_text_dynamic(x1, y1, "3. Select the asset list to copy sounds from:");
+	y1 += 40;
+	draw_text_dynamic(x1, y1, "2. Select the asset list to copy sounds from:");
+	x1 += 16;
 	y1 += 20;
-	draw_area(x1, y1, x1 + 140, y1 + 16);
-	if (draw_abutton(x1, y1)) {
+	y1 += 1;
+	draw_area(x1, y1, x1 + 100, y1 + 20);
+	draw_text_dynamic(x1 + 4, y1 + 4, sound_import_selected_asset_index);
+	if (draw_abutton(x1 + 100 - 16, y1 + 1, sound_import_menu_str == "")) {
 		show_debug_message(sound_import_menu_str);
 		menu = show_menu_ext("sound_import_asset_index", x1, y1, sound_import_menu_str);
 	}
-	x1 += 144
-	
-	// Located sounds count
-	if (sound_import_asset_index_count > -1) {
-		draw_text_dynamic(x1, y1, sound_import_asset_index_count + " sounds located!")
-	}
+	y1 -= 1;
+	x1 += 110;
 	
 	// Copy sounds button
-	if (draw_button2(x1, y1, 112, "Get sounds", false, true)) {
-		asset_indexes = load_asset_index(sound_import_asset_index_select, copy = true)
+	var is_locked = sound_import_selected_asset_index == "";
+	if (draw_button2(x1, y1, 112, "Get sounds", is_locked, false)) {
+		load_asset_index(true);
 	}
 	
 	x1 = startx;
 	y1 += 30;
-
 	
+	// Status text
+	x1 += 16;
+	draw_theme_font(font_main_bold);
+	draw_theme_color();
 	
-
+	// 0 = idle; 1 = copying; 2 = copying done
+	if (sound_import_status == 2) {
+		if (theme == 3 && fdark || theme == 2) draw_set_color(c_lime);
+		else draw_set_color(c_green);
+		draw_text_dynamic(x1, y1, string(sound_import_asset_index_count) + " sounds have been copied!");
+	} else if (sound_import_status == 1) {
+		draw_text_dynamic(x1, y1, "Copying sounds... please wait!");
+	} else {
+		if (sound_import_asset_index_count > 0) {
+			draw_text_dynamic(x1, y1, string(sound_import_asset_index_count) + " sounds located!");
+		} else {
+			draw_set_color(c_red);
+			draw_text_dynamic(x1, y1, "No sounds located! Check your Minecraft installation path.");
+		}
+	}
+	draw_theme_color();
+	draw_theme_font(font_main);
+	
+	// Instrument settings button
+	x1 = startx + 12;
+	y1 = starty + height - 20 - 12;
+	if (draw_button2(x1, y1, 120, "Instrument settings...", false, true)) {
+		window = w_instruments;
+	}
+	// Sounds folder button
+	x1 += 120 + 12;
+	if (draw_button2(x1, y1, 120, "Open sounds folder", false, true)) {
+		open_url(sounds_directory);
+	}
+	
+	// OK button
+	x1 = startx + width - 72 - 8 - 12;
+	if (draw_button2(x1, y1, 72, "OK", false, false)) {
+		sound_import_status = 0;
+		window = 0;
+	}
 }
