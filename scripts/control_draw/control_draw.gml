@@ -1673,7 +1673,7 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"音色设置......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
+		                        icon(icons.INSTRUMENTS)+"音色设置......|TRANSLATE...|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
 			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
 		}
 		if (draw_tab("帮助")) {
