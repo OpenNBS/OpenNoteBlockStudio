@@ -38,7 +38,11 @@ function find_asset_indexes() {
 	file_find_close();
 	
 	array_sort(asset_indexes, function(elm1, elm2) {
-		return ds_list_find_index(sound_import_asset_index_names_sort, elm1) < ds_list_find_index(sound_import_asset_index_names_sort, elm2);
+		var index1 = ds_list_find_index(sound_import_asset_index_names_sort, elm1)
+		var index2 = ds_list_find_index(sound_import_asset_index_names_sort, elm2)
+		if (index1 == -1) return -1; // Sort newer Minecraft versions at the top
+		if (index2 == -1) return 1;
+		return index1 < index2;
 	});
 	
 	return asset_indexes;
