@@ -67,7 +67,7 @@ function draw_window_sound_import() {
 	y1 += 20;
 	y1 += 1;
 	draw_area(x1, y1, x1 + 86, y1 + 20);
-	draw_text_dynamic(x1 + 4, y1 + 4, sound_import_selected_asset_index);
+	draw_text_dynamic(x1 + 4, y1 + 4, get_asset_index_friendly_name(sound_import_selected_asset_index));
 	if (draw_abutton(x1 + 86 - 16, y1 + 1, sound_import_menu_str == "")) {
 		menu = show_menu_ext("sound_import_asset_index", x1, y1, sound_import_menu_str);
 	}

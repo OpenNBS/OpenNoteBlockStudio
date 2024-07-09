@@ -488,6 +488,18 @@ function control_create() {
 	// Import sounds
 	mc_default_path = string_copy(game_save_id, 0, string_last_pos("\\", string_copy(game_save_id, 1, string_length(game_save_id) - 1))) + ".minecraft\\";
 	mc_install_path = mc_default_path;
+	
+	var asset_index_names_keys = ["pre-1.6", "legacy", "1.7.3", "1.7.4", "1.7.10", "14w25a", "14w31a", "1.8", "1.9", "1.9-aprilfools", "1.10", "1.11", "1.12", "1.13", "1.13.1", "1.14", "1.14-af", "1.15", "1.16", "1.17", "1.18", "1.19", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "_"];
+	var asset_index_names_values = ["Pre-1.6", "1.6-1.7", "1.7.3", "1.7.4", "1.7.10", "14w25a", "1.8 Pre-Release 1", "1.8", "1.9", "1.RV-Pre1", "1.10", "1.11", "1.12", "1.13", "1.13.1", "1.14", "3D Shareware v1.34", "1.15", "1.16", "1.17", "1.18", "1.19", "22w42a", "1.19.3", "1.19.4", "23w14a", "1.20", "23w31a", "1.20.2 Pre-Release 1", "1.20.2", "23w42a", "23w43a", "23w45a", "1.20.3", "24w06a", "24w09a", "24w11a", "1.20.5", "1.21", "Future version (1.21+)"];
+	
+	sound_import_asset_index_names = ds_map_create();
+	sound_import_asset_index_names_sort = ds_list_create(); // TODO: convert this to an array when array_get_index() is available
+
+    for (var i = 0; i < array_length(asset_index_names_keys); i++) {
+        ds_map_add(sound_import_asset_index_names, asset_index_names_keys[i], asset_index_names_values[i]);
+		ds_list_add(sound_import_asset_index_names_sort, asset_index_names_keys[i]);
+    }
+
 	sound_import_selected_asset_index = "";
 	sound_import_asset_index_select = 0;
 	sound_import_asset_index_count = -1;

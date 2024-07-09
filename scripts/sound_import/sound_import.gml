@@ -1,3 +1,12 @@
+function get_asset_index_friendly_name(asset_index) {
+	var friendly_name = ds_map_find_value(sound_import_asset_index_names, asset_index);
+	if (is_undefined(friendly_name)) {
+		friendly_name = ds_map_find_value(sound_import_asset_index_names, "_") + " (" + asset_index + ")";
+	}
+	
+	return friendly_name;
+}
+
 function get_assets_dir() {
 	var assets_dir = mc_install_path;
 	
@@ -8,7 +17,6 @@ function get_assets_dir() {
 	assets_dir = assets_dir + "assets\\";
 	return assets_dir;
 }
-
 
 function find_asset_indexes() {
 
@@ -28,6 +36,10 @@ function find_asset_indexes() {
 	    file_name = file_find_next();
 	}
 	file_find_close();
+	
+	array_sort(asset_indexes, function(elm1, elm2) {
+		return ds_list_find_index(sound_import_asset_index_names_sort, elm1) < ds_list_find_index(sound_import_asset_index_names_sort, elm2);
+	});
 	
 	return asset_indexes;
 }
@@ -52,7 +64,7 @@ function update_asset_index_menu() {
 	sound_import_menu_str = "";
 	for (var i = 0; i < array_length(sound_import_asset_indexes); i++) {
 		sound_import_menu_str += check(sound_import_asset_index_select == i);
-		sound_import_menu_str += sound_import_asset_indexes[i] + "|";
+		sound_import_menu_str += get_asset_index_friendly_name(sound_import_asset_indexes[i]) + "|";
 	}
 	sound_import_menu_str = string_delete(sound_import_menu_str, string_length(sound_import_menu_str), 1)
 	
