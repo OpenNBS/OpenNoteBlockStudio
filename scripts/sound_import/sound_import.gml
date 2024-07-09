@@ -1,4 +1,6 @@
 function get_asset_index_friendly_name(asset_index) {
+	if (asset_index == "") return "";
+	
 	var friendly_name = ds_map_find_value(sound_import_asset_index_names, asset_index);
 	if (is_undefined(friendly_name)) {
 		friendly_name = ds_map_find_value(sound_import_asset_index_names, "_") + " (" + asset_index + ")";
