@@ -38,6 +38,17 @@ function draw_window_update() {
 	}
 	
 	draw_theme_font(font_main)
+	
+	// Refresh changelog button (debug)
+	if (RUN_FROM_IDE) {
+		if (draw_button2(x1 + 500 - 144 - 16, y1 + 8, 72, "Open file")) {
+			open_url(data_directory + "changelog.txt");
+		}
+		if (draw_button2(x1 + 500 - 72 - 8, y1 + 8, 72, "Refresh")) {
+			changelogstr = load_text(data_directory + "changelog.txt");
+		}
+	}
+	
 	if (language != 1) {
 		if (window = w_update) {
 			draw_text_dynamic(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
