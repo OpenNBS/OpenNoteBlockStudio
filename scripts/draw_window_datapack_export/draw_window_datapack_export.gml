@@ -276,9 +276,9 @@ function draw_window_datapack_export() {
 		if (draw_radiobox(x1 + 264, y1 + 304, dat_source = "weather", "天气", "由天气音量控制")) dat_source = "weather"
 
 		// Minecraft version
-		draw_text_dynamic(x1 + 187, y1 + 334, "TRANSLATE")
-		if (draw_radiobox(x1 + 192, y1 + 354, dat_mcversion == 0, "1.13-1.20", "TRANSLATE")) dat_mcversion = 0
-		if (draw_radiobox(x1 + 192, y1 + 374, dat_mcversion == 1, "1.21+", "TRANSLATE")) dat_mcversion = 1
+		draw_text_dynamic(x1 + 187, y1 + 334, "Minecraft 版本")
+		if (draw_radiobox(x1 + 192, y1 + 354, dat_mcversion == 0, "1.13-1.20", "导出至 Minecraft: Java 版\n版本 1.13 至 1.20.6。")) dat_mcversion = 0
+		if (draw_radiobox(x1 + 192, y1 + 374, dat_mcversion == 1, "1.21+", "导出至 Minecraft: Java 版\n版本 1.21 及以上。")) dat_mcversion = 1
 
 		//Export as ZIP
 		if (draw_checkbox(x1 + 192, y1 + 404, dat_usezip, "导出为 ZIP", "是否导出为 ZIP 格式的文件。"+br+"如关闭，将导出为文件夹。", false, true)) dat_usezip=!dat_usezip

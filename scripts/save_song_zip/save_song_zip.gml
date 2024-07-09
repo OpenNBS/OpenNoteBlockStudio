@@ -2,7 +2,7 @@ function save_song_zip() {
 	var fn, tempdir, ins, src, dst, count;
 	
 	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "Save song with custom sounds"));
-	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "TRANSLATE"));
+	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "连带自定义音色一起导出"));
 	if (fn = "") return 0;
 	
 	tempdir = data_directory + "Temp\\";
@@ -38,7 +38,7 @@ function save_song_zip() {
 	
 	if (!file_exists_lib(fn)) {
 		if (language != 1) message("The song could not be saved!", "Error");
-		else message("TRANSLATE");
+		else message("导出歌曲失败！", "错误");
 	} else {
 		if (language != 1) set_msg("Song saved");
 		else set_msg("歌曲已保存");

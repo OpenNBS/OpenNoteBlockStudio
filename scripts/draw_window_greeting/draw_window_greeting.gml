@@ -70,7 +70,7 @@ function draw_window_greeting() {
 	//else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "原作者 David Norgren")
 	//draw_text_url(x1 + 132, y1 + 356 + dev_label_offset, "stuffbydavid.com", "https://www.stuffbydavid.com")
 	if (language != 1) draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "Follow OpenNBS:")
-	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "TRANSLATE")
+	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "关注 OpenNBS：")
 	draw_text_url(x1 + 80, y1 + 356 + dev_label_offset, "Discord", link_discord)
 	draw_text_dynamic(x1 + 104, y1 + 356 + dev_label_offset, "|")
 	draw_text_url(x1 + 128, y1 + 356 + dev_label_offset, "Twitter", link_twitter)
@@ -79,7 +79,8 @@ function draw_window_greeting() {
 
 	draw_text_url(x1 + 108, y1 + 372 + dev_label_offset, "GitHub", link_github)
 	draw_text_dynamic(x1 + 131, y1 + 372 + dev_label_offset, "|")
-	draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "Donate", link_donate)
+	if (language != 1) draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "Donate", link_donate)
+	else draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "捐赠", link_donate)
 	draw_set_color(c_white)
 	
 	if (fdark && theme = 3) draw_set_color(0)

@@ -86,13 +86,13 @@ function draw_window_about() {
 	if (draw_button2(x1 + 160, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false)) {
 		open_url(link_discord)
 	}
-	if (draw_button2(x1 + 236, y1 + 380, 72, condstr(language != 1, "Twitter", "TRANSLATE"), false)) {
+	if (draw_button2(x1 + 236, y1 + 380, 72, condstr(language != 1, "Twitter", "Twitter"), false)) {
 		open_url(link_twitter)
 	}
-	if (draw_button2(x1 + 312, y1 + 380, 72, condstr(language != 1, "YouTube", "TRANSLATE"), false)) {
+	if (draw_button2(x1 + 312, y1 + 380, 72, condstr(language != 1, "YouTube", "Youtube"), false)) {
 		open_url(link_youtube)
 	}
-	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, "Donate", "TRANSLATE"), false)) {
+	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, "Donate", "捐赠"), false)) {
 		open_url(link_donate)
 	}
 

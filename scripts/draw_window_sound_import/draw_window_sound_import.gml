@@ -19,7 +19,7 @@ function draw_window_sound_import() {
 	
 	// Title
 	draw_theme_font(font_main_bold)
-	draw_text_dynamic(x1, y1, ((language == 0) ? "Import sounds" : "TRANSLATE"));
+	draw_text_dynamic(x1, y1, ((language == 0) ? "Import sounds" : "导入音效"));
 	draw_theme_font(font_main)
 	
 	// Info text
@@ -27,17 +27,22 @@ function draw_window_sound_import() {
 	y1 += 20;
 	draw_text_dynamic(
 		x1, y1,
+		((language == 0) ? 
 		"This assistant will help you extract sound files from your Minecraft:" + "\n" +
 		"Java Edition installation." + "\n" +
 		"Before continuing, ensure you have launched the version you want from" + "\n" +
 		"the Minecraft Launcher." + "\n" +
-		"Select a version from the list, and then click 'Import' to look for sounds!"
+		"Select a version from the list, and then click 'Import' to look for sounds!" : 
+		"本向导将帮助您从您的 Minecraft：Java 版中提取音效。" + "\n" +
+		"在开始之前，请确保您从您的启动器至少启动过一次您想要选择的版本。" + "\n" +
+		"从列表中选择一个游戏版本，然后点击“导入”来选择音效！"
+		)
 	)
 	
 	// Minecraft installation path
 	x1 = startx;
 	y1 += 110;
-	draw_text_dynamic(x1, y1, "1. Set your Minecraft installation path:");
+	draw_text_dynamic(x1, y1, ((language == 0) ? "1. Set your Minecraft installation path:" : "1. 设定您的.minecraft目录："));
 	x1 += 16;
 	y1 += 20;
 	draw_text_dynamic(x1, y1, string_truncate(mc_install_path, 280, true));
@@ -45,15 +50,18 @@ function draw_window_sound_import() {
 	
 	// Change button
 	x1 = startx + width - 72 - 20;
-	if (draw_button2(x1, y1, 72, "Change", false, true)) {
-		var fn = string(get_save_filename_ext("", "Select Minecraft installation directory", mc_install_path, "Minecraft installation directory"));
+	if (draw_button2(x1, y1, 72, ((language == 0) ? "Change" : "更改"), false, true)) {
+		var fn = string(get_save_filename_ext("", 
+			((language == 0) ? "Select Minecraft installation directory" : "选择Minecraft安装目录"), 
+			mc_install_path, 
+			((language == 0) ? "Minecraft installation directory" : "Minecraft安装目录")));
 		if (fn != "") mc_install_path = filename_dir(fn);
 		update_asset_index_menu();
 	}
 	y1 += 28;
 	
 	// Use default button
-	if (draw_button2(x1, y1, 72, "Use default", false, true)) {
+	if (draw_button2(x1, y1, 72, ((language == 0) ? "Use default" : "使用默认设定"), false, true)) {
 		mc_install_path = mc_default_path;
 		update_asset_index_menu();
 	}
@@ -62,7 +70,7 @@ function draw_window_sound_import() {
 	// Asset index select menu
 	x1 = startx;
 	y1 += 30;
-	draw_text_dynamic(x1, y1, "2. Select the asset list to copy sounds from:");
+	draw_text_dynamic(x1, y1, ((language == 0) ? "2. Select the asset list to copy sounds from:" : "2. 选择想从中提取音效的版本："));
 	x1 += 16;
 	y1 += 20;
 	y1 += 1;
@@ -82,16 +90,16 @@ function draw_window_sound_import() {
 	if (sound_import_status == 2) {
 		if (theme == 3 && fdark || theme == 2) draw_set_color(c_lime);
 		else draw_set_color(c_green);
-		draw_text_dynamic(x1, y1, string_format_thousands(sound_import_asset_index_count) + " sounds have been copied!");
+		draw_text_dynamic(x1, y1, string_format_thousands(sound_import_asset_index_count) + ((language == 0) ? " sounds have been copied!" : " 个音效获取成功！"));
 	} else if (sound_import_status == 1) {
-		draw_text_dynamic(x1, y1, "Copying sounds... please wait!");
+		draw_text_dynamic(x1, y1, ((language == 0) ? "Copying sounds... please wait!" : "正在获取音效...... 请稍候！"));
 	} else {
 		if (sound_import_asset_index_count > 0) {
-			draw_text_dynamic(x1, y1, string_format_thousands(sound_import_asset_index_count) + " sounds located!");
+			draw_text_dynamic(x1, y1, string_format_thousands(sound_import_asset_index_count) + ((language == 0) ? " sounds located!" : " 个音效已被找到！"));
 		} else {
 			draw_set_color(c_red);
-			draw_text_dynamic(x1, y1 - 7, "No sounds located! Check your");
-			draw_text_dynamic(x1, y1 + 7, "Minecraft installation path.");
+			draw_text_dynamic(x1, y1 - 7, ((language == 0) ? "No sounds located! Check your" : "未找到音效！请检查您的 Minecraft"));
+			draw_text_dynamic(x1, y1 + 7, ((language == 0) ? "Minecraft installation path." : "安装目录。"));
 		}
 	}
 	draw_theme_color();
@@ -101,25 +109,25 @@ function draw_window_sound_import() {
 	// Copy sounds button
 	x1 = startx + width - 86 - 20;
 	var is_locked = sound_import_selected_asset_index == "";
-	if (draw_button2(x1, y1, 86, "Get sounds", is_locked, false)) {
+	if (draw_button2(x1, y1, 86, ((language == 0) ? "Get sounds" : "获取音效"), is_locked, false)) {
 		load_asset_index(true);
 	}
 	
 	// Instrument settings button
 	x1 = startx + 12;
 	y1 = starty + height - 20 - 12;
-	if (draw_button2(x1, y1, 120, "Instrument settings...", false, true)) {
+	if (draw_button2(x1, y1, 120, ((language == 0) ? "Instrument settings..." : "音色设置......"), false, true)) {
 		window = w_instruments;
 	}
 	// Sounds folder button
 	x1 += 120 + 12;
-	if (draw_button2(x1, y1, 120, "Open Sounds folder", false, true)) {
+	if (draw_button2(x1, y1, 120, ((language == 0) ? "Open Sounds folder" : "打开已获取音效目录"), false, true)) {
 		open_url(sounds_directory);
 	}
 	
 	// OK button
 	x1 = startx + width - 72 - 8 - 12;
-	if (draw_button2(x1, y1, 72, "OK", false, false)) {
+	if (draw_button2(x1, y1, 72, ((language == 0) ? "OK" : "确定"), false, false)) {
 		sound_import_status = 0;
 		window = 0;
 	}

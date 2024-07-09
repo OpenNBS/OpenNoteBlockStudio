@@ -67,7 +67,7 @@ function download_song_from_url() {
 				if (language != 1) {
 					show_message("The song could not be downloaded! Please try again with a different song.");
 				} else {
-					show_message("TRANSLATE");
+					show_message("歌曲下载失败！请更换歌曲重试。");
 				}
 				game_end();
 			}

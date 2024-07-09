@@ -1601,8 +1601,8 @@ function control_draw() {
 		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$新文件|"+
 		                             icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+
 		                             icon(icons.SAVE)+"Ctrl+S$保存歌曲|"+
-		                             icon(icons.SAVE_AS)+"另存为|保存选项......|-|"+
-									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + "TRANSLATE" +
+		                             icon(icons.SAVE_AS)+"另存为|"+
+									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + "连带自定义音色一起导出......|保存选项......|-|" +
 		                             inactive(selected != 0)+"导入片段......|"+
 									 inactive(selected = 0)+"导出片段......|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|"+
 		                             inactive(totalblocks = 0) + "导出音频文件......|"+
@@ -1673,11 +1673,11 @@ function control_draw() {
 				}
 		    }
 		    if (!isplayer) show_menu_ext("settings", 59, 19, "音色|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"音色设置......|TRANSLATE...|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
+		                        icon(icons.INSTRUMENTS)+"音色设置......|从 Minecraft 游戏文件中获取音效......|/|-|" + icon(icons.INFORMATION) + "歌曲信息......|" + icon(icons.PROPERTIES) + "歌曲属性......|歌曲数据......|-|" + icon(icons.MIDI_INPUT) + "MIDI 设备管理器|Ctrl+P$首选项......")
 			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
 		}
 		if (draw_tab("帮助")) {
-		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|TRANSLATE|-|更新历史......|关于......")
+		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|第 1 集：编写音符盒乐曲|第 2 集：打开 MIDI 文件|第 3 集：将乐曲导入进 Minecraft|第 4 集：编辑在 Minecraft 中创作的乐曲     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|捐赠......|-|更新历史......|关于......")
 		}
 	}
 
@@ -2338,7 +2338,7 @@ function control_draw() {
 	if (song_download_status == 1) {
 		window = -1
 		if (language != 1) draw_downloadprogress("Download", "Downloading song...", song_downloaded_size, song_total_size)
-		else draw_downloadprogress("TRANSLATE", "TRANSLATE", song_downloaded_size, song_total_size)
+		else draw_downloadprogress("下载", "正在下载乐曲......", song_downloaded_size, song_total_size)
 	}
 	
 	// Draw debug overlay
