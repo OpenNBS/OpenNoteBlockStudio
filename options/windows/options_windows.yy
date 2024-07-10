@@ -4,7 +4,7 @@
   "option_windows_version": "3.10.0.0",
   "option_windows_company_info": "OpenNBS",
   "option_windows_product_info": "Minecraft Note Block Studio",
-  "option_windows_copyright_info": "Copyright (c) 2022 OpenNBS",
+  "option_windows_copyright_info": "Copyright (c) 2024 OpenNBS",
   "option_windows_description_info": "Minecraft Note Block Studio",
   "option_windows_display_cursor": true,
   "option_windows_icon": "icons/icon.ico",
