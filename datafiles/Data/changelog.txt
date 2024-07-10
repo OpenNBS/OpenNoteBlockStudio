@@ -1,3 +1,10 @@
+Changes in v3.11.0 Beta 2 (2024.07.09):
+
+* Correctly applied the new audio export additions announced in Beta 1.
+* Added Chinese translations to the new features from Beta 1.
+* The social buttons in the About window no longer use the primary button style.
+
+
 Changes in v3.11.0 Beta 1 (2024.07.09):
 
 * Added a sound import assistant to help you use sounds from Minecraft: Java
