@@ -77,26 +77,26 @@ function draw_window_about() {
 	draw_set_halign(fa_left)
 	// End credits box
 
-	if (draw_button2(x1 + 8, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false)) {
+	if (draw_button2(x1 + 8, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false, true)) {
 		open_url(link_website)
 	}
-	if (draw_button2(x1 + 84, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false)) {
+	if (draw_button2(x1 + 84, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false, true)) {
 		open_url(link_github)
 	}
-	if (draw_button2(x1 + 160, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false)) {
+	if (draw_button2(x1 + 160, y1 + 380, 72, condstr(language != 1, "Discord", "Discord"), false, true)) {
 		open_url(link_discord)
 	}
-	if (draw_button2(x1 + 236, y1 + 380, 72, condstr(language != 1, "Twitter", "Twitter"), false)) {
+	if (draw_button2(x1 + 236, y1 + 380, 72, condstr(language != 1, "Twitter", "Twitter"), false, true)) {
 		open_url(link_twitter)
 	}
-	if (draw_button2(x1 + 312, y1 + 380, 72, condstr(language != 1, "YouTube", "YouTube"), false)) {
+	if (draw_button2(x1 + 312, y1 + 380, 72, condstr(language != 1, "YouTube", "YouTube"), false, true)) {
 		open_url(link_youtube)
 	}
-	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, "Donate", "捐赠"), false)) {
+	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, "Donate", "捐赠"), false, true)) {
 		open_url(link_donate)
 	}
 
-	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false, false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {
