@@ -17,6 +17,7 @@ function macros() {
 #macro link_github_org "https://github.com/OpenNBS"
 #macro link_youtube "https://youtube.com/@OpenNBS"
 #macro link_donate "https://opencollective.com/OpenNBS/donate"
+#macro link_qq_group "http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=9iT2JIMOPWcrhzVpOROtlv7PJ1jSGEu0&authKey=VmmwRR7507A9fEVxraPmXn224vhbHXc4xs4QmwkveFZBriU%2Fq2NCj9fbYE5QCaLJ&noverify=0&group_code=218993157"
 
 #macro file_directory		game_save_id
 #macro data_directory		working_directory + "Data\\"

@@ -197,9 +197,16 @@ function menu_click(argument0) {
 			if (sel = 7) open_url(link_github)
 			if (sel = 8) open_url(link_discord)
 	        if (sel = 9) open_url(link_report)
-	        if (sel = 10) open_url(link_donate)
-	        if (sel = 11) window = w_changelist
-	        if (sel = 12) window = w_about
+			if (language == 0) {
+		        if (sel = 10) open_url(link_donate)
+		        if (sel = 11) window = w_changelist
+		        if (sel = 12) window = w_about
+			} else if (language == 1) {
+		        if (sel = 10) open_url(link_qq_group)
+		        if (sel = 11) open_url(link_donate)
+		        if (sel = 12) window = w_changelist
+		        if (sel = 13) window = w_about
+			}
 	        break
 	    }
 	    case "section": {

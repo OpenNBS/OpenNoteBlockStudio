@@ -1677,7 +1677,7 @@ function control_draw() {
 			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "歌曲信息......|" + "歌曲数据......|-|" + "Ctrl+P$首选项......")
 		}
 		if (draw_tab("帮助")) {
-		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|第 1 集：编写音符盒乐曲|第 2 集：打开 MIDI 文件|第 3 集：将乐曲导入进 Minecraft|第 4 集：编辑在 Minecraft 中创作的乐曲     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|捐赠......|-|更新历史......|关于......")
+		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "教程视频|\\|第 1 集：编写音符盒乐曲|第 2 集：打开 MIDI 文件|第 3 集：将乐曲导入进 Minecraft|第 4 集：编辑在 Minecraft 中创作的乐曲     |-|F1$观看所有|/|-|" + icon(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|QQ 群......|捐赠......|-|更新历史......|关于......")
 		}
 	}
 

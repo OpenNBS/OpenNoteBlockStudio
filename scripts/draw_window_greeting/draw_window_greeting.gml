@@ -77,10 +77,12 @@ function draw_window_greeting() {
 	draw_text_dynamic(x1 + 150, y1 + 356 + dev_label_offset, "|")
 	draw_text_url(x1 + 180, y1 + 356 + dev_label_offset, "YouTube", link_youtube)
 
-	draw_text_url(x1 + 108, y1 + 372 + dev_label_offset, "GitHub", link_github)
-	draw_text_dynamic(x1 + 131, y1 + 372 + dev_label_offset, "|")
+	draw_text_url(x1 + 108 - (language == 1) * 20, y1 + 372 + dev_label_offset, "GitHub", link_github)
+	draw_text_dynamic(x1 + 131 - (language == 1) * 22, y1 + 372 + dev_label_offset, "|")
+	if (language == 1) draw_text_url(x1 + 133, y1 + 372 + dev_label_offset, "QQ 群", link_qq_group)
+	if (language == 1) draw_text_dynamic(x1 + 131 + 22, y1 + 372 + dev_label_offset, "|")
 	if (language != 1) draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "Donate", link_donate)
-	else draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "捐赠", link_donate)
+	else draw_text_url(x1 + 156 + 15, y1 + 372 + dev_label_offset, "捐赠", link_donate)
 	draw_set_color(c_white)
 	
 	if (fdark && theme = 3) draw_set_color(0)
