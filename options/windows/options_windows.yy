@@ -5,7 +5,7 @@
   "option_windows_company_info": "OpenNBS",
   "option_windows_product_info": "Minecraft Note Block Studio",
   "option_windows_copyright_info": "Copyright (c) 2024 OpenNBS",
-  "option_windows_description_info": "Minecraft Note Block Studio",
+  "option_windows_description_info": "An open-source Minecraft music editor",
   "option_windows_display_cursor": true,
   "option_windows_icon": "icons/icon.ico",
   "option_windows_save_location": 1,
