@@ -21,24 +21,39 @@
 An open-source continuation of Minecraft Note Block Studio with exciting new features!
 </p>
 
-### Download
-You can download Open Note Block Studio [here](https://github.com/OpenNBS/OpenNoteBlockStudio/releases/latest)! _(Windows-only. Support for other platforms is coming soon!)_
+## ⬇ Download
+You can download Open Note Block Studio [here](https://github.com/OpenNBS/OpenNoteBlockStudio/releases/latest)!
 
-### Project Status
+> _Windows-only. Support for other platforms is coming soon!_
+
+## 📄 Project Status
+
 The current version is considered stable and feature-complete; as such, it's no longer accepting contributions or new features other than minor bug fixes.
 
 In order to future-proof the project and allow us to make further improvements, we're currently in the process of rewriting the program using the Qt framework. You can read more about this and our future plans regarding the project in [this discussion](https://github.com/OpenNBS/OpenNoteBlockStudio/discussions/426)!
 
-### Issues
-To report issues, please head over to the [Issues](https://github.com/OpenNBS/OpenNoteBlockStudio/issues) page.
+## 🐛 Report an issue
+
+To report an issue or suggest an improvement, go to the [Issues](/issues/new/choose) page!
+
 You can also join our [Discord server](https://discord.gg/w35BqQp) to get support and share your creations!
 
-### Contributions
-This project is written in GameMaker Language (GML). You must have [GameMaker Studio 2](https://gamemaker.io/) in order to open the project and make changes.
+## ❤ Donate
 
-Since OpenNBS relies on 32-bit DLLs, you must use GameMaker runtime version **2022.6** as 32-bit support was removed in further versions. Scroll down [this page](https://gms.yoyogames.com/ReleaseNotes.html) and click _'Older versions'_ to find the appropriate installer.
+If OpenNBS is meaningful to you and you'd like to support its development, you can support us through one of the links below!
 
-If you'd like to contribute, please [open an issue](https://github.com/OpenNBS/OpenNoteBlockStudio/issues/new/choose) before making a pull request!
+[Patreon](https://patreon.com/OpenNBS) • [GitHub Sponsors](https://github.com/sponsors/OpenNBS) • [Open Collective](https://opencollective.com/OpenNBS)
 
-### More
+###### Supporters
+<img src="https://opencollective.com/opennbs/backers.svg" height="48px"/>
+
+## 👥 Contributing
+
+This project is written in the GameMaker Language (GML). You must have [GameMaker](https://gamemaker.io/) in order to open the project and make changes.
+
+Since OpenNBS relies on 32-bit DLLs, you must use the GameMaker runtime version **2022.6** as 32-bit support was removed in further versions. Scroll down [this page](https://gms.yoyogames.com/ReleaseNotes.html) and click _'Older versions'_ to find the appropriate installer.
+
+If you'd like to contribute, please [open an issue](https://github.com/OpenNBS/OpenNoteBlockStudio/issues/new/choose) discussing your suggestion before making a pull request!
+
+## ❔ More
 For everything else, please visit our [website](https://opennbs.org/). You can also follow us on [Twitter](https://twitter.com/OpenNBS) and [YouTube](https://youtube.com/@OpenNBS)!
