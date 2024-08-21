@@ -84,7 +84,7 @@ EXPORTED_FUNCTION void window_focus(void *window) {
           for (CFIndex j = 0; j < appCount; j++) {
             if (ownerPID.integerValue == [[[[NSWorkspace sharedWorkspace] runningApplications] objectAtIndex:j] processIdentifier]) {
               NSRunningApplication *appWithPID = [[[NSWorkspace sharedWorkspace] runningApplications] objectAtIndex:j];
-              [appWithPID activateWithOptions:NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps];
+              [appWithPID activateWithOptions:NSApplicationActivateAllWindows];
               char buf[PROC_PIDPATHINFO_MAXSIZE];
               proc_pidpath(ownerPID.integerValue, buf, sizeof(buf));
               NSString *buffer = [NSString stringWithUTF8String:buf];
