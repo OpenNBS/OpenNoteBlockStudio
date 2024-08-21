@@ -84,7 +84,18 @@ EXPORTED_FUNCTION void window_focus(void *window) {
           for (CFIndex j = 0; j < appCount; j++) {
             if (ownerPID.integerValue == [[[[NSWorkspace sharedWorkspace] runningApplications] objectAtIndex:j] processIdentifier]) {
               NSRunningApplication *appWithPID = [[[NSWorkspace sharedWorkspace] runningApplications] objectAtIndex:j];
-              [appWithPID activateWithOptions:NSApplicationActivateAllWindows];
+              if (@available(macOS 14.0, *)) {
+                [[NSApplication sharedApplication] yieldActivationToApplication:appWithPID];
+                [appWithPID activateWithOptions:NSApplicationActivateAllWindows];
+              } else {
+                #pragma GCC diagnostic push
+                #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+                #pragma clang diagnostic push
+                #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                [appWithPID activateWithOptions:NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps];
+                #pragma clang diagnostic pop
+                #pragma GCC diagnostic pop
+              }
               char buf[PROC_PIDPATHINFO_MAXSIZE];
               proc_pidpath(ownerPID.integerValue, buf, sizeof(buf));
               NSString *buffer = [NSString stringWithUTF8String:buf];
