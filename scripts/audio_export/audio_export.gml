@@ -21,7 +21,7 @@ function mp3_export() {
 	var output_format = audio_exp_format
 	var output_ext = "." + string_lower(output_format)
 	
-	fn = string(GetSaveFileName(output_format + " files (*" + output_ext + ")|*" + output_ext, filename_new_ext(songs[song].filename, "") + output_ext, filename_path(songs[song].filename), condstr(language != 1, "Export audio track", "导出音频文件")))
+	fn = string(get_save_filename_ext(output_format + " files (*" + output_ext + ")|*" + output_ext, filename_new_ext(songs[song].filename, "") + output_ext, filename_path(songs[song].filename), condstr(language != 1, "Export audio track", "导出音频文件")))
 	if (fn = "") return 0
 
 	save_song(temp_file, true);
@@ -40,8 +40,8 @@ function mp3_export() {
 	try {
 		var result = python_call_function("audio_export", "main", args, kwargs);
 	} catch (e) {
-		if (language != 1) ShowMessage("An error occurred while exporting the song:\n\n" + e)
-		else ShowMessage("导出歌曲时发生错误：\n\n" + e)
+		if (language != 1) show_message("An error occurred while exporting the song:\n\n" + e)
+		else show_message("导出歌曲时发生错误：\n\n" + e)
 		return -1;
 	}
 

@@ -3,8 +3,8 @@
 function pack_instruments() {
 	var fn, tempdir, ins, src, dst, count;
 	show_debug_message(songs[song].song_name)
-	if (language != 1) fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "Pack instruments to ZIP file"));
-	else fn = string(GetSaveFileName("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
+	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "Pack instruments to ZIP file"));
+	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
 	if (fn = "") return 0;
 	
 	tempdir = data_directory + "Temp\\";

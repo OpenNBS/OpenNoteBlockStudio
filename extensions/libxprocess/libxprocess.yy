@@ -18,7 +18,7 @@
   "exportToGame": true,
   "extensionVersion": "0.0.1",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"libxprocess.dll","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_EXEP","hidden":false,"value":"0x1000",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_CWDP","hidden":false,"value":"0x2000",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"KINFO_PPID","hidden":false,"value":"0x0100",},
@@ -149,6 +149,10 @@
             2,
             2,
           ],"documentation":"","externalName":"ProcInfoFromProcIdEx","help":"ProcInfoFromProcIdEx(procId,kInfoFlags)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"SetBufferLimitForStandardOutput","argCount":0,"args":[
+            2,
+          ],"documentation":"","externalName":"SetBufferLimitForStandardOutput","help":"SetBufferLimitForStandardOutput(limit)","hidden":false,"kind":1,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"CurrentProcessReadFromStandardInput","argCount":0,"args":[],"documentation":"","externalName":"CurrentProcessReadFromStandardInput","help":"CurrentProcessReadFromStandardInput()","hidden":false,"kind":1,"returnType":1,},
       ],"init":"","kind":1,"order":[
         {"name":"ProcessExecute","path":"extensions/libxprocess/libxprocess.yy",},
         {"name":"ProcessExecuteAsync","path":"extensions/libxprocess/libxprocess.yy",},
@@ -198,8 +202,8 @@
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess_arm64.so","TargetMask":7,},
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"libxprocess.so","TargetMask":7,},
       ],"uncompress":false,"usesRunnerInterface":false,},
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":0,"filename":"libxprocess.zip","final":"","functions":[],"init":"","kind":4,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":194,"filename":"libxprocess.gml","final":"","functions":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"libxprocess.zip","constants":[],"copyToTargets":0,"filename":"libxprocess.zip","final":"","functions":[],"init":"","kind":4,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"libxprocess.gml","constants":[],"copyToTargets":194,"filename":"libxprocess.gml","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"libxprocess_init","argCount":0,"args":[],"documentation":"","externalName":"libxprocess_init","help":"libxprocess_init()","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"execute_shell","argCount":0,"args":[
             1,

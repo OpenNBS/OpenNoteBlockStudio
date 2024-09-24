@@ -15,7 +15,7 @@ function pattern_import() {
 	if (songs[song].selected != 0) return 0
 	if (fn = "") {
 	    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
-	    fn = string(GetOpenFileName("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, condstr(language != 1, "Load pattern", "打开分段")))
+	    fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, condstr(language != 1, "Load pattern", "打开分段")))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 

@@ -5,7 +5,7 @@ function log_init() {
 	var f = file_text_open_write(log_file);
 	if (f < 0)
 	{
-	    ShowMessage("Could not access file directory. Try running in administrator mode or re-install.")
+	    show_message("Could not access file directory. Try running in administrator mode or re-install.")
 	    return false
 	}
 
