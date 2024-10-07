@@ -42,7 +42,7 @@ You can also join our [Discord server](https://discord.gg/w35BqQp) to get suppor
 
 If OpenNBS is meaningful to you and you'd like to support its development, you can support us through one of the links below!
 
-[Patreon](https://patreon.com/OpenNBS) • [GitHub Sponsors](https://github.com/sponsors/OpenNBS) • [Open Collective](https://opencollective.com/OpenNBS)
+[GitHub Sponsors](https://github.com/sponsors/OpenNBS) • [Open Collective](https://opencollective.com/OpenNBS)
 
 ###### Supporters
 <img src="https://opencollective.com/opennbs/backers.svg" height="48px"/>
