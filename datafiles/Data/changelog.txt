@@ -1,3 +1,16 @@
+Changes in v3.11.0 Beta 3 (TBD):
+
+* Improved auto-backup so it will now lead you to the backup folder and will not
+   overwrite your song with multiple instances open!
+* Added the OpenNBS QQ group link to display when language is set to Chinese.
+* Fix macro windows when nothing is selected.
+* Fix auto-save countdown going into the negatives.
+* Fix compressing selection sometimes crashes the editor.
+* Fix missing notes after compressing selection.
+* Revert Windows app description due to it displaying as the program name in
+   Task Manager and Programs and Resources.
+
+
 Changes in v3.11.0 Beta 2 (2024.07.09):
 
 * Correctly applied the new audio export additions announced in Beta 1.
