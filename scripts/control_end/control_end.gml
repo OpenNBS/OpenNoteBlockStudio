@@ -4,7 +4,7 @@ function control_end() {
 
 	confirm(1)
 	save_settings()
-	backup_clear()
+	if (!isplayer) backup_clear()
 
 
 }

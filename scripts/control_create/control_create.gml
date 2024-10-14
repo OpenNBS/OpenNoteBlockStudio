@@ -18,6 +18,12 @@ function control_create() {
 		if (parameter_string(i) = "-player" || parameter_string(i) == "--protocol-launcher") isplayer = 1
 	}
 	//if (RUN_FROM_IDE != 1) isplayer = 1
+	destroy_self = 0
+	port_taken = 0
+	server_socket = -1
+	if (!isplayer) server_socket = network_create_server(network_socket_tcp, 30010, 1)
+	client_socket = -1
+	if (server_socket < 0 && !isplayer) {port_taken = 1; client_socket = network_create_socket(network_socket_tcp)}
 	window_width = 0
 	window_height = 0
 	if (!isplayer) window_maximize()
@@ -165,6 +171,7 @@ function control_create() {
 	    recent_song_time[a] = 0
 	}
 	timesignature = 4
+	song_backupid = string(floor(random(800000)))
 	file_dnd_set_hwnd(hwnd_main)
 	file_dnd_set_enabled(true)
 	dndfile = ""
@@ -600,15 +607,13 @@ function control_create() {
 	change_theme()
 
 	// Auto-recovery
-	// DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
-	// Implement in a better way that takes multiple instances into account.
-	/*
-	if (file_exists_lib(backup_file)) {
+	// PREVIOUSLY DISABLED DUE TO https://github.com/OpenNBS/OpenNoteBlockStudio/issues/196
+	// Implemented in a better way that takes multiple instances into account.
+	if (file_find_first(backup_file + "*_backup.nbs", 0) != "" && !port_taken && !isplayer) {
 		if (question("Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?", "Auto-recovery")) {
-			load_song(backup_file, true)
+			open_url(backup_file)
 		}
 	}
-	*/
 
 	// Parse command line arguments
 	var p_num = parameter_count();
